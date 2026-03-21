@@ -1,0 +1,12 @@
+.DS_Store
+.claude/
+etc/
+archive/
+supanova-design-skill/
+CLAUDE.md
+DESIGN_PRINCIPLES.md
+*copy*.html
+*.pdf
+
+# 각 폴더 내 archive 제외
+**/archive/
