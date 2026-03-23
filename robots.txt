@@ -5,4 +5,4 @@ Disallow: /archive/
 Disallow: /.claude/
 Disallow: /.github/
 
-Sitemap: https://shinyounga.github.io/ontoh-website/sitemap.xml
+Sitemap: https://ontoh.co.kr/sitemap.xml

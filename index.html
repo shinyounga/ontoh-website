@@ -6,22 +6,22 @@
   <title>ONTOH - 건설현장 안전관리 AI 솔루션 | AI CCTV 자율관제 & 보건관리</title>
   <meta name="description" content="ONTOH는 AI 기반 건설현장 CCTV 자율관제와 작업자 보건관리 솔루션을 제공합니다. PTZ 카메라 자동 제어, 위험 감지, 중대재해 예방까지 — 건설현장 안전관제 AI 플랫폼.">
   <meta name="keywords" content="건설안전 AI, AI CCTV 건설현장, 건설현장 안전관제, 중대재해 예방 솔루션, CCTV 자율관제, 작업자 보건관리, ONTOH, 온토">
-  <link rel="canonical" href="https://shinyounga.github.io/ontoh-website/">
+  <link rel="canonical" href="https://ontoh.co.kr/">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:title" content="ONTOH - 건설현장 안전관리 AI 솔루션">
   <meta property="og:description" content="AI 기반 건설현장 CCTV 자율관제와 작업자 보건관리 솔루션. PTZ 카메라 자동 제어, 위험 감지, 중대재해 예방까지.">
-  <meta property="og:url" content="https://shinyounga.github.io/ontoh-website/">
+  <meta property="og:url" content="https://ontoh.co.kr/">
   <meta property="og:site_name" content="ONTOH">
-  <meta property="og:image" content="https://shinyounga.github.io/ontoh-website/assets/main/main1.png">
+  <meta property="og:image" content="https://ontoh.co.kr/assets/main/main1.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ONTOH - 건설현장 안전관리 AI 솔루션">
   <meta name="twitter:description" content="AI 기반 건설현장 CCTV 자율관제와 작업자 보건관리 솔루션.">
-  <meta name="twitter:image" content="https://shinyounga.github.io/ontoh-website/assets/main/main1.png">
+  <meta name="twitter:image" content="https://ontoh.co.kr/assets/main/main1.png">
   <!-- JSON-LD 구조화 데이터 -->
   <script type="application/ld+json">
   {
@@ -29,8 +29,8 @@
     "@type": "Organization",
     "name": "ONTOH",
     "alternateName": "주식회사 온토",
-    "url": "https://shinyounga.github.io/ontoh-website/",
-    "logo": "https://shinyounga.github.io/ontoh-website/assets/logo/ontoh/파랑.svg",
+    "url": "https://ontoh.co.kr/",
+    "logo": "https://ontoh.co.kr/assets/logo/ontoh/파랑.svg",
     "description": "AI 기반 건설현장 CCTV 자율관제 및 작업자 보건관리 솔루션",
     "address": {
       "@type": "PostalAddress",
@@ -93,89 +93,17 @@
       },
     }
   </script>
+  <link rel="stylesheet" href="css/common.css">
   <style>
-    * { word-break: keep-all; }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(2rem); filter: blur(4px); }
-      to { opacity: 1; transform: translateY(0); filter: blur(0); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
+    /* index.html 전용 스타일 */
     @keyframes scan-line {
       0% { top: 0; }
       100% { top: 100%; }
     }
 
-    @keyframes chevronFade {
-      0%, 100% { opacity: 0.2; transform: translateY(0); }
-      50% { opacity: 1; transform: translateY(4px); }
-    }
+    .accent-dot { color: #0169a9; }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(2rem);
-      filter: blur(4px);
-    }
-    .reveal.visible {
-      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    .stagger-1 { animation-delay: 80ms; }
-    .stagger-2 { animation-delay: 160ms; }
-    .stagger-3 { animation-delay: 240ms; }
-    .stagger-4 { animation-delay: 320ms; }
-    .stagger-5 { animation-delay: 400ms; }
-    .stagger-6 { animation-delay: 480ms; }
-
-    .spring { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-
-    /* Nav — 투명 → 글래스 전환 (Pluxity/AI-CON 스타일) */
-    .nav-transparent {
-      background: transparent;
-    }
-    .nav-scrolled {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(27, 46, 106, 0.06);
-      box-shadow: 0 1px 20px rgba(27, 46, 106, 0.06);
-    }
-
-    /* Noise overlay */
-    .noise-overlay {
-      position: fixed; inset: 0; z-index: 60;
-      pointer-events: none; opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-repeat: repeat; background-size: 256px 256px;
-    }
-
-    /* Double Bezel (기존 브랜드 유지) */
-    .double-bezel {
-      background: rgba(27, 46, 106, 0.03);
-      padding: 3px;
-      border-radius: 1.5rem;
-      box-shadow: 0 0 0 1px rgba(27, 46, 106, 0.06);
-    }
-    .double-bezel-inner {
-      background: #ffffff;
-      border-radius: calc(1.5rem - 3px);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 30px -8px rgba(27, 46, 106, 0.06);
-    }
-
-    .cta-arrow { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-    .group:hover .cta-arrow { transform: translateX(4px); }
-
-    .detection-box { animation: pulse-dot 2s ease-in-out infinite; }
+    .detection-box { animation: pulse-dot 2s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
 
     .scan-effect::after {
       content: '';
@@ -185,23 +113,6 @@
       animation: scan-line 3s linear infinite;
     }
 
-    /* Mobile menu */
-    .mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .mobile-menu.open { transform: translateX(0); }
-    .mobile-menu .menu-link {
-      opacity: 0; transform: translateY(1.5rem);
-    }
-    .mobile-menu.open .menu-link {
-      animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    /* AI-CON 스타일 에디토리얼 악센트 마침표 */
-    .accent-dot { color: #0169a9; }
-
-    /* Hero 비디오 배경 — 살짝 확대+이동으로 우하단 워터마크 크롭 */
     .hero-video {
       position: absolute;
       inset: 0;
@@ -212,12 +123,23 @@
       transform-origin: center center;
     }
 
-    /* Pluxity 스타일 넓은 섹션 여백 */
-    .section-spacious { padding-top: 7rem; padding-bottom: 7rem; }
-    @media (min-width: 768px) {
-      .section-spacious { padding-top: 9rem; padding-bottom: 9rem; }
+    /* Safers 스타일 탭 UI */
+    .tab-btn {
+      position: relative;
+      color: #94a3b8;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
-
+    .tab-btn.active { color: #1b2e6a; }
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0; right: 0;
+      height: 2px;
+      background: #0169a9;
+      border-radius: 1px;
+    }
+    .tab-panel { display: none; animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .tab-panel.active { display: block; }
   </style>
 </head>
 <body class="bg-white text-[#0f172a] font-sans antialiased">
@@ -308,8 +230,8 @@
           <span class="inline-block rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.15em] font-medium bg-white text-navy border border-navy/10 shadow-[0_2px_8px_rgba(27,46,106,0.06)] mb-8">Construction Safety AI Platform</span>
         </div>
         <h1 class="reveal stagger-1 text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] tracking-tight leading-tight font-bold text-[#0f172a] mb-6">
-          현장을 보고,<br>
-          사람을 살피다<span class="accent-dot">.</span>
+          <span class="font-medium text-[#334155]">현장을</span> 보고,<br>
+          <span class="font-medium text-[#334155]">사람을</span> 살피다<span class="accent-dot">.</span>
         </h1>
         <p class="reveal stagger-2 text-xl md:text-2xl font-semibold text-[#334155] mb-4 leading-snug">
           Vision<span class="text-accent">.</span> Health<span class="text-accent">.</span>
@@ -1002,81 +924,19 @@
   </footer>
 
   <!-- ==================== SCRIPTS ==================== -->
+  <script src="js/common.js"></script>
   <script>
+    // index.html 전용: 히어로 비디오
     document.addEventListener('DOMContentLoaded', function() {
-      // Scroll reveal (IntersectionObserver)
-      var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -60px 0px'
-      });
-
-      document.querySelectorAll('.reveal').forEach(function(el) {
-        observer.observe(el);
-      });
-
-      // Nav: 투명 → 글래스 전환 (AI-CON/Pluxity 스타일)
-      var nav = document.getElementById('mainNav');
-      function updateNav() {
-        var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollY > 80) {
-          nav.classList.remove('nav-transparent');
-          nav.classList.add('nav-scrolled');
-        } else {
-          nav.classList.remove('nav-scrolled');
-          nav.classList.add('nav-transparent');
-        }
-      }
-      window.addEventListener('scroll', updateNav, { passive: true });
-      updateNav();
-
-      // Mobile menu
-      var menuToggle = document.getElementById('menuToggle');
-      var menuClose = document.getElementById('menuClose');
-      var mobileMenu = document.getElementById('mobileMenu');
-
-      menuToggle.addEventListener('click', function() {
-        mobileMenu.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-      menuClose.addEventListener('click', function() {
-        closeMobileMenu();
-      });
-
-      // Smooth scroll
-      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-          var targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          e.preventDefault();
-          var target = document.querySelector(targetId);
-          if (target) {
-            var navHeight = 80;
-            var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-          }
-        });
-      });
-
-      // 히어로 비디오 — 자동 재생 + 루프
       var heroVideo = document.getElementById('heroVideo');
       if (heroVideo) {
-        // 자동 재생 시작
         heroVideo.play().catch(function() {
-          // autoplay 실패 시 (브라우저 정책) — 사용자 인터랙션 후 재생
           document.addEventListener('click', function playOnce() {
             heroVideo.play();
             document.removeEventListener('click', playOnce);
           }, { once: true });
         });
 
-        // 스크롤 시 영상 페이드 — 스크롤 내리면 영상이 서서히 어두워짐
         var heroSection = document.getElementById('heroSection');
         function updateVideoOpacity() {
           if (!heroSection) return;
@@ -1088,12 +948,6 @@
         window.addEventListener('scroll', updateVideoOpacity, { passive: true });
       }
     });
-
-    function closeMobileMenu() {
-      var mobileMenu = document.getElementById('mobileMenu');
-      mobileMenu.classList.remove('open');
-      document.body.style.overflow = '';
-    }
   </script>
 </body>
 </html>

@@ -6,22 +6,22 @@
   <title>ONTOH Vision - AI 건설 안전 CCTV 자동제어 자율관제 솔루션</title>
   <meta name="description" content="ONTOH Vision은 AI 기반 PTZ 카메라 자동 제어와 RAG-LMM 복합 상황 판단으로 건설현장 사각지대를 해소하는 CCTV 자율관제 솔루션입니다. 위험 감지, 법령 연동, 보고서 자동 생성.">
   <meta name="keywords" content="건설 안전 CCTV 자동제어, AI 자율관제, PTZ 카메라 AI, 건설현장 위험 감지, RAG LMM 건설 안전, ONTOH Vision">
-  <link rel="canonical" href="https://shinyounga.github.io/ontoh-website/vision.html">
+  <link rel="canonical" href="https://ontoh.co.kr/vision.html">
   <!-- Open Graph -->
   <meta property="og:type" content="product">
   <meta property="og:locale" content="ko_KR">
   <meta property="og:title" content="ONTOH Vision - AI 건설 안전 CCTV 자율관제 솔루션">
   <meta property="og:description" content="AI 기반 PTZ 카메라 자동 제어와 복합 상황 판단으로 건설현장 사각지대를 해소합니다.">
-  <meta property="og:url" content="https://shinyounga.github.io/ontoh-website/vision.html">
+  <meta property="og:url" content="https://ontoh.co.kr/vision.html">
   <meta property="og:site_name" content="ONTOH">
-  <meta property="og:image" content="https://shinyounga.github.io/ontoh-website/assets/vision/main2.png">
+  <meta property="og:image" content="https://ontoh.co.kr/assets/vision/main2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ONTOH Vision - AI 건설 안전 CCTV 자율관제 솔루션">
   <meta name="twitter:description" content="AI 기반 PTZ 카메라 자동 제어와 복합 상황 판단으로 건설현장 사각지대를 해소합니다.">
-  <meta name="twitter:image" content="https://shinyounga.github.io/ontoh-website/assets/vision/main2.png">
+  <meta name="twitter:image" content="https://ontoh.co.kr/assets/vision/main2.png">
   <!-- JSON-LD 구조화 데이터 -->
   <script type="application/ld+json">
   {
@@ -34,7 +34,7 @@
       "name": "ONTOH"
     },
     "category": "건설안전 AI 솔루션",
-    "url": "https://shinyounga.github.io/ontoh-website/vision.html"
+    "url": "https://ontoh.co.kr/vision.html"
   }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -85,50 +85,10 @@
       },
     }
   </script>
+  <link rel="stylesheet" href="css/common.css">
   <style>
-    * { word-break: keep-all; }
-
-    /* Noise Overlay */
-    .noise-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 60;
-      pointer-events: none;
-      opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-
-    /* Scroll Animations */
-    .reveal {
-      opacity: 0;
-      transform: translateY(2rem);
-      filter: blur(4px);
-      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-      filter: blur(0);
-    }
-
-    /* Supanova Transition */
-    * {
-      transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Double Bezel Card — Light theme */
-    .double-bezel {
-      background: rgba(27, 46, 106, 0.03);
-      padding: 3px;
-      border-radius: 1.5rem;
-      box-shadow: 0 0 0 1px rgba(27, 46, 106, 0.06);
-    }
-    .double-bezel-inner {
-      background: #ffffff;
-      border-radius: calc(1.5rem - 3px);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 30px -8px rgba(27, 46, 106, 0.06);
-      padding: 2rem;
-    }
+    /* Accent dot for editorial headings */
+    .accent-dot { color: #0169a9; }
 
     /* Dark Bezel (for dashboard) */
     .bezel-card-dark {
@@ -144,78 +104,10 @@
       padding: 2rem;
     }
 
-    /* Nav: transparent → glass on scroll */
-    .nav-transparent { background: transparent; }
-    .nav-scrolled {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid rgba(27, 46, 106, 0.06);
-      box-shadow: 0 1px 20px rgba(27, 46, 106, 0.06);
-    }
-
-    /* Accent dot for editorial headings */
-    .accent-dot { color: #0169a9; }
-
-    /* Section spacing (Pluxity style) */
-    .section-spacious { padding-top: 7rem; padding-bottom: 7rem; }
-    @media (min-width: 768px) { .section-spacious { padding-top: 9rem; padding-bottom: 9rem; } }
-
-    .spring {
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Chevron fade for scroll indicator */
-    @keyframes chevronFade {
-      0%, 100% { opacity: 0.2; transform: translateY(0); }
-      50% { opacity: 1; transform: translateY(4px); }
-    }
-
-    .mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .mobile-menu.open {
-      transform: translateX(0);
-    }
-    .mobile-menu .menu-link {
-      opacity: 0;
-      transform: translateY(1.5rem);
-    }
-    .mobile-menu.open .menu-link {
-      animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(1.5rem); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .stagger-1 { animation-delay: 80ms; }
-    .stagger-2 { animation-delay: 160ms; }
-    .stagger-3 { animation-delay: 240ms; }
-    .stagger-4 { animation-delay: 320ms; }
-
-    .cta-arrow {
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .group:hover .cta-arrow {
-      transform: translateX(4px);
-    }
-
     /* Pulse for live indicator */
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
     .pulse-dot {
       animation: pulse-dot 1.5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
     }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #f8fafc; }
-    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
 
     /* Step connector line */
     .step-line {
@@ -300,7 +192,7 @@
     <a href="index.html#why" class="menu-link text-2xl font-bold text-navy stagger-1 uppercase tracking-wider" onclick="closeMobileMenu()">About</a>
     <div class="menu-link stagger-2 text-center">
       <p class="text-sm text-[#94a3b8] font-medium tracking-wider uppercase mb-3">Solutions</p>
-      <a href="vision_v3.html" class="block text-xl font-bold text-navy mb-2" onclick="closeMobileMenu()">ONTOH Vision</a>
+      <a href="vision.html" class="block text-xl font-bold text-navy mb-2" onclick="closeMobileMenu()">ONTOH Vision</a>
       <a href="health.html" class="block text-xl font-bold text-navy" onclick="closeMobileMenu()">ONTOH Health</a>
     </div>
     <a href="index.html#contact" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-lg font-medium stagger-3 hover:scale-[1.02] active:scale-[0.98] spring uppercase tracking-wider" onclick="closeMobileMenu()">
@@ -570,9 +462,6 @@
                   <div class="flex-1 bg-white/60 border border-[#64748b]/10 rounded-xl px-4 py-3">
                     <span class="text-sm text-[#64748b]">알람 전송</span>
                   </div>
-                </div>
-                <div class="flex justify-center">
-                  <iconify-icon icon="solar:stop-circle-bold" width="24" class="text-[#94a3b8]"></iconify-icon>
                 </div>
               </div>
               <!-- Pain points -->
@@ -887,7 +776,7 @@
         <h2 class="text-3xl sm:text-4xl font-extrabold text-navy leading-tight">
           감지부터 교육까지, 하나의 흐름으로<span class="accent-dot">.</span>
         </h2>
-        <p class="text-[#64748b] text-lg max-w-2xl mx-auto mt-4">AI 영상 분석, 카메라 자율 제어, 법령 매칭, 교육 자료 생성까지 --<br>건설현장 안전관리의 기준을 만듭니다.</p>
+        <p class="text-[#64748b] text-lg max-w-2xl mx-auto mt-4">AI 영상 분석, CCTV PTZ 자율 제어, 법령 매칭, 교육 자료 생성까지 --<br>건설현장 안전관리의 기준을 만듭니다.</p>
       </div>
 
       <!-- Asymmetric Bento Grid -->
@@ -933,7 +822,7 @@
           <div class="double-bezel h-full">
             <div class="double-bezel-inner h-full">
               <div class="w-12 h-12 rounded-2xl bg-navy/5 flex items-center justify-center mb-5">
-                <iconify-icon icon="solar:brain-bold-duotone" width="24" class="text-navy"></iconify-icon>
+                <iconify-icon icon="solar:cpu-bolt-bold" width="24" class="text-navy"></iconify-icon>
               </div>
               <h3 class="text-lg font-bold text-navy mb-3">RAG-LLM 복합 상황 판단</h3>
               <p class="text-sm text-[#334155] leading-relaxed">단순 패턴 매칭이 아닌 RAG 기반 대형 언어 모델이<br>영상 속 상황을 종합적으로 판단합니다.<br>여러 위험 요소가 동시에 존재하는 복합 상황에서도 정확한 분석과 우선순위 판단이 가능합니다.</p>
@@ -1055,10 +944,10 @@
           <span class="text-accent text-sm font-semibold">Contact</span>
         </div>
         <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy leading-tight mb-6">
-          현장에 맞는 솔루션 도입 방안을<br>상담해 드립니다<span class="accent-dot">.</span>
+          현장에 맞는 <span class="text-accent">솔루션 도입</span> 방안을<br>상담해 드립니다<span class="accent-dot">.</span>
         </h2>
         <p class="text-[#64748b] text-lg mb-10 max-w-2xl mx-auto">
-          현재 운영 중인 CCTV 현황과 현장 규모를 알려주시면,<br>최적의 AI 관제 도입 계획을 제안합니다. 부담 없이 문의해 주세요.
+          현재 운영 중인 CCTV 현황과 현장 규모를 알려주시면,<br>최적의 도입 방안을 설계해 드립니다. 부담 없이 문의해 주세요.
         </p>
 
         <!-- Contact Info -->
@@ -1105,7 +994,7 @@
   </section>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="py-16 bg-navy-dark border-t border-white/5">
+  <footer class="py-16 bg-navy-900 border-t border-white/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-3 gap-10 mb-10">
         <!-- Logo & Company Info -->
@@ -1123,7 +1012,7 @@
         <div>
           <h4 class="text-white/60 text-sm font-semibold tracking-wide mb-4">솔루션</h4>
           <div class="space-y-2.5">
-            <a href="vision_v3.html" class="text-white/50 text-sm font-medium block">ONTOH Vision</a>
+            <a href="vision.html" class="text-white/50 text-sm font-medium block">ONTOH Vision</a>
             <a href="health.html" class="text-white/40 hover:text-white text-sm spring block">ONTOH Health</a>
           </div>
         </div>
@@ -1143,46 +1032,16 @@
   </footer>
 
   <!-- ==================== SCRIPTS ==================== -->
+  <script src="js/common.js"></script>
   <script>
-    // Scroll Reveal with IntersectionObserver
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = parseInt(entry.target.style.getPropertyValue('--index') || '0');
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, index * 80);
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-    // Smooth scroll for anchor links (same-page only)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    // Mobile Menu Toggle
+    // Mobile Menu Toggle (vision-specific inline onclick handler)
     function toggleMobileMenu() {
       var menu = document.getElementById('mobileMenu');
       menu.classList.toggle('open');
       document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
     }
 
-    function closeMobileMenu() {
-      var menu = document.getElementById('mobileMenu');
-      menu.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
+    // Language Toggle
     var currentLang = 'ko';
 
     function toggleLang() {
@@ -1226,18 +1085,6 @@
         ctaLabel.textContent = currentLang === 'ko' ? '문의하기' : 'Contact';
       }
     }
-
-    // Nav: transparent → glass on scroll
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 80) {
-        nav.classList.remove('nav-transparent');
-        nav.classList.add('nav-scrolled');
-      } else {
-        nav.classList.remove('nav-scrolled');
-        nav.classList.add('nav-transparent');
-      }
-    }, { passive: true });
   </script>
 </body>
 </html>
