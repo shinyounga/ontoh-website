@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /archive/
+Disallow: /.claude/
+Disallow: /.github/
+
+Sitemap: https://shinyounga.github.io/ontoh-website/sitemap.xml
