@@ -199,7 +199,7 @@
               </div>
             </div>
           </div>
-          <a href="blog/index.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">기술블로그</a>
+          <a href="blog/index.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">테크</a>
         </div>
         <div class="hidden md:flex items-center">
           <a href="contact.html" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
@@ -227,7 +227,7 @@
       <a href="vision.html" class="block text-xl font-bold text-navy mb-3" onclick="closeMobileMenu()">온토비전</a>
       <a href="health.html" class="block text-xl font-bold text-navy" onclick="closeMobileMenu()">온토케어</a>
     </div>
-    <a href="blog/index.html" class="menu-link text-2xl font-bold text-navy stagger-3" onclick="closeMobileMenu()">기술블로그</a>
+    <a href="blog/index.html" class="menu-link text-2xl font-bold text-navy stagger-3" onclick="closeMobileMenu()">테크</a>
     <a href="contact.html" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-4 hover:scale-[1.02] active:scale-[0.98] spring" onclick="closeMobileMenu()">
       문의하기
       <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
@@ -862,6 +862,63 @@
     </div>
   </section>
 
+  <!-- ==================== TECH — 최신 글 프리뷰 (Origami 'Blogs & Papers' 구조) ==================== -->
+  <section class="section-spacious bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+        <div>
+          <p class="reveal text-[15px] font-bold uppercase tracking-[0.16em] text-accent mb-4">Tech</p>
+          <h2 class="reveal stagger-1 text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-[#0f172a]" style="line-height: 1.18; letter-spacing: -0.02em;">
+            현장에서 부딪힌<br>안전 AI의 <span class="text-accent">기술 이야기</span>
+          </h2>
+        </div>
+        <a href="blog/index.html" class="reveal stagger-2 group inline-flex items-center gap-2 text-[16px] font-bold text-navy hover:text-accent spring shrink-0">
+          전체 글 보기
+          <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
+        </a>
+      </div>
+
+      <a href="blog/tiny-object-detection.html" class="reveal stagger-2 group block double-bezel hover:scale-[1.005] spring">
+        <div class="double-bezel-inner !p-0 overflow-hidden">
+          <div class="grid md:grid-cols-2">
+            <div class="relative aspect-[16/10] md:aspect-auto bg-navy-900 overflow-hidden min-h-[220px]">
+              <svg viewBox="0 0 400 280" class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
+                <rect width="400" height="280" fill="#0c142e"/>
+                <g stroke="#3d57a8" stroke-width="1" fill="none" opacity="0.4">
+                  <line x1="0" y1="70" x2="400" y2="70"/><line x1="0" y1="140" x2="400" y2="140"/><line x1="0" y1="210" x2="400" y2="210"/>
+                  <line x1="100" y1="0" x2="100" y2="280"/><line x1="200" y1="0" x2="200" y2="280"/><line x1="300" y1="0" x2="300" y2="280"/>
+                </g>
+                <rect x="246" y="150" width="22" height="30" stroke="#0169a9" stroke-width="2" fill="rgba(1,105,169,0.15)" rx="2"/>
+                <rect x="120" y="95" width="14" height="18" stroke="#59b4ff" stroke-width="1.5" fill="none" rx="1"/>
+                <rect x="318" y="178" width="10" height="13" stroke="#59b4ff" stroke-width="1.5" fill="none" rx="1"/>
+                <circle cx="257" cy="135" r="5" stroke="#0169a9" stroke-width="2" fill="none"/>
+                <text x="20" y="40" fill="#6079c0" font-size="13" font-family="monospace" opacity="0.7">CAM-04 · WIDE</text>
+              </svg>
+            </div>
+            <div class="p-8 md:p-10 flex flex-col justify-center">
+              <div class="flex items-center gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-accent text-[13px] font-bold">Computer Vision</span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-navy/5 text-navy text-[13px] font-bold">최신 글</span>
+              </div>
+              <h3 class="text-[22px] md:text-[26px] font-extrabold text-[#0f172a] leading-[1.3] tracking-tight mb-3 group-hover:text-accent spring">
+                건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제
+              </h3>
+              <p class="text-[16px] text-[#64748b] leading-[1.7] mb-6" style="letter-spacing: -0.3px;">
+                50m 밖 작업자의 안전모는 단 몇 픽셀입니다. 광역 CCTV에서 작은 객체를 검출하는 일이 왜 어려운지,
+                PTZ 카메라와 2단계 파이프라인으로 어떻게 푸는지 정리했습니다.
+              </p>
+              <div class="flex items-center gap-3 text-[14px] text-[#94a3b8]">
+                <span class="font-semibold text-[#475569]">ONTOH Vision Team</span>
+                <span class="w-1 h-1 rounded-full bg-[#cbd5e1]"></span>
+                <span>2026.06.26</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
   <!-- ==================== CTA — Navy 배경 (포인트 다크 — CTA/푸터에만 제한 사용) ==================== -->
   <section id="contact" class="section-spacious bg-navy relative overflow-hidden">
     <div class="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px]"></div>
@@ -911,6 +968,7 @@
             <a href="about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
             <a href="vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
             <a href="health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
+            <a href="blog/index.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">테크</a>
             <a href="contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
           </div>
         </div>

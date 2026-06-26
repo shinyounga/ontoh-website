@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════════════
+  ONTOH 테크 글 작성 템플릿
+  ────────────────────────────────────────────────────────────────────
+  새 글 쓰는 법:
+  1) 이 파일을 복사해서 blog/{영문-슬러그}.html 로 저장
+     예) blog/ppe-detection.html
+  2) 아래 [[...]] 로 표시된 부분을 모두 바꾸기
+  3) 본문(<article> 안)에서 <h2 id="sN">·<p>·<ul> 을 채우기
+  4) 오른쪽 목차(<nav id="toc">)의 항목을 본문 h2 의 id 와 제목에 맞게 수정
+  5) blog/index.html 의 카드 목록에 새 글 카드 추가
+  ※ [[...]] 가 하나도 남지 않았는지 저장 전에 검색해서 확인할 것
+  ════════════════════════════════════════════════════════════════════
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[[글 제목]] | ONTOH 테크</title>
+  <meta name="description" content="[[검색결과에 노출될 1~2문장 요약]]">
+  <meta name="keywords" content="[[쉼표로 구분한 키워드]]">
+  <link rel="canonical" href="https://ontoh.co.kr/blog/[[슬러그]].html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="[[글 제목]]">
+  <meta property="og:description" content="[[SNS 공유 시 보일 요약]]">
+  <meta property="og:url" content="https://ontoh.co.kr/blog/[[슬러그]].html">
+  <meta property="og:site_name" content="ONTOH">
+  <meta property="og:image" content="https://ontoh.co.kr/assets/main/main1.png">
+  <meta property="article:published_time" content="[[YYYY-MM-DD]]">
+  <meta property="article:author" content="ONTOH Vision Team">
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "[[글 제목]]",
+    "datePublished": "[[YYYY-MM-DD]]",
+    "author": { "@type": "Organization", "name": "ONTOH Vision Team" },
+    "publisher": { "@type": "Organization", "name": "ONTOH", "logo": { "@type": "ImageObject", "url": "https://ontoh.co.kr/assets/logo/ontoh/파랑.svg" } },
+    "mainEntityOfPage": "https://ontoh.co.kr/blog/[[슬러그]].html"
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+          colors: {
+            navy: { DEFAULT: '#1b2e6a', 50: '#f0f3fa', 100: '#dde3f3', 200: '#bcc8e7', 300: '#8fa3d6', 400: '#6079c0', 500: '#3d57a8', 600: '#1b2e6a', 700: '#162556', 800: '#111d42', 900: '#0c142e', 950: '#080e1f' },
+            accent: { DEFAULT: '#0169a9', 50: '#eef8ff', 100: '#d9eeff', 200: '#bce2ff', 300: '#8ed0ff', 400: '#59b4ff', 500: '#3393ff', 600: '#0169a9', 700: '#015a91', 800: '#064c77', 900: '#0b4063' },
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    #readingProgress { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, #1b2e6a, #0169a9); z-index: 60; transition: width 0.1s linear; }
+    .prose { max-width: 68ch; }
+    .prose h2 { font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; line-height: 1.3; margin-top: 3.5rem; margin-bottom: 1.25rem; scroll-margin-top: 6rem; }
+    .prose h3 { font-size: 20px; font-weight: 700; color: #1b2e6a; letter-spacing: -0.01em; line-height: 1.4; margin-top: 2.25rem; margin-bottom: 0.75rem; }
+    .prose p { font-size: 17.5px; line-height: 1.85; color: #334155; margin-bottom: 1.4rem; letter-spacing: -0.2px; }
+    .prose ul { margin: 0 0 1.4rem; padding-left: 1.25rem; }
+    .prose li { font-size: 17.5px; line-height: 1.8; color: #334155; margin-bottom: 0.5rem; letter-spacing: -0.2px; }
+    .prose li::marker { color: #0169a9; }
+    .prose strong { color: #0f172a; font-weight: 700; }
+    .prose a { color: #0169a9; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .prose code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; background: #f0f3fa; color: #162556; padding: 0.12em 0.4em; border-radius: 0.35rem; }
+    .define { border-left: 3px solid #0169a9; background: #eef8ff; border-radius: 0 0.75rem 0.75rem 0; padding: 1rem 1.25rem; margin: 1.6rem 0; font-size: 16.5px; line-height: 1.75; color: #1b2e6a; }
+    figure { margin: 2.5rem 0; }
+    figcaption { font-size: 14px; color: #94a3b8; text-align: center; margin-top: 0.85rem; letter-spacing: -0.2px; }
+    .toc-link { color: #94a3b8; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); border-left: 2px solid transparent; }
+    .toc-link:hover { color: #1b2e6a; }
+    .toc-link.active { color: #0169a9; font-weight: 700; border-left-color: #0169a9; }
+  </style>
+</head>
+<body class="bg-white text-[#0f172a] font-sans antialiased">
+
+  <div id="readingProgress"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 nav-scrolled spring">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="../index.html" class="flex items-center">
+          <img src="../assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
+        </a>
+        <div class="hidden md:flex items-center gap-10 h-full">
+          <a href="../about.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring">회사소개</a>
+          <a href="../vision.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring">온토비전</a>
+          <a href="../health.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring">온토케어</a>
+          <a href="index.html" class="text-[16px] font-bold text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:rounded-full">테크</a>
+        </div>
+        <div class="hidden md:flex items-center">
+          <a href="../contact.html" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
+            문의하기
+            <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
+              <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
+            </span>
+          </a>
+        </div>
+        <button id="menuToggle" class="md:hidden w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center spring hover:bg-navy/10" aria-label="메뉴 열기">
+          <iconify-icon icon="solar:hamburger-menu-linear" class="text-navy text-lg"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden">
+    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center" aria-label="메뉴 닫기">
+      <iconify-icon icon="solar:close-circle-linear" class="text-navy text-2xl"></iconify-icon>
+    </button>
+    <a href="../about.html" class="menu-link text-2xl font-bold text-navy stagger-1">회사소개</a>
+    <a href="../vision.html" class="menu-link text-2xl font-bold text-navy stagger-2">온토비전</a>
+    <a href="../health.html" class="menu-link text-2xl font-bold text-navy stagger-3">온토케어</a>
+    <a href="index.html" class="menu-link text-2xl font-bold text-accent stagger-4">테크</a>
+    <a href="../contact.html" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-5 spring">
+      문의하기
+      <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
+        <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
+      </span>
+    </a>
+  </div>
+
+  <!-- ==================== ARTICLE HEADER ==================== -->
+  <header class="pt-36 pb-12 md:pt-44 md:pb-14 bg-[#f8fafc] border-b border-navy/5">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="index.html" class="inline-flex items-center gap-2 text-[14px] font-semibold text-[#64748b] hover:text-accent spring mb-8">
+        <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
+        테크 목록
+      </a>
+      <div class="flex items-center gap-2 mb-5">
+        <!-- 카테고리 뱃지: 필요한 만큼 -->
+        <span class="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-accent text-[13px] font-bold">[[카테고리]]</span>
+      </div>
+      <h1 class="text-[32px] md:text-[44px] font-extrabold text-[#0f172a] tracking-tight" style="line-height: 1.22; letter-spacing: -0.02em;">
+        [[글 제목]]
+      </h1>
+      <!-- 부제목이 필요 없으면 아래 <p> 줄 삭제 -->
+      <p class="mt-3 text-[20px] md:text-[24px] font-bold text-accent" style="letter-spacing:-0.02em;">[[부제목]]</p>
+      <div class="flex items-center gap-3 text-[14px] text-[#94a3b8] mt-7">
+        <span class="font-semibold text-[#475569]">ONTOH Vision Team</span>
+        <span class="w-1 h-1 rounded-full bg-[#cbd5e1]"></span>
+        <span>[[YYYY.MM.DD]]</span>
+        <span class="w-1 h-1 rounded-full bg-[#cbd5e1]"></span>
+        <span>약 [[N]]분 읽기</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== BODY ==================== -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+    <div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-16">
+
+      <article class="prose mx-auto lg:mx-0">
+
+        <!-- TL;DR (핵심 3줄 요약) -->
+        <div class="not-prose rounded-2xl bg-navy-900 text-white p-7 mb-12">
+          <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-3">TL;DR</p>
+          <ul class="space-y-2 text-[16px] leading-[1.7] text-white/85">
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-bold" class="text-accent-400 text-[18px] mt-0.5 shrink-0"></iconify-icon><span>[[핵심 요약 1]]</span></li>
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-bold" class="text-accent-400 text-[18px] mt-0.5 shrink-0"></iconify-icon><span>[[핵심 요약 2]]</span></li>
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-bold" class="text-accent-400 text-[18px] mt-0.5 shrink-0"></iconify-icon><span>[[핵심 요약 3]]</span></li>
+          </ul>
+        </div>
+
+        <!-- 도입 문단 -->
+        <p>[[글을 여는 문단. 독자가 왜 이 글을 읽어야 하는지.]]</p>
+
+        <!-- ===== 본문 섹션 (필요한 만큼 복제) ===== -->
+        <h2 id="s1">1. [[첫 번째 섹션 제목]]</h2>
+        <p>[[본문. <strong>강조</strong>, <code>코드</code>, <a href="#">링크</a> 사용 가능.]]</p>
+
+        <!-- 강조 정의 박스가 필요할 때 -->
+        <div class="define">
+          <strong>[[용어]]</strong>는 [[정의/설명]] 입니다.
+        </div>
+
+        <ul>
+          <li>[[목록 항목]]</li>
+          <li>[[목록 항목]]</li>
+        </ul>
+
+        <!-- 그림이 필요할 때: 이미지 또는 인라인 SVG -->
+        <figure class="not-prose">
+          <img src="../assets/blog/[[이미지파일]]" alt="[[대체 텍스트]]" class="w-full rounded-xl border border-navy/10">
+          <figcaption>그림 1. [[캡션]]</figcaption>
+        </figure>
+
+        <h2 id="s2">2. [[두 번째 섹션 제목]]</h2>
+        <h3>2.1 [[소제목]]</h3>
+        <p>[[본문]]</p>
+
+        <h2 id="s3">3. [[정리/결론]]</h2>
+        <p>[[마무리 문단]]</p>
+
+        <!-- ===== 글 하단(공유/CTA): 그대로 두면 됨 ===== -->
+        <div class="not-prose mt-16 pt-8 border-t border-navy/10">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <span class="text-[14px] text-[#64748b] font-medium">공유하기</span>
+              <button id="copyLink" class="w-9 h-9 rounded-full bg-navy/5 hover:bg-navy/10 flex items-center justify-center spring" aria-label="링크 복사">
+                <iconify-icon icon="solar:link-linear" class="text-navy"></iconify-icon>
+              </button>
+              <span id="copyToast" class="text-[13px] text-accent font-semibold opacity-0 spring">링크 복사됨</span>
+            </div>
+            <a href="index.html" class="inline-flex items-center gap-2 text-[15px] font-semibold text-accent hover:gap-3 spring">
+              <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
+              테크 목록으로
+            </a>
+          </div>
+          <div class="mt-10 rounded-2xl bg-[#f8fafc] border border-navy/8 p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+            <div>
+              <p class="text-[18px] font-bold text-navy mb-1">현장에 ONTOH를 적용해 보고 싶다면</p>
+              <p class="text-[15px] text-[#64748b]">도입 상담을 도와드립니다.</p>
+            </div>
+            <a href="../contact.html" class="shrink-0 group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[15px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
+              도입 문의
+              <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
+                <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
+              </span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- TOC (본문 h2 의 id·제목과 일치시킬 것) -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-28">
+          <p class="text-[12px] font-bold uppercase tracking-[0.16em] text-[#94a3b8] mb-4">목차</p>
+          <nav id="toc" class="space-y-2.5 text-[14px]">
+            <a href="#s1" class="toc-link block pl-3 leading-snug">1. [[첫 번째 섹션]]</a>
+            <a href="#s2" class="toc-link block pl-3 leading-snug">2. [[두 번째 섹션]]</a>
+            <a href="#s3" class="toc-link block pl-3 leading-snug">3. [[정리/결론]]</a>
+          </nav>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-16 bg-navy-900 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-10 mb-10">
+        <div>
+          <a href="../index.html" class="mb-4 block">
+            <img src="../assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8">
+          </a>
+          <p class="text-white/60 text-[16px] font-bold mb-3">주식회사 온토</p>
+          <div class="space-y-1.5 text-white/40 text-[14px] leading-relaxed">
+            <p>대표이사: 김태건</p>
+            <p>사업자등록번호: 230-88-03436</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
+          <div class="space-y-2.5">
+            <a href="../about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
+            <a href="../vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
+            <a href="../health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
+            <a href="index.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">테크</a>
+            <a href="../contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">CONTACT</h4>
+          <div class="space-y-2 text-white/50 text-[14px] leading-relaxed">
+            <p>이메일: <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white spring">ktg@ontoh.co.kr</a></p>
+            <p>주소: 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH INC. All rights reserved.</p>
+        <a href="../privacy.html" class="text-white/50 hover:text-white text-[13px] spring font-medium">개인정보처리방침</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/common.js"></script>
+  <script>
+    // 읽기 진행률 바
+    (function() {
+      var bar = document.getElementById('readingProgress');
+      var article = document.querySelector('article');
+      function update() {
+        if (!article) return;
+        var rect = article.getBoundingClientRect();
+        var total = article.offsetHeight - window.innerHeight;
+        var scrolled = Math.min(Math.max(-rect.top, 0), total);
+        bar.style.width = (total > 0 ? (scrolled / total) * 100 : 0) + '%';
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+    // 목차 스크롤 스파이
+    (function() {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.toc-link'));
+      var sections = links.map(function(l) { return document.querySelector(l.getAttribute('href')); });
+      var spy = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = '#' + entry.target.id;
+            links.forEach(function(l) { l.classList.toggle('active', l.getAttribute('href') === id); });
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s) { if (s) spy.observe(s); });
+    })();
+    // 링크 복사
+    (function() {
+      var btn = document.getElementById('copyLink');
+      var toast = document.getElementById('copyToast');
+      if (btn) btn.addEventListener('click', function() {
+        navigator.clipboard.writeText(window.location.href).then(function() {
+          toast.style.opacity = '1';
+          setTimeout(function() { toast.style.opacity = '0'; }, 1800);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
