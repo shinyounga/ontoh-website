@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>문의하기 | ONTOH - 건설현장 안전관리 AI 솔루션</title>
+  <meta name="description" content="ONTOH(온토)에 도입 상담, 시연 요청, 협업 문의를 보내주세요. AI 자율관제·작업자 보건관리 솔루션 도입 컨설팅을 제공합니다.">
+  <meta name="keywords" content="ONTOH 문의, 온토 도입 상담, 건설안전 AI 컨설팅, AI CCTV 시연 요청">
+  <link rel="canonical" href="https://ontoh.co.kr/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="문의하기 | ONTOH">
+  <meta property="og:description" content="ONTOH 도입 상담 · 시연 요청 · 협업 문의">
+  <meta property="og:url" content="https://ontoh.co.kr/contact.html">
+  <meta property="og:site_name" content="ONTOH">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+          colors: {
+            navy: {
+              DEFAULT: '#1b2e6a',
+              50: '#f0f3fa', 100: '#dde3f3', 200: '#bcc8e7', 300: '#8fa3d6',
+              400: '#6079c0', 500: '#3d57a8', 600: '#1b2e6a',
+              700: '#162556', 800: '#111d42', 900: '#0c142e', 950: '#080e1f',
+            },
+            accent: {
+              DEFAULT: '#0169a9',
+              50: '#eef8ff', 100: '#d9eeff', 200: '#bce2ff', 300: '#8ed0ff',
+              400: '#59b4ff', 500: '#3393ff', 600: '#0169a9',
+              700: '#015a91', 800: '#064c77', 900: '#0b4063',
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    .accent-dot { color: #0169a9; }
+
+    /* Form field styles — architectural, less rounded */
+    .form-label {
+      display: block;
+      font-size: 13px; font-weight: 700;
+      color: #1b2e6a; margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .form-label .required { color: #dc2626; margin-left: 2px; }
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 13px 16px;
+      font-size: 15px; font-weight: 500;
+      color: #0f172a;
+      background: #ffffff;
+      border: 1px solid #d7dee9;
+      border-radius: 6px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      font-family: inherit;
+    }
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #0169a9;
+      box-shadow: 0 0 0 3px rgba(1, 105, 169, 0.12);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: #94a3b8; }
+    .form-textarea { resize: vertical; min-height: 132px; line-height: 1.6; }
+
+    /* Honeypot — hidden from users */
+    .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
+
+    /* Checkbox */
+    .form-checkbox {
+      width: 18px; height: 18px;
+      accent-color: #0169a9;
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Submit button — rectangular B2B */
+    .submit-btn {
+      width: 100%;
+      padding: 16px 24px;
+      font-size: 16px; font-weight: 700;
+      color: #fff;
+      background: #1b2e6a;
+      border-radius: 6px;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      letter-spacing: 0.01em;
+    }
+    .submit-btn:hover:not(:disabled) {
+      background: #0169a9;
+    }
+    .submit-btn:active:not(:disabled) { transform: translateY(1px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* Form wrapper — flat bordered card (no double-bezel) */
+    .form-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+    }
+
+    /* Left info — flat list with thin dividers */
+    .info-row {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(27, 46, 106, 0.08);
+    }
+    .info-row:last-child { border-bottom: 0; }
+    .info-row .icon-box {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      background: rgba(1, 105, 169, 0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .info-row .label {
+      font-size: 12px; font-weight: 700;
+      color: #64748b; letter-spacing: 0.14em;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    .info-row .value {
+      font-size: 15px; font-weight: 600;
+      color: #0f172a; line-height: 1.55;
+    }
+
+    /* Privacy consent — match form aesthetic */
+    .privacy-box {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 16px;
+      background: #f6f8fc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+    .privacy-box:hover { border-color: rgba(1, 105, 169, 0.4); }
+
+    /* Success / Error states — slightly tighter */
+    .form-state {
+      padding: 24px;
+      border-radius: 8px;
+      text-align: center;
+      animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .form-state.success { background: #ecfdf5; border: 1px solid #6ee7b7; color: #065f46; }
+    .form-state.error   { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+  </style>
+</head>
+<body class="bg-white text-[#0f172a] font-sans antialiased">
+
+  <div class="noise-overlay"></div>
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 nav-transparent spring">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center">
+          <img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
+        </a>
+        <div class="hidden md:flex items-center gap-10 h-full">
+          <a href="about.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">회사소개</a>
+          <div class="relative group/sol h-full flex items-center">
+            <button class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full group-hover/sol:after:w-full after:spring flex items-center gap-1.5">
+              솔루션
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[10px] spring group-hover/sol:rotate-180"></iconify-icon>
+            </button>
+            <!-- 상단바 아래로 확장되는 전체 가로폭 메가바 -->
+            <div class="fixed left-0 right-0 top-20 opacity-0 invisible group-hover/sol:opacity-100 group-hover/sol:visible spring">
+              <div class="bg-white border-t border-navy/8 shadow-[0_20px_40px_rgba(27,46,106,0.10)]">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                  <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-4 pr-6">
+                      <p class="text-[17px] font-bold uppercase tracking-[0.14em] text-accent mb-5">Solutions</p>
+                      <h3 class="text-[30px] font-extrabold text-navy leading-[1.25] tracking-tight mb-5">
+                        현장 안전부터<br>보건 관리까지
+                      </h3>
+                      <p class="text-[18px] text-[#64748b] leading-[1.65]" style="letter-spacing: -0.3px;">
+                        온토는 건설 현장의 두 가지 핵심 영역에서<br>통합 솔루션을 제공합니다.
+                      </p>
+                    </div>
+                    <div class="col-span-8 grid grid-cols-2 gap-4">
+                      <a href="vision.html" class="block p-7 rounded-xl hover:bg-navy/[0.04] spring group/item">
+                        <div class="flex items-center gap-4 mb-3">
+                          <div class="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center">
+                            <iconify-icon icon="solar:videocamera-record-bold-duotone" class="text-navy text-[24px]"></iconify-icon>
+                          </div>
+                          <span class="text-[20px] font-bold text-navy">온토비전</span>
+                        </div>
+                        <p class="text-[16px] text-[#64748b] leading-[1.65]">AI 기반 CCTV 자율 관제 솔루션</p>
+                      </a>
+                      <a href="health.html" class="block p-7 rounded-xl hover:bg-navy/[0.04] spring group/item">
+                        <div class="flex items-center gap-4 mb-3">
+                          <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                            <iconify-icon icon="solar:heart-pulse-bold-duotone" class="text-accent text-[24px]"></iconify-icon>
+                          </div>
+                          <span class="text-[20px] font-bold text-navy">온토케어</span>
+                        </div>
+                        <p class="text-[16px] text-[#64748b] leading-[1.65]">작업자 보건관리 솔루션</p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center">
+          <a href="contact.html" class="group inline-flex items-center gap-2 bg-accent text-white rounded-full px-6 py-3 text-[16px] font-bold spring shadow-[0_4px_12px_rgba(1,105,169,0.25)]">
+            문의하기
+            <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
+              <iconify-icon icon="solar:check-circle-bold" class="text-[10px]"></iconify-icon>
+            </span>
+          </a>
+        </div>
+        <button id="menuToggle" class="md:hidden w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center spring hover:bg-navy/10" aria-label="메뉴 열기">
+          <iconify-icon icon="solar:hamburger-menu-linear" class="text-navy text-lg"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden">
+    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center" aria-label="메뉴 닫기">
+      <iconify-icon icon="solar:close-circle-linear" class="text-navy text-2xl"></iconify-icon>
+    </button>
+    <a href="about.html" class="menu-link text-2xl font-bold text-navy stagger-1" onclick="closeMobileMenu()">회사소개</a>
+    <div class="menu-link stagger-2 text-center">
+      <p class="text-[13px] text-[#94a3b8] font-bold tracking-[0.14em] uppercase mb-4">솔루션</p>
+      <a href="vision.html" class="block text-xl font-bold text-navy mb-3" onclick="closeMobileMenu()">온토비전</a>
+      <a href="health.html" class="block text-xl font-bold text-navy" onclick="closeMobileMenu()">온토케어</a>
+    </div>
+    <a href="contact.html" class="menu-link group inline-flex items-center gap-3 bg-accent text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-3 hover:scale-[1.02] active:scale-[0.98] spring" onclick="closeMobileMenu()">
+      문의하기
+    </a>
+  </div>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="relative pt-40 pb-16 md:pt-48 md:pb-20 overflow-hidden bg-gradient-to-b from-[#f8fafc] to-white">
+    <div class="absolute top-32 right-0 w-[500px] h-[500px] rounded-full bg-accent/5 blur-[120px]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-3xl">
+        <div class="reveal">
+          <span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[15px] uppercase tracking-[0.14em] font-bold bg-white text-navy border border-navy/10 shadow-[0_2px_8px_rgba(27,46,106,0.06)] mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            Contact Us
+          </span>
+        </div>
+        <h1 class="reveal stagger-1 text-[40px] md:text-[52px] lg:text-[60px] tracking-tight font-extrabold text-[#0f172a] mb-7" style="line-height: 1.1; letter-spacing: -0.02em;">
+          현장에 맞는 안전관리,<br>
+          온토와 <span class="text-accent">함께 설계</span>하세요<span class="accent-dot">.</span>
+        </h1>
+        <p class="reveal stagger-2 text-[17px] md:text-[20px] text-[#64748b] leading-[1.65] max-w-[58ch]">
+          도입 상담, 시연 요청, 협업 문의 모두 환영합니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FORM SECTION ==================== -->
+  <section class="pb-24 md:pb-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+
+        <!-- Left: 연락처 정보 (flat 리스트) -->
+        <div class="lg:col-span-5">
+          <div class="reveal">
+
+            <div class="info-row">
+              <div class="icon-box">
+                <iconify-icon icon="solar:letter-linear" class="text-accent text-[18px]"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="label">이메일</div>
+                <a href="mailto:ktg@ontoh.co.kr" class="value text-accent hover:underline break-all">ktg@ontoh.co.kr</a>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <div class="icon-box">
+                <iconify-icon icon="solar:map-point-linear" class="text-accent text-[18px]"></iconify-icon>
+              </div>
+              <div class="flex-1">
+                <div class="label">주소</div>
+                <p class="value">서울특별시 서대문구 연세로2나길 61,<br>캠퍼스타운에스큐브 304호</p>
+              </div>
+            </div>
+
+            <p class="text-[14px] text-[#64748b] leading-[1.7] mt-10">
+              <span class="font-bold text-navy">어떤 문의든 환영합니다.</span><br>
+              제품 시연, 도입 가능성 검토, 파트너십, 기술 협업, 채용 등 자유롭게 작성해 주세요.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: 문의 폼 -->
+        <div class="lg:col-span-7 reveal stagger-1">
+          <div class="form-card">
+            <div class="p-7 md:p-9">
+
+              <!-- 폼 상태 메시지 (성공/에러) — JS가 토글 -->
+              <div id="formSuccess" class="form-state success hidden">
+                <iconify-icon icon="solar:check-circle-bold" class="text-[48px] mb-3"></iconify-icon>
+                <h3 class="text-[20px] font-extrabold mb-2">문의가 정상 접수되었습니다</h3>
+                <p class="text-[15px] leading-relaxed">담당자가 확인 후 회신드리겠습니다.<br>관심 가져주셔서 감사합니다.</p>
+              </div>
+
+              <div id="formError" class="form-state error hidden">
+                <iconify-icon icon="solar:close-circle-bold" class="text-[48px] mb-3"></iconify-icon>
+                <h3 class="text-[18px] font-extrabold mb-2">전송에 실패했습니다</h3>
+                <p class="text-[14px] leading-relaxed">잠시 후 다시 시도하거나, 직접 <a href="mailto:ktg@ontoh.co.kr" class="underline font-bold">ktg@ontoh.co.kr</a>로 메일을 보내주세요.</p>
+              </div>
+
+              <!-- 실제 폼 -->
+              <form id="contactForm" action="https://formspree.io/f/xpqnabkv" method="POST" class="space-y-5">
+                <!-- Formspree 메타 -->
+                <input type="hidden" name="_subject" value="[ONTOH] 신규 문의가 도착했습니다">
+                <input type="hidden" name="_language" value="ko">
+                <!-- Honeypot (스팸 봇 차단) -->
+                <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="company" class="form-label">회사명·기관명<span class="required">*</span></label>
+                    <input type="text" id="company" name="회사명" required class="form-input" placeholder="예) ○○주식회사">
+                  </div>
+                  <div>
+                    <label for="name" class="form-label">담당자 성함<span class="required">*</span></label>
+                    <input type="text" id="name" name="이름" required class="form-input" placeholder="예) 홍길동">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="email" class="form-label">이메일<span class="required">*</span></label>
+                    <input type="email" id="email" name="이메일" required class="form-input" placeholder="name@company.co.kr">
+                    <p class="text-[12px] text-[#94a3b8] mt-1.5">회신은 이 주소로 발송됩니다.</p>
+                  </div>
+                  <div>
+                    <label for="phone" class="form-label">연락처 <span class="text-[#94a3b8] font-medium ml-1">(선택)</span></label>
+                    <input type="tel" id="phone" name="연락처" class="form-input" placeholder="010-0000-0000">
+                  </div>
+                </div>
+
+                <div>
+                  <label for="message" class="form-label">문의 내용<span class="required">*</span></label>
+                  <textarea id="message" name="문의내용" required class="form-textarea" placeholder="사용 목적, 사용자 수, 현장 규모, 관심 솔루션(온토비전/온토케어), 도입 시기 등을 알려주시면 더 빠르게 안내드릴 수 있어요."></textarea>
+                </div>
+
+                <!-- 개인정보 수집 동의 -->
+                <div class="pt-2">
+                  <label class="privacy-box">
+                    <input type="checkbox" id="privacy_agree" name="개인정보동의" required class="form-checkbox">
+                    <div class="text-[13px] text-[#334155] leading-[1.6]">
+                      <a href="privacy.html" target="_blank" class="text-accent font-bold underline">개인정보 수집·이용</a>에 동의합니다.
+                      <span class="text-red-600 font-bold">*</span>
+                      <p class="text-[12px] text-[#64748b] mt-1 leading-[1.55]">
+                        수집 항목: 회사명, 이름, 이메일, 연락처, 문의내용 / 이용 목적: 문의 응대 / 보유 기간: 1년 또는 동의 철회 시까지
+                      </p>
+                    </div>
+                  </label>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit" id="submitBtn" class="submit-btn">
+                  <span id="submitText">문의 보내기</span>
+                  <iconify-icon icon="solar:arrow-right-linear" id="submitIcon" class="text-[18px]"></iconify-icon>
+                  <iconify-icon icon="solar:refresh-bold" id="loadingIcon" class="text-[18px] hidden" style="animation: spin 1s linear infinite;"></iconify-icon>
+                </button>
+
+                <p class="text-[12px] text-[#94a3b8] text-center mt-2">
+                  전송 시 입력하신 정보가 ONTOH 담당자에게 이메일로 발송됩니다.
+                </p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-16 bg-navy-900 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-10 mb-10">
+        <div>
+          <a href="index.html" class="mb-4 block">
+            <img src="assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8">
+          </a>
+          <p class="text-white/60 text-[16px] font-bold mb-3">주식회사 온토</p>
+          <div class="space-y-1.5 text-white/40 text-[14px] leading-relaxed">
+            <p>대표이사: 김태건</p>
+            <p>사업자등록번호: 230-88-03436</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
+          <div class="space-y-2.5">
+            <a href="about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
+            <a href="vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
+            <a href="health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
+            <a href="contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">Contact</h4>
+          <div class="space-y-2 text-white/50 text-[14px] leading-relaxed">
+            <p>이메일: <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white spring">ktg@ontoh.co.kr</a></p>
+            <p>주소: 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH INC. All rights reserved.</p>
+        <a href="privacy.html" class="text-white/50 hover:text-white text-[13px] spring font-medium">개인정보처리방침</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="js/common.js"></script>
+  <script>
+    // === Spin keyframe (Tailwind에는 spin이 있지만 inline icon용 보장) ===
+    const spinStyle = document.createElement('style');
+    spinStyle.textContent = '@keyframes spin { to { transform: rotate(360deg); } }';
+    document.head.appendChild(spinStyle);
+
+    // === Form AJAX submission ===
+    const form = document.getElementById('contactForm');
+    const successBox = document.getElementById('formSuccess');
+    const errorBox = document.getElementById('formError');
+    const submitBtn = document.getElementById('submitBtn');
+    const submitText = document.getElementById('submitText');
+    const submitIcon = document.getElementById('submitIcon');
+    const loadingIcon = document.getElementById('loadingIcon');
+
+    function setLoading(loading) {
+      submitBtn.disabled = loading;
+      submitText.textContent = loading ? '전송 중...' : '문의 보내기';
+      submitIcon.classList.toggle('hidden', loading);
+      loadingIcon.classList.toggle('hidden', !loading);
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      errorBox.classList.add('hidden');
+      setLoading(true);
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          form.style.display = 'none';
+          successBox.classList.remove('hidden');
+          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          const data = await response.json().catch(() => ({}));
+          console.error('Formspree error:', data);
+          errorBox.classList.remove('hidden');
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error('Network error:', err);
+        errorBox.classList.remove('hidden');
+        setLoading(false);
+      }
+    });
+  </script>
+</body>
+</html>

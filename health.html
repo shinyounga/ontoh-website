@@ -196,42 +196,60 @@
   <!-- ==================== NAVIGATION ==================== -->
   <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 nav-transparent">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+      <div class="flex items-center justify-between h-20">
         <a href="index.html" class="flex items-center">
           <img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="index.html#why" class="text-[13px] font-medium text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-navy after:rounded-full hover:after:w-full after:spring uppercase tracking-wider">About</a>
-          <!-- Solutions Dropdown -->
-          <div class="relative group/sol">
-            <button class="text-[13px] font-medium text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-navy after:rounded-full flex items-center gap-1 uppercase tracking-wider">
-              Solutions
+        <div class="hidden md:flex items-center gap-10 h-full">
+          <a href="about.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">회사소개</a>
+          <!-- 솔루션 Mega Bar -->
+          <div class="relative group/sol h-full flex items-center">
+            <button class="text-[16px] font-semibold text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:rounded-full flex items-center gap-1.5">
+              솔루션
               <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[10px] spring group-hover/sol:rotate-180"></iconify-icon>
             </button>
-            <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover/sol:opacity-100 group-hover/sol:visible spring">
-              <div class="bg-white rounded-2xl shadow-[0_8px_30px_rgba(27,46,106,0.12)] border border-navy/5 py-3 px-1 min-w-[240px]">
-                <a href="vision.html" class="block px-5 py-3 rounded-xl hover:bg-navy/[0.03] spring group/item">
-                  <div class="flex items-center justify-between">
-                    <span class="text-[13px] font-bold text-navy">ONTOH Vision</span>
-                    <iconify-icon icon="solar:arrow-right-linear" class="text-[11px] text-navy/30 group-hover/item:text-navy group-hover/item:translate-x-0.5 spring"></iconify-icon>
+            <div class="fixed left-0 right-0 top-20 opacity-0 invisible group-hover/sol:opacity-100 group-hover/sol:visible spring">
+              <div class="bg-white border-t border-navy/8 shadow-[0_20px_40px_rgba(27,46,106,0.10)]">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                  <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-4 pr-6">
+                      <p class="text-[17px] font-bold uppercase tracking-[0.14em] text-accent mb-5">Solutions</p>
+                      <h3 class="text-[30px] font-extrabold text-navy leading-[1.25] tracking-tight mb-5">
+                        현장 안전부터<br>보건 관리까지
+                      </h3>
+                      <p class="text-[18px] text-[#64748b] leading-[1.65]" style="letter-spacing: -0.3px;">
+                        온토는 건설 현장의 두 가지 핵심 영역에서<br>통합 솔루션을 제공합니다.
+                      </p>
+                    </div>
+                    <div class="col-span-8 grid grid-cols-2 gap-4">
+                      <a href="vision.html" class="block p-7 rounded-xl hover:bg-navy/[0.04] spring group/item">
+                        <div class="flex items-center gap-4 mb-3">
+                          <div class="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center">
+                            <iconify-icon icon="solar:videocamera-record-bold-duotone" class="text-navy text-[24px]"></iconify-icon>
+                          </div>
+                          <span class="text-[20px] font-bold text-navy">온토비전</span>
+                        </div>
+                        <p class="text-[16px] text-[#64748b] leading-[1.65]">AI 기반 CCTV 자율 관제 솔루션</p>
+                      </a>
+                      <a href="health.html" class="block p-7 rounded-xl bg-navy/[0.04]">
+                        <div class="flex items-center gap-4 mb-3">
+                          <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                            <iconify-icon icon="solar:heart-pulse-bold-duotone" class="text-accent text-[24px]"></iconify-icon>
+                          </div>
+                          <span class="text-[20px] font-bold text-navy">온토케어</span>
+                        </div>
+                        <p class="text-[16px] text-[#64748b] leading-[1.65]">작업자 보건관리 솔루션</p>
+                      </a>
+                    </div>
                   </div>
-                  <p class="text-[11px] text-[#64748b] mt-0.5">AI 기반 CCTV 자율 관제 솔루션</p>
-                </a>
-                <div class="mx-4 my-1 h-px bg-navy/5"></div>
-                <a href="health.html" class="block px-5 py-3 rounded-xl bg-navy/[0.03]">
-                  <div class="flex items-center justify-between">
-                    <span class="text-[13px] font-bold text-navy">ONTOH Health</span>
-                    <iconify-icon icon="solar:arrow-right-linear" class="text-[11px] text-navy/30"></iconify-icon>
-                  </div>
-                  <p class="text-[11px] text-[#64748b] mt-0.5">작업자 보건관리 솔루션</p>
-                </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="hidden md:flex items-center">
-          <a href="index.html#contact" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-5 py-2.5 text-[13px] font-medium hover:scale-[1.02] active:scale-[0.98] spring uppercase tracking-wider">
-            Contact
+          <a href="contact.html" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
+            문의하기
             <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
               <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
             </span>
@@ -249,14 +267,14 @@
     <button class="absolute top-6 right-6 w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center" aria-label="메뉴 닫기" onclick="closeMobileMenu()">
       <iconify-icon icon="solar:close-circle-linear" class="text-navy text-2xl"></iconify-icon>
     </button>
-    <a href="index.html#why" class="menu-link text-2xl font-bold text-navy stagger-1 uppercase tracking-wider" onclick="closeMobileMenu()">About</a>
+    <a href="about.html" class="menu-link text-2xl font-bold text-navy stagger-1" onclick="closeMobileMenu()">회사소개</a>
     <div class="menu-link stagger-2 text-center">
-      <p class="text-sm text-[#94a3b8] font-medium tracking-wider uppercase mb-3">Solutions</p>
-      <a href="vision.html" class="block text-xl font-bold text-navy mb-2" onclick="closeMobileMenu()">ONTOH Vision</a>
-      <a href="health.html" class="block text-xl font-bold text-navy" onclick="closeMobileMenu()">ONTOH Health</a>
+      <p class="text-[13px] text-[#94a3b8] font-bold tracking-[0.14em] uppercase mb-4">솔루션</p>
+      <a href="vision.html" class="block text-xl font-bold text-navy mb-3" onclick="closeMobileMenu()">온토비전</a>
+      <a href="health.html" class="block text-xl font-bold text-navy" onclick="closeMobileMenu()">온토케어</a>
     </div>
-    <a href="index.html#contact" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-lg font-medium stagger-3 hover:scale-[1.02] active:scale-[0.98] spring uppercase tracking-wider" onclick="closeMobileMenu()">
-      Contact
+    <a href="contact.html" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-3 hover:scale-[1.02] active:scale-[0.98] spring" onclick="closeMobileMenu()">
+      문의하기
       <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
         <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
       </span>
@@ -273,25 +291,23 @@
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <!-- Left: Text content -->
         <div class="reveal">
-          <div class="inline-flex items-center gap-2 bg-accent/5 border border-accent/15 rounded-full px-4 py-1.5 mb-6">
-            <iconify-icon icon="solar:health-bold" class="text-accent" width="16"></iconify-icon>
-            <span class="text-accent text-sm font-semibold tracking-wide">ONTOH Health</span>
-          </div>
-          <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold text-navy leading-[1.2] mb-6">
+          <span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[15px] uppercase tracking-[0.14em] font-bold bg-white text-navy border border-navy/10 shadow-[0_2px_8px_rgba(27,46,106,0.06)] mb-8">
+            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+            온토케어
+          </span>
+          <h1 class="text-[40px] md:text-[56px] lg:text-[68px] tracking-[-0.02em] font-extrabold text-navy leading-[1.08] mb-7">
             <span class="text-navy">검진 결과 수집부터 배치 관리까지,</span><br class="hidden sm:block"><span class="text-accent">수기 업무를 자동화</span>합니다
           </h1>
-          <p class="text-lg text-[#334155] leading-relaxed mb-10 max-w-xl">
+          <p class="text-[18px] md:text-[21px] text-[#334155] leading-[1.65] mb-12 max-w-[58ch]" style="letter-spacing: -0.3px;">
             검진 결과 수령, 엑셀 입력, 고위험군 분류까지 — 반복되던 수기 업무를 하나의 플랫폼에서 자동으로 처리합니다.
           </p>
-          <div class="flex flex-wrap gap-4">
-            <a href="index.html#contact" class="bg-accent text-white font-semibold rounded-full px-8 py-4 flex items-center gap-3 hover:scale-[1.02] active:scale-[0.98] spring shadow-lg shadow-accent/20">
+          <div class="flex flex-wrap gap-3">
+            <a href="contact.html" class="bg-navy text-white font-bold rounded-full px-7 py-3.5 inline-flex items-center gap-2 text-[15px] hover:scale-[1.02] active:scale-[0.98] spring">
               도입 상담 받기
-              <span class="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center">
-                <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
-              </span>
+              <iconify-icon icon="solar:arrow-right-linear" class="text-[14px]"></iconify-icon>
             </a>
-            <a href="index.html" class="bg-white text-navy font-semibold rounded-full px-8 py-4 flex items-center gap-3 border border-slate-200 hover:border-navy/20 hover:scale-[1.02] active:scale-[0.98] spring">
-              <iconify-icon icon="solar:arrow-left-linear" width="16"></iconify-icon>
+            <a href="index.html" class="bg-white text-navy font-bold rounded-full px-7 py-3.5 inline-flex items-center gap-2 text-[15px] hover:scale-[1.02] active:scale-[0.98] spring border border-navy/15">
+              <iconify-icon icon="solar:arrow-left-linear" class="text-[14px]"></iconify-icon>
               메인으로 돌아가기
             </a>
           </div>
@@ -314,7 +330,7 @@
                 </div>
                 <!-- App header -->
                 <div class="text-center mb-6">
-                  <p class="text-accent text-[11px] font-semibold tracking-wider mb-1">ONTOH Health</p>
+                  <p class="text-accent text-[11px] font-semibold tracking-wider mb-1">온토케어</p>
                   <p class="text-navy text-base font-bold">나의 건강 리포트</p>
                 </div>
                 <!-- Health Age Card -->
@@ -394,9 +410,9 @@
       <div class="text-center mb-16 reveal">
         <div class="inline-flex items-center gap-2 bg-danger/5 border border-danger/10 rounded-full px-4 py-1.5 mb-6">
           <iconify-icon icon="solar:danger-triangle-bold" class="text-danger" width="14"></iconify-icon>
-          <span class="text-danger text-sm font-semibold">AS-IS</span>
+          <span class="text-danger text-[15px] font-bold">AS-IS</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy leading-tight max-w-3xl mx-auto">
+        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] tracking-[-0.02em] font-extrabold text-navy leading-tight max-w-3xl mx-auto">
           검진 결과 &rarr; 현장 배치 &rarr; 작업 관리, <br class="hidden sm:block">전 과정이 수기 &middot; 분절 &middot; 사후 대응<span class="accent-dot">.</span>
         </h2>
       </div>
@@ -519,9 +535,9 @@
       <div class="text-center mb-20 reveal">
         <div class="inline-flex items-center gap-2 bg-accent/5 border border-accent/15 rounded-full px-4 py-1.5 mb-6">
           <iconify-icon icon="solar:routing-bold" class="text-accent" width="14"></iconify-icon>
-          <span class="text-accent text-sm font-semibold">TO-BE</span>
+          <span class="text-accent text-[15px] font-bold">TO-BE</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy leading-tight">
+        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] tracking-[-0.02em] font-extrabold text-navy leading-tight">
           반복 업무는 AI에게,<br>안전관리자는 <span class="text-accent">핵심 업무에 집중</span><span class="accent-dot">.</span>
         </h2>
         <p class="text-[#64748b] mt-4 text-lg max-w-2xl mx-auto">인증부터 사후관리까지,<br>전 과정을 하나의 플랫폼에서 자동으로 처리합니다.</p>
@@ -615,9 +631,9 @@
       <div class="text-center mb-20 reveal">
         <div class="inline-flex items-center gap-2 bg-navy/5 border border-navy/10 rounded-full px-4 py-1.5 mb-6">
           <iconify-icon icon="solar:widget-5-bold" class="text-navy" width="14"></iconify-icon>
-          <span class="text-navy text-sm font-semibold">주요 기능</span>
+          <span class="text-navy text-[15px] font-bold">주요 기능</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy leading-tight">
+        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] tracking-[-0.02em] font-extrabold text-navy leading-tight">
           <span class="text-accent">등록</span>부터 <span class="text-accent">관리</span>까지, 모든 기능을 하나로<span class="accent-dot">.</span>
         </h2>
       </div>
@@ -667,7 +683,7 @@
                     <div class="w-7 h-7 rounded-lg bg-accent/10 flex items-center justify-center">
                       <iconify-icon icon="solar:heart-pulse-bold" class="text-accent" width="14"></iconify-icon>
                     </div>
-                    <span class="text-sm font-bold text-navy">ONTOH Health</span>
+                    <span class="text-sm font-bold text-navy">온토케어</span>
                   </div>
                   <span class="text-[10px] text-[#94a3b8]">작업자 등록</span>
                 </div>
@@ -920,9 +936,9 @@
       <div class="text-center mb-16 reveal">
         <div class="inline-flex items-center gap-2 bg-navy/5 border border-navy/10 rounded-full px-4 py-1.5 mb-6">
           <iconify-icon icon="solar:monitor-smartphone-bold" class="text-navy" width="14"></iconify-icon>
-          <span class="text-navy text-sm font-semibold">대시보드</span>
+          <span class="text-navy text-[15px] font-bold">대시보드</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy leading-tight">
+        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] tracking-[-0.02em] font-extrabold text-navy leading-tight">
           관리자와 작업자, <span class="text-accent">모두를 위한</span> 화면<span class="accent-dot">.</span>
         </h2>
         <p class="text-[#64748b] mt-4 text-lg max-w-2xl mx-auto">관리자는 대시보드에서 전체 현황을,<br>작업자는 모바일 앱에서 개인 건강 리포트를 확인합니다.</p>
@@ -935,7 +951,7 @@
             <div class="double-bezel-inner !p-6 sm:!p-8">
               <div class="flex items-center justify-between mb-6">
                 <div>
-                  <p class="text-xs text-[#64748b] mb-1">ONTOH Health 관리자</p>
+                  <p class="text-xs text-[#64748b] mb-1">온토케어 관리자</p>
                   <h3 class="text-xl font-bold text-navy">관리자 대시보드</h3>
                 </div>
                 <div class="flex items-center gap-2 bg-accent/8 rounded-full px-3 py-1">
@@ -1094,9 +1110,9 @@
       <div class="max-w-3xl mb-16 reveal">
         <div class="inline-flex items-center gap-2 bg-accent-blue/8 border border-accent-blue/12 rounded-full px-4 py-1.5 mb-6">
           <iconify-icon icon="solar:graph-up-bold" class="text-accent" width="14"></iconify-icon>
-          <span class="text-accent text-sm font-semibold">건강 리포트</span>
+          <span class="text-accent text-[15px] font-bold">건강 리포트</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy leading-tight mb-4">
+        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] tracking-[-0.02em] font-extrabold text-navy leading-tight mb-4">
           국민건강보험공단 검진 데이터를 <span class="text-accent">한눈에 정리</span>합니다<span class="accent-dot">.</span>
         </h2>
         <p class="text-[#64748b] text-lg">공단에서 제공하는 검진 결과를 기반으로 건강 상태를 시각화합니다.<br>흩어진 데이터를 모아 작업자가 자신의 건강을 쉽게 이해할 수 있도록 정리합니다.</p>
@@ -1338,9 +1354,9 @@
         <div class="reveal">
           <div class="inline-flex items-center gap-2 bg-accent/5 border border-accent/15 rounded-full px-4 py-1.5 mb-6">
             <iconify-icon icon="solar:atom-bold" class="text-accent" width="14"></iconify-icon>
-            <span class="text-accent text-sm font-semibold">유해인자 매핑</span>
+            <span class="text-accent text-[15px] font-bold">유해인자 매핑</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold text-navy leading-tight mb-5">
+          <h2 class="text-[28px] md:text-[36px] lg:text-[44px] tracking-[-0.02em] font-extrabold text-navy leading-tight mb-5">
             직종을 선택하면,<br>유해인자가 <span class="text-accent">자동으로 매핑</span>됩니다<span class="accent-dot">.</span>
           </h2>
           <p class="text-[#334155] text-lg leading-relaxed mb-8">
@@ -1455,9 +1471,9 @@
       <div class="text-center mb-16 reveal">
         <div class="inline-flex items-center gap-2 bg-navy/8 border border-navy/10 rounded-full px-4 py-1.5 mb-5">
           <iconify-icon icon="solar:verified-check-bold" width="16" class="text-navy"></iconify-icon>
-          <span class="text-xs font-semibold text-navy tracking-wider uppercase">Compliance</span>
+          <span class="text-[14px] font-bold text-navy tracking-[0.14em] uppercase">Compliance</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-navy mb-4">
+        <h2 class="text-[28px] md:text-[36px] lg:text-[44px] tracking-[-0.02em] font-extrabold text-navy mb-4">
           법적 의무를 체계적으로 이행하고,<br><span class="text-accent">증빙을 자동으로</span> 확보합니다<span class="accent-dot">.</span>
         </h2>
       </div>
@@ -1534,9 +1550,9 @@
       <div class="reveal">
         <div class="inline-flex items-center gap-2 bg-accent/5 border border-accent/15 rounded-full px-4 py-1.5 mb-6">
           <iconify-icon icon="solar:phone-calling-bold" class="text-accent" width="14"></iconify-icon>
-          <span class="text-accent text-sm font-semibold">Contact</span>
+          <span class="text-accent text-[15px] font-bold">Contact</span>
         </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy leading-tight mb-6">
+        <h2 class="text-[32px] md:text-[40px] lg:text-[48px] tracking-[-0.02em] font-extrabold text-navy leading-[1.18] mb-6">
           현장에 맞는 <span class="text-accent">솔루션 도입</span> 방안을<br>상담해 드립니다<span class="accent-dot">.</span>
         </h2>
         <p class="text-[#64748b] text-lg mb-10 max-w-2xl mx-auto">
@@ -1571,11 +1587,9 @@
         </div>
 
         <div class="flex flex-wrap justify-center gap-4">
-          <a href="index.html#contact" class="bg-accent text-white font-semibold rounded-full px-8 py-4 flex items-center gap-3 hover:scale-[1.02] active:scale-[0.98] spring shadow-lg shadow-accent/20 text-lg">
+          <a href="contact.html" class="bg-navy text-white font-bold rounded-full px-8 py-4 inline-flex items-center gap-2 text-[16px] hover:scale-[1.02] active:scale-[0.98] spring">
             도입 상담 받기
-            <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
-              <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
-            </span>
+            <iconify-icon icon="solar:arrow-right-linear" class="text-[16px]"></iconify-icon>
           </a>
           <a href="index.html" class="bg-white text-navy font-semibold rounded-full px-8 py-4 flex items-center gap-3 border border-slate-200 hover:border-navy/20 hover:scale-[1.02] active:scale-[0.98] spring text-lg">
             <iconify-icon icon="solar:arrow-left-linear" width="18"></iconify-icon>
@@ -1603,10 +1617,12 @@
         </div>
         <!-- Links -->
         <div>
-          <h4 class="text-white/60 text-sm font-semibold tracking-wide mb-4">솔루션</h4>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
           <div class="space-y-2.5">
-            <a href="vision.html" class="text-white/40 hover:text-white text-sm spring block">ONTOH Vision</a>
-            <a href="health.html" class="text-white/50 text-sm font-medium block">ONTOH Health</a>
+            <a href="about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
+            <a href="vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
+            <a href="health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
+            <a href="contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
           </div>
         </div>
         <!-- Contact -->
@@ -1620,6 +1636,7 @@
       </div>
       <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
         <p class="text-white/25 text-xs">&copy; 2026 ONTOH INC. All rights reserved.</p>
+        <a href="privacy.html" class="text-white/50 hover:text-white text-xs spring font-medium">개인정보처리방침</a>
       </div>
     </div>
   </footer>

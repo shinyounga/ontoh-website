@@ -150,41 +150,59 @@
   <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 nav-transparent spring">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
-        <a href="index_v4.html" class="flex items-center">
+        <a href="index.html" class="flex items-center">
           <img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
         </a>
-        <div class="hidden md:flex items-center gap-10">
-          <a href="#about" class="text-[13px] font-medium text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring uppercase tracking-wider">About</a>
-          <!-- Solutions Dropdown -->
-          <div class="relative group/sol">
-            <button class="text-[13px] font-medium text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full group-hover/sol:after:w-full after:spring flex items-center gap-1 uppercase tracking-wider">
-              Solutions
+        <div class="hidden md:flex items-center gap-10 h-full">
+          <a href="about.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">회사소개</a>
+          <!-- 솔루션 Mega Bar -->
+          <div class="relative group/sol h-full flex items-center">
+            <button class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full group-hover/sol:after:w-full after:spring flex items-center gap-1.5">
+              솔루션
               <iconify-icon icon="solar:alt-arrow-down-linear" class="text-[10px] spring group-hover/sol:rotate-180"></iconify-icon>
             </button>
-            <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 invisible group-hover/sol:opacity-100 group-hover/sol:visible spring">
-              <div class="bg-white rounded-2xl shadow-[0_8px_30px_rgba(27,46,106,0.12)] border border-navy/5 py-3 px-1 min-w-[240px]">
-                <a href="vision.html" class="block px-5 py-3 rounded-xl hover:bg-navy/[0.03] spring group/item">
-                  <div class="flex items-center justify-between">
-                    <span class="text-[13px] font-bold text-navy">ONTOH Vision</span>
-                    <iconify-icon icon="solar:arrow-right-linear" class="text-[11px] text-navy/30 group-hover/item:text-navy group-hover/item:translate-x-0.5 spring"></iconify-icon>
+            <div class="fixed left-0 right-0 top-20 opacity-0 invisible group-hover/sol:opacity-100 group-hover/sol:visible spring">
+              <div class="bg-white border-t border-navy/8 shadow-[0_20px_40px_rgba(27,46,106,0.10)]">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                  <div class="grid grid-cols-12 gap-8">
+                    <div class="col-span-4 pr-6">
+                      <p class="text-[17px] font-bold uppercase tracking-[0.14em] text-accent mb-5">Solutions</p>
+                      <h3 class="text-[30px] font-extrabold text-navy leading-[1.25] tracking-tight mb-5">
+                        현장 안전부터<br>보건 관리까지
+                      </h3>
+                      <p class="text-[18px] text-[#64748b] leading-[1.65]" style="letter-spacing: -0.3px;">
+                        온토는 건설 현장의 두 가지 핵심 영역에서<br>통합 솔루션을 제공합니다.
+                      </p>
+                    </div>
+                    <div class="col-span-8 grid grid-cols-2 gap-4">
+                      <a href="vision.html" class="block p-7 rounded-xl hover:bg-navy/[0.04] spring group/item">
+                        <div class="flex items-center gap-4 mb-3">
+                          <div class="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center">
+                            <iconify-icon icon="solar:videocamera-record-bold-duotone" class="text-navy text-[24px]"></iconify-icon>
+                          </div>
+                          <span class="text-[20px] font-bold text-navy">온토비전</span>
+                        </div>
+                        <p class="text-[16px] text-[#64748b] leading-[1.65]">AI 기반 CCTV 자율 관제 솔루션</p>
+                      </a>
+                      <a href="health.html" class="block p-7 rounded-xl hover:bg-navy/[0.04] spring group/item">
+                        <div class="flex items-center gap-4 mb-3">
+                          <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
+                            <iconify-icon icon="solar:heart-pulse-bold-duotone" class="text-accent text-[24px]"></iconify-icon>
+                          </div>
+                          <span class="text-[20px] font-bold text-navy">온토케어</span>
+                        </div>
+                        <p class="text-[16px] text-[#64748b] leading-[1.65]">작업자 보건관리 솔루션</p>
+                      </a>
+                    </div>
                   </div>
-                  <p class="text-[11px] text-[#64748b] mt-0.5">AI 기반 CCTV 자율 관제 솔루션</p>
-                </a>
-                <div class="mx-4 my-1 h-px bg-navy/5"></div>
-                <a href="health.html" class="block px-5 py-3 rounded-xl hover:bg-navy/[0.03] spring group/item">
-                  <div class="flex items-center justify-between">
-                    <span class="text-[13px] font-bold text-navy">ONTOH Health</span>
-                    <iconify-icon icon="solar:arrow-right-linear" class="text-[11px] text-navy/30 group-hover/item:text-navy group-hover/item:translate-x-0.5 spring"></iconify-icon>
-                  </div>
-                  <p class="text-[11px] text-[#64748b] mt-0.5">작업자 보건관리 솔루션</p>
-                </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="hidden md:flex items-center">
-          <a href="#contact" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-2.5 text-[13px] font-medium hover:scale-[1.02] active:scale-[0.98] spring uppercase tracking-wider">
-            Contact
+          <a href="contact.html" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
+            문의하기
             <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
               <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
             </span>
@@ -202,10 +220,14 @@
     <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center" aria-label="메뉴 닫기">
       <iconify-icon icon="solar:close-circle-linear" class="text-navy text-2xl"></iconify-icon>
     </button>
-    <a href="#about" class="menu-link text-2xl font-bold text-navy stagger-1 uppercase tracking-wider" onclick="closeMobileMenu()">About</a>
-    <a href="#solutions" class="menu-link text-2xl font-bold text-navy stagger-2 uppercase tracking-wider" onclick="closeMobileMenu()">Solutions</a>
-    <a href="#contact" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-lg font-medium stagger-3 hover:scale-[1.02] active:scale-[0.98] spring" onclick="closeMobileMenu()">
-      Contact
+    <a href="about.html" class="menu-link text-2xl font-bold text-navy stagger-1" onclick="closeMobileMenu()">회사소개</a>
+    <div class="menu-link stagger-2 text-center">
+      <p class="text-[13px] text-[#94a3b8] font-bold tracking-[0.14em] uppercase mb-4">솔루션</p>
+      <a href="vision.html" class="block text-xl font-bold text-navy mb-3" onclick="closeMobileMenu()">온토비전</a>
+      <a href="health.html" class="block text-xl font-bold text-navy" onclick="closeMobileMenu()">온토케어</a>
+    </div>
+    <a href="contact.html" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-3 hover:scale-[1.02] active:scale-[0.98] spring" onclick="closeMobileMenu()">
+      문의하기
       <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
         <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
       </span>
@@ -227,26 +249,26 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-32 pb-20 relative z-10">
       <div class="max-w-2xl">
         <div class="reveal">
-          <span class="inline-block rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.15em] font-medium bg-white text-navy border border-navy/10 shadow-[0_2px_8px_rgba(27,46,106,0.06)] mb-8">Construction Safety AI Platform</span>
+          <span class="inline-block rounded-full px-4 py-1.5 text-[14px] uppercase tracking-[0.12em] font-bold bg-white text-navy border border-navy/10 shadow-[0_2px_8px_rgba(27,46,106,0.06)] mb-8">Construction Safety AI Platform</span>
         </div>
-        <h1 class="reveal stagger-1 text-4xl md:text-5xl lg:text-[3.5rem] xl:text-[4rem] tracking-tight leading-tight font-bold text-[#0f172a] mb-6">
+        <h1 class="reveal stagger-1 text-[40px] md:text-[56px] lg:text-[68px] tracking-tight font-extrabold text-[#0f172a] mb-7" style="line-height: 1.08; letter-spacing: -0.02em;">
           <span class="font-medium text-[#334155]">현장을</span> 보고,<br>
           <span class="font-medium text-[#334155]">사람을</span> 살피다<span class="accent-dot">.</span>
         </h1>
-        <p class="reveal stagger-2 text-xl md:text-2xl font-semibold text-[#334155] mb-4 leading-snug">
+        <p class="reveal stagger-2 text-[24px] md:text-[28px] font-bold text-[#334155] mb-5 leading-snug">
           Vision<span class="text-accent">.</span> Health<span class="text-accent">.</span>
         </p>
-        <p class="reveal stagger-3 text-base md:text-lg text-[#64748b] leading-relaxed max-w-[50ch] mb-10">
+        <p class="reveal stagger-3 text-[17px] md:text-[21px] text-[#64748b] leading-[1.6] max-w-[52ch] mb-12">
           ONTOH는 AI 영상 자율 관제와 디지털 보건 관리로<br>건설현장의 사고를 사전에 차단하고, 근로자의 건강까지 챙깁니다.
         </p>
         <div class="reveal stagger-4 flex flex-col sm:flex-row gap-4">
-          <a href="#solutions" class="group inline-flex items-center justify-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-lg font-medium hover:scale-[1.02] active:scale-[0.98] spring shadow-[0_8px_30px_rgba(27,46,106,0.2)]">
+          <a href="#solutions" class="group inline-flex items-center justify-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring shadow-[0_8px_30px_rgba(27,46,106,0.2)]">
             솔루션 살펴보기
             <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
               <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
             </span>
           </a>
-          <a href="#contact" class="group inline-flex items-center justify-center gap-3 bg-white text-navy border-2 border-navy/10 rounded-full px-8 py-4 text-lg font-medium hover:scale-[1.02] active:scale-[0.98] hover:border-navy/20 spring shadow-[0_2px_12px_rgba(27,46,106,0.06)]">
+          <a href="contact.html" class="group inline-flex items-center justify-center gap-3 bg-white text-navy border-2 border-navy/10 rounded-full px-8 py-4 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] hover:border-navy/20 spring shadow-[0_2px_12px_rgba(27,46,106,0.06)]">
             도입 문의
             <span class="w-8 h-8 rounded-full bg-navy/5 flex items-center justify-center">
               <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-navy"></iconify-icon>
@@ -265,20 +287,20 @@
   </section>
 
   <!-- ==================== METRICS BAR (CAAS Works 스타일 데이터 신뢰지표) ==================== -->
-  <section class="py-16 bg-white border-y border-navy/5">
+  <section class="py-20 md:py-24 bg-white border-y border-navy/5">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-3 gap-8 md:gap-16">
-        <div class="reveal text-center">
-          <div class="text-3xl md:text-4xl font-bold text-navy mb-2">5<span class="text-accent">개소</span></div>
-          <div class="text-sm text-[#64748b]">테스트베드 실증 완료</div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
+        <div class="reveal text-center md:text-left">
+          <div class="text-[44px] md:text-[52px] font-extrabold text-navy mb-3" style="line-height: 1.0; letter-spacing: -0.03em;">5<span class="text-accent">개소</span></div>
+          <div class="text-[15px] font-semibold text-[#64748b]">테스트베드 실증 완료</div>
         </div>
-        <div class="reveal stagger-1 text-center">
-          <div class="text-3xl md:text-4xl font-bold text-navy mb-2">20,000<span class="text-accent">+</span></div>
-          <div class="text-sm text-[#64748b]">자체 학습 데이터</div>
+        <div class="reveal stagger-1 text-center md:text-left">
+          <div class="text-[44px] md:text-[52px] font-extrabold text-navy mb-3" style="line-height: 1.0; letter-spacing: -0.03em;">20,000<span class="text-accent">+</span></div>
+          <div class="text-[15px] font-semibold text-[#64748b]">자체 학습 데이터</div>
         </div>
-        <div class="reveal stagger-2 text-center">
-          <img src="assets/logo/clients:partners/금호건설(국문).svg" alt="금호건설" class="h-10 md:h-14 mx-auto mb-3 opacity-70">
-          <div class="text-sm text-[#64748b]">금호건설 현장 기술 도입</div>
+        <div class="reveal stagger-2 text-center md:text-left flex flex-col items-center md:items-start">
+          <img src="assets/logo/clients:partners/금호건설(국문).svg" alt="금호건설" class="h-12 md:h-16 mb-4 opacity-80">
+          <div class="text-[15px] font-semibold text-[#64748b]">금호건설 현장 기술 도입</div>
         </div>
       </div>
     </div>
@@ -292,12 +314,12 @@
       <!-- 에디토리얼 헤딩 (AI-CON 스타일) -->
       <div class="max-w-3xl mb-16">
         <div class="reveal">
-          <span class="inline-block rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.15em] font-medium bg-red-500/10 text-red-600 mb-4">Problems</span>
+          <span class="inline-block rounded-full px-3 py-1 text-[15px] uppercase tracking-[0.14em] font-bold bg-red-500/10 text-red-600 mb-4">Problems</span>
         </div>
-        <h2 class="reveal stagger-1 text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight font-bold text-[#0f172a]">
+        <h2 class="reveal stagger-1 text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-[#0f172a]" style="line-height: 1.18; letter-spacing: -0.02em;">
           <span class="text-accent font-bold">건설업 사망사고</span>는<br>줄지 않고 있습니다<span class="accent-dot">.</span>
         </h2>
-        <p class="reveal stagger-2 text-base md:text-lg text-[#64748b] leading-relaxed mt-6 max-w-[55ch]">
+        <p class="reveal stagger-2 text-[16px] md:text-[20px] text-[#64748b] leading-[1.6] mt-7 max-w-[55ch]">
           한국 건설업 사망만인율은 OECD 평균의 2배를 넘습니다.<br>기존 안전관리 방식만으로는 한계가 분명합니다.
         </p>
       </div>
@@ -333,52 +355,52 @@
               </div>
             </div>
           </div>
-          <p class="reveal stagger-4 text-xs text-[#94a3b8] mt-4">건설업 사고사망만인율, 2023년 기준 / 출처: 한국건설산업연구원, 「OECD 국가의 건설업 산재 사망사고 실태 비교·분석」 (2025)</p>
+          <p class="reveal stagger-4 text-[13px] text-[#94a3b8] mt-4 leading-relaxed">건설업 사고사망만인율, 2023년 기준 / 출처: 한국건설산업연구원, 「OECD 국가의 건설업 산재 사망사고 실태 비교·분석」 (2025)</p>
         </div>
 
         <!-- 우: 페인포인트 카드 (Safers 스타일 문제점 나열) -->
-        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="reveal stagger-1 double-bezel">
-            <div class="double-bezel-inner p-6 flex items-start gap-4">
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 items-stretch">
+          <div class="reveal stagger-1 double-bezel h-full">
+            <div class="double-bezel-inner p-6 flex items-start gap-4 h-full">
               <div class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:eye-closed-bold-duotone" class="text-red-500 text-lg"></iconify-icon>
               </div>
               <div>
-                <h4 class="font-bold text-[#0f172a] mb-1 text-sm">CCTV 사각지대</h4>
-                <p class="text-xs text-[#64748b] leading-relaxed">고정 카메라로는 현장 전체를<br>커버할 수 없습니다.</p>
+                <h4 class="font-bold text-[#0f172a] mb-1.5 text-[17px]">CCTV 사각지대</h4>
+                <p class="text-[14px] text-[#64748b] leading-[1.6]">고정 카메라로는 현장 전체를<br>커버할 수 없습니다.</p>
               </div>
             </div>
           </div>
-          <div class="reveal stagger-2 double-bezel">
-            <div class="double-bezel-inner p-6 flex items-start gap-4">
+          <div class="reveal stagger-2 double-bezel h-full">
+            <div class="double-bezel-inner p-6 flex items-start gap-4 h-full">
               <div class="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:bell-bing-bold-duotone" class="text-amber-500 text-lg"></iconify-icon>
               </div>
               <div>
-                <h4 class="font-bold text-[#0f172a] mb-1 text-sm">오경보 과다</h4>
-                <p class="text-xs text-[#64748b] leading-relaxed">높은 오경보율로 관리자가<br>알림을 무시하게 됩니다.</p>
+                <h4 class="font-bold text-[#0f172a] mb-1.5 text-[17px]">오경보 과다</h4>
+                <p class="text-[14px] text-[#64748b] leading-[1.6]">높은 오경보율로 관리자가<br>알림을 무시하게 됩니다.</p>
               </div>
             </div>
           </div>
-          <div class="reveal stagger-3 double-bezel">
-            <div class="double-bezel-inner p-6 flex items-start gap-4">
+          <div class="reveal stagger-3 double-bezel h-full">
+            <div class="double-bezel-inner p-6 flex items-start gap-4 h-full">
               <div class="w-11 h-11 rounded-xl bg-navy/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:document-text-bold-duotone" class="text-navy text-lg"></iconify-icon>
               </div>
               <div>
-                <h4 class="font-bold text-[#0f172a] mb-1 text-sm">서류 작업 과부하</h4>
-                <p class="text-xs text-[#64748b] leading-relaxed">관리자가 행정 업무에 매몰되어<br>현장 관리에 집중하지 못합니다.</p>
+                <h4 class="font-bold text-[#0f172a] mb-1.5 text-[17px]">서류 작업 과부하</h4>
+                <p class="text-[14px] text-[#64748b] leading-[1.6]">관리자가 행정 업무에 매몰되어<br>현장 관리에 집중하지 못합니다.</p>
               </div>
             </div>
           </div>
-          <div class="reveal stagger-4 double-bezel">
-            <div class="double-bezel-inner p-6 flex items-start gap-4">
+          <div class="reveal stagger-4 double-bezel h-full">
+            <div class="double-bezel-inner p-6 flex items-start gap-4 h-full">
               <div class="w-11 h-11 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:clipboard-heart-bold-duotone" class="text-accent text-lg"></iconify-icon>
               </div>
               <div>
-                <h4 class="font-bold text-[#0f172a] mb-1 text-sm">보건관리 수기 운영</h4>
-                <p class="text-xs text-[#64748b] leading-relaxed">건강검진을 엑셀로 관리하고<br>고위험군 파악이 늦어집니다.</p>
+                <h4 class="font-bold text-[#0f172a] mb-1.5 text-[17px]">보건관리 수기 운영</h4>
+                <p class="text-[14px] text-[#64748b] leading-[1.6]">건강검진을 엑셀로 관리하고<br>고위험군 파악이 늦어집니다.</p>
               </div>
             </div>
           </div>
@@ -391,11 +413,11 @@
   <section id="solutions" class="section-spacious bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="reveal mb-12">
-        <span class="inline-block rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.15em] font-medium bg-accent/10 text-accent mb-4">Solutions</span>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight font-bold text-[#0f172a] max-w-2xl">
+        <span class="inline-block rounded-full px-3 py-1 text-[15px] uppercase tracking-[0.14em] font-bold bg-accent/10 text-accent mb-4">Solutions</span>
+        <h2 class="text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-[#0f172a] max-w-2xl" style="line-height: 1.18; letter-spacing: -0.02em;">
           현장 <span class="text-accent">안전</span>과 <span class="text-accent">건강</span>,<br>두 축을 잡습니다<span class="accent-dot">.</span>
         </h2>
-        <p class="reveal stagger-1 text-base md:text-lg text-[#64748b] leading-relaxed mt-6 max-w-[55ch]">
+        <p class="reveal stagger-1 text-[16px] md:text-[20px] text-[#64748b] leading-[1.6] mt-7 max-w-[55ch]">
           사각지대 없는 산업재해 CCTV 관제 & 보건관리 솔루션
         </p>
       </div>
@@ -411,15 +433,15 @@
               </div>
               <span class="text-[10px] uppercase tracking-[0.2em] text-accent font-semibold bg-accent/5 px-3 py-1 rounded-full">AI Vision</span>
             </div>
-            <h3 class="text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 leading-snug">지능형 <span class="text-accent">CCTV 관제</span> 솔루션</h3>
-            <p class="text-[#64748b] leading-relaxed mb-8 max-w-[50ch] flex-grow">
+            <h3 class="text-[24px] md:text-[30px] font-extrabold text-[#0f172a] mb-4 leading-[1.25] tracking-tight">지능형 <span class="text-accent">CCTV 관제</span> 솔루션</h3>
+            <p class="text-[16px] text-[#64748b] leading-[1.65] mb-8 max-w-[50ch] flex-grow">
               AI 기반 CCTV 자동 제어와 RAG-LMM 기반 복합 상황 판단으로<br>사각지대를 해소하는 자율 관제 솔루션
             </p>
             <div class="flex flex-wrap gap-2 mb-8">
-              <span class="text-xs px-3 py-1.5 rounded-full bg-[#f1f5f9] text-[#334155] font-medium">PTZ 자동 제어</span>
-              <span class="text-xs px-3 py-1.5 rounded-full bg-[#f1f5f9] text-[#334155] font-medium">위험 감지</span>
-              <span class="text-xs px-3 py-1.5 rounded-full bg-[#f1f5f9] text-[#334155] font-medium">법령 연동</span>
-              <span class="text-xs px-3 py-1.5 rounded-full bg-[#f1f5f9] text-[#334155] font-medium">자동 보고서</span>
+              <span class="text-[13px] px-3.5 py-2 rounded-full bg-[#f1f5f9] text-[#334155] font-semibold">PTZ 자동 제어</span>
+              <span class="text-[13px] px-3.5 py-2 rounded-full bg-[#f1f5f9] text-[#334155] font-semibold">위험 감지</span>
+              <span class="text-[13px] px-3.5 py-2 rounded-full bg-[#f1f5f9] text-[#334155] font-semibold">법령 연동</span>
+              <span class="text-[13px] px-3.5 py-2 rounded-full bg-[#f1f5f9] text-[#334155] font-semibold">자동 보고서</span>
             </div>
             <a href="vision.html" class="group inline-flex items-center gap-3 text-navy font-semibold spring hover:gap-4 mt-auto">
               자세히 보기
@@ -439,14 +461,14 @@
               </div>
               <span class="text-[10px] uppercase tracking-[0.2em] text-navy font-semibold bg-navy/5 px-3 py-1 rounded-full">Digital Health</span>
             </div>
-            <h3 class="text-2xl md:text-3xl font-bold text-[#0f172a] mb-3 leading-snug">작업자 <span class="text-accent">보건관리</span> 솔루션</h3>
-            <p class="text-[#64748b] leading-relaxed mb-8 max-w-[50ch] flex-grow">
+            <h3 class="text-[24px] md:text-[30px] font-extrabold text-[#0f172a] mb-4 leading-[1.25] tracking-tight">작업자 <span class="text-accent">보건관리</span> 솔루션</h3>
+            <p class="text-[16px] text-[#64748b] leading-[1.65] mb-8 max-w-[50ch] flex-grow">
               건강검진 데이터 기반 민감군 근로자 건강 보건 모니터링과<br>개인·현장 맞춤형 건강리포트 생성
             </p>
             <div class="flex flex-wrap gap-2 mb-8">
-              <span class="text-xs px-3 py-1.5 rounded-full bg-[#f1f5f9] text-[#334155] font-medium">건강검진 연동</span>
-              <span class="text-xs px-3 py-1.5 rounded-full bg-[#f1f5f9] text-[#334155] font-medium">고위험군 분류</span>
-              <span class="text-xs px-3 py-1.5 rounded-full bg-[#f1f5f9] text-[#334155] font-medium">보건 리포트</span>
+              <span class="text-[13px] px-3.5 py-2 rounded-full bg-[#f1f5f9] text-[#334155] font-semibold">건강검진 연동</span>
+              <span class="text-[13px] px-3.5 py-2 rounded-full bg-[#f1f5f9] text-[#334155] font-semibold">고위험군 분류</span>
+              <span class="text-[13px] px-3.5 py-2 rounded-full bg-[#f1f5f9] text-[#334155] font-semibold">보건 리포트</span>
             </div>
             <a href="health.html" class="group inline-flex items-center gap-3 text-accent font-semibold spring hover:gap-4 mt-auto">
               자세히 보기
@@ -465,9 +487,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mb-20">
         <div class="reveal">
-          <span class="inline-block rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.15em] font-medium bg-navy/5 text-navy mb-4">How it works</span>
+          <span class="inline-block rounded-full px-3 py-1 text-[15px] uppercase tracking-[0.14em] font-bold bg-navy/5 text-navy mb-4">How it works</span>
         </div>
-        <h2 class="reveal stagger-1 text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight font-bold text-[#0f172a]">
+        <h2 class="reveal stagger-1 text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-[#0f172a]" style="line-height: 1.18; letter-spacing: -0.02em;">
           ONTOH가 <span class="text-accent">현장을 지키는</span> 방법<span class="accent-dot">.</span>
         </h2>
       </div>
@@ -497,8 +519,8 @@
           <div class="reveal">
             <div class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-navy text-white text-sm font-bold mb-6">01</div>
           </div>
-          <h3 class="reveal stagger-1 text-2xl md:text-3xl font-bold text-[#0f172a] mb-4 leading-snug">AI가 <span class="text-accent">스스로</span> 카메라를 <span class="text-accent">제어</span>합니다</h3>
-          <p class="reveal stagger-2 text-[#64748b] leading-relaxed mb-6 max-w-[50ch]">
+          <h3 class="reveal stagger-1 text-[26px] md:text-[32px] font-extrabold text-[#0f172a] mb-5 leading-[1.25] tracking-tight">AI가 <span class="text-accent">스스로</span> 카메라를 <span class="text-accent">제어</span>합니다</h3>
+          <p class="reveal stagger-2 text-[16px] text-[#64748b] leading-[1.65] mb-7 max-w-[50ch]">
             PTZ 카메라가 자동으로 위험 구역을 순찰하며 사각지대를 실시간으로 해소합니다. 수동 조작 없이도 현장 전체를 커버합니다.
           </p>
           <div class="reveal stagger-3 space-y-3">
@@ -506,19 +528,19 @@
               <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:check-circle-bold" class="text-accent text-sm"></iconify-icon>
               </div>
-              <span class="text-sm text-[#334155]">24시간 무인 자율 순찰</span>
+              <span class="text-[16px] font-medium text-[#334155]">24시간 무인 자율 순찰</span>
             </div>
             <div class="flex items-center gap-3">
               <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:check-circle-bold" class="text-accent text-sm"></iconify-icon>
               </div>
-              <span class="text-sm text-[#334155]">위험 감지 시 자동 줌인/포커스</span>
+              <span class="text-[16px] font-medium text-[#334155]">위험 감지 시 자동 줌인/포커스</span>
             </div>
             <div class="flex items-center gap-3">
               <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:check-circle-bold" class="text-accent text-sm"></iconify-icon>
               </div>
-              <span class="text-sm text-[#334155]">기존 CCTV 장비와 호환 가능</span>
+              <span class="text-[16px] font-medium text-[#334155]">기존 CCTV 장비와 호환 가능</span>
             </div>
           </div>
         </div>
@@ -530,8 +552,8 @@
           <div class="reveal">
             <div class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-navy text-white text-sm font-bold mb-6">02</div>
           </div>
-          <h3 class="reveal stagger-1 text-2xl md:text-3xl font-bold text-[#0f172a] mb-4 leading-snug">위험을 <span class="text-accent">감지</span>하고, <span class="text-accent">맥락을 판단</span>합니다</h3>
-          <p class="reveal stagger-2 text-[#64748b] leading-relaxed mb-6 max-w-[50ch]">
+          <h3 class="reveal stagger-1 text-[26px] md:text-[32px] font-extrabold text-[#0f172a] mb-5 leading-[1.25] tracking-tight">위험을 <span class="text-accent">감지</span>하고, <span class="text-accent">맥락을 판단</span>합니다</h3>
+          <p class="reveal stagger-2 text-[16px] text-[#64748b] leading-[1.65] mb-7 max-w-[50ch]">
             단순 객체 인식을 넘어 RAG-LMM 기반의 복합 상황 판단으로 오경보를 줄이고, 실제 위험 상황만 정확하게 알립니다.
           </p>
           <div class="reveal stagger-3 space-y-3">
@@ -539,19 +561,19 @@
               <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:check-circle-bold" class="text-accent text-sm"></iconify-icon>
               </div>
-              <span class="text-sm text-[#334155]">20,000+ 자체 학습 데이터 기반</span>
+              <span class="text-[16px] font-medium text-[#334155]">20,000+ 자체 학습 데이터 기반</span>
             </div>
             <div class="flex items-center gap-3">
               <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:check-circle-bold" class="text-accent text-sm"></iconify-icon>
               </div>
-              <span class="text-sm text-[#334155]">안전 장비, 중장비 등 다중 위험 감지</span>
+              <span class="text-[16px] font-medium text-[#334155]">안전 장비, 중장비 등 다중 위험 감지</span>
             </div>
             <div class="flex items-center gap-3">
               <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:check-circle-bold" class="text-accent text-sm"></iconify-icon>
               </div>
-              <span class="text-sm text-[#334155]">산업안전보건법, 건설 안전 법령 및 규칙 자동 매칭</span>
+              <span class="text-[16px] font-medium text-[#334155]">산업안전보건법, 건설 안전 법령 및 규칙 자동 매칭</span>
             </div>
           </div>
         </div>
@@ -598,8 +620,8 @@
           <div class="reveal">
             <div class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-navy text-white text-sm font-bold mb-6">03</div>
           </div>
-          <h3 class="reveal stagger-1 text-2xl md:text-3xl font-bold text-[#0f172a] mb-4 leading-snug">근로자 <span class="text-accent">건강</span>까지 <span class="text-accent">데이터로 관리</span>합니다</h3>
-          <p class="reveal stagger-2 text-[#64748b] leading-relaxed mb-6 max-w-[50ch]">
+          <h3 class="reveal stagger-1 text-[26px] md:text-[32px] font-extrabold text-[#0f172a] mb-5 leading-[1.25] tracking-tight">근로자 <span class="text-accent">건강</span>까지 <span class="text-accent">데이터로 관리</span>합니다</h3>
+          <p class="reveal stagger-2 text-[16px] text-[#64748b] leading-[1.65] mb-7 max-w-[50ch]">
             건강검진 결과를 자동 연동하여 고위험군을 즉시 분류합니다. 현장별, 개인별 맞춤 보건 리포트로 질병형 산업재해까지 사전에 대응합니다.
           </p>
           <div class="reveal stagger-3 space-y-3">
@@ -607,19 +629,19 @@
               <div class="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:check-circle-bold" class="text-emerald-500 text-sm"></iconify-icon>
               </div>
-              <span class="text-sm text-[#334155]">건강검진 데이터 자동 연동</span>
+              <span class="text-[16px] font-medium text-[#334155]">건강검진 데이터 자동 연동</span>
             </div>
             <div class="flex items-center gap-3">
               <div class="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:check-circle-bold" class="text-emerald-500 text-sm"></iconify-icon>
               </div>
-              <span class="text-sm text-[#334155]">질환 민감군 자동 분류</span>
+              <span class="text-[16px] font-medium text-[#334155]">질환 민감군 자동 분류</span>
             </div>
             <div class="flex items-center gap-3">
               <div class="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
                 <iconify-icon icon="solar:check-circle-bold" class="text-emerald-500 text-sm"></iconify-icon>
               </div>
-              <span class="text-sm text-[#334155]">현장 맞춤형 보건 리포트 생성</span>
+              <span class="text-[16px] font-medium text-[#334155]">현장 맞춤형 보건 리포트 생성</span>
             </div>
           </div>
         </div>
@@ -632,9 +654,9 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <div class="reveal">
-          <span class="inline-block rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.15em] font-medium bg-navy/5 text-navy mb-4">Credentials</span>
+          <span class="inline-block rounded-full px-3 py-1 text-[15px] uppercase tracking-[0.14em] font-bold bg-navy/5 text-navy mb-4">Credentials</span>
         </div>
-        <h2 class="reveal stagger-1 text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight font-bold text-[#0f172a]">
+        <h2 class="reveal stagger-1 text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-[#0f172a]" style="line-height: 1.18; letter-spacing: -0.02em;">
           기술력으로 증명합니다<span class="accent-dot">.</span>
         </h2>
       </div>
@@ -648,27 +670,27 @@
               <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
                 <iconify-icon icon="solar:rocket-bold-duotone" class="text-accent text-2xl"></iconify-icon>
               </div>
-              <div class="text-xl font-bold text-navy mb-4">정부지원사업 선정</div>
+              <div class="text-[22px] font-extrabold text-navy mb-5">정부지원사업 선정</div>
               <div class="space-y-3">
                 <div class="flex items-start gap-2">
                   <div class="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></div>
                   <div>
-                    <span class="text-sm text-[#334155]">2025 예비창업패키지(딥테크 분야) 선정</span>
-                    <span class="text-xs text-[#94a3b8] ml-1">중소벤처기업부</span>
+                    <span class="text-[16px] font-medium text-[#334155]">2025 예비창업패키지(딥테크 분야) 선정</span>
+                    <span class="text-[13px] text-[#94a3b8] block mt-1">중소벤처기업부</span>
                   </div>
                 </div>
                 <div class="flex items-start gap-2">
                   <div class="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></div>
                   <div>
-                    <span class="text-sm text-[#334155]">2026 창업성공패키지(청년창업사관학교) 기본과정 최종 합격</span>
-                    <span class="text-xs text-[#94a3b8] ml-1">중소벤처기업부</span>
+                    <span class="text-[16px] font-medium text-[#334155]">2026 창업성공패키지(청년창업사관학교) 기본과정 최종 합격</span>
+                    <span class="text-[13px] text-[#94a3b8] block mt-1">중소벤처기업부</span>
                   </div>
                 </div>
                 <div class="flex items-start gap-2">
                   <div class="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 flex-shrink-0"></div>
                   <div>
-                    <span class="text-sm text-[#334155]">2026 연세대학교 캠퍼스타운 S-CUBE 입주기업 선발 창업경진대회</span>
-                    <span class="text-xs text-[#94a3b8] ml-1">서울특별시, 서대문구청, 연세대학교</span>
+                    <span class="text-[16px] font-medium text-[#334155]">2026 연세대학교 캠퍼스타운 S-CUBE 입주기업 선발 창업경진대회</span>
+                    <span class="text-[13px] text-[#94a3b8] block mt-1">서울특별시, 서대문구청, 연세대학교</span>
                   </div>
                 </div>
               </div>
@@ -684,20 +706,20 @@
               <div class="w-12 h-12 rounded-xl bg-navy/5 flex items-center justify-center mb-5">
                 <iconify-icon icon="solar:shield-check-bold-duotone" class="text-navy text-2xl"></iconify-icon>
               </div>
-              <div class="text-xl font-bold text-navy mb-1">특허 5건</div>
-              <div class="text-sm text-[#64748b] mb-3">출원 3건 / 등록 2건</div>
+              <div class="text-[22px] font-extrabold text-navy mb-1">특허 5건</div>
+              <div class="text-[15px] font-semibold text-[#64748b] mb-4">출원 3건 / 등록 2건</div>
               <div class="space-y-2.5 mt-2">
                 <div class="flex items-center gap-2">
                   <div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  <span class="text-sm text-[#334155]">원거리 영상 작업자 안전 모니터링 기술</span>
+                  <span class="text-[16px] font-medium text-[#334155]">원거리 영상 작업자 안전 모니터링 기술</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  <span class="text-sm text-[#334155]">딥러닝 모델 최적화 기술</span>
+                  <span class="text-[16px] font-medium text-[#334155]">딥러닝 모델 최적화 기술</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  <span class="text-sm text-[#334155]">건설 영상 학습데이터 자동 생성 기술</span>
+                  <span class="text-[16px] font-medium text-[#334155]">건설 영상 학습데이터 자동 생성 기술</span>
                 </div>
               </div>
             </div>
@@ -711,16 +733,16 @@
               <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5">
                 <iconify-icon icon="solar:document-text-bold-duotone" class="text-accent text-2xl"></iconify-icon>
               </div>
-              <div class="text-xl font-bold text-navy mb-1">SCI 논문 8건</div>
-              <div class="text-sm text-[#64748b] mb-3">국제 유수 저널 게재</div>
+              <div class="text-[22px] font-extrabold text-navy mb-1">SCI 논문 8건</div>
+              <div class="text-[15px] font-semibold text-[#64748b] mb-4">국제 유수 저널 게재</div>
               <div class="space-y-2.5">
                 <div class="flex items-center gap-2">
                   <div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  <span class="text-sm text-[#334155]">Automation in Construction</span>
+                  <span class="text-[16px] font-medium text-[#334155]">Automation in Construction</span>
                 </div>
                 <div class="flex items-center gap-2">
                   <div class="w-1.5 h-1.5 rounded-full bg-accent"></div>
-                  <span class="text-sm text-[#334155]">Computers in Industry</span>
+                  <span class="text-[16px] font-medium text-[#334155]">Computers in Industry</span>
                 </div>
               </div>
             </div>
@@ -735,97 +757,101 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <div class="reveal">
-          <span class="inline-block rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.15em] font-medium bg-navy/5 text-navy mb-4">Before & After</span>
+          <span class="inline-block rounded-full px-3 py-1 text-[15px] uppercase tracking-[0.14em] font-bold bg-navy/5 text-navy mb-4">Before & After</span>
         </div>
-        <h2 class="reveal stagger-1 text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight font-bold text-[#0f172a]">
+        <h2 class="reveal stagger-1 text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-[#0f172a]" style="line-height: 1.18; letter-spacing: -0.02em;">
           기존 방식과 무엇이 다른가<span class="accent-dot">.</span>
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal stagger-2">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal stagger-2 items-stretch">
         <!-- Before -->
         <div class="double-bezel">
-          <div class="double-bezel-inner p-8 md:p-10">
+          <div class="double-bezel-inner p-8 md:p-10 h-full">
             <div class="flex items-center gap-3 mb-8">
-              <div class="w-10 h-10 rounded-xl bg-[#f1f5f9] flex items-center justify-center">
-                <iconify-icon icon="solar:close-circle-bold-duotone" class="text-[#94a3b8] text-xl"></iconify-icon>
+              <div class="w-11 h-11 rounded-xl bg-[#f1f5f9] flex items-center justify-center">
+                <iconify-icon icon="solar:close-circle-bold-duotone" class="text-[#94a3b8] text-[22px]"></iconify-icon>
               </div>
-              <h3 class="text-xl font-bold text-[#94a3b8]">기존 안전관리</h3>
+              <h3 class="text-[22px] font-bold text-[#94a3b8]">기존 안전관리</h3>
             </div>
             <div class="space-y-4">
               <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-xs"></iconify-icon>
+                <div class="w-6 h-6 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-[14px]"></iconify-icon>
                 </div>
-                <p class="text-[#64748b] text-sm leading-relaxed">고정 카메라로 제한된 구역만 감시</p>
+                <p class="text-[#64748b] text-[16px] leading-[1.65]">고정 카메라로 제한된 구역만 감시</p>
               </div>
               <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-xs"></iconify-icon>
+                <div class="w-6 h-6 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-[14px]"></iconify-icon>
                 </div>
-                <p class="text-[#64748b] text-sm leading-relaxed">수동 CCTV 조작으로 인력 소모</p>
+                <p class="text-[#64748b] text-[16px] leading-[1.65]">수동 CCTV 조작으로 인력 소모</p>
               </div>
               <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-xs"></iconify-icon>
+                <div class="w-6 h-6 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-[14px]"></iconify-icon>
                 </div>
-                <p class="text-[#64748b] text-sm leading-relaxed">높은 오경보율로 알림 피로 누적</p>
+                <p class="text-[#64748b] text-[16px] leading-[1.65]">높은 오경보율로 알림 피로 누적</p>
               </div>
               <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-xs"></iconify-icon>
+                <div class="w-6 h-6 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-[14px]"></iconify-icon>
                 </div>
-                <p class="text-[#64748b] text-sm leading-relaxed">보건관리 엑셀 수기 입력</p>
+                <p class="text-[#64748b] text-[16px] leading-[1.65]">보건관리 엑셀 수기 입력</p>
               </div>
               <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-xs"></iconify-icon>
+                <div class="w-6 h-6 rounded-full bg-[#f1f5f9] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <iconify-icon icon="solar:minus-circle-linear" class="text-[#94a3b8] text-[14px]"></iconify-icon>
                 </div>
-                <p class="text-[#64748b] text-sm leading-relaxed">보고서 수작업 작성에 시간 소모</p>
+                <p class="text-[#64748b] text-[16px] leading-[1.65]">보고서 수작업 작성에 시간 소모</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- After -->
-        <div class="double-bezel" style="box-shadow: 0 0 0 1px rgba(1, 105, 169, 0.15);">
-          <div class="double-bezel-inner p-8 md:p-10" style="box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 30px -8px rgba(1, 105, 169, 0.12);">
-            <div class="flex items-center gap-3 mb-8">
-              <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
-                <iconify-icon icon="solar:check-circle-bold-duotone" class="text-accent text-xl"></iconify-icon>
-              </div>
-              <h3 class="text-xl font-bold text-accent">ONTOH 도입 후</h3>
-            </div>
-            <div class="space-y-4">
-              <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:check-circle-bold" class="text-accent text-xs"></iconify-icon>
+        <!-- After (강조) -->
+        <div class="relative">
+          <div class="rounded-[1.5rem] bg-white h-full relative overflow-hidden"
+               style="border: 2px solid #0169a9; box-shadow: 0 24px 60px -16px rgba(1, 105, 169, 0.32), 0 0 0 6px rgba(1, 105, 169, 0.06);">
+            <!-- 좌측 액센트 바 -->
+            <div class="p-8 md:p-10">
+              <div class="flex items-center gap-3 mb-8">
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center" style="background: linear-gradient(135deg, rgba(27,46,106,0.10), rgba(1,105,169,0.16));">
+                  <iconify-icon icon="solar:check-circle-bold-duotone" class="text-accent text-[22px]"></iconify-icon>
                 </div>
-                <p class="text-[#334155] text-sm leading-relaxed">PTZ 자율 순찰로 사각지대 해소</p>
+                <h3 class="text-[22px] font-extrabold text-accent">ONTOH 솔루션 도입 후</h3>
               </div>
-              <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:check-circle-bold" class="text-accent text-xs"></iconify-icon>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <iconify-icon icon="solar:check-circle-bold" class="text-accent text-[14px]"></iconify-icon>
+                  </div>
+                  <p class="text-[#0f172a] text-[16px] leading-[1.65] font-medium">PTZ 자율 순찰로 사각지대 해소</p>
                 </div>
-                <p class="text-[#334155] text-sm leading-relaxed">AI 자율 관제로 24시간 무인 운영</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:check-circle-bold" class="text-accent text-xs"></iconify-icon>
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <iconify-icon icon="solar:check-circle-bold" class="text-accent text-[14px]"></iconify-icon>
+                  </div>
+                  <p class="text-[#0f172a] text-[16px] leading-[1.65] font-medium">AI 자율 관제로 24시간 무인 운영</p>
                 </div>
-                <p class="text-[#334155] text-sm leading-relaxed">RAG-LMM 복합 판단으로 오경보 감소</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:check-circle-bold" class="text-accent text-xs"></iconify-icon>
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <iconify-icon icon="solar:check-circle-bold" class="text-accent text-[14px]"></iconify-icon>
+                  </div>
+                  <p class="text-[#0f172a] text-[16px] leading-[1.65] font-medium">RAG-LMM 복합 판단으로 오경보 감소</p>
                 </div>
-                <p class="text-[#334155] text-sm leading-relaxed">건강검진 자동 연동 및 고위험군 분류</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <iconify-icon icon="solar:check-circle-bold" class="text-accent text-xs"></iconify-icon>
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <iconify-icon icon="solar:check-circle-bold" class="text-accent text-[14px]"></iconify-icon>
+                  </div>
+                  <p class="text-[#0f172a] text-[16px] leading-[1.65] font-medium">건강검진 자동 연동 및 고위험군 분류</p>
                 </div>
-                <p class="text-[#334155] text-sm leading-relaxed">법령 연동 보고서 자동 생성</p>
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <iconify-icon icon="solar:check-circle-bold" class="text-accent text-[14px]"></iconify-icon>
+                  </div>
+                  <p class="text-[#0f172a] text-[16px] leading-[1.65] font-medium">법령 연동 보고서 자동 생성</p>
+                </div>
               </div>
             </div>
           </div>
@@ -842,43 +868,18 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="max-w-3xl mx-auto text-center">
         <div class="reveal">
-          <span class="inline-block rounded-full px-3 py-1 text-[11px] uppercase tracking-[0.15em] font-medium bg-white/10 text-white/70 mb-6">Contact Us</span>
+          <span class="inline-block rounded-full px-3 py-1 text-[15px] uppercase tracking-[0.14em] font-bold bg-white/10 text-white/70 mb-6">Contact Us</span>
         </div>
-        <h2 class="reveal stagger-1 text-3xl md:text-4xl lg:text-5xl tracking-tight leading-tight font-bold text-white mb-6">
+        <h2 class="reveal stagger-1 text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-white mb-7" style="line-height: 1.18; letter-spacing: -0.02em;">
           내일의 안전을,<br>오늘 설계합니다<span class="text-accent">.</span>
         </h2>
-        <p class="reveal stagger-2 text-lg text-white/60 leading-relaxed mb-12 max-w-[50ch] mx-auto">
+        <p class="reveal stagger-2 text-[18px] md:text-[20px] text-white/65 leading-[1.6] mb-14 max-w-[50ch] mx-auto">
           현장에 맞는 맞춤 솔루션을 제안드립니다. 편하게 연락주세요.
         </p>
 
-        <!-- Contact cards -->
-        <div class="reveal stagger-3 grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
-          <div class="bg-white/5 rounded-2xl p-6 border border-white/10 spring hover:bg-white/[0.08]">
-            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mx-auto mb-3">
-              <iconify-icon icon="solar:letter-bold-duotone" class="text-white text-lg"></iconify-icon>
-            </div>
-            <div class="text-sm text-white/40 mb-1">이메일</div>
-            <a href="mailto:ktg@ontoh.co.kr" class="text-white font-medium text-sm hover:text-accent spring">ktg@ontoh.co.kr</a>
-          </div>
-          <div class="bg-white/5 rounded-2xl p-6 border border-white/10 spring hover:bg-white/[0.08]">
-            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mx-auto mb-3">
-              <iconify-icon icon="solar:map-point-bold-duotone" class="text-white text-lg"></iconify-icon>
-            </div>
-            <div class="text-sm text-white/40 mb-1">주소</div>
-            <p class="text-white font-medium text-sm leading-snug">서울 서대문구 연세로2나길 61<br>캠퍼스타운에스큐브 304호</p>
-          </div>
-          <div class="bg-white/5 rounded-2xl p-6 border border-white/10 spring hover:bg-white/[0.08]">
-            <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center mx-auto mb-3">
-              <iconify-icon icon="solar:global-bold-duotone" class="text-white text-lg"></iconify-icon>
-            </div>
-            <div class="text-sm text-white/40 mb-1">웹사이트</div>
-            <a href="https://www.ontoh.co.kr" target="_blank" class="text-white font-medium text-sm hover:text-accent spring">www.ontoh.co.kr</a>
-          </div>
-        </div>
-
-        <div class="reveal stagger-4">
-          <a href="mailto:ktg@ontoh.co.kr" class="group inline-flex items-center gap-3 bg-white text-navy rounded-full px-10 py-5 text-lg font-bold hover:scale-[1.02] active:scale-[0.98] spring shadow-[0_8px_40px_rgba(255,255,255,0.15)]">
-            도입 상담 요청하기
+        <div class="reveal stagger-3">
+          <a href="contact.html" class="group inline-flex items-center gap-3 bg-white text-navy rounded-full px-10 py-5 text-[18px] font-extrabold hover:scale-[1.02] active:scale-[0.98] spring shadow-[0_8px_40px_rgba(255,255,255,0.15)]">
+            문의하기
             <span class="w-9 h-9 rounded-full bg-navy/10 flex items-center justify-center">
               <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-navy"></iconify-icon>
             </span>
@@ -893,32 +894,35 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-3 gap-10 mb-10">
         <div>
-          <a href="index_v4.html" class="mb-4 block">
+          <a href="index.html" class="mb-4 block">
             <img src="assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8">
           </a>
-          <p class="text-white/50 text-[15px] font-medium mb-3">주식회사 온토</p>
-          <div class="space-y-1.5 text-white/30 text-sm leading-relaxed">
+          <p class="text-white/60 text-[16px] font-bold mb-3">주식회사 온토</p>
+          <div class="space-y-1.5 text-white/40 text-[14px] leading-relaxed">
             <p>대표이사: 김태건</p>
             <p>사업자등록번호: 230-88-03436</p>
           </div>
         </div>
         <div>
-          <h4 class="text-white/60 text-sm font-semibold tracking-wide mb-4">솔루션</h4>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
           <div class="space-y-2.5">
-            <a href="vision.html" class="text-white/40 hover:text-white text-sm spring block">ONTOH Vision</a>
-            <a href="health.html" class="text-white/40 hover:text-white text-sm spring block">ONTOH Health</a>
+            <a href="about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
+            <a href="vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
+            <a href="health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
+            <a href="contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
           </div>
         </div>
         <div>
-          <h4 class="text-white/60 text-sm font-semibold tracking-wide mb-4">CONTACT</h4>
-          <div class="space-y-1.5 text-white/40 text-sm leading-relaxed">
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">CONTACT</h4>
+          <div class="space-y-2 text-white/50 text-[14px] leading-relaxed">
             <p>이메일: <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white spring">ktg@ontoh.co.kr</a></p>
             <p>주소: 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</p>
           </div>
         </div>
       </div>
       <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-white/25 text-xs">&copy; 2026 ONTOH INC. All rights reserved.</p>
+        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH INC. All rights reserved.</p>
+        <a href="privacy.html" class="text-white/50 hover:text-white text-[13px] spring font-medium">개인정보처리방침</a>
       </div>
     </div>
   </footer>
