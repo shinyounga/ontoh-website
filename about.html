@@ -42,43 +42,11 @@
   </script>
   <link rel="stylesheet" href="css/common.css">
   <style>
-    .accent-dot { color: #0169a9; }
-
-    /* Milestone 연도 그룹 — 큰 연도 + 우측 이벤트 리스트 */
-    .milestone-year {
-      font-size: 56px; font-weight: 800;
-      line-height: 1; letter-spacing: -0.04em;
-    }
-    @media (max-width: 768px) {
-      .milestone-year { font-size: 44px; }
-    }
-
-    /* Overview — minimal labeled rows (no card wrapper) */
-    .ov-row {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 20px;
-      padding: 14px 0;
-      align-items: baseline;
-      border-bottom: 1px solid rgba(27, 46, 106, 0.06);
-    }
-    .ov-row:last-child { border-bottom: 0; }
-    .ov-row:first-child { padding-top: 0; }
-    .ov-label {
-      font-size: 16px; font-weight: 700;
-      color: #0f172a;
-    }
-    .ov-value {
-      font-size: 16px; font-weight: 500;
-      color: #0f172a; line-height: 1.55;
-    }
-    @media (max-width: 640px) {
-      .ov-row {
-        grid-template-columns: 1fr;
-        gap: 2px; padding: 12px 0;
-        align-items: start;
-      }
-    }
+    /* about 전용 — 무던한(미니멀) 톤 */
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #0169a9; }
+    .lede { color: #475569; }
+    .ulink { font-weight: 600; color: #1b2e6a; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(27,46,106,0.3); }
+    .ulink:hover { text-decoration-color: #1b2e6a; }
   </style>
 </head>
 <body class="bg-[#faf8f3] text-[#0f172a] font-sans antialiased">
@@ -133,189 +101,137 @@
     </a>
   </div>
 
-  <!-- ==================== 01 HERO ==================== -->
-  <section class="relative pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden bg-gradient-to-b from-[#f2eee6] to-white">
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="max-w-4xl">
-        <div class="reveal">
-          <span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[15px] uppercase tracking-[0.14em] font-bold bg-white text-navy border border-navy/10 shadow-[0_2px_8px_rgba(27,46,106,0.06)] mb-8">
-            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            About
-          </span>
-        </div>
-        <h1 class="reveal stagger-1 text-[40px] md:text-[56px] lg:text-[68px] tracking-tight font-extrabold text-[#0f172a] mb-8" style="line-height: 1.08; letter-spacing: -0.02em;">
-          <span class="font-medium text-[#334155]">쓸 수 있는</span> 기술로,<br>
-          사고가 반복되는 <span class="text-accent">구조</span>를<br>
-          바꿉니다<span class="accent-dot">.</span>
-        </h1>
-        <p class="reveal stagger-2 text-[17px] md:text-[21px] text-[#64748b] leading-[1.65] max-w-[58ch]">
-          온토는 건설현장의 위험을 감지·판단·개입·기록하는<br class="hidden md:block">
-          <span class="text-accent font-semibold">Physical AI</span> 안전관리 기업입니다.
-        </p>
-      </div>
+  <!-- ==================== HERO (미니멀 타이포) ==================== -->
+  <section class="border-b border-navy/10">
+    <div class="max-w-5xl mx-auto px-6 pt-40 pb-24 md:pt-52 md:pb-32">
+      <p class="eyebrow mb-7 reveal">About</p>
+      <h1 class="reveal stagger-1 text-[48px] md:text-[80px] font-semibold tracking-tight text-[#0f172a]" style="line-height: 1.05; letter-spacing: -0.035em;">
+        쓸 수 있는 기술로,<br>사고가 반복되는 <span class="text-accent">구조</span>를 바꿉니다.
+      </h1>
+      <p class="reveal stagger-2 mt-8 text-[19px] md:text-[22px] text-[#475569] leading-[1.7] max-w-2xl">
+        온토는 건설현장의 위험을 감지·판단·개입·기록하는 Physical AI 안전관리 기업입니다.
+      </p>
     </div>
   </section>
 
-  <!-- ==================== 02 COMPANY OVERVIEW ==================== -->
-  <section id="overview" class="section-spacious bg-[#f2eee6]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mb-16">
-        <h2 class="reveal text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-[#0f172a]" style="line-height: 1.18; letter-spacing: -0.02em;">
-          회사 개요<span class="accent-dot">.</span>
-        </h2>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        <!-- 좌측: 회사 정보 -->
-        <div class="lg:col-span-7 reveal stagger-2">
-          <div class="ov-row">
-            <div class="ov-label">회사명</div>
-            <div class="ov-value">주식회사 온토</div>
-          </div>
-          <div class="ov-row">
-            <div class="ov-label">설립일</div>
-            <div class="ov-value">2025년 10월 2일</div>
-          </div>
-          <div class="ov-row">
-            <div class="ov-label">대표이사</div>
-            <div class="ov-value">김태건</div>
-          </div>
-          <div class="ov-row">
-            <div class="ov-label">주소</div>
-            <div class="ov-value">서울특별시 서대문구 연세로2나길 61,<br class="sm:hidden">캠퍼스타운에스큐브 304호</div>
-          </div>
-        </div>
-
-        <!-- 우측: 지도 (Google Maps embed, API 키 불필요) -->
-        <div class="lg:col-span-5 reveal stagger-3">
-          <div class="rounded-xl overflow-hidden border border-navy/8 shadow-[0_8px_24px_rgba(27,46,106,0.08)] h-[320px] md:h-[380px] bg-[#eef2f7]">
-            <iframe
-              src="https://maps.google.com/maps?q=%EC%84%9C%EC%9A%B8%ED%8A%B9%EB%B3%84%EC%8B%9C%20%EC%84%9C%EB%8C%80%EB%AC%B8%EA%B5%AC%20%EC%97%B0%EC%84%B8%EB%A1%9C2%EB%82%98%EA%B8%B8%2061&z=17&output=embed"
-              class="w-full h-full"
-              style="border: 0;"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="ONTOH 본사 위치">
-            </iframe>
-          </div>
+  <!-- ==================== OVERVIEW ==================== -->
+  <section id="overview" class="border-b border-navy/10">
+    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
+      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
+        <p class="eyebrow mb-5 md:mb-1 reveal">Overview</p>
+        <div>
+          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a]" style="line-height: 1.2; letter-spacing: -0.02em;">
+            회사 <span class="text-accent">개요</span>.
+          </h2>
+          <dl class="reveal mt-10 max-w-2xl">
+            <div class="grid grid-cols-[110px_1fr] sm:grid-cols-[140px_1fr] gap-x-8 py-4 border-t border-navy/10">
+              <dt class="text-[16px] font-semibold text-[#0f172a]">회사명</dt>
+              <dd class="text-[16px] text-[#64748b] leading-[1.7]">주식회사 온토</dd>
+            </div>
+            <div class="grid grid-cols-[110px_1fr] sm:grid-cols-[140px_1fr] gap-x-8 py-4 border-t border-navy/10">
+              <dt class="text-[16px] font-semibold text-[#0f172a]">설립일</dt>
+              <dd class="text-[16px] text-[#64748b] leading-[1.7]">2025년 10월 2일</dd>
+            </div>
+            <div class="grid grid-cols-[110px_1fr] sm:grid-cols-[140px_1fr] gap-x-8 py-4 border-t border-navy/10">
+              <dt class="text-[16px] font-semibold text-[#0f172a]">대표이사</dt>
+              <dd class="text-[16px] text-[#64748b] leading-[1.7]">김태건</dd>
+            </div>
+            <div class="grid grid-cols-[110px_1fr] sm:grid-cols-[140px_1fr] gap-x-8 py-4 border-t border-navy/10">
+              <dt class="text-[16px] font-semibold text-[#0f172a]">주소</dt>
+              <dd class="text-[16px] text-[#64748b] leading-[1.7]">(03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</dd>
+            </div>
+            <div class="grid grid-cols-[110px_1fr] sm:grid-cols-[140px_1fr] gap-x-8 py-4 border-t border-navy/10">
+              <dt class="text-[16px] font-semibold text-[#0f172a]">이메일</dt>
+              <dd class="text-[16px] text-[#64748b] leading-[1.7]"><a href="mailto:ktg@ontoh.co.kr" class="ulink">ktg@ontoh.co.kr</a></dd>
+            </div>
+          </dl>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 03 VISION ==================== -->
-  <section id="vision" class="section-spacious bg-[#f2eee6] relative overflow-hidden">
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="reveal text-[34px] md:text-[44px] lg:text-[54px] tracking-tight font-extrabold text-[#0f172a] mb-10" style="line-height: 1.18; letter-spacing: -0.02em;">
-          AI 자율관제를 넘어,<br>
-          <span class="text-accent">Physical AI 운영 플랫폼</span>으로<span class="accent-dot">.</span>
-        </h2>
-        <p class="reveal stagger-2 text-[17px] md:text-[20px] text-[#334155] leading-[1.7] max-w-[60ch] mx-auto">
-          건설현장 AI 자율관제를 시작으로,
-          <span class="font-semibold text-navy">제조·산업 안전·공정 관리</span>까지
-          확장 가능한 Physical AI 기반 운영 시스템을 지향합니다.
-        </p>
+  <!-- ==================== VISION ==================== -->
+  <section id="vision" class="border-b border-navy/10">
+    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
+      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
+        <p class="eyebrow mb-5 md:mb-1 reveal">Vision</p>
+        <div>
+          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a]" style="line-height: 1.2; letter-spacing: -0.02em;">
+            AI 자율관제를 넘어,<br><span class="text-accent">Physical AI</span> 운영 플랫폼으로.
+          </h2>
+          <p class="reveal lede mt-5 text-[18px] leading-[1.75] max-w-2xl">
+            건설현장 AI 자율관제를 시작으로, 제조·산업 안전·공정 관리까지 확장 가능한 Physical AI 기반 운영 시스템을 지향합니다.
+          </p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 04 MILESTONES ==================== -->
-  <section id="milestones" class="section-spacious bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mb-16">
-        <h2 class="reveal text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-[#0f172a]" style="line-height: 1.18; letter-spacing: -0.02em;">
-          주요 연혁<span class="accent-dot">.</span>
-        </h2>
-      </div>
+  <!-- ==================== MILESTONES ==================== -->
+  <section id="milestones" class="border-b border-navy/10">
+    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
+      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
+        <p class="eyebrow mb-5 md:mb-1 reveal">Milestones</p>
+        <div>
+          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a] mb-4" style="line-height: 1.2; letter-spacing: -0.02em;">
+            걸어온 <span class="text-accent">길</span>.
+          </h2>
 
-      <div class="max-w-5xl space-y-14 md:space-y-16">
-
-        <!-- 2025 -->
-        <div class="reveal grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
-          <!-- 연도 라벨 -->
-          <div class="md:col-span-3">
-            <div class="milestone-year text-accent">2025</div>
-            <div class="w-12 h-[3px] bg-accent mt-5 rounded-full"></div>
-          </div>
-          <!-- 이벤트 리스트 (시간순) -->
-          <div class="md:col-span-9 space-y-7">
-            <div class="flex items-start gap-5 md:gap-7">
-              <span class="text-[13px] font-bold text-accent uppercase tracking-[0.12em] w-12 flex-shrink-0 mt-1.5">9월</span>
-              <div class="flex-1 pb-7 border-b border-navy/8">
-                <h3 class="text-[18px] md:text-[20px] font-bold text-[#0f172a] leading-snug mb-1.5">중소벤처기업부 예비창업패키지 딥테크 분야 선정</h3>
-                <p class="text-[14px] text-[#64748b] font-medium">우수기업 선정</p>
+          <div class="reveal grid md:grid-cols-[120px_1fr] gap-x-6 py-10 border-t border-navy/10">
+            <div class="text-[26px] font-semibold text-navy/25 mb-5 md:mb-0">2025</div>
+            <div class="space-y-6">
+              <div class="grid grid-cols-[48px_1fr] gap-x-4">
+                <span class="text-[14px] font-semibold text-accent mt-0.5">9월</span>
+                <div>
+                  <h3 class="text-[18px] font-semibold text-[#0f172a] leading-snug">중소벤처기업부 예비창업패키지 딥테크 분야 선정</h3>
+                  <p class="mt-1 text-[15px] text-[#64748b]">우수기업 선정</p>
+                </div>
               </div>
-            </div>
-            <div class="flex items-start gap-5 md:gap-7">
-              <span class="text-[13px] font-bold text-accent uppercase tracking-[0.12em] w-12 flex-shrink-0 mt-1.5">10월</span>
-              <div class="flex-1 pb-7 border-b border-navy/8">
-                <h3 class="text-[18px] md:text-[20px] font-bold text-[#0f172a] leading-snug">주식회사 온토 법인 설립</h3>
+              <div class="grid grid-cols-[48px_1fr] gap-x-4">
+                <span class="text-[14px] font-semibold text-accent mt-0.5">10월</span>
+                <h3 class="text-[18px] font-semibold text-[#0f172a] leading-snug">주식회사 온토 법인 설립</h3>
               </div>
-            </div>
-            <div class="flex items-start gap-5 md:gap-7">
-              <span class="text-[13px] font-bold text-accent uppercase tracking-[0.12em] w-12 flex-shrink-0 mt-1.5">11월</span>
-              <div class="flex-1">
-                <h3 class="text-[18px] md:text-[20px] font-bold text-[#0f172a] leading-snug">금호건설 기술 개발 계약 체결</h3>
+              <div class="grid grid-cols-[48px_1fr] gap-x-4">
+                <span class="text-[14px] font-semibold text-accent mt-0.5">11월</span>
+                <h3 class="text-[18px] font-semibold text-[#0f172a] leading-snug">금호건설 기술 개발 계약 체결</h3>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- 2026 -->
-        <div class="reveal stagger-1 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
-          <!-- 연도 라벨 -->
-          <div class="md:col-span-3">
-            <div class="milestone-year text-navy">2026</div>
-            <div class="w-12 h-[3px] bg-navy mt-5 rounded-full"></div>
-          </div>
-          <!-- 이벤트 리스트 (시간순) -->
-          <div class="md:col-span-9 space-y-7">
-            <div class="flex items-start gap-5 md:gap-7">
-              <span class="text-[13px] font-bold text-navy uppercase tracking-[0.12em] w-12 flex-shrink-0 mt-1.5">2월</span>
-              <div class="flex-1 pb-7 border-b border-navy/8">
-                <h3 class="text-[18px] md:text-[20px] font-bold text-[#0f172a] leading-snug">연세대학교 캠퍼스타운 S-CUBE 입주기업 선발</h3>
+          <div class="reveal grid md:grid-cols-[120px_1fr] gap-x-6 py-10 border-t border-navy/10">
+            <div class="text-[26px] font-semibold text-navy/25 mb-5 md:mb-0">2026</div>
+            <div class="space-y-6">
+              <div class="grid grid-cols-[48px_1fr] gap-x-4">
+                <span class="text-[14px] font-semibold text-accent mt-0.5">2월</span>
+                <h3 class="text-[18px] font-semibold text-[#0f172a] leading-snug">연세대학교 캠퍼스타운 S-CUBE 입주기업 선발</h3>
               </div>
-            </div>
-            <div class="flex items-start gap-5 md:gap-7">
-              <span class="text-[13px] font-bold text-navy uppercase tracking-[0.12em] w-12 flex-shrink-0 mt-1.5">3월</span>
-              <div class="flex-1">
-                <h3 class="text-[18px] md:text-[20px] font-bold text-[#0f172a] leading-snug">중소벤처기업부 창업성공패키지 청년창업사관학교 기본과정 최종 합격</h3>
+              <div class="grid grid-cols-[48px_1fr] gap-x-4">
+                <span class="text-[14px] font-semibold text-accent mt-0.5">3월</span>
+                <h3 class="text-[18px] font-semibold text-[#0f172a] leading-snug">중소벤처기업부 창업성공패키지 청년창업사관학교 기본과정 최종 합격</h3>
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ==================== 05 CTA ==================== -->
-  <section id="contact" class="section-spacious bg-navy relative overflow-hidden">
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="max-w-3xl mx-auto text-center">
-        <div class="reveal">
-          <span class="inline-block rounded-full px-3 py-1 text-[15px] uppercase tracking-[0.14em] font-bold bg-white/10 text-white/70 mb-6">Contact Us</span>
-        </div>
-        <h2 class="reveal stagger-1 text-[32px] md:text-[40px] lg:text-[46px] tracking-tight font-extrabold text-white mb-7" style="line-height: 1.18; letter-spacing: -0.02em;">
-          현장에 맞는 안전관리,<br>온토와 함께 설계하세요<span class="text-accent">.</span>
-        </h2>
-        <p class="reveal stagger-2 text-[18px] md:text-[20px] text-white/65 leading-[1.6] mb-14 max-w-[50ch] mx-auto">
-          미팅, 시연, 도입 컨설팅 모두 환영합니다. 편하게 연락 주세요.
-        </p>
-
-        <div class="reveal stagger-3 flex flex-col sm:flex-row gap-3 justify-center items-center">
-          <a href="index.html#solutions" class="group inline-flex items-center justify-center gap-2 bg-white text-navy rounded-full px-7 py-3.5 text-[15px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
-            솔루션 살펴보기
-            <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-navy text-[14px]"></iconify-icon>
-          </a>
-          <a href="contact.html" class="group inline-flex items-center justify-center gap-2 bg-white/10 text-white border border-white/25 backdrop-blur rounded-full px-7 py-3.5 text-[15px] font-bold hover:bg-white/15 hover:border-white/40 active:scale-[0.98] spring">
-            문의하기
-            <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-white text-[14px]"></iconify-icon>
-          </a>
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact" class="border-b border-navy/10">
+    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
+      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
+        <p class="eyebrow mb-5 md:mb-1 reveal">Contact</p>
+        <div>
+          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a]" style="line-height: 1.2; letter-spacing: -0.02em;">
+            현장에 맞는 안전관리,<br>온토와 <span class="text-accent">함께</span> 설계하세요.
+          </h2>
+          <p class="reveal lede mt-5 text-[18px] leading-[1.75] max-w-2xl">
+            미팅, 시연, 도입 컨설팅 모두 환영합니다. 편하게 연락 주세요.
+          </p>
+          <div class="reveal mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[16px]">
+            <a href="index.html#solutions" class="ulink">솔루션 살펴보기 →</a>
+            <a href="contact.html" class="ulink">문의하기 →</a>
+          </div>
         </div>
       </div>
     </div>

@@ -153,6 +153,10 @@
     }
     .form-state.success { background: #ecfdf5; border: 1px solid #6ee7b7; color: #065f46; }
     .form-state.error   { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #0169a9; }
+    .lede { color: #475569; }
+    .ulink { font-weight: 600; color: #1b2e6a; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(27,46,106,0.3); }
+    .ulink:hover { text-decoration-color: #1b2e6a; }
   </style>
 </head>
 <body class="bg-[#faf8f3] text-[#0f172a] font-sans antialiased">
@@ -205,67 +209,39 @@
   </div>
 
   <!-- ==================== HERO ==================== -->
-  <section class="relative pt-40 pb-16 md:pt-48 md:pb-20 overflow-hidden bg-gradient-to-b from-[#f2eee6] to-white">
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="max-w-3xl">
-        <div class="reveal">
-          <span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[15px] uppercase tracking-[0.14em] font-bold bg-white text-navy border border-navy/10 shadow-[0_2px_8px_rgba(27,46,106,0.06)] mb-8">
-            <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-            Contact Us
-          </span>
-        </div>
-        <h1 class="reveal stagger-1 text-[40px] md:text-[52px] lg:text-[60px] tracking-tight font-extrabold text-[#0f172a] mb-7" style="line-height: 1.1; letter-spacing: -0.02em;">
-          현장에 맞는 안전관리,<br>
-          온토와 <span class="text-accent">함께 설계</span>하세요<span class="accent-dot">.</span>
-        </h1>
-        <p class="reveal stagger-2 text-[17px] md:text-[20px] text-[#64748b] leading-[1.65] max-w-[58ch]">
-          도입 상담, 시연 요청, 협업 문의 모두 환영합니다.
-        </p>
-      </div>
+  <section class="border-b border-navy/10">
+    <div class="max-w-5xl mx-auto px-6 pt-40 pb-20 md:pt-52 md:pb-24">
+      <p class="eyebrow mb-7 reveal">Contact</p>
+      <h1 class="reveal stagger-1 text-[48px] md:text-[72px] font-semibold tracking-tight text-[#0f172a]" style="line-height: 1.08; letter-spacing: -0.03em;">
+        현장에 맞는 안전관리,<br>온토와 <span class="text-accent">함께 설계</span>하세요.
+      </h1>
+      <p class="reveal stagger-2 mt-8 text-[19px] md:text-[22px] text-[#475569] leading-[1.7] max-w-2xl">
+        도입 상담, 시연 요청, 협업 문의 모두 환영합니다.
+      </p>
     </div>
   </section>
 
   <!-- ==================== FORM SECTION ==================== -->
-  <section class="pb-24 md:pb-32 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+  <section class="border-b border-navy/10">
+    <div class="max-w-5xl mx-auto px-6 py-20 md:py-28">
+      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
+        <p class="eyebrow mb-8 md:mb-1 reveal">문의 폼</p>
+        <div>
 
-        <!-- Left: 연락처 정보 (flat 리스트) -->
-        <div class="lg:col-span-5">
-          <div class="reveal">
-
-            <div class="info-row">
-              <div class="icon-box">
-                <iconify-icon icon="solar:letter-linear" class="text-accent text-[18px]"></iconify-icon>
-              </div>
-              <div class="flex-1 min-w-0">
-                <div class="label">이메일</div>
-                <a href="mailto:ktg@ontoh.co.kr" class="value text-accent hover:underline break-all">ktg@ontoh.co.kr</a>
-              </div>
+          <!-- 연락처 정보 (간결) -->
+          <div class="reveal flex flex-col sm:flex-row gap-8 sm:gap-16 mb-12 pb-12 border-b border-navy/10">
+            <div>
+              <div class="text-[13px] font-semibold text-[#94a3b8] mb-1.5">이메일</div>
+              <a href="mailto:ktg@ontoh.co.kr" class="ulink text-[17px] break-all">ktg@ontoh.co.kr</a>
             </div>
-
-            <div class="info-row">
-              <div class="icon-box">
-                <iconify-icon icon="solar:map-point-linear" class="text-accent text-[18px]"></iconify-icon>
-              </div>
-              <div class="flex-1">
-                <div class="label">주소</div>
-                <p class="value">서울특별시 서대문구 연세로2나길 61,<br>캠퍼스타운에스큐브 304호</p>
-              </div>
+            <div>
+              <div class="text-[13px] font-semibold text-[#94a3b8] mb-1.5">주소</div>
+              <p class="text-[16px] text-[#334155] leading-[1.6]">서울특별시 서대문구 연세로2나길 61,<br>캠퍼스타운에스큐브 304호</p>
             </div>
-
-            <p class="text-[14px] text-[#64748b] leading-[1.7] mt-10">
-              <span class="font-bold text-navy">어떤 문의든 환영합니다.</span><br>
-              제품 시연, 도입 가능성 검토, 파트너십, 기술 협업, 채용 등 자유롭게 작성해 주세요.
-            </p>
           </div>
-        </div>
 
-        <!-- Right: 문의 폼 -->
-        <div class="lg:col-span-7 reveal stagger-1">
-          <div class="form-card">
-            <div class="p-7 md:p-9">
+          <!-- 문의 폼 -->
+          <div class="reveal stagger-1 max-w-2xl">
 
               <!-- 폼 상태 메시지 (성공/에러) — JS가 토글 -->
               <div id="formSuccess" class="form-state success hidden">
@@ -342,10 +318,8 @@
                 </p>
               </form>
 
-            </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
