@@ -153,15 +153,15 @@
     </a>
   </div>
 
-  <!-- ==================== HERO (미니멀 타이포 + 와이드 이미지) ==================== -->
+  <!-- ==================== HERO (미니멀 타이포 + 추상 라인 그래픽) ==================== -->
   <section class="border-b border-navy/10">
     <div class="max-w-5xl mx-auto px-6 pt-40 pb-14 md:pt-52 md:pb-16">
-      <p class="eyebrow mb-7 reveal">Construction Safety AI Platform</p>
+      <p class="eyebrow mb-7 reveal">건설현장 안전관리 AI</p>
       <h1 class="reveal stagger-1 text-[48px] md:text-[80px] font-semibold tracking-tight text-[#0f172a]" style="line-height: 1.05; letter-spacing: -0.035em;">
-        현장을 보고,<br>사람을 <span class="text-accent">살피다</span>.
+        사람이 놓치는 위험을,<br><span class="text-accent">AI가 먼저</span> 본다.
       </h1>
       <p class="reveal stagger-2 mt-8 text-[19px] md:text-[22px] text-[#475569] leading-[1.7] max-w-2xl">
-        ONTOH는 AI 영상 자율 관제와 디지털 보건 관리로 건설현장의 사고를 사전에 차단하고, 근로자의 건강까지 챙깁니다.
+        CCTV를 스스로 관제하고, 작업자 건강까지 데이터로 지키는 건설현장 안전관리 플랫폼.
       </p>
       <div class="reveal stagger-3 mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[16px]">
         <a href="#solutions" class="ulink">솔루션 보기 →</a>
@@ -169,8 +169,46 @@
       </div>
     </div>
     <div class="max-w-7xl mx-auto px-6 pb-20 md:pb-28">
-      <figure class="reveal stagger-4 overflow-hidden rounded-2xl border border-navy/10">
-        <img src="assets/main/main1.png" alt="ONTOH 건설현장 AI 자율관제 화면" class="w-full aspect-[16/7] object-cover" loading="lazy">
+      <figure class="reveal stagger-4 overflow-hidden rounded-2xl border border-navy/10 bg-[#fcfbf8]">
+        <svg viewBox="0 0 1200 525" class="w-full aspect-[16/7]" role="img" aria-label="PTZ 카메라가 현장을 순찰하며 다양한 크기의 객체를 검출하는 개념도">
+          <defs>
+            <linearGradient id="cone" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#0169a9" stop-opacity="0.10"/>
+              <stop offset="1" stop-color="#0169a9" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- faint grid -->
+          <g stroke="#1b2e6a" stroke-opacity="0.06" stroke-width="1">
+            <line x1="150" y1="0" x2="150" y2="525"/><line x1="300" y1="0" x2="300" y2="525"/><line x1="450" y1="0" x2="450" y2="525"/><line x1="600" y1="0" x2="600" y2="525"/><line x1="750" y1="0" x2="750" y2="525"/><line x1="900" y1="0" x2="900" y2="525"/><line x1="1050" y1="0" x2="1050" y2="525"/>
+            <line x1="0" y1="105" x2="1200" y2="105"/><line x1="0" y1="210" x2="1200" y2="210"/><line x1="0" y1="315" x2="1200" y2="315"/><line x1="0" y1="420" x2="1200" y2="420"/>
+          </g>
+          <!-- 시야 콘 -->
+          <path d="M1055 120 L150 470 L720 510 Z" fill="url(#cone)"/>
+          <line x1="1055" y1="120" x2="150" y2="470" stroke="#0169a9" stroke-opacity="0.25" stroke-width="1.5"/>
+          <line x1="1055" y1="120" x2="720" y2="510" stroke="#0169a9" stroke-opacity="0.25" stroke-width="1.5"/>
+          <!-- 카메라 노드 -->
+          <g transform="translate(1010 78)">
+            <rect x="0" y="0" width="86" height="44" rx="10" fill="none" stroke="#1b2e6a" stroke-width="2"/>
+            <circle cx="60" cy="22" r="13" fill="none" stroke="#1b2e6a" stroke-width="2"/>
+            <circle cx="60" cy="22" r="5" fill="#1b2e6a"/>
+            <text x="6" y="-10" fill="#94a3b8" font-size="13" font-family="ui-monospace, monospace">CAM·01 · PTZ</text>
+          </g>
+          <!-- 검출 브래킷: 큰(근) / 중 / 작은(원거리·포커스) — 다중 스케일 -->
+          <g stroke="#1b2e6a" stroke-width="2.5" fill="none" stroke-linecap="round">
+            <path d="M190 300 V274 H216"/><path d="M314 274 H340 V300"/><path d="M190 446 V472 H216"/><path d="M340 472 H314"/><path d="M340 446 V472"/>
+          </g>
+          <g stroke="#1b2e6a" stroke-width="2" fill="none" stroke-linecap="round" stroke-opacity="0.8">
+            <path d="M470 320 V300 H492"/><path d="M560 300 H582 V320"/><path d="M470 430 V450 H492"/><path d="M582 450 H560"/><path d="M582 430 V450"/>
+          </g>
+          <!-- 작은 포커스 박스 (accent) -->
+          <g stroke="#0169a9" stroke-width="2.5" fill="none" stroke-linecap="round">
+            <path d="M720 264 V250 H736"/><path d="M768 250 H784 V264"/><path d="M720 322 V336 H736"/><path d="M784 336 H768"/><path d="M784 322 V336"/>
+          </g>
+          <circle cx="752" cy="293" r="3.5" fill="#0169a9"/>
+          <text x="792" y="262" fill="#0169a9" font-size="15" font-weight="700" font-family="ui-monospace, monospace">PPE 0.94</text>
+          <!-- 절제된 수평 스캔 가이드 -->
+          <line x1="120" y1="160" x2="1080" y2="160" stroke="#0169a9" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="2 8"/>
+        </svg>
       </figure>
     </div>
   </section>
