@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제 | ONTOH 기술 블로그</title>
+  <meta name="description" content="50m 밖 작업자의 안전모는 단 몇 픽셀입니다. 광역 CCTV에서 작은 객체를 검출하기 어려운 이유, PTZ 카메라 개념, 타일링(SAHI)과 2단계 파이프라인으로 푸는 방법을 정리합니다.">
+  <meta name="keywords" content="Tiny Object Detection, Small Object Detection, PTZ 카메라, PPE 검출, SAHI, 건설안전 AI, FPN, 영상 분석">
+  <link rel="canonical" href="https://ontoh.co.kr/blog/tiny-object-detection.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제">
+  <meta property="og:description" content="광역 CCTV에서 작은 객체를 검출하기 어려운 이유와, PTZ·타일링·2단계 파이프라인으로 푸는 방법.">
+  <meta property="og:url" content="https://ontoh.co.kr/blog/tiny-object-detection.html">
+  <meta property="og:site_name" content="ONTOH">
+  <meta property="og:image" content="https://ontoh.co.kr/assets/main/main1.png">
+  <meta property="article:published_time" content="2026-06-26">
+  <meta property="article:author" content="ONTOH Vision Team">
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제",
+    "datePublished": "2026-06-26",
+    "author": { "@type": "Organization", "name": "ONTOH Vision Team" },
+    "publisher": { "@type": "Organization", "name": "ONTOH", "logo": { "@type": "ImageObject", "url": "https://ontoh.co.kr/assets/logo/ontoh/파랑.svg" } },
+    "mainEntityOfPage": "https://ontoh.co.kr/blog/tiny-object-detection.html"
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+          colors: {
+            navy: { DEFAULT: '#1b2e6a', 50: '#f0f3fa', 100: '#dde3f3', 200: '#bcc8e7', 300: '#8fa3d6', 400: '#6079c0', 500: '#3d57a8', 600: '#1b2e6a', 700: '#162556', 800: '#111d42', 900: '#0c142e', 950: '#080e1f' },
+            accent: { DEFAULT: '#0169a9', 50: '#eef8ff', 100: '#d9eeff', 200: '#bce2ff', 300: '#8ed0ff', 400: '#59b4ff', 500: '#3393ff', 600: '#0169a9', 700: '#015a91', 800: '#064c77', 900: '#0b4063' },
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* ===== 읽기 진행률 바 ===== */
+    #readingProgress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, #1b2e6a, #0169a9);
+      z-index: 60; transition: width 0.1s linear;
+    }
+    /* ===== 본문 타이포 (measure 약 68ch) ===== */
+    .prose { max-width: 68ch; }
+    .prose h2 {
+      font-size: 28px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em;
+      line-height: 1.3; margin-top: 3.5rem; margin-bottom: 1.25rem; scroll-margin-top: 6rem;
+    }
+    .prose h3 {
+      font-size: 20px; font-weight: 700; color: #1b2e6a; letter-spacing: -0.01em;
+      line-height: 1.4; margin-top: 2.25rem; margin-bottom: 0.75rem;
+    }
+    .prose p { font-size: 17.5px; line-height: 1.85; color: #334155; margin-bottom: 1.4rem; letter-spacing: -0.2px; }
+    .prose ul { margin: 0 0 1.4rem; padding-left: 1.25rem; }
+    .prose li { font-size: 17.5px; line-height: 1.8; color: #334155; margin-bottom: 0.5rem; letter-spacing: -0.2px; }
+    .prose li::marker { color: #0169a9; }
+    .prose strong { color: #0f172a; font-weight: 700; }
+    .prose a { color: #0169a9; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em;
+      background: #f0f3fa; color: #162556; padding: 0.12em 0.4em; border-radius: 0.35rem;
+    }
+    /* 강조 정의 박스 */
+    .define {
+      border-left: 3px solid #0169a9; background: #eef8ff; border-radius: 0 0.75rem 0.75rem 0;
+      padding: 1rem 1.25rem; margin: 1.6rem 0; font-size: 16.5px; line-height: 1.75; color: #1b2e6a;
+    }
+    /* 그림 캡션 */
+    figure { margin: 2.5rem 0; }
+    figcaption { font-size: 14px; color: #94a3b8; text-align: center; margin-top: 0.85rem; letter-spacing: -0.2px; }
+    /* TOC active */
+    .toc-link { color: #94a3b8; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); border-left: 2px solid transparent; }
+    .toc-link:hover { color: #1b2e6a; }
+    .toc-link.active { color: #0169a9; font-weight: 700; border-left-color: #0169a9; }
+  </style>
+</head>
+<body class="bg-white text-[#0f172a] font-sans antialiased">
+
+  <div id="readingProgress"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 nav-scrolled spring">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="../index.html" class="flex items-center">
+          <img src="../assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
+        </a>
+        <div class="hidden md:flex items-center gap-10 h-full">
+          <a href="../about.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring">회사소개</a>
+          <a href="../vision.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring">온토비전</a>
+          <a href="../health.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring">온토케어</a>
+          <a href="index.html" class="text-[16px] font-bold text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:rounded-full">기술블로그</a>
+        </div>
+        <div class="hidden md:flex items-center">
+          <a href="../contact.html" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
+            문의하기
+            <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
+              <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
+            </span>
+          </a>
+        </div>
+        <button id="menuToggle" class="md:hidden w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center spring hover:bg-navy/10" aria-label="메뉴 열기">
+          <iconify-icon icon="solar:hamburger-menu-linear" class="text-navy text-lg"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden">
+    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center" aria-label="메뉴 닫기">
+      <iconify-icon icon="solar:close-circle-linear" class="text-navy text-2xl"></iconify-icon>
+    </button>
+    <a href="../about.html" class="menu-link text-2xl font-bold text-navy stagger-1">회사소개</a>
+    <a href="../vision.html" class="menu-link text-2xl font-bold text-navy stagger-2">온토비전</a>
+    <a href="../health.html" class="menu-link text-2xl font-bold text-navy stagger-3">온토케어</a>
+    <a href="index.html" class="menu-link text-2xl font-bold text-accent stagger-4">기술블로그</a>
+    <a href="../contact.html" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-5 spring">
+      문의하기
+      <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
+        <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
+      </span>
+    </a>
+  </div>
+
+  <!-- ==================== ARTICLE HEADER ==================== -->
+  <header class="pt-36 pb-12 md:pt-44 md:pb-14 bg-[#f8fafc] border-b border-navy/5">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="index.html" class="inline-flex items-center gap-2 text-[14px] font-semibold text-[#64748b] hover:text-accent spring mb-8">
+        <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
+        기술블로그 목록
+      </a>
+      <div class="flex items-center gap-2 mb-5">
+        <span class="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-accent text-[13px] font-bold">Computer Vision</span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full bg-navy/5 text-navy text-[13px] font-bold">Object Detection</span>
+      </div>
+      <h1 class="text-[32px] md:text-[44px] font-extrabold text-[#0f172a] tracking-tight" style="line-height: 1.22; letter-spacing: -0.02em;">
+        건설현장에서 ‘작은 것’을 본다는 것
+      </h1>
+      <p class="mt-3 text-[20px] md:text-[24px] font-bold text-accent" style="letter-spacing:-0.02em;">Tiny Object Detection과 PTZ 자율관제</p>
+      <div class="flex items-center gap-3 text-[14px] text-[#94a3b8] mt-7">
+        <span class="font-semibold text-[#475569]">ONTOH Vision Team</span>
+        <span class="w-1 h-1 rounded-full bg-[#cbd5e1]"></span>
+        <span>2026.06.26</span>
+        <span class="w-1 h-1 rounded-full bg-[#cbd5e1]"></span>
+        <span>약 9분 읽기</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== BODY (article + TOC) ==================== -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+    <div class="lg:grid lg:grid-cols-[1fr_220px] lg:gap-16">
+
+      <!-- Article -->
+      <article class="prose mx-auto lg:mx-0">
+
+        <!-- TL;DR -->
+        <div class="not-prose rounded-2xl bg-navy-900 text-white p-7 mb-12">
+          <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-3">TL;DR</p>
+          <ul class="space-y-2 text-[16px] leading-[1.7] text-white/85">
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-bold" class="text-accent-400 text-[18px] mt-0.5 shrink-0"></iconify-icon><span>광역 CCTV에서 멀리 있는 안전모·작업자는 수십 픽셀에 불과해, 일반 검출기로는 놓치기 쉽다.</span></li>
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-bold" class="text-accent-400 text-[18px] mt-0.5 shrink-0"></iconify-icon><span>다운샘플링 과정에서 작은 객체의 특징이 소실되는 것이 근본 원인이다.</span></li>
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-bold" class="text-accent-400 text-[18px] mt-0.5 shrink-0"></iconify-icon><span>해법은 ① 고해상도 입력·타일링(SAHI), ② PTZ 줌으로 픽셀을 확보하는 2단계 파이프라인.</span></li>
+          </ul>
+        </div>
+
+        <p>건설현장 안전관리에서 가장 흔한 오해는 “CCTV가 있으니 사고를 본다”는 것입니다. 현실은 다릅니다. 카메라는 현장을 <strong>넓게</strong> 봐야 하고, 넓게 볼수록 정작 봐야 할 대상 — 안전모를 쓰지 않은 작업자, 안전대를 걸지 않은 고소작업자 — 은 화면 속에서 <strong>아주 작아집니다</strong>. 이 글은 그 ‘작음’이라는 문제를 컴퓨터 비전 관점에서 풀어봅니다.</p>
+
+        <h2 id="s1">1. 50m 밖 안전모는 몇 픽셀인가</h2>
+        <p>문제를 숫자로 만들어 봅시다. 1080p(1920×1080) 카메라가 수평 화각 약 60°로 폭 50m 구역을 비춘다고 하면, 가로 1px은 현장에서 약 2.6cm에 해당합니다. 작업자의 안전모 지름을 약 25cm로 잡으면 화면상 너비는 <code>25 / 2.6 ≈ 9.6px</code>. 높이까지 합쳐도 <strong>10×7px 남짓</strong>입니다.</p>
+        <div class="define">
+          COCO 데이터셋은 면적이 <strong>32×32px(=1024px²) 미만</strong>인 객체를 ‘small’로 정의합니다. 위의 안전모는 약 70px²로, 이 기준의 1/14에 불과한 <strong>tiny object</strong>입니다.
+        </div>
+        <p>사람 눈에는 “저기 사람 있네” 싶어도, 검출 모델 입장에서 10픽셀짜리 헬멧은 텍스처도, 형태도 거의 남지 않은 흐릿한 색 덩어리입니다. 게다가 입력 이미지를 모델이 쓰는 크기(예: 640×640)로 리사이즈하면 이 객체는 다시 1/3로 줄어 <strong>3~4px</strong>이 됩니다.</p>
+
+        <figure class="not-prose">
+          <svg viewBox="0 0 640 220" class="w-full rounded-xl border border-navy/10 bg-white">
+            <rect width="640" height="220" fill="#f8fafc"/>
+            <!-- wide frame -->
+            <rect x="24" y="24" width="260" height="150" fill="#0c142e" rx="6"/>
+            <text x="34" y="46" fill="#6079c0" font-size="11" font-family="monospace">WIDE 1920×1080</text>
+            <rect x="150" y="92" width="9" height="7" fill="#0169a9"/>
+            <circle cx="154.5" cy="86" r="3" fill="none" stroke="#0169a9" stroke-width="1.5"/>
+            <!-- arrow -->
+            <line x1="300" y1="99" x2="356" y2="99" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
+            <text x="300" y="90" fill="#94a3b8" font-size="11">zoom</text>
+            <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker></defs>
+            <!-- zoomed -->
+            <rect x="372" y="24" width="244" height="150" fill="#0c142e" rx="6"/>
+            <text x="382" y="46" fill="#59b4ff" font-size="11" font-family="monospace">PTZ ZOOM ×8</text>
+            <rect x="452" y="74" width="80" height="62" fill="none" stroke="#0169a9" stroke-width="2.5" rx="3"/>
+            <circle cx="492" cy="60" r="22" fill="none" stroke="#0169a9" stroke-width="2.5"/>
+            <text x="446" y="158" fill="#bce2ff" font-size="10" font-family="monospace">helmet: 0.94</text>
+          </svg>
+          <figcaption>그림 1. 광역 프레임에서 9px이던 안전모가, PTZ 줌으로는 수백 픽셀의 또렷한 객체가 된다.</figcaption>
+        </figure>
+
+        <h2 id="s2">2. 왜 일반 검출기는 작은 객체에 약한가</h2>
+        <p>YOLO·Faster R-CNN 같은 표준 검출기는 입력을 여러 단계의 <strong>다운샘플링(stride)</strong>으로 압축하며 특징을 뽑습니다. stride가 32라면, 입력에서 32×32px 영역이 특징 맵에서는 단 1px로 수축합니다. 즉 <strong>10px짜리 객체는 특징 맵에서 채 1픽셀도 차지하지 못하고 사라집니다.</strong></p>
+        <p>이를 완화하려고 나온 것이 <strong>FPN(Feature Pyramid Network)</strong>입니다. 깊은 층의 의미 정보와 얕은 층의 고해상도 위치 정보를 결합해 여러 스케일을 동시에 보는 구조죠. 그래도 한계는 분명합니다.</p>
+        <ul>
+          <li><strong>정보 자체가 없다:</strong> 애초에 픽셀이 몇 개 안 되면, 어떤 네트워크도 없는 디테일을 복원할 수 없습니다.</li>
+          <li><strong>앵커/라벨 정합 문제:</strong> 작은 박스는 IoU가 조금만 어긋나도 매칭에서 탈락해 학습 신호가 약합니다.</li>
+          <li><strong>배경 노이즈:</strong> 작은 객체일수록 주변 배경에 묻혀 오탐(false positive)이 늘어납니다.</li>
+        </ul>
+
+        <h2 id="s3">3. PTZ 카메라 — 광역과 디테일의 맞교환</h2>
+        <div class="define">
+          <strong>PTZ</strong>는 <strong>Pan(좌우 회전)·Tilt(상하 회전)·Zoom(확대)</strong>의 약자입니다. 한 대의 카메라가 시야를 물리적으로 옮기고 당겨, 광각 감시와 망원 확대를 모두 수행합니다.
+        </div>
+        <p>PTZ는 2장의 근본 해법입니다. 픽셀이 부족하면, <strong>렌즈로 직접 픽셀을 더 확보</strong>하면 됩니다. ×8로 줌인하면 9px이던 안전모가 70px이 넘는 또렷한 객체가 되고(그림 1), 검출은 평범한 문제로 돌아옵니다.</p>
+        <p>대신 대가가 있습니다. PTZ는 <strong>한 번에 한 곳만</strong> 봅니다. 줌인한 순간 나머지 현장은 사각지대가 됩니다. 그래서 진짜 어려운 문제는 검출이 아니라 <strong>“언제, 어디를 볼 것인가”</strong>라는 스케줄링이 됩니다.</p>
+        <ul>
+          <li><strong>광역 상시 감시</strong>로 “수상한 영역”의 후보를 싸게 찾고,</li>
+          <li>그 좌표로 <strong>PTZ를 자동 구동(프리셋·좌표 매핑)</strong>해 줌인 검증하고,</li>
+          <li>여러 후보가 동시에 뜨면 <strong>위험도·우선순위</strong>로 순회 순서를 정합니다.</li>
+        </ul>
+        <p>이 “자동으로 보던 곳을 옮겨 가며 검증하는” 흐름이 바로 ONTOH가 말하는 <strong>자율관제(autonomous monitoring)</strong>의 핵심입니다.</p>
+
+        <h2 id="s4">4. 픽셀이 부족할 때 쓰는 기법들</h2>
+        <p>렌즈로 다 해결되지 않는 상황(고정 카메라 구간, 동시다발 이벤트)에서는 소프트웨어로 작은 객체를 살려야 합니다. 실무에서 효과가 큰 순서대로 정리하면:</p>
+        <h3>4.1 타일링 추론 — SAHI</h3>
+        <p>리사이즈로 객체를 죽이는 대신, 고해상도 원본을 <strong>겹치는 타일로 잘라</strong> 각각을 정상 해상도로 추론한 뒤 결과를 합칩니다. 이 방식이 <strong>SAHI(Slicing Aided Hyper Inference)</strong>입니다. 작은 객체가 타일 안에서는 ‘보통 크기’가 되므로 검출률이 크게 오릅니다. 대가는 추론 횟수가 타일 수만큼 늘어 느려진다는 점이라, 광역 화면 전체가 아니라 관심 영역에만 적용합니다.</p>
+        <h3>4.2 멀티스케일 학습과 작은 앵커</h3>
+        <p>학습 시 입력 해상도를 다양화하고, 작은 객체에 맞춘 앵커/라벨 할당 전략(예: 중심 기반 매칭)을 쓰면 tiny 영역의 재현율이 개선됩니다.</p>
+        <h3>4.3 시간 정보 활용</h3>
+        <p>한 프레임에서 3px인 객체도, 연속 프레임에서 <strong>움직임</strong>으로 드러납니다. 트래킹과 결합하면 단일 프레임에선 애매하던 검출을 시간축으로 확정할 수 있습니다.</p>
+
+        <figure class="not-prose">
+          <svg viewBox="0 0 640 200" class="w-full rounded-xl border border-navy/10 bg-white">
+            <rect width="640" height="200" fill="#ffffff"/>
+            <!-- stage1 -->
+            <rect x="24" y="60" width="150" height="80" rx="10" fill="#f0f3fa" stroke="#1b2e6a" stroke-width="1.5"/>
+            <text x="99" y="95" text-anchor="middle" fill="#1b2e6a" font-size="14" font-weight="700">광역 탐지</text>
+            <text x="99" y="116" text-anchor="middle" fill="#64748b" font-size="11">상시·저비용 후보 검출</text>
+            <line x1="174" y1="100" x2="232" y2="100" stroke="#0169a9" stroke-width="2" marker-end="url(#ah2)"/>
+            <defs><marker id="ah2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#0169a9"/></marker></defs>
+            <!-- stage2 -->
+            <rect x="234" y="60" width="150" height="80" rx="10" fill="#eef8ff" stroke="#0169a9" stroke-width="1.5"/>
+            <text x="309" y="95" text-anchor="middle" fill="#0169a9" font-size="14" font-weight="700">PTZ 줌 검증</text>
+            <text x="309" y="116" text-anchor="middle" fill="#64748b" font-size="11">픽셀 확보 후 정밀 판정</text>
+            <line x1="384" y1="100" x2="442" y2="100" stroke="#0169a9" stroke-width="2" marker-end="url(#ah2)"/>
+            <!-- stage3 -->
+            <rect x="444" y="60" width="172" height="80" rx="10" fill="#1b2e6a"/>
+            <text x="530" y="95" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">위험 판정·알림</text>
+            <text x="530" y="116" text-anchor="middle" fill="#bcc8e7" font-size="11">PPE 미착용·위험구역 진입</text>
+          </svg>
+          <figcaption>그림 2. ONTOH Vision의 2단계 파이프라인 — 싸게 찾고, 줌으로 확인하고, 위험만 알린다.</figcaption>
+        </figure>
+
+        <h2 id="s5">5. PPE 검출의 현실</h2>
+        <p>작은 객체를 찾았다고 끝이 아닙니다. 안전관리의 본질은 <strong>“보호구를 제대로 착용했는가”</strong>를 판정하는 것이고, 여기서 또 다른 난관이 시작됩니다.</p>
+        <h3>5.1 PPE는 종류가 많고 불균형하다</h3>
+        <p>현장 PPE는 <strong>안전모, 안전대(추락방지 하네스), 안전화, 안전조끼, 보안경, 보호장갑</strong> 등으로 다양합니다. 그런데 “안전모 미착용” 같은 위반 장면은 정상 장면보다 훨씬 드물어, 데이터가 <strong>심한 클래스 불균형</strong>을 보입니다. 정작 잡아야 할 위반이 소수 클래스라는 점이 학습을 어렵게 만듭니다.</p>
+        <h3>5.2 ‘쓴 것’과 ‘든 것’의 구분</h3>
+        <p>안전모를 <strong>손에 들고 있는</strong> 작업자를 ‘착용’으로 오판하면 안전관리는 무력화됩니다. 단순히 “헬멧이 프레임에 있다”가 아니라, <strong>사람의 머리 위치와 헬멧의 상대 위치</strong>를 함께 봐야 합니다. 그래서 PPE 검출은 사람 검출·자세 추정과 결합될 때 비로소 신뢰할 만해집니다.</p>
+        <h3>5.3 가려짐과 시점</h3>
+        <p>다른 작업자·자재에 가려지거나(occlusion), 카메라가 등 뒤에서 보는 각도에서는 보호구가 보이지 않습니다. 한 프레임의 ‘미검출’을 곧바로 ‘미착용’으로 단정하지 않고, 여러 프레임·여러 카메라의 근거를 모아 판단해야 오탐을 줄일 수 있습니다.</p>
+
+        <h2 id="s6">6. 정리 — ‘작음’을 다루는 시스템 설계</h2>
+        <p>Tiny object detection은 더 좋은 모델 하나로 끝나는 문제가 아니라 <strong>시스템 설계의 문제</strong>입니다. 정리하면:</p>
+        <ul>
+          <li><strong>픽셀을 확보하라:</strong> 가능하면 PTZ 줌으로 물리적 해상도를, 아니면 타일링(SAHI)으로 유효 해상도를 끌어올린다.</li>
+          <li><strong>2단계로 나눠라:</strong> 광역에서 싸게 후보를 찾고, 줌으로 비싸게 검증한다.</li>
+          <li><strong>맥락을 결합하라:</strong> 사람·자세·시간 정보를 함께 봐야 PPE 착용 여부가 신뢰성을 얻는다.</li>
+          <li><strong>스케줄링이 본질이다:</strong> 한 대의 PTZ로 ‘언제 어디를 볼지’ 정하는 것이 검출 정확도만큼 중요하다.</li>
+        </ul>
+        <p>ONTOH Vision은 이 원칙들을 하나의 자율관제 루프로 묶어, 사람이 모니터를 24시간 응시하지 않아도 현장의 ‘작은 위험’을 놓치지 않도록 설계되었습니다. 다음 글에서는 이 중 <strong>PPE 착용 판정</strong>을 더 깊이 다루겠습니다.</p>
+
+        <!-- ===== Article footer ===== -->
+        <div class="not-prose mt-16 pt-8 border-t border-navy/10">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <span class="text-[14px] text-[#64748b] font-medium">공유하기</span>
+              <a href="https://twitter.com/intent/tweet?url=https://ontoh.co.kr/blog/tiny-object-detection.html&text=건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제" target="_blank" rel="noopener" class="w-9 h-9 rounded-full bg-navy/5 hover:bg-navy/10 flex items-center justify-center spring" aria-label="X 공유">
+                <iconify-icon icon="solar:share-linear" class="text-navy"></iconify-icon>
+              </a>
+              <button id="copyLink" class="w-9 h-9 rounded-full bg-navy/5 hover:bg-navy/10 flex items-center justify-center spring" aria-label="링크 복사">
+                <iconify-icon icon="solar:link-linear" class="text-navy"></iconify-icon>
+              </button>
+              <span id="copyToast" class="text-[13px] text-accent font-semibold opacity-0 spring">링크 복사됨</span>
+            </div>
+            <a href="index.html" class="inline-flex items-center gap-2 text-[15px] font-semibold text-accent hover:gap-3 spring">
+              <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
+              블로그 목록으로
+            </a>
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-10 rounded-2xl bg-[#f8fafc] border border-navy/8 p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+            <div>
+              <p class="text-[18px] font-bold text-navy mb-1">현장에 ONTOH Vision을 적용해 보고 싶다면</p>
+              <p class="text-[15px] text-[#64748b]">자율관제 도입 상담을 도와드립니다.</p>
+            </div>
+            <a href="../contact.html" class="shrink-0 group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[15px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
+              도입 문의
+              <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
+                <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
+              </span>
+            </a>
+          </div>
+        </div>
+
+      </article>
+
+      <!-- TOC (desktop) -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-28">
+          <p class="text-[12px] font-bold uppercase tracking-[0.16em] text-[#94a3b8] mb-4">목차</p>
+          <nav id="toc" class="space-y-2.5 text-[14px]">
+            <a href="#s1" class="toc-link block pl-3 leading-snug">1. 50m 밖 안전모는 몇 픽셀인가</a>
+            <a href="#s2" class="toc-link block pl-3 leading-snug">2. 왜 일반 검출기는 작은 객체에 약한가</a>
+            <a href="#s3" class="toc-link block pl-3 leading-snug">3. PTZ — 광역과 디테일의 맞교환</a>
+            <a href="#s4" class="toc-link block pl-3 leading-snug">4. 픽셀이 부족할 때 쓰는 기법</a>
+            <a href="#s5" class="toc-link block pl-3 leading-snug">5. PPE 검출의 현실</a>
+            <a href="#s6" class="toc-link block pl-3 leading-snug">6. 정리 — 시스템 설계</a>
+          </nav>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-16 bg-navy-900 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-10 mb-10">
+        <div>
+          <a href="../index.html" class="mb-4 block">
+            <img src="../assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8">
+          </a>
+          <p class="text-white/60 text-[16px] font-bold mb-3">주식회사 온토</p>
+          <div class="space-y-1.5 text-white/40 text-[14px] leading-relaxed">
+            <p>대표이사: 김태건</p>
+            <p>사업자등록번호: 230-88-03436</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
+          <div class="space-y-2.5">
+            <a href="../about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
+            <a href="../vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
+            <a href="../health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
+            <a href="index.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">기술블로그</a>
+            <a href="../contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">CONTACT</h4>
+          <div class="space-y-2 text-white/50 text-[14px] leading-relaxed">
+            <p>이메일: <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white spring">ktg@ontoh.co.kr</a></p>
+            <p>주소: 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH INC. All rights reserved.</p>
+        <a href="../privacy.html" class="text-white/50 hover:text-white text-[13px] spring font-medium">개인정보처리방침</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/common.js"></script>
+  <script>
+    // ===== 읽기 진행률 바 =====
+    (function() {
+      var bar = document.getElementById('readingProgress');
+      var article = document.querySelector('article');
+      function update() {
+        if (!article) return;
+        var rect = article.getBoundingClientRect();
+        var total = article.offsetHeight - window.innerHeight;
+        var scrolled = Math.min(Math.max(-rect.top, 0), total);
+        var pct = total > 0 ? (scrolled / total) * 100 : 0;
+        bar.style.width = pct + '%';
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
+    // ===== TOC 스크롤 스파이 =====
+    (function() {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.toc-link'));
+      var sections = links.map(function(l) { return document.querySelector(l.getAttribute('href')); });
+      var spy = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = '#' + entry.target.id;
+            links.forEach(function(l) { l.classList.toggle('active', l.getAttribute('href') === id); });
+          }
+        });
+      }, { rootMargin: '-20% 0px -70% 0px' });
+      sections.forEach(function(s) { if (s) spy.observe(s); });
+    })();
+
+    // ===== 링크 복사 =====
+    (function() {
+      var btn = document.getElementById('copyLink');
+      var toast = document.getElementById('copyToast');
+      if (btn) {
+        btn.addEventListener('click', function() {
+          navigator.clipboard.writeText(window.location.href).then(function() {
+            toast.style.opacity = '1';
+            setTimeout(function() { toast.style.opacity = '0'; }, 1800);
+          });
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

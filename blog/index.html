@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기술 블로그 | ONTOH — 건설현장 안전관리 AI</title>
+  <meta name="description" content="ONTOH 기술 블로그. 건설현장 안전관리 AI의 영상 분석, Tiny Object Detection, PTZ 자율관제, PPE 검출 등 현장에서 부딪힌 기술 이야기를 다룹니다.">
+  <meta name="keywords" content="ONTOH 기술블로그, 건설안전 AI, Tiny Object Detection, PTZ 자율관제, PPE 검출, 영상 분석">
+  <link rel="canonical" href="https://ontoh.co.kr/blog/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="ONTOH 기술 블로그">
+  <meta property="og:description" content="건설현장 안전관리 AI의 기술 이야기 — 영상 분석, Tiny Object Detection, PTZ 자율관제.">
+  <meta property="og:url" content="https://ontoh.co.kr/blog/">
+  <meta property="og:site_name" content="ONTOH">
+  <meta property="og:image" content="https://ontoh.co.kr/assets/main/main1.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+          colors: {
+            navy: { DEFAULT: '#1b2e6a', 50: '#f0f3fa', 100: '#dde3f3', 200: '#bcc8e7', 300: '#8fa3d6', 400: '#6079c0', 500: '#3d57a8', 600: '#1b2e6a', 700: '#162556', 800: '#111d42', 900: '#0c142e', 950: '#080e1f' },
+            accent: { DEFAULT: '#0169a9', 50: '#eef8ff', 100: '#d9eeff', 200: '#bce2ff', 300: '#8ed0ff', 400: '#59b4ff', 500: '#3393ff', 600: '#0169a9', 700: '#015a91', 800: '#064c77', 900: '#0b4063' },
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="../css/common.css">
+</head>
+<body class="bg-white text-[#0f172a] font-sans antialiased">
+
+  <div class="noise-overlay"></div>
+
+  <!-- ==================== NAV ==================== -->
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 nav-scrolled spring">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="../index.html" class="flex items-center">
+          <img src="../assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
+        </a>
+        <div class="hidden md:flex items-center gap-10 h-full">
+          <a href="../about.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">회사소개</a>
+          <a href="../vision.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">온토비전</a>
+          <a href="../health.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">온토케어</a>
+          <a href="index.html" class="text-[16px] font-bold text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:rounded-full">기술블로그</a>
+        </div>
+        <div class="hidden md:flex items-center">
+          <a href="../contact.html" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
+            문의하기
+            <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
+              <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
+            </span>
+          </a>
+        </div>
+        <button id="menuToggle" class="md:hidden w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center spring hover:bg-navy/10" aria-label="메뉴 열기">
+          <iconify-icon icon="solar:hamburger-menu-linear" class="text-navy text-lg"></iconify-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden">
+    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center" aria-label="메뉴 닫기">
+      <iconify-icon icon="solar:close-circle-linear" class="text-navy text-2xl"></iconify-icon>
+    </button>
+    <a href="../about.html" class="menu-link text-2xl font-bold text-navy stagger-1">회사소개</a>
+    <a href="../vision.html" class="menu-link text-2xl font-bold text-navy stagger-2">온토비전</a>
+    <a href="../health.html" class="menu-link text-2xl font-bold text-navy stagger-3">온토케어</a>
+    <a href="index.html" class="menu-link text-2xl font-bold text-accent stagger-4">기술블로그</a>
+    <a href="../contact.html" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-5 hover:scale-[1.02] active:scale-[0.98] spring">
+      문의하기
+      <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
+        <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
+      </span>
+    </a>
+  </div>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="pt-40 pb-16 md:pt-48 md:pb-20 bg-[#f8fafc] border-b border-navy/5">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="reveal stagger-1 text-[15px] font-bold uppercase tracking-[0.16em] text-accent mb-5">Tech Blog</p>
+      <h1 class="reveal stagger-2 text-[40px] md:text-[56px] tracking-tight font-extrabold text-[#0f172a]" style="line-height: 1.1; letter-spacing: -0.02em;">
+        현장에서 부딪힌<br>안전 AI의 <span class="text-accent">기술 이야기</span>
+      </h1>
+      <p class="reveal stagger-3 mt-6 text-[18px] md:text-[20px] text-[#64748b] leading-[1.7] max-w-2xl" style="letter-spacing: -0.3px;">
+        영상 분석, Tiny Object Detection, PTZ 자율관제, PPE 검출까지 —
+        건설현장이라는 가장 까다로운 환경에서 우리가 풀고 있는 문제들을 기록합니다.
+      </p>
+    </div>
+  </header>
+
+  <!-- ==================== POST LIST ==================== -->
+  <main class="section-spacious bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Featured / latest post -->
+      <a href="tiny-object-detection.html" class="reveal stagger-1 group block double-bezel mb-12 hover:scale-[1.005] spring">
+        <div class="double-bezel-inner !p-0 overflow-hidden">
+          <div class="grid md:grid-cols-2">
+            <div class="relative aspect-[16/11] md:aspect-auto bg-navy-900 overflow-hidden">
+              <!-- 라인아트 히어로 일러스트: 광역 프레임 안의 작은 박스 -->
+              <svg viewBox="0 0 400 280" class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice">
+                <rect width="400" height="280" fill="#0c142e"/>
+                <g stroke="#3d57a8" stroke-width="1" fill="none" opacity="0.4">
+                  <line x1="0" y1="70" x2="400" y2="70"/><line x1="0" y1="140" x2="400" y2="140"/><line x1="0" y1="210" x2="400" y2="210"/>
+                  <line x1="100" y1="0" x2="100" y2="280"/><line x1="200" y1="0" x2="200" y2="280"/><line x1="300" y1="0" x2="300" y2="280"/>
+                </g>
+                <rect x="246" y="150" width="22" height="30" stroke="#0169a9" stroke-width="2" fill="rgba(1,105,169,0.15)" rx="2"/>
+                <rect x="120" y="95" width="14" height="18" stroke="#59b4ff" stroke-width="1.5" fill="none" rx="1"/>
+                <rect x="318" y="178" width="10" height="13" stroke="#59b4ff" stroke-width="1.5" fill="none" rx="1"/>
+                <circle cx="257" cy="135" r="5" stroke="#0169a9" stroke-width="2" fill="none"/>
+                <text x="20" y="40" fill="#6079c0" font-size="13" font-family="monospace" opacity="0.7">CAM-04 · WIDE</text>
+              </svg>
+            </div>
+            <div class="p-8 md:p-10 flex flex-col justify-center">
+              <div class="flex items-center gap-2 mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-accent text-[13px] font-bold">Computer Vision</span>
+                <span class="inline-flex items-center px-3 py-1 rounded-full bg-navy/5 text-navy text-[13px] font-bold">최신 글</span>
+              </div>
+              <h2 class="text-[24px] md:text-[28px] font-extrabold text-[#0f172a] leading-[1.3] tracking-tight mb-3 group-hover:text-accent spring">
+                건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제
+              </h2>
+              <p class="text-[16px] text-[#64748b] leading-[1.7] mb-6" style="letter-spacing: -0.3px;">
+                50m 밖 작업자의 안전모는 단 몇 픽셀입니다. 광역 CCTV에서 작은 객체를 검출하는 일이 왜 어려운지,
+                PTZ 카메라와 2단계 파이프라인으로 어떻게 푸는지 정리했습니다.
+              </p>
+              <div class="flex items-center gap-3 text-[14px] text-[#94a3b8]">
+                <span class="font-semibold text-[#475569]">ONTOH Vision Team</span>
+                <span class="w-1 h-1 rounded-full bg-[#cbd5e1]"></span>
+                <span>2026.06.26</span>
+                <span class="w-1 h-1 rounded-full bg-[#cbd5e1]"></span>
+                <span>약 9분</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Upcoming / placeholder grid -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="reveal stagger-2 rounded-2xl border border-dashed border-navy/15 p-8 flex flex-col justify-center min-h-[180px] bg-[#f8fafc]/50">
+          <span class="inline-flex w-fit items-center px-3 py-1 rounded-full bg-navy/5 text-navy/60 text-[13px] font-bold mb-3">준비 중</span>
+          <h3 class="text-[19px] font-bold text-navy/70 leading-snug mb-2">PPE 검출의 현실 — 안전모는 ‘쓴 것’과 ‘든 것’을 어떻게 구분하는가</h3>
+          <p class="text-[15px] text-[#94a3b8] leading-relaxed">착용 판정, 클래스 불균형, 가려짐(occlusion) 문제를 다룰 예정입니다.</p>
+        </div>
+        <div class="reveal stagger-3 rounded-2xl border border-dashed border-navy/15 p-8 flex flex-col justify-center min-h-[180px] bg-[#f8fafc]/50">
+          <span class="inline-flex w-fit items-center px-3 py-1 rounded-full bg-navy/5 text-navy/60 text-[13px] font-bold mb-3">준비 중</span>
+          <h3 class="text-[19px] font-bold text-navy/70 leading-snug mb-2">디지털 보건관리 — 현장 근로자 건강 데이터의 가치</h3>
+          <p class="text-[15px] text-[#94a3b8] leading-relaxed">온토케어가 수집·해석하는 생체 신호와 온열질환 예측을 소개할 예정입니다.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-16 bg-navy-900 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-10 mb-10">
+        <div>
+          <a href="../index.html" class="mb-4 block">
+            <img src="../assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8">
+          </a>
+          <p class="text-white/60 text-[16px] font-bold mb-3">주식회사 온토</p>
+          <div class="space-y-1.5 text-white/40 text-[14px] leading-relaxed">
+            <p>대표이사: 김태건</p>
+            <p>사업자등록번호: 230-88-03436</p>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
+          <div class="space-y-2.5">
+            <a href="../about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
+            <a href="../vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
+            <a href="../health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
+            <a href="index.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">기술블로그</a>
+            <a href="../contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">CONTACT</h4>
+          <div class="space-y-2 text-white/50 text-[14px] leading-relaxed">
+            <p>이메일: <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white spring">ktg@ontoh.co.kr</a></p>
+            <p>주소: 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</p>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH INC. All rights reserved.</p>
+        <a href="../privacy.html" class="text-white/50 hover:text-white text-[13px] spring font-medium">개인정보처리방침</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/common.js"></script>
+</body>
+</html>
