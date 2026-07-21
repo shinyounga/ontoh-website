@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>기술·연구 | ONTOH - 건설현장 안전관리 Physical AI 기업</title>
-  <meta name="description" content="ONTOH(온토)의 기술·연구 — Physical AI 파이프라인(감지·판단·개입·기록), Tiny Object Detection, PTZ 자율관제, RAG-LMM 복합 판단. 특허 5건·SCI 국제 논문 8건.">
-  <link rel="canonical" href="https://ontoh.co.kr/tech.html">
+  <title>도입 사례 | ONTOH - 건설현장 안전관리 Physical AI 기업</title>
+  <meta name="description" content="ONTOH Vision이 실제 건설현장에 배치되고 있습니다. 과천지식정보타운 공공주택지구, 대전 대동2 공공분양 등 금호건설 시공 현장에 적용 중.">
+  <link rel="canonical" href="https://ontoh.co.kr/references.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="기술·연구 | ONTOH">
-  <meta property="og:description" content="특허 5건·SCI 국제 논문 8건으로 증명하는 건설 안전 Physical AI 연구 역량">
-  <meta property="og:url" content="https://ontoh.co.kr/tech.html">
+  <meta property="og:title" content="도입 사례 | ONTOH">
+  <meta property="og:description" content="특허를 함께 개발한 파트너와, 그들의 대표 현장에서. ONTOH Vision 적용 현장.">
+  <meta property="og:url" content="https://ontoh.co.kr/references.html">
   <meta property="og:image" content="https://ontoh.co.kr/assets/main/main1.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap">
   <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
   <script>
     tailwind.config = {
       theme: { extend: {
-        fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'], serif: ['"Nanum Myeongjo"', 'serif'] },
+        fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
         colors: {
           navy: '#1b2e6a', ink: '#0A2440', body: '#212121', sub: '#555555',
           accent: { DEFAULT: '#0169a9', 300: '#8ed0ff', 400: '#59b4ff' },
@@ -30,20 +29,18 @@
   <link rel="stylesheet" href="css/common.css">
   <style>
     body { color: #212121; }
-    .myeongjo { font-family: 'Nanum Myeongjo', serif; }
     .band { background: #F5F6F8; }
     .rule { border-color: #E5E7EB; }
     .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
     .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
     .corp-card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
     .corp-card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
-    .news-row { transition: background .35s cubic-bezier(0.16,1,0.3,1); }
-    .news-row:hover { background:#F5F6F8; }
     .tag { font-size:12px; font-weight:800; letter-spacing:.02em; padding:3px 9px; }
     .stat-num { font-variant-numeric: tabular-nums; letter-spacing:-.02em; }
     .nav-item { position:relative; }
     .nav-top::after { content:""; position:absolute; left:20px; right:20px; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform .34s cubic-bezier(0.16,1,0.3,1); }
     .nav-item:hover .nav-top::after { transform:scaleX(1); }
+    .nav-top.is-active::after { transform:scaleX(1); }
     .megabar { position:absolute; left:0; right:0; top:100%; height:182px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
     .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
     header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
@@ -53,12 +50,10 @@
     .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink:hover { color:#0A2440; gap:.9rem; }
     .dlink:hover iconify-icon { opacity:1; transform:none; }
-    .doc-thumb { position:relative; display:block; width:100%; overflow:hidden; cursor:zoom-in; border:1px solid #E5E7EB; background:#F5F6F8; }
-    .doc-thumb img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform .6s cubic-bezier(0.16,1,0.3,1); }
-    .doc-thumb:hover img { transform:scale(1.045); }
-    .doc-zoom { position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:flex-end; padding:12px; background:linear-gradient(to top, rgba(10,36,64,.5), rgba(10,36,64,0) 45%); opacity:0; transition:opacity .4s cubic-bezier(0.16,1,0.3,1); }
-    .doc-thumb:hover .doc-zoom { opacity:1; }
-    #lightbox { transition:opacity .3s cubic-bezier(0.16,1,0.3,1); }
+    /* 이미지 없음 placeholder */
+    .ref-photo-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.75rem; background:repeating-linear-gradient(135deg, #F5F6F8 0 8px, #EFF1F5 8px 16px); color:#8B92A0; }
+    .ref-photo-empty iconify-icon { font-size:44px; opacity:.5; }
+    .ref-photo-empty span { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -75,7 +70,7 @@
     </div>
   </div>
 
-  <!-- ==================== 헤더 + 메가메뉴 GNB ==================== -->
+  <!-- ==================== 헤더 + 메가메뉴 GNB (솔루션 서브에 '도입 사례' 추가) ==================== -->
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-hair">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center justify-between h-[70px]">
@@ -86,11 +81,11 @@
             <div class="nav-panel"><div class="dbox min-w-[150]"><a href="about.html#mission" class="dlink">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#history" class="dlink">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#overview" class="dlink">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">솔루션</a>
+            <a href="vision.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">솔루션</a>
             <div class="nav-panel"><div class="dbox min-w-[150]"><a href="vision.html" class="dlink">ONTOH Vision <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="health.html" class="dlink">ONTOH Health <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="references.html" class="dlink">도입 사례 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="tech.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">기술·연구</a>
+            <a href="tech.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">기술·연구</a>
             <div class="nav-panel"><div class="dbox min-w-[160]"><a href="tech.html" class="dlink">기술 개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="patents.html" class="dlink">특허 · 지식재산권 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="papers.html" class="dlink">연구 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="blog/index.html" class="dlink">기술 이야기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
@@ -119,9 +114,9 @@
       <p class="text-[13px] text-sub/70 font-bold tracking-[0.14em] uppercase mb-3">솔루션</p>
       <a href="vision.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()">ONTOH Vision</a>
       <a href="health.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()">ONTOH Health</a>
-      <a href="references.html" class="block text-xl font-bold text-ink" onclick="closeMobileMenu()">도입 사례</a>
+      <a href="references.html" class="block text-xl font-bold text-accent" onclick="closeMobileMenu()">도입 사례</a>
     </div>
-    <a href="tech.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
+    <a href="tech.html" class="menu-link text-2xl font-bold text-ink stagger-3" onclick="closeMobileMenu()">기술·연구</a>
     <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
     <a href="contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[16px] font-bold stagger-5" onclick="closeMobileMenu()">데모 신청 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
@@ -131,12 +126,14 @@
     <img src="assets/main/main1.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25">
     <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50"></div>
     <div class="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
-      <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Technology &amp; Research</p>
-      <h1 class="text-white text-[34px] md:text-[46px] font-bold tracking-tight" style="letter-spacing:-0.02em;">기술·연구</h1>
+      <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Reference Sites</p>
+      <h1 class="text-white text-[34px] md:text-[46px] font-bold tracking-tight" style="letter-spacing:-0.02em;">도입 사례</h1>
       <nav class="mt-5 flex items-center gap-2 text-[13px] text-white/55">
         <a href="index.html" class="hover:text-white transition-colors">홈</a>
         <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[12px]"></iconify-icon>
-        <span class="text-white/85">기술·연구</span>
+        <a href="vision.html" class="hover:text-white transition-colors">솔루션</a>
+        <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[12px]"></iconify-icon>
+        <span class="text-white/85">도입 사례</span>
       </nav>
     </div>
   </section>
@@ -144,150 +141,119 @@
   <!-- ==================== 신뢰 지표 ==================== -->
   <section class="band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-3 lg:grid-cols-3 gap-y-8 gap-x-6">
-      <div class="reveal text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">5<span class="text-sub text-[18px] font-semibold ml-1">건</span></div><p class="mt-1.5 text-[14px] text-sub">특허 출원·등록</p></div>
-      <div class="reveal stagger-1 text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">5<span class="text-sub text-[18px] font-semibold ml-1">편</span></div><p class="mt-1.5 text-[14px] text-sub">국제 학술 논문</p></div>
-      <div class="reveal stagger-2 text-center"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">4<span class="text-sub text-[18px] font-semibold ml-1">회</span></div><p class="mt-1.5 text-[14px] text-sub">국제 학회 발표</p></div>
+      <div class="reveal text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">2<span class="text-sub text-[18px] font-semibold ml-1">현장</span></div><p class="mt-1.5 text-[14px] text-sub">ONTOH Vision 적용</p></div>
+      <div class="reveal stagger-1 text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-accent">9,801<span class="text-sub text-[18px] font-semibold ml-1">호</span></div><p class="mt-1.5 text-[14px] text-sub">총 세대 규모</p></div>
+      <div class="reveal stagger-2 text-center"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">1.35<span class="text-sub text-[18px] font-semibold ml-1">㎢</span></div><p class="mt-1.5 text-[14px] text-sub">총 사업 면적</p></div>
     </div>
   </section>
 
-  <!-- ==================== 진입 카드 (특허 / 논문 / 블로그) ==================== -->
+  <!-- ==================== 인트로 ==================== -->
   <section class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 py-20 md:py-24">
-      <div class="max-w-2xl mb-12">
-        <p class="kicker mb-4 reveal">Technology &amp; Research</p>
-        <h2 class="reveal stagger-1 text-[30px] md:text-[42px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.03em;">
-          연구실에서 시작해<br><span class="text-accent">현장으로.</span>
-        </h2>
-        <p class="reveal stagger-2 mt-5 text-[16px] text-sub leading-[1.75]">온토는 연세대 산학협력단·금호건설과의 공동 R&amp;D에서 시작되었습니다. 논문으로 검증하고 특허로 확보한 기술이, 지금 건설현장의 안전관리를 다시 설계하고 있습니다.</p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <!-- 특허 카드 -->
-        <a href="patents.html" class="reveal corp-card group p-9 flex flex-col">
-          <div class="flex items-center gap-3 mb-5">
-            <iconify-icon icon="solar:shield-keyhole-linear" class="text-accent text-[30px]"></iconify-icon>
-            <p class="stat-num text-[13px] font-bold uppercase tracking-[0.12em] text-accent">Patents &amp; IP</p>
-          </div>
-          <h3 class="text-[22px] md:text-[24px] font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.01em;">특허 보유 현황</h3>
-          <p class="text-[14.5px] text-sub leading-[1.7] mb-6">등록 2건 · 출원 3건. 원거리 객체 검출, 학습데이터 자동 생성, 생성형 AI 위험 판별 등 핵심 기술을 (주)온토가 단독 특허권자로 보유합니다.</p>
-          <div class="mt-auto flex items-center justify-between border-t border-hair pt-5">
-            <div class="flex gap-6">
-              <div><div class="stat-num text-[22px] font-bold text-ink leading-none">2</div><p class="text-[12px] text-sub/70 mt-0.5">등록</p></div>
-              <div><div class="stat-num text-[22px] font-bold text-sub leading-none">3</div><p class="text-[12px] text-sub/70 mt-0.5">출원</p></div>
-            </div>
-            <span class="inline-flex items-center gap-1 text-[13.5px] font-bold text-accent group-hover:gap-2 transition-all">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
-          </div>
-        </a>
-
-        <!-- 논문 카드 -->
-        <a href="papers.html" class="reveal stagger-1 corp-card group p-9 flex flex-col">
-          <div class="flex items-center gap-3 mb-5">
-            <iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[30px]"></iconify-icon>
-            <p class="stat-num text-[13px] font-bold uppercase tracking-[0.12em] text-accent">Publications</p>
-          </div>
-          <h3 class="text-[22px] md:text-[24px] font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.01em;">논문 · 학술 성과</h3>
-          <p class="text-[14.5px] text-sub leading-[1.7] mb-6">국제 학술지 1편·국제 학회 4편. ASCE·Springer·IAARC·KICEM·KSCE에 발표한 검출·판단·데이터 연구가 온토 기술의 뿌리입니다.</p>
-          <div class="mt-auto flex items-center justify-between border-t border-hair pt-5">
-            <div class="flex gap-6">
-              <div><div class="stat-num text-[22px] font-bold text-ink leading-none">1</div><p class="text-[12px] text-sub/70 mt-0.5">저널</p></div>
-              <div><div class="stat-num text-[22px] font-bold text-sub leading-none">4</div><p class="text-[12px] text-sub/70 mt-0.5">학회</p></div>
-            </div>
-            <span class="inline-flex items-center gap-1 text-[13.5px] font-bold text-accent group-hover:gap-2 transition-all">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
-          </div>
-        </a>
-
-        <!-- 블로그 카드 -->
-        <a href="blog/index.html" class="reveal stagger-2 corp-card group p-9 flex flex-col">
-          <div class="flex items-center gap-3 mb-5">
-            <iconify-icon icon="solar:pen-new-square-linear" class="text-accent text-[30px]"></iconify-icon>
-            <p class="stat-num text-[13px] font-bold uppercase tracking-[0.12em] text-accent">From the Lab</p>
-          </div>
-          <h3 class="text-[22px] md:text-[24px] font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.01em;">기술 이야기</h3>
-          <p class="text-[14.5px] text-sub leading-[1.7] mb-6">현장에서 마주친 문제와 그 문제를 푸는 방법을, 우리 언어로 풀어 씁니다. Tiny Object Detection, PTZ 자율관제 이야기부터.</p>
-          <div class="mt-auto flex items-center justify-between border-t border-hair pt-5">
-            <div class="text-[13px] text-sub">최신: <span class="text-ink font-semibold">건설현장에서 '작은 것'을 본다는 것</span></div>
-            <span class="inline-flex items-center gap-1 text-[13.5px] font-bold text-accent group-hover:gap-2 transition-all">읽기 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
-          </div>
-        </a>
+      <div class="grid lg:grid-cols-[320px_1fr] gap-10 lg:gap-16">
+        <div>
+          <p class="kicker mb-4 reveal">Deployments</p>
+          <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">특허를 함께 개발한 <span class="text-accent">파트너의 현장에서.</span></h2>
+        </div>
+        <div class="reveal stagger-2 text-[16px] text-sub leading-[1.8] space-y-4">
+          <p>온토는 연세대학교 산학협력단·<strong class="text-ink">금호건설(주)</strong>과의 공동 R&amp;D로 검출·판단 기술을 특허화했습니다. 그리고 지금, 그 파트너인 금호건설이 시공하는 대형 공공주택 현장에서 <strong class="text-ink">ONTOH Vision</strong>이 안전관리 솔루션으로 배치되고 있습니다.</p>
+          <p>연구실에서 시작한 기술이 실제 현장에 배치되기까지, 온토는 <strong class="text-ink">공동 R&amp;D → 특허 → 실증 현장</strong>이라는 정직한 경로를 밟았습니다. 이 페이지의 사례들은 그 경로의 결과입니다.</p>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- ==================== 도입 사례 카드 (2건) ==================== -->
+  <section id="cases" class="band border-b border-hair scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-24 space-y-10">
 
-  <!-- ==================== 기술 이야기 (블로그) ==================== -->
-  <section class="border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-12">
-        <div>
-          <p class="kicker mb-4 reveal">From the Lab</p>
-          <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">기술 이야기</h2>
-          <p class="reveal stagger-2 mt-4 text-[16px] text-sub leading-[1.7] max-w-xl">현장에서 마주친 문제와 그 문제를 푸는 방법을, 우리 언어로 풀어 씁니다.</p>
+      <!-- Case 1 · 과천지식정보타운 -->
+      <article class="reveal corp-card !p-0 overflow-hidden grid lg:grid-cols-[520px_1fr]">
+        <div class="ref-photo-empty aspect-[16/10] lg:aspect-auto lg:self-stretch">
+          <iconify-icon icon="solar:city-linear"></iconify-icon>
+          <span>현장 사진 준비 중</span>
         </div>
-        <a href="blog/index.html" class="reveal stagger-2 hidden sm:inline-flex items-center gap-1.5 text-[15px] font-bold text-accent hover:gap-2.5 transition-all shrink-0">전체보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[14px]"></iconify-icon></a>
-      </div>
-      <a href="blog/tiny-object-detection.html" class="reveal corp-card group block md:grid md:grid-cols-[1.3fr_1fr] overflow-hidden">
-        <div class="p-9 md:p-11 flex flex-col justify-center">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="tag bg-accent/10 text-accent">최신 글</span>
-            <span class="stat-num text-[13px] text-sub/70">2026.06.26</span>
+        <div class="p-8 md:p-11 flex flex-col">
+          <div class="flex items-center gap-2 mb-4 flex-wrap">
+            <span class="tag bg-accent/10 text-accent">Case 01</span>
+            <span class="tag bg-ink/[0.06] text-ink">공공주택 지구조성</span>
+            <span class="tag bg-ink/[0.06] text-ink">Vision 적용</span>
           </div>
-          <h3 class="text-[23px] md:text-[27px] font-bold text-ink leading-[1.35]" style="letter-spacing:-0.01em;">건설현장에서 ‘작은 것’을 본다는 것</h3>
-          <p class="mt-2.5 text-[16px] text-sub leading-[1.6]">Tiny Object Detection과 PTZ 자율관제 — 멀리 있는 작은 위험까지 놓치지 않기 위해 우리가 택한 방법.</p>
-          <span class="mt-7 inline-flex items-center gap-1.5 text-[15px] font-bold text-accent group-hover:gap-2.5 transition-all">읽어보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[14px]"></iconify-icon></span>
+          <h3 class="text-[22px] md:text-[28px] font-bold text-ink leading-tight mb-4" style="letter-spacing:-0.015em;">과천지식정보타운<br>공공주택지구 조성</h3>
+          <p class="text-[15.5px] text-sub leading-[1.75] mb-7">과천시 갈현동·문원동 일원 <strong class="text-ink">1.35㎢</strong> 규모의 대형 지구조성 사업. 3단계로 나뉜 다년간 프로젝트로 <strong class="text-ink">18,915인·8,381세대</strong>의 주거 공간이 만들어지고 있습니다.</p>
+          <dl class="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-[14px] leading-relaxed border-t border-hair pt-6">
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">위치</dt><dd class="text-ink">과천시 갈현동·문원동 일원</dd></div>
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">면적</dt><dd class="text-ink stat-num">1,353,090 ㎡</dd></div>
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">계획 인구</dt><dd class="text-ink stat-num">18,915 인</dd></div>
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">세대수</dt><dd class="text-ink stat-num">8,381 호</dd></div>
+            <div class="flex gap-3 sm:col-span-2"><dt class="w-20 shrink-0 text-sub/60">사업기간</dt><dd class="text-ink"><span class="stat-num">1단계 2011.10.05 ~ 2024.06.30</span> · <span class="stat-num">2단계 ~ 2026.06.30</span> · <span class="stat-num">3단계 ~ 2026.12.31</span></dd></div>
+            <div class="flex gap-3 sm:col-span-2"><dt class="w-20 shrink-0 text-sub/60">사업시행자</dt><dd class="text-ink">한국토지주택공사(LH) · ㈜대우건설 · ㈜태영건설 · <strong>금호건설(주)</strong></dd></div>
+            <div class="flex gap-3 sm:col-span-2"><dt class="w-20 shrink-0 text-sub/60">온토 역할</dt><dd class="text-accent font-semibold">ONTOH Vision — 영상 자율관제 솔루션 적용</dd></div>
+          </dl>
         </div>
-        <div class="relative bg-band min-h-[220px] hidden md:block overflow-hidden">
-          <img src="assets/main/main1.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-[1.04] transition-transform duration-700" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
-          <div class="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent"></div>
+      </article>
+
+      <!-- Case 2 · 대전 대동2구역 -->
+      <article class="reveal stagger-1 corp-card !p-0 overflow-hidden grid lg:grid-cols-[520px_1fr]">
+        <div class="ref-photo-empty aspect-[16/10] lg:aspect-auto lg:self-stretch">
+          <iconify-icon icon="solar:buildings-linear"></iconify-icon>
+          <span>현장 사진 준비 중</span>
         </div>
-      </a>
-      <a href="blog/index.html" class="reveal sm:hidden mt-8 inline-flex items-center gap-1.5 text-[15px] font-bold text-accent">전체보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[14px]"></iconify-icon></a>
+        <div class="p-8 md:p-11 flex flex-col">
+          <div class="flex items-center gap-2 mb-4 flex-wrap">
+            <span class="tag bg-accent/10 text-accent">Case 02</span>
+            <span class="tag bg-ink/[0.06] text-ink">공공분양 아파트</span>
+            <span class="tag bg-ink/[0.06] text-ink">Vision 적용</span>
+          </div>
+          <h3 class="text-[22px] md:text-[28px] font-bold text-ink leading-tight mb-4" style="letter-spacing:-0.015em;">대전 대동2 주거환경 개선사업<br>1·2블록 공공분양</h3>
+          <p class="text-[15.5px] text-sub leading-[1.75] mb-7">대전 동구 노후 주거지역을 재정비하는 총사업비 <strong class="text-ink">4,557억원</strong> 규모의 대형 프로젝트. 지하 2층 ~ 지상 35층, <strong class="text-ink">19개 동 1,420세대</strong>의 공공분양 아파트가 들어섭니다.</p>
+          <dl class="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-[14px] leading-relaxed border-t border-hair pt-6">
+            <div class="flex gap-3 sm:col-span-2"><dt class="w-20 shrink-0 text-sub/60">위치</dt><dd class="text-ink">대전광역시 동구 대동 33번지·용운동 447번지 일대</dd></div>
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">규모</dt><dd class="text-ink">지하 2 ~ 지상 35층 · 19개 동</dd></div>
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">세대수</dt><dd class="text-ink stat-num">1,420 호 (전체 공공분양)</dd></div>
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">전용면적</dt><dd class="text-ink stat-num">59㎡ · 84㎡</dd></div>
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">공사기간</dt><dd class="text-ink stat-num">52 개월</dd></div>
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">총공사비</dt><dd class="text-ink stat-num">2,703 억원</dd></div>
+            <div class="flex gap-3"><dt class="w-20 shrink-0 text-sub/60">발주</dt><dd class="text-ink">한국토지주택공사(LH)</dd></div>
+            <div class="flex gap-3 sm:col-span-2"><dt class="w-20 shrink-0 text-sub/60">시공사</dt><dd class="text-ink"><strong>금호건설(주)</strong> 주관 · DL이앤씨 · 계룡건설 컨소시엄</dd></div>
+            <div class="flex gap-3 sm:col-span-2"><dt class="w-20 shrink-0 text-sub/60">온토 역할</dt><dd class="text-accent font-semibold">ONTOH Vision — 영상 자율관제 솔루션 적용</dd></div>
+          </dl>
+        </div>
+      </article>
+
+      <p class="text-[12.5px] text-sub/60 leading-relaxed">* 각 현장의 실제 배치 사진은 확보되는 대로 이 페이지에 추가됩니다. 개인정보(작업자 얼굴 등) 마스킹 후 게시.</p>
+    </div>
+  </section>
+
+  <!-- ==================== 파트너십 스토리 (짧게) ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-24">
+      <div class="max-w-3xl">
+        <p class="kicker mb-4 reveal">Partnership</p>
+        <h2 class="reveal stagger-1 text-[28px] md:text-[36px] font-bold tracking-tight text-ink mb-6" style="line-height:1.25; letter-spacing:-0.02em;">연구실 → 특허 → 현장.<br>온토는 <span class="text-accent">지름길로 가지 않았습니다.</span></h2>
+        <p class="reveal stagger-2 text-[16.5px] text-sub leading-[1.8]">건설 안전관리 스타트업이 대형 건설사 현장에 진입하는 일은 결코 쉽지 않습니다. 온토는 연세대학교 산학협력단·금호건설(주)과의 공동 R&amp;D로 기술을 검증하고, <a href="patents.html" class="text-accent font-semibold hover:underline">특허 2건</a>을 등록·이전받은 뒤, 파트너 시공사의 현장에 적용되는 정직한 경로를 밟고 있습니다.</p>
+        <div class="reveal stagger-3 mt-8 flex flex-wrap gap-3.5">
+          <a href="patents.html" class="inline-flex items-center gap-2 border border-ink text-ink px-5 py-3 text-[14px] font-semibold hover:bg-ink hover:text-white transition-colors">특허 보유 현황 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <a href="papers.html" class="inline-flex items-center gap-2 border border-hair text-ink px-5 py-3 text-[14px] font-semibold hover:bg-band">논문 · 학술 성과 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ==================== CTA ==================== -->
   <section class="border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-24">
       <div class="bg-ink px-8 md:px-16 py-14 md:py-20 text-center">
-        <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-5 reveal">Get started</p>
-        <h2 class="reveal stagger-1 text-[28px] md:text-[44px] font-bold tracking-tight text-white" style="line-height:1.3;">기술이 궁금하시다면, <span class="text-accent-300">직접 보여드리겠습니다.</span></h2>
-        <p class="reveal stagger-2 mt-6 text-[17px] md:text-[18px] text-white/65 leading-[1.7] max-w-xl mx-auto">현장 상황을 들려주시면 온토의 검출·판단 기술이 어떻게 작동하는지 시연으로 보여드립니다.</p>
+        <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-5 reveal">Your site next</p>
+        <h2 class="reveal stagger-1 text-[28px] md:text-[40px] font-bold tracking-tight text-white" style="line-height:1.3;">다음 도입 현장은 <span class="text-accent-300">여러분의 현장</span>일지도 모릅니다.</h2>
+        <p class="reveal stagger-2 mt-6 text-[17px] md:text-[18px] text-white/65 leading-[1.7] max-w-xl mx-auto">현장 상황을 들려주시면 온토 Vision이 어떻게 배치될 수 있는지 함께 검토합니다.</p>
         <div class="reveal stagger-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-          <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-ink px-7 py-3.5 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">데모 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
-          <a href="mailto:ktg@ontoh.co.kr" class="inline-flex items-center justify-center gap-2 border border-white/25 text-white px-7 py-3.5 text-[16px] font-bold hover:bg-white/10 spring">이메일 문의</a>
+          <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-ink px-7 py-3.5 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <a href="vision.html" class="inline-flex items-center justify-center gap-2 border border-white/25 text-white px-7 py-3.5 text-[16px] font-bold hover:bg-white/10 spring">ONTOH Vision 자세히</a>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ==================== 라이트박스 (문서 확대) ==================== -->
-  <div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-ink/95 p-5 sm:p-10 cursor-zoom-out">
-    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[88vh] shadow-2xl bg-white">
-    <button id="lightbox-close" type="button" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white transition-colors" aria-label="닫기"><iconify-icon icon="solar:close-circle-outline" class="text-[38px]"></iconify-icon></button>
-    <p id="lightbox-cap" class="absolute bottom-5 left-0 right-0 text-center text-[13px] text-white/70 px-6"></p>
-  </div>
-  <script>
-    (function () {
-      var lb = document.getElementById('lightbox'),
-          img = document.getElementById('lightbox-img'),
-          cap = document.getElementById('lightbox-cap');
-      function open(src, caption) {
-        img.src = src; img.alt = caption || ''; cap.textContent = caption || '';
-        lb.classList.remove('hidden'); lb.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      }
-      function close() {
-        lb.classList.add('hidden'); lb.classList.remove('flex');
-        img.src = ''; document.body.style.overflow = '';
-      }
-      document.querySelectorAll('[data-lightbox]').forEach(function (el) {
-        el.addEventListener('click', function () {
-          open(el.getAttribute('data-lightbox'), el.getAttribute('data-caption'));
-        });
-      });
-      lb.addEventListener('click', close);
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
-    })();
-  </script>
 
   <!-- ==================== 강화 푸터 ==================== -->
   <footer class="bg-ink text-white/70">
