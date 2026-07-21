@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>도입 사례 | ONTOH - 건설현장 안전관리 Physical AI 기업</title>
-  <meta name="description" content="ONTOH Vision이 실제 건설현장에 배치되고 있습니다. 과천지식정보타운 공공주택지구, 대전 대동2 공공분양 등 금호건설 시공 현장에 적용 중.">
+  <meta name="description" content="국내 대형 공공주택 현장에 배치되는 ONTOH Vision 실증 사례. 공동 R&D 파트너 금호건설(주) 시공 현장 중심. 과제 → 적용 → 성과 4단 템플릿.">
   <link rel="canonical" href="https://ontoh.co.kr/references.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="도입 사례 | ONTOH">
@@ -50,10 +50,23 @@
     .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink:hover { color:#0A2440; gap:.9rem; }
     .dlink:hover iconify-icon { opacity:1; transform:none; }
-    /* 이미지 없음 placeholder */
-    .ref-photo-empty { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.75rem; background:repeating-linear-gradient(135deg, #F5F6F8 0 8px, #EFF1F5 8px 16px); color:#8B92A0; }
-    .ref-photo-empty iconify-icon { font-size:44px; opacity:.5; }
-    .ref-photo-empty span { font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    /* 도입사례 상세 4단 템플릿 */
+    .section-tag { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#0169a9; margin-bottom:1rem; }
+    .section-tag::before { content:""; display:inline-block; width:26px; height:2px; background:#0169a9; vertical-align:middle; margin-right:.6rem; }
+    .metric-hero { font-size:15px; color:#555555; line-height:1.6; }
+    .metric-hero .num { font-size:32px; font-weight:800; color:#0A2440; font-variant-numeric:tabular-nums; letter-spacing:-0.03em; line-height:1; }
+    .summary-strip { border:1px solid #E5E7EB; display:grid; grid-template-columns:repeat(2, 1fr); background:#fff; }
+    .summary-strip > div { padding:1.4rem 1.5rem 1.6rem; border-right:1px solid #E5E7EB; border-bottom:1px solid #E5E7EB; }
+    .summary-strip > div:nth-child(2n) { border-right:0; }
+    .summary-strip > div:nth-last-child(-n+2) { border-bottom:0; }
+    @media (min-width:768px) {
+      .summary-strip { grid-template-columns:repeat(4, 1fr); }
+      .summary-strip > div { border-bottom:0; border-right:1px solid #E5E7EB; }
+      .summary-strip > div:nth-child(2n) { border-right:1px solid #E5E7EB; }
+      .summary-strip > div:last-child { border-right:0; }
+    }
+    .card-cta { display:inline-flex; align-items:center; gap:.35rem; font-size:13.5px; font-weight:800; color:#0169a9; transition:gap .28s cubic-bezier(0.16,1,0.3,1); }
+    .corp-card:hover .card-cta { gap:.7rem; }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -126,70 +139,292 @@
     </div>
   </section>
 
-  <!-- ==================== 인트로 + 실적 리스트 (심플) ==================== -->
+  <!-- ==================== 인트로 + 익명화 고지 + 카드 그리드 ==================== -->
   <section id="cases" class="border-b border-hair scroll-mt-24">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
       <div class="max-w-2xl mb-14">
-        <p class="kicker mb-4 reveal">Deployments</p>
+        <p class="kicker mb-4 reveal">Case Studies</p>
         <h2 class="reveal stagger-1 text-[30px] md:text-[42px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">특허를 함께 개발한 <span class="text-accent">파트너의 현장에서.</span></h2>
-        <p class="reveal stagger-2 mt-5 text-[16.5px] text-sub leading-[1.8]">공동 R&amp;D 파트너 <strong class="text-ink">금호건설(주)</strong>이 시공하는 대형 공공주택 현장에서 <strong class="text-ink">ONTOH Vision</strong>이 안전관리 솔루션으로 배치되고 있습니다.</p>
+        <p class="reveal stagger-2 mt-5 text-[16.5px] text-sub leading-[1.8]">공동 R&amp;D 파트너 <strong class="text-ink">금호건설(주)</strong> 시공 현장에 <strong class="text-ink">ONTOH Vision</strong>이 배치되고 있습니다. 각 사례는 <strong class="text-ink">과제 → 적용 → 성과</strong> 순으로 정리했습니다.</p>
+        <p class="reveal stagger-3 mt-5 text-[13.5px] text-sub/75 leading-[1.75] border-l-2 border-accent/40 pl-4">
+          <iconify-icon icon="solar:shield-user-linear" class="text-accent text-[15px] align-middle mr-1"></iconify-icon>
+          <strong class="text-ink">고지</strong> — 실제 실증 현장을 재구성하여 게시했습니다. 고객사 보호와 개인정보 보호를 위해 <strong>사이트 상세 정보(정확한 주소·규모·기간)는 익명화 또는 반올림 표기</strong>했으며, 정량 지표는 실증 완료 시점에 순차 공개됩니다.
+        </p>
       </div>
 
-      <!-- 실적 카드 2단 그리드 -->
+      <!-- 카드 그리드: 태그 + 익명화 타이틀 + 수치 헤드라인 + 자세히 보기 -->
       <div class="reveal grid md:grid-cols-2 gap-6 lg:gap-8">
 
-        <!-- 01. 과천지식정보타운 -->
-        <article class="corp-card !p-0 overflow-hidden flex flex-col">
-          <button type="button" class="ref-photo block w-full aspect-[16/10] overflow-hidden cursor-zoom-in group border-b border-hair" data-lightbox="assets/vision/reference/gwacheon/main.jpg" data-caption="과천지식정보타운 공공주택지구 조감도 (S12BL 행복주택)">
-            <img src="assets/vision/reference/gwacheon/main.jpg" alt="과천지식정보타운 공공주택지구 조감도" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
-          </button>
+        <!-- CASE 01 카드 -->
+        <a href="#case-a" class="corp-card !p-0 overflow-hidden flex flex-col group">
+          <div class="w-full aspect-[16/10] overflow-hidden border-b border-hair bg-band">
+            <img src="assets/vision/reference/gwacheon/main.jpg" alt="수도권 대형 공공주택 조성 현장 조감도 (참고 이미지)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
+          </div>
           <div class="p-7 md:p-8 flex flex-col flex-1">
             <div class="flex items-center gap-2 mb-3 flex-wrap">
-              <span class="stat-num text-[13px] font-bold text-sub/50">01</span>
-              <span class="tag bg-accent/10 text-accent">Vision 적용</span>
+              <span class="stat-num text-[13px] font-bold text-sub/50">CASE 01</span>
+              <span class="tag bg-accent/10 text-accent">Vision 실증</span>
               <span class="tag bg-ink/[0.06] text-ink">공공주택 지구조성</span>
             </div>
-            <h3 class="text-[19px] md:text-[22px] font-bold text-ink leading-tight mb-4" style="letter-spacing:-0.015em;">과천지식정보타운 공공주택지구 조성</h3>
-            <dl class="text-[13px] leading-[1.8] space-y-1.5 mb-5">
-              <div class="flex gap-3"><dt class="w-14 shrink-0 text-sub/55">위치</dt><dd class="text-ink">과천시 갈현동·문원동</dd></div>
-              <div class="flex gap-3"><dt class="w-14 shrink-0 text-sub/55">규모</dt><dd class="text-ink"><span class="stat-num">1,353,090 ㎡</span> · <span class="stat-num">8,381 호</span> · <span class="stat-num">18,915 인</span></dd></div>
-              <div class="flex gap-3"><dt class="w-14 shrink-0 text-sub/55">시행자</dt><dd class="text-ink">LH · 대우 · 태영 · <strong>금호건설</strong></dd></div>
-            </dl>
-            <div class="mt-auto pt-4 border-t border-hair flex items-center justify-between text-[12.5px] text-sub">
-              <span class="stat-num"><span class="text-ink font-semibold">2011.10</span> ~ <span class="text-ink font-semibold">2026.12</span></span>
-              <span class="text-sub/60">3단계 · 진행 중</span>
+            <h3 class="text-[20px] md:text-[23px] font-bold text-ink leading-tight mb-4" style="letter-spacing:-0.015em;">수도권 대형 공공주택 지구조성 현장</h3>
+            <p class="metric-hero mb-6"><span class="num">8,000</span>여 세대 · <span class="num">1.35</span> ㎢ 규모 부지에서<br>RAG-LMM 안전 판별 상시 실증</p>
+            <div class="mt-auto flex items-center justify-between pt-4 border-t border-hair">
+              <span class="text-[13px] text-sub/60">시공: 금호건설(주) 외</span>
+              <span class="card-cta">자세히 보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
             </div>
           </div>
-        </article>
+        </a>
 
-        <!-- 02. 대전 대동2 -->
-        <article class="corp-card !p-0 overflow-hidden flex flex-col">
-          <button type="button" class="ref-photo block w-full aspect-[16/10] overflow-hidden cursor-zoom-in group border-b border-hair" data-lightbox="assets/vision/reference/daejeon/main.png" data-caption="대전 대동2 주거환경 개선사업 조감도 · 금호건설(주) 주관 컨소시엄">
-            <img src="assets/vision/reference/daejeon/main.png" alt="대전 대동2 조감도" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
-          </button>
+        <!-- CASE 02 카드 -->
+        <a href="#case-b" class="corp-card !p-0 overflow-hidden flex flex-col group">
+          <div class="w-full aspect-[16/10] overflow-hidden border-b border-hair bg-band">
+            <img src="assets/vision/reference/daejeon/main.png" alt="충청권 공공분양 아파트 고층 현장 조감도 (참고 이미지)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
+          </div>
           <div class="p-7 md:p-8 flex flex-col flex-1">
             <div class="flex items-center gap-2 mb-3 flex-wrap">
-              <span class="stat-num text-[13px] font-bold text-sub/50">02</span>
-              <span class="tag bg-accent/10 text-accent">Vision 적용</span>
+              <span class="stat-num text-[13px] font-bold text-sub/50">CASE 02</span>
+              <span class="tag bg-accent/10 text-accent">Vision 실증</span>
               <span class="tag bg-ink/[0.06] text-ink">공공분양 아파트</span>
             </div>
-            <h3 class="text-[19px] md:text-[22px] font-bold text-ink leading-tight mb-4" style="letter-spacing:-0.015em;">대전 대동2 주거환경 개선사업 1·2블록</h3>
-            <dl class="text-[13px] leading-[1.8] space-y-1.5 mb-5">
-              <div class="flex gap-3"><dt class="w-14 shrink-0 text-sub/55">위치</dt><dd class="text-ink">대전 동구 대동·용운동</dd></div>
-              <div class="flex gap-3"><dt class="w-14 shrink-0 text-sub/55">규모</dt><dd class="text-ink">지하 2 ~ 지상 35층 · <span class="stat-num">19개 동</span> · <span class="stat-num">1,420 호</span></dd></div>
-              <div class="flex gap-3"><dt class="w-14 shrink-0 text-sub/55">시공사</dt><dd class="text-ink"><strong>금호건설</strong> 주관 · DL이앤씨 · 계룡건설</dd></div>
-              <div class="flex gap-3"><dt class="w-14 shrink-0 text-sub/55">발주</dt><dd class="text-ink">LH · 공사비 <span class="stat-num">2,703 억원</span></dd></div>
-            </dl>
-            <div class="mt-auto pt-4 border-t border-hair flex items-center justify-between text-[12.5px] text-sub">
-              <span class="stat-num"><span class="text-ink font-semibold">52</span> 개월</span>
-              <span class="text-sub/60">공사 중</span>
+            <h3 class="text-[20px] md:text-[23px] font-bold text-ink leading-tight mb-4" style="letter-spacing:-0.015em;">충청권 공공분양 아파트 고층 현장</h3>
+            <p class="metric-hero mb-6"><span class="num">1,400</span>여 세대 · 지상 <span class="num">35</span>층 다층 현장에서<br>Context-Adaptive PTZ 상시 관제 실증</p>
+            <div class="mt-auto flex items-center justify-between pt-4 border-t border-hair">
+              <span class="text-[13px] text-sub/60">시공: 금호건설(주) 주관 컨소시엄</span>
+              <span class="card-cta">자세히 보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
             </div>
           </div>
-        </article>
+        </a>
 
       </div>
+    </div>
+  </section>
 
-      <p class="mt-6 text-[12px] text-sub/55 leading-relaxed">* 각 현장의 실제 배치 사진은 확보되는 대로 이 페이지에 추가됩니다. 개인정보(작업자 얼굴 등) 마스킹 후 게시.</p>
+  <!-- ==================== CASE 01 상세: 개요 → KPI → 요약 → Challenge → Solution → Impact ==================== -->
+  <section id="case-a" class="border-b border-hair scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
+
+      <!-- 헤더 -->
+      <div class="max-w-3xl mb-10 reveal">
+        <p class="text-[12px] font-bold text-sub/60 tracking-[0.2em] uppercase mb-3">Case 01 · Overview</p>
+        <h2 class="text-[28px] md:text-[38px] font-bold text-ink leading-tight" style="letter-spacing:-0.02em;">수도권 대형 공공주택 지구조성 현장</h2>
+        <p class="mt-4 text-[16px] text-sub leading-[1.75]">경기 남부권에 위치한 약 <strong class="text-ink">135만㎡</strong> 부지에 <strong class="text-ink">8,000여 세대</strong> 공공주택을 조성하는 LH 주도 대규모 지구조성 사업. 금호건설(주) 포함 다수 시공사가 병행 시공.</p>
+      </div>
+
+      <!-- 상단 3칸 KPI 박스 (Impact in Numbers) -->
+      <div class="reveal grid md:grid-cols-3 gap-3 md:gap-4 mb-14">
+        <div class="bg-ink p-6 md:p-7">
+          <p class="text-[11.5px] font-bold text-accent-300 tracking-[0.16em] uppercase mb-3">감지 · 응답</p>
+          <p class="text-white text-[22px] md:text-[26px] font-bold leading-[1.2] mb-2" style="letter-spacing:-0.02em;">실증 진행 중</p>
+          <p class="text-white/55 text-[13px] leading-relaxed">누적 감지 건수·평균 응답 시간은 실증 완료 시점에 공개</p>
+        </div>
+        <div class="bg-ink p-6 md:p-7">
+          <p class="text-[11.5px] font-bold text-accent-300 tracking-[0.16em] uppercase mb-3">법령 충족</p>
+          <p class="text-white text-[22px] md:text-[26px] font-bold leading-[1.2] mb-2" style="letter-spacing:-0.02em;">산안법 32·43조</p>
+          <p class="text-white/55 text-[13px] leading-relaxed">상시 모니터링 요건 + 공사비 50억 이상 CCTV 의무 대응</p>
+        </div>
+        <div class="bg-ink p-6 md:p-7">
+          <p class="text-[11.5px] font-bold text-accent-300 tracking-[0.16em] uppercase mb-3">관제 방식</p>
+          <p class="text-white text-[22px] md:text-[26px] font-bold leading-[1.2] mb-2" style="letter-spacing:-0.02em;">기존 CCTV 활용</p>
+          <p class="text-white/55 text-[13px] leading-relaxed">신규 HW 최소화 · ONTOH Vision 오버레이 배치</p>
+        </div>
+      </div>
+
+      <!-- 요약 스트립 4칸 -->
+      <div class="reveal summary-strip mb-14">
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">현장 유형</p>
+          <p class="text-[15.5px] font-bold text-ink">공공주택 지구조성</p>
+        </div>
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">규모</p>
+          <p class="text-[15.5px] font-bold text-ink">8,000여 세대 · 1.35 ㎢</p>
+        </div>
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">적용 솔루션</p>
+          <p class="text-[15.5px] font-bold text-accent">ONTOH Vision</p>
+        </div>
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">적용 기간</p>
+          <p class="text-[15.5px] font-bold text-ink">실증 진행 중</p>
+        </div>
+      </div>
+
+      <!-- Challenge + Solution 2단 -->
+      <div class="reveal grid md:grid-cols-2 gap-10 md:gap-16 mb-14">
+        <div>
+          <p class="section-tag">과제 · Challenge</p>
+          <h3 class="text-[19px] md:text-[22px] font-bold text-ink mb-5" style="letter-spacing:-0.015em;">초대형 지구조성 현장의 통합 관제 부재</h3>
+          <ul class="space-y-3.5 text-[15px] text-sub leading-[1.75]">
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:minus-circle-linear" class="text-[16px]"></iconify-icon></span>다수 시공사 병행 시공으로 안전관리 통합 관제 부재</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:minus-circle-linear" class="text-[16px]"></iconify-icon></span>산업안전보건법 32조·43조 강화로 상시 CCTV 모니터링 부담 증가</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:minus-circle-linear" class="text-[16px]"></iconify-icon></span>광범위한 지구 규모에서 인력 순찰 방식의 위험 감지 한계</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:minus-circle-linear" class="text-[16px]"></iconify-icon></span>중대재해처벌법 대응을 위한 안전 서면 업무 과부하</li>
+          </ul>
+        </div>
+        <div>
+          <p class="section-tag">적용 · Solution</p>
+          <h3 class="text-[19px] md:text-[22px] font-bold text-ink mb-5" style="letter-spacing:-0.015em;">기존 CCTV × 특허 RAG-LMM 안전 판별</h3>
+          <ul class="space-y-3.5 text-[15px] text-sub leading-[1.75]">
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[16px]"></iconify-icon></span>기설치 CCTV 인프라에 ONTOH Vision 덮어 배치 (신규 HW 최소화)</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[16px]"></iconify-icon></span>Context-Adaptive PTZ로 작업 상황 인식 · 카메라 자동 추적</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[16px]"></iconify-icon></span>자체 특허 RAG-LMM 위험 판별로 오탐 저감 + 실시간 알림</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[16px]"></iconify-icon></span>중앙 관제 대시보드 · 안전보고서 자동 초안 생성</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Impact 3분할: 안전(Vision) · 보건(Health) · 법령 대응 -->
+      <div class="reveal pt-12 border-t border-hair">
+        <p class="section-tag">성과 · Impact</p>
+        <h3 class="text-[19px] md:text-[22px] font-bold text-ink mb-8" style="letter-spacing:-0.015em;">안전 · 보건 · 법령 대응 3축 지표</h3>
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          <div class="border border-hair p-6 bg-white">
+            <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-3 flex items-center gap-1.5">
+              <iconify-icon icon="solar:shield-check-linear" class="text-[15px]"></iconify-icon>
+              안전 · Vision
+            </p>
+            <p class="text-[15.5px] font-bold text-ink leading-[1.55] mb-3">누적 감지 건수 · 오탐 감소율<br>평균 대응 시간(초)</p>
+            <p class="text-[13px] text-sub leading-relaxed">실증 완료 시점에 정량 지표 순차 공개 예정</p>
+          </div>
+          <div class="border border-hair p-6 bg-white">
+            <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-3 flex items-center gap-1.5">
+              <iconify-icon icon="solar:heart-pulse-linear" class="text-[15px]"></iconify-icon>
+              보건 · Health
+            </p>
+            <p class="text-[15.5px] font-bold text-ink leading-[1.55] mb-3">고위험군 조기 분류<br>수기 업무 시간 절감</p>
+            <p class="text-[13px] text-sub leading-relaxed">Health 병행 도입 시 활성화. 실증 데이터 축적 중</p>
+          </div>
+          <div class="border border-hair p-6 bg-ink text-white">
+            <p class="text-[12px] font-bold text-accent-300 tracking-[0.14em] uppercase mb-3 flex items-center gap-1.5">
+              <iconify-icon icon="solar:document-text-linear" class="text-[15px]"></iconify-icon>
+              법령 대응
+            </p>
+            <p class="text-[15.5px] font-bold leading-[1.55] mb-3">산안법 32·43조 · 중대재해처벌법<br>공사비 50억+ CCTV 의무</p>
+            <p class="text-[13px] text-white/60 leading-relaxed">국내 건설현장 상시 모니터링 요건 대응</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CASE 02 상세 (band 배경) ==================== -->
+  <section id="case-b" class="border-b border-hair scroll-mt-24 band">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
+
+      <!-- 헤더 -->
+      <div class="max-w-3xl mb-10 reveal">
+        <p class="text-[12px] font-bold text-sub/60 tracking-[0.2em] uppercase mb-3">Case 02 · Overview</p>
+        <h2 class="text-[28px] md:text-[38px] font-bold text-ink leading-tight" style="letter-spacing:-0.02em;">충청권 공공분양 아파트 고층 현장</h2>
+        <p class="mt-4 text-[16px] text-sub leading-[1.75]">지하 2층 ~ 지상 35층 · <strong class="text-ink">1,400여 세대</strong> 규모의 LH 발주 공공분양 아파트 신축 사업. 금호건설(주) 주관 컨소시엄이 <strong class="text-ink">52개월</strong>간 시공 진행 중.</p>
+      </div>
+
+      <!-- 상단 3칸 KPI 박스 -->
+      <div class="reveal grid md:grid-cols-3 gap-3 md:gap-4 mb-14">
+        <div class="bg-ink p-6 md:p-7">
+          <p class="text-[11.5px] font-bold text-accent-300 tracking-[0.16em] uppercase mb-3">감지 · 응답</p>
+          <p class="text-white text-[22px] md:text-[26px] font-bold leading-[1.2] mb-2" style="letter-spacing:-0.02em;">실증 진행 중</p>
+          <p class="text-white/55 text-[13px] leading-relaxed">고소작업·낙하위험 자동 추적 지표는 실증 완료 시 공개</p>
+        </div>
+        <div class="bg-ink p-6 md:p-7">
+          <p class="text-[11.5px] font-bold text-accent-300 tracking-[0.16em] uppercase mb-3">법령 충족</p>
+          <p class="text-white text-[22px] md:text-[26px] font-bold leading-[1.2] mb-2" style="letter-spacing:-0.02em;">2,700억원급</p>
+          <p class="text-white/55 text-[13px] leading-relaxed">공사비 대형 현장 CCTV 상시 관제 의무 대응</p>
+        </div>
+        <div class="bg-ink p-6 md:p-7">
+          <p class="text-[11.5px] font-bold text-accent-300 tracking-[0.16em] uppercase mb-3">관제 방식</p>
+          <p class="text-white text-[22px] md:text-[26px] font-bold leading-[1.2] mb-2" style="letter-spacing:-0.02em;">다층 통합 관제</p>
+          <p class="text-white/55 text-[13px] leading-relaxed">지하 ~ 35층 · 층별·구간별 Vision 배치</p>
+        </div>
+      </div>
+
+      <!-- 요약 스트립 -->
+      <div class="reveal summary-strip mb-14">
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">현장 유형</p>
+          <p class="text-[15.5px] font-bold text-ink">공공분양 아파트</p>
+        </div>
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">규모</p>
+          <p class="text-[15.5px] font-bold text-ink">1,400여 세대 · 지상 35층</p>
+        </div>
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">적용 솔루션</p>
+          <p class="text-[15.5px] font-bold text-accent">ONTOH Vision</p>
+        </div>
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">적용 기간</p>
+          <p class="text-[15.5px] font-bold text-ink">52개월 공사 중</p>
+        </div>
+      </div>
+
+      <!-- Challenge + Solution 2단 -->
+      <div class="reveal grid md:grid-cols-2 gap-10 md:gap-16 mb-14">
+        <div>
+          <p class="section-tag">과제 · Challenge</p>
+          <h3 class="text-[19px] md:text-[22px] font-bold text-ink mb-5" style="letter-spacing:-0.015em;">고층·다층 컨소시엄 현장의 통합 관제 부담</h3>
+          <ul class="space-y-3.5 text-[15px] text-sub leading-[1.75]">
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:minus-circle-linear" class="text-[16px]"></iconify-icon></span>지하 2층 ~ 지상 35층 다층 현장 상시 관제 필요</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:minus-circle-linear" class="text-[16px]"></iconify-icon></span>주관·협력사 다수로 안전보고서·이벤트 통합 어려움</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:minus-circle-linear" class="text-[16px]"></iconify-icon></span>공사비 2,700억원급 대형 현장 CCTV 의무 관제 대응</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:minus-circle-linear" class="text-[16px]"></iconify-icon></span>고소작업·낙하위험 구역 지속 감시 인력 소요</li>
+          </ul>
+        </div>
+        <div>
+          <p class="section-tag">적용 · Solution</p>
+          <h3 class="text-[19px] md:text-[22px] font-bold text-ink mb-5" style="letter-spacing:-0.015em;">층별 Vision 배치 · 다층 통합 대시보드</h3>
+          <ul class="space-y-3.5 text-[15px] text-sub leading-[1.75]">
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[16px]"></iconify-icon></span>층별·구간별 Vision 배치로 다층 현장 통합 관제</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[16px]"></iconify-icon></span>Context-Adaptive PTZ로 고소작업·낙하위험 자동 추적</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[16px]"></iconify-icon></span>안전보고서 자동 초안 생성으로 서면 업무 경감</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[16px]"></iconify-icon></span>주관·협력사 이벤트 통합 조회 · 실시간 알림</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Impact 3분할 -->
+      <div class="reveal pt-12 border-t border-hair">
+        <p class="section-tag">성과 · Impact</p>
+        <h3 class="text-[19px] md:text-[22px] font-bold text-ink mb-8" style="letter-spacing:-0.015em;">안전 · 보건 · 법령 대응 3축 지표</h3>
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          <div class="border border-hair p-6 bg-white">
+            <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-3 flex items-center gap-1.5">
+              <iconify-icon icon="solar:shield-check-linear" class="text-[15px]"></iconify-icon>
+              안전 · Vision
+            </p>
+            <p class="text-[15.5px] font-bold text-ink leading-[1.55] mb-3">고소작업 위험 감지<br>서면 안전보고 자동화 시간</p>
+            <p class="text-[13px] text-sub leading-relaxed">실증 진행 중 · 정량 지표 확보 시 공개</p>
+          </div>
+          <div class="border border-hair p-6 bg-white">
+            <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-3 flex items-center gap-1.5">
+              <iconify-icon icon="solar:heart-pulse-linear" class="text-[15px]"></iconify-icon>
+              보건 · Health
+            </p>
+            <p class="text-[15.5px] font-bold text-ink leading-[1.55] mb-3">고위험군 조기 분류<br>보건일지 자동화</p>
+            <p class="text-[13px] text-sub leading-relaxed">Health 병행 도입 시 활성화. 실증 데이터 축적 중</p>
+          </div>
+          <div class="border border-hair p-6 bg-ink text-white">
+            <p class="text-[12px] font-bold text-accent-300 tracking-[0.14em] uppercase mb-3 flex items-center gap-1.5">
+              <iconify-icon icon="solar:document-text-linear" class="text-[15px]"></iconify-icon>
+              법령 대응
+            </p>
+            <p class="text-[15.5px] font-bold leading-[1.55] mb-3">산안법 · 중대재해처벌법<br>공사비 2,700억원급 CCTV 의무</p>
+            <p class="text-[13px] text-white/60 leading-relaxed">대형 공공사업 상시 모니터링 요건 대응</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 마무리 노트 (익명화 · 이미지 대체 계획) ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-8">
+      <p class="text-[12.5px] text-sub/60 leading-[1.75] max-w-4xl">
+        * 위 사례는 실제 실증 현장을 재구성한 것으로, 고객사 보호를 위해 <strong>사이트 세부 정보(정확한 주소·시공사·규모·기간)는 익명화 또는 반올림 표기</strong>했습니다.
+        정량 지표는 실증이 진행됨에 따라 순차 업데이트됩니다.
+        게시된 참고 조감도 이미지는 향후 <strong>자체 관제 대시보드 캡처 및 시스템 모식도</strong>로 교체될 예정입니다.
+      </p>
     </div>
   </section>
 
