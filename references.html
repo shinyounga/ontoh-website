@@ -143,6 +143,10 @@
           <div class="grid md:grid-cols-[64px_1fr_auto] gap-x-6 md:gap-x-10 gap-y-4 items-start">
             <span class="stat-num text-[22px] md:text-[26px] font-bold text-sub/35 leading-none pt-1">01</span>
             <div>
+              <!-- 조감도 이미지 -->
+              <button type="button" class="ref-photo block w-full max-w-[620px] aspect-[16/10] overflow-hidden border border-hair mb-6 cursor-zoom-in group" data-lightbox="assets/vision/reference/keumho.jpg" data-caption="과천지식정보타운 공공주택지구 조감도 · 금호건설(주)">
+                <img src="assets/vision/reference/keumho.jpg" alt="과천지식정보타운 공공주택지구 조감도" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
+              </button>
               <div class="flex items-center gap-2 mb-3 flex-wrap">
                 <span class="tag bg-accent/10 text-accent">Vision 적용</span>
                 <span class="tag bg-ink/[0.06] text-ink">공공주택 지구조성</span>
@@ -223,6 +227,36 @@
       </div>
     </div>
   </section>
+
+  <!-- ==================== 라이트박스 ==================== -->
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-ink/95 p-5 sm:p-10 cursor-zoom-out">
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[88vh] shadow-2xl bg-white">
+    <button id="lightbox-close" type="button" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white transition-colors" aria-label="닫기"><iconify-icon icon="solar:close-circle-outline" class="text-[38px]"></iconify-icon></button>
+    <p id="lightbox-cap" class="absolute bottom-5 left-0 right-0 text-center text-[13px] text-white/70 px-6"></p>
+  </div>
+  <script>
+    (function () {
+      var lb = document.getElementById('lightbox'),
+          img = document.getElementById('lightbox-img'),
+          cap = document.getElementById('lightbox-cap');
+      function open(src, caption) {
+        img.src = src; img.alt = caption || ''; cap.textContent = caption || '';
+        lb.classList.remove('hidden'); lb.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.add('hidden'); lb.classList.remove('flex');
+        img.src = ''; document.body.style.overflow = '';
+      }
+      document.querySelectorAll('[data-lightbox]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          open(el.getAttribute('data-lightbox'), el.getAttribute('data-caption'));
+        });
+      });
+      lb.addEventListener('click', close);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
 
   <!-- ==================== 강화 푸터 ==================== -->
   <footer class="bg-ink text-white/70">

@@ -183,269 +183,181 @@
     </div>
   </section>
 
-  <!-- ==================== 논문 갤러리 (이미지 슬롯 5개) ==================== -->
-  <section class="band border-b border-hair">
+  <!-- ==================== 통합 논문 리스트 (썸네일 + DOI 링크) ==================== -->
+  <section id="list" class="band border-b border-hair scroll-mt-24">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
-      <div class="flex items-end justify-between flex-wrap gap-3 mb-10">
-        <div>
-          <p class="kicker mb-4 reveal">Paper Gallery</p>
-          <h2 class="reveal stagger-1 text-[28px] md:text-[36px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">논문 · 첫 페이지 미리보기</h2>
-        </div>
-        <p class="text-[12.5px] text-sub flex items-center gap-1.5"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-accent text-[16px]"></iconify-icon>이미지 준비 후 클릭 시 확대 예정</p>
-      </div>
-
-      <!-- 9개 슬롯: 저널 4편 (최신순, 이미지 있음) + 학회 5편 (일부 이미지) -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
-
-        <!-- J1 · DSDL Tiny Object Detection (Automation in Construction 2026) -->
-        <figure>
-          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2026-dsdl-tiny-large-01.png" data-caption="Tiny object detection using DSDL for construction site safety monitoring · Automation in Construction 2026">
-            <img src="assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png" alt="Tiny object detection using DSDL 첫 페이지">
-            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
-          </button>
-          <figcaption class="mt-3">
-            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2026</span></div>
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Tiny Object Detection using DSDL for Construction Site Safety</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">Automation in Construction · SCIE</p>
-          </figcaption>
-        </figure>
-
-        <!-- J2 · LVLM Safety (Automation in Construction 2025) -->
-        <figure>
-          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-lvlm-safety-large-01.png" data-caption="Optimizing large vision-language models for context-aware construction safety assessment · Automation in Construction 2025">
-            <img src="assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png" alt="LVLM Safety 논문 첫 페이지">
-            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
-          </button>
-          <figcaption class="mt-3">
-            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2025</span></div>
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Optimizing Large Vision-Language Models for Construction Safety</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">Automation in Construction · SCIE</p>
-          </figcaption>
-        </figure>
-
-        <!-- J3 · Moving-Feature Label Propagation (Computers in Industry 2025) -->
-        <figure>
-          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-moving-feature-large-01.png" data-caption="Moving-feature-driven label propagation for training data generation from target domains · Computers in Industry 2025">
-            <img src="assets/tech/papers/journal-2025-moving-feature-thumb-01.png" alt="Moving-feature-driven label propagation 첫 페이지">
-            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
-          </button>
-          <figcaption class="mt-3">
-            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2025</span></div>
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Moving-Feature-Driven Label Propagation for Training Data</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">Computers in Industry · SCIE</p>
-          </figcaption>
-        </figure>
-
-        <!-- J4 · Monte Carlo (KSCE 2024) - placeholder -->
-        <figure>
-          <div class="paper-thumb paper-slot-empty aspect-[3/4]">
-            <iconify-icon icon="solar:document-add-linear"></iconify-icon>
-            <span>이미지 준비 중</span>
-          </div>
-          <figcaption class="mt-3">
-            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Monte Carlo Simulation-based Cost Estimation for Floating Trash Barrier</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">KSCE J. Civ. &amp; Env. Eng. Res. · KCI</p>
-          </figcaption>
-        </figure>
-
-        <!-- C1 · Zero-shot Polygon Mask (ISARC 2024) -->
-        <figure>
-          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2024-zero-shot-polygon-large-1.png" data-caption="Zero-shot Learning-based Polygon Mask Generation for Construction Objects · ISARC 2024">
-            <img src="assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png" alt="Zero-shot Polygon Mask 첫 페이지">
-            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
-          </button>
-          <figcaption class="mt-3">
-            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Zero-shot Learning-based Polygon Mask Generation</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">ISARC 2024 · IAARC</p>
-          </figcaption>
-        </figure>
-
-        <!-- C2 · LMM Context-aware (ICCEPM 2024) - placeholder -->
-        <figure>
-          <div class="paper-thumb paper-slot-empty aspect-[3/4]">
-            <iconify-icon icon="solar:document-add-linear"></iconify-icon>
-            <span>이미지 준비 중</span>
-          </div>
-          <figcaption class="mt-3">
-            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Large Multimodal Model for Context-aware Construction Safety</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">ICCEPM 2024 · KICEM</p>
-          </figcaption>
-        </figure>
-
-        <!-- C3 · Context-Adaptive CCTV PTZ (ISARC 2024) - placeholder -->
-        <figure>
-          <div class="paper-thumb paper-slot-empty aspect-[3/4]">
-            <iconify-icon icon="solar:document-add-linear"></iconify-icon>
-            <span>이미지 준비 중</span>
-          </div>
-          <figcaption class="mt-3">
-            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Context-Adaptive CCTV Pan-Tilt-Zoom for PPE Detection</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">ISARC 2024 · IAARC</p>
-          </figcaption>
-        </figure>
-
-        <!-- C4 · Target Domain (i3CE 2023) -->
-        <figure>
-          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2023-target-domain-large-1.png" data-caption="Target Domain Training Data Generation by Moving Object Detection and Label Propagation · Computing in Civil Engineering 2023, ASCE">
-            <img src="assets/tech/papers/conf-2023-target-domain-thumb-1.png" alt="Target Domain 논문 첫 페이지">
-            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
-          </button>
-          <figcaption class="mt-3">
-            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2023</span></div>
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Target Domain Training Data Generation by Moving Object Detection</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">Computing in Civil Eng. 2023 · ASCE</p>
-          </figcaption>
-        </figure>
-
-        <!-- C5 · Generating pseudo label (ICCCBE 2022) -->
-        <figure>
-          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2022-pseudo-label-large.png" data-caption="Generating Pseudo Label of Object Detector for Construction Site Monitoring · ICCCBE 2022, Springer (pp.111-119)">
-            <img src="assets/tech/papers/conf-2022-pseudo-label-thumb.png" alt="Generating pseudo label 논문 첫 페이지">
-            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
-          </button>
-          <figcaption class="mt-3">
-            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2022</span></div>
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Generating Pseudo Label of Object Detector</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">ICCCBE 2022 · Springer · pp.111-119</p>
-          </figcaption>
-        </figure>
-
-      </div>
-
-      <p class="mt-8 text-[12.5px] text-sub/60 leading-relaxed">* 이미지 준비 중인 3편(KSCE 2024, ICCEPM 2024, ISARC 2024 PTZ)은 원본 PDF 확보되는 대로 <code class="text-ink">assets/tech/papers/</code>에 추가하면 자동 노출됩니다.<br>* 이미지 클릭 시 첫 페이지를 확대해서 볼 수 있으며, 논문 전문은 아래 목록의 각 항목을 클릭해 저널·학회 원문으로 이동합니다.</p>
-    </div>
-  </section>
-
-  <!-- ==================== 논문 목록 (저널 + 학회) ==================== -->
-  <section id="list" class="border-b border-hair scroll-mt-24">
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
-      <div class="flex items-end justify-between flex-wrap gap-3 mb-10">
+      <div class="flex items-end justify-between flex-wrap gap-3 mb-12">
         <div>
           <p class="kicker mb-4 reveal">Publications</p>
           <h2 class="reveal stagger-1 text-[28px] md:text-[36px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">전체 논문 목록</h2>
         </div>
-        <p class="text-[12.5px] text-sub">2022 – 2026 · 총 9편</p>
+        <p class="text-[12.5px] text-sub max-w-xs md:text-right">2022 – 2026 · 총 9편<br>썸네일 클릭 시 확대, 제목 클릭 시 원문(DOI) 이동</p>
       </div>
 
       <!-- 저널 · 4편 -->
-      <div class="mb-12">
-        <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[18px]"></iconify-icon><p class="text-[12.5px] font-bold uppercase tracking-[0.12em] text-accent stat-num">Journal · 4편</p></div>
+      <div class="mb-14">
+        <div class="flex items-center gap-2.5 mb-5"><iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[18px]"></iconify-icon><p class="text-[12.5px] font-bold uppercase tracking-[0.12em] text-accent stat-num">Journal · 4편</p></div>
         <div class="border-t border-hair">
+
           <!-- J1 · Automation in Construction 2026 · DSDL -->
-          <a href="https://www.sciencedirect.com/science/article/pii/S0926580526001706" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
-            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
-              <div>
-                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Tiny object detection using Distance-guided, Signed, and Densified Learning (DSDL) for construction site safety monitoring</p>
+          <article class="border-b border-hair py-6 md:py-8">
+            <div class="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr_auto] gap-5 md:gap-8 items-start">
+              <button type="button" class="paper-thumb aspect-[3/4] w-full self-start" data-lightbox="assets/tech/papers/journal-2026-dsdl-tiny-large-01.png" data-caption="Tiny object detection using DSDL for construction site safety monitoring · Automation in Construction Vol.187 (2026)">
+                <img src="assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png" alt="DSDL 첫 페이지">
+                <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+              </button>
+              <a href="https://www.sciencedirect.com/science/article/pii/S0926580526001706" target="_blank" rel="noopener" class="group block col-span-1 self-start">
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Tiny object detection using Distance-guided, Signed, and Densified Learning (DSDL) for construction site safety monitoring <iconify-icon icon="solar:arrow-right-up-linear" class="text-[13px] text-accent align-middle opacity-60 group-hover:opacity-100 transition-opacity"></iconify-icon></p>
                 <p class="text-[13px] text-sub mt-1.5 leading-relaxed">Seokhwan Kim, <strong class="text-ink">Taegeon Kim</strong>, Kichang Choi, Siheon Joo, Hongjo Kim</p>
-              </div>
-              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
+              </a>
+              <div class="col-span-2 md:col-span-1 md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap self-start md:pt-1">
                 <span class="text-ink font-semibold">Automation in Construction</span> · Vol.187 · 2026 · SCIE
               </div>
             </div>
-          </a>
+          </article>
+
           <!-- J2 · Automation in Construction 2025 · LVLM Safety -->
-          <a href="https://www.sciencedirect.com/science/article/pii/S0926580525005503" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
-            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
-              <div>
-                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Optimizing large vision-language models for context-aware construction safety assessment</p>
+          <article class="border-b border-hair py-6 md:py-8">
+            <div class="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr_auto] gap-5 md:gap-8 items-start">
+              <button type="button" class="paper-thumb aspect-[3/4] w-full self-start" data-lightbox="assets/tech/papers/journal-2025-lvlm-safety-large-01.png" data-caption="Optimizing large vision-language models for context-aware construction safety assessment · Automation in Construction Vol.180 (2025)">
+                <img src="assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png" alt="LVLM Safety 첫 페이지">
+                <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+              </button>
+              <a href="https://www.sciencedirect.com/science/article/pii/S0926580525005503" target="_blank" rel="noopener" class="group block col-span-1 self-start">
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Optimizing large vision-language models for context-aware construction safety assessment <iconify-icon icon="solar:arrow-right-up-linear" class="text-[13px] text-accent align-middle opacity-60 group-hover:opacity-100 transition-opacity"></iconify-icon></p>
                 <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Seokhwan Kim, Wei-Chih Chern, Somin Park, Daeho Kim, Hongjo Kim</p>
-              </div>
-              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
+              </a>
+              <div class="col-span-2 md:col-span-1 md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap self-start md:pt-1">
                 <span class="text-ink font-semibold">Automation in Construction</span> · Vol.180 · 2025 · SCIE
               </div>
             </div>
-          </a>
+          </article>
+
           <!-- J3 · Computers in Industry 2025 · Moving-Feature -->
-          <a href="https://www.sciencedirect.com/science/article/pii/S0166361525001009" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
-            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
-              <div>
-                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Moving-feature-driven label propagation for training data generation from target domains</p>
+          <article class="border-b border-hair py-6 md:py-8">
+            <div class="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr_auto] gap-5 md:gap-8 items-start">
+              <button type="button" class="paper-thumb aspect-[3/4] w-full self-start" data-lightbox="assets/tech/papers/journal-2025-moving-feature-large-01.png" data-caption="Moving-feature-driven label propagation for training data generation from target domains · Computers in Industry Vol.171 (2025)">
+                <img src="assets/tech/papers/journal-2025-moving-feature-thumb-01.png" alt="Moving-Feature 첫 페이지">
+                <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+              </button>
+              <a href="https://www.sciencedirect.com/science/article/pii/S0166361525001009" target="_blank" rel="noopener" class="group block col-span-1 self-start">
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Moving-feature-driven label propagation for training data generation from target domains <iconify-icon icon="solar:arrow-right-up-linear" class="text-[13px] text-accent align-middle opacity-60 group-hover:opacity-100 transition-opacity"></iconify-icon></p>
                 <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Wei-Chih Chern, Seokhwan Kim, Vijayan K. Asari, Hongjo Kim</p>
-              </div>
-              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
+              </a>
+              <div class="col-span-2 md:col-span-1 md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap self-start md:pt-1">
                 <span class="text-ink font-semibold">Computers in Industry</span> · Vol.171 · 2025 · SCIE
               </div>
             </div>
-          </a>
-          <!-- J4 · KSCE 2024 · Monte Carlo -->
-          <a href="https://www.koreascience.kr/journal/TMHHC2.page" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
-            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
-              <div>
-                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Monte Carlo simulation-based cost estimation for floating trash barrier maintenance</p>
-                <p class="text-[13px] text-sub mt-1.5 leading-relaxed">Seokhwan Kim, <strong class="text-ink">Taegeon Kim</strong>, Hongjo Kim</p>
+          </article>
+
+          <!-- J4 · KSCE 2024 · Monte Carlo (placeholder) -->
+          <article class="border-b border-hair py-6 md:py-8">
+            <div class="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr_auto] gap-5 md:gap-8 items-start">
+              <div class="paper-thumb paper-slot-empty aspect-[3/4] w-full self-start">
+                <iconify-icon icon="solar:document-add-linear"></iconify-icon>
               </div>
-              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
+              <a href="https://www.koreascience.kr/journal/TMHHC2.page" target="_blank" rel="noopener" class="group block col-span-1 self-start">
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Monte Carlo simulation-based cost estimation for floating trash barrier maintenance <iconify-icon icon="solar:arrow-right-up-linear" class="text-[13px] text-accent align-middle opacity-60 group-hover:opacity-100 transition-opacity"></iconify-icon></p>
+                <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Seokhwan Kim, Hongjo Kim</p>
+              </a>
+              <div class="col-span-2 md:col-span-1 md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap self-start md:pt-1">
                 <span class="text-ink font-semibold">KSCE J. Civ. &amp; Env. Eng. Res.</span> · Vol.44 No.2 · 2024
               </div>
             </div>
-          </a>
+          </article>
+
         </div>
       </div>
 
-      <!-- 학회 -->
+      <!-- 학회 · 5편 -->
       <div>
-        <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:users-group-two-rounded-linear" class="text-accent text-[18px]"></iconify-icon><p class="text-[12.5px] font-bold uppercase tracking-[0.12em] text-accent stat-num">International Conference · 5편</p></div>
+        <div class="flex items-center gap-2.5 mb-5"><iconify-icon icon="solar:users-group-two-rounded-linear" class="text-accent text-[18px]"></iconify-icon><p class="text-[12.5px] font-bold uppercase tracking-[0.12em] text-accent stat-num">International Conference · 5편</p></div>
         <div class="border-t border-hair">
-          <a href="https://doi.org/10.6106/ICCEPM.2024.0415" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
-            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
-              <div>
-                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Large Multimodal Model for Context-aware Construction Safety Monitoring</p>
+
+          <!-- C1 · ICCEPM 2024 · LMM (placeholder) -->
+          <article class="border-b border-hair py-6 md:py-8">
+            <div class="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr_auto] gap-5 md:gap-8 items-start">
+              <div class="paper-thumb paper-slot-empty aspect-[3/4] w-full self-start">
+                <iconify-icon icon="solar:document-add-linear"></iconify-icon>
+              </div>
+              <a href="https://doi.org/10.6106/ICCEPM.2024.0415" target="_blank" rel="noopener" class="group block col-span-1 self-start">
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Large Multimodal Model for Context-aware Construction Safety Monitoring <iconify-icon icon="solar:arrow-right-up-linear" class="text-[13px] text-accent align-middle opacity-60 group-hover:opacity-100 transition-opacity"></iconify-icon></p>
                 <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Seokhwan Kim, Minkyu Koo, Minwoo Jeong, Hongjo Kim</p>
                 <p class="text-[12px] text-accent stat-num mt-1">DOI: 10.6106/ICCEPM.2024.0415</p>
-              </div>
-              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
+              </a>
+              <div class="col-span-2 md:col-span-1 md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap self-start md:pt-1">
                 <span class="text-ink font-semibold">ICCEPM 2024</span> · KICEM · pp.415-422
               </div>
             </div>
-          </a>
-          <a href="https://www.semanticscholar.org/paper/Context-Adaptive-CCTV-Pan-Tilt-Zoom-method-for-Kim-Jeong/1194f9fa2ab943dad9a6dc28217270f735462968" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
-            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
-              <div>
-                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Context-Adaptive CCTV Pan-Tilt-Zoom method for Personal Protective Equipment Detection</p>
-                <p class="text-[13px] text-sub mt-1.5 leading-relaxed">Seokhwan Kim, Minwoo Jeong, Minkyu Koo, <strong class="text-ink">Taegeon Kim</strong>, Hongjo Kim</p>
-              </div>
-              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
-                <span class="text-ink font-semibold">ISARC 2024</span> · IAARC · Vol.41 pp.768-775
-              </div>
-            </div>
-          </a>
-          <a href="https://ascelibrary.org/action/doSearch?AllField=Target+Domain+Training+Data+Generation+Moving+Object+Detection+Label+Propagation" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
-            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
-              <div>
-                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Target Domain Training Data Generation by Moving Object Detection and Label Propagation</p>
-                <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Giwon Shin, Seokhwan Kim, Vijayan K. Asari, Hongjo Kim</p>
-              </div>
-              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
-                <span class="text-ink font-semibold">Computing in Civil Eng. 2023</span> · ASCE · pp.380-387
-              </div>
-            </div>
-          </a>
-          <a href="https://link.springer.com/search?query=Generating+pseudo+label+object+detector+construction+site+monitoring+Kim" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
-            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
-              <div>
-                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Generating pseudo label of object detector for construction site monitoring</p>
-                <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Giwon Shin, Seokhwan Kim, Hongjo Kim</p>
-              </div>
-              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
-                <span class="text-ink font-semibold">ICCCBE 2022</span> · Springer · pp.111-119
-              </div>
-            </div>
-          </a>
-          <a href="http://www.iaarc.org/publications/2024_proceedings_of_the_41st_isarc_lille_france/zero-shot_learning-based_polygon_mask_generation_for_construction_objects.html" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
-            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
-              <div>
-                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Zero-shot Learning-based Polygon Mask Generation for Construction Objects</p>
+          </article>
+
+          <!-- C2 · ISARC 2024 · Zero-shot Polygon -->
+          <article class="border-b border-hair py-6 md:py-8">
+            <div class="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr_auto] gap-5 md:gap-8 items-start">
+              <button type="button" class="paper-thumb aspect-[3/4] w-full self-start" data-lightbox="assets/tech/papers/conf-2024-zero-shot-polygon-large-1.png" data-caption="Zero-shot Learning-based Polygon Mask Generation for Construction Objects · ISARC 2024 Vol.41 pp.81-88">
+                <img src="assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png" alt="Zero-shot Polygon 첫 페이지">
+                <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+              </button>
+              <a href="http://www.iaarc.org/publications/2024_proceedings_of_the_41st_isarc_lille_france/zero-shot_learning-based_polygon_mask_generation_for_construction_objects.html" target="_blank" rel="noopener" class="group block col-span-1 self-start">
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Zero-shot Learning-based Polygon Mask Generation for Construction Objects <iconify-icon icon="solar:arrow-right-up-linear" class="text-[13px] text-accent align-middle opacity-60 group-hover:opacity-100 transition-opacity"></iconify-icon></p>
                 <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Minkyu Koo, Jeongho Hyeon, Hongjo Kim</p>
-              </div>
-              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
+              </a>
+              <div class="col-span-2 md:col-span-1 md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap self-start md:pt-1">
                 <span class="text-ink font-semibold">ISARC 2024</span> · IAARC · Vol.41 pp.81-88
               </div>
             </div>
-          </a>
+          </article>
+
+          <!-- C3 · ISARC 2024 · CCTV PTZ (placeholder) -->
+          <article class="border-b border-hair py-6 md:py-8">
+            <div class="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr_auto] gap-5 md:gap-8 items-start">
+              <div class="paper-thumb paper-slot-empty aspect-[3/4] w-full self-start">
+                <iconify-icon icon="solar:document-add-linear"></iconify-icon>
+              </div>
+              <a href="https://www.semanticscholar.org/paper/Context-Adaptive-CCTV-Pan-Tilt-Zoom-method-for-Kim-Jeong/1194f9fa2ab943dad9a6dc28217270f735462968" target="_blank" rel="noopener" class="group block col-span-1 self-start">
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Context-Adaptive CCTV Pan-Tilt-Zoom method for Personal Protective Equipment Detection <iconify-icon icon="solar:arrow-right-up-linear" class="text-[13px] text-accent align-middle opacity-60 group-hover:opacity-100 transition-opacity"></iconify-icon></p>
+                <p class="text-[13px] text-sub mt-1.5 leading-relaxed">Seokhwan Kim, Minwoo Jeong, Minkyu Koo, <strong class="text-ink">Taegeon Kim</strong>, Hongjo Kim</p>
+              </a>
+              <div class="col-span-2 md:col-span-1 md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap self-start md:pt-1">
+                <span class="text-ink font-semibold">ISARC 2024</span> · IAARC · Vol.41 pp.768-775
+              </div>
+            </div>
+          </article>
+
+          <!-- C4 · i3CE 2023 · Target Domain -->
+          <article class="border-b border-hair py-6 md:py-8">
+            <div class="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr_auto] gap-5 md:gap-8 items-start">
+              <button type="button" class="paper-thumb aspect-[3/4] w-full self-start" data-lightbox="assets/tech/papers/conf-2023-target-domain-large-1.png" data-caption="Target Domain Training Data Generation by Moving Object Detection and Label Propagation · Computing in Civil Engineering 2023, ASCE pp.380-387">
+                <img src="assets/tech/papers/conf-2023-target-domain-thumb-1.png" alt="Target Domain 첫 페이지">
+                <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+              </button>
+              <a href="https://ascelibrary.org/action/doSearch?AllField=Target+Domain+Training+Data+Generation+Moving+Object+Detection+Label+Propagation" target="_blank" rel="noopener" class="group block col-span-1 self-start">
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Target Domain Training Data Generation by Moving Object Detection and Label Propagation <iconify-icon icon="solar:arrow-right-up-linear" class="text-[13px] text-accent align-middle opacity-60 group-hover:opacity-100 transition-opacity"></iconify-icon></p>
+                <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Giwon Shin, Seokhwan Kim, Vijayan K. Asari, Hongjo Kim</p>
+              </a>
+              <div class="col-span-2 md:col-span-1 md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap self-start md:pt-1">
+                <span class="text-ink font-semibold">Computing in Civil Eng. 2023</span> · ASCE · pp.380-387
+              </div>
+            </div>
+          </article>
+
+          <!-- C5 · ICCCBE 2022 · Pseudo Label -->
+          <article class="border-b border-hair py-6 md:py-8">
+            <div class="grid grid-cols-[96px_1fr] md:grid-cols-[120px_1fr_auto] gap-5 md:gap-8 items-start">
+              <button type="button" class="paper-thumb aspect-[3/4] w-full self-start" data-lightbox="assets/tech/papers/conf-2022-pseudo-label-large.png" data-caption="Generating Pseudo Label of Object Detector for Construction Site Monitoring · ICCCBE 2022, Springer pp.111-119">
+                <img src="assets/tech/papers/conf-2022-pseudo-label-thumb.png" alt="Pseudo Label 첫 페이지">
+                <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+              </button>
+              <a href="https://link.springer.com/search?query=Generating+pseudo+label+object+detector+construction+site+monitoring+Kim" target="_blank" rel="noopener" class="group block col-span-1 self-start">
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Generating pseudo label of object detector for construction site monitoring <iconify-icon icon="solar:arrow-right-up-linear" class="text-[13px] text-accent align-middle opacity-60 group-hover:opacity-100 transition-opacity"></iconify-icon></p>
+                <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Giwon Shin, Seokhwan Kim, Hongjo Kim</p>
+              </a>
+              <div class="col-span-2 md:col-span-1 md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap self-start md:pt-1">
+                <span class="text-ink font-semibold">ICCCBE 2022</span> · Springer · pp.111-119
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
     </div>
