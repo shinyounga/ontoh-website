@@ -188,27 +188,174 @@
     </div>
   </section>
 
-  <!-- ==================== 논문 미리보기 갤러리 (썸네일 그리드) ==================== -->
+  <!-- ==================== 논문 · 미리보기 갤러리 (썸네일 + 캡션) ==================== -->
   <section class="band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
-      <div class="mb-8">
-        <p class="kicker mb-3 reveal">At a Glance</p>
-        <h2 class="reveal stagger-1 text-[24px] md:text-[30px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">한눈에 보는 논문 13편</h2>
+      <div class="flex items-end justify-between flex-wrap gap-3 mb-10">
+        <div>
+          <p class="kicker mb-3 reveal">Papers</p>
+          <h2 class="reveal stagger-1 text-[24px] md:text-[30px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">갤러리 보기</h2>
+        </div>
+        <p class="text-[12.5px] text-sub flex items-center gap-1.5"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-accent text-[16px]"></iconify-icon>썸네일 클릭 시 확대</p>
       </div>
-      <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2026-dsdl-tiny-large-01.png" data-caption="Tiny object detection using DSDL · Automation in Construction 2026"><img src="assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png" alt="DSDL 2026"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-lvlm-safety-large-01.png" data-caption="Optimizing LVLM for Construction Safety · Automation in Construction 2025"><img src="assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png" alt="LVLM 2025"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-moving-feature-large-01.png" data-caption="Moving-Feature-Driven Label Propagation · Computers in Industry 2025"><img src="assets/tech/papers/journal-2025-moving-feature-thumb-01.png" alt="Moving-Feature 2025"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-adaptive-water-large.png" data-caption="Adaptive water waste processing strategy · KSCE Journal of Civil Engineering 2025"><img src="assets/tech/papers/journal-2025-adaptive-water-thumb.png" alt="Adaptive Water 2025"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2024-monte-carlo-large.png" data-caption="Monte Carlo Simulation-Based Cost Estimation · KSCE J. Civ. &amp; Env. Eng. Res. 2024"><img src="assets/tech/papers/journal-2024-monte-carlo-thumb.png" alt="Monte Carlo 2024"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2024-zero-shot-polygon-large-1.png" data-caption="Zero-shot Learning-based Polygon Mask Generation · ISARC 2024"><img src="assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png" alt="Zero-shot Polygon 2024"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2024-cctv-ptz-large.png" data-caption="Context-Adaptive CCTV Pan-Tilt-Zoom for PPE Detection · ISARC 2024"><img src="assets/tech/papers/conf-2024-cctv-ptz-thumb.png" alt="CCTV PTZ 2024"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <div class="paper-thumb paper-slot-empty aspect-[3/4]" title="ICCEPM 2024 LMM (이미지 준비 중)"><iconify-icon icon="solar:document-add-linear"></iconify-icon></div>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2023-target-domain-large-1.png" data-caption="Target Domain Training Data Generation · Computing in Civil Engineering 2023, ASCE"><img src="assets/tech/papers/conf-2023-target-domain-thumb-1.png" alt="Target Domain 2023"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2022-pseudo-label-large.png" data-caption="Generating Pseudo Label of Object Detector · ICCCBE 2022, Springer"><img src="assets/tech/papers/conf-2022-pseudo-label-thumb.png" alt="Pseudo Label 2022"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2022-comparing-objdet-large.png" data-caption="Comparing Object Detection Models · ICCCBE 2022, Springer"><img src="assets/tech/papers/conf-2022-comparing-objdet-thumb.png" alt="Comparing ObjDet 2022"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/domestic-2023-self-training-large.png" data-caption="자가 학습 기반 건설 객체 탐지 · KSCE 2023 CONVENTION"><img src="assets/tech/papers/domestic-2023-self-training-thumb.png" alt="Self-training 2023"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
-        <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/domestic-2023-optimization-debris-large.png" data-caption="컴퓨터 비전·몬테카를로 부유 쓰레기 차단막 유지관리 · KSCE 2023 CONVENTION"><img src="assets/tech/papers/domestic-2023-optimization-debris-thumb.png" alt="Optimization Debris 2023"><span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[14px]"></iconify-icon></span></button>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2026-dsdl-tiny-large-01.png" data-caption="Tiny object detection using DSDL · Automation in Construction Vol.187 (2026)">
+            <img src="assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png" alt="DSDL 2026">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2026</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Tiny Object Detection using DSDL</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">Automation in Construction · SCIE</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-lvlm-safety-large-01.png" data-caption="Optimizing LVLM for Construction Safety · Automation in Construction Vol.180 (2025)">
+            <img src="assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png" alt="LVLM 2025">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2025</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Optimizing LVLM for Construction Safety</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">Automation in Construction · SCIE</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-moving-feature-large-01.png" data-caption="Moving-Feature-Driven Label Propagation · Computers in Industry Vol.171 (2025)">
+            <img src="assets/tech/papers/journal-2025-moving-feature-thumb-01.png" alt="Moving-Feature 2025">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2025</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Moving-Feature-Driven Label Propagation</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">Computers in Industry · SCIE</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-adaptive-water-large.png" data-caption="Adaptive water waste processing strategy · KSCE Journal of Civil Engineering Vol.29 (2025)">
+            <img src="assets/tech/papers/journal-2025-adaptive-water-thumb.png" alt="Adaptive Water 2025">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2025</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Adaptive Water Waste Processing</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">KSCE J. Civil Engineering · SCIE</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2024-monte-carlo-large.png" data-caption="Monte Carlo Simulation-Based Cost Estimation · KSCE J. Civ. &amp; Env. Eng. Res. Vol.44 No.2 (2024)">
+            <img src="assets/tech/papers/journal-2024-monte-carlo-thumb.png" alt="Monte Carlo 2024">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Monte Carlo Simulation-Based Cost Estimation</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">KSCE J. Civ. &amp; Env. Eng. Res. · KCI</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2024-zero-shot-polygon-large-1.png" data-caption="Zero-shot Learning-based Polygon Mask Generation · ISARC 2024 Vol.41 pp.81-88">
+            <img src="assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png" alt="Zero-shot Polygon 2024">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Zero-shot Polygon Mask Generation</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">ISARC 2024 · IAARC</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2024-cctv-ptz-large.png" data-caption="Context-Adaptive CCTV Pan-Tilt-Zoom for PPE Detection · ISARC 2024 Vol.41 pp.768-775">
+            <img src="assets/tech/papers/conf-2024-cctv-ptz-thumb.png" alt="CCTV PTZ 2024">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Context-Adaptive CCTV Pan-Tilt-Zoom for PPE</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">ISARC 2024 · IAARC</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <div class="paper-thumb paper-slot-empty aspect-[3/4]">
+            <iconify-icon icon="solar:document-add-linear"></iconify-icon>
+            <span>이미지 준비 중</span>
+          </div>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Large Multimodal Model for Construction Safety</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">ICCEPM 2024 · KICEM</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2023-target-domain-large-1.png" data-caption="Target Domain Training Data Generation · Computing in Civil Engineering 2023, ASCE pp.380-387">
+            <img src="assets/tech/papers/conf-2023-target-domain-thumb-1.png" alt="Target Domain 2023">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2023</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Target Domain Training Data Generation</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">Computing in Civil Eng. · ASCE</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2022-pseudo-label-large.png" data-caption="Generating Pseudo Label of Object Detector · ICCCBE 2022, Springer pp.111-119">
+            <img src="assets/tech/papers/conf-2022-pseudo-label-thumb.png" alt="Pseudo Label 2022">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2022</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Generating Pseudo Label of Object Detector</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">ICCCBE 2022 · Springer</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2022-comparing-objdet-large.png" data-caption="Comparing Object Detection Models for Water Trash Monitoring · ICCCBE 2022, Springer pp.161-170">
+            <img src="assets/tech/papers/conf-2022-comparing-objdet-thumb.png" alt="Comparing ObjDet 2022">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2022</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Comparing Object Detection Models</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">ICCCBE 2022 · Springer</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/domestic-2023-self-training-large.png" data-caption="자가 학습 기반 건설 객체 탐지 · KSCE 2023 CONVENTION pp.55-56">
+            <img src="assets/tech/papers/domestic-2023-self-training-thumb.png" alt="Self-training 2023">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">국내 학회</span><span class="tag bg-ink/[0.06] text-ink stat-num">2023</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">자가 학습 기반 건설 객체 탐지 데이터 생성</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">KSCE 2023 · 대한토목학회</p>
+          </figcaption>
+        </figure>
+
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/domestic-2023-optimization-debris-large.png" data-caption="컴퓨터 비전 및 몬테카를로 시뮬레이션 기반 수상 부유 쓰레기 차단막 유지관리 최적화 방안 · KSCE 2023 CONVENTION pp.380-381">
+            <img src="assets/tech/papers/domestic-2023-optimization-debris-thumb.png" alt="Optimization Debris 2023">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[16px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">국내 학회</span><span class="tag bg-ink/[0.06] text-ink stat-num">2023</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">컴퓨터 비전·MCS 기반 부유 쓰레기 차단막 유지관리</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">KSCE 2023 · 대한토목학회</p>
+          </figcaption>
+        </figure>
+
       </div>
     </div>
   </section>
