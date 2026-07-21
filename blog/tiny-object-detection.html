@@ -31,15 +31,17 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap">
   <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'], serif: ['"Nanum Myeongjo"', 'serif'] },
           colors: {
             navy: { DEFAULT: '#1b2e6a', 50: '#f0f3fa', 100: '#dde3f3', 200: '#bcc8e7', 300: '#8fa3d6', 400: '#6079c0', 500: '#3d57a8', 600: '#1b2e6a', 700: '#162556', 800: '#111d42', 900: '#0c142e', 950: '#080e1f' },
             accent: { DEFAULT: '#0169a9', 50: '#eef8ff', 100: '#d9eeff', 200: '#bce2ff', 300: '#8ed0ff', 400: '#59b4ff', 500: '#3393ff', 600: '#0169a9', 700: '#015a91', 800: '#064c77', 900: '#0b4063' },
+            ink: '#0A2440', body: '#212121', sub: '#555555', band: '#F5F6F8', hair: '#E5E7EB',
           },
         },
       },
@@ -85,70 +87,117 @@
     .toc-link { color: #94a3b8; transition: all 0.4s cubic-bezier(0.16,1,0.3,1); border-left: 2px solid transparent; }
     .toc-link:hover { color: #1b2e6a; }
     .toc-link.active { color: #0169a9; font-weight: 700; border-left-color: #0169a9; }
+    /* ===== 인터랙티브 돋보기 데모 ===== */
+    #lensSvg { touch-action: none; cursor: grab; user-select: none; -webkit-user-select: none; display: block; }
+    #lensSvg.dragging { cursor: grabbing; }
+    .det { opacity: 0; transform: scale(0.45); transform-box: fill-box; transform-origin: center; }
+    #lensDemo.scan .det { animation: lockOn 0.55s cubic-bezier(0.16,1,0.3,1) forwards; }
+    @keyframes lockOn { 0% { opacity: 0; transform: scale(0.45); } 55% { opacity: 1; transform: scale(1.2); } 100% { opacity: 1; transform: scale(1); } }
+    @media (prefers-reduced-motion: reduce) { .det { opacity: 1; transform: none; } }
+
+    /* ===== v3 셸(헤더/메가메뉴/푸터) — 본문 prose와 분리된 크롬 전용 ===== */
+    .myeongjo { font-family: 'Nanum Myeongjo', serif; }
+    .band { background: #F5F6F8; }
+    .rule { border-color: #E5E7EB; }
+    .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+    .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
+    .corp-card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
+    .corp-card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
+    .tag { font-size:12px; font-weight:800; letter-spacing:.02em; padding:3px 9px; }
+    .stat-num { font-variant-numeric: tabular-nums; letter-spacing:-.02em; }
+    .nav-item { position:relative; }
+    .nav-top::after { content:""; position:absolute; left:20px; right:20px; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform .34s cubic-bezier(0.16,1,0.3,1); }
+    .nav-item:hover .nav-top::after { transform:scaleX(1); }
+    .megabar { position:absolute; left:0; right:0; top:100%; height:182px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
+    .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
+    header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
+    .dbox { padding:24px 0; }
+    .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:182px; width:1px; background:#E5E7EB; }
+    .dlink { display:flex; align-items:center; gap:.5rem; font-size:14.5px; color:#555555; padding:8px 0; white-space:nowrap; transition:color .28s cubic-bezier(0.16,1,0.3,1), gap .28s cubic-bezier(0.16,1,0.3,1); }
+    .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
+    .dlink:hover { color:#0A2440; gap:.9rem; }
+    .dlink:hover iconify-icon { opacity:1; transform:none; }
   </style>
 </head>
-<body class="bg-[#faf8f3] text-[#0f172a] font-sans antialiased">
+<body class="bg-[#ffffff] text-[#0f172a] font-sans antialiased">
 
   <div id="readingProgress"></div>
   <div class="noise-overlay"></div>
 
-  <!-- ==================== NAV ==================== -->
-  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 nav-scrolled spring">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="../index.html" class="flex items-center">
-          <img src="../assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
-        </a>
-        <div class="hidden md:flex items-center gap-10 h-full">
-          <a href="../about.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring">회사소개</a>
-          <a href="../vision.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring">온토비전</a>
-          <a href="../health.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring">온토케어</a>
-          <a href="index.html" class="text-[16px] font-bold text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:rounded-full">테크</a>
-        </div>
-        <div class="hidden md:flex items-center">
-          <a href="../contact.html" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
-            문의하기
-            <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
-              <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
-            </span>
-          </a>
-        </div>
-        <button id="menuToggle" class="md:hidden w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center spring hover:bg-navy/10" aria-label="메뉴 열기">
-          <iconify-icon icon="solar:hamburger-menu-linear" class="text-navy text-lg"></iconify-icon>
-        </button>
+  <!-- ==================== 유틸리티 바 ==================== -->
+  <div class="hidden lg:block bg-ink text-white/55 text-[13px]">
+    <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
+      <p>건설현장 안전관리 Physical AI · 주식회사 온토</p>
+      <div class="flex items-center gap-5">
+        <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors inline-flex items-center gap-1.5"><iconify-icon icon="solar:letter-linear" class="text-[13px]"></iconify-icon> ktg@ontoh.co.kr</a>
+        <span class="text-white/25">|</span>
+        <a href="../contact.html" class="hover:text-white transition-colors inline-flex items-center gap-1.5 text-white/75"><iconify-icon icon="solar:chat-round-line-linear" class="text-[13px]"></iconify-icon> 도입 문의</a>
       </div>
     </div>
-  </nav>
+  </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden">
-    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center" aria-label="메뉴 닫기">
-      <iconify-icon icon="solar:close-circle-linear" class="text-navy text-2xl"></iconify-icon>
+  <!-- ==================== 헤더 + 메가메뉴 GNB ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-[70px]">
+        <a href="../index.html" class="flex items-center shrink-0"><img src="../assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-9"></a>
+        <nav class="gnb hidden lg:flex items-stretch h-full">
+          <div class="nav-item flex items-stretch">
+            <a href="../about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">회사소개</a>
+            <div class="nav-panel"><div class="dbox min-w-[150px]"><a href="../about.html#mission" class="dlink">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#history" class="dlink">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#overview" class="dlink">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+          <div class="nav-item flex items-stretch">
+            <a href="../vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">솔루션</a>
+            <div class="nav-panel"><div class="dbox min-w-[150px]"><a href="../vision.html" class="dlink">ONTOH Vision <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../health.html" class="dlink">ONTOH Health <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+          <div class="nav-item flex items-stretch">
+            <a href="../tech.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">기술·연구</a>
+            <div class="nav-panel"><div class="dbox min-w-[160px]"><a href="../tech.html" class="dlink">기술 개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../patents.html" class="dlink">특허 · 지식재산권 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../papers.html" class="dlink">연구 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="index.html" class="dlink">기술 이야기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+          <div class="nav-item flex items-stretch">
+            <a href="../contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">문의</a>
+            <div class="nav-panel"><div class="dbox min-w-[150px]"><a href="../contact.html" class="dlink">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="../contact.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[15px] font-bold hover:bg-[#0e3161] transition-colors">데모 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <button id="menuToggle" class="lg:hidden w-10 h-10 bg-ink/[0.05] flex items-center justify-center hover:bg-ink/10 transition-colors" aria-label="메뉴 열기">
+            <iconify-icon icon="solar:hamburger-menu-linear" class="text-ink text-lg"></iconify-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="megabar"></div>
+  </header>
+
+  <!-- ==================== 모바일 메뉴 ==================== -->
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/97 backdrop-blur-3xl flex flex-col items-center justify-center gap-7 lg:hidden">
+    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 bg-ink/[0.05] flex items-center justify-center" aria-label="메뉴 닫기">
+      <iconify-icon icon="solar:close-circle-linear" class="text-ink text-2xl"></iconify-icon>
     </button>
-    <a href="../about.html" class="menu-link text-2xl font-bold text-navy stagger-1">회사소개</a>
-    <a href="../vision.html" class="menu-link text-2xl font-bold text-navy stagger-2">온토비전</a>
-    <a href="../health.html" class="menu-link text-2xl font-bold text-navy stagger-3">온토케어</a>
-    <a href="index.html" class="menu-link text-2xl font-bold text-accent stagger-4">테크</a>
-    <a href="../contact.html" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-5 spring">
-      문의하기
-      <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
-        <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
-      </span>
-    </a>
+    <a href="../about.html" class="menu-link text-2xl font-bold text-ink stagger-1" onclick="closeMobileMenu()">회사소개</a>
+    <div class="menu-link stagger-2 text-center">
+      <p class="text-[13px] text-sub/70 font-bold tracking-[0.14em] uppercase mb-3">솔루션</p>
+      <a href="../vision.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()">ONTOH Vision</a>
+      <a href="../health.html" class="block text-xl font-bold text-ink" onclick="closeMobileMenu()">ONTOH Health</a>
+    </div>
+    <a href="../tech.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
+    <a href="../contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
+    <a href="../contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[16px] font-bold stagger-5" onclick="closeMobileMenu()">데모 신청 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
 
   <!-- ==================== ARTICLE HEADER ==================== -->
-  <header class="pt-36 pb-12 md:pt-44 md:pb-14 bg-[#f2eee6] border-b border-navy/5">
+  <header class="pt-16 pb-12 md:pt-20 md:pb-14 bg-white border-b border-hair">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href="index.html" class="inline-flex items-center gap-2 text-[14px] font-semibold text-[#64748b] hover:text-accent spring mb-8">
+      <a href="index.html" class="inline-flex items-center gap-2 text-[14px] font-semibold text-sub hover:text-accent spring mb-8">
         <iconify-icon icon="solar:arrow-left-linear"></iconify-icon>
-        테크 목록
+        기술 이야기 목록
       </a>
       <div class="flex items-center gap-2 mb-5">
         <span class="inline-flex items-center px-3 py-1 rounded-full bg-accent/10 text-accent text-[13px] font-bold">Computer Vision</span>
-        <span class="inline-flex items-center px-3 py-1 rounded-full bg-navy/5 text-navy text-[13px] font-bold">Object Detection</span>
+        <span class="inline-flex items-center px-3 py-1 rounded-full bg-ink/[0.06] text-ink text-[13px] font-bold">Object Detection</span>
       </div>
-      <h1 class="text-[32px] md:text-[44px] font-extrabold text-[#0f172a] tracking-tight" style="line-height: 1.22; letter-spacing: -0.02em;">
+      <h1 class="text-[32px] md:text-[44px] font-extrabold text-ink tracking-tight" style="line-height: 1.22; letter-spacing: -0.02em;">
         건설현장에서 ‘작은 것’을 본다는 것
       </h1>
       <p class="mt-3 text-[20px] md:text-[24px] font-bold text-accent" style="letter-spacing:-0.02em;">Tiny Object Detection과 PTZ 자율관제</p>
@@ -169,14 +218,24 @@
       <!-- Article -->
       <article class="prose mx-auto lg:mx-0">
 
-        <!-- TL;DR -->
-        <div class="not-prose rounded-2xl bg-navy-900 text-white p-7 mb-12">
-          <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-3">TL;DR</p>
-          <ul class="space-y-2 text-[16px] leading-[1.7] text-white/85">
-            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-bold" class="text-accent-400 text-[18px] mt-0.5 shrink-0"></iconify-icon><span>광역 CCTV에서 멀리 있는 안전모·작업자는 수십 픽셀에 불과해, 일반 검출기로는 놓치기 쉽다.</span></li>
-            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-bold" class="text-accent-400 text-[18px] mt-0.5 shrink-0"></iconify-icon><span>다운샘플링 과정에서 작은 객체의 특징이 소실되는 것이 근본 원인이다.</span></li>
-            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-bold" class="text-accent-400 text-[18px] mt-0.5 shrink-0"></iconify-icon><span>해법은 ① 고해상도 입력·타일링(SAHI), ② PTZ 줌으로 픽셀을 확보하는 2단계 파이프라인.</span></li>
-          </ul>
+        <!-- 요약 -->
+        <div class="not-prose mb-14">
+          <div class="flex items-center gap-4 mb-1">
+            <span class="font-bold text-accent uppercase" style="font-size:12px; letter-spacing:0.22em;">요약</span>
+            <span class="flex-1 h-px bg-navy/10"></span>
+          </div>
+          <div class="group flex gap-5 py-5 border-b border-navy/[0.08]">
+            <span class="font-extrabold text-navy/15 tabular-nums shrink-0 transition-[color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-accent" style="font-size:30px; line-height:0.9;">01</span>
+            <div class="self-center text-[#1f2937]" style="font-size:17px; line-height:1.62;">광역 CCTV에서 멀리 있는 안전모·작업자는 수십 픽셀에 불과해, 일반 검출기로는 그냥 놓친다.</div>
+          </div>
+          <div class="group flex gap-5 py-5 border-b border-navy/[0.08]">
+            <span class="font-extrabold text-navy/15 tabular-nums shrink-0 transition-[color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-accent" style="font-size:30px; line-height:0.9;">02</span>
+            <div class="self-center text-[#1f2937]" style="font-size:17px; line-height:1.62;">근본 원인은 모델이다. 다운샘플링을 거치며 작은 객체의 특징이 특징 맵에서 통째로 사라진다.</div>
+          </div>
+          <div class="group flex gap-5 py-5 border-b border-navy/[0.08]">
+            <span class="font-extrabold text-navy/15 tabular-nums shrink-0 transition-[color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-accent" style="font-size:30px; line-height:0.9;">03</span>
+            <div class="self-center text-[#1f2937]" style="font-size:17px; line-height:1.62;">그래서 픽셀을 되찾는다. 타일링(SAHI)으로 유효 해상도를, PTZ 줌으로 물리 해상도를 끌어올리는 2단계 파이프라인.</div>
+          </div>
         </div>
 
         <p>건설현장 안전관리에서 가장 흔한 오해는 “CCTV가 있으니 사고를 본다”는 것입니다. 현실은 다릅니다. 카메라는 현장을 <strong>넓게</strong> 봐야 하고, 넓게 볼수록 정작 봐야 할 대상 — 안전모를 쓰지 않은 작업자, 안전대를 걸지 않은 고소작업자 — 은 화면 속에서 <strong>아주 작아집니다</strong>. 이 글은 그 ‘작음’이라는 문제를 컴퓨터 비전 관점에서 풀어봅니다.</p>
@@ -188,26 +247,64 @@
         </div>
         <p>사람 눈에는 “저기 사람 있네” 싶어도, 검출 모델 입장에서 10픽셀짜리 헬멧은 텍스처도, 형태도 거의 남지 않은 흐릿한 색 덩어리입니다. 게다가 입력 이미지를 모델이 쓰는 크기(예: 640×640)로 리사이즈하면 이 객체는 다시 1/3로 줄어 <strong>3~4px</strong>이 됩니다.</p>
 
-        <figure class="not-prose">
-          <svg viewBox="0 0 640 220" class="w-full rounded-xl border border-navy/10 bg-white">
-            <rect width="640" height="220" fill="#f8fafc"/>
-            <!-- wide frame -->
-            <rect x="24" y="24" width="260" height="150" fill="#0c142e" rx="6"/>
-            <text x="34" y="46" fill="#6079c0" font-size="11" font-family="monospace">WIDE 1920×1080</text>
-            <rect x="150" y="92" width="9" height="7" fill="#0169a9"/>
-            <circle cx="154.5" cy="86" r="3" fill="none" stroke="#0169a9" stroke-width="1.5"/>
-            <!-- arrow -->
-            <line x1="300" y1="99" x2="356" y2="99" stroke="#94a3b8" stroke-width="2" marker-end="url(#ah)"/>
-            <text x="300" y="90" fill="#94a3b8" font-size="11">zoom</text>
-            <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#94a3b8"/></marker></defs>
-            <!-- zoomed -->
-            <rect x="372" y="24" width="244" height="150" fill="#0c142e" rx="6"/>
-            <text x="382" y="46" fill="#59b4ff" font-size="11" font-family="monospace">PTZ ZOOM ×8</text>
-            <rect x="452" y="74" width="80" height="62" fill="none" stroke="#0169a9" stroke-width="2.5" rx="3"/>
-            <circle cx="492" cy="60" r="22" fill="none" stroke="#0169a9" stroke-width="2.5"/>
-            <text x="446" y="158" fill="#bce2ff" font-size="10" font-family="monospace">helmet: 0.94</text>
-          </svg>
-          <figcaption>그림 1. 광역 프레임에서 9px이던 안전모가, PTZ 줌으로는 수백 픽셀의 또렷한 객체가 된다.</figcaption>
+        <figure class="not-prose my-16" id="lensDemo">
+          <!-- 타이포 히어로 -->
+          <div class="max-w-xl">
+            <div class="font-extrabold text-[#0f172a] tracking-tight" style="font-size:32px; line-height:1.16; letter-spacing:-0.03em;">사람 눈엔, 점.</div>
+            <div class="mt-3 text-[#64748b]" style="font-size:16px; line-height:1.65;">광역 한 장에 흩어진 작업자들 — AI는 안전모를 하나씩 찾아낸다.<br class="hidden sm:block">돋보기를 끌어 몇 픽셀짜리 헬멧을 직접 확인해 보세요.</div>
+          </div>
+
+          <!-- 캔버스 -->
+          <div class="mt-8 relative rounded-[28px] bg-[#ffffff] ring-1 ring-navy/[0.06] overflow-hidden">
+            <svg id="lensSvg" viewBox="0 0 720 440" class="w-full h-full">
+              <defs>
+                <filter id="lensShadow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#1b2e6a" flood-opacity="0.18"/>
+                </filter>
+                <g id="sceneG">
+                  <image href="../assets/vision/archive/construction_cctv.png" x="0" y="0" width="720" height="440" preserveAspectRatio="xMidYMid slice"/>
+                </g>
+                <clipPath id="lensClip"><circle id="lensClipC" cx="320" cy="240" r="88"/></clipPath>
+              </defs>
+
+              <!-- 광역(기본) 장면: 실제 현장 CCTV -->
+              <use href="#sceneG"/>
+
+              <!-- 검출 박스: 작업자 5명 안전모 동시 표시 (스태거 lock-on) -->
+              <g id="dets">
+                <rect class="det" style="animation-delay:0s"   x="230.2" y="315.6" width="9.4"  height="8.4"  rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+                <rect class="det" style="animation-delay:.10s" x="297.7" y="313.8" width="9.4"  height="8.4"  rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+                <rect class="det" style="animation-delay:.20s" x="400.3" y="317.0" width="9.4"  height="8.4"  rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+                <rect class="det" style="animation-delay:.30s" x="454.7" y="304.4" width="9.4"  height="8.4"  rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+                <rect class="det" style="animation-delay:.40s" x="542.3" y="286.6" width="13.1" height="13.1" rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+              </g>
+
+              <!-- 돋보기 확대 레이어 (장면 + 검출박스 함께 확대) -->
+              <g clip-path="url(#lensClip)">
+                <use id="magUse" href="#sceneG"/>
+                <g id="detsMag">
+                  <rect class="det" style="animation-delay:0s"   x="230.2" y="315.6" width="9.4"  height="8.4"  rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+                  <rect class="det" style="animation-delay:.10s" x="297.7" y="313.8" width="9.4"  height="8.4"  rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+                  <rect class="det" style="animation-delay:.20s" x="400.3" y="317.0" width="9.4"  height="8.4"  rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+                  <rect class="det" style="animation-delay:.30s" x="454.7" y="304.4" width="9.4"  height="8.4"  rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+                  <rect class="det" style="animation-delay:.40s" x="542.3" y="286.6" width="13.1" height="13.1" rx="1.2" fill="none" stroke="#0169a9" stroke-width="0.9"/>
+                </g>
+              </g>
+              <!-- 돋보기 테 (얇게 + 그림자) -->
+              <g filter="url(#lensShadow)">
+                <circle id="lensRing" cx="320" cy="240" r="88" fill="none" stroke="#1b2e6a" stroke-width="1.6" stroke-opacity="0.5"/>
+              </g>
+              <circle id="lensRingIn" cx="320" cy="240" r="86.5" fill="none" stroke="#ffffff" stroke-width="1" stroke-opacity="0.7"/>
+            </svg>
+
+            <!-- 검출 카운트 칩 (lock-on 후 등장) -->
+            <div id="detCount" class="absolute top-4 left-4 inline-flex items-center gap-2 bg-navy text-white text-[12px] font-bold px-3 py-1.5 rounded-full shadow-md pointer-events-none select-none" style="opacity:0; transition:opacity .5s cubic-bezier(0.16,1,0.3,1);">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent-400"></span>안전모 5건 검출
+            </div>
+            <!-- 절제된 안내 (조작하면 사라짐) -->
+            <div id="lensHint" class="absolute bottom-5 left-1/2 -translate-x-1/2 text-[12px] tracking-[0.08em] text-navy/35 font-semibold pointer-events-none select-none">돋보기 드래그</div>
+          </div>
+          <figcaption class="text-left">그림 1. 광역 한 장에서 동시에 잡힌 안전모 5건 — 돋보기로 끌어 확대하면 몇 픽셀짜리 헬멧이 또렷해진다.</figcaption>
         </figure>
 
         <h2 id="s2">2. 왜 일반 검출기는 작은 객체에 약한가</h2>
@@ -302,7 +399,7 @@
           </div>
 
           <!-- CTA -->
-          <div class="mt-10 rounded-2xl bg-[#f2eee6] border border-navy/8 p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+          <div class="mt-10 rounded-2xl bg-[#ffffff] border border-navy/8 p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
             <div>
               <p class="text-[18px] font-bold text-navy mb-1">현장에 ONTOH Vision을 적용해 보고 싶다면</p>
               <p class="text-[15px] text-[#64748b]">자율관제 도입 상담을 도와드립니다.</p>
@@ -336,41 +433,44 @@
     </div>
   </div>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="py-16 bg-navy-900 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-10 mb-10">
+  <!-- ==================== 강화 푸터 ==================== -->
+  <footer class="bg-ink text-white/70">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 md:gap-8">
         <div>
-          <a href="../index.html" class="mb-4 block">
-            <img src="../assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8">
-          </a>
-          <p class="text-white/60 text-[16px] font-bold mb-3">주식회사 온토</p>
-          <div class="space-y-1.5 text-white/40 text-[14px] leading-relaxed">
-            <p>대표이사: 김태건</p>
-            <p>사업자등록번호: 230-88-03436</p>
+          <img src="../assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8 mb-5">
+          <p class="text-white text-[16px] font-bold mb-4">주식회사 온토 <span class="text-white/45 font-medium">ONTOH Inc.</span></p>
+          <dl class="space-y-1.5 text-[13.5px] text-white/50 leading-relaxed">
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">대표이사</dt><dd>김태건</dd></div>
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">사업자번호</dt><dd>230-88-03436</dd></div>
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">소재지</dt><dd>(03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</dd></div>
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">이메일</dt><dd><a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></dd></div>
+          </dl>
+        </div>
+        <div>
+          <h4 class="text-white/80 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
+          <div class="space-y-2.5 text-[14.5px]">
+            <a href="../about.html" class="block text-white/55 hover:text-white transition-colors">회사소개</a>
+            <a href="../vision.html" class="block text-white/55 hover:text-white transition-colors">솔루션</a>
+            <a href="index.html" class="block text-white/55 hover:text-white transition-colors">기술·연구</a>
+            <a href="../contact.html" class="block text-white/55 hover:text-white transition-colors">문의</a>
           </div>
         </div>
         <div>
-          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
-          <div class="space-y-2.5">
-            <a href="../about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
-            <a href="../vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
-            <a href="../health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
-            <a href="index.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">테크</a>
-            <a href="../contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">CONTACT</h4>
-          <div class="space-y-2 text-white/50 text-[14px] leading-relaxed">
-            <p>이메일: <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white spring">ktg@ontoh.co.kr</a></p>
-            <p>주소: 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</p>
+          <h4 class="text-white/80 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">문의</h4>
+          <div class="space-y-2 text-[14.5px] text-white/55 leading-relaxed">
+            <p>이메일 <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></p>
+            <p>www.ontoh.co.kr</p>
+            <a href="../contact.html" class="mt-3 inline-flex items-center gap-1.5 text-white font-semibold hover:gap-2.5 transition-all">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           </div>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH INC. All rights reserved.</p>
-        <a href="../privacy.html" class="text-white/50 hover:text-white text-[13px] spring font-medium">개인정보처리방침</a>
+      <div class="border-t border-white/10 mt-12 pt-7 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH Inc. All rights reserved.</p>
+        <div class="flex items-center gap-5 text-[13px]">
+          <a href="../privacy.html" class="text-white/55 hover:text-white transition-colors font-medium">개인정보처리방침</a>
+          <a href="../terms.html" class="text-white/40 hover:text-white transition-colors">이용약관</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -421,6 +521,82 @@
           });
         });
       }
+    })();
+
+    // ===== 인터랙티브 드래그 돋보기 데모 =====
+    (function() {
+      var svg = document.getElementById('lensSvg');
+      if (!svg) return;
+      var clipC  = document.getElementById('lensClipC');
+      var ring   = document.getElementById('lensRing');
+      var ringIn = document.getElementById('lensRingIn');
+      var magUse  = document.getElementById('magUse');
+      var detsMag = document.getElementById('detsMag');
+      var hint    = document.getElementById('lensHint');
+      var demo    = document.getElementById('lensDemo');
+      var count   = document.getElementById('detCount');
+
+      var VW = 720, VH = 440;
+      var R = 88, F = 3.2;       // 돋보기 반지름, 배율
+
+      // 물리 상태: 위치는 관성(lerp)
+      var lx = 300, ly = 200, tx = 300, ty = 200;
+      var idle = true, t0 = null;
+
+      function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+      function draw() {
+        lx = clamp(lx, R, VW - R); ly = clamp(ly, R, VH - R);
+        var tf = 'translate(' + lx + ' ' + ly + ') scale(' + F + ') translate(' + (-lx) + ' ' + (-ly) + ')';
+        clipC.setAttribute('cx', lx); clipC.setAttribute('cy', ly);
+        magUse.setAttribute('transform', tf);
+        detsMag.setAttribute('transform', tf);   // 검출 박스도 장면과 함께 확대
+        ring.setAttribute('cx', lx); ring.setAttribute('cy', ly);
+        ringIn.setAttribute('cx', lx); ringIn.setAttribute('cy', ly);
+      }
+
+      function frame(ts) {
+        if (t0 === null) t0 = ts;
+        if (idle) {                       // 조작 전: 작업자들 위로 느리게 표류하며 유도
+          var t = (ts - t0) / 1000;
+          tx = 360 + 170 * Math.sin(t * 0.5);
+          ty = 312 + 20 * Math.sin(t * 1.0);
+        }
+        lx += (tx - lx) * 0.14;           // 관성(무게감)
+        ly += (ty - ly) * 0.14;
+        draw();
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+
+      // 스크롤 진입 시: 검출 박스 lock-on + 카운트 칩 등장
+      if ('IntersectionObserver' in window && demo) {
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              demo.classList.add('scan');
+              if (count) setTimeout(function() { count.style.opacity = '1'; }, 720);
+              io.disconnect();
+            }
+          });
+        }, { threshold: 0.35 });
+        io.observe(demo);
+      } else if (demo) {
+        demo.classList.add('scan');
+        if (count) count.style.opacity = '1';
+      }
+
+      function toVB(e) {
+        var r = svg.getBoundingClientRect();
+        return { x: (e.clientX - r.left) / r.width * VW, y: (e.clientY - r.top) / r.height * VH };
+      }
+      function follow(e) {
+        if (idle) { idle = false; if (hint) { hint.style.transition = 'opacity 0.5s cubic-bezier(0.16,1,0.3,1)'; hint.style.opacity = '0'; } }
+        var p = toVB(e); tx = p.x; ty = p.y;
+      }
+      svg.addEventListener('pointermove', follow);
+      svg.addEventListener('pointerdown', function(e) { svg.classList.add('dragging'); follow(e); });
+      window.addEventListener('pointerup', function() { svg.classList.remove('dragging'); });
     })();
   </script>
 </body>

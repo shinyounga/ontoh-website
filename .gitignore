@@ -1,12 +1,19 @@
 .DS_Store
+._*
+**/._*
+# 특허등록원부 이미지는 재무·개인정보 포함 → 저장소 제외 (원본 PDF는 assets/patent/에 있음)
+assets/tech/patents/patent-registry-*
 .claude/
 etc/
 archive/
 supanova-design-skill/
 CLAUDE.md
 DESIGN_PRINCIPLES.md
+DESIGN_REFERENCE_ANALYSIS.md
+건설사_웹디자인_레퍼런스.md
 *copy*.html
 *.pdf
+sijae/
 
 # 각 폴더 내 archive 제외
 **/archive/

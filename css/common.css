@@ -58,7 +58,7 @@ html { font-size: 17px; }
   background: transparent;
 }
 .nav-scrolled {
-  background: rgba(250, 248, 243, 0.92);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(27, 46, 106, 0.08);
@@ -129,5 +129,5 @@ html { font-size: 17px; }
 
 /* ==================== Scrollbar ==================== */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #f2eee6; }
+::-webkit-scrollbar-track { background: #eef2f7; }
 ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }

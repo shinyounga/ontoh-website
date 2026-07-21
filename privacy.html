@@ -9,40 +9,45 @@
   <link rel="canonical" href="https://ontoh.co.kr/privacy.html">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap">
   <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
-          colors: {
-            navy: { DEFAULT: '#1b2e6a', 600: '#1b2e6a', 700: '#162556', 800: '#111d42', 900: '#0c142e' },
-            accent: { DEFAULT: '#0169a9', 600: '#0169a9' },
-          },
+      theme: { extend: {
+        fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'], serif: ['"Nanum Myeongjo"', 'serif'] },
+        colors: {
+          navy: '#1b2e6a', ink: '#0A2440', body: '#212121', sub: '#555555',
+          accent: { DEFAULT: '#0169a9', 300: '#8ed0ff', 400: '#59b4ff' },
+          band: '#F5F6F8', hair: '#E5E7EB',
         },
-      },
+      } },
     }
   </script>
   <link rel="stylesheet" href="css/common.css">
   <style>
-    .accent-dot { color: #0169a9; }
+    body { color: #212121; }
+    .myeongjo { font-family: 'Nanum Myeongjo', serif; }
+    .band { background: #F5F6F8; }
+    .rule { border-color: #E5E7EB; }
+    .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+    .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
 
-    /* 처리방침 본문 타이포그래피 */
+    /* 처리방침 본문 타이포그래피 — v3 토큰 (직각·헤어라인) */
     .privacy-content h2 {
       font-size: 22px; font-weight: 800;
-      color: #0f172a; letter-spacing: -0.02em;
+      color: #0A2440; letter-spacing: -0.02em;
       margin-top: 56px; margin-bottom: 16px;
       padding-bottom: 12px;
-      border-bottom: 2px solid #1b2e6a;
+      border-bottom: 2px solid #0A2440;
     }
     .privacy-content h2:first-child { margin-top: 0; }
     .privacy-content h3 {
       font-size: 17px; font-weight: 700;
-      color: #1b2e6a; margin-top: 28px; margin-bottom: 10px;
+      color: #0A2440; margin-top: 28px; margin-bottom: 10px;
     }
     .privacy-content p {
       font-size: 16px; line-height: 1.8;
-      color: #334155; margin-bottom: 14px;
+      color: #555555; margin-bottom: 14px;
     }
     .privacy-content ul {
       list-style: disc; padding-left: 22px;
@@ -50,103 +55,138 @@
     }
     .privacy-content ul li {
       font-size: 16px; line-height: 1.8;
-      color: #334155; margin-bottom: 6px;
+      color: #555555; margin-bottom: 6px;
     }
     .privacy-content ul li::marker { color: #0169a9; }
     .privacy-content table {
       width: 100%; border-collapse: collapse;
       margin: 16px 0 24px;
       font-size: 15px;
-      border: 1px solid #e2e8f0; border-radius: 12px;
-      overflow: hidden;
+      border: 1px solid #E5E7EB;
     }
     .privacy-content table th {
-      background: #f8fafc;
+      background: #F5F6F8;
       padding: 14px 16px;
-      font-weight: 700; color: #1b2e6a;
+      font-weight: 700; color: #0A2440;
       text-align: left;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 1px solid #E5E7EB;
     }
     .privacy-content table td {
       padding: 14px 16px;
-      color: #334155;
-      border-bottom: 1px solid #f1f5f9;
+      color: #555555;
+      border-bottom: 1px solid #E5E7EB;
       vertical-align: top;
     }
     .privacy-content table tr:last-child td { border-bottom: 0; }
-    .privacy-content strong { color: #0f172a; font-weight: 700; }
+    .privacy-content strong { color: #0A2440; font-weight: 700; }
+    .nav-item { position:relative; }
+    .nav-top::after { content:""; position:absolute; left:20px; right:20px; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform .34s cubic-bezier(0.16,1,0.3,1); }
+    .nav-item:hover .nav-top::after { transform:scaleX(1); }
+    .megabar { position:absolute; left:0; right:0; top:100%; height:182px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
+    .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
+    header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
+    .dbox { padding:24px 0; }
+    .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:182px; width:1px; background:#E5E7EB; }
+    .dlink { display:flex; align-items:center; gap:.5rem; font-size:14.5px; color:#555555; padding:8px 0; white-space:nowrap; transition:color .28s cubic-bezier(0.16,1,0.3,1), gap .28s cubic-bezier(0.16,1,0.3,1); }
+    .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
+    .dlink:hover { color:#0A2440; gap:.9rem; }
+    .dlink:hover iconify-icon { opacity:1; transform:none; }
   </style>
 </head>
-<body class="bg-[#faf8f3] text-[#0f172a] font-sans antialiased">
+<body class="bg-white font-sans antialiased">
 
-  <div class="noise-overlay"></div>
-
-  <!-- ==================== NAV ==================== -->
-  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 nav-transparent spring">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="index.html" class="flex items-center">
-          <img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
-        </a>
-        <div class="hidden md:flex items-center gap-10 h-full">
-          <a href="about.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">회사소개</a>
-          <a href="vision.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">온토비전</a>
-          <a href="health.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">온토케어</a>
-          <a href="blog/index.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">테크</a>
-        </div>
-        <div class="hidden md:flex items-center">
-          <a href="contact.html" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
-            문의하기
-            <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
-              <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
-            </span>
-          </a>
-        </div>
-        <button id="menuToggle" class="md:hidden w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center spring hover:bg-navy/10" aria-label="메뉴 열기">
-          <iconify-icon icon="solar:hamburger-menu-linear" class="text-navy text-lg"></iconify-icon>
-        </button>
+  <!-- ==================== 유틸리티 바 ==================== -->
+  <div class="hidden lg:block bg-ink text-white/55 text-[13px]">
+    <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
+      <p>건설현장 안전관리 Physical AI · 주식회사 온토</p>
+      <div class="flex items-center gap-5">
+        <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors inline-flex items-center gap-1.5"><iconify-icon icon="solar:letter-linear" class="text-[13px]"></iconify-icon> ktg@ontoh.co.kr</a>
+        <span class="text-white/25">|</span>
+        <a href="contact.html" class="hover:text-white transition-colors inline-flex items-center gap-1.5 text-white/75"><iconify-icon icon="solar:chat-round-line-linear" class="text-[13px]"></iconify-icon> 도입 문의</a>
       </div>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden">
-    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center" aria-label="메뉴 닫기">
-      <iconify-icon icon="solar:close-circle-linear" class="text-navy text-2xl"></iconify-icon>
-    </button>
-    <a href="about.html" class="menu-link text-2xl font-bold text-navy stagger-1" onclick="closeMobileMenu()">회사소개</a>
-    <div class="menu-link stagger-2 text-center">
-      <p class="text-[13px] text-[#94a3b8] font-bold tracking-[0.14em] uppercase mb-4">솔루션</p>
-      <a href="vision.html" class="block text-xl font-bold text-navy mb-3" onclick="closeMobileMenu()">온토비전</a>
-      <a href="health.html" class="block text-xl font-bold text-navy" onclick="closeMobileMenu()">온토케어</a>
-    </div>
-    <a href="blog/index.html" class="menu-link text-2xl font-bold text-navy stagger-3" onclick="closeMobileMenu()">테크</a>
-    <a href="contact.html" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-3 hover:scale-[1.02] active:scale-[0.98] spring" onclick="closeMobileMenu()">
-      문의하기
-      <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
-        <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
-      </span>
-    </a>
   </div>
 
-  <!-- ==================== CONTENT ==================== -->
-  <section class="pt-40 pb-24 md:pt-52 md:pb-32">
-    <div class="max-w-3xl mx-auto px-6">
+  <!-- ==================== 헤더 + 메가메뉴 GNB ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-[70px]">
+        <a href="index.html" class="flex items-center shrink-0"><img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-9"></a>
+        <nav class="gnb hidden lg:flex items-stretch h-full">
+          <div class="nav-item flex items-stretch">
+            <a href="about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">회사소개</a>
+            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="about.html#mission" class="dlink">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#history" class="dlink">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#overview" class="dlink">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+          <div class="nav-item flex items-stretch">
+            <a href="vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">솔루션</a>
+            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="vision.html" class="dlink">ONTOH Vision <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="health.html" class="dlink">ONTOH Health <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+          <div class="nav-item flex items-stretch">
+            <a href="tech.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">기술·연구</a>
+            <div class="nav-panel"><div class="dbox min-w-[160]"><a href="tech.html" class="dlink">기술 개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="patents.html" class="dlink">특허 · 지식재산권 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="papers.html" class="dlink">연구 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="blog/index.html" class="dlink">기술 이야기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+          <div class="nav-item flex items-stretch">
+            <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">문의</a>
+            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="contact.html" class="dlink">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="contact.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[15px] font-bold hover:bg-[#0e3161] transition-colors">데모 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <button id="menuToggle" class="lg:hidden w-10 h-10 bg-ink/[0.05] flex items-center justify-center hover:bg-ink/10 transition-colors" aria-label="메뉴 열기">
+            <iconify-icon icon="solar:hamburger-menu-linear" class="text-ink text-lg"></iconify-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="megabar"></div>
+  </header>
 
-      <!-- 헤더 -->
-      <header class="mb-16">
-        <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent mb-4">Privacy</p>
-        <h1 class="text-[40px] md:text-[56px] font-semibold tracking-tight text-[#0f172a] mb-5" style="line-height: 1.1; letter-spacing: -0.03em;">
-          개인정보처리방침
-        </h1>
-        <p class="text-[15px] text-[#64748b] leading-relaxed">
-          <strong class="text-navy">주식회사 온토</strong>(이하 "회사")는 정보주체의 개인정보를 중요시하며,<br>
+  <!-- ==================== 모바일 메뉴 ==================== -->
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/97 backdrop-blur-3xl flex flex-col items-center justify-center gap-7 lg:hidden">
+    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 bg-ink/[0.05] flex items-center justify-center" aria-label="메뉴 닫기">
+      <iconify-icon icon="solar:close-circle-linear" class="text-ink text-2xl"></iconify-icon>
+    </button>
+    <a href="about.html" class="menu-link text-2xl font-bold text-ink stagger-1" onclick="closeMobileMenu()">회사소개</a>
+    <div class="menu-link stagger-2 text-center">
+      <p class="text-[13px] text-sub/70 font-bold tracking-[0.14em] uppercase mb-3">솔루션</p>
+      <a href="vision.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()">ONTOH Vision</a>
+      <a href="health.html" class="block text-xl font-bold text-ink" onclick="closeMobileMenu()">ONTOH Health</a>
+    </div>
+    <a href="blog/index.html" class="menu-link text-2xl font-bold text-ink stagger-3" onclick="closeMobileMenu()">기술·연구</a>
+    <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
+    <a href="contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[16px] font-bold stagger-5" onclick="closeMobileMenu()">데모 신청 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+  </div>
+
+  <!-- ==================== 서브 비주얼 + 브레드크럼 ==================== -->
+  <section class="relative bg-ink overflow-hidden">
+    <img src="assets/main/main1.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25">
+    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
+      <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Privacy Policy</p>
+      <h1 class="text-white text-[34px] md:text-[46px] font-bold tracking-tight" style="letter-spacing:-0.02em;">개인정보처리방침</h1>
+      <nav class="mt-5 flex items-center gap-2 text-[13px] text-white/55">
+        <a href="index.html" class="hover:text-white transition-colors">홈</a>
+        <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[12px]"></iconify-icon>
+        <span class="text-white/85">개인정보처리방침</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ==================== 본문 ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-4xl mx-auto px-6 py-20 md:py-28">
+
+      <!-- 리드 -->
+      <header class="mb-14 pb-10 border-b border-hair">
+        <p class="kicker mb-4">개인정보처리방침</p>
+        <p class="text-[16px] text-sub leading-[1.8]">
+          <strong class="text-ink font-bold">주식회사 온토</strong>(이하 "회사")는 정보주체의 개인정보를 중요시하며,
           「개인정보 보호법」을 준수하기 위해 본 개인정보처리방침을 수립·공개합니다.
         </p>
         <!-- 시행일은 게시 시 결정 — 아래 '공지 예정'을 실제 날짜로 변경 (예: 2026년 6월 1일) -->
-        <div class="mt-5 inline-flex items-center gap-2 text-[13px] text-[#64748b]">
-          <iconify-icon icon="solar:calendar-bold-duotone" class="text-accent text-[16px]"></iconify-icon>
-          <span>시행일: <strong class="text-navy">공지 예정</strong></span>
+        <div class="mt-5 inline-flex items-center gap-2 text-[13px] text-sub">
+          <iconify-icon icon="solar:calendar-linear" class="text-accent text-[16px]"></iconify-icon>
+          <span>시행일: <strong class="text-ink">공지 예정</strong></span>
         </div>
       </header>
 
@@ -229,7 +269,7 @@
             </tr>
           </tbody>
         </table>
-        <p class="text-[14px] text-[#64748b]">※ 위탁 계약 체결 시 「개인정보 보호법」 제26조에 따라 위탁업무 수행 목적 외 개인정보 처리 금지, 기술적·관리적 보호조치, 재위탁 제한, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁업체가 개인정보를 안전하게 처리하는지 감독합니다.</p>
+        <p class="text-[14px] text-sub">※ 위탁 계약 체결 시 「개인정보 보호법」 제26조에 따라 위탁업무 수행 목적 외 개인정보 처리 금지, 기술적·관리적 보호조치, 재위탁 제한, 손해배상 등 책임에 관한 사항을 계약서 등 문서에 명시하고, 수탁업체가 개인정보를 안전하게 처리하는지 감독합니다.</p>
 
         <h2>6. 정보주체의 권리·의무 및 행사 방법</h2>
         <p>정보주체는 회사에 대해 언제든지 다음 각 호의 권리를 행사할 수 있습니다.</p>
@@ -294,51 +334,54 @@
       </article>
 
       <!-- 하단 컨택 안내 -->
-      <div class="mt-16 p-7 rounded-2xl bg-[#f2eee6] border border-navy/8 text-center">
-        <p class="text-[15px] text-[#475569] leading-relaxed">
+      <div class="mt-16 p-7 band border border-hair text-center">
+        <p class="text-[15px] text-sub leading-relaxed">
           본 처리방침에 관한 문의는<br>
-          <a href="mailto:ktg@ontoh.co.kr" class="text-accent font-bold underline">ktg@ontoh.co.kr</a> 또는 <a href="contact.html" class="text-accent font-bold underline">문의하기</a> 페이지를 이용해 주세요.
+          <a href="mailto:ktg@ontoh.co.kr" class="text-accent font-bold hover:underline">ktg@ontoh.co.kr</a> 또는 <a href="contact.html" class="text-accent font-bold hover:underline">문의하기</a> 페이지를 이용해 주세요.
         </p>
       </div>
 
     </div>
   </section>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="py-16 bg-navy-900 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-10 mb-10">
+  <!-- ==================== 강화 푸터 ==================== -->
+  <footer class="bg-ink text-white/70">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 md:gap-8">
         <div>
-          <a href="index.html" class="mb-4 block">
-            <img src="assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8">
-          </a>
-          <p class="text-white/60 text-[16px] font-bold mb-3">주식회사 온토</p>
-          <div class="space-y-1.5 text-white/40 text-[14px] leading-relaxed">
-            <p>대표이사: 김태건</p>
-            <p>사업자등록번호: 230-88-03436</p>
+          <img src="assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8 mb-5">
+          <p class="text-white text-[16px] font-bold mb-4">주식회사 온토 <span class="text-white/45 font-medium">ONTOH Inc.</span></p>
+          <dl class="space-y-1.5 text-[13.5px] text-white/50 leading-relaxed">
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">대표이사</dt><dd>김태건</dd></div>
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">사업자번호</dt><dd>230-88-03436</dd></div>
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">소재지</dt><dd>(03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</dd></div>
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">이메일</dt><dd><a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></dd></div>
+          </dl>
+        </div>
+        <div>
+          <h4 class="text-white/80 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
+          <div class="space-y-2.5 text-[14.5px]">
+            <a href="about.html" class="block text-white/55 hover:text-white transition-colors">회사소개</a>
+            <a href="vision.html" class="block text-white/55 hover:text-white transition-colors">솔루션</a>
+            <a href="blog/index.html" class="block text-white/55 hover:text-white transition-colors">기술·연구</a>
+            <a href="contact.html" class="block text-white/55 hover:text-white transition-colors">문의</a>
           </div>
         </div>
         <div>
-          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
-          <div class="space-y-2.5">
-            <a href="about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
-            <a href="vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
-            <a href="health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
-            <a href="blog/index.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">테크</a>
-            <a href="contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">Contact</h4>
-          <div class="space-y-2 text-white/50 text-[14px] leading-relaxed">
-            <p>이메일: <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white spring">ktg@ontoh.co.kr</a></p>
-            <p>주소: 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</p>
+          <h4 class="text-white/80 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">문의</h4>
+          <div class="space-y-2 text-[14.5px] text-white/55 leading-relaxed">
+            <p>이메일 <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></p>
+            <p>www.ontoh.co.kr</p>
+            <a href="contact.html" class="mt-3 inline-flex items-center gap-1.5 text-white font-semibold hover:gap-2.5 transition-all">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           </div>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH INC. All rights reserved.</p>
-        <a href="privacy.html" class="text-white text-[13px] spring font-bold">개인정보처리방침</a>
+      <div class="border-t border-white/10 mt-12 pt-7 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH Inc. All rights reserved.</p>
+        <div class="flex items-center gap-5 text-[13px]">
+          <a href="privacy.html" class="text-white/55 hover:text-white transition-colors font-medium">개인정보처리방침</a>
+          <a href="terms.html" class="text-white/40 hover:text-white transition-colors">이용약관</a>
+        </div>
       </div>
     </div>
   </footer>

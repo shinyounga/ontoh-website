@@ -39,393 +39,382 @@
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap">
   <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
   <script>
     tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Pretendard', 'system-ui', 'sans-serif'],
-          },
-          colors: {
-            navy: {
-              DEFAULT: '#1b2e6a',
-              50: '#f0f3fa',
-              100: '#dde3f3',
-              200: '#bcc8e7',
-              300: '#8fa3d6',
-              400: '#6079c0',
-              500: '#3d57a8',
-              600: '#1b2e6a',
-              700: '#162556',
-              800: '#111d42',
-              900: '#0c142e',
-              950: '#080e1f',
-            },
-            accent: {
-              DEFAULT: '#0169a9',
-              50: '#eef8ff',
-              100: '#d9eeff',
-              200: '#bce2ff',
-              300: '#8ed0ff',
-              400: '#59b4ff',
-              500: '#3393ff',
-              600: '#0169a9',
-              700: '#015a91',
-              800: '#064c77',
-              900: '#0b4063',
-            },
-            danger: '#ef4444',
-            warning: '#d97706',
-          },
+      theme: { extend: {
+        fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'], serif: ['"Nanum Myeongjo"', 'serif'] },
+        colors: {
+          navy: '#1b2e6a', ink: '#0A2440', body: '#212121', sub: '#555555',
+          accent: { DEFAULT: '#0169a9', 300: '#8ed0ff', 400: '#59b4ff' },
+          band: '#F5F6F8', hair: '#E5E7EB',
         },
-      },
+      } },
     }
   </script>
   <link rel="stylesheet" href="css/common.css">
   <style>
-    .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #0169a9; }
-    .lede { color: #475569; }
-    .ulink { font-weight: 600; color: #1b2e6a; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(27,46,106,0.3); }
-    .ulink:hover { text-decoration-color: #1b2e6a; }
+    body { color: #212121; }
+    .myeongjo { font-family: 'Nanum Myeongjo', serif; }
+    .band { background: #F5F6F8; }
+    .rule { border-color: #E5E7EB; }
+    .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+    .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
+    .corp-card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
+    .corp-card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
+    .news-row { transition: background .35s cubic-bezier(0.16,1,0.3,1); }
+    .news-row:hover { background:#F5F6F8; }
+    .tag { font-size:12px; font-weight:800; letter-spacing:.02em; padding:3px 9px; }
+    .stat-num { font-variant-numeric: tabular-nums; letter-spacing:-.02em; }
+    .nav-item { position:relative; }
+    .nav-top::after { content:""; position:absolute; left:20px; right:20px; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform .34s cubic-bezier(0.16,1,0.3,1); }
+    .nav-item:hover .nav-top::after { transform:scaleX(1); }
+    .megabar { position:absolute; left:0; right:0; top:100%; height:182px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
+    .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
+    header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
+    .dbox { padding:24px 0; }
+    .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:182px; width:1px; background:#E5E7EB; }
+    .dlink { display:flex; align-items:center; gap:.5rem; font-size:14.5px; color:#555555; padding:8px 0; white-space:nowrap; transition:color .28s cubic-bezier(0.16,1,0.3,1), gap .28s cubic-bezier(0.16,1,0.3,1); }
+    .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
+    .dlink:hover { color:#0A2440; gap:.9rem; }
+    .dlink:hover iconify-icon { opacity:1; transform:none; }
   </style>
 </head>
-<body class="bg-[#faf8f3] text-[#0f172a] font-sans antialiased min-h-[100dvh]">
-  <!-- Noise Overlay -->
-  <div class="noise-overlay"></div>
+<body class="bg-white font-sans antialiased">
 
-  <!-- ==================== NAVIGATION ==================== -->
-  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-40 nav-transparent">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="index.html" class="flex items-center">
-          <img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
-        </a>
-        <div class="hidden md:flex items-center gap-10 h-full">
-          <a href="about.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">회사소개</a>
-          <a href="vision.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">온토비전</a>
-          <a href="health.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">온토케어</a>
-          <a href="blog/index.html" class="text-[16px] font-semibold text-[#334155] hover:text-navy spring relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:rounded-full hover:after:w-full after:spring">테크</a>
-        </div>
-        <div class="hidden md:flex items-center">
-          <a href="contact.html" class="group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
-            문의하기
-            <span class="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center">
-              <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow text-[10px]"></iconify-icon>
-            </span>
-          </a>
-        </div>
-        <button id="menuToggle" class="md:hidden w-9 h-9 rounded-full bg-navy/5 flex items-center justify-center spring hover:bg-navy/10" aria-label="메뉴 열기" onclick="toggleMobileMenu()">
-          <iconify-icon icon="solar:hamburger-menu-linear" class="text-navy text-lg"></iconify-icon>
-        </button>
+  <!-- ==================== 유틸리티 바 ==================== -->
+  <div class="hidden lg:block bg-ink text-white/55 text-[13px]">
+    <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
+      <p>건설현장 안전관리 Physical AI · 주식회사 온토</p>
+      <div class="flex items-center gap-5">
+        <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors inline-flex items-center gap-1.5"><iconify-icon icon="solar:letter-linear" class="text-[13px]"></iconify-icon> ktg@ontoh.co.kr</a>
+        <span class="text-white/25">|</span>
+        <a href="contact.html" class="hover:text-white transition-colors inline-flex items-center gap-1.5 text-white/75"><iconify-icon icon="solar:chat-round-line-linear" class="text-[13px]"></iconify-icon> 도입 문의</a>
       </div>
     </div>
-  </nav>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/95 backdrop-blur-3xl flex flex-col items-center justify-center gap-8 md:hidden">
-    <button class="absolute top-6 right-6 w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center" aria-label="메뉴 닫기" onclick="closeMobileMenu()">
-      <iconify-icon icon="solar:close-circle-linear" class="text-navy text-2xl"></iconify-icon>
-    </button>
-    <a href="about.html" class="menu-link text-2xl font-bold text-navy stagger-1" onclick="closeMobileMenu()">회사소개</a>
-    <div class="menu-link stagger-2 text-center">
-      <p class="text-[13px] text-[#94a3b8] font-bold tracking-[0.14em] uppercase mb-4">솔루션</p>
-      <a href="vision.html" class="block text-xl font-bold text-navy mb-3" onclick="closeMobileMenu()">온토비전</a>
-      <a href="health.html" class="block text-xl font-bold text-navy" onclick="closeMobileMenu()">온토케어</a>
-    </div>
-    <a href="blog/index.html" class="menu-link text-2xl font-bold text-navy stagger-3" onclick="closeMobileMenu()">테크</a>
-    <a href="contact.html" class="menu-link group inline-flex items-center gap-3 bg-navy text-white rounded-full px-8 py-4 text-[16px] font-bold stagger-3 hover:scale-[1.02] active:scale-[0.98] spring" onclick="closeMobileMenu()">
-      문의하기
-      <span class="w-8 h-8 rounded-full bg-white/15 flex items-center justify-center">
-        <iconify-icon icon="solar:arrow-right-linear" class="cta-arrow"></iconify-icon>
-      </span>
-    </a>
   </div>
 
-  <!-- ==================== HERO ==================== -->
-  <section class="border-b border-navy/10">
-    <div class="max-w-5xl mx-auto px-6 pt-40 pb-24 md:pt-52 md:pb-32">
-      <p class="eyebrow mb-7 reveal">ONTOH Health</p>
-      <h1 class="reveal stagger-1 text-[48px] md:text-[80px] font-semibold tracking-tight text-[#0f172a]" style="line-height:1.05; letter-spacing:-0.035em;">
-        검진 수집부터 배치 관리까지,<br><span class="text-accent">수기 업무를 자동화</span>합니다.
-      </h1>
-      <p class="reveal stagger-2 mt-8 text-[19px] md:text-[22px] text-[#475569] leading-[1.7] max-w-2xl">
-        검진 결과 수령, 엑셀 입력, 고위험군 분류까지 — 반복되던 수기 업무를 하나의 플랫폼에서 자동으로 처리합니다.
-      </p>
-      <div class="reveal stagger-3 mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[16px]">
-        <a href="#process" class="ulink">작동 방식 보기 →</a>
-        <a href="contact.html" class="ulink">도입 문의 →</a>
+  <!-- ==================== 헤더 + 메가메뉴 GNB ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-center justify-between h-[70px]">
+        <a href="index.html" class="flex items-center shrink-0"><img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-9"></a>
+        <nav class="gnb hidden lg:flex items-stretch h-full">
+          <div class="nav-item flex items-stretch">
+            <a href="about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">회사소개</a>
+            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="about.html#mission" class="dlink">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#history" class="dlink">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#overview" class="dlink">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+          <div class="nav-item flex items-stretch">
+            <a href="vision.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">솔루션</a>
+            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="vision.html" class="dlink">ONTOH Vision <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="health.html" class="dlink">ONTOH Health <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+          <div class="nav-item flex items-stretch">
+            <a href="tech.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">기술·연구</a>
+            <div class="nav-panel"><div class="dbox min-w-[160]"><a href="tech.html" class="dlink">기술 개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="patents.html" class="dlink">특허 · 지식재산권 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="papers.html" class="dlink">연구 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="blog/index.html" class="dlink">기술 이야기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+          <div class="nav-item flex items-stretch">
+            <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">문의</a>
+            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="contact.html" class="dlink">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+          </div>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="contact.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[15px] font-bold hover:bg-[#0e3161] transition-colors">데모 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <button id="menuToggle" class="lg:hidden w-10 h-10 bg-ink/[0.05] flex items-center justify-center hover:bg-ink/10 transition-colors" aria-label="메뉴 열기">
+            <iconify-icon icon="solar:hamburger-menu-linear" class="text-ink text-lg"></iconify-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="megabar"></div>
+  </header>
+
+  <!-- ==================== 모바일 메뉴 ==================== -->
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/97 backdrop-blur-3xl flex flex-col items-center justify-center gap-7 lg:hidden">
+    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 bg-ink/[0.05] flex items-center justify-center" aria-label="메뉴 닫기">
+      <iconify-icon icon="solar:close-circle-linear" class="text-ink text-2xl"></iconify-icon>
+    </button>
+    <a href="about.html" class="menu-link text-2xl font-bold text-ink stagger-1" onclick="closeMobileMenu()">회사소개</a>
+    <div class="menu-link stagger-2 text-center">
+      <p class="text-[13px] text-accent font-bold tracking-[0.14em] uppercase mb-3">솔루션</p>
+      <a href="vision.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()">ONTOH Vision</a>
+      <a href="health.html" class="block text-xl font-bold text-accent" onclick="closeMobileMenu()">ONTOH Health</a>
+    </div>
+    <a href="blog/index.html" class="menu-link text-2xl font-bold text-ink stagger-3" onclick="closeMobileMenu()">기술·연구</a>
+    <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
+    <a href="contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[16px] font-bold stagger-5" onclick="closeMobileMenu()">데모 신청 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+  </div>
+
+  <!-- ==================== 서브 비주얼 + 브레드크럼 ==================== -->
+  <section class="relative bg-ink overflow-hidden">
+    <img src="assets/main/main1.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25">
+    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50"></div>
+    <div class="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
+      <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Solution</p>
+      <h1 class="text-white text-[34px] md:text-[46px] font-bold tracking-tight" style="letter-spacing:-0.02em;">ONTOH Health</h1>
+      <nav class="mt-5 flex items-center gap-2 text-[13px] text-white/55">
+        <a href="index.html" class="hover:text-white transition-colors">홈</a>
+        <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[12px]"></iconify-icon>
+        <a href="vision.html" class="hover:text-white transition-colors">솔루션</a>
+        <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[12px]"></iconify-icon>
+        <span class="text-white/85">ONTOH Health</span>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ==================== 인트로 ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div class="max-w-3xl">
+        <p class="kicker mb-4 reveal">디지털 보건관리</p>
+        <h2 class="reveal stagger-1 text-[30px] md:text-[44px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.03em;">
+          근로자의 건강 위험을,<br><span class="text-accent">데이터로</span> 먼저 살핍니다.
+        </h2>
+        <p class="reveal stagger-2 mt-6 text-[19px] md:text-[21px] text-ink leading-[1.7]">“보이지 않는 위험일수록, 먼저 찾아내야 합니다.”</p>
+        <p class="reveal stagger-2 mt-4 text-[17px] text-sub leading-[1.75]">고혈압·과로·폭염 같은 질병형 산업재해는 보이지 않게 다가옵니다. 온토케어는 흩어진 검진 데이터를 자동으로 모아, <strong class="text-ink font-bold">고위험군을 먼저 찾아냅니다.</strong></p>
+      </div>
+      <div class="reveal stagger-3 mt-11 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+        <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-ink text-white px-7 py-3.5 text-[16px] font-bold hover:bg-[#0e3161] transition-colors">데모 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+        <a href="#process" class="inline-flex items-center gap-1.5 text-accent font-bold text-[16px] hover:gap-2.5 transition-all">작동 방식 보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+      </div>
+      <p class="reveal stagger-3 mt-5 text-[14px] text-sub/70">기존 검진 데이터 연동 · 현장 규모에 맞춘 무료 데모 제공</p>
+    </div>
+  </section>
+
+  <!-- ==================== 문제 (AS-IS) ==================== -->
+  <section class="band border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div class="lg:grid lg:grid-cols-[300px_1fr] lg:gap-16">
+        <div class="mb-10 lg:mb-0">
+          <p class="kicker mb-4 reveal">문제 인식</p>
+          <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
+            검진 결과부터 작업 관리까지, 전 과정이 <span class="text-accent">수기·분절</span>입니다.
+          </h2>
+          <p class="reveal stagger-2 mt-5 text-[17px] text-sub leading-[1.75]">건강검진 → 결과 수령 → 엑셀 입력 → 개별 관리 → 고위험군 식별까지, 모든 단계가 끊겨 있어 사후 대응에 그칩니다.</p>
+        </div>
+        <div class="reveal grid sm:grid-cols-2 gap-px bg-hair border border-hair">
+          <div class="bg-white p-7"><h3 class="text-[17px] font-bold text-ink mb-2 flex items-center gap-2"><iconify-icon icon="solar:document-text-linear" class="text-ink text-[19px]"></iconify-icon>건강검진 결과</h3><p class="text-[14.5px] text-sub leading-[1.7]">PDF·엑셀로 개별 관리되고 현장마다 양식이 달라 통합 조회가 불가능합니다. 작업자가 늘수록 관리 난이도가 급증합니다.</p></div>
+          <div class="bg-white p-7"><h3 class="text-[17px] font-bold text-ink mb-2 flex items-center gap-2"><iconify-icon icon="solar:users-group-rounded-linear" class="text-ink text-[19px]"></iconify-icon>배치 시 건강상태 확인</h3><p class="text-[14.5px] text-sub leading-[1.7]">검진 결과와 배치 정보를 수기로 대조해 확인 누락이 잦고, 건강 이상 작업자가 고위험 작업에 배치되는 사각지대가 생깁니다.</p></div>
+          <div class="bg-white p-7"><h3 class="text-[17px] font-bold text-ink mb-2 flex items-center gap-2"><iconify-icon icon="solar:danger-triangle-linear" class="text-ink text-[19px]"></iconify-icon>고위험군 식별</h3><p class="text-[14.5px] text-sub leading-[1.7]">관리자 개인의 경험과 역량에 의존해 체계적 기준 없이 판단하므로, 고위험 작업자 사전 식별에 반복적으로 실패합니다.</p></div>
+          <div class="bg-white p-7"><h3 class="text-[17px] font-bold text-ink mb-2 flex items-center gap-2"><iconify-icon icon="solar:pen-2-linear" class="text-ink text-[19px]"></iconify-icon>수기 업무 흐름</h3><p class="text-[14.5px] text-sub leading-[1.7]">우편·PDF 수령과 엑셀 수기 입력으로 오타·누락이 빈번하고, 데이터가 파편화되어 통합 조회가 어렵습니다.</p></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== PROBLEMS (AS-IS) ==================== -->
-  <section class="border-b border-navy/10">
-    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
-      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
-        <p class="eyebrow mb-5 md:mb-1 reveal">Problems</p>
+  <!-- ==================== 작동 방식 (TO-BE) ==================== -->
+  <section id="process" class="border-b border-hair scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div class="grid lg:grid-cols-[300px_1fr] gap-10 lg:gap-16">
         <div>
-          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a]" style="line-height:1.2; letter-spacing:-0.02em;">
-            검진 결과부터 작업 관리까지, 전 과정이 <span class="text-accent">수기·분절</span>입니다.
+          <p class="kicker mb-4 reveal">작동 방식</p>
+          <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
+            반복 업무는 AI에게,<br>관리자는 <span class="text-accent">핵심 업무</span>에.
           </h2>
-          <p class="reveal lede mt-5 text-[18px] leading-[1.75] max-w-2xl">
-            건강검진 → 결과 수령 → 엑셀 입력 → 개별 관리 → 고위험군 식별까지, 모든 단계가 끊겨 있어 사후 대응에 그칩니다.
-          </p>
-          <dl class="reveal mt-14 grid sm:grid-cols-2 gap-x-12 gap-y-8">
-            <div><dt class="text-[17px] font-semibold text-[#0f172a]">건강검진 결과</dt><dd class="mt-1.5 text-[16px] text-[#64748b] leading-[1.7]">PDF·엑셀로 개별 관리되고 현장마다 양식이 달라 통합 조회가 불가능합니다. 작업자가 늘수록 관리 난이도가 급증합니다.</dd></div>
-            <div><dt class="text-[17px] font-semibold text-[#0f172a]">현장 배치 시 건강상태 확인</dt><dd class="mt-1.5 text-[16px] text-[#64748b] leading-[1.7]">검진 결과와 배치 정보를 수기로 대조해 확인 누락이 잦고, 건강 이상 작업자가 고위험 작업에 배치되는 사각지대가 생깁니다.</dd></div>
-            <div><dt class="text-[17px] font-semibold text-[#0f172a]">고위험군 식별</dt><dd class="mt-1.5 text-[16px] text-[#64748b] leading-[1.7]">관리자 개인의 경험과 역량에 의존해 체계적 기준 없이 판단하므로, 고위험 작업자 사전 식별에 반복적으로 실패합니다.</dd></div>
-            <div><dt class="text-[17px] font-semibold text-[#0f172a]">수기 업무 흐름</dt><dd class="mt-1.5 text-[16px] text-[#64748b] leading-[1.7]">우편·PDF 수령과 엑셀 수기 입력으로 오타·누락이 빈번하고, 데이터가 파편화되어 통합 조회가 어렵습니다.</dd></div>
+          <p class="reveal stagger-2 mt-5 text-[16px] text-sub leading-[1.7]">인증부터 사후관리까지, 전 과정을 하나의 플랫폼에서 자동으로 처리합니다.</p>
+        </div>
+        <div class="reveal border-t-2 border-ink">
+          <div class="news-row grid grid-cols-[52px_1fr] gap-x-5 px-3 sm:px-5 py-7 border-b border-hair">
+            <span class="stat-num text-[22px] font-bold text-accent">01</span>
+            <div><h3 class="text-[19px] font-bold text-ink mb-1.5">간편 인증</h3><p class="text-[15px] text-sub leading-[1.7]">본인 확인 한 번으로 시작합니다. 카카오·네이버·PASS 간편인증을 지원합니다.</p></div>
+          </div>
+          <div class="news-row grid grid-cols-[52px_1fr] gap-x-5 px-3 sm:px-5 py-7 border-b border-hair">
+            <span class="stat-num text-[22px] font-bold text-accent">02</span>
+            <div><h3 class="text-[19px] font-bold text-ink mb-1.5">데이터 수집</h3><p class="text-[15px] text-sub leading-[1.7]">검진 기관과 연동해 10년치 국가건강검진 결과를 자동으로 수집합니다.</p></div>
+          </div>
+          <div class="news-row grid grid-cols-[52px_1fr] gap-x-5 px-3 sm:px-5 py-7 border-b border-hair">
+            <span class="stat-num text-[22px] font-bold text-accent">03</span>
+            <div><h3 class="text-[19px] font-bold text-ink mb-1.5">위험 분류</h3><p class="text-[15px] text-sub leading-[1.7]">AI가 고위험군을 판별해 고혈압·당뇨·심뇌혈관 위험을 자동으로 분류합니다.</p></div>
+          </div>
+          <div class="news-row grid grid-cols-[52px_1fr] gap-x-5 px-3 sm:px-5 py-7 border-b border-hair">
+            <span class="stat-num text-[22px] font-bold text-accent">04</span>
+            <div><h3 class="text-[19px] font-bold text-ink mb-1.5">리포트</h3><p class="text-[15px] text-sub leading-[1.7]">현장별·개인별 보건 리포트를 자동 생성하고 엑셀 출력을 지원합니다.</p></div>
+          </div>
+          <div class="news-row grid grid-cols-[52px_1fr] gap-x-5 px-3 sm:px-5 py-7 border-b border-hair">
+            <span class="stat-num text-[22px] font-bold text-accent">05</span>
+            <div><h3 class="text-[19px] font-bold text-ink mb-1.5">사후 관리 추적</h3><p class="text-[15px] text-sub leading-[1.7]">건강 이력을 모니터링하고 재검사·작업전환 리마인드를 자동 발송합니다.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 기능 ==================== -->
+  <section class="band border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div class="max-w-2xl mb-12">
+        <p class="kicker mb-4 reveal">주요 기능</p>
+        <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
+          등록부터 관리까지, <span class="text-accent">모든 기능</span>을 하나로.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="reveal corp-card p-8">
+          <h3 class="text-[20px] font-bold text-ink mb-3">작업자 등록 &amp; 검진 자동 수집</h3>
+          <p class="text-[15.5px] text-sub leading-[1.75]">작업자가 간편인증을 완료하면 국가건강검진 결과가 자동으로 수집됩니다. 관리자는 별도 입력 없이 대시보드에서 전체 현황을 확인하고, 10년치 이력으로 과거 추이까지 분석할 수 있습니다.</p>
+          <ul class="text-[15px] text-sub leading-[1.7] space-y-2.5 border-t border-hair pt-5 mt-5">
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-linear" class="text-accent text-[17px] mt-0.5 shrink-0"></iconify-icon>카카오·네이버·PASS 간편인증 지원</li>
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-linear" class="text-accent text-[17px] mt-0.5 shrink-0"></iconify-icon>10년치 국가건강검진 결과 자동 연동</li>
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-linear" class="text-accent text-[17px] mt-0.5 shrink-0"></iconify-icon>수기 입력 완전 제거, 오류율 0%</li>
+          </ul>
+        </div>
+        <div class="reveal stagger-1 corp-card p-8">
+          <h3 class="text-[20px] font-bold text-ink mb-3">관리자를 위한 핵심 기능</h3>
+          <p class="text-[15.5px] text-sub leading-[1.75]">작업자 건강 상태를 한눈에 파악하고, 필요한 조치를 바로 확인합니다. 등록 작업자·고위험군·미등록자 현황을 실시간으로 집계합니다.</p>
+          <dl class="grid sm:grid-cols-2 gap-x-8 gap-y-5 border-t border-hair pt-5 mt-5">
+            <div><dt class="text-[15.5px] font-bold text-ink">민감군 대시보드</dt><dd class="mt-1 text-[14px] text-sub leading-[1.6]">현장별 고위험군 현황을 실시간으로 파악합니다.</dd></div>
+            <div><dt class="text-[15.5px] font-bold text-ink">미등록자 알림</dt><dd class="mt-1 text-[14px] text-sub leading-[1.6]">미등록 작업자를 자동 식별하고 등록을 독촉합니다.</dd></div>
+            <div><dt class="text-[15.5px] font-bold text-ink">유해인자별 검진결과 조회</dt><dd class="mt-1 text-[14px] text-sub leading-[1.6]">유해인자별 건강구분과 조치 현황을 확인합니다.</dd></div>
+            <div><dt class="text-[15.5px] font-bold text-ink">엑셀 출력 &amp; 조치완료 체크</dt><dd class="mt-1 text-[14px] text-sub leading-[1.6]">기존 보고 양식과 호환되는 엑셀 출력과 조치 이행 체크를 지원합니다.</dd></div>
           </dl>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== PROCESS (TO-BE) ==================== -->
-  <section id="process" class="border-b border-navy/10">
-    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
-      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
-        <p class="eyebrow mb-5 md:mb-1 reveal">How it works</p>
+  <!-- ==================== 보건 리포트 ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div class="grid lg:grid-cols-[300px_1fr] gap-10 lg:gap-16">
         <div>
-          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a] mb-4" style="line-height:1.2; letter-spacing:-0.02em;">
-            반복 업무는 AI에게, 안전관리자는 <span class="text-accent">핵심 업무에 집중</span>.
+          <p class="kicker mb-4 reveal">보건 리포트</p>
+          <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
+            공단 검진 데이터를 <span class="text-accent">한눈에</span> 정리합니다.
           </h2>
-          <p class="reveal lede mb-2 text-[18px] leading-[1.75] max-w-2xl">인증부터 사후관리까지, 전 과정을 하나의 플랫폼에서 자동으로 처리합니다.</p>
-
-          <div class="reveal grid md:grid-cols-[56px_1fr] gap-x-6 py-10 border-t border-navy/10">
-            <div class="text-[26px] font-semibold text-navy/25">01</div>
-            <div>
-              <h3 class="text-[21px] font-semibold text-[#0f172a] mb-3">간편 인증</h3>
-              <p class="text-[16px] text-[#64748b] leading-[1.75] max-w-2xl">본인 확인 한 번으로 시작합니다. 카카오·네이버·PASS 간편인증을 지원합니다.</p>
-            </div>
+          <p class="reveal stagger-2 mt-5 text-[16px] text-sub leading-[1.7]">국민건강보험공단 검진 결과를 기반으로 건강 상태를 시각화하고, 흩어진 데이터를 모아 작업자가 자신의 건강을 쉽게 이해하도록 정리합니다.</p>
+          <p class="reveal stagger-2 mt-5 text-[15px] text-sub leading-[1.7] border-t border-hair pt-5">관리자는 대시보드에서 전체 현황을, 작업자는 모바일 앱에서 개인 건강 리포트와 현장 배치용 QR 체크인을 확인합니다.</p>
+        </div>
+        <div class="reveal border-t-2 border-ink">
+          <div class="news-row grid sm:grid-cols-[220px_1fr] gap-x-8 items-center px-3 sm:px-5 py-6 border-b border-hair">
+            <p class="text-[17px] font-bold text-ink mb-1 sm:mb-0">건강나이</p>
+            <p class="text-[15px] text-sub leading-[1.7]">공단 검진 기반 건강나이를 직관적으로 표시합니다.</p>
           </div>
-          <div class="reveal grid md:grid-cols-[56px_1fr] gap-x-6 py-10 border-t border-navy/10">
-            <div class="text-[26px] font-semibold text-navy/25">02</div>
-            <div>
-              <h3 class="text-[21px] font-semibold text-[#0f172a] mb-3">데이터 수집</h3>
-              <p class="text-[16px] text-[#64748b] leading-[1.75] max-w-2xl">검진 기관과 연동해 10년치 국가건강검진 결과를 자동으로 수집합니다.</p>
-            </div>
+          <div class="news-row grid sm:grid-cols-[220px_1fr] gap-x-8 items-center px-3 sm:px-5 py-6 border-b border-hair">
+            <p class="text-[17px] font-bold text-ink mb-1 sm:mb-0">심뇌혈관 위험 예측</p>
+            <p class="text-[15px] text-sub leading-[1.7]">3년 내 발병 확률과 위험 요인을 분석합니다.</p>
           </div>
-          <div class="reveal grid md:grid-cols-[56px_1fr] gap-x-6 py-10 border-t border-navy/10">
-            <div class="text-[26px] font-semibold text-navy/25">03</div>
-            <div>
-              <h3 class="text-[21px] font-semibold text-[#0f172a] mb-3">위험 분류</h3>
-              <p class="text-[16px] text-[#64748b] leading-[1.75] max-w-2xl">AI가 고위험군을 판별해 고혈압·당뇨·심뇌혈관 위험을 자동으로 분류합니다.</p>
-            </div>
+          <div class="news-row grid sm:grid-cols-[220px_1fr] gap-x-8 items-center px-3 sm:px-5 py-6 border-b border-hair">
+            <p class="text-[17px] font-bold text-ink mb-1 sm:mb-0">유사집단 비교</p>
+            <p class="text-[15px] text-sub leading-[1.7]">동일 연령·성별·직종 집단과 비교합니다.</p>
           </div>
-          <div class="reveal grid md:grid-cols-[56px_1fr] gap-x-6 py-10 border-t border-navy/10">
-            <div class="text-[26px] font-semibold text-navy/25">04</div>
-            <div>
-              <h3 class="text-[21px] font-semibold text-[#0f172a] mb-3">리포트</h3>
-              <p class="text-[16px] text-[#64748b] leading-[1.75] max-w-2xl">현장별·개인별 보건 리포트를 자동 생성하고 엑셀 출력을 지원합니다.</p>
-            </div>
-          </div>
-          <div class="reveal grid md:grid-cols-[56px_1fr] gap-x-6 py-10 border-t border-navy/10">
-            <div class="text-[26px] font-semibold text-navy/25">05</div>
-            <div>
-              <h3 class="text-[21px] font-semibold text-[#0f172a] mb-3">사후 관리 추적</h3>
-              <p class="text-[16px] text-[#64748b] leading-[1.75] max-w-2xl">건강 이력을 모니터링하고 재검사·작업전환 리마인드를 자동 발송합니다.</p>
-            </div>
+          <div class="news-row grid sm:grid-cols-[220px_1fr] gap-x-8 items-center px-3 sm:px-5 py-6 border-b border-hair">
+            <p class="text-[17px] font-bold text-ink mb-1 sm:mb-0">연도별 건강 추이</p>
+            <p class="text-[15px] text-sub leading-[1.7]">10년간 검진 이력을 시계열로 시각화합니다.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== FEATURES ==================== -->
-  <section class="border-b border-navy/10">
-    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
-      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
-        <p class="eyebrow mb-5 md:mb-1 reveal">Features</p>
+  <!-- ==================== 유해인자 매핑 ==================== -->
+  <section class="band border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
         <div>
-          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a]" style="line-height:1.2; letter-spacing:-0.02em;">
-            등록부터 관리까지, <span class="text-accent">모든 기능</span>을 하나로.
+          <p class="kicker mb-4 reveal">유해인자 매핑</p>
+          <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
+            직종을 선택하면, 유해인자가 <span class="text-accent">자동 매핑</span>됩니다.
           </h2>
-
-          <div class="reveal border-t border-navy/10 pt-10 mt-12">
-            <h3 class="text-[21px] font-semibold text-[#0f172a]">작업자 등록 &amp; 검진 자동 수집</h3>
-            <p class="lede mt-4 text-[16px] leading-[1.75] max-w-2xl">작업자가 간편인증을 완료하면 국가건강검진 결과가 자동으로 수집됩니다. 관리자는 별도 입력 없이 대시보드에서 전체 현황을 확인하고, 10년치 이력으로 과거 추이까지 분석할 수 있습니다.</p>
-            <ul class="list-disc pl-5 marker:text-accent space-y-1.5 text-[15px] text-[#475569] mt-5">
-              <li>카카오·네이버·PASS 간편인증 지원</li>
-              <li>10년치 국가건강검진 결과 자동 연동</li>
-              <li>수기 입력 완전 제거, 오류율 0%</li>
-            </ul>
-          </div>
-
-          <div class="reveal border-t border-navy/10 pt-10 mt-10">
-            <h3 class="text-[21px] font-semibold text-[#0f172a]">관리자를 위한 핵심 기능</h3>
-            <p class="lede mt-4 text-[16px] leading-[1.75] max-w-2xl">작업자 건강 상태를 한눈에 파악하고, 필요한 조치를 바로 확인합니다. 등록 작업자·고위험군·미등록자 현황을 실시간으로 집계합니다.</p>
-            <dl class="mt-6 grid sm:grid-cols-2 gap-x-12 gap-y-7">
-              <div><dt class="text-[17px] font-semibold text-[#0f172a]">민감군 대시보드</dt><dd class="mt-1.5 text-[16px] text-[#64748b] leading-[1.7]">현장별 고위험군 현황을 실시간으로 파악합니다.</dd></div>
-              <div><dt class="text-[17px] font-semibold text-[#0f172a]">미등록자 알림</dt><dd class="mt-1.5 text-[16px] text-[#64748b] leading-[1.7]">미등록 작업자를 자동 식별하고 등록을 독촉합니다.</dd></div>
-              <div><dt class="text-[17px] font-semibold text-[#0f172a]">유해인자별 검진결과 조회</dt><dd class="mt-1.5 text-[16px] text-[#64748b] leading-[1.7]">유해인자별 건강구분과 조치 현황을 확인합니다.</dd></div>
-              <div><dt class="text-[17px] font-semibold text-[#0f172a]">엑셀 출력 &amp; 조치완료 체크</dt><dd class="mt-1.5 text-[16px] text-[#64748b] leading-[1.7]">기존 보고 양식과 호환되는 엑셀 출력과 조치 이행 체크를 지원합니다.</dd></div>
-            </dl>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== REPORTS ==================== -->
-  <section class="border-b border-navy/10">
-    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
-      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
-        <p class="eyebrow mb-5 md:mb-1 reveal">Reports</p>
-        <div>
-          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a]" style="line-height:1.2; letter-spacing:-0.02em;">
-            국민건강보험공단 검진 데이터를 <span class="text-accent">한눈에 정리</span>합니다.
-          </h2>
-          <p class="reveal lede mt-5 text-[18px] leading-[1.75] max-w-2xl">공단 검진 결과를 기반으로 건강 상태를 시각화하고, 흩어진 데이터를 모아 작업자가 자신의 건강을 쉽게 이해하도록 정리합니다.</p>
-
-          <div class="reveal mt-12">
-            <div class="grid sm:grid-cols-[200px_1fr] gap-x-8 gap-y-1 border-t border-navy/10 py-6">
-              <p class="text-[17px] font-semibold text-[#0f172a]">건강나이</p>
-              <p class="text-[16px] text-[#64748b] leading-[1.7]">공단 검진 기반 건강나이를 직관적으로 표시합니다.</p>
-            </div>
-            <div class="grid sm:grid-cols-[200px_1fr] gap-x-8 gap-y-1 border-t border-navy/10 py-6">
-              <p class="text-[17px] font-semibold text-[#0f172a]">심뇌혈관 위험 예측</p>
-              <p class="text-[16px] text-[#64748b] leading-[1.7]">3년 내 발병 확률과 위험 요인을 분석합니다.</p>
-            </div>
-            <div class="grid sm:grid-cols-[200px_1fr] gap-x-8 gap-y-1 border-t border-navy/10 py-6">
-              <p class="text-[17px] font-semibold text-[#0f172a]">유사집단 비교</p>
-              <p class="text-[16px] text-[#64748b] leading-[1.7]">동일 연령·성별·직종 집단과 비교합니다.</p>
-            </div>
-            <div class="grid sm:grid-cols-[200px_1fr] gap-x-8 gap-y-1 border-t border-navy/10 py-6">
-              <p class="text-[17px] font-semibold text-[#0f172a]">연도별 건강 추이</p>
-              <p class="text-[16px] text-[#64748b] leading-[1.7]">10년간 검진 이력을 시계열로 시각화합니다.</p>
-            </div>
-          </div>
-          <p class="reveal lede mt-8 text-[16px] leading-[1.75] max-w-2xl">관리자는 대시보드에서 전체 현황을, 작업자는 모바일 앱에서 개인 건강 리포트와 현장 배치용 QR 체크인을 확인합니다.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== MAPPING ==================== -->
-  <section class="border-b border-navy/10">
-    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
-      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
-        <p class="eyebrow mb-5 md:mb-1 reveal">Mapping</p>
-        <div>
-          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a]" style="line-height:1.2; letter-spacing:-0.02em;">
-            직종을 선택하면, 유해인자가 <span class="text-accent">자동으로 매핑</span>됩니다.
-          </h2>
-          <p class="reveal lede mt-5 text-[18px] leading-[1.75] max-w-2xl">공종과 직종을 선택하면 노출 유해인자 목록이 자동으로 설정됩니다. 관리자가 일일이 찾을 필요 없이 유해인자별 검진 항목과 관리 기준이 즉시 연동됩니다.</p>
-          <ul class="reveal list-disc pl-5 marker:text-accent space-y-1.5 text-[15px] text-[#475569] mt-6">
-            <li>공종·직종 선택만으로 유해인자 자동 설정</li>
-            <li>유해인자별 필요 검진 항목 즉시 확인</li>
-            <li>관리 기준과 검진 주기 자동 연동</li>
+          <p class="reveal stagger-2 mt-5 text-[17px] text-sub leading-[1.75]">공종과 직종을 선택하면 노출 유해인자 목록이 자동으로 설정됩니다. 관리자가 일일이 찾을 필요 없이 유해인자별 검진 항목과 관리 기준이 즉시 연동됩니다.</p>
+          <ul class="reveal stagger-2 text-[15px] text-sub leading-[1.7] space-y-2.5 mt-6">
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-linear" class="text-accent text-[17px] mt-0.5 shrink-0"></iconify-icon>공종·직종 선택만으로 유해인자 자동 설정</li>
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-linear" class="text-accent text-[17px] mt-0.5 shrink-0"></iconify-icon>유해인자별 필요 검진 항목 즉시 확인</li>
+            <li class="flex gap-2.5"><iconify-icon icon="solar:check-circle-linear" class="text-accent text-[17px] mt-0.5 shrink-0"></iconify-icon>관리 기준과 검진 주기 자동 연동</li>
           </ul>
-          <div class="reveal mt-10 border-t border-navy/10 pt-7 space-y-2.5 text-[15px] text-[#475569] leading-[1.7]">
-            <p class="text-[13px] font-bold uppercase tracking-[0.12em] text-[#94a3b8] mb-1">예시 — 도장 / 도장공</p>
-            <p><span class="font-semibold text-[#0f172a]">유해인자</span> · 크실렌, 메틸에틸케톤, 톨루엔</p>
-            <p><span class="font-semibold text-[#0f172a]">검진 항목</span> · 간기능, 신장기능, 신경계, 조혈기</p>
-            <p><span class="font-semibold text-[#0f172a]">관리 기준</span> · 특수건강검진 대상, 검진 주기 12개월</p>
-          </div>
+        </div>
+        <div class="reveal stagger-1 corp-card p-8">
+          <p class="text-[12px] font-bold uppercase tracking-[0.12em] text-accent mb-5">예시 — 도장 / 도장공</p>
+          <dl class="divide-y divide-hair text-[15px] leading-[1.7]">
+            <div class="grid grid-cols-[86px_1fr] gap-4 py-3.5"><dt class="font-bold text-ink">유해인자</dt><dd class="text-sub">크실렌, 메틸에틸케톤, 톨루엔</dd></div>
+            <div class="grid grid-cols-[86px_1fr] gap-4 py-3.5"><dt class="font-bold text-ink">검진 항목</dt><dd class="text-sub">간기능, 신장기능, 신경계, 조혈기</dd></div>
+            <div class="grid grid-cols-[86px_1fr] gap-4 py-3.5"><dt class="font-bold text-ink">관리 기준</dt><dd class="text-sub">특수건강검진 대상, 검진 주기 12개월</dd></div>
+          </dl>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== COMPLIANCE ==================== -->
-  <section class="border-b border-navy/10">
-    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
-      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
-        <p class="eyebrow mb-5 md:mb-1 reveal">Compliance</p>
-        <div>
-          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a]" style="line-height:1.2; letter-spacing:-0.02em;">
-            법적 의무를 체계적으로 이행하고, <span class="text-accent">증빙을 자동</span>으로 확보합니다.
-          </h2>
-
-          <div class="mt-14 grid md:grid-cols-2 gap-x-12 gap-y-10">
-            <div class="reveal border-t border-navy/10 pt-7">
-              <p class="text-[13px] font-bold uppercase tracking-[0.12em] text-[#94a3b8] mb-3">산업안전보건법 제129조</p>
-              <h3 class="text-[20px] font-semibold text-[#0f172a] mb-3">배치전·특수건강검진 실시 의무</h3>
-              <p class="text-[16px] text-[#64748b] leading-[1.75]">검진 결과 자동 연동으로 배치전 건강검진 이행 여부를 실시간 확인하고, 미실시자 자동 알림과 이력 관리로 법적 의무 이행 증빙을 확보합니다.</p>
-            </div>
-            <div class="reveal stagger-1 border-t border-navy/10 pt-7">
-              <p class="text-[13px] font-bold uppercase tracking-[0.12em] text-[#94a3b8] mb-3">중대재해처벌법 대응</p>
-              <h3 class="text-[20px] font-semibold text-[#0f172a] mb-3">안전보건관리체계 구축 의무</h3>
-              <p class="text-[16px] text-[#64748b] leading-[1.75]">고위험군 사전 식별과 배치 관리 체계를 구축하고, 건강관리 이력의 자동 기록으로 안전보건관리체계 이행 증거를 확보합니다.</p>
-            </div>
-          </div>
+  <!-- ==================== 법령 대응 ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div class="max-w-3xl mb-12">
+        <p class="kicker mb-4 reveal">법령 대응</p>
+        <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
+          법적 의무를 체계적으로 이행하고, <span class="text-accent">증빙을 자동</span>으로 확보합니다.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="reveal corp-card p-8">
+          <p class="text-[12px] font-bold uppercase tracking-[0.12em] text-accent mb-3">산업안전보건법 제129조</p>
+          <h3 class="text-[20px] font-bold text-ink mb-3">배치전·특수건강검진 실시 의무</h3>
+          <p class="text-[15.5px] text-sub leading-[1.75]">검진 결과 자동 연동으로 배치전 건강검진 이행 여부를 실시간 확인하고, 미실시자 자동 알림과 이력 관리로 법적 의무 이행 증빙을 확보합니다.</p>
+        </div>
+        <div class="reveal stagger-1 corp-card p-8">
+          <p class="text-[12px] font-bold uppercase tracking-[0.12em] text-accent mb-3">중대재해처벌법 대응</p>
+          <h3 class="text-[20px] font-bold text-ink mb-3">안전보건관리체계 구축 의무</h3>
+          <p class="text-[15.5px] text-sub leading-[1.75]">고위험군 사전 식별과 배치 관리 체계를 구축하고, 건강관리 이력의 자동 기록으로 안전보건관리체계 이행 증거를 확보합니다.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== CONTACT (CTA) ==================== -->
-  <section class="border-b border-navy/10">
-    <div class="max-w-5xl mx-auto px-6 py-24 md:py-32">
-      <div class="md:grid md:grid-cols-[160px_1fr] md:gap-12">
-        <p class="eyebrow mb-5 md:mb-1 reveal">Contact</p>
-        <div>
-          <h2 class="reveal text-[32px] md:text-[46px] font-semibold tracking-tight text-[#0f172a]" style="line-height:1.2; letter-spacing:-0.02em;">
-            현장에 맞는 <span class="text-accent">도입 방안</span>을 상담해 드립니다.
-          </h2>
-          <p class="reveal lede mt-5 text-[18px] leading-[1.75] max-w-2xl">현장 규모, 작업자 수, 기존 업무 프로세스에 맞춰 최적의 도입 방안을 설계해 드립니다. 부담 없이 문의해 주세요.</p>
-          <p class="reveal mt-6 text-[16px] text-[#475569]">이메일 <a href="mailto:ktg@ontoh.co.kr" class="ulink">ktg@ontoh.co.kr</a> · 담당 대표이사 김태건</p>
-          <div class="reveal mt-9">
-            <a href="contact.html" class="inline-flex items-center gap-2 bg-navy text-white rounded-full px-7 py-3.5 text-[16px] font-semibold hover:bg-navy-700 spring">도입 문의 →</a>
-          </div>
+  <!-- ==================== CTA ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+      <div class="bg-ink px-8 md:px-16 py-14 md:py-20 text-center">
+        <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-5 reveal">Get started</p>
+        <h2 class="reveal stagger-1 text-[28px] md:text-[44px] font-bold tracking-tight text-white" style="line-height:1.3;">수기 보건 업무를 <span class="text-accent-300">자동화</span>로 바꿔보세요.</h2>
+        <p class="reveal stagger-2 mt-6 text-[17px] md:text-[18px] text-white/65 leading-[1.7] max-w-xl mx-auto">현장 규모와 작업자 수에 맞춰 최적의 도입 방안을 설계해 드립니다. 부담 없이 문의해 주세요.</p>
+        <div class="reveal stagger-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+          <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-ink px-7 py-3.5 text-[16px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">데모 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <a href="mailto:ktg@ontoh.co.kr" class="inline-flex items-center justify-center gap-2 border border-white/25 text-white px-7 py-3.5 text-[16px] font-bold hover:bg-white/10 spring">이메일 문의</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="py-16 bg-navy-900 border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-10 mb-10">
-        <!-- Logo & Company Info -->
+  <!-- ==================== 강화 푸터 ==================== -->
+  <footer class="bg-ink text-white/70">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 md:gap-8">
         <div>
-          <a href="index.html" class="mb-4 block">
-            <img src="assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8">
-          </a>
-          <p class="text-white/50 text-[15px] font-medium mb-3">주식회사 온토</p>
-          <div class="space-y-1.5 text-white/30 text-sm leading-relaxed">
-            <p>대표이사: 김태건</p>
-            <p>사업자등록번호: 230-88-03436</p>
+          <img src="assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8 mb-5">
+          <p class="text-white text-[16px] font-bold mb-4">주식회사 온토 <span class="text-white/45 font-medium">ONTOH Inc.</span></p>
+          <dl class="space-y-1.5 text-[13.5px] text-white/50 leading-relaxed">
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">대표이사</dt><dd>김태건</dd></div>
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">사업자번호</dt><dd>230-88-03436</dd></div>
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">소재지</dt><dd>(03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</dd></div>
+            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">이메일</dt><dd><a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></dd></div>
+          </dl>
+        </div>
+        <div>
+          <h4 class="text-white/80 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
+          <div class="space-y-2.5 text-[14.5px]">
+            <a href="about.html" class="block text-white/55 hover:text-white transition-colors">회사소개</a>
+            <a href="vision.html" class="block text-white/55 hover:text-white transition-colors">솔루션</a>
+            <a href="blog/index.html" class="block text-white/55 hover:text-white transition-colors">기술·연구</a>
+            <a href="contact.html" class="block text-white/55 hover:text-white transition-colors">문의</a>
           </div>
         </div>
-        <!-- Links -->
         <div>
-          <h4 class="text-white/70 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
-          <div class="space-y-2.5">
-            <a href="about.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">회사소개</a>
-            <a href="vision.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토비전</a>
-            <a href="health.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">온토케어</a>
-            <a href="blog/index.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">테크</a>
-            <a href="contact.html" class="text-white/50 hover:text-white text-[15px] spring block font-medium">문의하기</a>
-          </div>
-        </div>
-        <!-- Contact -->
-        <div>
-          <h4 class="text-white/60 text-sm font-semibold tracking-wide mb-4">CONTACT</h4>
-          <div class="space-y-1.5 text-white/40 text-sm leading-relaxed">
-            <p>이메일: <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white spring">ktg@ontoh.co.kr</a></p>
-            <p>주소: 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</p>
+          <h4 class="text-white/80 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">문의</h4>
+          <div class="space-y-2 text-[14.5px] text-white/55 leading-relaxed">
+            <p>이메일 <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></p>
+            <p>www.ontoh.co.kr</p>
+            <a href="contact.html" class="mt-3 inline-flex items-center gap-1.5 text-white font-semibold hover:gap-2.5 transition-all">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           </div>
         </div>
       </div>
-      <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-white/25 text-xs">&copy; 2026 ONTOH INC. All rights reserved.</p>
-        <a href="privacy.html" class="text-white/50 hover:text-white text-xs spring font-medium">개인정보처리방침</a>
+      <div class="border-t border-white/10 mt-12 pt-7 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-white/35 text-[13px]">&copy; 2026 ONTOH Inc. All rights reserved.</p>
+        <div class="flex items-center gap-5 text-[13px]">
+          <a href="privacy.html" class="text-white/55 hover:text-white transition-colors font-medium">개인정보처리방침</a>
+          <a href="terms.html" class="text-white/40 hover:text-white transition-colors">이용약관</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- ==================== SCRIPTS ==================== -->
   <script src="js/common.js"></script>
-  <script>
-    // Health-specific: toggleMobileMenu (used by inline onclick)
-    function toggleMobileMenu() {
-      var menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('open');
-      document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-    }
-  </script>
 </body>
 </html>
