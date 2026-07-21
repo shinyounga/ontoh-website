@@ -44,11 +44,11 @@
     .nav-item { position:relative; }
     .nav-top::after { content:""; position:absolute; left:20px; right:20px; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform .34s cubic-bezier(0.16,1,0.3,1); }
     .nav-item:hover .nav-top::after { transform:scaleX(1); }
-    .megabar { position:absolute; left:0; right:0; top:100%; height:182px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
+    .megabar { position:absolute; left:0; right:0; top:100%; height:210px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
     .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
     header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
-    .dbox { padding:24px 0; }
-    .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:182px; width:1px; background:#E5E7EB; }
+    .dbox { padding:32px 0 36px; }
+    .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:210px; width:1px; background:#E5E7EB; }
     .dlink { display:flex; align-items:center; gap:.5rem; font-size:14.5px; color:#555555; padding:8px 0; white-space:nowrap; transition:color .28s cubic-bezier(0.16,1,0.3,1), gap .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink:hover { color:#0A2440; gap:.9rem; }
@@ -57,38 +57,26 @@
 </head>
 <body class="bg-white font-sans antialiased">
 
-  <!-- ==================== 유틸리티 바 ==================== -->
-  <div class="hidden lg:block bg-ink text-white/55 text-[13px]">
-    <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
-      <p>건설현장 안전관리 Physical AI · 주식회사 온토</p>
-      <div class="flex items-center gap-5">
-        <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors inline-flex items-center gap-1.5"><iconify-icon icon="solar:letter-linear" class="text-[13px]"></iconify-icon> ktg@ontoh.co.kr</a>
-        <span class="text-white/25">|</span>
-        <a href="contact.html" class="hover:text-white transition-colors inline-flex items-center gap-1.5 text-white/75"><iconify-icon icon="solar:chat-round-line-linear" class="text-[13px]"></iconify-icon> 도입 문의</a>
-      </div>
-    </div>
-  </div>
-
   <!-- ==================== 헤더 + 메가메뉴 GNB ==================== -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-center justify-between h-[70px]">
+  <header class="sticky top-0 z-40 bg-white border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
+      <div class="flex items-center justify-between h-[78px]">
         <a href="index.html" class="flex items-center shrink-0"><img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-9"></a>
         <nav class="gnb hidden lg:flex items-stretch h-full">
           <div class="nav-item flex items-stretch">
-            <a href="about.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">회사소개</a>
+            <a href="about.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">회사소개</a>
             <div class="nav-panel"><div class="dbox min-w-[150]"><a href="about.html#mission" class="dlink">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#history" class="dlink">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#overview" class="dlink">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">솔루션</a>
+            <a href="vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">솔루션</a>
             <div class="nav-panel"><div class="dbox min-w-[150]"><a href="vision.html" class="dlink">ONTOH Vision <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="health.html" class="dlink">ONTOH Health <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="references.html" class="dlink">도입 사례 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="tech.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">기술·연구</a>
-            <div class="nav-panel"><div class="dbox min-w-[160]"><a href="tech.html" class="dlink">기술 개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="patents.html" class="dlink">특허 · 지식재산권 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="papers.html" class="dlink">연구 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="blog/index.html" class="dlink">기술 이야기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <a href="patents.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">기술·연구</a>
+            <div class="nav-panel"><div class="dbox min-w-[160]"><a href="patents.html" class="dlink">특허 · 지식재산권 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="papers.html" class="dlink">논문 · 학술 성과 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="blog/index.html" class="dlink">기술 이야기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">문의</a>
+            <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">문의</a>
             <div class="nav-panel"><div class="dbox min-w-[150]"><a href="contact.html" class="dlink">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
         </nav>
@@ -124,7 +112,7 @@
   <section class="relative bg-ink overflow-hidden">
     <img src="assets/main/main1.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25">
     <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50"></div>
-    <div class="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
+    <div class="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-24 md:py-32">
       <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">About</p>
       <h1 class="text-white text-[34px] md:text-[46px] font-bold tracking-tight" style="letter-spacing:-0.02em;">회사소개</h1>
       <nav class="mt-5 flex items-center gap-2 text-[13px] text-white/55">
@@ -137,7 +125,7 @@
 
   <!-- ==================== 비전·미션 ==================== -->
   <section id="mission" class="border-b border-hair scroll-mt-24">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-3xl mb-14">
         <p class="kicker mb-4 reveal">비전 · 미션</p>
         <h2 class="reveal stagger-1 text-[30px] md:text-[42px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.03em;">
@@ -157,7 +145,7 @@
 
   <!-- ==================== 회사개요 ==================== -->
   <section id="overview" class="band border-b border-hair scroll-mt-24">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <p class="kicker mb-4 reveal">일반 현황</p>
       <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink mb-10" style="line-height:1.2; letter-spacing:-0.02em;">회사개요</h2>
       <div class="reveal border border-hair bg-white max-w-4xl">
@@ -175,17 +163,17 @@
 
   <!-- ==================== 신뢰 지표 ==================== -->
   <section class="border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6">
       <div class="reveal text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">5<span class="text-sub text-[18px] font-semibold ml-1">건</span></div><p class="mt-1.5 text-[14px] text-sub">특허 출원·등록</p></div>
-      <div class="reveal stagger-1 text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">8<span class="text-sub text-[18px] font-semibold ml-1">건</span></div><p class="mt-1.5 text-[14px] text-sub">SCI 국제 논문</p></div>
+      <div class="reveal stagger-1 text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">9<span class="text-sub text-[18px] font-semibold ml-1">편</span></div><p class="mt-1.5 text-[14px] text-sub">국제 학술 논문</p></div>
       <div class="reveal stagger-2 text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">20,000<span class="text-accent">+</span></div><p class="mt-1.5 text-[14px] text-sub">자체 학습 데이터</p></div>
-      <div class="reveal stagger-3 text-center"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">5<span class="text-sub text-[18px] font-semibold ml-1">개소</span></div><p class="mt-1.5 text-[14px] text-sub">테스트베드 실증</p></div>
+      <div class="reveal stagger-3 text-center"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">2<span class="text-sub text-[18px] font-semibold ml-1">현장</span></div><p class="mt-1.5 text-[14px] text-sub">Vision 적용 현장</p></div>
     </div>
   </section>
 
   <!-- ==================== 연혁 ==================== -->
   <section id="history" class="band border-b border-hair scroll-mt-24">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-4xl">
         <p class="kicker mb-4 reveal">연혁</p>
         <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">연구실에서 <span class="text-accent">현장</span>까지.</h2>
@@ -213,9 +201,72 @@
     </div>
   </section>
 
+  <!-- ==================== 성과 · 연구 (기술·연구 3카드 통합) ==================== -->
+  <section id="research" class="border-b border-hair scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
+      <div class="max-w-2xl mb-12">
+        <p class="kicker mb-4 reveal">Research &amp; Impact</p>
+        <h2 class="reveal stagger-1 text-[30px] md:text-[42px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.03em;">
+          연구실에서 시작해<br><span class="text-accent">현장으로.</span>
+        </h2>
+        <p class="reveal stagger-2 mt-5 text-[16px] text-sub leading-[1.75]">온토는 연세대 산학협력단·금호건설과의 공동 R&amp;D에서 시작되었습니다. 논문으로 검증하고 특허로 확보한 기술이, 지금 건설현장의 안전관리를 다시 설계하고 있습니다.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <!-- 특허 카드 -->
+        <a href="patents.html" class="reveal corp-card group p-9 flex flex-col">
+          <div class="flex items-center gap-3 mb-5">
+            <iconify-icon icon="solar:shield-keyhole-linear" class="text-accent text-[30px]"></iconify-icon>
+            <p class="stat-num text-[13px] font-bold uppercase tracking-[0.12em] text-accent">Patents &amp; IP</p>
+          </div>
+          <h3 class="text-[22px] md:text-[24px] font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.01em;">특허 보유 현황</h3>
+          <p class="text-[14.5px] text-sub leading-[1.7] mb-6">등록 2건 · 출원 3건. 원거리 객체 검출, 학습데이터 자동 생성, 생성형 AI 위험 판별 등 핵심 기술을 (주)온토가 단독 특허권자로 보유합니다.</p>
+          <div class="mt-auto flex items-center justify-between border-t border-hair pt-5">
+            <div class="flex gap-6">
+              <div><div class="stat-num text-[22px] font-bold text-ink leading-none">2</div><p class="text-[12px] text-sub/70 mt-0.5">등록</p></div>
+              <div><div class="stat-num text-[22px] font-bold text-sub leading-none">3</div><p class="text-[12px] text-sub/70 mt-0.5">출원</p></div>
+            </div>
+            <span class="inline-flex items-center gap-1 text-[13.5px] font-bold text-accent group-hover:gap-2 transition-all">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
+          </div>
+        </a>
+
+        <!-- 논문 카드 -->
+        <a href="papers.html" class="reveal stagger-1 corp-card group p-9 flex flex-col">
+          <div class="flex items-center gap-3 mb-5">
+            <iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[30px]"></iconify-icon>
+            <p class="stat-num text-[13px] font-bold uppercase tracking-[0.12em] text-accent">Publications</p>
+          </div>
+          <h3 class="text-[22px] md:text-[24px] font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.01em;">논문 · 학술 성과</h3>
+          <p class="text-[14.5px] text-sub leading-[1.7] mb-6">국제 학술지 4편·국제 학회 5편. Automation in Construction·Computers in Industry 등 SCI(E) 저널에 검출·판단·데이터 연구를 지속적으로 게재하고 있습니다.</p>
+          <div class="mt-auto flex items-center justify-between border-t border-hair pt-5">
+            <div class="flex gap-6">
+              <div><div class="stat-num text-[22px] font-bold text-ink leading-none">4</div><p class="text-[12px] text-sub/70 mt-0.5">저널</p></div>
+              <div><div class="stat-num text-[22px] font-bold text-sub leading-none">5</div><p class="text-[12px] text-sub/70 mt-0.5">학회</p></div>
+            </div>
+            <span class="inline-flex items-center gap-1 text-[13.5px] font-bold text-accent group-hover:gap-2 transition-all">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
+          </div>
+        </a>
+
+        <!-- 블로그 카드 -->
+        <a href="blog/index.html" class="reveal stagger-2 corp-card group p-9 flex flex-col">
+          <div class="flex items-center gap-3 mb-5">
+            <iconify-icon icon="solar:pen-new-square-linear" class="text-accent text-[30px]"></iconify-icon>
+            <p class="stat-num text-[13px] font-bold uppercase tracking-[0.12em] text-accent">From the Lab</p>
+          </div>
+          <h3 class="text-[22px] md:text-[24px] font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.01em;">기술 이야기</h3>
+          <p class="text-[14.5px] text-sub leading-[1.7] mb-6">현장에서 마주친 문제와 그 문제를 푸는 방법을, 우리 언어로 풀어 씁니다. Tiny Object Detection, PTZ 자율관제 이야기부터.</p>
+          <div class="mt-auto flex items-center justify-between border-t border-hair pt-5">
+            <div class="text-[13px] text-sub">최신: <span class="text-ink font-semibold">건설현장에서 '작은 것'을 본다는 것</span></div>
+            <span class="inline-flex items-center gap-1 text-[13.5px] font-bold text-accent group-hover:gap-2 transition-all">읽기 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== 오시는 길 ==================== -->
   <section id="location" class="band border-b border-hair scroll-mt-24">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <p class="kicker mb-4 reveal">오시는 길</p>
       <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink mb-10" style="line-height:1.2; letter-spacing:-0.02em;">찾아오시는 길</h2>
       <div class="reveal grid lg:grid-cols-[1.3fr_0.7fr] border border-hair bg-white overflow-hidden">
@@ -248,7 +299,7 @@
 
   <!-- ==================== CTA ==================== -->
   <section class="border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="bg-ink px-8 md:px-16 py-14 md:py-20 text-center">
         <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-5 reveal">Get started</p>
         <h2 class="reveal stagger-1 text-[28px] md:text-[44px] font-bold tracking-tight text-white" style="line-height:1.3;">다음 사고를 막는 일은, <span class="text-accent-300">대화 한 번</span>에서.</h2>
@@ -263,7 +314,7 @@
 
   <!-- ==================== 강화 푸터 ==================== -->
   <footer class="bg-ink text-white/70">
-    <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16">
       <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 md:gap-8">
         <div>
           <img src="assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8 mb-5">

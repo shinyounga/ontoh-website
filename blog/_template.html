@@ -95,11 +95,11 @@
     .nav-item { position:relative; }
     .nav-top::after { content:""; position:absolute; left:20px; right:20px; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform .34s cubic-bezier(0.16,1,0.3,1); }
     .nav-item:hover .nav-top::after { transform:scaleX(1); }
-    .megabar { position:absolute; left:0; right:0; top:100%; height:182px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
+    .megabar { position:absolute; left:0; right:0; top:100%; height:210px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
     .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
     header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
-    .dbox { padding:24px 0; }
-    .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:182px; width:1px; background:#E5E7EB; }
+    .dbox { padding:32px 0 36px; }
+    .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:210px; width:1px; background:#E5E7EB; }
     .dlink { display:flex; align-items:center; gap:.5rem; font-size:14.5px; color:#555555; padding:8px 0; white-space:nowrap; transition:color .28s cubic-bezier(0.16,1,0.3,1), gap .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink:hover { color:#0A2440; gap:.9rem; }
@@ -111,38 +111,26 @@
   <div id="readingProgress"></div>
   <div class="noise-overlay"></div>
 
-  <!-- ==================== 유틸리티 바 ==================== -->
-  <div class="hidden lg:block bg-ink text-white/55 text-[13px]">
-    <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
-      <p>건설현장 안전관리 Physical AI · 주식회사 온토</p>
-      <div class="flex items-center gap-5">
-        <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors inline-flex items-center gap-1.5"><iconify-icon icon="solar:letter-linear" class="text-[13px]"></iconify-icon> ktg@ontoh.co.kr</a>
-        <span class="text-white/25">|</span>
-        <a href="../contact.html" class="hover:text-white transition-colors inline-flex items-center gap-1.5 text-white/75"><iconify-icon icon="solar:chat-round-line-linear" class="text-[13px]"></iconify-icon> 도입 문의</a>
-      </div>
-    </div>
-  </div>
-
   <!-- ==================== 헤더 + 메가메뉴 GNB ==================== -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-center justify-between h-[70px]">
+  <header class="sticky top-0 z-40 bg-white border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
+      <div class="flex items-center justify-between h-[78px]">
         <a href="../index.html" class="flex items-center shrink-0"><img src="../assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-9"></a>
         <nav class="gnb hidden lg:flex items-stretch h-full">
           <div class="nav-item flex items-stretch">
-            <a href="../about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">회사소개</a>
+            <a href="../about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">회사소개</a>
             <div class="nav-panel"><div class="dbox min-w-[150px]"><a href="../about.html#mission" class="dlink">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#history" class="dlink">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#overview" class="dlink">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="../vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">솔루션</a>
+            <a href="../vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">솔루션</a>
             <div class="nav-panel"><div class="dbox min-w-[150px]"><a href="../vision.html" class="dlink">ONTOH Vision <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../health.html" class="dlink">ONTOH Health <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../references.html" class="dlink">도입 사례 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="../tech.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">기술·연구</a>
+            <a href="../tech.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">기술·연구</a>
             <div class="nav-panel"><div class="dbox min-w-[160px]"><a href="../tech.html" class="dlink">기술 개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../patents.html" class="dlink">특허 · 지식재산권 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../papers.html" class="dlink">연구 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="index.html" class="dlink">기술 이야기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="../contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">문의</a>
+            <a href="../contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">문의</a>
             <div class="nav-panel"><div class="dbox min-w-[150px]"><a href="../contact.html" class="dlink">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
         </nav>
@@ -169,7 +157,7 @@
       <a href="../health.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()">ONTOH Health</a>
       <a href="../references.html" class="block text-xl font-bold text-ink" onclick="closeMobileMenu()">도입 사례</a>
     </div>
-    <a href="../tech.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
+    <a href="../patents.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
     <a href="../contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
     <a href="../contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[16px] font-bold stagger-5" onclick="closeMobileMenu()">데모 신청 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
@@ -299,7 +287,7 @@
 
   <!-- ==================== 강화 푸터 ==================== -->
   <footer class="bg-ink text-white/70">
-    <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16">
       <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 md:gap-8">
         <div>
           <img src="../assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8 mb-5">
@@ -316,7 +304,7 @@
           <div class="space-y-2.5 text-[14.5px]">
             <a href="../about.html" class="block text-white/55 hover:text-white transition-colors">회사소개</a>
             <a href="../vision.html" class="block text-white/55 hover:text-white transition-colors">솔루션</a>
-            <a href="../tech.html" class="block text-white/55 hover:text-white transition-colors">기술·연구</a>
+            <a href="../patents.html" class="block text-white/55 hover:text-white transition-colors">기술·연구</a>
             <a href="../contact.html" class="block text-white/55 hover:text-white transition-colors">문의</a>
           </div>
         </div>

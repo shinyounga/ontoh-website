@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>논문 · 학술 성과 | ONTOH - 건설현장 안전관리 Physical AI 기업</title>
-  <meta name="description" content="ONTOH(온토)의 국제 학술 논문 5편(저널 1·학회 4). 원거리 객체 검출, 위장 라벨 생성, 멀티모달 위험 판단, PTZ 제어 등을 ASCE·Springer·IAARC·KICEM·KSCE에 발표.">
+  <meta name="description" content="ONTOH(온토)의 국제 학술 논문 9편 — SCI(E) 저널 4편(Automation in Construction 2편, Computers in Industry 1편, KSCE 1편) + 국제 학회 5편. 원거리 객체 검출, 학습데이터 자동 생성, 멀티모달 위험 판단, PTZ 제어, 초소형 객체 검출.">
   <link rel="canonical" href="https://ontoh.co.kr/papers.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="논문 · 학술 성과 | ONTOH">
-  <meta property="og:description" content="건설 안전·컴퓨터 비전 분야 국제 학술 논문 5편. 스타트업이 아니라 연구실에서 시작한 기술.">
+  <meta property="og:description" content="건설 안전·컴퓨터 비전 분야 국제 학술 논문 9편 — SCI(E) 저널 4편 + 학회 5편. 논문으로 증명하고 특허로 지킵니다.">
   <meta property="og:url" content="https://ontoh.co.kr/papers.html">
   <meta property="og:image" content="https://ontoh.co.kr/assets/main/main1.png">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -43,11 +43,11 @@
     .nav-top::after { content:""; position:absolute; left:20px; right:20px; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform .34s cubic-bezier(0.16,1,0.3,1); }
     .nav-item:hover .nav-top::after { transform:scaleX(1); }
     .nav-top.is-active::after { transform:scaleX(1); }
-    .megabar { position:absolute; left:0; right:0; top:100%; height:182px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
+    .megabar { position:absolute; left:0; right:0; top:100%; height:210px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
     .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
     header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
-    .dbox { padding:24px 0; }
-    .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:182px; width:1px; background:#E5E7EB; }
+    .dbox { padding:32px 0 36px; }
+    .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:210px; width:1px; background:#E5E7EB; }
     .dlink { display:flex; align-items:center; gap:.5rem; font-size:14.5px; color:#555555; padding:8px 0; white-space:nowrap; transition:color .28s cubic-bezier(0.16,1,0.3,1), gap .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink:hover { color:#0A2440; gap:.9rem; }
@@ -67,38 +67,26 @@
 </head>
 <body class="bg-white font-sans antialiased">
 
-  <!-- ==================== 유틸리티 바 ==================== -->
-  <div class="hidden lg:block bg-ink text-white/55 text-[13px]">
-    <div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
-      <p>건설현장 안전관리 Physical AI · 주식회사 온토</p>
-      <div class="flex items-center gap-5">
-        <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors inline-flex items-center gap-1.5"><iconify-icon icon="solar:letter-linear" class="text-[13px]"></iconify-icon> ktg@ontoh.co.kr</a>
-        <span class="text-white/25">|</span>
-        <a href="contact.html" class="hover:text-white transition-colors inline-flex items-center gap-1.5 text-white/75"><iconify-icon icon="solar:chat-round-line-linear" class="text-[13px]"></iconify-icon> 도입 문의</a>
-      </div>
-    </div>
-  </div>
-
   <!-- ==================== 헤더 + 메가메뉴 GNB ==================== -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-center justify-between h-[70px]">
+  <header class="sticky top-0 z-40 bg-white border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
+      <div class="flex items-center justify-between h-[78px]">
         <a href="index.html" class="flex items-center shrink-0"><img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-9"></a>
         <nav class="gnb hidden lg:flex items-stretch h-full">
           <div class="nav-item flex items-stretch">
-            <a href="about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">회사소개</a>
+            <a href="about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">회사소개</a>
             <div class="nav-panel"><div class="dbox min-w-[150]"><a href="about.html#mission" class="dlink">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#history" class="dlink">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#overview" class="dlink">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">솔루션</a>
+            <a href="vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">솔루션</a>
             <div class="nav-panel"><div class="dbox min-w-[150]"><a href="vision.html" class="dlink">ONTOH Vision <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="health.html" class="dlink">ONTOH Health <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="tech.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">기술·연구</a>
-            <div class="nav-panel"><div class="dbox min-w-[160]"><a href="tech.html" class="dlink">기술 개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="patents.html" class="dlink">특허 · 지식재산 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="papers.html" class="dlink">논문 · 학술 성과 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="blog/index.html" class="dlink">기술 이야기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <a href="patents.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">기술·연구</a>
+            <div class="nav-panel"><div class="dbox min-w-[160]"><a href="patents.html" class="dlink">특허 · 지식재산권 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="papers.html" class="dlink">논문 · 학술 성과 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="blog/index.html" class="dlink">기술 이야기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
-            <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[15.5px] font-bold text-ink">문의</a>
+            <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[17px] font-bold text-ink">문의</a>
             <div class="nav-panel"><div class="dbox min-w-[150]"><a href="contact.html" class="dlink">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
         </nav>
@@ -124,7 +112,7 @@
       <a href="vision.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()">ONTOH Vision</a>
       <a href="health.html" class="block text-xl font-bold text-ink" onclick="closeMobileMenu()">ONTOH Health</a>
     </div>
-    <a href="tech.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
+    <a href="patents.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
     <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
     <a href="contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[16px] font-bold stagger-5" onclick="closeMobileMenu()">데모 신청 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
@@ -133,7 +121,7 @@
   <section class="relative bg-ink overflow-hidden">
     <img src="assets/main/main1.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25">
     <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50"></div>
-    <div class="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
+    <div class="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-24 md:py-32">
       <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Research &amp; Publications</p>
       <h1 class="text-white text-[34px] md:text-[46px] font-bold tracking-tight" style="letter-spacing:-0.02em;">논문 · 학술 성과</h1>
       <nav class="mt-5 flex items-center gap-2 text-[13px] text-white/55">
@@ -148,38 +136,48 @@
 
   <!-- ==================== 신뢰 지표 ==================== -->
   <section class="band border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 py-10 grid grid-cols-3 lg:grid-cols-3 gap-y-8 gap-x-6">
-      <div class="reveal text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">6<span class="text-sub text-[18px] font-semibold ml-1">편</span></div><p class="mt-1.5 text-[14px] text-sub">국제 학술 논문</p></div>
-      <div class="reveal stagger-1 text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-accent">1<span class="text-sub text-[18px] font-semibold ml-1">편</span></div><p class="mt-1.5 text-[14px] text-sub">저널 게재 (KSCE)</p></div>
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 grid grid-cols-3 lg:grid-cols-3 gap-y-8 gap-x-6">
+      <div class="reveal text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">9<span class="text-sub text-[18px] font-semibold ml-1">편</span></div><p class="mt-1.5 text-[14px] text-sub">국제 학술 논문</p></div>
+      <div class="reveal stagger-1 text-center lg:border-r border-hair"><div class="stat-num text-[34px] md:text-[40px] font-bold text-accent">4<span class="text-sub text-[18px] font-semibold ml-1">편</span></div><p class="mt-1.5 text-[14px] text-sub">SCI(E) 저널 게재</p></div>
       <div class="reveal stagger-2 text-center"><div class="stat-num text-[34px] md:text-[40px] font-bold text-ink">5<span class="text-sub text-[18px] font-semibold ml-1">회</span></div><p class="mt-1.5 text-[14px] text-sub">국제 학회 발표</p></div>
     </div>
   </section>
 
   <!-- ==================== 인트로 ==================== -->
   <section class="border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-24">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
       <div class="grid lg:grid-cols-[320px_1fr] gap-10 lg:gap-16">
         <div>
           <p class="kicker mb-4 reveal">Publications</p>
-          <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">시작은 마케팅이 아니라 <span class="text-accent">연구</span>였습니다.</h2>
+          <h2 class="reveal stagger-1 text-[30px] md:text-[40px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;"><span class="text-accent">논문</span>으로 증명하고,<br>특허로 지킵니다.</h2>
         </div>
         <div class="reveal stagger-2 text-[16px] text-sub leading-[1.8] space-y-4">
-          <p>온토의 기술은 논문에서 검증된 방법 위에 서 있습니다. 건설 안전·컴퓨터 비전 분야의 <strong class="text-ink">국제 학술지 1편·국제 학회 5편</strong>의 연구 성과와, 국내 학회지 특집 기고가 스타트업이라는 이유로 의심받을 기술의 깊이를 대신 증명합니다.</p>
+          <p>온토의 기술은 논문에서 검증된 방법 위에 서 있습니다. 건설 안전·컴퓨터 비전 분야의 <strong class="text-ink">SCI(E) 국제 학술지 4편·국제 학회 5편</strong>의 연구 성과가 스타트업이라는 이유로 의심받을 기술의 깊이를 대신 증명합니다. Automation in Construction, Computers in Industry 등 건설 자동화 분야 최상위 저널에 지속적으로 게재하고 있습니다.</p>
           <p>원거리 객체 검출, 학습데이터 생성, 멀티모달 위험 판단, PTZ 자율 제어 등 <strong class="text-ink">현장에 실제 배포된 기술은 모두 학술 검증을 거친 것</strong>입니다.</p>
         </div>
       </div>
 
-      <!-- 저널/학회 하이라이트 -->
-      <div class="reveal mt-14 grid md:grid-cols-2 gap-6">
-        <div class="corp-card p-8">
-          <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[24px]"></iconify-icon><p class="text-[13px] font-bold uppercase tracking-[0.1em] text-accent stat-num">Journal · 1편</p></div>
-          <h3 class="text-[19px] font-bold text-ink mb-2 leading-snug">KSCE Journal (KCI)</h3>
-          <p class="text-[14px] text-sub leading-[1.7]">대한토목학회 논문집(J. Civil &amp; Environmental Engineering Research). 원격 감지 기반 유지관리 비용 최적화 연구 게재.</p>
+      <!-- 저널 하이라이트 (3개) + 학회 하이라이트 -->
+      <div class="reveal mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="corp-card p-7">
+          <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[22px]"></iconify-icon><p class="text-[12px] font-bold uppercase tracking-[0.1em] text-accent stat-num">Journal · 2편</p></div>
+          <h3 class="text-[16px] font-bold text-ink mb-2 leading-snug">Automation in Construction</h3>
+          <p class="text-[13.5px] text-sub leading-[1.65]">Elsevier · SCIE. 건설 자동화 분야 <strong class="text-ink">최상위 국제 학술지</strong>. LVLM 안전 평가·초소형 객체 검출 연구 게재.</p>
         </div>
-        <div class="corp-card p-8">
-          <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:users-group-two-rounded-linear" class="text-accent text-[24px]"></iconify-icon><p class="text-[13px] font-bold uppercase tracking-[0.1em] text-accent stat-num">Conferences · 5편</p></div>
-          <h3 class="text-[19px] font-bold text-ink mb-2 leading-snug">ASCE · Springer · IAARC · KICEM</h3>
-          <p class="text-[14px] text-sub leading-[1.7]">건설공학·건설자동화 분야의 대표 국제 학회 4곳에 매년 지속적으로 논문 발표.</p>
+        <div class="corp-card p-7">
+          <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[22px]"></iconify-icon><p class="text-[12px] font-bold uppercase tracking-[0.1em] text-accent stat-num">Journal · 1편</p></div>
+          <h3 class="text-[16px] font-bold text-ink mb-2 leading-snug">Computers in Industry</h3>
+          <p class="text-[13.5px] text-sub leading-[1.65]">Elsevier · SCIE. 산업 자동화·컴퓨터 비전 분야 국제 학술지. 학습데이터 자동 생성 연구 게재.</p>
+        </div>
+        <div class="corp-card p-7">
+          <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[22px]"></iconify-icon><p class="text-[12px] font-bold uppercase tracking-[0.1em] text-accent stat-num">Journal · 1편</p></div>
+          <h3 class="text-[16px] font-bold text-ink mb-2 leading-snug">KSCE Journal (KCI)</h3>
+          <p class="text-[13.5px] text-sub leading-[1.65]">대한토목학회 논문집. 원격 감지 기반 유지관리 비용 최적화 연구 게재.</p>
+        </div>
+        <div class="corp-card p-7">
+          <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:users-group-two-rounded-linear" class="text-accent text-[22px]"></iconify-icon><p class="text-[12px] font-bold uppercase tracking-[0.1em] text-accent stat-num">Conf. · 5편</p></div>
+          <h3 class="text-[16px] font-bold text-ink mb-2 leading-snug">ASCE · Springer · IAARC · KICEM</h3>
+          <p class="text-[13.5px] text-sub leading-[1.65]">건설공학·건설자동화 분야의 대표 국제 학회 4곳에 매년 지속적으로 논문 발표.</p>
         </div>
       </div>
     </div>
@@ -187,7 +185,7 @@
 
   <!-- ==================== 논문 갤러리 (이미지 슬롯 5개) ==================== -->
   <section class="band border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-24">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
       <div class="flex items-end justify-between flex-wrap gap-3 mb-10">
         <div>
           <p class="kicker mb-4 reveal">Paper Gallery</p>
@@ -196,102 +194,184 @@
         <p class="text-[12.5px] text-sub flex items-center gap-1.5"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-accent text-[16px]"></iconify-icon>이미지 준비 후 클릭 시 확대 예정</p>
       </div>
 
-      <!-- 5개 슬롯: 이미지가 있으면 자동 노출, 없으면 '준비 중' 배지 -->
+      <!-- 9개 슬롯: 저널 4편 (최신순, 이미지 있음) + 학회 5편 (일부 이미지) -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
 
-        <!-- Slot 1 · Monte Carlo (KSCE) -->
+        <!-- J1 · DSDL Tiny Object Detection (Automation in Construction 2026) -->
         <figure>
-          <div class="paper-thumb paper-slot-empty aspect-[3/4]">
-            <iconify-icon icon="solar:document-add-linear"></iconify-icon>
-            <span>이미지 준비 중</span>
-          </div>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2026-dsdl-tiny-large-01.png" data-caption="Tiny object detection using DSDL for construction site safety monitoring · Automation in Construction 2026">
+            <img src="assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png" alt="Tiny object detection using DSDL 첫 페이지">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
+          </button>
           <figcaption class="mt-3">
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Monte Carlo simulation-based cost estimation for floating trash barrier maintenance</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">KSCE J. Civ. &amp; Env. Eng. Res. · 2024</p>
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2026</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Tiny Object Detection using DSDL for Construction Site Safety</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">Automation in Construction · SCIE</p>
           </figcaption>
         </figure>
 
-        <!-- Slot 2 · Large Multimodal Model (ICCEPM) -->
+        <!-- J2 · LVLM Safety (Automation in Construction 2025) -->
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-lvlm-safety-large-01.png" data-caption="Optimizing large vision-language models for context-aware construction safety assessment · Automation in Construction 2025">
+            <img src="assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png" alt="LVLM Safety 논문 첫 페이지">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2025</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Optimizing Large Vision-Language Models for Construction Safety</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">Automation in Construction · SCIE</p>
+          </figcaption>
+        </figure>
+
+        <!-- J3 · Moving-Feature Label Propagation (Computers in Industry 2025) -->
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-moving-feature-large-01.png" data-caption="Moving-feature-driven label propagation for training data generation from target domains · Computers in Industry 2025">
+            <img src="assets/tech/papers/journal-2025-moving-feature-thumb-01.png" alt="Moving-feature-driven label propagation 첫 페이지">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2025</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Moving-Feature-Driven Label Propagation for Training Data</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">Computers in Industry · SCIE</p>
+          </figcaption>
+        </figure>
+
+        <!-- J4 · Monte Carlo (KSCE 2024) - placeholder -->
         <figure>
           <div class="paper-thumb paper-slot-empty aspect-[3/4]">
             <iconify-icon icon="solar:document-add-linear"></iconify-icon>
             <span>이미지 준비 중</span>
           </div>
           <figcaption class="mt-3">
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Large Multimodal Model for Context-aware Construction Safety Monitoring</p>
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-accent/10 text-accent">Journal</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Monte Carlo Simulation-based Cost Estimation for Floating Trash Barrier</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">KSCE J. Civ. &amp; Env. Eng. Res. · KCI</p>
+          </figcaption>
+        </figure>
+
+        <!-- C1 · Zero-shot Polygon Mask (ISARC 2024) -->
+        <figure>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2024-zero-shot-polygon-large-1.png" data-caption="Zero-shot Learning-based Polygon Mask Generation for Construction Objects · ISARC 2024">
+            <img src="assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png" alt="Zero-shot Polygon Mask 첫 페이지">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
+          </button>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Zero-shot Learning-based Polygon Mask Generation</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">ISARC 2024 · IAARC</p>
+          </figcaption>
+        </figure>
+
+        <!-- C2 · LMM Context-aware (ICCEPM 2024) - placeholder -->
+        <figure>
+          <div class="paper-thumb paper-slot-empty aspect-[3/4]">
+            <iconify-icon icon="solar:document-add-linear"></iconify-icon>
+            <span>이미지 준비 중</span>
+          </div>
+          <figcaption class="mt-3">
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Large Multimodal Model for Context-aware Construction Safety</p>
             <p class="text-[12px] text-sub/70 mt-1 stat-num">ICCEPM 2024 · KICEM</p>
           </figcaption>
         </figure>
 
-        <!-- Slot 3 · Context-Adaptive CCTV PTZ (ISARC) -->
+        <!-- C3 · Context-Adaptive CCTV PTZ (ISARC 2024) - placeholder -->
         <figure>
           <div class="paper-thumb paper-slot-empty aspect-[3/4]">
             <iconify-icon icon="solar:document-add-linear"></iconify-icon>
             <span>이미지 준비 중</span>
           </div>
           <figcaption class="mt-3">
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Context-Adaptive CCTV Pan-Tilt-Zoom method for PPE Detection</p>
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2024</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Context-Adaptive CCTV Pan-Tilt-Zoom for PPE Detection</p>
             <p class="text-[12px] text-sub/70 mt-1 stat-num">ISARC 2024 · IAARC</p>
           </figcaption>
         </figure>
 
-        <!-- Slot 4 · Target Domain Training Data (i3CE) -->
+        <!-- C4 · Target Domain (i3CE 2023) -->
         <figure>
-          <div class="paper-thumb paper-slot-empty aspect-[3/4]">
-            <iconify-icon icon="solar:document-add-linear"></iconify-icon>
-            <span>이미지 준비 중</span>
-          </div>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2023-target-domain-large-1.png" data-caption="Target Domain Training Data Generation by Moving Object Detection and Label Propagation · Computing in Civil Engineering 2023, ASCE">
+            <img src="assets/tech/papers/conf-2023-target-domain-thumb-1.png" alt="Target Domain 논문 첫 페이지">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
+          </button>
           <figcaption class="mt-3">
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Target Domain Training Data Generation by Moving Object Detection and Label Propagation</p>
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2023</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Target Domain Training Data Generation by Moving Object Detection</p>
             <p class="text-[12px] text-sub/70 mt-1 stat-num">Computing in Civil Eng. 2023 · ASCE</p>
           </figcaption>
         </figure>
 
-        <!-- Slot 5 · Generating pseudo label (ICCCBE) -->
+        <!-- C5 · Generating pseudo label (ICCCBE 2022) -->
         <figure>
-          <div class="paper-thumb paper-slot-empty aspect-[3/4]">
-            <iconify-icon icon="solar:document-add-linear"></iconify-icon>
-            <span>이미지 준비 중</span>
-          </div>
+          <button type="button" class="paper-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2022-pseudo-label-large.png" data-caption="Generating Pseudo Label of Object Detector for Construction Site Monitoring · ICCCBE 2022, Springer (pp.111-119)">
+            <img src="assets/tech/papers/conf-2022-pseudo-label-thumb.png" alt="Generating pseudo label 논문 첫 페이지">
+            <span class="paper-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[20px]"></iconify-icon></span>
+          </button>
           <figcaption class="mt-3">
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Generating pseudo label of object detector for construction site monitoring</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">ICCCBE 2022 · Springer</p>
-          </figcaption>
-        </figure>
-
-        <!-- Slot 6 · Zero-shot Polygon Mask (ISARC) -->
-        <figure>
-          <div class="paper-thumb paper-slot-empty aspect-[3/4]">
-            <iconify-icon icon="solar:document-add-linear"></iconify-icon>
-            <span>이미지 준비 중</span>
-          </div>
-          <figcaption class="mt-3">
-            <p class="text-[13.5px] font-semibold text-ink leading-snug">Zero-shot Learning-based Polygon Mask Generation for Construction Objects</p>
-            <p class="text-[12px] text-sub/70 mt-1 stat-num">ISARC 2024 · IAARC</p>
+            <div class="flex items-center gap-1.5 mb-1"><span class="tag bg-ink/[0.06] text-ink">Conference</span><span class="tag bg-ink/[0.06] text-ink stat-num">2022</span></div>
+            <p class="text-[13.5px] font-semibold text-ink leading-snug">Generating Pseudo Label of Object Detector</p>
+            <p class="text-[12px] text-sub/70 mt-1 stat-num">ICCCBE 2022 · Springer · pp.111-119</p>
           </figcaption>
         </figure>
 
       </div>
 
-      <p class="mt-8 text-[12.5px] text-sub/60 leading-relaxed">* 각 논문 첫 페이지 PDF/이미지를 <code class="text-ink">assets/tech/papers/</code> 폴더에 넣으면 자동으로 이 자리에 노출됩니다. 파일명 규칙과 교체 안내는 아래 논문 목록의 각 항목에서 확인할 수 있습니다.</p>
+      <p class="mt-8 text-[12.5px] text-sub/60 leading-relaxed">* 이미지 준비 중인 3편(KSCE 2024, ICCEPM 2024, ISARC 2024 PTZ)은 원본 PDF 확보되는 대로 <code class="text-ink">assets/tech/papers/</code>에 추가하면 자동 노출됩니다.<br>* 이미지 클릭 시 첫 페이지를 확대해서 볼 수 있으며, 논문 전문은 아래 목록의 각 항목을 클릭해 저널·학회 원문으로 이동합니다.</p>
     </div>
   </section>
 
   <!-- ==================== 논문 목록 (저널 + 학회) ==================== -->
   <section id="list" class="border-b border-hair scroll-mt-24">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-24">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
       <div class="flex items-end justify-between flex-wrap gap-3 mb-10">
         <div>
           <p class="kicker mb-4 reveal">Publications</p>
           <h2 class="reveal stagger-1 text-[28px] md:text-[36px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">전체 논문 목록</h2>
         </div>
-        <p class="text-[12.5px] text-sub">2022 – 2024 · 총 6편</p>
+        <p class="text-[12.5px] text-sub">2022 – 2026 · 총 9편</p>
       </div>
 
-      <!-- 저널 -->
+      <!-- 저널 · 4편 -->
       <div class="mb-12">
-        <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[18px]"></iconify-icon><p class="text-[12.5px] font-bold uppercase tracking-[0.12em] text-accent stat-num">Journal · 1편</p></div>
+        <div class="flex items-center gap-2.5 mb-4"><iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[18px]"></iconify-icon><p class="text-[12.5px] font-bold uppercase tracking-[0.12em] text-accent stat-num">Journal · 4편</p></div>
         <div class="border-t border-hair">
+          <!-- J1 · Automation in Construction 2026 · DSDL -->
+          <a href="https://www.sciencedirect.com/science/article/pii/S0926580526001706" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
+            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
+              <div>
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Tiny object detection using Distance-guided, Signed, and Densified Learning (DSDL) for construction site safety monitoring</p>
+                <p class="text-[13px] text-sub mt-1.5 leading-relaxed">Seokhwan Kim, <strong class="text-ink">Taegeon Kim</strong>, Kichang Choi, Siheon Joo, Hongjo Kim</p>
+              </div>
+              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
+                <span class="text-ink font-semibold">Automation in Construction</span> · Vol.187 · 2026 · SCIE
+              </div>
+            </div>
+          </a>
+          <!-- J2 · Automation in Construction 2025 · LVLM Safety -->
+          <a href="https://www.sciencedirect.com/science/article/pii/S0926580525005503" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
+            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
+              <div>
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Optimizing large vision-language models for context-aware construction safety assessment</p>
+                <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Seokhwan Kim, Wei-Chih Chern, Somin Park, Daeho Kim, Hongjo Kim</p>
+              </div>
+              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
+                <span class="text-ink font-semibold">Automation in Construction</span> · Vol.180 · 2025 · SCIE
+              </div>
+            </div>
+          </a>
+          <!-- J3 · Computers in Industry 2025 · Moving-Feature -->
+          <a href="https://www.sciencedirect.com/science/article/pii/S0166361525001009" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
+            <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
+              <div>
+                <p class="text-[15.5px] md:text-[17px] font-bold text-ink leading-snug group-hover:text-accent transition-colors">Moving-feature-driven label propagation for training data generation from target domains</p>
+                <p class="text-[13px] text-sub mt-1.5 leading-relaxed"><strong class="text-ink">Taegeon Kim</strong>, Wei-Chih Chern, Seokhwan Kim, Vijayan K. Asari, Hongjo Kim</p>
+              </div>
+              <div class="md:text-right text-[13px] text-sub stat-num shrink-0 whitespace-nowrap">
+                <span class="text-ink font-semibold">Computers in Industry</span> · Vol.171 · 2025 · SCIE
+              </div>
+            </div>
+          </a>
+          <!-- J4 · KSCE 2024 · Monte Carlo -->
           <a href="https://www.koreascience.kr/journal/TMHHC2.page" target="_blank" rel="noopener" class="news-row block border-b border-hair py-5 md:py-6 group">
             <div class="grid md:grid-cols-[1fr_auto] gap-3 md:gap-8 items-baseline">
               <div>
@@ -373,7 +453,7 @@
 
   <!-- ==================== 대표 기고 · 학회지 (KICEM Vol.27 No.3) ==================== -->
   <section class="band border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-24">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
       <div class="max-w-2xl mb-10">
         <p class="kicker mb-4 reveal">Featured Article</p>
         <h2 class="reveal stagger-1 text-[28px] md:text-[36px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">대표 기고 · 학회지 특집</h2>
@@ -399,7 +479,7 @@
 
   <!-- ==================== CTA ==================== -->
   <section class="border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 py-20 md:py-24">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
       <div class="bg-ink px-8 md:px-16 py-14 md:py-20 text-center">
         <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-5 reveal">More</p>
         <h2 class="reveal stagger-1 text-[28px] md:text-[40px] font-bold tracking-tight text-white" style="line-height:1.3;">논문에서 <span class="text-accent-300">현장으로.</span></h2>
@@ -444,7 +524,7 @@
 
   <!-- ==================== 강화 푸터 ==================== -->
   <footer class="bg-ink text-white/70">
-    <div class="max-w-7xl mx-auto px-6 py-16">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16">
       <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 md:gap-8">
         <div>
           <img src="assets/logo/ontoh/흰색.svg" alt="ONTOH" class="h-8 mb-5">
@@ -461,7 +541,7 @@
           <div class="space-y-2.5 text-[14.5px]">
             <a href="about.html" class="block text-white/55 hover:text-white transition-colors">회사소개</a>
             <a href="vision.html" class="block text-white/55 hover:text-white transition-colors">솔루션</a>
-            <a href="tech.html" class="block text-white/55 hover:text-white transition-colors">기술·연구</a>
+            <a href="patents.html" class="block text-white/55 hover:text-white transition-colors">기술·연구</a>
             <a href="contact.html" class="block text-white/55 hover:text-white transition-colors">문의</a>
           </div>
         </div>
