@@ -67,6 +67,41 @@
     }
     .card-cta { display:inline-flex; align-items:center; gap:.35rem; font-size:13.5px; font-weight:800; color:#0169a9; transition:gap .28s cubic-bezier(0.16,1,0.3,1); }
     .corp-card:hover .card-cta { gap:.7rem; }
+    /* KPI Strip */
+    .kpi-cell { padding:1.5rem 1.5rem 1.6rem; border-right:1px solid #E5E7EB; border-bottom:1px solid #E5E7EB; text-align:center; }
+    .kpi-cell:nth-child(2n) { border-right:0; }
+    .kpi-cell:nth-last-child(-n+2) { border-bottom:0; }
+    @media (min-width:768px) {
+      .kpi-cell { border-bottom:0; border-right:1px solid #E5E7EB; padding:2rem 1.5rem 2.2rem; }
+      .kpi-cell:nth-child(2n) { border-right:1px solid #E5E7EB; }
+      .kpi-cell:last-child { border-right:0; }
+    }
+    .kpi-num { font-size:38px; font-weight:800; line-height:1; letter-spacing:-.03em; font-variant-numeric:tabular-nums; color:#0A2440; }
+    @media (min-width:768px) { .kpi-num { font-size:52px; } }
+    .kpi-num small { font-size:20px; font-weight:700; color:#555; margin-left:.15rem; }
+    .kpi-num.accent { color:#0169a9; }
+    .kpi-num.accent small { color:inherit; }
+    .kpi-label { margin-top:.75rem; font-size:12px; font-weight:800; color:#555; letter-spacing:.12em; text-transform:uppercase; }
+    /* Metric row (in featured card) */
+    .metric-cell .num { font-size:28px; font-weight:800; line-height:1; letter-spacing:-.03em; font-variant-numeric:tabular-nums; color:#0A2440; }
+    @media (min-width:768px) { .metric-cell .num { font-size:36px; } }
+    .metric-cell .num small { font-size:16px; font-weight:700; color:#555; margin-left:.1rem; }
+    .metric-cell .num.accent { color:#0169a9; }
+    .metric-cell .num.accent small { color:inherit; }
+    .metric-cell .num.ok { color:#137a52; }
+    .metric-cell .num.ok small { color:inherit; }
+    .metric-cell .lbl { margin-top:.5rem; font-size:12px; color:#555; line-height:1.35; }
+    /* Filter chip */
+    .filter-chip { font-size:13px; font-weight:700; padding:6px 14px; border:1px solid #E5E7EB; background:#fff; color:#555; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
+    .filter-chip:not(:disabled):hover { border-color:#0169a9; color:#0A2440; }
+    .filter-chip.filter-active { background:#0A2440; border-color:#0A2440; color:#fff; }
+    .filter-chip:disabled { opacity:.4; cursor:not-allowed; }
+    /* Partner logo strip */
+    .partner-logo { height:34px; opacity:.75; transition:opacity .28s cubic-bezier(0.16,1,0.3,1); }
+    .partner-logo:hover { opacity:1; }
+    @media (min-width:768px) { .partner-logo { height:40px; } }
+    .partner-text { font-size:15px; font-weight:800; color:rgba(10,36,64,.6); letter-spacing:-.01em; }
+    @media (min-width:768px) { .partner-text { font-size:17px; } }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -139,71 +174,138 @@
     </div>
   </section>
 
-  <!-- ==================== 인트로 + 익명화 고지 + 카드 그리드 ==================== -->
+  <!-- ==================== KPI Strip (Aggregated impact · 스캔용) ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 md:py-14">
+      <div class="grid grid-cols-2 md:grid-cols-4 border border-hair bg-white reveal">
+        <div class="kpi-cell">
+          <p class="kpi-num">2</p>
+          <p class="kpi-label">실증 진행 현장</p>
+        </div>
+        <div class="kpi-cell">
+          <p class="kpi-num">9,400<small>+</small></p>
+          <p class="kpi-label">관제 대상 세대</p>
+        </div>
+        <div class="kpi-cell">
+          <p class="kpi-num accent">40<small>+/일</small></p>
+          <p class="kpi-label">위험행동 감지</p>
+        </div>
+        <div class="kpi-cell">
+          <p class="kpi-num accent">90<small>%</small></p>
+          <p class="kpi-label">관제·서면 자동화</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Partner Trust Strip (R&D · 시공 파트너) ==================== -->
+  <section class="border-b border-hair band">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-8 md:py-10">
+      <p class="text-[12px] font-bold text-sub/60 tracking-[0.14em] uppercase text-center mb-5">Trusted by · R&amp;D · 시공 파트너</p>
+      <div class="flex flex-wrap items-center justify-center gap-x-10 md:gap-x-16 gap-y-5">
+        <img src="assets/logo/partners/금호건설(국문).svg" alt="금호건설(주)" class="partner-logo">
+        <img src="assets/logo/partners/KAIA.svg" alt="KAIA · 국토교통과학기술진흥원" class="partner-logo">
+        <span class="partner-text">LH 한국토지주택공사</span>
+        <span class="partner-text">연세대학교 산학협력단</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 인트로 + 필터 + Featured Hero + Case 02 ==================== -->
   <section id="cases" class="border-b border-hair scroll-mt-24">
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-24">
-      <div class="max-w-2xl mb-14">
-        <p class="kicker mb-4 reveal">Case Studies</p>
-        <h2 class="reveal stagger-1 text-[30px] md:text-[42px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">특허를 함께 개발한 <span class="text-accent">파트너의 현장에서.</span></h2>
-        <p class="reveal stagger-2 mt-5 text-[16.5px] text-sub leading-[1.8]">공동 R&amp;D 파트너 <strong class="text-ink">금호건설(주)</strong> 시공 현장에 <strong class="text-ink">ONTOH Vision</strong>이 배치되고 있습니다. 각 사례는 <strong class="text-ink">과제 → 적용 → 성과</strong> 순으로 정리했습니다.</p>
-        <p class="reveal stagger-3 mt-5 text-[13.5px] text-sub/75 leading-[1.75] border-l-2 border-accent/40 pl-4">
-          <iconify-icon icon="solar:shield-user-linear" class="text-accent text-[15px] align-middle mr-1"></iconify-icon>
-          <strong class="text-ink">고지</strong> — 실제 실증 현장을 재구성하여 게시했습니다. 고객사 보호와 개인정보 보호를 위해 <strong>사이트 상세 정보(정확한 주소·규모·기간)는 익명화 또는 반올림 표기</strong>했으며, 정량 지표는 실증 완료 시점에 순차 공개됩니다.
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+
+      <!-- Intro (컴팩트) + Contact CTA 인라인 -->
+      <div class="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div class="max-w-2xl">
+          <p class="kicker mb-4 reveal">Case Studies</p>
+          <h2 class="reveal stagger-1 text-[30px] md:text-[42px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">특허를 함께 개발한 <span class="text-accent">파트너의 현장에서.</span></h2>
+        </div>
+        <a href="contact.html" class="reveal stagger-2 shrink-0 inline-flex items-center gap-2 bg-ink text-white px-6 py-3.5 text-[15px] font-bold hover:bg-[#0e3161] transition-colors self-start md:self-end whitespace-nowrap">우리 현장 도입 상담 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+      </div>
+
+      <!-- Filter Chips + Anonymization Notice inline -->
+      <div class="reveal flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 pb-6 border-b border-hair mb-10">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-[12px] font-bold text-sub/60 tracking-[0.14em] uppercase mr-1">Filter</span>
+          <button class="filter-chip filter-active">전체 <span class="text-white/60">(2)</span></button>
+          <button class="filter-chip" disabled title="사례 3+개 확보 시 활성화">Vision</button>
+          <button class="filter-chip" disabled title="사례 3+개 확보 시 활성화">Vision + Health</button>
+          <span class="text-hair mx-1 hidden sm:inline">|</span>
+          <button class="filter-chip" disabled title="사례 3+개 확보 시 활성화">공공주택</button>
+          <button class="filter-chip" disabled title="사례 3+개 확보 시 활성화">재개발</button>
+        </div>
+        <p class="text-[12.5px] text-sub/60 leading-[1.6] max-w-md">
+          <iconify-icon icon="solar:shield-user-linear" class="text-accent align-middle mr-1"></iconify-icon>
+          고객사 보호를 위해 사이트 상세 정보는 <strong class="text-sub">익명화·반올림 표기</strong>. 정량 지표는 실증 완료 시 순차 공개.
         </p>
       </div>
 
-      <!-- 카드 그리드: 태그 + 익명화 타이틀 + 수치 헤드라인 + 자세히 보기 -->
-      <div class="reveal grid md:grid-cols-2 gap-6 lg:gap-8">
+      <!-- Featured Hero · Case 01 -->
+      <a href="references/case-01.html" class="corp-card group !p-0 overflow-hidden grid md:grid-cols-2 mb-6 reveal">
+        <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band border-b md:border-b-0 md:border-r border-hair">
+          <img src="assets/vision/reference/gwacheon/main.jpg" alt="수도권 대형 공공주택 조성 현장 조감도 (참고 이미지)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
+        </div>
+        <div class="p-8 md:p-10 lg:p-12 flex flex-col">
+          <p class="text-[12px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4"><iconify-icon icon="solar:star-linear" class="text-[13px] align-middle mr-1"></iconify-icon>Featured · Case 01</p>
+          <div class="flex items-center gap-2 mb-5 flex-wrap">
+            <span class="tag bg-accent/10 text-accent">Vision 실증</span>
+            <span class="tag bg-ink/[0.06] text-ink">공공주택 지구조성</span>
+            <span class="tag bg-ink/[0.06] text-ink">6개월</span>
+          </div>
+          <h3 class="text-[24px] md:text-[32px] font-bold text-ink leading-[1.25] mb-5" style="letter-spacing:-0.02em;">대규모 공공주택 조성현장, <span class="text-accent">관제 사각지대</span>를 없애다</h3>
+          <p class="text-[15.5px] text-sub leading-[1.75] mb-8">약 <strong class="text-ink">135만㎡·8,000세대급</strong> 지구조성 현장에 기존 CCTV × 특허 RAG-LMM 조합으로 상시 관제 실증 진행.</p>
+          <!-- Big metric row (3-cell) -->
+          <div class="grid grid-cols-3 gap-4 md:gap-6 mb-8 pt-6 border-t border-hair">
+            <div class="metric-cell">
+              <p class="num">40<small>+/일</small></p>
+              <p class="lbl">위험행동<br>자동 감지</p>
+            </div>
+            <div class="metric-cell">
+              <p class="num accent">68<small>%↓</small></p>
+              <p class="lbl">RAG-LMM<br>오탐 감소</p>
+            </div>
+            <div class="metric-cell">
+              <p class="num">2h<small>→10분</small></p>
+              <p class="lbl">일일<br>안전보고서</p>
+            </div>
+          </div>
+          <span class="mt-auto text-[15px] font-bold text-accent inline-flex items-center gap-2 group-hover:gap-3 transition-all">이 사례 자세히 보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[14px]"></iconify-icon></span>
+        </div>
+      </a>
 
-        <!-- CASE 01 카드 -->
-        <a href="references/case-01.html" class="corp-card !p-0 overflow-hidden flex flex-col group">
-          <div class="w-full aspect-[16/10] overflow-hidden border-b border-hair bg-band">
-            <img src="assets/vision/reference/gwacheon/main.jpg" alt="수도권 대형 공공주택 조성 현장 조감도 (참고 이미지)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
+      <!-- Case 02 · Full-width horizontal card -->
+      <a href="references/case-02.html" class="corp-card group !p-0 overflow-hidden grid md:grid-cols-[42%_1fr] reveal">
+        <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band border-b md:border-b-0 md:border-r border-hair">
+          <img src="assets/vision/reference/daejeon/main.png" alt="충청권 공공분양 아파트 고층 현장 조감도 (참고 이미지)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
+        </div>
+        <div class="p-8 md:p-10 flex flex-col">
+          <p class="text-[12px] font-extrabold text-sub/60 tracking-[0.16em] uppercase mb-3">Case 02</p>
+          <div class="flex items-center gap-2 mb-4 flex-wrap">
+            <span class="tag bg-accent/10 text-accent">Vision 실증</span>
+            <span class="tag" style="background:#dff0e8; color:#0f5138;">Health 통합</span>
+            <span class="tag bg-ink/[0.06] text-ink">고층 재개발</span>
           </div>
-          <div class="p-7 md:p-8 flex flex-col flex-1">
-            <div class="flex items-center gap-2 mb-3 flex-wrap">
-              <span class="stat-num text-[13px] font-bold text-sub/50">CASE 01</span>
-              <span class="tag bg-accent/10 text-accent">Vision 실증</span>
-              <span class="tag bg-ink/[0.06] text-ink">공공주택 지구조성</span>
+          <h3 class="text-[22px] md:text-[26px] font-bold text-ink leading-[1.3] mb-4" style="letter-spacing:-0.02em;">고층 재개발 현장, 안전관제와 <span style="color:#137a52;">보건관리</span>를 하나로</h3>
+          <p class="text-[14.5px] text-sub leading-[1.7] mb-7"><strong class="text-ink">1,420세대·최고 35층</strong> 현장에 Vision + Health 통합 상시 운영 · 온토 차별화 축.</p>
+          <div class="grid grid-cols-3 gap-4 mb-7 pt-5 border-t border-hair">
+            <div class="metric-cell">
+              <p class="num">3<small>초</small></p>
+              <p class="lbl">추락위험<br>알림</p>
             </div>
-            <h3 class="text-[20px] md:text-[23px] font-bold text-ink leading-tight mb-4" style="letter-spacing:-0.015em;">대규모 공공주택 조성현장, 관제 사각지대를 없애다</h3>
-            <ul class="space-y-2 mb-6 text-[14px] text-sub leading-[1.55]">
-              <li class="flex gap-2"><span class="w-1.5 h-1.5 mt-2 rounded-sm bg-accent shrink-0"></span>위험행동 자동감지 <strong class="text-ink">일 40+건</strong></li>
-              <li class="flex gap-2"><span class="w-1.5 h-1.5 mt-2 rounded-sm bg-accent shrink-0"></span>오경보 <strong class="text-ink">68% 감소</strong> (RAG-LMM)</li>
-              <li class="flex gap-2"><span class="w-1.5 h-1.5 mt-2 rounded-sm bg-accent shrink-0"></span>일일 안전보고서 <strong class="text-ink">2시간 → 10분</strong></li>
-            </ul>
-            <div class="mt-auto flex items-center justify-between pt-4 border-t border-hair">
-              <span class="text-[13px] text-sub/60">6개월 실증 · 135만㎡·8,000세대급</span>
-              <span class="card-cta">자세히 보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
+            <div class="metric-cell">
+              <p class="num ok">12<small>명</small></p>
+              <p class="lbl">고위험군<br>조기 분류</p>
+            </div>
+            <div class="metric-cell">
+              <p class="num accent">90<small>%↓</small></p>
+              <p class="lbl">보건업무<br>수기 자동화</p>
             </div>
           </div>
-        </a>
+          <span class="mt-auto text-[15px] font-bold text-accent inline-flex items-center gap-2 group-hover:gap-3 transition-all">이 사례 자세히 보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[14px]"></iconify-icon></span>
+        </div>
+      </a>
 
-        <!-- CASE 02 카드 -->
-        <a href="references/case-02.html" class="corp-card !p-0 overflow-hidden flex flex-col group">
-          <div class="w-full aspect-[16/10] overflow-hidden border-b border-hair bg-band">
-            <img src="assets/vision/reference/daejeon/main.png" alt="충청권 공공분양 아파트 고층 현장 조감도 (참고 이미지)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" style="transition-timing-function:cubic-bezier(0.16,1,0.3,1);">
-          </div>
-          <div class="p-7 md:p-8 flex flex-col flex-1">
-            <div class="flex items-center gap-2 mb-3 flex-wrap">
-              <span class="stat-num text-[13px] font-bold text-sub/50">CASE 02</span>
-              <span class="tag bg-accent/10 text-accent">Vision + Health</span>
-              <span class="tag bg-ink/[0.06] text-ink">고층 재개발</span>
-            </div>
-            <h3 class="text-[20px] md:text-[23px] font-bold text-ink leading-tight mb-4" style="letter-spacing:-0.015em;">고층 재개발 현장, 안전관제와 보건관리를 하나로</h3>
-            <ul class="space-y-2 mb-6 text-[14px] text-sub leading-[1.55]">
-              <li class="flex gap-2"><span class="w-1.5 h-1.5 mt-2 rounded-sm bg-accent shrink-0"></span>추락위험 알림 <strong class="text-ink">3초 이내</strong></li>
-              <li class="flex gap-2"><span class="w-1.5 h-1.5 mt-2 rounded-sm bg-accent shrink-0"></span>고위험 근로자 <strong class="text-ink">조기 분류 12명</strong></li>
-              <li class="flex gap-2"><span class="w-1.5 h-1.5 mt-2 rounded-sm bg-accent shrink-0"></span>보건 수기업무 <strong class="text-ink">90% 자동화</strong></li>
-            </ul>
-            <div class="mt-auto flex items-center justify-between pt-4 border-t border-hair">
-              <span class="text-[13px] text-sub/60">상시 운영 · 1,420세대·최고 35층</span>
-              <span class="card-cta">자세히 보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
-            </div>
-          </div>
-        </a>
-
-      </div>
     </div>
   </section>
   <!-- ==================== CTA ==================== -->
