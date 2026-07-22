@@ -1,0 +1,231 @@
+/* ==========================================================================
+   ONTOH Design System · Colors + Typography
+   ==========================================================================
+   Version 3.0 · 2026-07-22
+   Source of truth: design/DESIGN.md
+
+   사용법:
+     <link rel="stylesheet"
+           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+     <link rel="stylesheet" href="path/to/design/colors_and_type.css">
+
+   또는 Tailwind CDN에 tailwind.config로 병용 (기존 페이지 방식).
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. CSS Variables (Design Tokens)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Primary (구조) */
+  --color-ink:          #0A2440;     /* 헤드라인 · 헤더 · 다크 CTA 배경 */
+  --color-body:         #212121;     /* 본문 텍스트 (기본) */
+  --color-sub:          #555555;     /* 보조 텍스트 · 캡션 */
+
+  /* Accent (강조 · 링크 · CTA · 수치) */
+  --color-accent:       #0169a9;     /* 온토 블루 (표준 accent) */
+  --color-accent-300:   #8ed0ff;     /* 다크 배경 위 킥커 */
+  --color-accent-400:   #59b4ff;     /* 보조 강조 */
+
+  /* Surface (배경 · 선) */
+  --color-white:        #FFFFFF;
+  --color-band:         #F5F6F8;     /* 섹션 구분 오프화이트 */
+  --color-hair:         #E5E7EB;     /* 헤어라인 (테두리) */
+
+  /* Semantic */
+  --color-ok:           #137a52;     /* Health 축 · 성공 · 보건 성과 */
+  --color-warn-bg:      #FEF9E7;     /* Draft 배너 배경 */
+  --color-warn-fg:      #8B6A00;     /* Draft 배너 텍스트 */
+  --color-warn-border:  #F5DE83;
+
+  /* Brand 자산 전용 (웹 UI 사용 금지) */
+  --color-logo-navy:    #1b2e6a;     /* 로고 SVG 원본 색 */
+
+  /* Radius (직각 우선) */
+  --radius-none:  0px;
+  --radius-sm:    2px;
+  --radius-full:  9999px;
+
+  /* Shadow (호버 시에만) */
+  --shadow-card-hover: 0 18px 40px -22px rgba(10, 36, 64, .32);
+  --shadow-mega:       0 28px 46px -26px rgba(10, 36, 64, .30);
+
+  /* Motion (단일 이징) */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Duration */
+  --dur-micro:    240ms;
+  --dur-standard: 380ms;
+  --dur-slow:     500ms;
+
+  /* Container */
+  --max-width:    1280px;    /* Tailwind max-w-7xl 등가 */
+
+  /* Padding scale (섹션 세로) */
+  --pad-hero:     6rem;      /* 96px (md: 128px) */
+  --pad-section:  4rem;      /* 64px (md: 80px)  */
+  --pad-compact:  3.5rem;    /* 56px (md: 64px)  */
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Base Typography
+   -------------------------------------------------------------------------- */
+
+/* Pretendard는 CDN link로 별도 로드하는 것이 정석
+   <link rel="stylesheet"
+         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css"> */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Pretendard', system-ui, -apple-system, sans-serif;
+  color: var(--color-body);
+  background: var(--color-white);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Type Scale (utility classes · optional)
+   -------------------------------------------------------------------------- */
+
+.type-hero {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.type-h2 {
+  font-size: clamp(24px, 3.2vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--color-ink);
+}
+
+.type-h3 {
+  font-size: clamp(18px, 2vw, 23px);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  color: var(--color-ink);
+}
+
+.type-h4 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+.type-body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--color-body);
+}
+
+.type-body-lg {
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.type-small {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--color-sub);
+}
+
+.type-kicker {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.type-section-tag {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.type-meta {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-sub);
+}
+
+.type-kpi-num {
+  font-size: 44px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+}
+
+.type-kpi-num small {
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 0.15rem;
+}
+
+.stat-num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. Color utility classes (optional · Tailwind로 대체 가능)
+   -------------------------------------------------------------------------- */
+
+.text-ink     { color: var(--color-ink); }
+.text-body    { color: var(--color-body); }
+.text-sub     { color: var(--color-sub); }
+.text-accent  { color: var(--color-accent); }
+
+.bg-white     { background: var(--color-white); }
+.bg-band      { background: var(--color-band); }
+.bg-ink       { background: var(--color-ink); }
+.bg-accent    { background: var(--color-accent); }
+
+.border-hair  { border-color: var(--color-hair); }
+
+
+/* --------------------------------------------------------------------------
+   5. Layout helpers
+   -------------------------------------------------------------------------- */
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@media (min-width: 640px)  { .container { padding-inline: 40px; } }
+@media (min-width: 1024px) { .container { padding-inline: 56px; } }
+
+
+/* --------------------------------------------------------------------------
+   6. Accessibility
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* Focus (기본 포커스 유지 · 커스텀 안 함) */
+
+/* End of file */

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components · ONTOH Design System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+      colors: { ink: '#0A2440', body: '#212121', sub: '#555555',
+        accent: { DEFAULT: '#0169a9', 300: '#8ed0ff' },
+        band: '#F5F6F8', hair: '#E5E7EB', ok: '#137a52' } } } }
+  </script>
+  <style>
+    body { font-family: 'Pretendard', system-ui, sans-serif; color: #212121; }
+    .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+    .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
+    .section-tag { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#0169a9; margin-bottom:1rem; }
+    .section-tag::before { content:""; display:inline-block; width:26px; height:2px; background:#0169a9; vertical-align:middle; margin-right:.6rem; }
+    .corp-card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
+    .corp-card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
+    .tag { font-size:12px; font-weight:800; letter-spacing:.02em; padding:3px 9px; }
+    .kpi-num { font-size:44px; font-weight:800; line-height:1; letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
+    .kpi-num small { font-size:20px; font-weight:700; margin-left:.15rem; }
+    .summary-strip { border:1px solid #E5E7EB; display:grid; grid-template-columns:repeat(2, 1fr); background:#fff; }
+    .summary-strip > div { padding:1.4rem 1.5rem 1.6rem; border-right:1px solid #E5E7EB; border-bottom:1px solid #E5E7EB; }
+    .summary-strip > div:nth-child(2n) { border-right:0; }
+    .summary-strip > div:nth-last-child(-n+2) { border-bottom:0; }
+    @media (min-width:768px) {
+      .summary-strip { grid-template-columns:repeat(4, 1fr); }
+      .summary-strip > div { border-bottom:0; border-right:1px solid #E5E7EB; }
+      .summary-strip > div:nth-child(2n) { border-right:1px solid #E5E7EB; }
+      .summary-strip > div:last-child { border-right:0; }
+    }
+    .pts li { position:relative; padding:12px 0 12px 24px; border-bottom:1px solid #E5E7EB; color:#33383e; font-size:15.5px; line-height:1.65; }
+    .pts li:before { content:""; position:absolute; left:0; top:19px; width:8px; height:8px; border:2px solid #0169a9; border-radius:50%; }
+    .pts li b { color:#0A2440; font-weight:700; }
+    .ba { display:inline-block; background:#EAF0FA; color:#0A2440; font-weight:800; padding:2px 10px; font-size:14.5px; }
+    .law-chip { font-size:13px; font-weight:700; color:#0A2440; background:#fff; border:1px solid #E5E7EB; padding:8px 13px; }
+    .law-chip::before { content:"§ "; color:#0169a9; }
+    .draft-notice { background:#FEF9E7; border-bottom:1px solid #F5DE83; }
+    .demo { border:1px solid #E5E7EB; padding:2rem; background:#fff; }
+    .demo-band { border:1px solid #E5E7EB; padding:2rem; background:#F5F6F8; }
+    details.code-block { margin-top:1rem; }
+    details.code-block summary { cursor:pointer; font-size:12px; font-weight:700; color:#0169a9; text-transform:uppercase; letter-spacing:.1em; padding:.6rem 0; }
+    details.code-block pre { background:#0A2440; color:#8ed0ff; padding:1rem; overflow-x:auto; font-size:12px; line-height:1.65; font-family:'SF Mono', Consolas, monospace; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Nav -->
+  <nav class="border-b border-hair sticky top-0 bg-white z-20">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 h-14 flex items-center gap-6 text-[13.5px]">
+      <a href="index.html" class="font-bold text-ink">ONTOH Design System</a>
+      <div class="flex-1"></div>
+      <a href="index.html" class="text-sub hover:text-ink transition-colors">Overview</a>
+      <a href="colors.html" class="text-sub hover:text-ink transition-colors">Colors</a>
+      <a href="typography.html" class="text-sub hover:text-ink transition-colors">Typography</a>
+      <a href="spacing.html" class="text-sub hover:text-ink transition-colors">Spacing</a>
+      <a href="components.html" class="text-accent font-bold">Components</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+      <p class="kicker mb-4">04 · Components</p>
+      <h1 class="text-[30px] md:text-[42px] font-bold text-ink mb-4" style="letter-spacing:-0.02em;">컴포넌트 갤러리</h1>
+      <p class="text-[16px] text-sub leading-[1.75] max-w-2xl">실제 사이트에 배치된 컴포넌트만 수록. 각 항목의 <strong class="text-ink">View Code</strong>를 펼쳐 마크업 복사.</p>
+
+      <nav class="mt-8 flex flex-wrap gap-2 text-[13px]">
+        <a href="#kicker" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Kicker</a>
+        <a href="#section-tag" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Section Tag</a>
+        <a href="#tag" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Tag / Chip</a>
+        <a href="#button" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Buttons</a>
+        <a href="#card" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Card</a>
+        <a href="#kpi" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">KPI Box</a>
+        <a href="#strip" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Summary Strip</a>
+        <a href="#pts" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Points List</a>
+        <a href="#badge" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Badge</a>
+        <a href="#law" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Law Chip</a>
+        <a href="#draft" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Draft Notice</a>
+        <a href="#quote" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">Quote</a>
+        <a href="#cta" class="tag bg-ink/[0.06] text-ink hover:bg-accent hover:text-white transition-colors">CTA Block</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Kicker -->
+  <section id="kicker" class="border-b border-hair scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 01</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Kicker (섹션 킥커)</h2>
+      <div class="demo">
+        <p class="kicker">Case Studies</p>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;p class="kicker"&gt;Case Studies&lt;/p&gt;
+
+.kicker { display:inline-flex; align-items:center; gap:.6rem;
+  font-size:13px; font-weight:800; letter-spacing:.14em;
+  text-transform:uppercase; color:#0169a9; }
+.kicker::before { content:""; width:26px; height:2px;
+  background:#0169a9; display:inline-block; }</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Section Tag -->
+  <section id="section-tag" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 02</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Section Tag (상세 페이지 섹션 라벨)</h2>
+      <div class="demo">
+        <p class="section-tag">과제 · Challenge</p>
+        <p class="section-tag">적용 · Solution</p>
+        <p class="section-tag">성과 · Impact</p>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;p class="section-tag"&gt;과제 · Challenge&lt;/p&gt;
+
+.section-tag { display:inline-block; font-size:12px; font-weight:800;
+  letter-spacing:.16em; text-transform:uppercase; color:#0169a9;
+  margin-bottom:1rem; }
+.section-tag::before { content:""; display:inline-block;
+  width:26px; height:2px; background:#0169a9;
+  vertical-align:middle; margin-right:.6rem; }</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Tag / Chip -->
+  <section id="tag" class="border-b border-hair scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 03</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Tag / Chip</h2>
+      <div class="demo flex flex-wrap gap-2">
+        <span class="tag bg-accent/10 text-accent">Vision 실증</span>
+        <span class="tag bg-ink/[0.06] text-ink">공공주택 지구조성</span>
+        <span class="tag bg-ink text-white">SELECTED</span>
+        <span class="tag" style="background:#137a52; color:white;">ONTOH HEALTH</span>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;span class="tag bg-accent/10 text-accent"&gt;Vision 실증&lt;/span&gt;
+&lt;span class="tag bg-ink/[0.06] text-ink"&gt;공공주택 지구조성&lt;/span&gt;
+
+.tag { font-size:12px; font-weight:800; letter-spacing:.02em;
+  padding:3px 9px; }</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Buttons -->
+  <section id="button" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 04</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Buttons</h2>
+      <div class="demo flex flex-wrap gap-3">
+        <a class="inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[15px] font-bold hover:bg-[#0e3161] transition-colors">Primary <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+        <a class="inline-flex items-center gap-2 bg-white text-ink border border-hair px-5 py-2.5 text-[15px] font-bold hover:bg-band transition-colors">Secondary</a>
+        <a class="inline-flex items-center gap-2 text-accent px-5 py-2.5 text-[15px] font-bold hover:gap-3 transition-all">Text link <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+      </div>
+      <div class="demo mt-4 bg-ink text-white flex flex-wrap gap-3 items-center">
+        <a class="inline-flex items-center gap-2 bg-white text-ink px-7 py-3.5 text-[16px] font-bold hover:scale-[1.02] transition-transform">Dark bg Primary <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+        <a class="inline-flex items-center gap-2 border border-white/25 text-white px-7 py-3.5 text-[16px] font-bold hover:bg-white/10 transition-colors">Dark bg Ghost</a>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;!-- Primary --&gt;
+&lt;a class="inline-flex items-center gap-2 bg-ink text-white
+    px-5 py-2.5 text-[15px] font-bold
+    hover:bg-[#0e3161] transition-colors"&gt;
+  Primary
+  &lt;iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"&gt;&lt;/iconify-icon&gt;
+&lt;/a&gt;
+
+&lt;!-- Secondary --&gt;
+&lt;a class="inline-flex items-center gap-2 bg-white text-ink
+    border border-hair px-5 py-2.5 text-[15px] font-bold
+    hover:bg-band transition-colors"&gt;Secondary&lt;/a&gt;</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Card -->
+  <section id="card" class="border-b border-hair scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 05</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Card (.corp-card)</h2>
+      <div class="demo-band">
+        <div class="corp-card p-8 max-w-md">
+          <div class="flex items-center gap-2 mb-3 flex-wrap">
+            <span class="text-[13px] font-bold text-sub/50" style="font-variant-numeric:tabular-nums;">CASE 01</span>
+            <span class="tag bg-accent/10 text-accent">Vision 실증</span>
+          </div>
+          <h3 class="text-[22px] font-bold text-ink leading-tight mb-3" style="letter-spacing:-0.015em;">대규모 공공주택 조성현장</h3>
+          <p class="text-[14.5px] text-sub leading-[1.7] mb-5">기존 CCTV × RAG-LMM 안전 판별로 사각지대 해소.</p>
+          <span class="text-[13.5px] font-bold text-accent inline-flex items-center gap-1.5">자세히 보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
+        </div>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;a href="..." class="corp-card block p-8 group"&gt;
+  &lt;h3&gt;타이틀&lt;/h3&gt;
+&lt;/a&gt;
+
+.corp-card { background:#fff; border:1px solid #E5E7EB;
+  transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1),
+              transform .5s cubic-bezier(0.16,1,0.3,1); }
+.corp-card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32);
+  transform: translateY(-3px); }</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- KPI Box -->
+  <section id="kpi" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 06</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">KPI Box (Impact in Numbers)</h2>
+      <div class="grid md:grid-cols-3 gap-3 md:gap-4">
+        <div class="bg-ink p-7">
+          <div class="text-white kpi-num mb-3">40<small>+건/일</small></div>
+          <p class="text-white/60 text-[13.5px] leading-relaxed">위험행동 자동 감지</p>
+        </div>
+        <div class="bg-ink p-7">
+          <div class="text-white kpi-num mb-3">68<small>%↓</small></div>
+          <p class="text-white/60 text-[13.5px] leading-relaxed">RAG-LMM으로 오경보 감소</p>
+        </div>
+        <div class="bg-ink p-7">
+          <div class="text-white kpi-num mb-3">2h<small>→10분</small></div>
+          <p class="text-white/60 text-[13.5px] leading-relaxed">일일 안전보고서 자동화</p>
+        </div>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;div class="grid md:grid-cols-3 gap-3 md:gap-4"&gt;
+  &lt;div class="bg-ink p-7"&gt;
+    &lt;div class="text-white kpi-num mb-3"&gt;
+      40&lt;small&gt;+건/일&lt;/small&gt;
+    &lt;/div&gt;
+    &lt;p class="text-white/60 text-[13.5px]"&gt;위험행동 자동 감지&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+.kpi-num { font-size:44px; font-weight:800; line-height:1;
+  letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
+.kpi-num small { font-size:20px; font-weight:700;
+  margin-left:.15rem; }</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Summary Strip -->
+  <section id="strip" class="border-b border-hair scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 07</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Summary Strip (4칸)</h2>
+      <div class="summary-strip">
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">현장 유형</p>
+          <p class="text-[15.5px] font-bold text-ink">공공주택 조성지구</p>
+        </div>
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">규모</p>
+          <p class="text-[15.5px] font-bold text-ink">약 135만㎡ · 8,000세대급</p>
+        </div>
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">적용 솔루션</p>
+          <p class="text-[15.5px] font-bold text-accent">ONTOH Vision</p>
+        </div>
+        <div>
+          <p class="text-[11.5px] text-sub/60 font-bold tracking-[0.14em] uppercase mb-2">적용 기간</p>
+          <p class="text-[15.5px] font-bold text-ink">6개월 실증</p>
+        </div>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;div class="summary-strip"&gt;
+  &lt;div&gt;
+    &lt;p class="text-[11.5px] uppercase tracking-[0.14em]"&gt;현장 유형&lt;/p&gt;
+    &lt;p class="text-[15.5px] font-bold"&gt;공공주택 조성지구&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;!-- x4 --&gt;
+&lt;/div&gt;
+
+/* CSS는 DESIGN.md 참조 */</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Points List -->
+  <section id="pts" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 08</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Points List (.pts)</h2>
+      <div class="demo">
+        <ul class="pts">
+          <li>다수 시공사 병행 시공으로 <b>안전관리 통합 관제 부재</b></li>
+          <li>산업안전보건법 32조·43조 강화로 <b>상시 CCTV 모니터링 부담</b> 증가</li>
+          <li>광범위한 지구 규모에서 <b>인력 순찰 방식의 위험 감지 한계</b></li>
+          <li>중대재해처벌법 대응을 위한 <b>안전 서면 업무 과부하</b></li>
+        </ul>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;ul class="pts"&gt;
+  &lt;li&gt;다수 시공사 병행 시공으로 &lt;b&gt;통합 관제 부재&lt;/b&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+.pts li { position:relative; padding:12px 0 12px 24px;
+  border-bottom:1px solid #E5E7EB; color:#33383e;
+  font-size:15.5px; line-height:1.65; }
+.pts li:before { content:""; position:absolute; left:0; top:19px;
+  width:8px; height:8px; border:2px solid #0169a9;
+  border-radius:50%; }
+.pts li b { color:#0A2440; font-weight:700; }</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Badge -->
+  <section id="badge" class="border-b border-hair scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 09</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Badge (.ba · 인라인 수치)</h2>
+      <div class="demo text-[15.5px] text-body leading-[1.75]">
+        <p>위험행동 자동 감지 <span class="ba">일 평균 40+건</span></p>
+        <p class="mt-3">오경보 <span class="ba">68% 감소</span> — 유효 알림 중심으로 관제 집중도 향상</p>
+        <p class="mt-3">보고서 작성 <span class="ba">2시간 → 10분</span></p>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>오경보 &lt;span class="ba"&gt;68% 감소&lt;/span&gt;
+
+.ba { display:inline-block; background:#EAF0FA; color:#0A2440;
+  font-weight:800; padding:2px 10px; font-size:14.5px; }</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Law Chip -->
+  <section id="law" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 10</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Law Chip (법령 나열)</h2>
+      <div class="demo flex flex-wrap gap-2.5">
+        <span class="law-chip">산업안전보건법 제43조 (추락 방지)</span>
+        <span class="law-chip">산업안전보건법 제32조 (보호구)</span>
+        <span class="law-chip">건설기술진흥법</span>
+        <span class="law-chip">공사금액 50억 이상 CCTV 설치 의무</span>
+        <span class="law-chip">중대재해처벌법 (안전보건관리체계)</span>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;span class="law-chip"&gt;산업안전보건법 제43조 (추락 방지)&lt;/span&gt;
+
+.law-chip { font-size:13px; font-weight:700; color:#0A2440;
+  background:#fff; border:1px solid #E5E7EB; padding:8px 13px; }
+.law-chip::before { content:"§ "; color:#0169a9; }</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Draft Notice -->
+  <section id="draft" class="border-b border-hair scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 11</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Draft Notice (초안 배너)</h2>
+      <div class="draft-notice">
+        <div class="py-3 px-6 text-[13px] text-[#8B6A00]">
+          <iconify-icon icon="solar:info-circle-linear" class="align-middle text-[15px] mr-1"></iconify-icon>
+          <strong>초안</strong> — 이 사례의 과제·적용·성과 상세는 실증 진행에 따라 실제 진단·측정 데이터로 순차 업데이트됩니다.
+        </div>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;div class="draft-notice"&gt;
+  &lt;div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-3
+      text-[13px] text-[#8B6A00]"&gt;
+    &lt;iconify-icon icon="solar:info-circle-linear"&gt;&lt;/iconify-icon&gt;
+    &lt;strong&gt;초안&lt;/strong&gt; — 실증 진행에 따라 업데이트.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+.draft-notice { background:#FEF9E7; border-bottom:1px solid #F5DE83; }</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section id="quote" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 12</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Quote (고객 코멘트)</h2>
+      <div class="border-l-4 border-accent bg-white p-8" style="border-top:1px solid #E5E7EB;border-right:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;">
+        <iconify-icon icon="solar:quote-up-linear" class="text-accent text-[28px] mb-3"></iconify-icon>
+        <p class="text-[18px] font-semibold text-ink leading-[1.65] italic" style="letter-spacing:-0.01em;">"알림이 쏟아지던 예전과 달리, 지금은 정말 봐야 할 상황만 뜹니다. 보고서까지 자동으로 정리돼 현장 관리에 집중할 수 있게 됐어요."</p>
+        <p class="text-[13.5px] text-sub mt-5">— 현장 안전관리책임자 <span class="text-sub/60">(실명·소속은 고객사 동의 시 표기)</span></p>
+      </div>
+      <details class="code-block"><summary>View Code</summary>
+<pre>&lt;div class="border-l-4 border-accent bg-white p-8"&gt;
+  &lt;iconify-icon icon="solar:quote-up-linear"&gt;&lt;/iconify-icon&gt;
+  &lt;p class="text-[18px] font-semibold italic"&gt;"..."&lt;/p&gt;
+  &lt;p class="text-[13.5px] text-sub mt-5"&gt;— 담당자&lt;/p&gt;
+&lt;/div&gt;</pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA Block -->
+  <section id="cta" class="border-b border-hair scroll-mt-16">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 13</p>
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">CTA Block (다크 배경)</h2>
+      <div class="bg-ink px-8 md:px-16 py-14 text-center">
+        <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-5">Your site next</p>
+        <h3 class="text-[24px] md:text-[36px] font-bold text-white" style="line-height:1.3;">우리 현장에도 <span class="text-accent-300">적용해보고 싶다면</span></h3>
+        <p class="mt-5 text-[16px] text-white/65 leading-[1.7] max-w-xl mx-auto">현장 규모와 여건을 알려주시면 맞춤 도입 방안을 안내해 드립니다.</p>
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+          <a class="inline-flex items-center gap-2 bg-white text-ink px-7 py-3.5 text-[16px] font-bold">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <a class="inline-flex items-center gap-2 border border-white/25 text-white px-7 py-3.5 text-[16px] font-bold">ONTOH Vision 자세히</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/60 text-[13px]">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-8 flex flex-col sm:flex-row justify-between gap-3">
+      <p>&copy; 2026 ONTOH Inc. — Design System v3.0</p>
+      <div class="flex items-center gap-4">
+        <a href="../DESIGN.md" class="hover:text-white transition-colors">DESIGN.md</a>
+        <a href="index.html" class="hover:text-white transition-colors">← Overview</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

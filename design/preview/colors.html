@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colors · ONTOH Design System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+      colors: { ink: '#0A2440', body: '#212121', sub: '#555555',
+        accent: { DEFAULT: '#0169a9', 300: '#8ed0ff' },
+        band: '#F5F6F8', hair: '#E5E7EB' } } } }
+  </script>
+  <style>
+    body { font-family: 'Pretendard', system-ui, sans-serif; color: #212121; }
+    .swatch { border:1px solid #E5E7EB; }
+    .swatch-color { aspect-ratio:16/9; }
+    .swatch-info { padding:1.25rem 1.5rem; background:#fff; border-top:1px solid #E5E7EB; }
+    .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+    .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
+    code { font-family: 'SF Mono', Consolas, monospace; font-size:.85em; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Nav -->
+  <nav class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 h-14 flex items-center gap-6 text-[13.5px]">
+      <a href="index.html" class="font-bold text-ink">ONTOH Design System</a>
+      <div class="flex-1"></div>
+      <a href="index.html" class="text-sub hover:text-ink transition-colors">Overview</a>
+      <a href="colors.html" class="text-accent font-bold">Colors</a>
+      <a href="typography.html" class="text-sub hover:text-ink transition-colors">Typography</a>
+      <a href="spacing.html" class="text-sub hover:text-ink transition-colors">Spacing</a>
+      <a href="components.html" class="text-sub hover:text-ink transition-colors">Components</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+      <p class="kicker mb-4">01 · Colors</p>
+      <h1 class="text-[30px] md:text-[42px] font-bold text-ink mb-4" style="letter-spacing:-0.02em;">색상 팔레트</h1>
+      <p class="text-[16px] text-sub leading-[1.75] max-w-2xl">브랜드 컬러는 딱 <strong class="text-ink">3개의 primary + 3개의 surface</strong>. 나머지는 지원 팔레트.</p>
+    </div>
+  </section>
+
+  <!-- Primary -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <div class="mb-8">
+        <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Primary · 구조</p>
+        <h2 class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">헤드라인 · 본문 · 보조</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#0A2440"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">ink</p>
+            <p class="text-[16px] font-bold text-ink"><code>#0A2440</code></p>
+            <p class="text-[13px] text-sub mt-1">RGB 10, 36, 64</p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">헤드라인 · 헤더 · 다크 CTA 배경</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#212121"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">body</p>
+            <p class="text-[16px] font-bold text-ink"><code>#212121</code></p>
+            <p class="text-[13px] text-sub mt-1">RGB 33, 33, 33</p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">본문 텍스트 (기본)</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#555555"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">sub</p>
+            <p class="text-[16px] font-bold text-ink"><code>#555555</code></p>
+            <p class="text-[13px] text-sub mt-1">RGB 85, 85, 85</p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">보조 텍스트 · 캡션</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Accent -->
+  <section class="border-b border-hair band" style="background:#F5F6F8">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <div class="mb-8">
+        <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Accent · 강조</p>
+        <h2 class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">링크 · CTA · 수치 · 킥커</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#0169a9"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">accent (DEFAULT)</p>
+            <p class="text-[16px] font-bold text-ink"><code>#0169a9</code></p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">온토 블루. 링크·CTA·수치·킥커·section-tag 전용</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#8ed0ff"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">accent-300</p>
+            <p class="text-[16px] font-bold text-ink"><code>#8ed0ff</code></p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">다크 배경 위 킥커·강조 텍스트</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#59b4ff"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">accent-400</p>
+            <p class="text-[16px] font-bold text-ink"><code>#59b4ff</code></p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">보조 강조 (그라디언트 등)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Surface -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <div class="mb-8">
+        <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Surface · 배경 · 선</p>
+        <h2 class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">배경 · 섹션 구분 · 헤어라인</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#FFFFFF; border-bottom:1px solid #E5E7EB;"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">white</p>
+            <p class="text-[16px] font-bold text-ink"><code>#FFFFFF</code></p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">기본 배경</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#F5F6F8"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">band</p>
+            <p class="text-[16px] font-bold text-ink"><code>#F5F6F8</code></p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">섹션 구분 오프화이트</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#E5E7EB"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">hair</p>
+            <p class="text-[16px] font-bold text-ink"><code>#E5E7EB</code></p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">테두리 · 헤어라인</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Semantic -->
+  <section class="border-b border-hair band" style="background:#F5F6F8">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <div class="mb-8">
+        <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Semantic</p>
+        <h2 class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">Health · 초안 · 상태</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#137a52"></div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">ok</p>
+            <p class="text-[16px] font-bold text-ink"><code>#137a52</code></p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">Health 축 · 성공 · 보건 성과 강조 (해외 5사에 없는 온토 차별화)</p>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#FEF9E7; border-bottom:1px solid #F5DE83;">
+            <div class="h-full flex items-center justify-center text-[14px] font-bold" style="color:#8B6A00">
+              <iconify-icon icon="solar:info-circle-linear" class="mr-1"></iconify-icon>초안
+            </div>
+          </div>
+          <div class="swatch-info">
+            <p class="text-[11.5px] font-bold text-sub/60 tracking-[0.14em] uppercase mb-2">warn (draft notice)</p>
+            <p class="text-[16px] font-bold text-ink">bg <code>#FEF9E7</code> · fg <code>#8B6A00</code></p>
+            <p class="text-[13px] text-sub mt-3 leading-relaxed">미확정 콘텐츠 상단 안내 배너</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Warning -->
+  <section class="border-b border-hair" style="background:#FEF2F2;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-10">
+      <p class="text-[12px] font-bold tracking-[0.14em] uppercase mb-3 text-[#c14a4a]">Do Not Use · 웹 UI 금지</p>
+      <div class="flex flex-wrap gap-4 items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12" style="background:#1b2e6a; border:1px solid #E5E7EB;"></div>
+          <div>
+            <p class="text-[14px] font-bold text-ink"><code>#1b2e6a</code> · Logo Navy</p>
+            <p class="text-[13px] text-sub">로고 SVG 원본 색. 웹 UI에는 <code>#0A2440</code> (ink) 사용.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/60 text-[13px]">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-8 flex flex-col sm:flex-row justify-between gap-3">
+      <p>&copy; 2026 ONTOH Inc. — Design System v3.0</p>
+      <div class="flex items-center gap-4">
+        <a href="../DESIGN.md" class="hover:text-white transition-colors">DESIGN.md</a>
+        <a href="index.html" class="hover:text-white transition-colors">← Overview</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

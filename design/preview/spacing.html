@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spacing · ONTOH Design System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+      colors: { ink: '#0A2440', body: '#212121', sub: '#555555',
+        accent: { DEFAULT: '#0169a9', 300: '#8ed0ff' },
+        band: '#F5F6F8', hair: '#E5E7EB' } } } }
+  </script>
+  <style>
+    body { font-family: 'Pretendard', system-ui, sans-serif; color: #212121; }
+    .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+    .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
+    .space-vis { background:#0169a9; height:32px; }
+    .row { display:grid; grid-template-columns:80px 120px 1fr; gap:1.5rem; align-items:center; padding:.9rem 0; border-bottom:1px solid #E5E7EB; }
+    .row .name { font-size:14px; font-weight:800; color:#0A2440; font-family:'SF Mono', Consolas, monospace; }
+    .row .val { font-size:13px; color:#555; font-family:'SF Mono', Consolas, monospace; }
+    code { font-family: 'SF Mono', Consolas, monospace; font-size:.85em; color:#0169a9; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Nav -->
+  <nav class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 h-14 flex items-center gap-6 text-[13.5px]">
+      <a href="index.html" class="font-bold text-ink">ONTOH Design System</a>
+      <div class="flex-1"></div>
+      <a href="index.html" class="text-sub hover:text-ink transition-colors">Overview</a>
+      <a href="colors.html" class="text-sub hover:text-ink transition-colors">Colors</a>
+      <a href="typography.html" class="text-sub hover:text-ink transition-colors">Typography</a>
+      <a href="spacing.html" class="text-accent font-bold">Spacing</a>
+      <a href="components.html" class="text-sub hover:text-ink transition-colors">Components</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+      <p class="kicker mb-4">03 · Spacing</p>
+      <h1 class="text-[30px] md:text-[42px] font-bold text-ink mb-4" style="letter-spacing:-0.02em;">스페이싱 · 레이아웃</h1>
+      <p class="text-[16px] text-sub leading-[1.75] max-w-2xl">Tailwind 기본 스케일 준수. 여백으로 위계를 만들고, 볼드 남발을 자제하는 게 핵심.</p>
+    </div>
+  </section>
+
+  <!-- Container -->
+  <section class="border-b border-hair band" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Container</p>
+      <h2 class="text-[22px] md:text-[26px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">max-w-7xl · 반응형 수평 패딩</h2>
+
+      <div class="bg-white border border-hair p-8">
+        <pre class="text-[13px] leading-[1.7] overflow-x-auto" style="font-family:'SF Mono', Consolas, monospace;">&lt;div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14"&gt;</pre>
+        <div class="mt-6 space-y-3 text-[14px] text-sub">
+          <p><code>max-w-7xl</code> = <strong class="text-ink">1280px</strong></p>
+          <p><code>px-6</code> mobile = <strong class="text-ink">24px</strong> 좌우 패딩</p>
+          <p><code>sm:px-10</code> tablet (640px+) = <strong class="text-ink">40px</strong></p>
+          <p><code>lg:px-14</code> desktop (1024px+) = <strong class="text-ink">56px</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Vertical Padding -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Section Vertical Padding</p>
+      <h2 class="text-[22px] md:text-[26px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">4가지 세로 스케일</h2>
+
+      <div class="bg-white border border-hair">
+        <div class="row">
+          <div class="name">Hero</div>
+          <div class="val">py-24 md:py-32</div>
+          <div class="text-[14px] text-sub"><strong class="text-ink">96 → 128px</strong> · 페이지 히어로만</div>
+        </div>
+        <div class="row">
+          <div class="name">Sub-hero</div>
+          <div class="val">py-20 md:py-28</div>
+          <div class="text-[14px] text-sub"><strong class="text-ink">80 → 112px</strong> · 서브 페이지 상단</div>
+        </div>
+        <div class="row">
+          <div class="name">Standard</div>
+          <div class="val">py-16 md:py-20</div>
+          <div class="text-[14px] text-sub"><strong class="text-ink">64 → 80px</strong> · 일반 섹션</div>
+        </div>
+        <div class="row">
+          <div class="name">Compact</div>
+          <div class="val">py-14 md:py-16</div>
+          <div class="text-[14px] text-sub"><strong class="text-ink">56 → 64px</strong> · 컴팩트 섹션</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spacing Scale -->
+  <section class="border-b border-hair band" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Spacing Scale</p>
+      <h2 class="text-[22px] md:text-[26px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Gap · Padding · Margin</h2>
+
+      <div class="bg-white border border-hair p-8">
+        <div class="space-y-1">
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-1</div>
+            <div class="w-16 text-[13px] text-sub">4px</div>
+            <div class="space-vis" style="width:4px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-2</div>
+            <div class="w-16 text-[13px] text-sub">8px</div>
+            <div class="space-vis" style="width:8px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-3</div>
+            <div class="w-16 text-[13px] text-sub">12px</div>
+            <div class="space-vis" style="width:12px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-4</div>
+            <div class="w-16 text-[13px] text-sub">16px</div>
+            <div class="space-vis" style="width:16px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-5</div>
+            <div class="w-16 text-[13px] text-sub">20px</div>
+            <div class="space-vis" style="width:20px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-6</div>
+            <div class="w-16 text-[13px] text-sub">24px</div>
+            <div class="space-vis" style="width:24px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-8</div>
+            <div class="w-16 text-[13px] text-sub">32px</div>
+            <div class="space-vis" style="width:32px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-10</div>
+            <div class="w-16 text-[13px] text-sub">40px</div>
+            <div class="space-vis" style="width:40px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-14</div>
+            <div class="w-16 text-[13px] text-sub">56px</div>
+            <div class="space-vis" style="width:56px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-16</div>
+            <div class="w-16 text-[13px] text-sub">64px</div>
+            <div class="space-vis" style="width:64px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-20</div>
+            <div class="w-16 text-[13px] text-sub">80px</div>
+            <div class="space-vis" style="width:80px"></div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 text-[13px] text-sub" style="font-family:monospace;">space-24</div>
+            <div class="w-16 text-[13px] text-sub">96px</div>
+            <div class="space-vis" style="width:96px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Radius -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Border Radius</p>
+      <h2 class="text-[22px] md:text-[26px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">직각 우선 (rounded-none)</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="text-center">
+          <div class="w-full aspect-square bg-ink mb-3" style="border-radius:0;"></div>
+          <p class="text-[13px] font-bold text-ink">rounded-none</p>
+          <p class="text-[12px] text-sub">0px · <strong class="text-ink">기본</strong></p>
+        </div>
+        <div class="text-center">
+          <div class="w-full aspect-square bg-ink mb-3" style="border-radius:2px;"></div>
+          <p class="text-[13px] font-bold text-ink">rounded-sm</p>
+          <p class="text-[12px] text-sub">2px · 예외 (도트 등)</p>
+        </div>
+        <div class="text-center">
+          <div class="w-full aspect-square bg-ink mb-3 rounded-full"></div>
+          <p class="text-[13px] font-bold text-ink">rounded-full</p>
+          <p class="text-[12px] text-sub">9999px · 아바타·칩만</p>
+        </div>
+        <div class="text-center border-2 border-dashed p-4" style="border-color:#c14a4a;">
+          <div class="w-full aspect-square bg-ink mb-3 rounded-2xl"></div>
+          <p class="text-[13px] font-bold text-[#c14a4a]">rounded-2xl+</p>
+          <p class="text-[12px] text-[#c14a4a]">사용 금지</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Motion -->
+  <section class="border-b border-hair band" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Motion</p>
+      <h2 class="text-[22px] md:text-[26px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">단일 이징 커브</h2>
+
+      <div class="bg-white border border-hair p-8">
+        <pre class="text-[14px] leading-[1.7] overflow-x-auto text-accent" style="font-family:'SF Mono', Consolas, monospace;">transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);</pre>
+        <p class="text-[14px] text-sub mt-4 leading-relaxed">Spring 스타일 이징. Hero → CTA → 카드 hover까지 모든 모션에 이 커브 하나만 사용.</p>
+        <div class="mt-6 p-4 border border-dashed border-[#c14a4a] text-[13px] text-[#c14a4a]">
+          <strong>사용 금지</strong>: <code>ease-in-out</code>, <code>linear</code>, <code>ease</code>
+        </div>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-4 gap-3">
+        <div class="bg-white border border-hair p-4">
+          <p class="text-[11.5px] text-sub/60 font-bold uppercase tracking-[0.14em] mb-2">Micro</p>
+          <p class="text-[16px] font-bold text-ink">240ms</p>
+          <p class="text-[12px] text-sub mt-1">Hover 색상</p>
+        </div>
+        <div class="bg-white border border-hair p-4">
+          <p class="text-[11.5px] text-sub/60 font-bold uppercase tracking-[0.14em] mb-2">Standard</p>
+          <p class="text-[16px] font-bold text-ink">380ms</p>
+          <p class="text-[12px] text-sub mt-1">버튼 · 메가메뉴</p>
+        </div>
+        <div class="bg-white border border-hair p-4">
+          <p class="text-[11.5px] text-sub/60 font-bold uppercase tracking-[0.14em] mb-2">Slow</p>
+          <p class="text-[16px] font-bold text-ink">500ms</p>
+          <p class="text-[12px] text-sub mt-1">Card hover</p>
+        </div>
+        <div class="bg-white border border-hair p-4">
+          <p class="text-[11.5px] text-sub/60 font-bold uppercase tracking-[0.14em] mb-2">Reveal</p>
+          <p class="text-[16px] font-bold text-ink">600–700ms</p>
+          <p class="text-[12px] text-sub mt-1">Scroll 진입</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/60 text-[13px]">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-8 flex flex-col sm:flex-row justify-between gap-3">
+      <p>&copy; 2026 ONTOH Inc. — Design System v3.0</p>
+      <div class="flex items-center gap-4">
+        <a href="../DESIGN.md" class="hover:text-white transition-colors">DESIGN.md</a>
+        <a href="index.html" class="hover:text-white transition-colors">← Overview</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typography · ONTOH Design System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+      colors: { ink: '#0A2440', body: '#212121', sub: '#555555',
+        accent: { DEFAULT: '#0169a9', 300: '#8ed0ff' },
+        band: '#F5F6F8', hair: '#E5E7EB' } } } }
+  </script>
+  <style>
+    body { font-family: 'Pretendard', system-ui, sans-serif; color: #212121; }
+    .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+    .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
+    .row { display:grid; grid-template-columns: 200px 1fr; gap:2rem; align-items:baseline; padding:1.5rem 0; border-bottom:1px solid #E5E7EB; }
+    @media (max-width:640px) { .row { grid-template-columns:1fr; gap:.5rem; } }
+    .label { font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#8a9099; }
+    .label small { display:block; margin-top:6px; font-size:11px; letter-spacing:.02em; text-transform:none; color:#b0b6bc; font-weight:600; font-family:'SF Mono', Consolas, monospace; }
+    code { font-family: 'SF Mono', Consolas, monospace; font-size:.85em; color:#0169a9; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Nav -->
+  <nav class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 h-14 flex items-center gap-6 text-[13.5px]">
+      <a href="index.html" class="font-bold text-ink">ONTOH Design System</a>
+      <div class="flex-1"></div>
+      <a href="index.html" class="text-sub hover:text-ink transition-colors">Overview</a>
+      <a href="colors.html" class="text-sub hover:text-ink transition-colors">Colors</a>
+      <a href="typography.html" class="text-accent font-bold">Typography</a>
+      <a href="spacing.html" class="text-sub hover:text-ink transition-colors">Spacing</a>
+      <a href="components.html" class="text-sub hover:text-ink transition-colors">Components</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+      <p class="kicker mb-4">02 · Typography</p>
+      <h1 class="text-[30px] md:text-[42px] font-bold text-ink mb-4" style="letter-spacing:-0.02em;">타이포그래피</h1>
+      <p class="text-[16px] text-sub leading-[1.75] max-w-2xl">Pretendard 단일 폰트. Inter · Noto Sans KR · Roboto · 명조체 전부 사용 금지. 웨이트는 400 / 600 / 700 / 800 네 개만.</p>
+    </div>
+  </section>
+
+  <!-- Font Info -->
+  <section class="border-b border-hair band" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Font Family</p>
+          <h2 class="text-[64px] font-black text-ink leading-none mb-3" style="letter-spacing:-0.04em;">Pretendard</h2>
+          <p class="text-[15px] text-sub leading-[1.75]">한국어·라틴 문자 모두 안정적. 오리온 카투스가 만든 오픈소스 폰트. jsDelivr CDN으로 로드.</p>
+        </div>
+        <div>
+          <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-3">CDN Link</p>
+          <pre class="bg-white border border-hair p-4 text-[12px] leading-[1.6] overflow-x-auto" style="font-family:'SF Mono', Consolas, monospace;">&lt;link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/
+    orioncactus/pretendard/dist/web/
+    static/pretendard.min.css"&gt;</pre>
+          <p class="text-[13px] text-sub mt-4 leading-relaxed">system-ui, sans-serif로 fallback. 절대 <code>Inter</code>, <code>Noto Sans KR</code>, <code>Roboto</code>, 명조체 사용하지 말 것.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Type Scale -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <div class="mb-10">
+        <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Type Scale</p>
+        <h2 class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">12단계 스케일</h2>
+      </div>
+
+      <div class="row">
+        <div class="label">Hero H1 <small>34–46px · w800 · -0.02em</small></div>
+        <div class="text-[34px] md:text-[46px] font-extrabold text-ink leading-[1.2]" style="letter-spacing:-0.02em;">건설현장 안전관리 Physical AI</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Section H2 <small>28–38px · w700 · -0.02em</small></div>
+        <div class="text-[28px] md:text-[38px] font-bold text-ink leading-[1.25]" style="letter-spacing:-0.02em;">특허를 함께 개발한 파트너의 현장에서</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Card H3 <small>19–23px · w700 · -0.015em</small></div>
+        <div class="text-[19px] md:text-[23px] font-bold text-ink leading-tight" style="letter-spacing:-0.015em;">대규모 공공주택 조성현장, 관제 사각지대를 없애다</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Sub-h H4 <small>17px · w700 · -0.01em</small></div>
+        <div class="text-[17px] font-bold text-ink" style="letter-spacing:-0.01em;">넓은 부지, 고정 CCTV의 한계</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Body Large <small>17px · w400 · 1.85</small></div>
+        <div class="text-[17px] text-body leading-[1.85]">공동 R&amp;D 파트너 금호건설(주) 시공 현장에 ONTOH Vision이 배치되고 있습니다.</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Body <small>15.5–16px · w400 · 1.75</small></div>
+        <div class="text-[15.5px] text-body leading-[1.75]">현장 기설치 CCTV 인프라에 ONTOH Vision 덮어 배치. Context-Adaptive PTZ로 작업 상황 인식.</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Small <small>13.5–14px · w400 · 1.7</small></div>
+        <div class="text-[13.5px] text-sub leading-[1.7]">누적 감지 건수·평균 응답 시간은 실증 완료 시점에 공개</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Kicker <small>13px · w800 · +0.14em · UPPER</small></div>
+        <div class="text-[13px] font-extrabold text-accent uppercase" style="letter-spacing:.14em;">Case Studies</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Section Tag <small>12px · w800 · +0.16em · UPPER</small></div>
+        <div class="text-[12px] font-extrabold text-accent uppercase" style="letter-spacing:.16em;">과제 · Challenge</div>
+      </div>
+
+      <div class="row">
+        <div class="label">Meta <small>11.5–12px · w700 · +0.14em · UPPER</small></div>
+        <div class="text-[12px] font-bold text-sub uppercase" style="letter-spacing:.14em;">현장 유형</div>
+      </div>
+
+      <div class="row">
+        <div class="label">KPI Num <small>44px · w800 · -0.03em · tabular</small></div>
+        <div class="text-[44px] font-extrabold text-ink leading-none stat-num" style="letter-spacing:-0.03em; font-variant-numeric:tabular-nums;">68<span class="text-[20px] font-bold">%↓</span></div>
+      </div>
+
+      <div class="row">
+        <div class="label">Code · Mono <small>SF Mono / Consolas</small></div>
+        <div class="text-[14px]" style="font-family:'SF Mono', Consolas, monospace;">#0A2440 · cubic-bezier(0.16, 1, 0.3, 1)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weight -->
+  <section class="border-b border-hair band" style="background:#F5F6F8;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
+      <div class="mb-8">
+        <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Font Weight · 4단계</p>
+        <h2 class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">400 / 600 / 700 / 800만 사용</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white border border-hair p-6">
+          <p class="text-[11.5px] text-sub/60 font-bold uppercase tracking-[0.14em] mb-3">400 Regular</p>
+          <p class="text-[32px] text-ink" style="font-weight:400; letter-spacing:-0.02em;">Aa 온토</p>
+        </div>
+        <div class="bg-white border border-hair p-6">
+          <p class="text-[11.5px] text-sub/60 font-bold uppercase tracking-[0.14em] mb-3">600 Semibold</p>
+          <p class="text-[32px] text-ink" style="font-weight:600; letter-spacing:-0.02em;">Aa 온토</p>
+        </div>
+        <div class="bg-white border border-hair p-6">
+          <p class="text-[11.5px] text-sub/60 font-bold uppercase tracking-[0.14em] mb-3">700 Bold</p>
+          <p class="text-[32px] text-ink" style="font-weight:700; letter-spacing:-0.02em;">Aa 온토</p>
+        </div>
+        <div class="bg-white border border-hair p-6">
+          <p class="text-[11.5px] text-sub/60 font-bold uppercase tracking-[0.14em] mb-3">800 Extrabold</p>
+          <p class="text-[32px] text-ink" style="font-weight:800; letter-spacing:-0.02em;">Aa 온토</p>
+        </div>
+      </div>
+      <p class="text-[13px] text-sub mt-6 leading-relaxed"><strong class="text-ink">900 Black 사용 금지</strong> — 웹에서 뭉개짐. Hero KPI 수치가 필요할 때도 800로 충분.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/60 text-[13px]">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-8 flex flex-col sm:flex-row justify-between gap-3">
+      <p>&copy; 2026 ONTOH Inc. — Design System v3.0</p>
+      <div class="flex items-center gap-4">
+        <a href="../DESIGN.md" class="hover:text-white transition-colors">DESIGN.md</a>
+        <a href="index.html" class="hover:text-white transition-colors">← Overview</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

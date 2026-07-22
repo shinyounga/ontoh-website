@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONTOH Design System · UI Kit</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+        colors: {
+          ink: '#0A2440', body: '#212121', sub: '#555555',
+          accent: { DEFAULT: '#0169a9', 300: '#8ed0ff' },
+          band: '#F5F6F8', hair: '#E5E7EB', ok: '#137a52',
+        },
+      } },
+    }
+  </script>
+  <style>
+    body { font-family: 'Pretendard', system-ui, sans-serif; color: #212121; }
+    .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+    .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
+    .card { background:#fff; border:1px solid #E5E7EB; transition: all .5s cubic-bezier(0.16,1,0.3,1); }
+    .card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- Sub Hero -->
+  <section class="bg-ink text-white">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+      <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Design System</p>
+      <h1 class="text-[32px] md:text-[46px] font-bold tracking-tight" style="letter-spacing:-0.02em;">ONTOH UI Kit</h1>
+      <p class="mt-4 text-white/70 text-[16px] leading-[1.75] max-w-2xl">
+        브랜드 · 색상 · 타이포 · 컴포넌트를 브라우저에서 실물로 확인.
+        각 페이지는 그대로 참조해서 실 페이지에 복사할 수 있도록 마크업 노출.
+      </p>
+      <div class="mt-6 flex items-center gap-4 text-[13px] text-white/50">
+        <span>Version 3.0</span>
+        <span class="w-1 h-1 rounded-full bg-white/30"></span>
+        <span>2026-07-22</span>
+        <span class="w-1 h-1 rounded-full bg-white/30"></span>
+        <a href="../DESIGN.md" class="text-accent-300 hover:text-white transition-colors">DESIGN.md →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UI Kit Grid -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+      <p class="kicker mb-4">Explore</p>
+      <h2 class="text-[24px] md:text-[32px] font-bold text-ink mb-10" style="letter-spacing:-0.02em;">4 preview pages</h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+
+        <a href="colors.html" class="card block p-7 group">
+          <div class="flex gap-1.5 mb-5">
+            <div class="w-8 h-8" style="background:#0A2440"></div>
+            <div class="w-8 h-8" style="background:#0169a9"></div>
+            <div class="w-8 h-8" style="background:#F5F6F8; border:1px solid #E5E7EB"></div>
+            <div class="w-8 h-8" style="background:#137a52"></div>
+          </div>
+          <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-2">01 · Colors</p>
+          <h3 class="text-[19px] font-bold text-ink mb-2" style="letter-spacing:-0.015em;">색상 팔레트</h3>
+          <p class="text-[14px] text-sub leading-[1.65]">딥네이비 · 온토 블루 · 오프화이트 · 헤어라인 등 브랜드 컬러 전체.</p>
+          <span class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-accent group-hover:gap-2.5 transition-all">보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></span>
+        </a>
+
+        <a href="typography.html" class="card block p-7 group">
+          <div class="mb-5" style="font-family:Pretendard;">
+            <div class="text-[36px] font-black text-ink leading-none" style="letter-spacing:-0.03em;">Aa</div>
+            <div class="text-[11px] text-sub mt-2 tracking-wider">Pretendard</div>
+          </div>
+          <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-2">02 · Typography</p>
+          <h3 class="text-[19px] font-bold text-ink mb-2" style="letter-spacing:-0.015em;">타이포그래피</h3>
+          <p class="text-[14px] text-sub leading-[1.65]">Pretendard 단일 폰트 · 헤드라인부터 킥커까지 12단계 스케일.</p>
+          <span class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-accent group-hover:gap-2.5 transition-all">보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></span>
+        </a>
+
+        <a href="spacing.html" class="card block p-7 group">
+          <div class="flex items-end gap-1.5 mb-5 h-10">
+            <div class="w-1 bg-accent" style="height:20%"></div>
+            <div class="w-1 bg-accent" style="height:35%"></div>
+            <div class="w-1 bg-accent" style="height:55%"></div>
+            <div class="w-1 bg-accent" style="height:75%"></div>
+            <div class="w-1 bg-accent" style="height:100%"></div>
+          </div>
+          <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-2">03 · Spacing</p>
+          <h3 class="text-[19px] font-bold text-ink mb-2" style="letter-spacing:-0.015em;">스페이싱 · 레이아웃</h3>
+          <p class="text-[14px] text-sub leading-[1.65]">컨테이너 · 섹션 세로 패딩 · 그리드 gap 스케일.</p>
+          <span class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-accent group-hover:gap-2.5 transition-all">보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></span>
+        </a>
+
+        <a href="components.html" class="card block p-7 group">
+          <div class="mb-5 space-y-1.5">
+            <div class="h-2 bg-ink w-16"></div>
+            <div class="h-2 bg-accent w-10"></div>
+            <div class="h-2 bg-hair w-14"></div>
+          </div>
+          <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-2">04 · Components</p>
+          <h3 class="text-[19px] font-bold text-ink mb-2" style="letter-spacing:-0.015em;">컴포넌트 갤러리</h3>
+          <p class="text-[14px] text-sub leading-[1.65]">킥커 · 태그 · 카드 · KPI · Summary Strip · Points List 등.</p>
+          <span class="mt-4 inline-flex items-center gap-1.5 text-[13px] font-bold text-accent group-hover:gap-2.5 transition-all">보기 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Foundation Summary -->
+  <section class="border-b border-hair bg-band">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+      <p class="kicker mb-4">Foundation</p>
+      <h2 class="text-[24px] md:text-[32px] font-bold text-ink mb-10" style="letter-spacing:-0.02em;">30초 요약</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white border border-hair p-7">
+          <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-3">Color</p>
+          <h3 class="text-[17px] font-bold text-ink mb-3">3 primary + 3 surface</h3>
+          <p class="text-[14px] text-sub leading-[1.75]">Ink <code class="text-accent">#0A2440</code> · Body <code class="text-accent">#212121</code> · Accent <code class="text-accent">#0169a9</code>. Band · Hair · White.</p>
+        </div>
+        <div class="bg-white border border-hair p-7">
+          <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-3">Type</p>
+          <h3 class="text-[17px] font-bold text-ink mb-3">Pretendard 단일</h3>
+          <p class="text-[14px] text-sub leading-[1.75]">한국어 필수. Inter · Noto · 명조 금지. 400 → 800 웨이트만.</p>
+        </div>
+        <div class="bg-white border border-hair p-7">
+          <p class="text-[12px] font-bold text-accent tracking-[0.14em] uppercase mb-3">Shape</p>
+          <h3 class="text-[17px] font-bold text-ink mb-3">직각 · 헤어라인</h3>
+          <p class="text-[14px] text-sub leading-[1.75]">rounded-none 기본. 큰 그림자 자제. 여백으로 위계.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Do / Don't -->
+  <section class="border-b border-hair">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+      <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+        <div>
+          <p class="text-[12px] font-bold tracking-[0.14em] uppercase mb-3" style="color:#137a52;">Do · 지향</p>
+          <h3 class="text-[22px] font-bold text-ink mb-5" style="letter-spacing:-0.015em;">기관형 절제 · 정직한 지표</h3>
+          <ul class="space-y-3 text-[15px] text-body leading-[1.75]">
+            <li class="flex gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-[16px] mt-1 shrink-0" style="color:#137a52;"></iconify-icon>직각 · 헤어라인 · 여백 위주</li>
+            <li class="flex gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-[16px] mt-1 shrink-0" style="color:#137a52;"></iconify-icon>Pretendard 단일 · Iconify Solar</li>
+            <li class="flex gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-[16px] mt-1 shrink-0" style="color:#137a52;"></iconify-icon>없는 수치는 "실증 진행 중" 표기</li>
+            <li class="flex gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-[16px] mt-1 shrink-0" style="color:#137a52;"></iconify-icon>이징 <code class="text-accent">cubic-bezier(0.16,1,0.3,1)</code></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[12px] font-bold tracking-[0.14em] uppercase text-[#c14a4a] mb-3">Don't · 금지</p>
+          <h3 class="text-[22px] font-bold text-ink mb-5" style="letter-spacing:-0.015em;">AI 클리셰 · 웜톤 · 이모지</h3>
+          <ul class="space-y-3 text-[15px] text-body leading-[1.75]">
+            <li class="flex gap-3"><iconify-icon icon="solar:close-circle-linear" class="text-[16px] mt-1 shrink-0 text-[#c14a4a]"></iconify-icon>이모지 (Iconify Solar로 대체)</li>
+            <li class="flex gap-3"><iconify-icon icon="solar:close-circle-linear" class="text-[16px] mt-1 shrink-0 text-[#c14a4a]"></iconify-icon>보라·네온 그라디언트</li>
+            <li class="flex gap-3"><iconify-icon icon="solar:close-circle-linear" class="text-[16px] mt-1 shrink-0 text-[#c14a4a]"></iconify-icon>"혁신적인", "원활한" 등 AI 클리셰</li>
+            <li class="flex gap-3"><iconify-icon icon="solar:close-circle-linear" class="text-[16px] mt-1 shrink-0 text-[#c14a4a]"></iconify-icon>ease-in-out · linear 트랜지션</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-white/60 text-[13px]">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-10 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p>&copy; 2026 ONTOH Inc. — Design System v3.0</p>
+      <div class="flex items-center gap-4">
+        <a href="../DESIGN.md" class="hover:text-white transition-colors">DESIGN.md</a>
+        <a href="../SKILL.md" class="hover:text-white transition-colors">SKILL.md</a>
+        <a href="../../index.html" class="hover:text-white transition-colors">↩ Site</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
