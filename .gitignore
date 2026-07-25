@@ -17,3 +17,8 @@ sijae/
 
 # 각 폴더 내 archive 제외
 **/archive/
+
+# 대용량 원본 소스 · AI 처리 백업 (웹사이트 미사용, GitHub 100MB 파일 제한 위반)
+assets/vision/vid/
+assets/vision/processed/
+assets/vision/site/processed/

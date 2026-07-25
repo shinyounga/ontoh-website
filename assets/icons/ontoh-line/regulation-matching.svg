@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">안전 규정 자동 매칭</title>
+  <g fill="none" stroke="#0A2440" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 15h61l20 20v78H20z" fill="#fff"/>
+    <path d="M81 15v21h20M35 48h38M35 63h50M35 78h29"/>
+    <circle cx="87" cy="88" r="25" fill="#fff"/>
+    <path stroke="#0169A9" d="m75 88 8 8 16-19"/>
+    <path fill="#8ED0FF" stroke="#0169A9" d="M28 23h34v11H28z"/>
+  </g>
+</svg>

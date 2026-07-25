@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제 | 온토 테크</title>
-  <meta name="description" content="50m 밖 작업자의 안전모는 단 몇 픽셀입니다. 광역 CCTV에서 작은 객체를 검출하기 어려운 이유, PTZ 카메라 개념, 타일링(SAHI)과 2단계 파이프라인으로 푸는 방법을 정리합니다.">
-  <meta name="keywords" content="Tiny Object Detection, Small Object Detection, PTZ 카메라, PPE 검출, SAHI, 건설안전 AI, FPN, 영상 분석">
+  <meta name="description" content="50m 밖 작업자의 안전모는 단 몇 픽셀입니다. 광역 CCTV에서 작은 객체를 검출하기 어려운 이유, PTZ 카메라 개념, 2단계 파이프라인으로 푸는 방법을 정리합니다.">
+  <meta name="keywords" content="Tiny Object Detection, Small Object Detection, PTZ 카메라, PPE 검출, 건설안전 AI, FPN, 영상 분석">
   <link rel="canonical" href="https://ontoh.co.kr/blog/tiny-object-detection.html">
   <!-- Open Graph -->
   <meta property="og:type" content="article">
@@ -144,11 +144,11 @@
           </div>
           <div class="nav-item flex items-stretch">
             <a href="../contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">문의</a>
-            <div class="nav-panel"><div class="dbox min-w-[150px]"><a href="../contact.html" class="dlink">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="dbox min-w-[150px]"><a href="../contact.html" class="dlink">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
         </nav>
         <div class="flex items-center gap-3">
-          <a href="../contact.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[16.5px] font-bold hover:bg-[#0e3161] transition-colors">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <a href="../contact.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[16.5px] font-bold hover:bg-[#0e3161] transition-colors">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           <button id="menuToggle" class="lg:hidden w-10 h-10 bg-ink/[0.05] flex items-center justify-center hover:bg-ink/10 transition-colors" aria-label="메뉴 열기">
             <iconify-icon icon="solar:hamburger-menu-linear" class="text-ink text-lg"></iconify-icon>
           </button>
@@ -172,7 +172,7 @@
     </div>
     <a href="../patents.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
     <a href="../contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
-    <a href="../contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[18px] font-bold stagger-5" onclick="closeMobileMenu()">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+    <a href="../contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[18px] font-bold stagger-5" onclick="closeMobileMenu()">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
 
   <!-- ==================== ARTICLE HEADER ==================== -->
@@ -223,7 +223,7 @@
           </div>
           <div class="group flex gap-5 py-5 border-b border-navy/[0.08]">
             <span class="font-extrabold text-navy/15 tabular-nums shrink-0 transition-[color] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-accent" style="font-size:30px; line-height:0.9;">03</span>
-            <div class="self-center text-[#1f2937]" style="font-size:17px; line-height:1.62;">그래서 픽셀을 되찾는다. 타일링(SAHI)으로 유효 해상도를, PTZ 줌으로 물리 해상도를 끌어올리는 2단계 파이프라인.</div>
+            <div class="self-center text-[#1f2937]" style="font-size:17px; line-height:1.62;">그래서 픽셀을 되찾는다. PTZ 줌으로 물리 해상도를 확보하는 2단계 파이프라인.</div>
           </div>
         </div>
 
@@ -320,11 +320,9 @@
 
         <h2 id="s4">4. 픽셀이 부족할 때 쓰는 기법들</h2>
         <p>렌즈로 다 해결되지 않는 상황(고정 카메라 구간, 동시다발 이벤트)에서는 소프트웨어로 작은 객체를 살려야 합니다. 실무에서 효과가 큰 순서대로 정리하면:</p>
-        <h3>4.1 타일링 추론 — SAHI</h3>
-        <p>리사이즈로 객체를 죽이는 대신, 고해상도 원본을 <strong>겹치는 타일로 잘라</strong> 각각을 정상 해상도로 추론한 뒤 결과를 합칩니다. 이 방식이 <strong>SAHI(Slicing Aided Hyper Inference)</strong>입니다. 작은 객체가 타일 안에서는 ‘보통 크기’가 되므로 검출률이 크게 오릅니다. 대가는 추론 횟수가 타일 수만큼 늘어 느려진다는 점이라, 광역 화면 전체가 아니라 관심 영역에만 적용합니다.</p>
-        <h3>4.2 멀티스케일 학습과 작은 앵커</h3>
+        <h3>4.1 멀티스케일 학습과 작은 앵커</h3>
         <p>학습 시 입력 해상도를 다양화하고, 작은 객체에 맞춘 앵커/라벨 할당 전략(예: 중심 기반 매칭)을 쓰면 tiny 영역의 재현율이 개선됩니다.</p>
-        <h3>4.3 시간 정보 활용</h3>
+        <h3>4.2 시간 정보 활용</h3>
         <p>한 프레임에서 3px인 객체도, 연속 프레임에서 <strong>움직임</strong>으로 드러납니다. 트래킹과 결합하면 단일 프레임에선 애매하던 검출을 시간축으로 확정할 수 있습니다.</p>
 
         <figure class="not-prose">
@@ -361,7 +359,7 @@
         <h2 id="s6">6. 정리 — ‘작음’을 다루는 시스템 설계</h2>
         <p>Tiny object detection은 더 좋은 모델 하나로 끝나는 문제가 아니라 <strong>시스템 설계의 문제</strong>입니다. 정리하면:</p>
         <ul>
-          <li><strong>픽셀을 확보하라:</strong> 가능하면 PTZ 줌으로 물리적 해상도를, 아니면 타일링(SAHI)으로 유효 해상도를 끌어올린다.</li>
+          <li><strong>픽셀을 확보하라:</strong> PTZ 줌으로 물리적 해상도를 확보한다.</li>
           <li><strong>2단계로 나눠라:</strong> 광역에서 싸게 후보를 찾고, 줌으로 비싸게 검증한다.</li>
           <li><strong>맥락을 결합하라:</strong> 사람·자세·시간 정보를 함께 봐야 PPE 착용 여부가 신뢰성을 얻는다.</li>
           <li><strong>스케줄링이 본질이다:</strong> 한 대의 PTZ로 ‘언제 어디를 볼지’ 정하는 것이 검출 정확도만큼 중요하다.</li>
@@ -449,7 +447,7 @@
           <div class="space-y-2 text-[15.5px] text-white/55 leading-relaxed">
             <p>이메일 <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></p>
             <p>www.ontoh.co.kr</p>
-            <a href="../contact.html" class="mt-3 inline-flex items-center gap-1.5 text-white font-semibold hover:gap-2.5 transition-all">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+            <a href="../contact.html" class="mt-3 inline-flex items-center gap-1.5 text-white font-semibold hover:gap-2.5 transition-all">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           </div>
         </div>
       </div>

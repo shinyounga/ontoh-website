@@ -73,6 +73,41 @@
     .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink:hover { color:#0A2440; gap:.9rem; }
     .dlink:hover iconify-icon { opacity:1; transform:none; }
+    /* Lightbox */
+    .lb-trigger { cursor: zoom-in; background:transparent; border:0; padding:0; width:100%; }
+    .lb-thumb { position:relative; overflow:hidden; }
+    .lb-thumb::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 55%, rgba(10,36,64,0.55) 100%); opacity:0; transition:opacity .38s cubic-bezier(0.16,1,0.3,1); }
+    .lb-thumb .lb-badge { position:absolute; top:10px; right:10px; background:rgba(255,255,255,0.9); color:#0A2440; font-size:11px; font-weight:800; letter-spacing:.06em; padding:4px 8px; display:inline-flex; align-items:center; gap:4px; opacity:0; transform:translateY(-4px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:2; }
+    .lb-trigger:hover .lb-thumb::after,
+    .lb-trigger:focus-visible .lb-thumb::after { opacity:1; }
+    .lb-trigger:hover .lb-badge,
+    .lb-trigger:focus-visible .lb-badge { opacity:1; transform:none; }
+    .lb-trigger img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }
+    .lb-trigger:hover img { transform: scale(1.04); }
+    dialog.lb-dialog { padding:0; background:transparent; border:0; max-width:96vw; max-height:96vh; overflow:visible; }
+    dialog.lb-dialog::backdrop { background:rgba(10,36,64,0.88); backdrop-filter:blur(6px); }
+    dialog.lb-dialog[open] { animation: lb-in .28s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes lb-in { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:none; } }
+    .lb-frame { position:relative; padding:44px 0 0; }
+    .lb-frame img { display:block; max-width:96vw; max-height:82vh; width:auto; height:auto; object-fit:contain; margin:0 auto; }
+    .lb-close { position:absolute; top:0; right:0; background:transparent; border:0; color:#fff; font-size:26px; cursor:pointer; padding:4px 12px; line-height:1; font-weight:300; }
+    .lb-close:hover { color:#8ed0ff; }
+    .lb-cap { color:#fff; text-align:center; margin-top:14px; font-size:15px; font-weight:600; letter-spacing:-.01em; }
+    /* 법령 매칭 캐러셀 */
+    .lc-viewport { position:relative; }
+    .lc-stack { display:grid; }
+    .lc-stack > .lc-slide { grid-area: 1 / 1; opacity:0; transition: opacity .55s cubic-bezier(0.16,1,0.3,1); pointer-events:none; }
+    .lc-stack > .lc-slide.active { opacity:1; pointer-events:auto; }
+    .lc-controls { display:flex; align-items:center; justify-content:center; gap:14px; margin-top:22px; }
+    .lc-dot { width:36px; height:3px; background:#E5E7EB; border:0; padding:0; cursor:pointer; transition: background .38s cubic-bezier(0.16,1,0.3,1), transform .38s cubic-bezier(0.16,1,0.3,1); }
+    .lc-dot:hover { background:#8ed0ff; }
+    .lc-dot.active { background:#0169a9; transform: scaleY(1.6); }
+    .lc-nav { background:transparent; border:0; color:#555; padding:6px; cursor:pointer; display:inline-flex; align-items:center; transition: color .28s cubic-bezier(0.16,1,0.3,1); }
+    .lc-nav:hover { color:#0169a9; }
+    .lc-progress { position:absolute; left:0; right:0; bottom:0; height:2px; background:transparent; overflow:hidden; }
+    .lc-progress::after { content:""; display:block; height:100%; background:#0169a9; width:0; }
+    .lc-viewport.playing .lc-progress::after { animation: lc-fill 5s linear forwards; }
+    @keyframes lc-fill { from { width:0; } to { width:100%; } }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -97,11 +132,11 @@
           </div>
           <div class="nav-item flex items-stretch">
             <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">문의</a>
-            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="contact.html" class="dlink">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="contact.html" class="dlink">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
         </nav>
         <div class="flex items-center gap-3">
-          <a href="contact.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[16.5px] font-bold hover:bg-[#0e3161] transition-colors">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <a href="contact.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[16.5px] font-bold hover:bg-[#0e3161] transition-colors">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           <button id="menuToggle" class="lg:hidden w-10 h-10 bg-ink/[0.05] flex items-center justify-center hover:bg-ink/10 transition-colors" aria-label="메뉴 열기">
             <iconify-icon icon="solar:hamburger-menu-linear" class="text-ink text-lg"></iconify-icon>
           </button>
@@ -124,40 +159,47 @@
     </div>
     
     <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
-    <a href="contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[18px] font-bold stagger-5" onclick="closeMobileMenu()">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+    <a href="contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[18px] font-bold stagger-5" onclick="closeMobileMenu()">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
 
   <!-- ==================== 서브 비주얼 + 브레드크럼 ==================== -->
   <section class="relative bg-ink overflow-hidden">
-    <img src="assets/vision/main2.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-25">
+    <img src="assets/main/vision.png" alt="" class="absolute right-0 bottom-0 max-h-full max-w-[50%] md:max-w-[45%] object-contain object-right-bottom opacity-55 grayscale pointer-events-none">
     <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50"></div>
     <div class="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-24 md:py-32">
       <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Solution</p>
       <h1 class="text-white text-[42px] md:text-[48px] font-bold tracking-tight" style="letter-spacing:-0.02em;">온토비전</h1>
-      <nav class="mt-5 flex items-center gap-2 text-[15px] text-white/55">
+      <nav class="mt-5 flex items-center gap-2 text-[17px] text-white/75">
         <a href="index.html" class="hover:text-white transition-colors">홈</a>
         <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[12px]"></iconify-icon>
         <a href="vision.html" class="hover:text-white transition-colors">솔루션</a>
         <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[12px]"></iconify-icon>
-        <span class="text-white/85">온토비전</span>
+        <span class="text-white font-semibold">온토비전</span>
       </nav>
     </div>
   </section>
 
   <main>
-  <!-- ==================== 인트로 (컴팩트) ==================== -->
+  <!-- ==================== 인트로 (컴팩트 + 메인 플랫폼 이미지) ==================== -->
   <section class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
-      <div class="max-w-3xl">
-        <p class="kicker mb-4 reveal">CCTV 자율관제</p>
-        <h2 class="reveal stagger-1 text-[32px] md:text-[48px] font-bold tracking-tight text-ink" style="line-height:1.15; letter-spacing:-0.03em;">
-          고정된 카메라가 놓치는 곳까지,<br><span class="text-accent">스스로</span> 살핍니다.
-        </h2>
-        <p class="reveal stagger-2 mt-6 text-[19px] text-sub leading-[1.75] max-w-2xl">
-          기존 CCTV에 AI를 더해 위험을 감지하고, PTZ 카메라가 스스로 움직여 사각지대를 커버합니다.
-        </p>
-        <div class="reveal stagger-3 mt-9 flex flex-col sm:flex-row sm:items-center gap-3.5">
-          <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-ink text-white px-7 py-3.5 text-[18px] font-bold hover:bg-[#0e3161] transition-colors">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+      <div class="grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="kicker mb-4 reveal">CCTV 자율관제</p>
+          <h2 class="reveal stagger-1 text-[32px] md:text-[48px] font-bold tracking-tight text-ink" style="line-height:1.15; letter-spacing:-0.03em;">
+            고정된 카메라가 놓치는 곳까지,<br><span class="text-accent">스스로</span> 살핍니다.
+          </h2>
+          <p class="reveal stagger-2 mt-6 text-[19px] text-sub leading-[1.75]">
+            기존 CCTV에 AI를 더해 위험을 감지하고, PTZ 카메라가 스스로 움직여 사각지대를 커버합니다.
+          </p>
+          <div class="reveal stagger-3 mt-9 flex flex-col sm:flex-row sm:items-center gap-3.5">
+            <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-ink text-white px-7 py-3.5 text-[18px] font-bold hover:bg-[#0e3161] transition-colors">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          </div>
+        </div>
+        <div class="reveal stagger-2">
+          <div class="relative overflow-hidden shadow-[0_30px_60px_-30px_rgba(10,36,64,0.35)]">
+            <img src="assets/vision/main.png" alt="온토비전 자율 관제 플랫폼 메인 화면" class="w-full h-full object-cover">
+          </div>
         </div>
       </div>
     </div>
@@ -166,38 +208,68 @@
   <!-- ==================== Before / After 비교 ==================== -->
   <section class="band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
-      <div class="max-w-3xl mb-14">
-        <p class="kicker mb-4 reveal">현장에서 실제로</p>
+      <div class="max-w-3xl mb-14 md:mb-16">
+        <p class="kicker mb-4 reveal">지능형 CCTV를 넘어</p>
         <h2 class="reveal stagger-1 text-[30px] md:text-[46px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
-          같은 CCTV 화면에서<br>온토비전은 <span class="text-accent">이렇게 봅니다.</span>
+          상황을 해석하고,<br>CCTV를 <span class="text-accent">제어합니다</span>.
         </h2>
+        <p class="reveal stagger-2 mt-6 text-[18px] md:text-[19px] text-sub leading-[1.75]">단순 이벤트 감지에 머무르던 지능형 CCTV를 넘어, 상황을 이해하고 스스로 행동하는 관제 시스템으로 진화합니다.</p>
       </div>
+
       <div class="grid md:grid-cols-2 gap-6 md:gap-10">
+        <!-- BEFORE · 기존 지능형 CCTV -->
         <figure class="reveal">
-          <div class="aspect-video border border-hair overflow-hidden bg-white">
-            <img src="assets/vision/features/before-cctv-raw.jpg" alt="원본 CCTV 영상" class="w-full h-full object-cover">
+          <div class="aspect-video overflow-hidden bg-white">
+            <img src="assets/vision/features/before-cctv-raw.jpg" alt="기존 지능형 CCTV" class="w-full h-full object-cover">
           </div>
           <figcaption class="mt-5">
-            <p class="text-[12px] font-bold text-sub/60 uppercase tracking-[0.14em] mb-1">BEFORE</p>
+            <p class="text-[12px] font-bold text-sub/60 uppercase tracking-[0.14em] mb-1.5">BEFORE</p>
             <p class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">사람이 보는 CCTV</p>
-            <p class="text-[17px] text-sub mt-2 leading-[1.65]">여러 화면을 사람이 실시간으로 훑어봐야 함</p>
+            <p class="text-[17px] text-sub mt-2 leading-[1.65]">감지해도 규정·조치·기록은 사람이 별도로 정리해야 합니다.</p>
           </figcaption>
         </figure>
+
+        <!-- AFTER · 온토비전 -->
         <figure class="reveal stagger-1">
           <div class="aspect-video border-2 border-accent overflow-hidden bg-white">
-            <img src="assets/vision/features/after-ppe-detected.png" alt="온토비전 AI 검출 결과" class="w-full h-full object-cover">
+            <img src="assets/vision/features/after-ppe-detected.png" alt="온토비전 AI 자율 관제" class="w-full h-full object-cover">
           </div>
           <figcaption class="mt-5">
-            <p class="text-[12px] font-bold text-accent uppercase tracking-[0.14em] mb-1">AFTER · 온토비전</p>
-            <p class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">AI가 즉시 위험을 잡아냅니다</p>
-            <p class="text-[17px] text-sub mt-2 leading-[1.65]">PPE 미착용 · 위험 구역 침입을 자동 감지</p>
+            <p class="text-[12px] font-bold text-accent uppercase tracking-[0.14em] mb-1.5">AFTER · 온토비전</p>
+            <p class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">스스로 판단하는 CCTV</p>
+            <p class="text-[17px] text-sub mt-2 leading-[1.65]">감지에서 법령 대조·조치 안내·자동 기록까지 한 흐름으로 이어집니다.</p>
           </figcaption>
         </figure>
+      </div>
+
+      <!-- 3-포인트 요약 스트립 -->
+      <div class="mt-14 md:mt-16 pt-10 md:pt-12 border-t border-hair grid md:grid-cols-3 gap-8 md:gap-10">
+        <div class="reveal flex items-start gap-4">
+          <iconify-icon icon="solar:refresh-circle-linear" class="text-accent text-[36px] md:text-[38px] shrink-0"></iconify-icon>
+          <div>
+            <h4 class="text-[17px] md:text-[18px] font-bold text-ink mb-1.5">완전 자동화</h4>
+            <p class="text-[14.5px] text-sub leading-[1.6]">감지에서 조치까지 한 흐름으로 자동 처리합니다.</p>
+          </div>
+        </div>
+        <div class="reveal stagger-1 flex items-start gap-4">
+          <iconify-icon icon="solar:shield-check-linear" class="text-accent text-[36px] md:text-[38px] shrink-0"></iconify-icon>
+          <div>
+            <h4 class="text-[17px] md:text-[18px] font-bold text-ink mb-1.5">법적 증빙 자료</h4>
+            <p class="text-[14.5px] text-sub leading-[1.6]">법령 연동 증빙 자료를 자동으로 생성합니다.</p>
+          </div>
+        </div>
+        <div class="reveal stagger-2 flex items-start gap-4">
+          <iconify-icon icon="solar:notebook-linear" class="text-accent text-[36px] md:text-[38px] shrink-0"></iconify-icon>
+          <div>
+            <h4 class="text-[17px] md:text-[18px] font-bold text-ink mb-1.5">교육 자료 원스톱</h4>
+            <p class="text-[14.5px] text-sub leading-[1.6]">현장 맞춤형 교육 자료까지 한 번에 제공합니다.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 주요 기능 4가지 ==================== -->
+  <!-- ==================== 주요 기능 ==================== -->
   <section class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-3xl mb-16 md:mb-20">
@@ -211,7 +283,7 @@
       <div class="reveal mb-24 md:mb-32">
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
-            <div class="aspect-[4/3] border border-hair overflow-hidden bg-band">
+            <div class="aspect-[7/4] overflow-hidden">
               <img src="assets/vision/features/01-realtime-monitoring.png" alt="실시간 AI 관제 화면" class="w-full h-full object-cover">
             </div>
           </div>
@@ -231,7 +303,7 @@
       <div class="reveal mb-24 md:mb-32">
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div class="md:order-2">
-            <div class="aspect-[4/3] border border-hair overflow-hidden bg-band">
+            <div class="aspect-[3/1] overflow-hidden">
               <img src="assets/vision/features/02-hazard-detection.png" alt="위험 상황 감지" class="w-full h-full object-cover">
             </div>
           </div>
@@ -239,49 +311,285 @@
             <p class="stat-num text-[16px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">02</p>
             <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">위험 상황 즉시 인지</h3>
             <ul class="space-y-4 text-[19px] text-body leading-[1.7]">
-              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>PPE 미착용 감지</li>
-              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>위험구역 진입 감지</li>
-              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>작업 이상 상황 자동 탐지</li>
+              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>다채널 영상에서 이상 상황 자동 탐지</li>
+              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>발생 즉시 관제·현장으로 알림</li>
+              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>이력 자동 기록으로 사후 확인 가능</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- 5대 감지 시나리오 스트립 (썸네일 클릭 → 팝업) -->
+        <div class="mt-12 md:mt-14 pt-10 md:pt-12 border-t border-hair">
+          <div class="mb-6">
+            <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">5대 감지 시나리오</p>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+            <button class="lb-trigger group" data-lb="assets/vision/detection/01-simultaneous-work/01.png" data-lb-cap="상하동시작업 · 상·하부 동시 작업 상황 감지" aria-label="상하동시작업 감지 예시 크게 보기">
+              <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
+                <img src="assets/vision/detection/01-simultaneous-work/01.png" alt="상하동시작업 감지" class="w-full h-full object-cover" loading="lazy">
+                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-[12px]"></iconify-icon>확대</span>
+              </div>
+              <p class="mt-2.5 text-[13.5px] font-bold text-ink text-left">상하동시작업</p>
+              <div class="mt-1.5 flex flex-wrap gap-1">
+                <span class="tag bg-ink/[0.06] text-ink">작업자 동시 감지</span>
+                <span class="tag bg-ink/[0.06] text-ink">낙하물 위험 알림</span>
+              </div>
+            </button>
+            <button class="lb-trigger group" data-lb="assets/vision/detection/02-fall-strap/01-off.png" data-lb-cap="고소작업 · 안전대(스트랩) 미착용 감지" aria-label="스트랩 미착용 감지 예시 크게 보기">
+              <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
+                <img src="assets/vision/detection/02-fall-strap/01-off.png" alt="스트랩 미착용" class="w-full h-full object-cover" loading="lazy">
+                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-[12px]"></iconify-icon>확대</span>
+              </div>
+              <p class="mt-2.5 text-[13.5px] font-bold text-ink text-left">스트랩 미착용</p>
+              <div class="mt-1.5 flex flex-wrap gap-1">
+                <span class="tag bg-ink/[0.06] text-ink">스트랩 착·비착 판별</span>
+                <span class="tag bg-ink/[0.06] text-ink">고소구간 자동 인식</span>
+              </div>
+            </button>
+            <button class="lb-trigger group" data-lb="assets/vision/detection/03-helmet/01-off.png" data-lb-cap="안전모 미착용 감지" aria-label="안전모 미착용 감지 예시 크게 보기">
+              <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
+                <img src="assets/vision/detection/03-helmet/01-off.png" alt="안전모 미착용" class="w-full h-full object-cover" loading="lazy">
+                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-[12px]"></iconify-icon>확대</span>
+              </div>
+              <p class="mt-2.5 text-[13.5px] font-bold text-ink text-left">안전모 미착용</p>
+              <div class="mt-1.5 flex flex-wrap gap-1">
+                <span class="tag bg-ink/[0.06] text-ink">개별 작업자 인식</span>
+                <span class="tag bg-ink/[0.06] text-ink">즉시 관제 알림</span>
+              </div>
+            </button>
+            <button class="lb-trigger group" data-lb="assets/vision/detection/04-heavy-equipment/01.png" data-lb-cap="중장비 위험구역 침범 · 작업자 반경 진입 감지" aria-label="중장비 위험구역 침범 예시 크게 보기">
+              <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
+                <img src="assets/vision/detection/04-heavy-equipment/01.png" alt="중장비 위험구역 침범" class="w-full h-full object-cover" loading="lazy">
+                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-[12px]"></iconify-icon>확대</span>
+              </div>
+              <p class="mt-2.5 text-[13.5px] font-bold text-ink text-left">중장비 위험구역</p>
+              <div class="mt-1.5 flex flex-wrap gap-1">
+                <span class="tag bg-ink/[0.06] text-ink">위험반경 자동 설정</span>
+                <span class="tag bg-ink/[0.06] text-ink">작업자 진입 감지</span>
+              </div>
+            </button>
+            <button class="lb-trigger group" data-lb="assets/vision/detection/05-opening/04-open.png" data-lb-cap="개구부 미설치 · 안전 커버 미설치 감지" aria-label="개구부 미설치 감지 예시 크게 보기">
+              <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
+                <img src="assets/vision/detection/05-opening/04-open.png" alt="개구부 미설치" class="w-full h-full object-cover" loading="lazy">
+                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-[12px]"></iconify-icon>확대</span>
+              </div>
+              <p class="mt-2.5 text-[13.5px] font-bold text-ink text-left">개구부 미설치</p>
+              <div class="mt-1.5 flex flex-wrap gap-1">
+                <span class="tag bg-ink/[0.06] text-ink">커버 · 난간 상태 판별</span>
+                <span class="tag bg-ink/[0.06] text-ink">개폐 이력 관리</span>
+              </div>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Feature 03: 사각지대 자동 추적 관제 -->
+      <!-- Feature 03: PTZ 자율 제어 · Core -->
       <div class="reveal mb-24 md:mb-32">
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
-            <div class="aspect-[4/3] border border-hair overflow-hidden bg-band">
-              <img src="assets/vision/features/03-ptz-tracking.png" alt="PTZ 사각지대 자동 추적" class="w-full h-full object-cover">
+            <div class="aspect-[4/1] overflow-hidden">
+              <img src="assets/vision/features/04-rag-llm-example-2.png" alt="PTZ 자율 제어" class="w-full h-full object-cover">
             </div>
           </div>
           <div>
             <p class="stat-num text-[16px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">03</p>
-            <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">사각지대 자동 추적 관제</h3>
+            <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">PTZ 자율 제어 <span class="text-accent text-[16px] md:text-[18px] font-bold align-middle">· Core</span></h3>
+            <p class="text-[19px] text-body leading-[1.7] mb-6">위험 감지 시 카메라가 자동으로 회전 · 줌인하여, 사각지대 없이 추적하고 기록합니다.</p>
             <ul class="space-y-4 text-[19px] text-body leading-[1.7]">
-              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>AI 기반 PTZ 자동 제어</li>
-              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>객체 및 작업자 인식</li>
+              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>AI 기반 PTZ 자동 제어 · 객체 및 작업자 인식</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>위험 행동 자동 분석</li>
             </ul>
+            <div class="mt-7 pt-6 border-t border-hair">
+              <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-3">핵심 특징</p>
+              <ul class="flex flex-wrap gap-2 text-[13px]">
+                <li class="tag bg-ink/[0.06] text-ink">자동 회전 / 줌</li>
+                <li class="tag bg-ink/[0.06] text-ink">사각지대 자동 추적</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Feature 04: 생성형 AI 기반 안전 관리 -->
-      <div class="reveal">
+      <!-- Feature 04: RAG-LLM 규정 매칭 -->
+      <div class="reveal mb-24 md:mb-32">
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div class="md:order-2">
-            <div class="aspect-[4/3] border border-hair overflow-hidden bg-band">
-              <img src="assets/vision/features/04-ai-safety-mgmt.png" alt="생성형 AI 안전 관리" class="w-full h-full object-cover">
+            <div class="aspect-[3/1] overflow-hidden">
+              <img src="assets/vision/features/04-rag-llm-matching.png" alt="RAG-LLM 규정 매칭" class="w-full h-full object-cover">
             </div>
           </div>
           <div class="md:order-1">
             <p class="stat-num text-[16px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">04</p>
+            <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">RAG-LLM 규정 매칭</h3>
+            <p class="text-[19px] text-body leading-[1.7] mb-6">위험 상황을 관련 법령과 자동으로 대조하여, 위반 조항과 필요 조치를 즉시 안내합니다.</p>
+            <ul class="space-y-4 text-[19px] text-body leading-[1.7]">
+              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>산업안전보건법 · 시행규칙 자동 대조</li>
+              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>위반 조항과 필요 조치 즉시 안내</li>
+              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>PTZ 감지 결과와 연동해 근거 자동 첨부</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 법령 매칭 실제 사례 캐러셀 -->
+        <div class="mt-12 md:mt-14 pt-10 md:pt-12 border-t border-hair">
+          <div class="mb-6">
+            <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">규정 매칭 실제 사례</p>
+          </div>
+
+          <div class="lc-viewport playing" data-lc>
+            <div class="lc-stack">
+              <!-- Case 01: 안전모 미착용 → 제32조 제1항 제1호 -->
+              <div class="lc-slide active">
+                <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
+                  <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
+                    <img src="assets/vision/detection/03-helmet/01-off.png" alt="안전모 미착용 감지" class="w-full h-full object-cover" loading="lazy">
+                  </div>
+                  <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
+                    <p class="text-[12px] font-extrabold text-accent tracking-[0.14em] uppercase mb-3">Case 01 · 안전모 미착용</p>
+                    <p class="text-[15px] font-bold text-ink mb-1">산업안전보건기준에 관한 규칙</p>
+                    <p class="text-[20px] md:text-[22px] font-bold text-accent mb-4" style="letter-spacing:-0.015em;">제32조 · 보호구의 지급 등</p>
+                    <blockquote class="text-[14.5px] text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
+                      "물체가 떨어지거나 날아올 위험 또는 근로자가 추락할 위험이 있는 작업: <strong class="text-ink font-semibold">안전모</strong>"<br><span class="text-[12.5px] text-sub/70">— 제32조 제1항 제1호</span>
+                    </blockquote>
+                    <div class="pt-4 border-t border-hair">
+                      <p class="text-[12px] font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
+                      <p class="text-[14px] text-body leading-[1.6]">현장 · 관제 알림 → 안전모 착용 지시 → 미착용 시 작업 중지</p>
+                    </div>
+                    <p class="mt-3 text-[11.5px] text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Case 02: 안전대 미착용 → 제32조 제1항 제2호 -->
+              <div class="lc-slide">
+                <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
+                  <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
+                    <img src="assets/vision/detection/02-fall-strap/01-off.png" alt="고소작업 안전대 미착용 감지" class="w-full h-full object-cover" loading="lazy">
+                  </div>
+                  <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
+                    <p class="text-[12px] font-extrabold text-accent tracking-[0.14em] uppercase mb-3">Case 02 · 고소작업 안전대 미착용</p>
+                    <p class="text-[15px] font-bold text-ink mb-1">산업안전보건기준에 관한 규칙</p>
+                    <p class="text-[20px] md:text-[22px] font-bold text-accent mb-4" style="letter-spacing:-0.015em;">제32조 · 보호구의 지급 등</p>
+                    <blockquote class="text-[14.5px] text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
+                      "높이 또는 깊이 2미터 이상의 추락할 위험이 있는 장소에서 하는 작업: <strong class="text-ink font-semibold">안전대(安全帶)</strong>"<br><span class="text-[12.5px] text-sub/70">— 제32조 제1항 제2호</span>
+                    </blockquote>
+                    <div class="pt-4 border-t border-hair">
+                      <p class="text-[12px] font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
+                      <p class="text-[14px] text-body leading-[1.6]">현장 · 관제 알림 → 안전대 착용 지시 → 부착 설비 점검</p>
+                    </div>
+                    <p class="mt-3 text-[11.5px] text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Case 03: 개구부 → 제43조 -->
+              <div class="lc-slide">
+                <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
+                  <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
+                    <img src="assets/vision/detection/05-opening/04-open.png" alt="개구부 안전조치 미비 감지" class="w-full h-full object-cover" loading="lazy">
+                  </div>
+                  <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
+                    <p class="text-[12px] font-extrabold text-accent tracking-[0.14em] uppercase mb-3">Case 03 · 개구부 안전조치 미비</p>
+                    <p class="text-[15px] font-bold text-ink mb-1">산업안전보건기준에 관한 규칙</p>
+                    <p class="text-[20px] md:text-[22px] font-bold text-accent mb-4" style="letter-spacing:-0.015em;">제43조 · 개구부 등의 방호 조치</p>
+                    <blockquote class="text-[14.5px] text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
+                      "개구부로서 근로자가 추락할 위험이 있는 장소에는 <strong class="text-ink font-semibold">안전난간, 울타리, 수직형 추락방망 또는 덮개 등</strong>의 방호 조치를 설치하여야 한다."<br><span class="text-[12.5px] text-sub/70">— 제43조 제1항</span>
+                    </blockquote>
+                    <div class="pt-4 border-t border-hair">
+                      <p class="text-[12px] font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
+                      <p class="text-[14px] text-body leading-[1.6]">현장 · 관제 알림 → 개구부 덮개·난간 설치 지시 → 접근 통제</p>
+                    </div>
+                    <p class="mt-3 text-[11.5px] text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Case 04: 상하동시작업 → 제14조 -->
+              <div class="lc-slide">
+                <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
+                  <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
+                    <img src="assets/vision/detection/01-simultaneous-work/01.png" alt="상하동시작업 감지" class="w-full h-full object-cover" loading="lazy">
+                  </div>
+                  <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
+                    <p class="text-[12px] font-extrabold text-accent tracking-[0.14em] uppercase mb-3">Case 04 · 상하동시작업</p>
+                    <p class="text-[15px] font-bold text-ink mb-1">산업안전보건기준에 관한 규칙</p>
+                    <p class="text-[20px] md:text-[22px] font-bold text-accent mb-4" style="letter-spacing:-0.015em;">제14조 · 낙하물에 의한 위험의 방지</p>
+                    <blockquote class="text-[14.5px] text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
+                      "작업으로 인하여 물체가 떨어지거나 날아올 위험이 있는 경우 <strong class="text-ink font-semibold">낙하물 방지망, 수직보호망 또는 방호선반의 설치, 출입금지구역의 설정, 보호구의 착용</strong> 등 위험을 방지하기 위하여 필요한 조치를 하여야 한다."<br><span class="text-[12.5px] text-sub/70">— 제14조 제2항</span>
+                    </blockquote>
+                    <div class="pt-4 border-t border-hair">
+                      <p class="text-[12px] font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
+                      <p class="text-[14px] text-body leading-[1.6]">상·하부 동시 작업 감지 → 하부 출입금지구역 설정 알림 → 방호 설비 점검 지시</p>
+                    </div>
+                    <p class="mt-3 text-[11.5px] text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Case 05: 중장비 위험구역 침범 → 제200조 -->
+              <div class="lc-slide">
+                <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
+                  <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
+                    <img src="assets/vision/detection/04-heavy-equipment/01.png" alt="중장비 위험구역 침범 감지" class="w-full h-full object-cover" loading="lazy">
+                  </div>
+                  <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
+                    <p class="text-[12px] font-extrabold text-accent tracking-[0.14em] uppercase mb-3">Case 05 · 중장비 위험구역 침범</p>
+                    <p class="text-[15px] font-bold text-ink mb-1">산업안전보건기준에 관한 규칙</p>
+                    <p class="text-[20px] md:text-[22px] font-bold text-accent mb-4" style="letter-spacing:-0.015em;">제200조 · 접촉 방지</p>
+                    <blockquote class="text-[14.5px] text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
+                      "차량계 건설기계를 사용하여 작업을 하는 경우에는 운전 중인 해당 차량계 건설기계에 <strong class="text-ink font-semibold">접촉되어 근로자가 부딪칠 위험이 있는 장소에 근로자를 출입시켜서는 아니 된다.</strong> 다만, 유도자를 배치하고 해당 차량계 건설기계를 유도하는 경우에는 그러하지 아니하다."<br><span class="text-[12.5px] text-sub/70">— 제200조 제1항</span>
+                    </blockquote>
+                    <div class="pt-4 border-t border-hair">
+                      <p class="text-[12px] font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
+                      <p class="text-[14px] text-body leading-[1.6]">위험반경 진입 감지 → 현장·관제 즉시 경보 → 유도자 배치·출입 통제 지시</p>
+                    </div>
+                    <p class="mt-3 text-[11.5px] text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="lc-progress" aria-hidden="true"></div>
+
+            <div class="lc-controls">
+              <button type="button" class="lc-nav" data-lc-prev aria-label="이전 사례">
+                <iconify-icon icon="solar:alt-arrow-left-linear" class="text-[18px]"></iconify-icon>
+              </button>
+              <button type="button" class="lc-dot active" data-lc-index="0" aria-label="Case 01 · 안전모"></button>
+              <button type="button" class="lc-dot" data-lc-index="1" aria-label="Case 02 · 안전대"></button>
+              <button type="button" class="lc-dot" data-lc-index="2" aria-label="Case 03 · 개구부"></button>
+              <button type="button" class="lc-dot" data-lc-index="3" aria-label="Case 04 · 상하동시작업"></button>
+              <button type="button" class="lc-dot" data-lc-index="4" aria-label="Case 05 · 중장비 위험구역"></button>
+              <button type="button" class="lc-nav" data-lc-next aria-label="다음 사례">
+                <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[18px]"></iconify-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature 05: 생성형 AI 기반 안전 관리 -->
+      <div class="reveal">
+        <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div>
+            <div class="aspect-[17/6] overflow-hidden">
+              <img src="assets/vision/features/05-ai-safety-mgmt.png" alt="생성형 AI 안전 관리" class="w-full h-full object-cover">
+            </div>
+          </div>
+          <div>
+            <p class="stat-num text-[16px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">05</p>
             <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">생성형 AI 기반 안전 관리</h3>
             <ul class="space-y-4 text-[19px] text-body leading-[1.7]">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>법정 서류 및 교육 · 조치 이력 자동 관리</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>점검 · 보고 · 교육 자동 생성</li>
             </ul>
+            <div class="mt-7 pt-6 border-t border-hair">
+              <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-3">핵심 기능</p>
+              <ul class="flex flex-wrap gap-2 text-[13px]">
+                <li class="tag bg-ink/[0.06] text-ink">전 과정 조치 기록</li>
+                <li class="tag bg-ink/[0.06] text-ink">관리자 실시간 알림</li>
+                <li class="tag bg-ink/[0.06] text-ink">맞춤형 교육 자료</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -289,16 +597,96 @@
     </div>
   </section>
 
+  <!-- ==================== 도입 프로세스 3-스텝 ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
+      <div class="max-w-3xl mb-14 md:mb-16">
+        <p class="kicker mb-4 reveal">도입 프로세스</p>
+        <h2 class="reveal stagger-1 text-[30px] md:text-[46px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
+          기존 CCTV 그대로,<br><span class="text-accent">3단계로 시작합니다</span>.
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8 md:gap-0 items-stretch">
+        <div class="reveal md:pr-8">
+          <p class="text-[13px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">Step 01</p>
+          <iconify-icon icon="solar:videocamera-linear" class="text-[42px] text-ink mb-4"></iconify-icon>
+          <h3 class="text-[22px] md:text-[24px] font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">CCTV 영상 수신</h3>
+          <p class="text-[16px] text-sub leading-[1.7]">기존 CCTV 인프라의 영상 스트림을 그대로 받아옵니다. 카메라 교체나 신규 장비 설치가 필요 없습니다.</p>
+          <ul class="mt-5 flex flex-wrap gap-1.5">
+            <li class="tag bg-ink/[0.06] text-ink">별도 장비 불필요</li>
+            <li class="tag bg-ink/[0.06] text-ink">기존 인프라 활용</li>
+          </ul>
+        </div>
+        <div class="reveal stagger-1 md:border-l md:border-hair md:pl-8 md:pr-8">
+          <p class="text-[13px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">Step 02</p>
+          <iconify-icon icon="solar:cpu-bolt-linear" class="text-[42px] text-ink mb-4"></iconify-icon>
+          <h3 class="text-[22px] md:text-[24px] font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">AI 실시간 분석</h3>
+          <p class="text-[16px] text-sub leading-[1.7]">관리자가 화면을 지켜보지 않아도, AI가 24시간 5대 위험 시나리오를 자동 감지합니다. 사각지대는 PTZ 카메라가 스스로 추적해 감시 공백을 없앱니다.</p>
+        </div>
+        <div class="reveal stagger-2 md:border-l md:border-hair md:pl-8">
+          <p class="text-[13px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">Step 03</p>
+          <iconify-icon icon="solar:bell-bing-linear" class="text-[42px] text-ink mb-4"></iconify-icon>
+          <h3 class="text-[22px] md:text-[24px] font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">알림 · 자동 기록</h3>
+          <p class="text-[16px] text-sub leading-[1.7]">발생 즉시 관제 · 현장에 알림을 보내고, RAG-LLM이 법령 대조와 보고서 초안을 자동 생성합니다.</p>
+        </div>
+      </div>
+
+      <!-- 결과물 · 이렇게 남습니다 -->
+      <div class="mt-16 md:mt-20 pt-12 md:pt-14 border-t border-hair">
+        <div class="max-w-3xl mb-10 md:mb-12">
+          <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-3">이렇게 남습니다</p>
+          <h3 class="text-[24px] md:text-[30px] font-bold text-ink" style="letter-spacing:-0.02em; line-height:1.3;">도입 후, 매일 다음 자료가<br class="hidden md:block"> 자동으로 생성됩니다.</h3>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4 md:gap-5">
+          <article class="reveal border border-hair p-6 md:p-7 bg-white">
+            <p class="text-[13px] font-extrabold text-accent tracking-[0.16em] uppercase mb-3">01</p>
+            <iconify-icon icon="solar:chart-square-linear" class="text-[36px] text-ink mb-4"></iconify-icon>
+            <h4 class="text-[19px] md:text-[20px] font-bold text-ink mb-2 leading-tight" style="letter-spacing:-0.015em;">일일 위험 탐지 리포트</h4>
+            <p class="text-[14.5px] text-sub leading-[1.65] mb-4">탐지 건수 · 유형 · 시간대별 패턴을 자동 정리한 일일 보고서.</p>
+            <ul class="flex flex-wrap gap-1.5">
+              <li class="tag bg-ink/[0.06] text-ink">탐지 건수·유형별 분류</li>
+              <li class="tag bg-ink/[0.06] text-ink">조치 완료·미완료 현황</li>
+            </ul>
+          </article>
+          <article class="reveal stagger-1 border border-hair p-6 md:p-7 bg-white">
+            <p class="text-[13px] font-extrabold text-accent tracking-[0.16em] uppercase mb-3">02</p>
+            <iconify-icon icon="solar:notebook-linear" class="text-[36px] text-ink mb-4"></iconify-icon>
+            <h4 class="text-[19px] md:text-[20px] font-bold text-ink mb-2 leading-tight" style="letter-spacing:-0.015em;">현장 맞춤형 안전교육 자료</h4>
+            <p class="text-[14.5px] text-sub leading-[1.65] mb-4">실제 현장 영상과 관련 법령 조항을 조합한 맞춤형 교육 자료.</p>
+            <ul class="flex flex-wrap gap-1.5">
+              <li class="tag bg-ink/[0.06] text-ink">실제 현장 영상 기반</li>
+              <li class="tag bg-ink/[0.06] text-ink">해당 법령 조항 연결</li>
+            </ul>
+          </article>
+          <article class="reveal stagger-2 border border-hair p-6 md:p-7 bg-white">
+            <p class="text-[13px] font-extrabold text-accent tracking-[0.16em] uppercase mb-3">03</p>
+            <iconify-icon icon="solar:shield-check-linear" class="text-[36px] text-ink mb-4"></iconify-icon>
+            <h4 class="text-[19px] md:text-[20px] font-bold text-ink mb-2 leading-tight" style="letter-spacing:-0.015em;">법적 증빙 자료</h4>
+            <p class="text-[14.5px] text-sub leading-[1.65] mb-4">감지부터 조치까지 전 과정을 타임스탬프와 함께 기록해, 법적 분쟁 시 즉시 활용합니다.</p>
+            <ul class="flex flex-wrap gap-1.5">
+              <li class="tag bg-ink/[0.06] text-ink">감지—조치 전 과정 기록</li>
+              <li class="tag bg-ink/[0.06] text-ink">타임스탬프 영상 저장</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== CTA ==================== -->
   <section class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
-      <div class="bg-ink px-8 md:px-16 py-14 md:py-20 text-center">
-        <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-5 reveal">Get started</p>
-        <h2 class="reveal stagger-1 text-[34px] md:text-[46px] font-bold tracking-tight text-white" style="line-height:1.3;">기존 CCTV에 AI를 얹는 <span class="text-accent-300">가장 빠른 방법</span>.</h2>
-        <p class="reveal stagger-2 mt-6 text-[19px] md:text-[23px] text-white/65 leading-[1.7] max-w-xl mx-auto">운영 중인 CCTV 현황과 현장 규모를 알려주시면, 최적의 자율 관제 도입 방안을 설계해 드립니다.</p>
-        <div class="reveal stagger-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-          <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-ink px-7 py-3.5 text-[18px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
-          <a href="mailto:ktg@ontoh.co.kr" class="inline-flex items-center justify-center gap-2 border border-white/25 text-white px-7 py-3.5 text-[18px] font-bold hover:bg-white/10 spring">이메일 문의</a>
+      <div class="relative bg-ink overflow-hidden px-8 md:px-16 py-14 md:py-20 text-center">
+        <img src="assets/vision/site/02.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-35">
+        <div class="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/70 to-ink/85"></div>
+        <div class="relative">
+          <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-5 reveal">Get started</p>
+          <h2 class="reveal stagger-1 text-[34px] md:text-[46px] font-bold tracking-tight text-white" style="line-height:1.3;">기존 CCTV에 AI를 얹는 <span class="text-accent-300">가장 빠른 방법</span>.</h2>
+          <p class="reveal stagger-2 mt-6 text-[19px] md:text-[23px] text-white/75 leading-[1.7] max-w-xl mx-auto">운영 중인 CCTV 현황과 현장 규모를 알려주시면, 최적의 자율 관제 도입 방안을 설계해 드립니다.</p>
+          <div class="reveal stagger-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+            <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-ink px-7 py-3.5 text-[18px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+            <a href="mailto:ktg@ontoh.co.kr" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-7 py-3.5 text-[18px] font-bold hover:bg-white/10 spring">이메일 문의</a>
+          </div>
         </div>
       </div>
     </div>
@@ -332,7 +720,7 @@
           <div class="space-y-2 text-[15.5px] text-white/55 leading-relaxed">
             <p>이메일 <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></p>
             <p>www.ontoh.co.kr</p>
-            <a href="contact.html" class="mt-3 inline-flex items-center gap-1.5 text-white font-semibold hover:gap-2.5 transition-all">도입 상담 신청 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+            <a href="contact.html" class="mt-3 inline-flex items-center gap-1.5 text-white font-semibold hover:gap-2.5 transition-all">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           </div>
         </div>
       </div>
@@ -345,6 +733,78 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox 팝업 -->
+  <dialog id="lb" class="lb-dialog" aria-label="이미지 팝업">
+    <div class="lb-frame">
+      <button type="button" class="lb-close" onclick="document.getElementById('lb').close()" aria-label="닫기">✕</button>
+      <img id="lb-img" src="" alt="">
+      <p class="lb-cap" id="lb-cap"></p>
+    </div>
+  </dialog>
+  <script>
+    (function() {
+      var dlg = document.getElementById('lb');
+      var img = document.getElementById('lb-img');
+      var cap = document.getElementById('lb-cap');
+      if (!dlg || !dlg.showModal) return;
+      document.querySelectorAll('[data-lb]').forEach(function(el) {
+        el.addEventListener('click', function() {
+          img.src = el.getAttribute('data-lb');
+          img.alt = el.getAttribute('data-lb-cap') || '';
+          cap.textContent = el.getAttribute('data-lb-cap') || '';
+          dlg.showModal();
+        });
+      });
+      dlg.addEventListener('click', function(e) {
+        if (e.target === dlg) dlg.close();
+      });
+      dlg.addEventListener('close', function() { img.src = ''; });
+    })();
+  </script>
+
+  <!-- 법령 매칭 캐러셀 -->
+  <script>
+    (function() {
+      document.querySelectorAll('[data-lc]').forEach(function(viewport) {
+        var slides = viewport.querySelectorAll('.lc-slide');
+        var dots = viewport.querySelectorAll('.lc-dot');
+        var prevBtn = viewport.querySelector('[data-lc-prev]');
+        var nextBtn = viewport.querySelector('[data-lc-next]');
+        var idx = 0;
+        var timer = null;
+        var DURATION = 5000;
+
+        function go(n) {
+          idx = (n + slides.length) % slides.length;
+          slides.forEach(function(s, i) { s.classList.toggle('active', i === idx); });
+          dots.forEach(function(d, i) { d.classList.toggle('active', i === idx); });
+          viewport.classList.remove('playing');
+          void viewport.offsetWidth;
+          viewport.classList.add('playing');
+        }
+        function start() {
+          stop();
+          timer = setInterval(function() { go(idx + 1); }, DURATION);
+          viewport.classList.add('playing');
+        }
+        function stop() {
+          if (timer) { clearInterval(timer); timer = null; }
+          viewport.classList.remove('playing');
+        }
+        dots.forEach(function(d, i) {
+          d.addEventListener('click', function() { go(i); start(); });
+        });
+        if (prevBtn) prevBtn.addEventListener('click', function() { go(idx - 1); start(); });
+        if (nextBtn) nextBtn.addEventListener('click', function() { go(idx + 1); start(); });
+        viewport.addEventListener('mouseenter', stop);
+        viewport.addEventListener('mouseleave', start);
+        viewport.addEventListener('focusin', stop);
+        viewport.addEventListener('focusout', start);
+        start();
+      });
+    })();
+  </script>
 
   <script src="js/common.js"></script>
 </body>
