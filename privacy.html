@@ -90,14 +90,14 @@
     .dlink { display:flex; align-items:center; font-size:14.5px; color:#555555; padding:8px 40px 8px 16px; white-space:nowrap; position:relative; transition:color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); }
     .dlink::after { content:"\2192"; position:absolute; right:16px; opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); font-weight:bold; }
     .dlink iconify-icon { display:none; }
-    .dlink:hover { color:#0169a9; background:#F5F6F8; }
+    .dlink:hover { color:#0169a9; }
     .dlink:hover::after { opacity:1; transform:none; }
     /* 인트로 히어로 배경 이미지 고정 (시재건설 스타일) */
     .hero-bg-fixed { background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; }
     @media (max-width: 768px) { .hero-bg-fixed { background-attachment: scroll; } }
     /* Breadcrumb 스트립 · 남색 통일 · 세로선 divider */
     .bc-row { display: flex; align-items: stretch; }
-    .bc-cell { display: flex !important; align-items: center !important; height: 48px !important; min-height: 48px !important; font-size: 15px; white-space: nowrap; transition: background .22s ease, color .22s ease; cursor: pointer; box-sizing: border-box; color: rgba(255,255,255,0.75); border-right: 1px solid rgba(255,255,255,0.15); }
+    .bc-cell { display: flex !important; align-items: center !important; min-height: 48px !important; padding-top: 0; padding-bottom: 0; font-size: 15px; white-space: nowrap; transition: background .22s ease, color .22s ease; cursor: pointer; box-sizing: border-box; color: rgba(255,255,255,0.75); border-right: 1px solid rgba(255,255,255,0.15); }
     .bc-cell:first-child { border-left: 1px solid rgba(255,255,255,0.15); }
     .bc-cell:hover { color: #fff; background: rgba(255,255,255,0.06); }
     .bc-cell.bc-home { padding: 0; width: 48px; justify-content: center; }
@@ -169,7 +169,7 @@
   <!-- ==================== 얇은 브레드크럼 스트립 (남색) ==================== -->
   <section class="bg-ink border-b border-white/10">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
-      <div class="flex items-stretch justify-between gap-4" style="height:48px;">
+      <div class="flex items-stretch justify-between gap-4" style="min-height:48px;">
         <nav class="bc-row" aria-label="현재 위치">
           <a href="index.html" class="bc-cell bc-home" aria-label="홈">
             <iconify-icon icon="mdi:home" class="text-[18px]"></iconify-icon>
