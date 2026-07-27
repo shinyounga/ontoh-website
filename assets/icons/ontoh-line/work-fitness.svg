@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">작업 적합성 판정</title>
+  <g fill="none" stroke="#0A2440" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 32h86v73H21z" fill="#fff"/>
+    <path fill="#8ED0FF" stroke="#0169A9" d="M39 20h50v22H39z"/>
+    <circle cx="48" cy="66" r="12"/>
+    <path d="M31 95c2-12 8-18 17-18s15 6 17 18"/>
+    <path stroke="#0169A9" d="m75 71 8 8 16-19"/>
+    <path d="M74 91h25"/>
+  </g>
+</svg>

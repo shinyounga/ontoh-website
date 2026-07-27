@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">건강 이상 사후관리</title>
+  <g fill="none" stroke="#0A2440" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64 111S20 86 20 50c0-18 11-29 26-29 9 0 15 5 18 12 3-7 9-12 18-12 15 0 26 11 26 29 0 36-44 61-44 61z" fill="#fff"/>
+    <path stroke="#0169A9" d="M32 65h16l8-21 13 40 9-24 6 5h13"/>
+    <circle cx="99" cy="29" r="15" fill="#8ED0FF" stroke="#0169A9"/>
+    <path d="M99 21v9l6 4"/>
+  </g>
+</svg>
