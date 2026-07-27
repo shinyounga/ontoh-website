@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Breadcrumb Hover 효과 5가지 비교</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { ink: '#0A2440', accent: { DEFAULT: '#0169a9', 300: '#8ed0ff', 400: '#59b4ff' } } } } }
+  </script>
+  <style>
+    body { font-family: 'Pretendard', sans-serif; background: #F5F6F8; color: #212121; }
+    /* 공통 breadcrumb 스트립 스타일 */
+    .strip { background: #0A2440; }
+    .bc-row { display: flex; align-items: stretch; }
+    .bc-cell { display: flex; align-items: center; height: 48px; min-height: 48px; font-size: 15px; white-space: nowrap; transition: all .28s cubic-bezier(0.16,1,0.3,1); cursor: pointer; box-sizing: border-box; color: rgba(255,255,255,0.75); border-right: 1px solid rgba(255,255,255,0.15); font-weight: 500; }
+    .bc-cell:first-child { border-left: 1px solid rgba(255,255,255,0.15); }
+    .bc-cell.bc-home { padding: 0; width: 48px; justify-content: center; }
+    .bc-cell.bc-menu { min-width: 158px; padding: 0 18px; justify-content: space-between; gap: 14px; }
+    .bc-cell.bc-menu.is-current { color: #fff; font-weight: 600; }
+    .bc-cell .bc-caret { font-size: 12px; opacity: .7; transition: transform .32s cubic-bezier(0.16,1,0.3,1); }
+    .bc-cell:hover .bc-caret { transform: rotate(180deg); opacity: 1; }
+
+    /* ============ 옵션 1: Subtle Background (현재) ============ */
+    .h1 .bc-cell:hover { background: rgba(255,255,255,0.08); color: #fff; }
+
+    /* ============ 옵션 2: Accent Fill (강한 브랜드 컬러) ============ */
+    .h2 .bc-cell:hover { background: #0169a9; color: #fff; }
+
+    /* ============ 옵션 3: Bottom Underline Animation ============ */
+    .h3 .bc-cell { position: relative; }
+    .h3 .bc-cell::after { content:""; position:absolute; left:18%; right:18%; bottom:0; height:2px; background:#59b4ff; transform:scaleX(0); transform-origin:left; transition:transform .38s cubic-bezier(0.16,1,0.3,1); }
+    .h3 .bc-cell:hover::after { transform:scaleX(1); }
+    .h3 .bc-cell:hover { color: #fff; }
+
+    /* ============ 옵션 4: Top Accent Line ============ */
+    .h4 .bc-cell { border-top: 3px solid transparent; padding-top: 0; }
+    .h4 .bc-cell:hover { border-top-color: #59b4ff; color: #fff; background: rgba(255,255,255,0.04); }
+
+    /* ============ 옵션 5: Bright Accent Text + Subtle BG ============ */
+    .h5 .bc-cell:hover { color: #8ed0ff; background: rgba(255,255,255,0.05); }
+
+    /* ============ 드롭다운 패널 (공통) ============ */
+    .demo-panel { background: #fff; border: 1px solid #E5E7EB; box-shadow: 0 24px 44px -20px rgba(10,36,64,.15); padding: 6px 0; width: 200px; }
+    .demo-panel a { display: block; padding: 10px 18px; font-size: 14px; color: #555; white-space: nowrap; transition: all .28s cubic-bezier(0.16,1,0.3,1); text-decoration: none; position: relative; }
+    .demo-panel a.is-active { color: #0A2440; font-weight: 700; background: #F5F6F8; }
+
+    /* ─── D1: Text Color + Subtle BG (현재) ─── */
+    .d1 a:hover { color: #0169a9; background: #F5F6F8; }
+    /* ─── D2: Left Accent Border Indicator ─── */
+    .d2 a { border-left: 3px solid transparent; padding-left: 15px; }
+    .d2 a:hover { border-left-color: #0169a9; color: #0A2440; background: #F5F6F8; }
+    /* ─── D3: Slide Indent (텍스트 우측 이동) ─── */
+    .d3 a:hover { padding-left: 28px; color: #0169a9; background: #F5F6F8; }
+    /* ─── D4: Arrow Indicator ─── */
+    .d4 a::after { content: "→"; position: absolute; right: 18px; opacity: 0; transform: translateX(-6px); color: #0169a9; transition: all .28s cubic-bezier(0.16,1,0.3,1); }
+    .d4 a:hover { color: #0169a9; background: #F5F6F8; padding-right: 40px; }
+    .d4 a:hover::after { opacity: 1; transform: none; }
+    /* ─── D5: Full Accent Fill (강한 강조) ─── */
+    .d5 a:hover { color: #fff; background: #0169a9; }
+  </style>
+</head>
+<body class="p-12">
+
+  <div class="max-w-5xl mx-auto space-y-10">
+    <div>
+      <h1 class="text-3xl font-bold text-ink mb-2">Breadcrumb Hover 효과 · 5가지 비교</h1>
+      <p class="text-[15px] text-[#555]">각 스트립의 <b>제품소개</b> · <b>온토비전</b> 셀에 마우스를 올려서 hover 효과를 비교해보세요.</p>
+    </div>
+
+    <!-- ─────────── 옵션 1 ─────────── -->
+    <div>
+      <div class="flex items-baseline gap-3 mb-3">
+        <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">1</span>
+        <div>
+          <h2 class="text-[19px] font-bold text-ink">Subtle Background (현재 · baseline)</h2>
+          <p class="text-[14px] text-[#555]">배경이 아주 살짝 밝아짐 · 우아하고 미묘한 반응 · 시재건설 · 한솔홈데코 톤</p>
+        </div>
+      </div>
+      <div class="strip h1">
+        <div class="max-w-7xl mx-auto px-14">
+          <div class="flex items-stretch justify-between" style="height:48px;">
+            <nav class="bc-row">
+              <a href="#" class="bc-cell bc-home" aria-label="홈"><iconify-icon icon="mdi:home" class="text-[18px]"></iconify-icon></a>
+              <a href="#" class="bc-cell bc-menu"><span>제품소개</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></a>
+              <span class="bc-cell bc-menu is-current"><span>온토비전</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────── 옵션 2 ─────────── -->
+    <div>
+      <div class="flex items-baseline gap-3 mb-3">
+        <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">2</span>
+        <div>
+          <h2 class="text-[19px] font-bold text-ink">Accent Fill (강한 브랜드 컬러)</h2>
+          <p class="text-[14px] text-[#555]">셀 전체가 accent 컬러(#0169a9)로 채워짐 · 강한 강조 · 공공기관 · 은행 톤</p>
+        </div>
+      </div>
+      <div class="strip h2">
+        <div class="max-w-7xl mx-auto px-14">
+          <div class="flex items-stretch justify-between" style="height:48px;">
+            <nav class="bc-row">
+              <a href="#" class="bc-cell bc-home" aria-label="홈"><iconify-icon icon="mdi:home" class="text-[18px]"></iconify-icon></a>
+              <a href="#" class="bc-cell bc-menu"><span>제품소개</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></a>
+              <span class="bc-cell bc-menu is-current"><span>온토비전</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────── 옵션 3 ─────────── -->
+    <div>
+      <div class="flex items-baseline gap-3 mb-3">
+        <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">3</span>
+        <div>
+          <h2 class="text-[19px] font-bold text-ink">Bottom Underline Animation</h2>
+          <p class="text-[14px] text-[#555]">셀 하단에 밝은 accent 라인이 좌→우로 그어짐 · 모던 · 최근 트렌드 · 부드러움</p>
+        </div>
+      </div>
+      <div class="strip h3">
+        <div class="max-w-7xl mx-auto px-14">
+          <div class="flex items-stretch justify-between" style="height:48px;">
+            <nav class="bc-row">
+              <a href="#" class="bc-cell bc-home" aria-label="홈"><iconify-icon icon="mdi:home" class="text-[18px]"></iconify-icon></a>
+              <a href="#" class="bc-cell bc-menu"><span>제품소개</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></a>
+              <span class="bc-cell bc-menu is-current"><span>온토비전</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────── 옵션 4 ─────────── -->
+    <div>
+      <div class="flex items-baseline gap-3 mb-3">
+        <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">4</span>
+        <div>
+          <h2 class="text-[19px] font-bold text-ink">Top Accent Line</h2>
+          <p class="text-[14px] text-[#555]">셀 상단에 두꺼운 accent 라인 · 클래식 · 신뢰감 · 대기업 · 기관 톤</p>
+        </div>
+      </div>
+      <div class="strip h4">
+        <div class="max-w-7xl mx-auto px-14">
+          <div class="flex items-stretch justify-between" style="height:48px;">
+            <nav class="bc-row">
+              <a href="#" class="bc-cell bc-home" aria-label="홈"><iconify-icon icon="mdi:home" class="text-[18px]"></iconify-icon></a>
+              <a href="#" class="bc-cell bc-menu"><span>제품소개</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></a>
+              <span class="bc-cell bc-menu is-current"><span>온토비전</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────── 옵션 5 ─────────── -->
+    <div>
+      <div class="flex items-baseline gap-3 mb-3">
+        <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">5</span>
+        <div>
+          <h2 class="text-[19px] font-bold text-ink">Bright Accent Text + Subtle BG</h2>
+          <p class="text-[14px] text-[#555]">텍스트가 밝은 accent-300 컬러(하늘색)로 · 배경도 살짝 밝아짐 · 색상 대비 명확</p>
+        </div>
+      </div>
+      <div class="strip h5">
+        <div class="max-w-7xl mx-auto px-14">
+          <div class="flex items-stretch justify-between" style="height:48px;">
+            <nav class="bc-row">
+              <a href="#" class="bc-cell bc-home" aria-label="홈"><iconify-icon icon="mdi:home" class="text-[18px]"></iconify-icon></a>
+              <a href="#" class="bc-cell bc-menu"><span>제품소개</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></a>
+              <span class="bc-cell bc-menu is-current"><span>온토비전</span><iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon></span>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== 드롭다운 패널 Hover 5가지 ======================== -->
+    <div class="mt-16 pt-10 border-t-2 border-[#0A2440]">
+      <h1 class="text-3xl font-bold text-ink mb-2">드롭다운 아이템 Hover 효과 · 5가지 비교</h1>
+      <p class="text-[15px] text-[#555] mb-8">각 드롭다운의 <b>회사소개 · 기술·연구 · 문의</b> 아이템에 마우스를 올려서 비교하세요. (현재 페이지 "제품소개"는 강조된 active 상태)</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- D1 -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">D1</span>
+          <div>
+            <h2 class="text-[19px] font-bold text-ink">Text Color + Subtle BG (현재)</h2>
+            <p class="text-[14px] text-[#555]">텍스트 accent 컬러 + 연회색 배경 · 심플 · 표준</p>
+          </div>
+        </div>
+        <div class="demo-panel d1">
+          <a href="#">회사소개</a>
+          <a href="#" class="is-active">제품소개</a>
+          <a href="#">기술·연구</a>
+          <a href="#">문의</a>
+        </div>
+      </div>
+
+      <!-- D2 -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">D2</span>
+          <div>
+            <h2 class="text-[19px] font-bold text-ink">Left Accent Border Indicator</h2>
+            <p class="text-[14px] text-[#555]">왼쪽에 accent 세로 라인 · 한솔홈데코 · 기관 톤</p>
+          </div>
+        </div>
+        <div class="demo-panel d2">
+          <a href="#">회사소개</a>
+          <a href="#" class="is-active">제품소개</a>
+          <a href="#">기술·연구</a>
+          <a href="#">문의</a>
+        </div>
+      </div>
+
+      <!-- D3 -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">D3</span>
+          <div>
+            <h2 class="text-[19px] font-bold text-ink">Slide Indent (우측 슬라이드)</h2>
+            <p class="text-[14px] text-[#555]">텍스트가 살짝 오른쪽 슬라이드 · 부드러움 · 모던</p>
+          </div>
+        </div>
+        <div class="demo-panel d3">
+          <a href="#">회사소개</a>
+          <a href="#" class="is-active">제품소개</a>
+          <a href="#">기술·연구</a>
+          <a href="#">문의</a>
+        </div>
+      </div>
+
+      <!-- D4 -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">D4</span>
+          <div>
+            <h2 class="text-[19px] font-bold text-ink">Arrow Indicator (→ 나타남)</h2>
+            <p class="text-[14px] text-[#555]">오른쪽에 화살표가 슬라이드 인 · 명확한 방향성</p>
+          </div>
+        </div>
+        <div class="demo-panel d4">
+          <a href="#">회사소개</a>
+          <a href="#" class="is-active">제품소개</a>
+          <a href="#">기술·연구</a>
+          <a href="#">문의</a>
+        </div>
+      </div>
+
+      <!-- D5 -->
+      <div>
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="inline-flex items-center justify-center w-8 h-8 bg-ink text-white text-[15px] font-bold">D5</span>
+          <div>
+            <h2 class="text-[19px] font-bold text-ink">Full Accent Fill (강한 강조)</h2>
+            <p class="text-[14px] text-[#555]">아이템 전체가 accent 컬러 · 강한 대비 · 공공기관</p>
+          </div>
+        </div>
+        <div class="demo-panel d5">
+          <a href="#">회사소개</a>
+          <a href="#" class="is-active">제품소개</a>
+          <a href="#">기술·연구</a>
+          <a href="#">문의</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 결정 안내 -->
+    <div class="mt-16 pt-10 border-t border-[#E5E7EB]">
+      <p class="text-[15px] text-[#555]"><b>Breadcrumb Hover</b>(1~5)와 <b>드롭다운 Hover</b>(D1~D5) 각각 마음에 드는 번호 알려주면 vision.html에 반영 후 나머지 페이지 batch 적용할게요.</p>
+    </div>
+  </div>
+
+</body>
+</html>
