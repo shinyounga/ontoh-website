@@ -75,10 +75,30 @@
     header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
     .dbox { padding:32px 0 36px; }
     .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:210px; width:1px; background:#E5E7EB; }
-    .dlink { display:flex; align-items:center; gap:.5rem; font-size:14.5px; color:#555555; padding:8px 0; white-space:nowrap; transition:color .28s cubic-bezier(0.16,1,0.3,1), gap .28s cubic-bezier(0.16,1,0.3,1); }
-    .dlink iconify-icon { opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); }
-    .dlink:hover { color:#0A2440; gap:.9rem; }
-    .dlink:hover iconify-icon { opacity:1; transform:none; }
+    .dlink { display:flex; align-items:center; font-size:14.5px; color:#555555; padding:8px 16px 8px 13px; white-space:nowrap; border-left:3px solid transparent; transition:border-left-color .28s cubic-bezier(0.16,1,0.3,1), color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); }
+    .dlink iconify-icon { display:none; }
+    .dlink:hover { border-left-color:#0169a9; color:#0A2440; background:#F5F6F8; }
+    .dlink:hover iconify-icon { display:none; }
+    /* 인트로 히어로 배경 이미지 고정 (시재건설 스타일) */
+    .hero-bg-fixed { background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; }
+    @media (max-width: 768px) { .hero-bg-fixed { background-attachment: scroll; } }
+    /* Breadcrumb 스트립 · 남색 통일 · 세로선 divider */
+    .bc-row { display: flex; align-items: stretch; }
+    .bc-cell { display: flex !important; align-items: center !important; height: 48px !important; min-height: 48px !important; font-size: 15px; white-space: nowrap; transition: background .22s ease, color .22s ease; cursor: pointer; box-sizing: border-box; color: rgba(255,255,255,0.75); border-right: 1px solid rgba(255,255,255,0.15); }
+    .bc-cell:first-child { border-left: 1px solid rgba(255,255,255,0.15); }
+    .bc-cell:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .bc-cell.bc-home { padding: 0; width: 48px; justify-content: center; }
+    .bc-cell.bc-menu { min-width: 158px; padding: 0 18px; justify-content: space-between; gap: 14px; font-weight: 500; }
+    .bc-cell.bc-menu.is-current { color: #fff; font-weight: 600; }
+    .bc-cell .bc-caret { font-size: 12px; opacity: .7; transition: transform .32s cubic-bezier(0.16,1,0.3,1); }
+    .bc-item:hover .bc-caret, .bc-item:focus-within .bc-caret { transform: rotate(180deg); opacity: 1; }
+    .bc-item { position: relative; display: flex; align-items: stretch; }
+    .bc-panel { position: absolute; top: 100%; left: 0; min-width: 100%; background: #fff; color: #212121; border: 1px solid #E5E7EB; border-top: 0; box-shadow: 0 24px 44px -20px rgba(10,36,64,.35); opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .32s cubic-bezier(0.16,1,0.3,1); z-index: 30; padding: 6px 0; }
+    .bc-item:hover .bc-panel, .bc-item:focus-within .bc-panel { opacity: 1; visibility: visible; transform: none; }
+    .bc-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -4px; height: 4px; }
+    .bc-panel a { display: block; padding: 9px 16px 9px 13px; font-size: 15px; color: #555; border-left: 3px solid transparent; transition: border-left-color .28s cubic-bezier(0.16,1,0.3,1), color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
+    .bc-panel a:hover { border-left-color: #0169a9; color: #0A2440; background: #F5F6F8; }
+    .bc-panel a.is-active { border-left-color: #0A2440; color: #0A2440; font-weight: 700; background: #F5F6F8; }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -133,20 +153,58 @@
     <a href="contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[18px] font-bold stagger-5" onclick="closeMobileMenu()">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
 
-  <!-- ==================== 서브 비주얼 + 브레드크럼 ==================== -->
-  <section class="relative bg-ink overflow-hidden">
-    <img src="assets/main/health.png" alt="" class="absolute inset-0 w-full h-full object-cover opacity-35 grayscale">
-    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/50"></div>
-    <div class="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-24">
-      <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Solution</p>
+  <!-- ==================== 얇은 브레드크럼 스트립 (남색) ==================== -->
+  <section class="bg-ink border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
+      <div class="flex items-stretch justify-between gap-4" style="height:48px;">
+        <nav class="bc-row" aria-label="현재 위치">
+          <a href="index.html" class="bc-cell bc-home" aria-label="홈">
+            <iconify-icon icon="mdi:home" class="text-[18px]"></iconify-icon>
+          </a>
+
+          <div class="bc-item">
+            <a href="vision.html" class="bc-cell bc-menu">
+              <span>제품소개</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon>
+            </a>
+            <div class="bc-panel">
+              <a href="about.html">회사소개</a>
+              <a href="vision.html" class="is-active">제품소개</a>
+              <a href="patents.html">기술·연구</a>
+              <a href="contact.html">문의</a>
+            </div>
+          </div>
+
+          <div class="bc-item">
+            <span class="bc-cell bc-menu is-current">
+              <span>온토케어</span>
+              <iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon>
+            </span>
+            <div class="bc-panel">
+              <a href="vision.html">온토비전</a>
+              <a href="health.html" class="is-active">온토케어</a>
+            </div>
+          </div>
+        </nav>
+
+        <div class="inline-flex items-stretch gap-5 text-white/70 text-[15px]">
+          <span class="w-px bg-white/25" aria-hidden="true"></span>
+          <button type="button" onclick="fontResize('up')" class="hover:text-white transition-colors font-semibold flex items-center leading-none" aria-label="글자 크게">+</button>
+          <span class="w-px bg-white/25" aria-hidden="true"></span>
+          <button type="button" onclick="fontResize('down')" class="hover:text-white transition-colors font-semibold flex items-center leading-none" aria-label="글자 작게">−</button>
+          <span class="w-px bg-white/25" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 인트로 히어로 (배경 이미지 fixed · 가운데 정렬) ==================== -->
+  <section class="relative overflow-hidden bg-ink hero-bg-fixed" style="background-image: url('assets/main/health.png');">
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/60 to-ink/85"></div>
+    <div class="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-24 text-center">
+      <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Products</p>
       <h1 class="text-white text-[42px] md:text-[48px] font-bold tracking-tight" style="letter-spacing:-0.02em;">온토케어</h1>
-      <nav class="mt-5 flex items-center gap-2 text-[17px] text-white/75">
-        <a href="index.html" class="hover:text-white transition-colors inline-flex items-center" aria-label="홈"><iconify-icon icon="solar:home-2-linear" class="text-[19px]"></iconify-icon></a>
-        <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[12px]"></iconify-icon>
-        <a href="vision.html" class="hover:text-white transition-colors">제품소개</a>
-        <iconify-icon icon="solar:alt-arrow-right-linear" class="text-[12px]"></iconify-icon>
-        <span class="text-white font-semibold">온토케어</span>
-      </nav>
+      <p class="mt-5 text-white/80 text-[17px] md:text-[19px] leading-[1.7] max-w-2xl mx-auto">간편인증 한 번으로 10년치 건강검진을 자동 수집하는<br class="hidden md:block"> 작업자 보건관리 시스템.</p>
     </div>
   </section>
 
@@ -398,6 +456,25 @@
       </div>
     </div>
   </footer>
+
+  <!-- 글자 크기 조절 (breadcrumb 스트립 우측 컨트롤) -->
+  <script>
+    (function() {
+      var LEVELS = [90, 100, 110, 120];
+      var current = parseInt(localStorage.getItem('ontoh-font-level'));
+      if (isNaN(current)) current = 1;
+      function apply() {
+        document.documentElement.style.fontSize = LEVELS[current] + '%';
+      }
+      apply();
+      window.fontResize = function(dir) {
+        if (dir === 'up' && current < LEVELS.length - 1) current++;
+        else if (dir === 'down' && current > 0) current--;
+        localStorage.setItem('ontoh-font-level', String(current));
+        apply();
+      };
+    })();
+  </script>
 
   <script src="js/common.js"></script>
 </body>
