@@ -183,7 +183,7 @@ AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임
 ```
 ```css
 .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
-.kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
+.kicker::before { content:""; width:4px; height:18px; background:#0169a9; display:inline-block; }
 ```
 
 ### 3.2 Section Tag (상세 페이지 섹션 라벨)
@@ -192,7 +192,7 @@ AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임
 ```
 ```css
 .section-tag { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#0169a9; margin-bottom:1rem; }
-.section-tag::before { content:""; display:inline-block; width:26px; height:2px; background:#0169a9; vertical-align:middle; margin-right:.6rem; }
+.section-tag::before { content:""; display:inline-block; width:4px; height:18px; background:#0169a9; vertical-align:middle; margin-right:.6rem; }
 ```
 
 ### 3.3 Tag / Chip
@@ -376,5 +376,5 @@ AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임
 
 ---
 
-_ONTOH Design Skill · v3.3 · 2026-07-28_  
-_섹션 1~10 정합성 감사 전체 완료 · 운영 거버넌스 신규 (operations.md)_
+_ONTOH Design Skill · v3.4 · 2026-07-28_  
+_Kicker 스펙 개정 · 가로선 26×2px → 세로 블록 4×18px (건축 · 구조 톤)_

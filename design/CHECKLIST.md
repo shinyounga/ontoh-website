@@ -355,3 +355,7 @@ _점검 진행 시 여기에 발견 사항, 결정 사항, 후속 액션 기록.
 - **섹션 8 완료** · design/glossary.md 신규 (10개 카테고리 용어 사전) · SKILL.md v3.1 갱신 (신규 문서 카탈로그 · State/Typography/Shadow scale 반영)
 - **섹션 9 완료** · design/a11y.md 신규 (WCAG 2.1 AA 기준) · 13개 페이지에 skip-to-content · `<main id="main">` · prefers-reduced-motion CSS 배치 반영
 - **섹션 10 완료** · design/operations.md 신규 (담당자·신규/폐기 프로세스·리뷰·정기 점검·문서-코드 정합성 8개 섹션) · **CHECKLIST 10섹션 전체 완료**
+- **Kicker 스펙 개정** (v3.3 → v3.4) · 26×2px 가로선 → **4×18px 세로 블록** (건축·구조적 톤 강화 · 시재건설급 대형 건설사 톤 매치)
+  - HTML 19개 파일 batch 적용 (`.kicker` + `.section-tag` 일괄)
+  - 문서 갱신: DESIGN.md · SKILL.md · components.md
+  - 판단 근거: 아티팩트 10종 시각 비교 (kicker-variants) · 3번(Vertical Block Bold) 선정

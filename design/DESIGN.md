@@ -223,9 +223,9 @@ font-family: 'Pretendard', system-ui, sans-serif;
 ```
 
 ```css
-.kicker { display:inline-flex; align-items:center; gap:.6rem;
+.kicker { display:inline-flex; align-items:center; gap:.7rem;
   font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
-.kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
+.kicker::before { content:""; width:4px; height:18px; background:#0169a9; display:inline-block; }
 ```
 
 ### 6.2 Section Tag
@@ -239,7 +239,7 @@ Kicker의 상세 페이지 버전. Challenge / Solution / Impact 등에 사용.
 ```css
 .section-tag { display:inline-block; font-size:12px; font-weight:800;
   letter-spacing:.16em; text-transform:uppercase; color:#0169a9; margin-bottom:1rem; }
-.section-tag::before { content:""; display:inline-block; width:26px; height:2px;
+.section-tag::before { content:""; display:inline-block; width:4px; height:18px;
   background:#0169a9; vertical-align:middle; margin-right:.6rem; }
 ```
 
