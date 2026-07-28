@@ -19,7 +19,7 @@ _사용자와 AI(Claude)가 함께 확인하며 진행하는 디자인 시스템
 | 1 | 컴포넌트 이름과 구조 | ✅ 완료 (2026-07-28) |
 | 2 | 필수 컴포넌트 구성 | ✅ 완료 (2026-07-28) |
 | 3 | 상태와 Variant | ✅ 완료 (2026-07-28) |
-| 4 | 디자인 토큰 | ☐ |
+| 4 | 디자인 토큰 | ✅ 완료 (2026-07-28) |
 | 5 | 컴포넌트 사용 기준 | ☐ |
 | 6 | Figma 파일 구조 (N/A · 코드 기반) | ☐ |
 | 7 | 디자인과 코드의 연결 | ☐ |
@@ -149,20 +149,35 @@ Loading = True / False
 
 ---
 
-## 4. 디자인 토큰
+## 4. 디자인 토큰 ✅
 
-- [ ] **색상 값이 공통 토큰으로 관리되고 있나요?**  
-화면마다 임의의 HEX 값을 사용하지 않고 공통 컬러 기준을 사용합니다.
-- [ ] **색상 이름이 실제 색보다 의미를 중심으로 작성되어 있나요?**  
-`Blue 500`만 사용하는 것보다 `Action Primary`, `Text Error`처럼 용도가 드러나는 토큰을 함께 사용합니다.
-- [ ] **타이포그래피가 공통 스타일로 정리되어 있나요?**  
-폰트 크기, 굵기, 행간을 화면마다 직접 입력하지 않도록 관리합니다.
-- [ ] **간격과 크기 기준이 토큰으로 정의되어 있나요?**  
-Spacing, Radius, Border, Shadow 등의 값을 공통 규칙으로 관리합니다.
-- [ ] **토큰의 단계와 이름 규칙이 일관적인가요?**  
-Primitive, Semantic, Component 토큰이 명확하게 구분되어 있어야 합니다.
-- [ ] **컴포넌트가 직접 값이 아닌 토큰을 사용하고 있나요?**  
-토큰을 수정하면 관련 컴포넌트에도 변경 사항이 함께 반영되어야 합니다.
+- [x] **색상 값이 공통 토큰으로 관리되고 있나요?**  
+Tailwind config에 12색상 정의 (navy/ink/body/sub/accent+3/band/hair) + 4 state color (error/warning/success/info).
+- [x] **색상 이름이 실제 색보다 의미를 중심으로 작성되어 있나요?**  
+`ink`(딥네이비 헤드라인) · `accent`(강조 링크·CTA) · `band`(연회색 밴드) · `hair`(헤어라인 border) · `error/warning/success/info` 모두 의미 기반.
+- [x] **타이포그래피가 공통 스타일로 정리되어 있나요?**  
+**신규 fontSize scale 9종 추가** (`text-caption` ~ `text-hero`) · Tailwind fontSize extend · line-height/letter-spacing 포함.
+- [x] **간격과 크기 기준이 토큰으로 정의되어 있나요?**  
+Spacing: Tailwind 기본 · Radius: 직각(rounded-none) 원칙 · Border: `border-hair` · **Shadow: 4종 semantic scale 신규** (`shadow-card/panel/megabar/lightbox`).
+- [x] **토큰의 단계와 이름 규칙이 일관적인가요?**  
+Primitive(Tailwind config) · Semantic(이름 자체가 semantic · ink/accent/error 등 겸함) · Component(.btn/.card/.tag 등) 3-layer.
+- [x] **컴포넌트가 직접 값이 아닌 토큰을 사용하고 있나요?**  
+`.btn-primary { background: #0A2440 }` = Tailwind `ink` 토큰. CSS 안 hex는 Primitive 참조. 향후 신규 코드는 semantic scale (`text-h1` `shadow-card` 등) 사용.
+
+### 신규 Tailwind extend (2026-07-28)
+
+**fontSize scale (9종)**  
+`text-caption` (12px) · `text-body-sm` (13px) · `text-body` (15px) · `text-body-md` (17px) · `text-body-lg` (19px) · `text-h3` (22px) · `text-h2` (28px) · `text-h1` (38px) · `text-hero` (48px)
+
+**boxShadow scale (4종)**  
+`shadow-card` · `shadow-panel` · `shadow-megabar` · `shadow-lightbox`
+
+### 카탈로그 위치
+전체 토큰 정의는 **[design/tokens.md](tokens.md)** 신규 파일 참조.
+
+### 기존 arbitrary 값 처리 원칙
+- 15가지 arbitrary `text-[Xpx]` 시각 조정용 · 기존 코드 유지
+- 새 컴포넌트/리팩토링에만 semantic scale 사용 (혼용 방지)
 
 ---
 
@@ -279,4 +294,5 @@ _점검 진행 시 여기에 발견 사항, 결정 사항, 후속 액션 기록.
   - `.myeongjo` 삭제 (미사용)
 - **섹션 2 완료** · 버튼 시스템 신규 도입 (97개 인스턴스 통일)
 - **섹션 3 완료** · State 시스템 전면 구축 (Focus·Disabled·Loading·State Colors)
-- 다음: 섹션 4 (디자인 토큰)
+- **섹션 4 완료** · Tailwind fontSize(9종) + boxShadow(4종) scale 신규 · design/tokens.md 카탈로그
+- 다음: 섹션 5 (컴포넌트 사용 기준)
