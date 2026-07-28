@@ -21,8 +21,8 @@ _사용자와 AI(Claude)가 함께 확인하며 진행하는 디자인 시스템
 | 3 | 상태와 Variant | ✅ 완료 (2026-07-28) |
 | 4 | 디자인 토큰 | ✅ 완료 (2026-07-28) |
 | 5 | 컴포넌트 사용 기준 | ☐ |
-| 6 | Figma 파일 구조 (N/A · 코드 기반) | ☐ |
-| 7 | 디자인과 코드의 연결 | ☐ |
+| 6 | Figma 파일 구조 (N/A · 코드 기반) | ✅ 완료 (2026-07-28) |
+| 7 | 디자인과 코드의 연결 | ✅ 완료 (2026-07-28) |
 | 8 | AI가 이해할 수 있는 문서 | ☐ |
 | 9 | 접근성과 품질 기준 | ☐ |
 | 10 | 운영과 관리 | ☐ |
@@ -215,27 +215,39 @@ Property 및 Variant
 
 ---
 
-## 6. Figma 파일 구조 _(N/A · 코드 기반 프로젝트)_
+## 6. Figma 파일 구조 _(코드 기반으로 재해석)_ ✅
 
-_ONTOH는 Figma 없이 코드(HTML/CSS/Tailwind)로 직접 관리하므로 이 섹션은 참고용._
+_ONTOH는 Figma 없이 코드(HTML/CSS/Tailwind)로 직접 관리. 각 항목을 파일/폴더/HTML 구조로 재해석하여 점검._
 
-- [ ] **페이지와 섹션 이름이 명확하게 정리되어 있나요?**
-- [ ] **컴포넌트와 실제 화면이 분리되어 있나요?** _(design/preview/ vs 실제 페이지)_
-- [ ] **레이어명이 역할에 맞게 정리되어 있나요?** _(HTML 주석 · class 명)_
-- [ ] **Auto Layout이 일관되게 적용되어 있나요?** _(Tailwind flex/grid 일관성)_
-- [ ] **불필요한 중복 컴포넌트가 제거되어 있나요?**
-- [ ] **사용하지 않는 이전 버전이 분리되어 있나요?** _(archive/ 폴더 활용)_
+- [x] **페이지와 섹션 이름이 명확하게 정리되어 있나요?**  
+파일명 role-based (about/vision/health/patents/contact/references/terms/privacy/blog). 섹션은 HTML 주석으로 `<!-- ==================== 섹션명 ==================== -->` 명시.
+- [x] **컴포넌트와 실제 화면이 분리되어 있나요?**  
+`design/preview/` = UI 킷 (컴포넌트 갤러리) · 정본 페이지 = 화면. 명확 분리.
+- [x] **레이어명이 역할에 맞게 정리되어 있나요?**  
+HTML class는 섹션 1 리팩토링으로 role-based prefix 통일 (`.bc-*` `.gnb-*` `.lb-*` `.lc-*` `.btn-*` 등). ID는 semantic (`#lb` `#formSuccess` `#mobileMenu`).
+- [x] **Auto Layout이 일관되게 적용되어 있나요?**  
+Tailwind flex/grid 일관 사용 · 인접 섹션 동일 레이아웃 지양 (Bento · Zig-Zag) · CLAUDE.md 규칙 준수.
+- [x] **불필요한 중복 컴포넌트가 제거되어 있나요?**  
+섹션 1 리팩토링에서 이름 통일 · 섹션 2 리팩토링에서 97개 버튼 인스턴스 통합 · 중복 제거 완료.
+- [x] **사용하지 않는 이전 버전이 분리되어 있나요?**  
+`archive/` 폴더 활용: design-legacy · history_demos · menu_demos · pre_v3 · pre-restructure · v2_intermediate · 구 인덱스 버전 등 완전 분리.
 
 ---
 
-## 7. 디자인과 코드의 연결
+## 7. 디자인과 코드의 연결 ✅
 
-- [ ] **Figma 컴포넌트와 개발 컴포넌트가 같은 이름을 사용하나요?** _(코드 기반이라 자동 통일)_
-- [ ] **Figma와 실제 서비스의 컴포넌트 상태가 일치하나요?** _(N/A)_
-- [ ] **Storybook 등에서 개발 컴포넌트를 확인할 수 있나요?** _(design/preview/ 활용)_
-- [ ] **디자인 변경 사항이 코드에도 반영되는 과정이 정리되어 있나요?**
-- [ ] **디자인 시스템의 최신 버전을 구분할 수 있나요?**
-- [ ] **디자인과 코드 사이의 연결 정보가 기록되어 있나요?**
+- [x] **Figma 컴포넌트와 개발 컴포넌트가 같은 이름을 사용하나요?**  
+N/A · 코드 기반이라 자동 통일 (Figma 없음). 컴포넌트 이름 규칙은 [components.md](components.md) 참조.
+- [x] **Figma와 실제 서비스의 컴포넌트 상태가 일치하나요?**  
+N/A · 코드가 유일한 진실 소스.
+- [x] **Storybook 등에서 개발 컴포넌트를 확인할 수 있나요?**  
+`design/preview/` 5개 페이지 (index/colors/typography/spacing/components) · 로컬 서버로 브라우저 확인 가능.
+- [x] **디자인 변경 사항이 코드에도 반영되는 과정이 정리되어 있나요?**  
+[design/README.md](README.md) "기여 · 업데이트 워크플로우" 섹션 · 신규 컴포넌트/토큰 변경/리팩토링 각각 절차 문서화.
+- [x] **디자인 시스템의 최신 버전을 구분할 수 있나요?**  
+Git commit 히스토리 (primary source) + CHECKLIST.md 진행 로그 + 각 문서 하단 업데이트 날짜.
+- [x] **디자인과 코드 사이의 연결 정보가 기록되어 있나요?**  
+[components.md](components.md) 각 컴포넌트 실제 사용 예시 + [tokens.md](tokens.md) 토큰-Tailwind config 매핑 + [README.md](README.md) 파일 구성 표.
 
 ---
 
@@ -299,4 +311,6 @@ _점검 진행 시 여기에 발견 사항, 결정 사항, 후속 액션 기록.
 - **섹션 3 완료** · State 시스템 전면 구축 (Focus·Disabled·Loading·State Colors)
 - **섹션 4 완료** · Tailwind fontSize(9종) + boxShadow(4종) scale 신규 · design/tokens.md 카탈로그
 - **섹션 5 완료** · design/components.md 신규 (12개 컴포넌트 사용 가이드 · Do/Don't · 텍스트 규칙 · 조합 원칙 · 예외 규칙)
-- 다음: 섹션 6 (Figma 파일 구조 · N/A 코드 기반) · 섹션 7 (디자인과 코드의 연결)
+- **섹션 6 완료** · 파일 구조 · HTML 주석 · Auto Layout · archive 활용 모두 정합성 확인
+- **섹션 7 완료** · design/README.md 워크플로우 섹션 추가 · 문서 인덱스 최신화 (v3.1)
+- 다음: 섹션 8 (AI가 이해할 수 있는 문서)
