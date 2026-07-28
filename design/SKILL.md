@@ -183,7 +183,8 @@ AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임
 ```
 ```css
 .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
-.kicker::before { content:""; width:4px; height:18px; background:#0169a9; display:inline-block; }
+.kicker { ... font-size:15px; ... }
+.kicker::before { content:""; width:5px; height:20px; background:#0169a9; display:inline-block; }
 ```
 
 ### 3.2 Section Tag (상세 페이지 섹션 라벨)
@@ -376,5 +377,5 @@ AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임
 
 ---
 
-_ONTOH Design Skill · v3.4 · 2026-07-28_  
-_Kicker 스펙 개정 · 가로선 26×2px → 세로 블록 4×18px (건축 · 구조 톤)_
+_ONTOH Design Skill · v3.5 · 2026-07-28_  
+_Kicker 위계 강화 · 15px + 세로 블록 5×20px · about/vision 정리 + "5대 현장 위험 유형" 리네임_

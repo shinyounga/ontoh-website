@@ -111,18 +111,21 @@ _토큰 참조: [tokens.md](tokens.md) · 클래스 카탈로그: [CHECKLIST.md]
 **사용 상황**: 큰 헤딩(H2/H1) 위 · 섹션 시작 신호  
 **사용하지 않는 상황**: 카드 안 · 페이지당 5개 이상 (남발 금지)
 
-### Property (v3.4 · 2026-07-28 개정)
-`.kicker` (13px · font-extrabold · accent · **세로 블록 4×18px prefix**)
+### Property (v3.5 · 2026-07-28 개정)
+`.kicker` (**15px** · font-extrabold · accent · **세로 블록 5×20px prefix**)
 
 **CSS**:
 ```css
-.kicker { display:inline-flex; align-items:center; gap:.7rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
-.kicker::before { content:""; width:4px; height:18px; background:#0169a9; display:inline-block; }
+.kicker { display:inline-flex; align-items:center; gap:.7rem; font-size:15px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+.kicker::before { content:""; width:5px; height:20px; background:#0169a9; display:inline-block; }
 ```
 
-**시각적 특징**: 건축·구조적 · 시재건설급 대형 건설사 톤 강화. 텍스트 높이와 매칭되는 세로 액센트 블록.
+**시각적 특징**: 건축·구조적 · 시재건설급 대형 건설사 톤 강화. 텍스트 높이와 매칭되는 세로 액센트 블록. 위계 강화 (13→15px).
 
-**이전 (v3.3 이전)**: 26×2px 가로선 (`─── 오시는 길`) — 저널리즘 스타일에서 건축 스타일로 전환.
+**변경 히스토리**:
+- v3.5 (2026-07-28) — 폰트 15px · 블록 5×20px (위계 강화)
+- v3.4 (2026-07-28) — 폰트 13px · 블록 4×18px (세로 블록 도입)
+- v3.3 이전 — 폰트 13px · 26×2px 가로선 (저널리즘)
 
 ### 텍스트 규칙
 - **한글 우선** (실제 사이트 전부 한글 · 영문 대문자는 미사용)

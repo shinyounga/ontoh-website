@@ -94,8 +94,8 @@
     .alert-warning { border-left-color: #ea580c; background: #fff7ed; color: #7c2d12; }
     .alert-success { border-left-color: #137a52; background: #f0fdf4; color: #14532d; }
     .alert-info { border-left-color: #0169a9; background: #eff6ff; color: #1e3a8a; }
-    .kicker { display:inline-flex; align-items:center; gap:.7rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
-    .kicker::before { content:""; width:4px; height:18px; background:#0169a9; display:inline-block; }
+    .kicker { display:inline-flex; align-items:center; gap:.7rem; font-size:15px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
+    .kicker::before { content:""; width:5px; height:20px; background:#0169a9; display:inline-block; }
     .card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
     .card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
     .news-row { transition: background .35s cubic-bezier(0.16,1,0.3,1); }
@@ -340,7 +340,7 @@
             고정된 카메라가 놓치는 곳까지,<br><span class="text-accent">스스로</span> 살핍니다.
           </h2>
           <p class="reveal stagger-2 mt-6 text-[19px] text-sub leading-[1.75]">
-            기존 CCTV에 AI를 더해 위험을 감지하고, PTZ 카메라가 스스로 움직여 사각지대를 커버합니다.
+            기존 CCTV에 AI를 더해 위험을 감지하고,<br class="hidden md:block"> PTZ 카메라가 스스로 움직여 사각지대를 커버합니다.
           </p>
           <div class="reveal stagger-3 mt-9 flex flex-col sm:flex-row sm:items-center gap-3.5">
             <a href="contact.html" class="btn btn-primary btn-md">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
@@ -363,7 +363,7 @@
         <h2 class="reveal stagger-1 text-[30px] md:text-[46px] font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
           상황을 해석하고,<br>CCTV를 <span class="text-accent">제어합니다</span>.
         </h2>
-        <p class="reveal stagger-2 mt-6 text-[18px] md:text-[19px] text-sub leading-[1.75]">단순 이벤트 감지에 머무르던 지능형 CCTV를 넘어, 상황을 이해하고 스스로 행동하는 관제 시스템으로 진화합니다.</p>
+        <p class="reveal stagger-2 mt-6 text-[18px] md:text-[19px] text-sub leading-[1.75]">단순 이벤트 감지에 머무르던 지능형 CCTV를 넘어,<br class="hidden md:block"> 상황을 이해하고 스스로 행동하는 관제 시스템으로 진화합니다.</p>
       </div>
 
       <div class="grid md:grid-cols-2 gap-6 md:gap-10">
@@ -440,7 +440,7 @@
           <div>
             <p class="stat-num text-[16px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">01</p>
             <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">실시간 AI 현장 안전 관제</h3>
-            <ul class="space-y-4 text-[19px] text-body leading-[1.7]">
+            <ul class="space-y-4 text-[22px] text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>다채널 영상 이벤트 자동 감지</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>현장 전체 실시간 시각화</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>작업 구역별 상태 확인</li>
@@ -460,7 +460,7 @@
           <div class="md:order-1">
             <p class="stat-num text-[16px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">02</p>
             <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">위험 상황 즉시 인지</h3>
-            <ul class="space-y-4 text-[19px] text-body leading-[1.7]">
+            <ul class="space-y-4 text-[22px] text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>다채널 영상에서 이상 상황 자동 탐지</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>발생 즉시 관제·현장으로 알림</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>이력 자동 기록으로 사후 확인 가능</li>
@@ -468,10 +468,10 @@
           </div>
         </div>
 
-        <!-- 5대 감지 시나리오 스트립 (썸네일 클릭 → 팝업) -->
+        <!-- 5대 현장 위험 유형 스트립 (썸네일 클릭 → 팝업) -->
         <div class="mt-12 md:mt-14 pt-10 md:pt-12 border-t border-hair">
           <div class="mb-6">
-            <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">5대 감지 시나리오</p>
+            <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">5대 현장 위험 유형</p>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             <!-- 01 안전모 미착용 (캐러셀 Case 01) -->
@@ -548,7 +548,7 @@
             <p class="stat-num text-[16px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">03</p>
             <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">PTZ 자율 제어 <span class="text-accent text-[16px] md:text-[18px] font-bold align-middle">· Core</span></h3>
             <p class="text-[19px] text-body leading-[1.7] mb-6">위험 감지 시 카메라가 자동으로 회전 · 줌인하여, 사각지대 없이 추적하고 기록합니다.</p>
-            <ul class="space-y-4 text-[19px] text-body leading-[1.7]">
+            <ul class="space-y-4 text-[22px] text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>AI 기반 PTZ 자동 제어 · 객체 및 작업자 인식</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>위험 행동 자동 분석</li>
             </ul>
@@ -575,7 +575,7 @@
             <p class="stat-num text-[16px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">04</p>
             <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">RAG-LLM 규정 매칭</h3>
             <p class="text-[19px] text-body leading-[1.7] mb-6">위험 상황을 관련 법령과 자동으로 대조하여, 위반 조항과 필요 조치를 즉시 안내합니다.</p>
-            <ul class="space-y-4 text-[19px] text-body leading-[1.7]">
+            <ul class="space-y-4 text-[22px] text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>산업안전보건법 · 시행규칙 자동 대조</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>위반 조항과 필요 조치 즉시 안내</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>PTZ 감지 결과와 연동해 근거 자동 첨부</li>
@@ -729,7 +729,7 @@
           <div>
             <p class="stat-num text-[16px] font-extrabold text-accent tracking-[0.16em] uppercase mb-4">05</p>
             <h3 class="text-[27px] md:text-[38px] font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">생성형 AI 기반 안전 관리</h3>
-            <ul class="space-y-4 text-[19px] text-body leading-[1.7]">
+            <ul class="space-y-4 text-[22px] text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>법정 서류 및 교육 · 조치 이력 자동 관리</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>점검 · 보고 · 교육 자동 생성</li>
             </ul>
@@ -786,7 +786,7 @@
       <div class="mt-16 md:mt-20 pt-12 md:pt-14 border-t border-hair">
         <div class="max-w-3xl mb-10 md:mb-12">
           <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-3">이렇게 남습니다</p>
-          <h3 class="text-[24px] md:text-[30px] font-bold text-ink" style="letter-spacing:-0.02em; line-height:1.3;">도입 후, 매일 다음 자료가<br class="hidden md:block"> 자동으로 생성됩니다.</h3>
+          <h3 class="text-[24px] md:text-[30px] font-bold text-ink" style="letter-spacing:-0.02em; line-height:1.3;">도입 후, 다음 자료가<br class="hidden md:block"> 매일 자동으로 생성됩니다.</h3>
         </div>
         <div class="grid md:grid-cols-3 gap-4 md:gap-5">
           <article class="reveal border border-hair p-6 md:p-7 bg-white">
