@@ -121,6 +121,20 @@
     .bc-panel .dropdown-link { display: block; padding: 10px 16px; font-size: 15px; color: #555; transition: color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
     .bc-panel .dropdown-link:hover { color: #fff; background: #0169a9; }
     .bc-panel .dropdown-link.is-active { color: #0A2440; font-weight: 700; background: #F5F6F8; }
+    /* -- Button System -- */
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font-weight:700; text-decoration:none; transition:background-color .28s cubic-bezier(0.16,1,0.3,1), color .28s ease, transform .16s cubic-bezier(0.16,1,0.3,1); cursor:pointer; white-space:nowrap; }
+    .btn-primary { background:#0A2440; color:#fff; }
+    .btn-primary:hover { background:#0e3161; }
+    .btn-inverse { background:#fff; color:#0A2440; }
+    .btn-inverse:hover { transform:scale(1.02); }
+    .btn-inverse:active { transform:scale(0.98); }
+    .btn-outline-light { border:1px solid rgba(255,255,255,0.3); color:#fff; background:transparent; }
+    .btn-outline-light:hover { background:rgba(255,255,255,0.1); }
+    .btn-outline-dark { border:1px solid #E5E7EB; color:#0A2440; background:transparent; }
+    .btn-outline-dark:hover { background:#F5F6F8; }
+    .btn-sm { padding:10px 20px; font-size:16.5px; }
+    .btn-md { padding:14px 28px; font-size:18px; }
+    .btn-lg { padding:16px 32px; font-size:18px; }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
