@@ -18,7 +18,7 @@ _사용자와 AI(Claude)가 함께 확인하며 진행하는 디자인 시스템
 |---|---|---|
 | 1 | 컴포넌트 이름과 구조 | ✅ 완료 (2026-07-28) |
 | 2 | 필수 컴포넌트 구성 | ✅ 완료 (2026-07-28) |
-| 3 | 상태와 Variant | ☐ |
+| 3 | 상태와 Variant | ✅ 완료 (2026-07-28) |
 | 4 | 디자인 토큰 | ☐ |
 | 5 | 컴포넌트 사용 기준 | ☐ |
 | 6 | Figma 파일 구조 (N/A · 코드 기반) | ☐ |
@@ -104,20 +104,40 @@ Sizes:     .btn-sm (16.5px) · .btn-md (18px) · .btn-lg (18px, larger padding)
 
 ---
 
-## 3. 상태와 Variant
+## 3. 상태와 Variant ✅
 
-- [ ] **기본 상태 외에 필요한 인터랙션 상태가 정의되어 있나요?**  
-Default뿐 아니라 Hover, Pressed, Focus 등의 상태도 함께 제작합니다.
-- [ ] **사용할 수 없는 상태가 명확하게 구분되어 있나요?**  
-Disabled와 Read only가 시각적·기능적으로 구분되어 있는지 확인합니다.
-- [ ] **오류와 경고 상태가 정의되어 있나요?**  
-Error, Warning, Success, Information의 표현 기준이 일관되어야 합니다.
-- [ ] **로딩과 처리 중 상태가 준비되어 있나요?**  
-버튼 로딩, 페이지 로딩, 데이터 로딩 등 상황별 피드백을 정의합니다.
-- [ ] **사이즈와 유형이 Variant로 정리되어 있나요?**  
-Small, Medium, Large 또는 Primary, Secondary 등의 속성을 일관된 방식으로 관리합니다.
-- [ ] **Property 이름이 AI가 이해하기 쉽게 작성되어 있나요?**  
-`Property 1`, `Variant 2` 대신 `State`, `Size`, `Type`, `Icon`처럼 역할이 드러나는 이름을 사용합니다.
+- [x] **기본 상태 외에 필요한 인터랙션 상태가 정의되어 있나요?**  
+Hover(21곳)·Active(.btn-inverse)·**Focus (22개 파일 배포 · `:focus-visible outline 2px solid #0169a9`)** WCAG 2.4.7 준수.
+- [x] **사용할 수 없는 상태가 명확하게 구분되어 있나요?**  
+`.btn:disabled` `.btn.is-disabled` · `input/select/textarea:disabled` · opacity + cursor:not-allowed + pointer-events:none.
+- [x] **오류와 경고 상태가 정의되어 있나요?**  
+Tailwind config에 4가지 state color 추가: `error #dc2626` · `warning #ea580c` · `success #137a52` · `info #0169a9`.  
+Text/Tag/Alert variant 각각 정의: `.text-error/warning/success/info` · `.tag-error/warning/success/info` · `.alert-error/warning/success/info`.
+- [x] **로딩과 처리 중 상태가 준비되어 있나요?**  
+`.btn.is-loading` · spinner (border rotation animation) · color 투명 + pointer-events 차단. 정적 사이트라 페이지 로딩은 N/A.
+- [x] **사이즈와 유형이 Variant로 정리되어 있나요?**  
+`.btn` = Type(Primary/Inverse/Outline-Light/Outline-Dark) × Size(SM/MD/LG). Tag/Alert도 State variant 정의.
+- [x] **Property 이름이 AI가 이해하기 쉽게 작성되어 있나요?**  
+`btn-primary`(Type) · `btn-md`(Size) · `is-current` `is-active` `is-loading` `is-disabled`(State) · `tag-error`(State variant) · 모두 역할 기반.
+
+### 신규 State 시스템 (2026-07-28)
+
+```
+Focus:     22개 파일 · :focus-visible outline
+Disabled:  .btn:disabled · input:disabled 등
+Loading:   .btn.is-loading (spinner)
+Text:      .text-error/warning/success/info
+Tag:       .tag-error/warning/success/info
+Alert:     .alert-error/warning/success/info
+Colors:    error #dc2626 · warning #ea580c · success #137a52 · info #0169a9
+```
+
+### Property 표준
+```
+Type  = primary / inverse / outline-light / outline-dark
+Size  = sm / md / lg
+State = default (base) · hover · active · focus · disabled · loading · is-current · is-active
+```
 
 ### 권장 Property 구조
 ```
@@ -258,4 +278,5 @@ _점검 진행 시 여기에 발견 사항, 결정 사항, 후속 액션 기록.
   - `.band`/`.rule` → Tailwind 유틸(`bg-band`/`border-hair`)로 통합
   - `.myeongjo` 삭제 (미사용)
 - **섹션 2 완료** · 버튼 시스템 신규 도입 (97개 인스턴스 통일)
-- 다음: 섹션 3 (상태와 Variant)
+- **섹션 3 완료** · State 시스템 전면 구축 (Focus·Disabled·Loading·State Colors)
+- 다음: 섹션 4 (디자인 토큰)
