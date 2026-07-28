@@ -20,8 +20,8 @@
     .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
     .section-tag { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#0169a9; margin-bottom:1rem; }
     .section-tag::before { content:""; display:inline-block; width:26px; height:2px; background:#0169a9; vertical-align:middle; margin-right:.6rem; }
-    .corp-card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
-    .corp-card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
+    .card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
+    .card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
     .tag { font-size:12px; font-weight:800; letter-spacing:.02em; padding:3px 9px; }
     .kpi-num { font-size:44px; font-weight:800; line-height:1; letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
     .kpi-num small { font-size:20px; font-weight:700; margin-left:.15rem; }
@@ -110,7 +110,7 @@
   </section>
 
   <!-- Section Tag -->
-  <section id="section-tag" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+  <section id="section-tag" class="border-b border-hair bg-band scroll-mt-16" style="background:#F5F6F8;">
     <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
       <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 02</p>
       <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Section Tag (상세 페이지 섹션 라벨)</h2>
@@ -154,13 +154,13 @@
   </section>
 
   <!-- Buttons -->
-  <section id="button" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+  <section id="button" class="border-b border-hair bg-band scroll-mt-16" style="background:#F5F6F8;">
     <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
       <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 04</p>
       <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Buttons</h2>
       <div class="demo flex flex-wrap gap-3">
         <a class="inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[15px] font-bold hover:bg-[#0e3161] transition-colors">Primary <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
-        <a class="inline-flex items-center gap-2 bg-white text-ink border border-hair px-5 py-2.5 text-[15px] font-bold hover:bg-band transition-colors">Secondary</a>
+        <a class="inline-flex items-center gap-2 bg-white text-ink border border-hair px-5 py-2.5 text-[15px] font-bold hover:bg-bg-band transition-colors">Secondary</a>
         <a class="inline-flex items-center gap-2 text-accent px-5 py-2.5 text-[15px] font-bold hover:gap-3 transition-all">Text link <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
       </div>
       <div class="demo mt-4 bg-ink text-white flex flex-wrap gap-3 items-center">
@@ -179,7 +179,7 @@
 &lt;!-- Secondary --&gt;
 &lt;a class="inline-flex items-center gap-2 bg-white text-ink
     border border-hair px-5 py-2.5 text-[15px] font-bold
-    hover:bg-band transition-colors"&gt;Secondary&lt;/a&gt;</pre>
+    hover:bg-bg-band transition-colors"&gt;Secondary&lt;/a&gt;</pre>
       </details>
     </div>
   </section>
@@ -188,9 +188,9 @@
   <section id="card" class="border-b border-hair scroll-mt-16">
     <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
       <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 05</p>
-      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Card (.corp-card)</h2>
-      <div class="demo-band">
-        <div class="corp-card p-8 max-w-md">
+      <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Card (.card)</h2>
+      <div class="demo-bg-band">
+        <div class="card p-8 max-w-md">
           <div class="flex items-center gap-2 mb-3 flex-wrap">
             <span class="text-[13px] font-bold text-sub/50" style="font-variant-numeric:tabular-nums;">CASE 01</span>
             <span class="tag bg-accent/10 text-accent">Vision 실증</span>
@@ -201,21 +201,21 @@
         </div>
       </div>
       <details class="code-block"><summary>View Code</summary>
-<pre>&lt;a href="..." class="corp-card block p-8 group"&gt;
+<pre>&lt;a href="..." class="card block p-8 group"&gt;
   &lt;h3&gt;타이틀&lt;/h3&gt;
 &lt;/a&gt;
 
-.corp-card { background:#fff; border:1px solid #E5E7EB;
+.card { background:#fff; border:1px solid #E5E7EB;
   transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1),
               transform .5s cubic-bezier(0.16,1,0.3,1); }
-.corp-card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32);
+.card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32);
   transform: translateY(-3px); }</pre>
       </details>
     </div>
   </section>
 
   <!-- KPI Box -->
-  <section id="kpi" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+  <section id="kpi" class="border-b border-hair bg-band scroll-mt-16" style="background:#F5F6F8;">
     <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
       <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 06</p>
       <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">KPI Box (Impact in Numbers)</h2>
@@ -289,7 +289,7 @@
   </section>
 
   <!-- Points List -->
-  <section id="pts" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+  <section id="pts" class="border-b border-hair bg-band scroll-mt-16" style="background:#F5F6F8;">
     <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
       <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 08</p>
       <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Points List (.pts)</h2>
@@ -337,7 +337,7 @@
   </section>
 
   <!-- Law Chip -->
-  <section id="law" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+  <section id="law" class="border-b border-hair bg-band scroll-mt-16" style="background:#F5F6F8;">
     <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
       <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 10</p>
       <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Law Chip (법령 나열)</h2>
@@ -384,7 +384,7 @@
   </section>
 
   <!-- Quote -->
-  <section id="quote" class="border-b border-hair band scroll-mt-16" style="background:#F5F6F8;">
+  <section id="quote" class="border-b border-hair bg-band scroll-mt-16" style="background:#F5F6F8;">
     <div class="max-w-6xl mx-auto px-6 sm:px-10 lg:px-14 py-14">
       <p class="text-[12px] font-bold text-accent tracking-[0.16em] uppercase mb-2">Component 12</p>
       <h2 class="text-[22px] font-bold text-ink mb-6" style="letter-spacing:-0.015em;">Quote (고객 코멘트)</h2>

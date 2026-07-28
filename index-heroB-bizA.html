@@ -39,13 +39,10 @@
   <link rel="stylesheet" href="css/common.css">
   <style>
     body { color: #212121; }
-    .myeongjo { font-family: 'Nanum Myeongjo', serif; }
-    .band { background: #F5F6F8; }
-    .rule { border-color: #E5E7EB; }
     .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
     .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
-    .corp-card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
-    .corp-card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
+    .card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
+    .card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
     .news-row { transition: background .35s cubic-bezier(0.16,1,0.3,1); }
     .news-row:hover { background:#F5F6F8; }
     .t-smooth { transition: all .5s cubic-bezier(0.16,1,0.3,1); }
@@ -54,16 +51,16 @@
     .nav-item { position:relative; }
     .nav-top::after { content:""; position:absolute; left:20px; right:20px; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform .34s cubic-bezier(0.16,1,0.3,1); }
     .nav-item:hover .nav-top::after { transform:scaleX(1); }
-    .megabar { position:absolute; left:0; right:0; top:100%; height:210px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
+    .gnb-megabar { position:absolute; left:0; right:0; top:100%; height:210px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
     .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
-    header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
-    .dbox { padding:32px 0 36px; }
+    header:has(.gnb:hover) .gnb-megabar, header:has(.gnb-megabar:hover) .gnb-megabar, header:has(.gnb:hover) .nav-panel, header:has(.gnb-megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
+    .gnb-panel-box { padding:32px 0 36px; }
     .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:210px; width:1px; background:#E5E7EB; }
-    .dlink { display:flex; align-items:center; font-size:15px; color:#555555; padding:8px 40px 8px 16px; white-space:nowrap; position:relative; transition:color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); }
-    .dlink::after { content:"\2192"; position:absolute; right:16px; opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); font-weight:bold; }
-    .dlink iconify-icon { display:none; }
-    .dlink:hover { color:#0169a9; }
-    .dlink:hover::after { opacity:1; transform:none; }
+    .dropdown-link { display:flex; align-items:center; font-size:15px; color:#555555; padding:8px 40px 8px 16px; white-space:nowrap; position:relative; transition:color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); }
+    .dropdown-link::after { content:"\2192"; position:absolute; right:16px; opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); font-weight:bold; }
+    .dropdown-link iconify-icon { display:none; }
+    .dropdown-link:hover { color:#0169a9; }
+    .dropdown-link:hover::after { opacity:1; transform:none; }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -76,19 +73,19 @@
         <nav class="gnb hidden lg:flex items-stretch h-full">
           <div class="nav-item flex items-stretch">
             <a href="about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">회사소개</a>
-            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="about.html#mission" class="dlink">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#history" class="dlink">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#overview" class="dlink">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[150]"><a href="about.html#mission" class="dropdown-link">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#history" class="dropdown-link">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#overview" class="dropdown-link">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dropdown-link">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
             <a href="vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">제품소개</a>
-            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="vision.html" class="dlink">온토비전 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="health.html" class="dlink">온토케어 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[150]"><a href="vision.html" class="dropdown-link">온토비전 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="health.html" class="dropdown-link">온토케어 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
             <a href="patents.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">기술·연구</a>
-            <div class="nav-panel"><div class="dbox min-w-[160]"><a href="patents.html" class="dlink">특허 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[160]"><a href="patents.html" class="dropdown-link">특허 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
             <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">문의</a>
-            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="contact.html" class="dlink">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[150]"><a href="contact.html" class="dropdown-link">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
         </nav>
         <div class="flex items-center gap-3">
@@ -99,7 +96,7 @@
         </div>
       </div>
     </div>
-    <div class="megabar"></div>
+    <div class="gnb-megabar"></div>
   </header>
 
   <!-- ==================== 모바일 메뉴 (common.js 호환) ==================== -->
@@ -130,7 +127,7 @@
           <p class="reveal stagger-2 mt-6 text-[22px] md:text-[28px] font-semibold text-body" style="letter-spacing:-0.02em; line-height:1.35;">보이지 않는 위험을,<br>먼저 봅니다.</p>
           <div class="reveal stagger-3 mt-9 flex flex-col sm:flex-row sm:items-center gap-3.5">
             <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-ink text-white px-7 py-3.5 text-[18px] font-bold hover:bg-[#0e3161] transition-colors">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
-            <a href="vision.html" class="inline-flex items-center justify-center gap-2 border border-hair text-ink px-7 py-3.5 text-[18px] font-bold hover:bg-band transition-colors">솔루션 살펴보기</a>
+            <a href="vision.html" class="inline-flex items-center justify-center gap-2 border border-hair text-ink px-7 py-3.5 text-[18px] font-bold hover:bg-bg-band transition-colors">솔루션 살펴보기</a>
           </div>
           <p class="reveal stagger-3 mt-5 text-[15px] text-sub/70">현장 환경 맞춤 무료 데모 · 기존 CCTV 장비와 호환</p>
         </div>
@@ -192,14 +189,14 @@
   </section>
 
   <!-- ==================== 기술력·실적 ==================== -->
-  <section class="band border-b border-hair">
+  <section class="bg-band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-2xl mb-12">
         <h2 class="reveal text-[36px] md:text-[42px] font-bold tracking-tight text-ink mb-4" style="line-height:1.2; letter-spacing:-0.02em;">학술과 특허로 <span class="text-accent">검증한 기술</span>.</h2>
         
       </div>
       <div class="grid md:grid-cols-2 gap-6">
-        <a href="patents.html" class="reveal corp-card group p-9 flex flex-col">
+        <a href="patents.html" class="reveal card group p-9 flex flex-col">
           <div class="flex items-center gap-3 mb-5">
             <iconify-icon icon="solar:shield-keyhole-linear" class="text-accent text-[36px]"></iconify-icon>
             
@@ -214,7 +211,7 @@
             <span class="inline-flex items-center gap-1 text-[13.5px] font-bold text-accent group-hover:gap-2 transition-all">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
           </div>
         </a>
-        <a href="patents.html#papers" class="reveal stagger-1 corp-card group p-9 flex flex-col">
+        <a href="patents.html#papers" class="reveal stagger-1 card group p-9 flex flex-col">
           <div class="flex items-center gap-3 mb-5">
             <iconify-icon icon="solar:notebook-bookmark-linear" class="text-accent text-[36px]"></iconify-icon>
             

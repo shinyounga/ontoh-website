@@ -26,9 +26,6 @@
   <link rel="stylesheet" href="css/common.css">
   <style>
     body { color: #212121; }
-    .myeongjo { font-family: 'Nanum Myeongjo', serif; }
-    .band { background: #F5F6F8; }
-    .rule { border-color: #E5E7EB; }
     .kicker { display:inline-flex; align-items:center; gap:.6rem; font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
     .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
 
@@ -82,16 +79,16 @@
     .nav-item { position:relative; }
     .nav-top::after { content:""; position:absolute; left:20px; right:20px; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform .34s cubic-bezier(0.16,1,0.3,1); }
     .nav-item:hover .nav-top::after { transform:scaleX(1); }
-    .megabar { position:absolute; left:0; right:0; top:100%; height:210px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
+    .gnb-megabar { position:absolute; left:0; right:0; top:100%; height:210px; background:#fff; border-bottom:1px solid #E5E7EB; box-shadow:0 28px 46px -26px rgba(10,36,64,.3); opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:20; pointer-events:none; }
     .nav-panel { position:absolute; top:100%; left:20px; opacity:0; visibility:hidden; transform:translateY(8px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:22; pointer-events:none; }
-    header:has(.gnb:hover) .megabar, header:has(.megabar:hover) .megabar, header:has(.gnb:hover) .nav-panel, header:has(.megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
-    .dbox { padding:32px 0 36px; }
+    header:has(.gnb:hover) .gnb-megabar, header:has(.gnb-megabar:hover) .gnb-megabar, header:has(.gnb:hover) .nav-panel, header:has(.gnb-megabar:hover) .nav-panel { opacity:1; visibility:visible; transform:none; pointer-events:auto; }
+    .gnb-panel-box { padding:32px 0 36px; }
     .nav-item:not(:first-child) .nav-panel::before { content:""; position:absolute; left:-20px; top:0; height:210px; width:1px; background:#E5E7EB; }
-    .dlink { display:flex; align-items:center; font-size:15px; color:#555555; padding:8px 40px 8px 16px; white-space:nowrap; position:relative; transition:color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); }
-    .dlink::after { content:"\2192"; position:absolute; right:16px; opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); font-weight:bold; }
-    .dlink iconify-icon { display:none; }
-    .dlink:hover { color:#0169a9; }
-    .dlink:hover::after { opacity:1; transform:none; }
+    .dropdown-link { display:flex; align-items:center; font-size:15px; color:#555555; padding:8px 40px 8px 16px; white-space:nowrap; position:relative; transition:color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); }
+    .dropdown-link::after { content:"\2192"; position:absolute; right:16px; opacity:0; transform:translateX(-6px); color:#0169a9; transition:all .28s cubic-bezier(0.16,1,0.3,1); font-weight:bold; }
+    .dropdown-link iconify-icon { display:none; }
+    .dropdown-link:hover { color:#0169a9; }
+    .dropdown-link:hover::after { opacity:1; transform:none; }
     /* 인트로 히어로 배경 이미지 고정 (시재건설 스타일) */
     .hero-bg-fixed { background-attachment: fixed; background-position: center center; background-size: cover; background-repeat: no-repeat; }
     @media (max-width: 768px) { .hero-bg-fixed { background-attachment: scroll; } }
@@ -109,9 +106,9 @@
     .bc-panel { position: absolute; top: 100%; left: 0; min-width: 100%; background: #fff; color: #212121; border: 1px solid #E5E7EB; border-top: 0; box-shadow: 0 24px 44px -20px rgba(10,36,64,.35); opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .32s cubic-bezier(0.16,1,0.3,1); z-index: 30; padding: 0; }
     .bc-item:hover .bc-panel, .bc-item:focus-within .bc-panel { opacity: 1; visibility: visible; transform: none; }
     .bc-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -4px; height: 4px; }
-    .bc-panel a { display: block; padding: 10px 16px; font-size: 15px; color: #555; transition: color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
-    .bc-panel a:hover { color: #fff; background: #0169a9; }
-    .bc-panel a.is-active { color: #0A2440; font-weight: 700; background: #F5F6F8; }
+    .bc-panel .dropdown-link { display: block; padding: 10px 16px; font-size: 15px; color: #555; transition: color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
+    .bc-panel .dropdown-link:hover { color: #fff; background: #0169a9; }
+    .bc-panel .dropdown-link.is-active { color: #0A2440; font-weight: 700; background: #F5F6F8; }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -124,19 +121,19 @@
         <nav class="gnb hidden lg:flex items-stretch h-full">
           <div class="nav-item flex items-stretch">
             <a href="about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">회사소개</a>
-            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="about.html#mission" class="dlink">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#history" class="dlink">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#overview" class="dlink">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dlink">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[150]"><a href="about.html#mission" class="dropdown-link">비전 · 미션 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#history" class="dropdown-link">연혁 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#overview" class="dropdown-link">회사개요 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="about.html#location" class="dropdown-link">오시는 길 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
             <a href="vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">제품소개</a>
-            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="vision.html" class="dlink">온토비전 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="health.html" class="dlink">온토케어 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[150]"><a href="vision.html" class="dropdown-link">온토비전 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="health.html" class="dropdown-link">온토케어 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
             <a href="patents.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">기술·연구</a>
-            <div class="nav-panel"><div class="dbox min-w-[160]"><a href="patents.html" class="dlink">특허 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[160]"><a href="patents.html" class="dropdown-link">특허 · 논문 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
             <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">문의</a>
-            <div class="nav-panel"><div class="dbox min-w-[150]"><a href="contact.html" class="dlink">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[150]"><a href="contact.html" class="dropdown-link">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
         </nav>
         <div class="flex items-center gap-3">
@@ -147,7 +144,7 @@
         </div>
       </div>
     </div>
-    <div class="megabar"></div>
+    <div class="gnb-megabar"></div>
   </header>
 
   <!-- ==================== 모바일 메뉴 ==================== -->
@@ -181,10 +178,10 @@
               <iconify-icon icon="solar:alt-arrow-down-linear" class="bc-caret"></iconify-icon>
             </span>
             <div class="bc-panel">
-              <a href="about.html">회사소개</a>
-              <a href="vision.html">제품소개</a>
-              <a href="patents.html">기술·연구</a>
-              <a href="contact.html">문의</a>
+              <a href="about.html" class="dropdown-link">회사소개</a>
+              <a href="vision.html" class="dropdown-link">제품소개</a>
+              <a href="patents.html" class="dropdown-link">기술·연구</a>
+              <a href="contact.html" class="dropdown-link">문의</a>
             </div>
           </div>
         </nav>
@@ -371,7 +368,7 @@
       </article>
 
       <!-- 하단 컨택 안내 -->
-      <div class="mt-16 p-7 band border border-hair text-center">
+      <div class="mt-16 p-7 bg-band border border-hair text-center">
         <p class="text-[16.5px] text-sub leading-relaxed">
           본 처리방침에 관한 문의는<br>
           <a href="mailto:ktg@ontoh.co.kr" class="text-accent font-bold hover:underline">ktg@ontoh.co.kr</a> 또는 <a href="contact.html" class="text-accent font-bold hover:underline">문의하기</a> 페이지를 이용해 주세요.
