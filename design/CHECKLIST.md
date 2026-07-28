@@ -25,7 +25,7 @@ _사용자와 AI(Claude)가 함께 확인하며 진행하는 디자인 시스템
 | 7 | 디자인과 코드의 연결 | ✅ 완료 (2026-07-28) |
 | 8 | AI가 이해할 수 있는 문서 | ✅ 완료 (2026-07-28) |
 | 9 | 접근성과 품질 기준 | ✅ 완료 (2026-07-28) |
-| 10 | 운영과 관리 | ☐ |
+| 10 | 운영과 관리 | ✅ 완료 (2026-07-28) |
 
 ---
 
@@ -315,14 +315,23 @@ Tailwind 브레이크포인트 6단계 · `py-16 md:py-24` 등 여백 위계 · 
 
 ---
 
-## 10. 운영과 관리
+## 10. 운영과 관리 ✅
 
-- [ ] **디자인 시스템을 관리하는 담당자가 정해져 있나요?**
-- [ ] **새 컴포넌트를 추가하는 기준이 있나요?**
-- [ ] **컴포넌트 변경 내역을 확인할 수 있나요?**
-- [ ] **기존 컴포넌트를 폐기하는 절차가 있나요?**
-- [ ] **디자이너와 개발자가 함께 리뷰하나요?**
-- [ ] **정기적으로 사용 현황을 점검하나요?**
+- [x] **디자인 시스템을 관리하는 담당자가 정해져 있나요?**  
+CEO 김태건 (오너 · 브랜드 결정 · 최종 승인) · AI 협업 Claude Code (구현·문서화) · [operations.md §1](operations.md#1-담당자-ownership).
+- [x] **새 컴포넌트를 추가하는 기준이 있나요?**  
+5개 판단 체크리스트 (재사용성·기존 조합 대안·토큰 준수·CLAUDE.md 규정·접근성) + 7단계 프로세스 · [operations.md §2](operations.md#2-신규-컴포넌트-추가-기준).
+- [x] **컴포넌트 변경 내역을 확인할 수 있나요?**  
+Git commit 히스토리 (primary) + CHECKLIST.md 진행 로그 (secondary) + 문서 하단 업데이트 날짜 + SKILL.md/README.md 버전 표기 · [operations.md §3](operations.md#3-변경-내역-확인).
+- [x] **기존 컴포넌트를 폐기하는 절차가 있나요?**  
+5단계 (사용처 확인 → components.md 제거 → CSS 삭제 → archive/ 이동 → CHECKLIST 로그) · 실 폐기 사례 4건 문서화 · [operations.md §4](operations.md#4-기존-컴포넌트-폐기-deprecation-절차).
+- [x] **디자이너와 개발자가 함께 리뷰하나요?**  
+현 구조 = CEO 겸직 · Solo + AI cross-check 모델 · 셀프 리뷰 체크리스트 + AI 질의 체크리스트 · 팀 확장 시 프로세스 갱신 지점 명시 · [operations.md §5](operations.md#5-디자이너--개발자-협업-리뷰).
+- [x] **정기적으로 사용 현황을 점검하나요?**  
+분기별 (CHECKLIST 순회 + 컴포넌트 사용 감사) · 반기별 (Lighthouse 실측 + 벤치마크 재검토) · 자동화 후보 (GitHub Actions Lighthouse CI 등) · [operations.md §6](operations.md#6-정기-사용-현황-점검).
+
+### 신규 문서
+- **[design/operations.md](operations.md)** — 8개 섹션 · 담당자 · 신규/폐기 프로세스 · 리뷰 · 정기 점검 · 문서-코드 정합성 유지
 
 ---
 
@@ -345,4 +354,4 @@ _점검 진행 시 여기에 발견 사항, 결정 사항, 후속 액션 기록.
 - **섹션 7 완료** · design/README.md 워크플로우 섹션 추가 · 문서 인덱스 최신화 (v3.1)
 - **섹션 8 완료** · design/glossary.md 신규 (10개 카테고리 용어 사전) · SKILL.md v3.1 갱신 (신규 문서 카탈로그 · State/Typography/Shadow scale 반영)
 - **섹션 9 완료** · design/a11y.md 신규 (WCAG 2.1 AA 기준) · 13개 페이지에 skip-to-content · `<main id="main">` · prefers-reduced-motion CSS 배치 반영
-- 다음: 섹션 10 (운영과 관리)
+- **섹션 10 완료** · design/operations.md 신규 (담당자·신규/폐기 프로세스·리뷰·정기 점검·문서-코드 정합성 8개 섹션) · **CHECKLIST 10섹션 전체 완료**

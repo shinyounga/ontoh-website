@@ -12,6 +12,7 @@ description: Build new pages or components in the ONTOH website's brand style �
 - `design/components.md` — 12개 컴포넌트 (Button · Card · Tag · Kicker · Breadcrumb · Lightbox 등) 사용 가이드 · Do/Don't
 - `design/glossary.md` — 브랜드 · 제품 · 시나리오 · CTA · 톤 용어 사전 (같은 개념을 여러 이름으로 부르지 말 것)
 - `design/a11y.md` — WCAG 2.1 AA 접근성 기준 · 색상대비 실측 · Skip-to-content · 시맨틱 랜드마크
+- `design/operations.md` — 담당자 · 신규/폐기 프로세스 · 리뷰 · 정기 점검 · 문서-코드 정합성
 - `design/CHECKLIST.md` — 10개 섹션 정합성 감사 로그
 - `design/DESIGN.md` — 상세 원칙 · 이론 (레퍼런스)
 
@@ -375,5 +376,5 @@ AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임
 
 ---
 
-_ONTOH Design Skill · v3.2 · 2026-07-28_  
-_섹션 1~9 정합성 감사 반영 · 접근성 기준 신규 (a11y.md · WCAG 2.1 AA)_
+_ONTOH Design Skill · v3.3 · 2026-07-28_  
+_섹션 1~10 정합성 감사 전체 완료 · 운영 거버넌스 신규 (operations.md)_
