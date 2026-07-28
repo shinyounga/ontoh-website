@@ -68,7 +68,7 @@
     .bc-panel { position: absolute; top: 100%; left: 0; min-width: 100%; background: #fff; color: #212121; border: 1px solid #E5E7EB; border-top: 0; box-shadow: 0 24px 44px -20px rgba(10,36,64,.35); opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .32s cubic-bezier(0.16,1,0.3,1); z-index: 30; padding: 0; }
     .bc-item:hover .bc-panel, .bc-item:focus-within .bc-panel { opacity: 1; visibility: visible; transform: none; }
     .bc-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -4px; height: 4px; }
-    .bc-panel a { display: block; padding: 6px 16px; font-size: 15px; color: #555; transition: color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
+    .bc-panel a { display: block; padding: 10px 16px; font-size: 15px; color: #555; transition: color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
     .bc-panel a:hover { color: #fff; background: #0169a9; }
     .bc-panel a.is-active { color: #0A2440; font-weight: 700; background: #F5F6F8; }
     .doc-thumb { position:relative; display:block; width:100%; overflow:hidden; cursor:zoom-in; border:1px solid #E5E7EB; background:#F5F6F8; }
@@ -77,6 +77,23 @@
     .doc-zoom { position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:flex-end; padding:12px; background:linear-gradient(to top, rgba(10,36,64,.5), rgba(10,36,64,0) 45%); opacity:0; transition:opacity .4s cubic-bezier(0.16,1,0.3,1); }
     .doc-thumb:hover .doc-zoom { opacity:1; }
     #lightbox { transition:opacity .3s cubic-bezier(0.16,1,0.3,1); }
+    /* Lightbox 팝업 (vision.html과 통일) */
+    .lb-trigger { cursor: zoom-in; background:transparent; border:0; padding:0; width:100%; }
+    dialog.lb-dialog { padding:0; background:transparent; border:0; max-width:96vw; max-height:96vh; overflow:visible; }
+    dialog.lb-dialog::backdrop { background:rgba(10,36,64,0.88); backdrop-filter:blur(6px); }
+    dialog.lb-dialog[open] { animation: lb-in .28s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes lb-in { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:none; } }
+    .lb-frame { position:relative; padding:44px 0 0; }
+    .lb-frame img { display:block; max-width:96vw; max-height:82vh; width:auto; height:auto; object-fit:contain; margin:0 auto; background:#fff; }
+    .lb-close { position:absolute; top:0; right:0; background:transparent; border:0; color:#fff; font-size:26px; cursor:pointer; padding:4px 12px; line-height:1; font-weight:300; }
+    .lb-close:hover { color:#8ed0ff; }
+    .lb-cap { color:#fff; text-align:center; margin-top:14px; font-size:15px; font-weight:600; letter-spacing:-.01em; }
+    .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.55); border:0; color:#fff; width:64px; height:64px; border-radius:999px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .22s ease, transform .32s cubic-bezier(0.16,1,0.3,1); z-index:2; }
+    .lb-nav:hover { background:#0169a9; transform:translateY(-50%) scale(1.08); }
+    .lb-nav iconify-icon { font-size:34px; }
+    .lb-prev { left:-84px; }
+    .lb-next { right:-84px; }
+    @media (max-width: 900px) { .lb-prev { left:10px; } .lb-next { right:10px; } .lb-nav { width:50px; height:50px; } .lb-nav iconify-icon { font-size:26px; } }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -233,7 +250,7 @@
         <!-- 특허 A -->
         <article class="reveal corp-card !p-0 overflow-hidden">
           <div class="grid grid-cols-[180px_1fr] md:grid-cols-[220px_1fr]">
-            <button type="button" class="doc-thumb aspect-[3/4] md:aspect-auto md:self-stretch" data-lightbox="assets/tech/patents/patent-2023-0592-large-1.png" data-caption="특허 제10-2587288호 · 건설객체 데이터셋의 의미적 분할 모델의 학습을 위한 자기 지도학습 기반의 고품질 의사 라벨 생성시스템 및 생성방법">
+            <button type="button" class="doc-thumb aspect-[3/4] md:aspect-auto md:self-stretch" data-lb-group="patents" data-lb="assets/tech/patents/patent-2023-0592-large-1.png" data-lb-cap="특허 제10-2587288호 · 건설객체 데이터셋의 의미적 분할 모델의 학습을 위한 자기 지도학습 기반의 고품질 의사 라벨 생성시스템 및 생성방법">
               <img src="assets/tech/patents/patent-2023-0592-thumb-1.png" alt="특허 제10-2587288호 등록증">
               <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[23px]"></iconify-icon></span>
             </button>
@@ -254,7 +271,7 @@
         <!-- 특허 B -->
         <article class="reveal stagger-1 corp-card !p-0 overflow-hidden">
           <div class="grid grid-cols-[180px_1fr] md:grid-cols-[220px_1fr]">
-            <button type="button" class="doc-thumb aspect-[3/4] md:aspect-auto md:self-stretch" data-lightbox="assets/tech/patents/patent-2025-0986-large-1.png" data-caption="특허 제10-2875205호 · 영상 분석을 통해 위험 판별 및 규정 조치 안내가 수행되는 생성형 AI 기반 건설현장 안전관리 방법 및 안전관리 시스템">
+            <button type="button" class="doc-thumb aspect-[3/4] md:aspect-auto md:self-stretch" data-lb-group="patents" data-lb="assets/tech/patents/patent-2025-0986-large-1.png" data-lb-cap="특허 제10-2875205호 · 영상 분석을 통해 위험 판별 및 규정 조치 안내가 수행되는 생성형 AI 기반 건설현장 안전관리 방법 및 안전관리 시스템">
               <img src="assets/tech/patents/patent-2025-0986-thumb-1.png" alt="특허 제10-2875205호 등록증">
               <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[23px]"></iconify-icon></span>
             </button>
@@ -287,7 +304,7 @@
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2026-dsdl-tiny-large-01.png" data-caption="Tiny object detection using DSDL · Automation in Construction Vol.187 (2026)">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/journal-2026-dsdl-tiny-large-01.png" data-lb-cap="Tiny object detection using DSDL · Automation in Construction Vol.187 (2026)">
             <img src="assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png" alt="DSDL 2026">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -301,7 +318,7 @@
         </figure>
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-lvlm-safety-large-01.png" data-caption="Optimizing LVLM for Construction Safety · Automation in Construction Vol.180 (2025)">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/journal-2025-lvlm-safety-large-01.png" data-lb-cap="Optimizing LVLM for Construction Safety · Automation in Construction Vol.180 (2025)">
             <img src="assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png" alt="LVLM 2025">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -315,7 +332,7 @@
         </figure>
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-moving-feature-large-01.png" data-caption="Moving-Feature-Driven Label Propagation · Computers in Industry Vol.171 (2025)">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/journal-2025-moving-feature-large-01.png" data-lb-cap="Moving-Feature-Driven Label Propagation · Computers in Industry Vol.171 (2025)">
             <img src="assets/tech/papers/journal-2025-moving-feature-thumb-01.png" alt="Moving-Feature 2025">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -329,7 +346,7 @@
         </figure>
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2025-adaptive-water-large.png" data-caption="Adaptive water waste processing strategy · KSCE Journal of Civil Engineering Vol.29 (2025)">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/journal-2025-adaptive-water-large.png" data-lb-cap="Adaptive water waste processing strategy · KSCE Journal of Civil Engineering Vol.29 (2025)">
             <img src="assets/tech/papers/journal-2025-adaptive-water-thumb.png" alt="Adaptive Water 2025">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -343,7 +360,7 @@
         </figure>
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/journal-2024-monte-carlo-large.png" data-caption="Monte Carlo Simulation-Based Cost Estimation · KSCE J. Civ. &amp; Env. Eng. Res. Vol.44 No.2 (2024)">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/journal-2024-monte-carlo-large.png" data-lb-cap="Monte Carlo Simulation-Based Cost Estimation · KSCE J. Civ. &amp; Env. Eng. Res. Vol.44 No.2 (2024)">
             <img src="assets/tech/papers/journal-2024-monte-carlo-thumb.png" alt="Monte Carlo 2024">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -357,7 +374,7 @@
         </figure>
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2024-zero-shot-polygon-large-1.png" data-caption="Zero-shot Learning-based Polygon Mask Generation · ISARC 2024 Vol.41 pp.81-88">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/conf-2024-zero-shot-polygon-large-1.png" data-lb-cap="Zero-shot Learning-based Polygon Mask Generation · ISARC 2024 Vol.41 pp.81-88">
             <img src="assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png" alt="Zero-shot Polygon 2024">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -371,7 +388,7 @@
         </figure>
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2024-cctv-ptz-large.png" data-caption="Context-Adaptive CCTV Pan-Tilt-Zoom for PPE Detection · ISARC 2024 Vol.41 pp.768-775">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/conf-2024-cctv-ptz-large.png" data-lb-cap="Context-Adaptive CCTV Pan-Tilt-Zoom for PPE Detection · ISARC 2024 Vol.41 pp.768-775">
             <img src="assets/tech/papers/conf-2024-cctv-ptz-thumb.png" alt="CCTV PTZ 2024">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -385,7 +402,7 @@
         </figure>
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/conf-2022-comparing-objdet-large.png" data-caption="Comparing Object Detection Models for Water Trash Monitoring · ICCCBE 2022, Springer pp.161-170">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/conf-2022-comparing-objdet-large.png" data-lb-cap="Comparing Object Detection Models for Water Trash Monitoring · ICCCBE 2022, Springer pp.161-170">
             <img src="assets/tech/papers/conf-2022-comparing-objdet-thumb.png" alt="Comparing ObjDet 2022">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -399,7 +416,7 @@
         </figure>
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/domestic-2023-self-training-large.png" data-caption="자가 학습 기반 건설 객체 탐지 · KSCE 2023 CONVENTION pp.55-56">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/domestic-2023-self-training-large.png" data-lb-cap="자가 학습 기반 건설 객체 탐지 · KSCE 2023 CONVENTION pp.55-56">
             <img src="assets/tech/papers/domestic-2023-self-training-thumb.png" alt="Self-training 2023">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -413,7 +430,7 @@
         </figure>
 
         <figure>
-          <button type="button" class="doc-thumb aspect-[3/4]" data-lightbox="assets/tech/papers/domestic-2023-optimization-debris-large.png" data-caption="컴퓨터 비전 및 몬테카를로 시뮬레이션 기반 수상 부유 쓰레기 차단막 유지관리 최적화 방안 · KSCE 2023 CONVENTION pp.380-381">
+          <button type="button" class="doc-thumb aspect-[3/4]" data-lb-group="patents" data-lb="assets/tech/papers/domestic-2023-optimization-debris-large.png" data-lb-cap="컴퓨터 비전 및 몬테카를로 시뮬레이션 기반 수상 부유 쓰레기 차단막 유지관리 최적화 방안 · KSCE 2023 CONVENTION pp.380-381">
             <img src="assets/tech/papers/domestic-2023-optimization-debris-thumb.png" alt="Optimization Debris 2023">
             <span class="doc-zoom"><iconify-icon icon="solar:magnifer-linear" class="text-white text-[18px]"></iconify-icon></span>
           </button>
@@ -470,33 +487,63 @@
     </div>
   </section>
 
-  <!-- ==================== 라이트박스 (문서 확대) ==================== -->
-  <div id="lightbox" class="fixed inset-0 z-[100] hidden items-center justify-center bg-ink/95 p-5 sm:p-10 cursor-zoom-out">
-    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[88vh] shadow-2xl bg-white">
-    <button id="lightbox-close" type="button" class="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white transition-colors" aria-label="닫기"><iconify-icon icon="solar:close-circle-outline" class="text-[38px]"></iconify-icon></button>
-    <p id="lightbox-cap" class="absolute bottom-5 left-0 right-0 text-center text-[13px] text-white/70 px-6"></p>
-  </div>
+  <!-- Lightbox 팝업 (그룹 내 좌우 순환) -->
+  <dialog id="lb" class="lb-dialog" aria-label="이미지 팝업">
+    <div class="lb-frame">
+      <button type="button" class="lb-close" onclick="document.getElementById('lb').close()" aria-label="닫기">✕</button>
+      <button type="button" class="lb-nav lb-prev" onclick="lbNav(-1)" aria-label="이전 이미지"><iconify-icon icon="solar:alt-arrow-left-linear"></iconify-icon></button>
+      <button type="button" class="lb-nav lb-next" onclick="lbNav(1)" aria-label="다음 이미지"><iconify-icon icon="solar:alt-arrow-right-linear"></iconify-icon></button>
+      <img id="lb-img" src="" alt="">
+      <p class="lb-cap" id="lb-cap"></p>
+    </div>
+  </dialog>
   <script>
-    (function () {
-      var lb = document.getElementById('lightbox'),
-          img = document.getElementById('lightbox-img'),
-          cap = document.getElementById('lightbox-cap');
-      function open(src, caption) {
-        img.src = src; img.alt = caption || ''; cap.textContent = caption || '';
-        lb.classList.remove('hidden'); lb.classList.add('flex');
-        document.body.style.overflow = 'hidden';
+    (function() {
+      var dlg = document.getElementById('lb');
+      var img = document.getElementById('lb-img');
+      var cap = document.getElementById('lb-cap');
+      var prevBtn = document.querySelector('.lb-prev');
+      var nextBtn = document.querySelector('.lb-next');
+      if (!dlg || !dlg.showModal) return;
+      var currentGroup = [];
+      var currentIdx = 0;
+      function loadImage(el) {
+        img.src = el.getAttribute('data-lb');
+        img.alt = el.getAttribute('data-lb-cap') || '';
+        cap.textContent = el.getAttribute('data-lb-cap') || '';
       }
-      function close() {
-        lb.classList.add('hidden'); lb.classList.remove('flex');
-        img.src = ''; document.body.style.overflow = '';
+      function updateNav() {
+        var multi = currentGroup.length > 1;
+        if (prevBtn) prevBtn.style.display = multi ? '' : 'none';
+        if (nextBtn) nextBtn.style.display = multi ? '' : 'none';
       }
-      document.querySelectorAll('[data-lightbox]').forEach(function (el) {
-        el.addEventListener('click', function () {
-          open(el.getAttribute('data-lightbox'), el.getAttribute('data-caption'));
+      document.querySelectorAll('[data-lb]').forEach(function(el) {
+        el.addEventListener('click', function() {
+          var group = el.getAttribute('data-lb-group');
+          if (group) {
+            currentGroup = Array.from(document.querySelectorAll('[data-lb-group="' + group + '"]'));
+            currentIdx = currentGroup.indexOf(el);
+          } else {
+            currentGroup = [el];
+            currentIdx = 0;
+          }
+          loadImage(el);
+          updateNav();
+          if (!dlg.open) dlg.showModal();
         });
       });
-      lb.addEventListener('click', close);
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      window.lbNav = function(dir) {
+        if (currentGroup.length <= 1) return;
+        currentIdx = (currentIdx + dir + currentGroup.length) % currentGroup.length;
+        loadImage(currentGroup[currentIdx]);
+      };
+      dlg.addEventListener('click', function(e) { if (e.target === dlg) dlg.close(); });
+      dlg.addEventListener('close', function() { img.src = ''; });
+      document.addEventListener('keydown', function(e) {
+        if (!dlg.open) return;
+        if (e.key === 'ArrowLeft') lbNav(-1);
+        else if (e.key === 'ArrowRight') lbNav(1);
+      });
     })();
   </script>
 
@@ -504,31 +551,32 @@
   <footer class="bg-[#E9ECEF] text-sub border-t border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 md:py-12">
       <!-- 상단: 로고 + 정책 링크 -->
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-8 border-b border-hair/70">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-hair/70">
         <a href="index.html" class="flex items-center">
           <img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
         </a>
         <div class="flex items-center gap-5 text-[14px]">
-          <a href="privacy.html" class="text-ink hover:text-accent transition-colors font-semibold">개인정보처리방침</a>
+          <a href="privacy.html" class="text-sub hover:text-ink transition-colors font-semibold">개인정보처리방침</a>
           <span class="text-sub/40">|</span>
           <a href="terms.html" class="text-sub hover:text-ink transition-colors">이용약관</a>
         </div>
       </div>
 
-      <!-- 하단: 회사 정보 -->
-      <div>
-        <p class="text-ink text-[16px] font-bold mb-4">주식회사 온토</p>
-        <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-2 text-[13.5px] text-sub leading-relaxed">
-          <div class="flex gap-2"><dt class="text-sub/60 shrink-0 w-[72px]">대표이사</dt><dd>김태건</dd></div>
-          <div class="flex gap-2"><dt class="text-sub/60 shrink-0 w-[72px]">사업자번호</dt><dd>230-88-03436</dd></div>
-          <div class="flex gap-2"><dt class="text-sub/60 shrink-0 w-[72px]">이메일</dt><dd><a href="mailto:ktg@ontoh.co.kr" class="hover:text-ink transition-colors">ktg@ontoh.co.kr</a></dd></div>
-          <div class="flex gap-2"><dt class="text-sub/60 shrink-0 w-[72px]">웹사이트</dt><dd>www.ontoh.co.kr</dd></div>
-          <div class="flex gap-2 sm:col-span-2"><dt class="text-sub/60 shrink-0 w-[72px]">소재지</dt><dd>(03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</dd></div>
-        </dl>
+      <!-- 회사 정보 · 가로 한 줄 (큐플레이스·시재건설 스타일 · 회색조 · | 구분자) -->
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13.5px] text-sub leading-relaxed">
+        <span class="text-ink font-bold">주식회사 온토</span>
+        <span class="text-sub/40" aria-hidden="true">|</span>
+        <span><span class="font-semibold">대표이사</span> 김태건</span>
+        <span class="text-sub/40" aria-hidden="true">|</span>
+        <span><span class="font-semibold">사업자등록번호</span> 230-88-03436</span>
+        <span class="text-sub/40" aria-hidden="true">|</span>
+        <span><span class="font-semibold">이메일</span> <a href="mailto:ktg@ontoh.co.kr" class="hover:text-ink transition-colors">ktg@ontoh.co.kr</a></span>
+        <span class="text-sub/40" aria-hidden="true">|</span>
+        <span><span class="font-semibold">주소</span> (03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</span>
       </div>
 
       <!-- 카피라이트 -->
-      <p class="mt-8 pt-5 border-t border-hair/60 text-sub/70 text-[13px]">&copy; 2026 주식회사 온토. All rights reserved.</p>
+      <p class="mt-6 pt-4 border-t border-hair/60 text-sub/70 text-[13px]">&copy; 2026 주식회사 온토. All rights reserved.</p>
     </div>
   </footer>
 

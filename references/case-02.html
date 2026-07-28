@@ -67,7 +67,7 @@
     .bc-panel { position: absolute; top: 100%; left: 0; min-width: 100%; background: #fff; color: #212121; border: 1px solid #E5E7EB; border-top: 0; box-shadow: 0 24px 44px -20px rgba(10,36,64,.35); opacity: 0; visibility: hidden; transform: translateY(4px); transition: all .32s cubic-bezier(0.16,1,0.3,1); z-index: 30; padding: 0; }
     .bc-item:hover .bc-panel, .bc-item:focus-within .bc-panel { opacity: 1; visibility: visible; transform: none; }
     .bc-panel::before { content: ""; position: absolute; left: 0; right: 0; top: -4px; height: 4px; }
-    .bc-panel a { display: block; padding: 6px 16px; font-size: 15px; color: #555; transition: color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
+    .bc-panel a { display: block; padding: 10px 16px; font-size: 15px; color: #555; transition: color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
     .bc-panel a:hover { color: #fff; background: #0169a9; }
     .bc-panel a.is-active { color: #0A2440; font-weight: 700; background: #F5F6F8; }
     .section-tag { display:inline-block; font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:#0169a9; margin-bottom:1rem; }
@@ -364,43 +364,35 @@
   </section>
 
   <!-- ==================== 강화 푸터 ==================== -->
-  <footer class="bg-ink text-white/70">
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16">
-      <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 md:gap-8">
-        <div>
-          <p class="text-white text-[18px] font-bold mb-4">주식회사 온토</p>
-          <dl class="space-y-1.5 text-[13.5px] text-white/50 leading-relaxed">
-            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">대표이사</dt><dd>김태건</dd></div>
-            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">사업자번호</dt><dd>230-88-03436</dd></div>
-            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">소재지</dt><dd>(03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</dd></div>
-            <div class="flex gap-2"><dt class="text-white/35 shrink-0 w-[68px]">이메일</dt><dd><a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></dd></div>
-          </dl>
-        </div>
-        <div>
-          <h4 class="text-white/80 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">메뉴</h4>
-          <div class="space-y-2.5 text-[15.5px]">
-            <a href="../about.html" class="block text-white/55 hover:text-white transition-colors">회사소개</a>
-            <a href="../vision.html" class="block text-white/55 hover:text-white transition-colors">제품소개</a>
-            <a href="../patents.html" class="block text-white/55 hover:text-white transition-colors">기술·연구</a>
-            <a href="../contact.html" class="block text-white/55 hover:text-white transition-colors">문의</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="text-white/80 text-[13px] font-bold tracking-[0.14em] uppercase mb-4">문의</h4>
-          <div class="space-y-2 text-[15.5px] text-white/55 leading-relaxed">
-            <p>이메일 <a href="mailto:ktg@ontoh.co.kr" class="hover:text-white transition-colors">ktg@ontoh.co.kr</a></p>
-            <p>www.ontoh.co.kr</p>
-            <a href="../contact.html" class="mt-3 inline-flex items-center gap-1.5 text-white font-semibold hover:gap-2.5 transition-all">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
-          </div>
+  <footer class="bg-[#E9ECEF] text-sub border-t border-hair">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 md:py-12">
+      <!-- 상단: 로고 + 정책 링크 -->
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-hair/70">
+        <a href="../index.html" class="flex items-center">
+          <img src="../assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
+        </a>
+        <div class="flex items-center gap-5 text-[14px]">
+          <a href="../privacy.html" class="text-sub hover:text-ink transition-colors font-semibold">개인정보처리방침</a>
+          <span class="text-sub/40">|</span>
+          <a href="../terms.html" class="text-sub hover:text-ink transition-colors">이용약관</a>
         </div>
       </div>
-      <div class="border-t border-white/10 mt-12 pt-7 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-white/35 text-[13px]">&copy; 2026 주식회사 온토</p>
-        <div class="flex items-center gap-5 text-[13px]">
-          <a href="../privacy.html" class="text-white/55 hover:text-white transition-colors font-medium">개인정보처리방침</a>
-          <a href="../terms.html" class="text-white/40 hover:text-white transition-colors">이용약관</a>
-        </div>
+
+      <!-- 회사 정보 · 가로 한 줄 (큐플레이스·시재건설 스타일 · 회색조 · | 구분자) -->
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13.5px] text-sub leading-relaxed">
+        <span class="text-ink font-bold">주식회사 온토</span>
+        <span class="text-sub/40" aria-hidden="true">|</span>
+        <span><span class="font-semibold">대표이사</span> 김태건</span>
+        <span class="text-sub/40" aria-hidden="true">|</span>
+        <span><span class="font-semibold">사업자등록번호</span> 230-88-03436</span>
+        <span class="text-sub/40" aria-hidden="true">|</span>
+        <span><span class="font-semibold">이메일</span> <a href="mailto:ktg@ontoh.co.kr" class="hover:text-ink transition-colors">ktg@ontoh.co.kr</a></span>
+        <span class="text-sub/40" aria-hidden="true">|</span>
+        <span><span class="font-semibold">주소</span> (03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</span>
       </div>
+
+      <!-- 카피라이트 -->
+      <p class="mt-6 pt-4 border-t border-hair/60 text-sub/70 text-[13px]">&copy; 2026 주식회사 온토. All rights reserved.</p>
     </div>
   </footer>
 
