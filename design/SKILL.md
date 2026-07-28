@@ -6,7 +6,13 @@ description: Build new pages or components in the ONTOH website's brand style �
 # ONTOH Design Skill
 
 새 페이지를 만들거나 기존 페이지를 수정할 때 **이 파일 하나만** 참조해서 스타일을 준수한다.
-더 자세한 이유·근거는 `design/DESIGN.md`를 별도로 열어 확인.
+
+**깊이 있는 참조 문서** (필요 시 열기):
+- `design/tokens.md` — Color · Typography (`text-h1` 등) · Shadow · Radius · Spacing 토큰 카탈로그
+- `design/components.md` — 12개 컴포넌트 (Button · Card · Tag · Kicker · Breadcrumb · Lightbox 등) 사용 가이드 · Do/Don't
+- `design/glossary.md` — 브랜드 · 제품 · 시나리오 · CTA · 톤 용어 사전 (같은 개념을 여러 이름으로 부르지 말 것)
+- `design/CHECKLIST.md` — 10개 섹션 정합성 감사 로그
+- `design/DESIGN.md` — 상세 원칙 · 이론 (레퍼런스)
 
 ---
 
@@ -25,19 +31,28 @@ description: Build new pages or components in the ONTOH website's brand style �
 - **Iconify Solar** 아이콘만. 이모지 · 다른 아이콘셋 금지.
 - 단일 HTML 파일. 스타일은 `<style>` 블록 인라인 or 공용 `css/common.css`.
 
-### 1.2 컬러 (딱 이 팔레트만)
+### 1.2 컬러 (딱 이 팔레트만 · 상세는 `tokens.md`)
 
+**Primitive**
 ```
+navy    #1b2e6a  — 로고 SVG 전용 (웹 UI 금지)
 ink     #0A2440  — 헤드라인 · 헤더 · 다크 CTA 배경
 body    #212121  — 본문
 sub     #555555  — 보조 텍스트
-accent  #0169a9  — 링크 · CTA · 수치 · 킥커
+accent  #0169a9  — 링크 · CTA · 수치 · 킥커 (+ 300/400 lighter)
 band    #F5F6F8  — 섹션 구분 오프화이트
 hair    #E5E7EB  — 테두리
-ok      #137a52  — Health 축 · 성공 · 보건 강조
 ```
 
-**금지**: 로고 네이비 `#1b2e6a` 웹 UI 사용 (로고 SVG 전용), 웜톤, 다크 배경 본문, 보라·네온 그라디언트.
+**State (신규 · 섹션 3)**
+```
+error    #dc2626  — 오류 · 실패
+warning  #ea580c  — 주의
+success  #137a52  — 성공 · Health OK
+info     #0169a9  — 정보 (accent와 동일 값)
+```
+
+**금지**: 웜톤, 다크 배경 본문, 보라·네온 그라디언트, 임의 hex 값 (반드시 위 palette만).
 
 ### 1.3 형태
 - **rounded-none** (직각). `rounded-2xl` 이상 금지.
@@ -48,7 +63,32 @@ ok      #137a52  — Health 축 · 성공 · 보건 강조
 ```html
 <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
 ```
-- 섹션 세로 패딩: 일반 `py-16 md:py-20`, Hero `py-24 md:py-32`.
+- 섹션 세로 패딩: 일반 `py-16 md:py-24`, 인트로 히어로 `py-16 md:py-24`.
+
+### 1.4b 타이포그래피 · Shadow 토큰 (신규 · 섹션 4)
+
+**신규 fontSize scale** (기존 arbitrary `text-[42px]` 지양 · 신규 코드는 이 semantic scale 사용)
+```
+text-caption  12px    — 라벨 · 뱃지
+text-body-sm  13px    — 폼 라벨 · 브레드크럼
+text-body     15px    — 본문 base
+text-body-md  17px    — 서브 헤딩 body
+text-body-lg  19px    — 인트로 body
+text-h3       22px    — h3 · 카드 타이틀
+text-h2       28px    — h2 서브섹션
+text-h1       38px    — h1 페이지 타이틀
+text-hero     48px    — 인트로 히어로
+```
+
+**신규 boxShadow scale**
+```
+shadow-card       — 카드 hover
+shadow-panel      — 드롭다운 패널
+shadow-megabar    — GNB 메가메뉴
+shadow-lightbox   — Lightbox 모달
+```
+
+**기존 arbitrary는 유지** (시각 조정용) · 새 코드는 semantic scale.
 
 ### 1.5 모션
 ```css
@@ -62,6 +102,28 @@ transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 ### 1.7 언어
 AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임 체인저", "혁신을 통해".
 지어낸 수치 금지 — 없으면 "실증 진행 중 · 완료 시 공개" 표기.
+
+### 1.8 컴포넌트 시스템 (신규 · 섹션 2)
+
+**모든 액션은 `.btn` 시스템 사용** (매번 긴 Tailwind 조합 금지):
+```html
+<a class="btn btn-primary btn-md">무료 현장 진단 →</a>
+<a class="btn btn-outline-light btn-md">이메일 문의</a>
+```
+- Type: `btn-primary` · `btn-inverse` · `btn-outline-light` · `btn-outline-dark`
+- Size: `btn-sm` · `btn-md` · `btn-lg`
+- State: `.btn:disabled` · `.btn.is-loading`
+
+**Card / Tag / Kicker 등 세부는 `components.md` 참조**
+
+### 1.9 CTA 카피 통일 (섹션 4 결정)
+- **Primary** (히어로 · CTA 카드): "무료 현장 진단"
+- **Secondary** (footer · GNB 드롭다운): "도입 문의"
+- 지양: 도입 상담 신청 · 데모 신청 · 상담 요청 (`glossary.md` 참조)
+
+### 1.10 접근성 (신규 · 섹션 3)
+- 모든 인터랙티브 요소에 `:focus-visible` 자동 적용 (`.btn`, `.dropdown-link`, `.bc-cell` 등)
+- Focus outline: 2px solid #0169a9 · WCAG 2.1 준수
 
 ---
 
@@ -286,4 +348,5 @@ AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임
 
 ---
 
-_ONTOH Design Skill · v3.0 · 2026-07-22_
+_ONTOH Design Skill · v3.1 · 2026-07-28_  
+_섹션 1~8 정합성 감사 반영 · 신규 문서 카탈로그 추가 (tokens.md · components.md · glossary.md · CHECKLIST.md)_
