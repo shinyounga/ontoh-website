@@ -56,6 +56,20 @@
     .card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
     .news-row { transition: background .35s cubic-bezier(0.16,1,0.3,1); }
     .news-row:hover { background:#F5F6F8; }
+    /* ── Button System (통일) ── */
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font-weight:700; text-decoration:none; transition:background-color .28s cubic-bezier(0.16,1,0.3,1), color .28s ease, transform .16s cubic-bezier(0.16,1,0.3,1); cursor:pointer; white-space:nowrap; }
+    .btn-primary { background:#0A2440; color:#fff; }
+    .btn-primary:hover { background:#0e3161; }
+    .btn-inverse { background:#fff; color:#0A2440; }
+    .btn-inverse:hover { transform:scale(1.02); }
+    .btn-inverse:active { transform:scale(0.98); }
+    .btn-outline-light { border:1px solid rgba(255,255,255,0.3); color:#fff; background:transparent; }
+    .btn-outline-light:hover { background:rgba(255,255,255,0.1); }
+    .btn-outline-dark { border:1px solid #E5E7EB; color:#0A2440; background:transparent; }
+    .btn-outline-dark:hover { background:#F5F6F8; }
+    .btn-sm { padding:10px 20px; font-size:16.5px; }
+    .btn-md { padding:14px 28px; font-size:18px; }
+    .btn-lg { padding:16px 32px; font-size:18px; }
     .tag { font-size:12px; font-weight:800; letter-spacing:.02em; padding:3px 9px; }
     .stat-num { font-variant-numeric: tabular-nums; letter-spacing:-.02em; }
     .nav-item { position:relative; }
@@ -161,7 +175,7 @@
           </div>
         </nav>
         <div class="flex items-center gap-3">
-          <a href="contact.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[16.5px] font-bold hover:bg-[#0e3161] transition-colors">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <a href="contact.html" class="hidden sm:inline-flex btn btn-primary btn-sm">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           <button id="menuToggle" class="lg:hidden w-10 h-10 bg-ink/[0.05] flex items-center justify-center hover:bg-ink/10 transition-colors" aria-label="메뉴 열기">
             <iconify-icon icon="solar:hamburger-menu-linear" class="text-ink text-lg"></iconify-icon>
           </button>
@@ -184,7 +198,7 @@
     </div>
     
     <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
-    <a href="contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[18px] font-bold stagger-5" onclick="closeMobileMenu()">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+    <a href="contact.html" class="menu-link btn btn-primary btn-lg stagger-5" onclick="closeMobileMenu()">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
 
   <!-- ==================== 얇은 브레드크럼 스트립 (한솔홈데코 스타일 · 균일 박스 그리드) ==================== -->
@@ -261,7 +275,7 @@
             기존 CCTV에 AI를 더해 위험을 감지하고, PTZ 카메라가 스스로 움직여 사각지대를 커버합니다.
           </p>
           <div class="reveal stagger-3 mt-9 flex flex-col sm:flex-row sm:items-center gap-3.5">
-            <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-ink text-white px-7 py-3.5 text-[18px] font-bold hover:bg-[#0e3161] transition-colors">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+            <a href="contact.html" class="btn btn-primary btn-md">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           </div>
         </div>
         <div class="reveal stagger-2">
@@ -753,8 +767,8 @@
           <h2 class="reveal stagger-1 text-[34px] md:text-[46px] font-bold tracking-tight text-white" style="line-height:1.3;">기존 CCTV에 AI를 얹는 <span class="text-accent-300">가장 빠른 방법</span>.</h2>
           <p class="reveal stagger-2 mt-6 text-[19px] md:text-[23px] text-white/75 leading-[1.7] max-w-xl mx-auto">운영 중인 CCTV 현황과 현장 규모를 알려주시면, 최적의 자율 관제 도입 방안을 설계해 드립니다.</p>
           <div class="reveal stagger-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <a href="contact.html" class="inline-flex items-center justify-center gap-2 bg-white text-ink px-7 py-3.5 text-[18px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
-            <a href="mailto:ktg@ontoh.co.kr" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-7 py-3.5 text-[18px] font-bold hover:bg-white/10 spring">이메일 문의</a>
+            <a href="contact.html" class="btn btn-inverse btn-md">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+            <a href="mailto:ktg@ontoh.co.kr" class="btn btn-outline-light btn-md">이메일 문의</a>
           </div>
         </div>
       </div>

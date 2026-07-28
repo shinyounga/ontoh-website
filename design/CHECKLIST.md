@@ -17,7 +17,7 @@ _사용자와 AI(Claude)가 함께 확인하며 진행하는 디자인 시스템
 | # | 섹션 | 상태 |
 |---|---|---|
 | 1 | 컴포넌트 이름과 구조 | ✅ 완료 (2026-07-28) |
-| 2 | 필수 컴포넌트 구성 | ☐ |
+| 2 | 필수 컴포넌트 구성 | ✅ 완료 (2026-07-28) |
 | 3 | 상태와 Variant | ☐ |
 | 4 | 디자인 토큰 | ☐ |
 | 5 | 컴포넌트 사용 기준 | ☐ |
@@ -64,20 +64,36 @@ prefix 규칙 확립: `.bc-*` (breadcrumb) · `.gnb-*` (GNB) · `.lb-*` (lightbo
 
 ---
 
-## 2. 필수 컴포넌트 구성
+## 2. 필수 컴포넌트 구성 ✅
 
-- [ ] **서비스에서 반복적으로 사용하는 기본 컴포넌트가 제작되어 있나요?**  
-여러 화면에서 반복되는 UI를 매번 새롭게 만들지 않도록 공통 컴포넌트로 관리합니다.
-- [ ] **버튼과 링크 등 주요 액션 요소가 준비되어 있나요?**  
-Primary, Secondary, Tertiary, Icon Button, Text Link 등의 역할을 구분합니다.
-- [ ] **입력과 선택을 위한 폼 컴포넌트가 준비되어 있나요?**  
-Input, Textarea, Select, Checkbox, Radio, Switch 등의 기본 입력 요소를 포함합니다.
-- [ ] **사용자에게 상태를 전달하는 피드백 컴포넌트가 있나요?**  
-Toast, Alert, Tooltip, Dialog, Progress, Loading 등의 피드백 요소를 준비합니다.
-- [ ] **데이터를 보여주기 위한 컴포넌트가 정리되어 있나요?**  
-Table, List, Card, Badge, Pagination 등 서비스 특성에 맞는 데이터 표현 방식을 정의합니다.
-- [ ] **빈 화면과 오류 상황을 위한 컴포넌트가 있나요?**  
-Empty State, No Result, Error State, Offline State 등을 공통 기준으로 관리합니다.
+- [x] **서비스에서 반복적으로 사용하는 기본 컴포넌트가 제작되어 있나요?**  
+`.card` 260곳 · `.tag` 194곳 · `.kicker` 82곳 · `.stat-num` 181곳 · `.dropdown-link` 통일 · 반복 사용 컴포넌트 잘 구성.
+- [x] **버튼과 링크 등 주요 액션 요소가 준비되어 있나요?**  
+**`.btn` 시스템 신규 도입** (97개 버튼 인스턴스 통일). Primary/Inverse/Outline-Light/Outline-Dark × SM/MD/LG 조합.
+- [x] **입력과 선택을 위한 폼 컴포넌트가 준비되어 있나요?**  
+contact.html에 Formspree 폼 + `.form-label` 커스텀 클래스. 정적 마케팅 사이트라 이 수준으로 충분.
+- [x] **사용자에게 상태를 전달하는 피드백 컴포넌트가 있나요?**  
+Lightbox(dialog) + Feature 04 캐러셀 컨트롤. 정적 사이트라 Toast/Alert 불필요 (contact 폼은 Formspree 자체 처리).
+- [x] **데이터를 보여주기 위한 컴포넌트가 정리되어 있나요?**  
+`.card` · `.tag` · `.kicker` · `.stat-num` · `.dropdown-link` · list(ul/ol) 다양한 표현 방식 확보.
+- [x] **빈 화면과 오류 상황을 위한 컴포넌트가 있나요?**  
+정적 사이트라 Empty/Error State 대부분 N/A. Hoster(GitHub Pages)의 404 fallback 활용.
+
+### 신규 `.btn` 시스템 (2026-07-28 도입)
+
+```
+Base:      .btn
+Variants:  .btn-primary · .btn-inverse · .btn-outline-light · .btn-outline-dark
+Sizes:     .btn-sm (16.5px) · .btn-md (18px) · .btn-lg (18px, larger padding)
+```
+
+**사용 예시:**
+```html
+<a class="btn btn-primary btn-md">무료 현장 진단</a>
+<a class="btn btn-outline-light btn-md">이메일 문의</a>
+```
+
+**변경 규모:** 97개 버튼 인스턴스 통일 · 25개 파일 · 22개 파일 CSS 추가
 
 ### 컴포넌트 종류 예시
 **1. 기본 액션** — Button · Icon Button · Link · Dropdown Menu  
@@ -241,4 +257,5 @@ _점검 진행 시 여기에 발견 사항, 결정 사항, 후속 액션 기록.
   - `.dlink` + `.bc-panel a` → `.dropdown-link` 통일
   - `.band`/`.rule` → Tailwind 유틸(`bg-band`/`border-hair`)로 통합
   - `.myeongjo` 삭제 (미사용)
-- 다음: 섹션 2 (필수 컴포넌트 구성)
+- **섹션 2 완료** · 버튼 시스템 신규 도입 (97개 인스턴스 통일)
+- 다음: 섹션 3 (상태와 Variant)

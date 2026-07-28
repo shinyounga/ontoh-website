@@ -100,6 +100,20 @@
     .kicker::before { content:""; width:26px; height:2px; background:#0169a9; display:inline-block; }
     .card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
     .card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
+    /* ── Button System (통일) ── */
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font-weight:700; text-decoration:none; transition:background-color .28s cubic-bezier(0.16,1,0.3,1), color .28s ease, transform .16s cubic-bezier(0.16,1,0.3,1); cursor:pointer; white-space:nowrap; }
+    .btn-primary { background:#0A2440; color:#fff; }
+    .btn-primary:hover { background:#0e3161; }
+    .btn-inverse { background:#fff; color:#0A2440; }
+    .btn-inverse:hover { transform:scale(1.02); }
+    .btn-inverse:active { transform:scale(0.98); }
+    .btn-outline-light { border:1px solid rgba(255,255,255,0.3); color:#fff; background:transparent; }
+    .btn-outline-light:hover { background:rgba(255,255,255,0.1); }
+    .btn-outline-dark { border:1px solid #E5E7EB; color:#0A2440; background:transparent; }
+    .btn-outline-dark:hover { background:#F5F6F8; }
+    .btn-sm { padding:10px 20px; font-size:16.5px; }
+    .btn-md { padding:14px 28px; font-size:18px; }
+    .btn-lg { padding:16px 32px; font-size:18px; }
     .tag { font-size:12px; font-weight:800; letter-spacing:.02em; padding:3px 9px; }
     .stat-num { font-variant-numeric: tabular-nums; letter-spacing:-.02em; }
     .nav-item { position:relative; }
@@ -146,7 +160,7 @@
           </div>
         </nav>
         <div class="flex items-center gap-3">
-          <a href="../contact.html" class="hidden sm:inline-flex items-center gap-2 bg-ink text-white px-5 py-2.5 text-[16.5px] font-bold hover:bg-[#0e3161] transition-colors">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <a href="../contact.html" class="hidden sm:inline-flex btn btn-primary btn-sm">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
           <button id="menuToggle" class="lg:hidden w-10 h-10 bg-ink/[0.05] flex items-center justify-center hover:bg-ink/10 transition-colors" aria-label="메뉴 열기">
             <iconify-icon icon="solar:hamburger-menu-linear" class="text-ink text-lg"></iconify-icon>
           </button>
@@ -170,7 +184,7 @@
     </div>
     <a href="../patents.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
     <a href="../contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
-    <a href="../contact.html" class="menu-link inline-flex items-center gap-2 bg-ink text-white px-8 py-4 text-[18px] font-bold stagger-5" onclick="closeMobileMenu()">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+    <a href="../contact.html" class="menu-link btn btn-primary btn-lg stagger-5" onclick="closeMobileMenu()">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
 
   <!-- ==================== ARTICLE HEADER ==================== -->
