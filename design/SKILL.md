@@ -11,6 +11,7 @@ description: Build new pages or components in the ONTOH website's brand style �
 - `design/tokens.md` — Color · Typography (`text-h1` 등) · Shadow · Radius · Spacing 토큰 카탈로그
 - `design/components.md` — 12개 컴포넌트 (Button · Card · Tag · Kicker · Breadcrumb · Lightbox 등) 사용 가이드 · Do/Don't
 - `design/glossary.md` — 브랜드 · 제품 · 시나리오 · CTA · 톤 용어 사전 (같은 개념을 여러 이름으로 부르지 말 것)
+- `design/a11y.md` — WCAG 2.1 AA 접근성 기준 · 색상대비 실측 · Skip-to-content · 시맨틱 랜드마크
 - `design/CHECKLIST.md` — 10개 섹션 정합성 감사 로그
 - `design/DESIGN.md` — 상세 원칙 · 이론 (레퍼런스)
 
@@ -348,5 +349,31 @@ AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임
 
 ---
 
-_ONTOH Design Skill · v3.1 · 2026-07-28_  
-_섹션 1~8 정합성 감사 반영 · 신규 문서 카탈로그 추가 (tokens.md · components.md · glossary.md · CHECKLIST.md)_
+## 8. 접근성 (필수 · 신규 페이지 만들 때 챙길 것)
+
+새 페이지 만들 때 **반드시** 다음 3가지 포함:
+
+### 8.1 Skip-to-content 링크
+`<body>` 바로 다음:
+```html
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+```
+
+### 8.2 `<main id="main" tabindex="-1">` 랜드마크
+`</header>` 이후 · `<footer>` 이전 콘텐츠를 `<main id="main" tabindex="-1">...</main>`로 감싼다.
+
+### 8.3 CSS · Skip 링크 스타일 + prefers-reduced-motion
+```css
+.skip-to-content{position:absolute;top:-100px;left:0;background:#0A2440;color:#fff;padding:12px 20px;font-weight:700;z-index:100;transition:top 200ms cubic-bezier(0.16,1,0.3,1);text-decoration:none;}
+.skip-to-content:focus{top:0;outline:3px solid #0169a9;outline-offset:0}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+}
+```
+
+기타 규칙 (색상 대비 · Focus · 터치 영역 등)은 **[a11y.md](a11y.md)** 참조.
+
+---
+
+_ONTOH Design Skill · v3.2 · 2026-07-28_  
+_섹션 1~9 정합성 감사 반영 · 접근성 기준 신규 (a11y.md · WCAG 2.1 AA)_
