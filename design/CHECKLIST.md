@@ -181,20 +181,23 @@ Primitive(Tailwind config) · Semantic(이름 자체가 semantic · ink/accent/e
 
 ---
 
-## 5. 컴포넌트 사용 기준
+## 5. 컴포넌트 사용 기준 ✅
 
-- [ ] **각 컴포넌트를 언제 사용해야 하는지 정리되어 있나요?**  
-컴포넌트의 형태뿐 아니라 적절한 사용 상황까지 안내해야 합니다.
-- [ ] **비슷한 컴포넌트의 차이가 설명되어 있나요?**  
-Toast와 Alert, Dialog와 Bottom Sheet처럼 혼동하기 쉬운 요소의 사용 기준을 구분합니다.
-- [ ] **사용하면 안 되는 사례가 정리되어 있나요?**  
-Do와 Don't 예시를 통해 잘못된 사용을 방지합니다.
-- [ ] **텍스트와 콘텐츠 작성 기준이 있나요?**  
-버튼 글자 수, 레이블 작성 방식, 문장형·명사형 기준 등을 함께 문서화합니다.
-- [ ] **컴포넌트 조합 규칙이 정리되어 있나요?**  
-어떤 컴포넌트를 함께 사용할 수 있는지, 권장 레이아웃은 무엇인지 안내합니다.
-- [ ] **서비스별 예외 규칙이 기록되어 있나요?**  
-일반적인 시스템 규칙과 특정 기능에서만 사용하는 예외를 구분합니다.
+- [x] **각 컴포넌트를 언제 사용해야 하는지 정리되어 있나요?**  
+[design/components.md](components.md) · 12개 주요 컴포넌트(Button/Card/Tag/Kicker/StatNumber/DropdownLink/Breadcrumb/Lightbox/Carousel/Alert/Form/Navigation) 각각 목적·사용 상황·비사용 상황 명시.
+- [x] **비슷한 컴포넌트의 차이가 설명되어 있나요?**  
+Alert vs Toast (Toast 미도입 · Alert 인라인 지속 · Toast 우상단 일시), Card vs Alert (그룹핑 vs 상태 알림), Tag vs Btn (라벨 vs 액션) 등.
+- [x] **사용하면 안 되는 사례가 정리되어 있나요?**  
+각 컴포넌트마다 Do & Don't 코드 예시 · 안티패턴 명시 (card 중첩 · btn-primary 다중 · kicker 안 kicker 등).
+- [x] **텍스트와 콘텐츠 작성 기준이 있나요?**  
+헤딩(h1 6-10자·h2 12-30자·h3 5-15자) · 버튼(6-10자 명사구) · Tag(2-8자) · AI 클리셰 금지 목록 · 정중형 필수.
+- [x] **컴포넌트 조합 규칙이 정리되어 있나요?**  
+권장 조합(kicker → H2 → 서브카피 → 콘텐츠), 지양 조합, 여백 위계(py-16/24 · mb-14/16 · p-6/7/8) 문서화.
+- [x] **서비스별 예외 규칙이 기록되어 있나요?**  
+patents.html의 `.doc-thumb` · blog의 `.prose/.define/.toc-link/#readingProgress` · contact의 `.form-*/.honeypot` 등 페이지 전용 클래스 정리.
+
+### 문서 위치
+전체 사용 가이드는 **[design/components.md](components.md)** 신규 파일 참조.
 
 ### 컴포넌트 문서에 포함할 항목
 ```
@@ -295,4 +298,5 @@ _점검 진행 시 여기에 발견 사항, 결정 사항, 후속 액션 기록.
 - **섹션 2 완료** · 버튼 시스템 신규 도입 (97개 인스턴스 통일)
 - **섹션 3 완료** · State 시스템 전면 구축 (Focus·Disabled·Loading·State Colors)
 - **섹션 4 완료** · Tailwind fontSize(9종) + boxShadow(4종) scale 신규 · design/tokens.md 카탈로그
-- 다음: 섹션 5 (컴포넌트 사용 기준)
+- **섹션 5 완료** · design/components.md 신규 (12개 컴포넌트 사용 가이드 · Do/Don't · 텍스트 규칙 · 조합 원칙 · 예외 규칙)
+- 다음: 섹션 6 (Figma 파일 구조 · N/A 코드 기반) · 섹션 7 (디자인과 코드의 연결)
