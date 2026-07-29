@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Section · ONTOH Design</title>
+  <meta name="description" content="ONTOH Section · 페이지 조립 패턴 · 컴포넌트 조합 가이드">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Patterns</p>
+    <h1 class="doc-title">Section</h1>
+    <p class="doc-lead">
+      본문 섹션의 표준 조합. Kicker → H2 → 서브카피 → 콘텐츠 (카드 그리드 · 리스트 · 이미지).
+      <strong>여백으로 위계</strong>를 만드는 것이 핵심.
+    </p>
+
+    <h2>Standard Section</h2>
+    <div class="preview-frame preview" style="padding:64px 48px; flex-direction:column; align-items:stretch; gap:0;">
+      <span class="kicker" style="margin-bottom:16px;">핵심 기능</span>
+      <h2 style="font-size:32px; font-weight:800; color:#0A2440; letter-spacing:-0.02em; line-height:1.2; margin-bottom:48px; max-width:640px;">온토비전이 현장을 지키는 방법</h2>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+        <article class="card" style="padding:24px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.16em; color:#0169a9; text-transform:uppercase; margin-bottom:12px;">01</div>
+          <h3 style="font-size:18px; font-weight:700; color:#0A2440; margin-bottom:8px;">실시간 자율 관제</h3>
+          <p style="font-size:13px; color:#555; line-height:1.55;">다채널 CCTV에서 위험 상황 자동 감지.</p>
+        </article>
+        <article class="card" style="padding:24px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.16em; color:#0169a9; text-transform:uppercase; margin-bottom:12px;">02</div>
+          <h3 style="font-size:18px; font-weight:700; color:#0A2440; margin-bottom:8px;">규정 자동 대조</h3>
+          <p style="font-size:13px; color:#555; line-height:1.55;">산업안전보건법 실시간 매칭 · 조치 안내.</p>
+        </article>
+        <article class="card" style="padding:24px;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.16em; color:#0169a9; text-transform:uppercase; margin-bottom:12px;">03</div>
+          <h3 style="font-size:18px; font-weight:700; color:#0A2440; margin-bottom:8px;">이력 자동 기록</h3>
+          <p style="font-size:13px; color:#555; line-height:1.55;">감지·조치·결과를 이력으로 자동 정리.</p>
+        </article>
+      </div>
+    </div>
+
+    <h2>Anatomy</h2>
+    <ul>
+      <li><strong>Kicker</strong> — 섹션 라벨 · 2-8자</li>
+      <li><strong>H2</strong> — 섹션 제목 · 28-38px · 12-30자</li>
+      <li><strong>Content</strong> — 카드 그리드 · 리스트 · 이미지 · 비디오 등</li>
+    </ul>
+
+    <h2>여백 규칙</h2>
+    <table class="token-table">
+      <thead><tr><th>위치</th><th>모바일</th><th>데스크톱</th></tr></thead>
+      <tbody>
+        <tr><td>섹션 상하 padding</td><td class="token-name">py-16 (64px)</td><td class="token-name">md:py-24 (96px)</td></tr>
+        <tr><td>Kicker → H2</td><td class="token-name">mb-4</td><td class="token-name">mb-4</td></tr>
+        <tr><td>H2 → Content</td><td class="token-name">mb-14</td><td class="token-name">md:mb-16</td></tr>
+        <tr><td>카드 간 gap</td><td class="token-name">gap-4</td><td class="token-name">md:gap-6</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Do</h2>
+    <pre><code>&lt;section class="py-16 md:py-24 border-t border-hair"&gt;
+  &lt;div class="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-14"&gt;
+    &lt;p class="kicker mb-4 reveal"&gt;핵심 기능&lt;/p&gt;
+    &lt;h2 class="reveal stagger-1 text-h2 md:text-h1 font-bold mb-14 md:mb-16"&gt;
+      온토비전이 현장을 지키는 방법
+    &lt;/h2&gt;
+    &lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"&gt;
+      &lt;!-- Card × 3 --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+    <h2>Don't</h2>
+    <div class="dont-block">
+      <strong>✗</strong> 인접 섹션 3열 카드 반복 · 여백 감소로 밀도 높이기 · 헤어라인 없이 섹션 구분
+    </div>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md #14 조합 원칙</a></span>
+      <span>
+        <a href="hero.html">← Hero</a> · <a href="cta.html">Next · Cta →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+
+</body>
+</html>

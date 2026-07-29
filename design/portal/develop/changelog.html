@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Changelog · ONTOH Design</title>
+  <meta name="description" content="ONTOH Changelog · 페이지 조립 패턴 · 컴포넌트 조합 가이드">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Develop</p>
+    <h1 class="doc-title">Changelog</h1>
+    <p class="doc-lead">
+      ONTOH 디자인 시스템 버전 · 주요 변경 이력. 원본은 Git commit 히스토리.
+    </p>
+
+    <h2>v3.5 · 2026-07-29</h2>
+    <ul>
+      <li><strong>Kicker 위계 강화</strong> — 폰트 15px · 세로 블록 5×20px (13px → 15px, 4×18 → 5×20)</li>
+      <li><strong>SEED 포털 신규</strong> · <code>design/portal/</code> 구축 · 3단계 완료 (Foundations 7 + Components 12 + Patterns 4 + Develop 2)</li>
+      <li><strong>정합성 감사</strong> · a11y.md state 컬러 hex 갱신 (구버전 → tokens.md 정합)</li>
+      <li><strong>vision.html · about.html 정리</strong> · 5대 감지 시나리오 → "5대 현장 위험 유형" · kicker 태그 일부 제거</li>
+    </ul>
+
+    <h2>v3.4 · 2026-07-28</h2>
+    <ul>
+      <li><strong>Kicker 세로 블록 도입</strong> · 가로선 26×2px → 세로 블록 4×18px (건축·구조 톤)</li>
+      <li><strong>디렉토리 정리</strong> · archive/ 6-폴더 구조 · 실험 페이지 이동</li>
+      <li><strong>Section 10 완료</strong> · <code>design/operations.md</code> 신규 (거버넌스)</li>
+      <li>components.md v3.5 · SKILL.md v3.4 · CHECKLIST 10섹션 완료</li>
+    </ul>
+
+    <h2>v3.3 · 2026-07-28</h2>
+    <ul>
+      <li><strong>접근성 batch 반영</strong> · 13개 페이지에 skip-to-content · <code>&lt;main id="main"&gt;</code> · prefers-reduced-motion CSS</li>
+      <li><strong>a11y.md 신규</strong> · WCAG 2.1 AA 기준 · 9섹션</li>
+    </ul>
+
+    <h2>v3.2 · 2026-07-28</h2>
+    <ul>
+      <li><strong>Section 9 완료</strong> (접근성과 품질 기준)</li>
+      <li>State 컬러 · Typography scale · Shadow scale · CTA 카피 · Focus 규정</li>
+    </ul>
+
+    <h2>v3.1 · 2026-07-28</h2>
+    <ul>
+      <li><strong>Section 8 완료</strong> · <code>design/glossary.md</code> 신규 (10 카테고리 용어 사전)</li>
+      <li>Alert · Focus · State system · 컴포넌트 이름 통일 완료 (섹션 1-7)</li>
+    </ul>
+
+    <h2>v3.0 · 2026-07-22</h2>
+    <ul>
+      <li><strong>디자인 시스템 통합</strong> · <code>design/</code> 폴더로 single source of truth 정립</li>
+      <li>DESIGN.md · SKILL.md · tokens.md · components.md · CHECKLIST.md 등 신규</li>
+      <li>이전 흩어진 문서들 <code>archive/design-legacy/</code> 로 이동</li>
+    </ul>
+
+    <h2>이전 (v2.x)</h2>
+    <p>초기 구축 시기 · 페이지별 인라인 스타일 · 일부 디자인 시스템 문서 (DESIGN_PRINCIPLES.md 등).
+    현재 <code>archive/design-legacy/</code> 에 보관.</p>
+
+    <h2>변경 추적</h2>
+    <ul>
+      <li><strong>Primary source</strong> · Git commit 히스토리 (github.com/shinyounga/ontoh-website)</li>
+      <li><strong>Secondary</strong> · <a href="../../CHECKLIST.md">CHECKLIST.md</a> 진행 로그 (섹션별 완료 시점 · 주요 결정)</li>
+      <li><strong>Tertiary</strong> · 각 <code>design/*.md</code> 하단 "업데이트" 날짜</li>
+    </ul>
+
+    <h2>버전 정책</h2>
+    <ul>
+      <li><strong>Patch (3.5 → 3.5.x)</strong> · 문서 · 예시 갱신 · 코드 변경 없음</li>
+      <li><strong>Minor (3.5 → 3.6)</strong> · 컴포넌트/토큰 신규 추가</li>
+      <li><strong>Major (3.5 → 4.0)</strong> · 브랜드/체계 대변경</li>
+    </ul>
+
+    <h2>다음 예정</h2>
+    <ul>
+      <li>포털 검색 향상 (전체 텍스트 · 페이지 콘텐츠 인덱싱)</li>
+      <li>다크 모드 실사이트 적용 검토 (현재는 포털만 다크 지원)</li>
+      <li>Toast 컴포넌트 도입 검토 (Alert 인라인만 있음)</li>
+      <li>Motion Duration 정식 토큰 승격 (현재 DESIGN.md §7 범위 안내만)</li>
+    </ul>
+
+    <div class="callout">
+      <strong>버전 결정 · 폐기 절차 · 리뷰 프로세스</strong> ·
+      <a href="../../operations.md">operations.md</a> 참조.
+    </div>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md #14 조합 원칙</a></span>
+      <span>
+        <a href="integration.html">← Integration</a> · 
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+
+</body>
+</html>

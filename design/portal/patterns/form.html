@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form · ONTOH Design</title>
+  <meta name="description" content="ONTOH Form · 페이지 조립 패턴 · 컴포넌트 조합 가이드">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Patterns</p>
+    <h1 class="doc-title">Form</h1>
+    <p class="doc-lead">
+      문의·신청 폼 페이지 구성. <strong>페이지 히어로 + 폼 + 대안 접점</strong> 조합.
+      contact.html 표준 · Formspree 백엔드 사용.
+    </p>
+
+    <h2>Contact Page Pattern</h2>
+    <div class="preview-frame preview" style="padding:0;">
+      <div style="width:100%; display:grid; grid-template-columns:2fr 1fr; gap:32px; padding:48px;">
+        <!-- 좌: 페이지 헤더 + 폼 -->
+        <div>
+          <span class="kicker" style="margin-bottom:16px;">문의</span>
+          <h2 style="font-size:26px; font-weight:800; color:#0A2440; letter-spacing:-0.02em; margin-bottom:12px;">도입 문의</h2>
+          <p style="font-size:14px; color:#555; line-height:1.65; margin-bottom:24px;">현장 정보를 알려주시면 담당자가 24시간 내로 연락드립니다.</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div>
+              <label style="display:block; font-size:12px; font-weight:700; color:#0A2440; margin-bottom:5px;">회사명 <span style="color:#dc2626;">*</span></label>
+              <input type="text" placeholder="예) ○○주식회사" style="width:100%; padding:10px 12px; font-size:13px; background:#fff; border:1px solid #E5E7EB; font-family:inherit;">
+            </div>
+            <div>
+              <label style="display:block; font-size:12px; font-weight:700; color:#0A2440; margin-bottom:5px;">담당자 <span style="color:#dc2626;">*</span></label>
+              <input type="text" placeholder="홍길동" style="width:100%; padding:10px 12px; font-size:13px; background:#fff; border:1px solid #E5E7EB; font-family:inherit;">
+            </div>
+            <button type="button" style="background:#0A2440; color:#fff; padding:12px 24px; font-size:13px; font-weight:700; border:none; align-self:flex-start; margin-top:4px;">문의 전송 →</button>
+          </div>
+        </div>
+        <!-- 우: 대안 접점 -->
+        <div>
+          <h3 style="font-size:15px; font-weight:800; color:#0A2440; margin-bottom:16px; letter-spacing:0.02em;">기타 연락 방법</h3>
+          <div style="display:flex; flex-direction:column; gap:16px; font-size:13px; color:#555;">
+            <div>
+              <div style="font-weight:700; color:#0A2440; margin-bottom:2px;">이메일</div>
+              <a href="mailto:ktg@ontoh.co.kr" style="color:#0169a9;">ktg@ontoh.co.kr</a>
+            </div>
+            <div>
+              <div style="font-weight:700; color:#0A2440; margin-bottom:2px;">주소</div>
+              서울 서대문구 연세로2나길 61<br>캠퍼스타운에스큐브 304호
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Anatomy</h2>
+    <ul>
+      <li><strong>Page Header</strong> — Kicker + H2 + Lead (contact 페이지 상단)</li>
+      <li><strong>Form Grid</strong> — 2 columns (모바일 stack) · 좌: 폼 · 우: 대안 접점</li>
+      <li><strong>Form Fields</strong> — 회사명 · 담당자 · 이메일 · 문의 내용 · 개인정보 동의</li>
+      <li><strong>Submit</strong> — btn-primary "문의 전송" · 로딩 스피너 지원</li>
+      <li><strong>Sidebar</strong> — 이메일·주소·전화 (대안 접점)</li>
+    </ul>
+
+    <h2>Field 규칙</h2>
+    <table class="token-table">
+      <thead><tr><th>필드</th><th>Type</th><th>Required</th></tr></thead>
+      <tbody>
+        <tr><td>회사명·기관명</td><td class="token-name">text</td><td>✓</td></tr>
+        <tr><td>담당자 이름</td><td class="token-name">text</td><td>✓</td></tr>
+        <tr><td>이메일</td><td class="token-name">email</td><td>✓</td></tr>
+        <tr><td>연락처</td><td class="token-name">tel</td><td>선택</td></tr>
+        <tr><td>문의 내용</td><td class="token-name">textarea</td><td>선택</td></tr>
+        <tr><td>개인정보 동의</td><td class="token-name">checkbox</td><td>✓</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Do</h2>
+    <pre><code>&lt;form action="https://formspree.io/f/YOUR_ID" method="POST"&gt;
+  &lt;label class="form-label" for="company"&gt;
+    회사명·기관명 &lt;span class="required"&gt;*&lt;/span&gt;
+  &lt;/label&gt;
+  &lt;input class="form-input" id="company" name="company" required
+         placeholder="예) ○○주식회사"&gt;
+  &lt;!-- ... other fields ... --&gt;
+  &lt;input type="text" name="_gotcha" class="honeypot" tabindex="-1"&gt;
+  &lt;button type="submit" class="btn btn-primary btn-md"&gt;문의 전송&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+    <h2>Don't</h2>
+    <div class="dont-block">
+      <strong>✗</strong> Label 없는 Input · 자동 focus (사용자 흐름 방해) · CAPTCHA (a11y 저해)
+      · 필수 필드 6개 초과 (이탈율 급증)
+    </div>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md #14 조합 원칙</a></span>
+      <span>
+        <a href="cta.html">← Cta</a> · <a href="../develop/integration.html">Next · ../Develop/Integration →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install · Use · ONTOH Design</title>
+  <meta name="description" content="ONTOH 디자인 시스템 설치 · 사용 · 새 페이지 만드는 방법">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Get Started</p>
+    <h1 class="doc-title">Install · Use</h1>
+    <p class="doc-lead">
+      ONTOH 디자인 시스템을 새 페이지에 적용하는 방법. 5분 셋업 · CDN 기반 · 빌드 도구 없음.
+    </p>
+
+    <h2>Quick Start · 5분</h2>
+    <ol>
+      <li>기존 페이지 (예: <code>about.html</code>) 복제 · 파일명 변경</li>
+      <li><code>&lt;title&gt;</code> · <code>&lt;meta name="description"&gt;</code> 변경</li>
+      <li>본문 콘텐츠 교체 (Kicker + H2 + Section 패턴)</li>
+      <li>Breadcrumb 셀 대메뉴·중메뉴 명 변경</li>
+      <li>헤더·푸터 그대로 유지 (전 페이지 공용)</li>
+    </ol>
+
+    <h2>필수 head 요소</h2>
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;페이지 이름 · ONTOH&lt;/title&gt;
+  &lt;meta name="description" content="한 줄 설명"&gt;
+
+  &lt;!-- Pretendard 폰트 --&gt;
+  &lt;link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css"&gt;
+
+  &lt;!-- Tailwind CDN --&gt;
+  &lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;
+
+  &lt;!-- Iconify Solar --&gt;
+  &lt;script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"&gt;&lt;/script&gt;
+
+  &lt;script&gt;
+    tailwind.config = { /* config extend · Integration 페이지 참조 */ };
+  &lt;/script&gt;
+
+  &lt;style&gt;
+    /* 페이지별 커스텀 CSS · .btn · .card · .kicker 등 */
+    /* about.html 참조하여 복사 */
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+
+    <h2>필수 body 구조</h2>
+    <pre><code>&lt;body class="bg-white font-sans antialiased"&gt;
+
+  &lt;!-- Skip-to-content (WCAG 2.4.1) --&gt;
+  &lt;a href="#main" class="skip-to-content"&gt;본문 바로가기&lt;/a&gt;
+
+  &lt;!-- Header · GNB (about.html 그대로 복사) --&gt;
+  &lt;header class="sticky top-0 z-40 bg-white border-b border-hair"&gt;
+    &lt;!-- 로고 · 4 대메뉴 · CTA --&gt;
+  &lt;/header&gt;
+
+  &lt;!-- Breadcrumb 스트립 --&gt;
+  &lt;section class="bg-ink border-b border-white/10"&gt;
+    &lt;div class="bc-row"&gt;
+      &lt;div class="bc-cell bc-home"&gt;
+        &lt;iconify-icon icon="mdi:home"&gt;&lt;/iconify-icon&gt;
+      &lt;/div&gt;
+      &lt;div class="bc-cell bc-menu"&gt;대메뉴&lt;/div&gt;
+      &lt;div class="bc-cell bc-menu is-current"&gt;현재 페이지&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;!-- Main content · id="main" 필수 --&gt;
+  &lt;main id="main"&gt;
+    &lt;!-- 히어로 --&gt;
+    &lt;section class="hero-bg-fixed py-24 md:py-32"&gt;...&lt;/section&gt;
+    &lt;!-- 본문 섹션들 (Kicker + H2 + Content) --&gt;
+    &lt;section class="py-16 md:py-24"&gt;...&lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;!-- Footer (about.html 그대로 복사) --&gt;
+  &lt;footer class="bg-[#E9ECEF] text-sub border-t border-hair"&gt;...&lt;/footer&gt;
+
+  &lt;!-- Reduced motion (WCAG 2.3.3) 자동 지원 --&gt;
+&lt;/body&gt;</code></pre>
+
+    <h2>새 페이지 첫 커밋 체크리스트</h2>
+    <ol>
+      <li>✅ <code>&lt;title&gt;</code> 페이지 이름 · <code>meta description</code> 채움</li>
+      <li>✅ <code>&lt;html lang="ko"&gt;</code></li>
+      <li>✅ Skip-to-content 링크 첫 요소</li>
+      <li>✅ <code>&lt;main id="main"&gt;</code> 본문 wrap</li>
+      <li>✅ 모든 이미지에 <code>alt</code> 속성</li>
+      <li>✅ 폼 있으면 <code>&lt;label for&gt;</code> 매칭</li>
+      <li>✅ 미완성 <code>&lt;!-- ... --&gt;</code> · 플레이스홀더 없음</li>
+      <li>✅ Iconify Solar만 사용 (이모지 X)</li>
+      <li>✅ Kicker · H2 · Section 조합 준수</li>
+    </ol>
+
+    <h2>사이트맵 갱신</h2>
+    <p>새 페이지 추가 시 <code>sitemap.xml</code> 에 URL 추가:</p>
+    <pre><code>&lt;url&gt;
+  &lt;loc&gt;https://ontoh.co.kr/신규-페이지.html&lt;/loc&gt;
+  &lt;lastmod&gt;2026-07-29&lt;/lastmod&gt;
+  &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+&lt;/url&gt;</code></pre>
+
+    <h2>GNB 대메뉴 추가 (신중히)</h2>
+    <p>대메뉴 4개는 <strong>고정</strong> (회사소개 · 제품소개 · 기술·연구 · 문의). 신규 추가는 별도 논의 · 중메뉴로 편성 가능한지 먼저 검토.</p>
+    <ul>
+      <li>중메뉴로 처리 가능 → 해당 대메뉴의 dropdown-link에 추가</li>
+      <li>대메뉴 자체 확장 필요 → 사이트 정보 구조 재검토</li>
+    </ul>
+
+    <h2>배포</h2>
+    <ol>
+      <li>Git commit (커밋 메시지: 무엇을 · 왜)</li>
+      <li>main 브랜치로 push</li>
+      <li>GitHub Actions 자동 배포 (수 분 이내 반영)</li>
+      <li>배포 URL 확인 · Lighthouse 점검 (Accessibility ≥ 95)</li>
+    </ol>
+
+    <div class="callout">
+      <strong>AI 에이전트로 새 페이지 만들 때</strong> · <code>design/SKILL.md</code> 를 Claude Code · Cursor · GitHub Copilot에 컨텍스트로 제공하면 자동으로 ONTOH 스타일 준수.
+    </div>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../README.md">README.md</a> · <a href="../../operations.md">operations.md</a></span>
+      <span>
+        <a href="principles.html">← Principles</a> · <a href="../foundations/color.html">Next · Color →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

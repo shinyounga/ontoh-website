@@ -29,8 +29,8 @@
       icon: 'solar:book-linear',
       links: [
         { label: 'Introduction',  href: 'get-started/introduction.html', status: 'ready' },
-        { label: 'Principles',    href: 'get-started/principles.html',   status: 'wip' },
-        { label: 'Install · Use', href: 'get-started/install.html',      status: 'wip' },
+        { label: 'Principles',    href: 'get-started/principles.html',   status: 'ready' },
+        { label: 'Install · Use', href: 'get-started/install.html',      status: 'ready' },
       ]
     },
     {
@@ -68,18 +68,18 @@
       title: 'Patterns',
       icon: 'solar:layers-linear',
       links: [
-        { label: 'Hero',    href: 'patterns/hero.html',    status: 'wip' },
-        { label: 'Section', href: 'patterns/section.html', status: 'wip' },
-        { label: 'CTA',     href: 'patterns/cta.html',     status: 'wip' },
-        { label: 'Form',    href: 'patterns/form.html',    status: 'wip' },
+        { label: 'Hero',    href: 'patterns/hero.html',    status: 'ready' },
+        { label: 'Section', href: 'patterns/section.html', status: 'ready' },
+        { label: 'CTA',     href: 'patterns/cta.html',     status: 'ready' },
+        { label: 'Form',    href: 'patterns/form.html',    status: 'ready' },
       ]
     },
     {
       title: 'Develop',
       icon: 'solar:code-square-linear',
       links: [
-        { label: 'Integration', href: 'develop/integration.html', status: 'wip' },
-        { label: 'Changelog',   href: 'develop/changelog.html',   status: 'wip' },
+        { label: 'Integration', href: 'develop/integration.html', status: 'ready' },
+        { label: 'Changelog',   href: 'develop/changelog.html',   status: 'ready' },
       ]
     },
   ];

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Principles · ONTOH Design</title>
+  <meta name="description" content="ONTOH 디자인 원칙 · 시재건설급 톤 · 정연·절제·기관형">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Get Started</p>
+    <h1 class="doc-title">Principles</h1>
+    <p class="doc-lead">
+      ONTOH 디자인 시스템의 5가지 원칙. 모든 컴포넌트 · 페이지 · 콘텐츠 결정의 기준.
+      <strong>시재건설급 대형 건설사 톤</strong> — 정연 · 절제 · 기관형.
+    </p>
+
+    <h2>1. 여백이 위계다</h2>
+    <p>
+      큰 그림자·볼드·컬러 대비 대신 <strong>여백으로 정보 위계</strong>를 만듭니다.
+      섹션 간 <code>py-16 md:py-24</code> · 헤더-콘텐츠 <code>mb-14 md:mb-16</code> · 카드 내 <code>p-6 ~ p-10</code>.
+    </p>
+    <div class="callout">
+      "볼드로 강조하는 대신 여백을 늘려라" · "그림자 대신 헤어라인"
+    </div>
+
+    <h2>2. 직각 · 헤어라인 · 액센트 하나</h2>
+    <ul>
+      <li><strong>rounded-none</strong> 기본 · 라운드는 원형 예외만</li>
+      <li><strong>Hair (#E5E7EB)</strong> 경계선 우선 · 큰 그림자 자제</li>
+      <li><strong>Accent (#0169a9)</strong> 하나로 강조 통일 · 여러 색 혼용 금지</li>
+    </ul>
+
+    <h2>3. 폰트 하나 · 아이콘 하나 · 스타일 하나</h2>
+    <ul>
+      <li><strong>Pretendard</strong> 단일 (Inter/Noto Sans KR/명조 금지)</li>
+      <li><strong>Iconify Solar</strong> 단일 (이모지 금지)</li>
+      <li><strong>Tailwind CDN</strong> 단일 (빌드 도구 없음)</li>
+    </ul>
+
+    <h2>4. 실증 · 절제 · 정직</h2>
+    <ul>
+      <li><strong>지어낸 수치 금지</strong> · 없으면 "실증 진행 중"</li>
+      <li><strong>AI 클리셰 한국어 금지</strong>: "혁신적인", "원활한", "차세대", "게임 체인저", "혁신을 통해"</li>
+      <li>수치·성과는 근거와 함께 (특허 번호 · 논문 제목 등)</li>
+    </ul>
+
+    <h2>5. 접근성 · 실사용자 우선</h2>
+    <ul>
+      <li>WCAG 2.1 AA 기준 (색상 대비 · Focus · 키보드 접근)</li>
+      <li>Skip-to-content · <code>&lt;main id="main"&gt;</code> · <code>prefers-reduced-motion</code> 필수</li>
+      <li>모바일 우선 (min-h-[100dvh] · touch 44px+)</li>
+      <li>스크린 리더 대응 (alt · aria-label · 시맨틱 마크업)</li>
+    </ul>
+
+    <h2>참조 · 톤 벤치마크</h2>
+    <ul>
+      <li><a href="https://sijae.com" target="_blank" rel="noopener">시재건설 sijae.com</a></li>
+      <li><a href="http://kr.hansolhomedeco.net" target="_blank" rel="noopener">한솔홈데코 hansolhomedeco.net</a></li>
+      <li><a href="https://qplace.kr" target="_blank" rel="noopener">Q Place qplace.kr</a></li>
+    </ul>
+    <p>공통 특징: 직각 · 헤어라인 · 큰 여백 · 정연한 타이포그래피 · 절제된 컬러.</p>
+
+    <h2>피해야 할 스타일 (AI 클리셰)</h2>
+    <ul>
+      <li>웜 아이보리 (#F4F1EA) · 세리프 디스플레이 + 테라코타 액센트</li>
+      <li>보라·핑크·오렌지 그라디언트 (Stripe 스타일)</li>
+      <li><code>rounded-lg</code> 남발 · 모든 카드에 rounded-xl</li>
+      <li>이모지 아이콘 (🚀 ✨ 💡 등)</li>
+      <li>모든 것을 중앙 정렬 · 액센트 바가 카드에 다닥 붙어 있는 패턴</li>
+    </ul>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../DESIGN.md">DESIGN.md</a> · <a href="../../SKILL.md">SKILL.md</a> · <a href="../../../CLAUDE.md">CLAUDE.md</a></span>
+      <span>
+        <a href="introduction.html">← Introduction</a> · <a href="install.html">Next · Install →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>
