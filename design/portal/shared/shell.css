@@ -646,6 +646,99 @@ table.token-table td.token-use {
   white-space: pre;       /* preserve formatting · scroll rather than wrap */
   word-wrap: normal;
 }
+
+/* ============ Prism.js · ONTOH Custom Theme ============ */
+/* Tokens colored via ONTOH palette · dark/light aware */
+.doc pre code[class*="language-"],
+.doc code[class*="language-"] {
+  color: var(--code-text);
+  background: none;
+  text-shadow: none;
+  font-family: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: inherit;
+  line-height: inherit;
+  tab-size: 2;
+  hyphens: none;
+}
+/* Common tokens */
+.doc .token.comment,
+.doc .token.prolog,
+.doc .token.doctype,
+.doc .token.cdata { color: #6B7280; font-style: italic; }
+.doc .token.punctuation { color: var(--sub); }
+.doc .token.property,
+.doc .token.tag,
+.doc .token.constant,
+.doc .token.symbol,
+.doc .token.deleted { color: #0169a9; }
+.doc .token.boolean,
+.doc .token.number { color: #B45309; }
+.doc .token.selector,
+.doc .token.attr-name,
+.doc .token.string,
+.doc .token.char,
+.doc .token.builtin,
+.doc .token.inserted { color: #137a52; }
+.doc .token.operator,
+.doc .token.entity,
+.doc .token.url,
+.doc .language-css .token.string,
+.doc .style .token.string,
+.doc .token.variable { color: #0A2440; }
+.doc .token.atrule,
+.doc .token.attr-value,
+.doc .token.function,
+.doc .token.class-name { color: #7C3AED; }
+.doc .token.keyword { color: #DC2626; font-weight: 700; }
+.doc .token.regex,
+.doc .token.important { color: #F59E0B; }
+.doc .token.important,
+.doc .token.bold { font-weight: bold; }
+.doc .token.italic { font-style: italic; }
+
+/* Dark mode adjustments · higher saturation */
+:root[data-theme="dark"] .doc .token.comment,
+:root[data-theme="dark"] .doc .token.prolog,
+:root[data-theme="dark"] .doc .token.doctype,
+:root[data-theme="dark"] .doc .token.cdata { color: #94A3B8; }
+:root[data-theme="dark"] .doc .token.property,
+:root[data-theme="dark"] .doc .token.tag,
+:root[data-theme="dark"] .doc .token.constant,
+:root[data-theme="dark"] .doc .token.symbol { color: #60A5FA; }
+:root[data-theme="dark"] .doc .token.boolean,
+:root[data-theme="dark"] .doc .token.number { color: #FBBF24; }
+:root[data-theme="dark"] .doc .token.selector,
+:root[data-theme="dark"] .doc .token.attr-name,
+:root[data-theme="dark"] .doc .token.string,
+:root[data-theme="dark"] .doc .token.char,
+:root[data-theme="dark"] .doc .token.builtin { color: #4ADE80; }
+:root[data-theme="dark"] .doc .token.operator,
+:root[data-theme="dark"] .doc .token.entity,
+:root[data-theme="dark"] .doc .token.url,
+:root[data-theme="dark"] .doc .token.variable { color: #E5E7EB; }
+:root[data-theme="dark"] .doc .token.atrule,
+:root[data-theme="dark"] .doc .token.attr-value,
+:root[data-theme="dark"] .doc .token.function,
+:root[data-theme="dark"] .doc .token.class-name { color: #C084FC; }
+:root[data-theme="dark"] .doc .token.keyword { color: #F87171; }
+
+/* ============ Iconify fallback (script not loaded) ============ */
+iconify-icon:not(:defined) {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  background: color-mix(in oklab, currentColor 15%, transparent);
+  border: 1px dashed color-mix(in oklab, currentColor 30%, transparent);
+  border-radius: 2px;
+  min-width: 12px;
+  min-height: 12px;
+}
+/* When defined (script loaded), reset to normal */
+iconify-icon:defined {
+  background: none;
+  border: none;
+}
 .doc pre code {
   white-space: inherit;
   display: block;

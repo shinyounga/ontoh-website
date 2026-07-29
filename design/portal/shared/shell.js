@@ -240,6 +240,40 @@
     });
   }
 
+  // ==================== Syntax Highlighting (Prism.js) ====================
+  function detectLanguage(text) {
+    // Simple heuristic-based language detection
+    const trimmed = text.trim();
+    // HTML: starts with < or has HTML tag pattern
+    if (/^\s*<\/?[a-zA-Z]/.test(trimmed) || /<\/[a-z]+>/.test(trimmed)) return 'markup';
+    // CSS: has selectors + rules
+    if (/[a-zA-Z-]+\s*\{[^}]*[a-zA-Z-]+\s*:/.test(trimmed) &&
+        !/(function|const|let|var|=>)/.test(trimmed)) return 'css';
+    // JS: function/const/let/etc.
+    if (/(function\s*\(|const\s+|let\s+|var\s+|=>|document\.|window\.)/.test(trimmed)) return 'javascript';
+    // Shell/bash: starts with $ or has npm/git commands
+    if (/^\s*(\$|npm |git |cd |bash )/.test(trimmed)) return 'bash';
+    // Default fall-through: markup
+    return 'markup';
+  }
+
+  function tagCodeBlocks() {
+    document.querySelectorAll('.doc pre code').forEach(code => {
+      if (code.className && code.className.includes('language-')) return;
+      const lang = detectLanguage(code.textContent);
+      code.className = 'language-' + lang;
+    });
+  }
+
+  function loadPrism() {
+    if (window.Prism) { window.Prism.highlightAll(); return; }
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js';
+    s.async = true;
+    s.onload = () => { if (window.Prism) window.Prism.highlightAll(); };
+    document.head.appendChild(s);
+  }
+
   // ==================== Code Copy Buttons ====================
   function attachCopyButtons() {
     document.querySelectorAll('.doc pre').forEach(pre => {
@@ -274,6 +308,8 @@
     renderTopnav();
     renderSidebar();
     renderBrandHref();
+    tagCodeBlocks();
+    loadPrism();
     attachCopyButtons();
 
     const savedTheme = localStorage.getItem('portal-theme');
