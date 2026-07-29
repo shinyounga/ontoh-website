@@ -126,6 +126,39 @@
     if (brand) brand.setAttribute('href', PREFIX + 'index.html');
   }
 
+  // ==================== Topnav Rendering ====================
+  function renderTopnav() {
+    const topnav = document.querySelector('.topnav');
+    if (!topnav) return;
+    if (topnav.dataset.rendered) return;
+    if (topnav.children.length > 0) return; // already has content (backward compat)
+
+    topnav.setAttribute('aria-label', '상단 네비게이션');
+    topnav.innerHTML = `
+      <a href="${PREFIX}index.html" class="topnav-brand">
+        <span class="topnav-brand-name">ONTOH</span>
+        <span class="topnav-brand-sub">Design</span>
+      </a>
+      <div class="topnav-right">
+        <div class="topnav-search">
+          <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+          <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+          <kbd>/</kbd>
+        </div>
+        <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+          <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+        </button>
+        <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+          <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+        </button>
+        <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+          <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+        </a>
+      </div>
+    `;
+    topnav.dataset.rendered = '1';
+  }
+
   // ==================== Theme Toggle ====================
   const root = document.documentElement;
 
@@ -209,6 +242,7 @@
 
   // ==================== Init ====================
   function init() {
+    renderTopnav();
     renderSidebar();
     renderBrandHref();
 
