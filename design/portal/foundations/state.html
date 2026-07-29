@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>State · ONTOH Design</title>
+  <meta name="description" content="ONTOH State · Foundations · 브랜드 · 콘텐츠 · 접근성 가이드">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Foundations</p>
+    <h1 class="doc-title">State</h1>
+    <p class="doc-lead">
+      인터랙티브 요소의 상태 시스템. Default · Hover · Active · Focus · Disabled · Loading.
+      <strong>모든 상태는 시각적 · 시맨틱으로 명확</strong>해야 함.
+    </p>
+
+    <h2>Interactive States (6종)</h2>
+
+    <div class="preview-frame preview stack" style="padding:32px; gap:16px;">
+      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+        <span style="font-size:11px; color:#555; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; min-width:80px;">Default</span>
+        <button class="btn btn-primary btn-md">도입 문의</button>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+        <span style="font-size:11px; color:#555; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; min-width:80px;">Disabled</span>
+        <button class="btn btn-primary btn-md is-disabled">도입 문의</button>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+        <span style="font-size:11px; color:#555; letter-spacing:0.14em; text-transform:uppercase; font-weight:700; min-width:80px;">Loading</span>
+        <button class="btn btn-primary btn-md is-loading">도입 문의</button>
+      </div>
+    </div>
+
+    <h2>State 정의 · 규칙</h2>
+    <table class="token-table">
+      <thead><tr><th>State</th><th>Trigger</th><th>시각 표현</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="token-name">Default</td>
+          <td>기본</td>
+          <td>Primary color · normal</td>
+        </tr>
+        <tr>
+          <td class="token-name">Hover</td>
+          <td>마우스 오버</td>
+          <td>배경 색상 변경 · transform lift (200-300ms)</td>
+        </tr>
+        <tr>
+          <td class="token-name">Active</td>
+          <td>클릭 순간</td>
+          <td>Scale 0.98 · 배경 살짝 어둡게</td>
+        </tr>
+        <tr>
+          <td class="token-name">Focus</td>
+          <td>키보드 Tab</td>
+          <td><code>:focus-visible</code> · 3px accent outline · offset 2px</td>
+        </tr>
+        <tr>
+          <td class="token-name">Disabled</td>
+          <td><code>:disabled</code> · <code>.is-disabled</code></td>
+          <td>opacity 0.5 · cursor not-allowed · pointer-events none</td>
+        </tr>
+        <tr>
+          <td class="token-name">Loading</td>
+          <td><code>.is-loading</code></td>
+          <td>텍스트 숨김 · 스피너 표시 · pointer-events none</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Focus Visible (WCAG 2.4.7 · 필수)</h2>
+    <pre><code>:focus-visible {
+  outline: 3px solid #0169a9;
+  outline-offset: 2px;
+  border-radius: 0;
+}
+:focus:not(:focus-visible) { outline: none; }</code></pre>
+    <ul>
+      <li><strong>3px 실선 · Accent 컬러 · 2px offset</strong></li>
+      <li>마우스 클릭 시 outline 안 뜨고 (`:focus`) · 키보드 탐색 시만 뜸 (`:focus-visible`)</li>
+      <li>모든 인터랙티브 요소 (button · a · input · select · textarea)</li>
+    </ul>
+
+    <h2>Alert State Colors</h2>
+    <div class="preview-frame preview stack" style="padding:24px;">
+      <div class="alert alert-error"><iconify-icon icon="solar:danger-triangle-bold"></iconify-icon><div><strong>Error</strong> · #dc2626</div></div>
+      <div class="alert alert-warning"><iconify-icon icon="solar:info-circle-bold"></iconify-icon><div><strong>Warning</strong> · #ea580c</div></div>
+      <div class="alert alert-success"><iconify-icon icon="solar:check-circle-bold"></iconify-icon><div><strong>Success</strong> · #137a52</div></div>
+      <div class="alert alert-info"><iconify-icon icon="solar:info-circle-linear"></iconify-icon><div><strong>Info</strong> · #0169a9</div></div>
+    </div>
+
+    <table class="token-table">
+      <thead><tr><th>State</th><th>Border/BG</th><th>Text</th><th>Icon</th></tr></thead>
+      <tbody>
+        <tr><td>Error</td><td class="token-name">#dc2626 / #fef2f2</td><td class="token-name">#7f1d1d</td><td>danger-triangle-bold</td></tr>
+        <tr><td>Warning</td><td class="token-name">#ea580c / #fff7ed</td><td class="token-name">#7c2d12</td><td>info-circle-bold</td></tr>
+        <tr><td>Success</td><td class="token-name">#137a52 / #f0fdf4</td><td class="token-name">#14532d</td><td>check-circle-bold</td></tr>
+        <tr><td>Info</td><td class="token-name">#0169a9 / #eff6ff</td><td class="token-name">#1e3a8a</td><td>info-circle-linear</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Form Field States</h2>
+    <ul>
+      <li><strong>Default</strong> — border hair</li>
+      <li><strong>Focus</strong> — border accent · outline 2px accent</li>
+      <li><strong>Error</strong> — border error · <code>.form-state.error</code> 메시지</li>
+      <li><strong>Success</strong> — border success · <code>.form-state.success</code></li>
+      <li><strong>Disabled</strong> — bg band · cursor not-allowed · opacity 0.6</li>
+    </ul>
+
+    <h2>Reduced Motion (WCAG 2.3.3)</h2>
+    <p>사용자가 OS "동작 최소화" 설정 시 모든 애니메이션·트랜지션 사실상 제거.</p>
+    <pre><code>@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}</code></pre>
+    <p>Feature Carousel 자동 재생 · 스크롤 애니메이션 등 별도 조건부 처리 권장.</p>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../CHECKLIST.md">CHECKLIST §3</a> · <a href="../../a11y.md">a11y.md §2</a></span>
+      <span>
+        <a href="writing.html">← Writing</a> · <a href="layout.html">Next · Layout →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

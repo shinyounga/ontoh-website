@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Writing · ONTOH Design</title>
+  <meta name="description" content="ONTOH Writing · Foundations · 브랜드 · 콘텐츠 · 접근성 가이드">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Foundations</p>
+    <h1 class="doc-title">Writing</h1>
+    <p class="doc-lead">
+      ONTOH 콘텐츠 작성 규칙. 헤딩 계층 · 문장 규칙 · 컴포넌트별 자수 · 명명 규칙.
+      Voice & Tone과 함께 <strong>일관된 사이트 목소리</strong>를 만듬.
+    </p>
+
+    <h2>헤딩 계층</h2>
+    <table class="token-table">
+      <thead><tr><th>헤딩</th><th>용도</th><th>자수</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">&lt;h1&gt;</td><td>페이지 제목 · 페이지당 1개</td><td>6-10자</td></tr>
+        <tr><td class="token-name">&lt;h2&gt;</td><td>섹션 제목 · 명사구</td><td>12-30자</td></tr>
+        <tr><td class="token-name">&lt;h3&gt;</td><td>하위 섹션 · 카드 타이틀</td><td>5-15자</td></tr>
+        <tr><td class="token-name">Kicker</td><td>섹션 라벨 (H2 위)</td><td>2-8자</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>주의</strong> · 시각적 크기 (<code>.text-h1</code>)와 시맨틱 레벨 (<code>&lt;h1&gt;</code>)은 다를 수 있음.
+      HTML 계층은 h1 → h2 → h3 순서 유지 · 건너뛰기 금지.
+    </div>
+
+    <h2>컴포넌트별 텍스트 규칙</h2>
+    <table class="token-table">
+      <thead><tr><th>컴포넌트</th><th>자수</th><th>특징</th></tr></thead>
+      <tbody>
+        <tr><td>Button</td><td>6-10자 (최대 15)</td><td>명사구 우선 · 아이콘 오른쪽</td></tr>
+        <tr><td>Kicker</td><td>2-8자</td><td>한글 · 명사 · 마침표 없음</td></tr>
+        <tr><td>Tag</td><td>2-8자</td><td>명사 · 마침표 없음</td></tr>
+        <tr><td>Dropdown Link</td><td>4-10자</td><td>대메뉴명 동일</td></tr>
+        <tr><td>Card 제목</td><td>15자 이내</td><td>-</td></tr>
+        <tr><td>Card 본문</td><td>2-3줄</td><td>-</td></tr>
+        <tr><td>Form Label</td><td>-</td><td>명사 (예: "회사명·기관명")</td></tr>
+        <tr><td>Form Placeholder</td><td>-</td><td>형식: <code>예) ○○주식회사</code></td></tr>
+      </tbody>
+    </table>
+
+    <h2>문장 규칙</h2>
+    <ul>
+      <li><strong>한국어 정중형</strong> (합니다체) · 반말 · 축약 금지</li>
+      <li><strong>중점 (·)</strong> 사용 · "감지 · 판단 · 개입 · 기록"</li>
+      <li><strong>지어낸 수치 금지</strong> · 없으면 "실증 진행 중"</li>
+      <li>반복 어휘 지양 · 문장 리듬 유지</li>
+    </ul>
+
+    <h2>CTA · 액션 문구 통일</h2>
+    <table class="token-table">
+      <thead><tr><th>상황</th><th>표준 문구</th><th>금지</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Primary CTA (히어로·CTA 카드)</td>
+          <td class="token-name">무료 현장 진단</td>
+          <td>도입 상담 신청 · 데모 신청 · 시연 요청</td>
+        </tr>
+        <tr>
+          <td>Secondary (footer · GNB 드롭다운)</td>
+          <td class="token-name">도입 문의</td>
+          <td>상담 신청 · 문의하기</td>
+        </tr>
+        <tr>
+          <td>이메일 링크</td>
+          <td class="token-name">이메일 문의</td>
+          <td>메일 보내기 · 이메일 상담</td>
+        </tr>
+        <tr>
+          <td>폼 제출</td>
+          <td class="token-name">전송</td>
+          <td>제출 · Submit · Send</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>제품·서비스 표기</h2>
+    <table class="token-table">
+      <thead><tr><th>표준</th><th>금지</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">주식회사 온토 / ONTOH</td><td>온토주식회사 · Ontoh · OnToh</td></tr>
+        <tr><td class="token-name">온토비전 / ONTOH Vision</td><td>온토 비전 (띄어쓰기 X) · OntohVision</td></tr>
+        <tr><td class="token-name">온토케어 / ONTOH Care</td><td>온토 케어 · Ontoh Care</td></tr>
+        <tr><td class="token-name">5대 현장 위험 유형</td><td>5대 감지 시나리오 (구 이름)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>파일·폴더 명명</h2>
+    <table class="token-table">
+      <thead><tr><th>유형</th><th>규칙</th><th>예시</th></tr></thead>
+      <tbody>
+        <tr><td>HTML</td><td>소문자 · 하이픈</td><td class="token-name">about.html · case-01.html</td></tr>
+        <tr><td>이미지</td><td>소문자 · 카테고리 폴더</td><td class="token-name">assets/vision/detection/helmet-006.png</td></tr>
+        <tr><td>클래스</td><td>소문자 · 하이픈 · prefix 유지</td><td class="token-name">.btn · .btn-primary · .gnb-megabar</td></tr>
+      </tbody>
+    </table>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md #13</a> · <a href="../../glossary.md">glossary.md</a></span>
+      <span>
+        <a href="voice-tone.html">← Voice Tone</a> · <a href="state.html">Next · State →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>
