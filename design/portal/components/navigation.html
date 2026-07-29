@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navigation · ONTOH Design</title>
+  <meta name="description" content="ONTOH Navigation 컴포넌트 · 사용 가이드 · Do/Don't · 실물 프리뷰">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Components</p>
+    <h1 class="doc-title">Navigation</h1>
+    <p class="doc-lead">
+      GNB 메가메뉴 + Breadcrumb 스트립. Sticky · 92px 높이 · 대메뉴 4개 고정.
+    </p>
+
+    <h2>GNB · Global Navigation Bar</h2>
+    <table class="token-table">
+      <thead><tr><th>클래스</th><th>용도</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">.nav-item</td><td>탑 메뉴 아이템 컨테이너</td></tr>
+        <tr><td class="token-name">.nav-top</td><td>탑 메뉴 텍스트 · Hover 시 밑줄 slide</td></tr>
+        <tr><td class="token-name">.nav-panel</td><td>메가메뉴 패널 · Hover 시 확장</td></tr>
+        <tr><td class="token-name">.gnb-megabar</td><td>메가메뉴 컨테이너</td></tr>
+        <tr><td class="token-name">.gnb-panel-box</td><td>메가메뉴 링크 그룹</td></tr>
+      </tbody>
+    </table>
+
+    <h3>구조</h3>
+    <ul>
+      <li>위치: <code>sticky top-0</code> · 92px 높이</li>
+      <li>대메뉴 4개 고정: <strong>회사소개 · 제품소개 · 기술·연구 · 문의</strong></li>
+      <li>중메뉴: 각 대메뉴 하위 1-4개 이내</li>
+    </ul>
+
+    <h2>Breadcrumb Strip</h2>
+    <ul>
+      <li>GNB 아래 얇은 남색 스트립 (48px)</li>
+      <li>홈 → 대메뉴 → 중메뉴 순서</li>
+      <li>3단계 초과 지양</li>
+      <li>Cross-link: <a href="breadcrumb.html">Breadcrumb 컴포넌트</a></li>
+    </ul>
+
+    <h2>Sitemap Rules</h2>
+    <ul>
+      <li><strong>대메뉴 4개 고정</strong> · 신규 추가는 별도 논의</li>
+      <li>중메뉴: 각 대메뉴 하위 1-4개 이내 · 5개 초과 시 재편성</li>
+      <li>드롭다운 링크 텍스트: 대메뉴명 동일 · 4-10자</li>
+    </ul>
+
+    <h2>모바일 대응</h2>
+    <ul>
+      <li>1024px 이하: 햄버거 메뉴로 전환</li>
+      <li>Off-canvas 사이드바 · 배경 backdrop</li>
+      <li>Sticky 유지 · 스크롤 시에도 접근 가능</li>
+    </ul>
+
+    <h2>접근성</h2>
+    <ul>
+      <li>드롭다운은 <code>aria-expanded</code> 상태 반영</li>
+      <li>키보드 <code>Tab</code> · <code>Enter</code> · <code>Esc</code> 완전 지원</li>
+      <li>현재 페이지는 <code>aria-current="page"</code></li>
+    </ul>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md</a></span>
+      <span>
+        <a href="form.html">← Form</a> · 
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

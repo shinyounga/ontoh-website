@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Breadcrumb · ONTOH Design</title>
+  <meta name="description" content="ONTOH Breadcrumb 컴포넌트 · 사용 가이드 · Do/Don't · 실물 프리뷰">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Components</p>
+    <h1 class="doc-title">Breadcrumb</h1>
+    <p class="doc-lead">
+      현재 위치 표시 + 상위 카테고리 이동. GNB 아래 얇은 남색 스트립.
+      한솔홈데코 스타일 · 세로 divider · 화살표 아이콘 미사용.
+    </p>
+
+    <h2>실물 프리뷰</h2>
+    <div class="preview-frame preview" style="background:#0A2440; padding:0;">
+      <div style="display:flex; height:48px; width:100%;">
+        <div style="display:flex; align-items:center; justify-content:center; width:48px; height:48px; color:#fff; border-right:1px solid rgba(255,255,255,0.15);">
+          <iconify-icon icon="mdi:home" style="font-size:20px;"></iconify-icon>
+        </div>
+        <div style="display:flex; align-items:center; padding:0 20px; min-width:158px; color:#fff; font-size:14px; font-weight:600; border-right:1px solid rgba(255,255,255,0.15);">회사소개</div>
+        <div style="display:flex; align-items:center; padding:0 20px; min-width:158px; color:#fff; font-size:14px; font-weight:800; background:rgba(255,255,255,0.06);">회사개요</div>
+      </div>
+    </div>
+
+    <h2>Property (한솔홈데코 스타일)</h2>
+    <table class="token-table">
+      <thead><tr><th>클래스</th><th>용도</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">.bc-row</td><td>Row container (flex)</td></tr>
+        <tr><td class="token-name">.bc-cell</td><td>Cell · 48px 균일 높이</td></tr>
+        <tr><td class="token-name">.bc-cell.bc-home</td><td>48×48 정사각형 · 홈 아이콘</td></tr>
+        <tr><td class="token-name">.bc-cell.bc-menu</td><td>min-width 158px · 메뉴 이름</td></tr>
+        <tr><td class="token-name">.bc-cell.is-current</td><td>현재 페이지 (bg 강조)</td></tr>
+        <tr><td>Divider</td><td class="token-name">border-right: 1px solid rgba(255,255,255,0.15)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>사용 규칙</h2>
+    <ul>
+      <li>홈 아이콘 항상 첫 셀 (<code>mdi:home</code> 예외적 허용)</li>
+      <li>대메뉴 → 중메뉴 순서 · 3단계 초과 지양</li>
+      <li>드롭다운 = 4개 대메뉴 리스트</li>
+    </ul>
+
+    <h2>Don't</h2>
+    <div class="dont-block">
+      <strong>✗</strong> Breadcrumb 없이 페이지 시작 (홈 제외 필수) · 화살표 아이콘 사용 (세로선 원칙)
+    </div>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md</a></span>
+      <span>
+        <a href="dropdown-link.html">← Dropdown-Link</a> · <a href="lightbox.html">Next · Lightbox →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

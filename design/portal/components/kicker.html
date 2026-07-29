@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kicker · ONTOH Design</title>
+  <meta name="description" content="ONTOH Kicker 컴포넌트 · 사용 가이드 · Do/Don't · 실물 프리뷰">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Components</p>
+    <h1 class="doc-title">Kicker</h1>
+    <p class="doc-lead">
+      섹션 상단 라벨 · "이 섹션이 무엇인지" 1-2단어. <strong>큰 헤딩(H2/H1) 위 · 섹션 시작 신호</strong>.
+      카드 안 · 페이지당 5개 이상은 남발.
+    </p>
+
+    <h2>실물 프리뷰 (v3.5)</h2>
+    <div class="preview-frame preview stack" style="padding:32px;">
+      <span class="kicker">오시는 길</span>
+      <h2 style="font-size:34px; font-weight:800; color:#0A2440; letter-spacing:-0.02em; margin-top:14px;">찾아오시는 길</h2>
+      <p style="font-size:15px; color:#555; margin-top:8px; max-width:520px;">
+        서울 서대문구 연세로2나길 61 · 캠퍼스타운에스큐브 304호
+      </p>
+    </div>
+
+    <h2>Property (v3.5 · 2026-07-28 개정)</h2>
+    <table class="token-table">
+      <thead><tr><th>속성</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>Font size</td><td class="token-name">15px</td></tr>
+        <tr><td>Weight</td><td class="token-name">800 (extrabold)</td></tr>
+        <tr><td>Letter-spacing</td><td class="token-name">.14em · uppercase</td></tr>
+        <tr><td>Color</td><td class="token-name">#0169a9 (accent)</td></tr>
+        <tr><td>Prefix (::before)</td><td class="token-name">width:5px · height:20px · background:accent (세로 블록)</td></tr>
+        <tr><td>Gap</td><td class="token-name">.7rem</td></tr>
+      </tbody>
+    </table>
+
+    <h2>변경 히스토리</h2>
+    <ul>
+      <li><strong>v3.5</strong> (2026-07-28) — 폰트 15px · 블록 5×20px (위계 강화)</li>
+      <li>v3.4 (2026-07-28) — 폰트 13px · 블록 4×18px (세로 블록 도입)</li>
+      <li>v3.3 이전 — 폰트 13px · 26×2px 가로선 (저널리즘)</li>
+    </ul>
+
+    <h2>텍스트 규칙</h2>
+    <ul>
+      <li><strong>한글 우선</strong> (실사이트 100% 한글 · 영문 대문자는 미사용)</li>
+      <li>2-8자 · 명사구 · 마침표 없음</li>
+      <li>실 사용 예: "오시는 길" · "회사개요" · "핵심 기능" · "연구·성과" · "실증 사례"</li>
+    </ul>
+
+    <h2>Do</h2>
+    <pre><code>&lt;p class="kicker"&gt;오시는 길&lt;/p&gt;
+&lt;h2 class="text-h2 font-bold"&gt;찾아오시는 길&lt;/h2&gt;</code></pre>
+
+    <h2>Don't</h2>
+    <div class="dont-block">
+      <strong>✗</strong> 긴 문장 · 마침표 · 물음표 · kicker 안 kicker · 페이지당 5개 초과
+    </div>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md</a></span>
+      <span>
+        <a href="tag.html">← Tag</a> · <a href="stat-number.html">Next · Stat Number →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

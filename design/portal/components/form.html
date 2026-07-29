@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form · ONTOH Design</title>
+  <meta name="description" content="ONTOH Form 컴포넌트 · 사용 가이드 · Do/Don't · 실물 프리뷰">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Components</p>
+    <h1 class="doc-title">Form</h1>
+    <p class="doc-lead">
+      사용자 입력 수집. <code>contact.html</code> 전용. Formspree 백엔드 사용.
+      Label · Input · Textarea · Checkbox · State 조합.
+    </p>
+
+    <h2>Property</h2>
+    <table class="token-table">
+      <thead><tr><th>클래스</th><th>용도</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">.form-label</td><td>레이블 · 명사 (예: "회사명·기관명")</td></tr>
+        <tr><td class="token-name">.form-input</td><td>text · email · tel input · min-height 52px</td></tr>
+        <tr><td class="token-name">.form-textarea</td><td>여러 줄 텍스트 · min-height 120px</td></tr>
+        <tr><td class="token-name">.form-checkbox</td><td>동의 체크박스</td></tr>
+        <tr><td class="token-name">.form-state.success</td><td>성공 · 초록</td></tr>
+        <tr><td class="token-name">.form-state.error</td><td>오류 · 빨강</td></tr>
+        <tr><td class="token-name">.honeypot</td><td>스팸 방지 숨김 필드</td></tr>
+      </tbody>
+    </table>
+
+    <h2>사용 규칙</h2>
+    <ul>
+      <li>필수 필드 → HTML5 <code>required</code> 속성 + <code>&lt;span class="required"&gt;*&lt;/span&gt;</code></li>
+      <li>에러는 <code>.alert-error</code> 또는 <code>.form-state.error</code></li>
+      <li>Placeholder 형식: <code>예) ○○주식회사</code></li>
+      <li>Label · Input 반드시 <code>for</code>/<code>id</code> 매칭 (a11y)</li>
+    </ul>
+
+    <h2>Do</h2>
+    <pre><code>&lt;label for="company" class="form-label"&gt;
+  회사명·기관명 &lt;span class="required"&gt;*&lt;/span&gt;
+&lt;/label&gt;
+&lt;input id="company" type="text" class="form-input" required
+       placeholder="예) ○○주식회사"
+       aria-describedby="company-help"&gt;
+&lt;p id="company-help" class="text-caption text-sub"&gt;공식 명칭을 적어주세요.&lt;/p&gt;</code></pre>
+
+    <h2>Don't</h2>
+    <div class="dont-block">
+      <strong>✗</strong> Label 없는 Input · Placeholder만으로 Label 대체 (a11y 위반) · 자동 focus (사용자 흐름 방해)
+    </div>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md</a></span>
+      <span>
+        <a href="alert.html">← Alert</a> · <a href="navigation.html">Next · Navigation →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

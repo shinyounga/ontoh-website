@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feature Carousel · ONTOH Design</title>
+  <meta name="description" content="ONTOH Feature Carousel 컴포넌트 · 사용 가이드 · Do/Don't · 실물 프리뷰">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Components</p>
+    <h1 class="doc-title">Feature Carousel</h1>
+    <p class="doc-lead">
+      여러 사례(Case)를 자동 순환 + 수동 이동. Feature 04 규정 매칭 사례에 사용.
+      3-6개 케이스 순환 · 도트·화살표 컨트롤.
+    </p>
+
+    <h2>Property (Feature 04 규정 매칭 사례)</h2>
+    <table class="token-table">
+      <thead><tr><th>클래스</th><th>용도</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">.lc-viewport</td><td>Viewport · <code>.playing</code> 클래스로 자동 재생</td></tr>
+        <tr><td class="token-name">.lc-stack &gt; .lc-slide</td><td>Slide 스택</td></tr>
+        <tr><td class="token-name">.lc-controls</td><td>도트 · 화살표 컨트롤</td></tr>
+        <tr><td class="token-name">.lc-nav</td><td>이전·다음 버튼</td></tr>
+        <tr><td class="token-name">.lc-dot</td><td>슬라이드 인디케이터</td></tr>
+      </tbody>
+    </table>
+
+    <h2>사용 상황</h2>
+    <ul>
+      <li>3-6개 케이스 순환</li>
+      <li>자동 재생 5초 간격 · Hover 시 일시정지</li>
+      <li>수동 이동: 도트 클릭 · 화살표 · 키보드 ←/→</li>
+    </ul>
+
+    <h2>Don't</h2>
+    <div class="dont-block">
+      <strong>✗</strong> 2개 이하 (병렬 배치로 표시) · 10개 이상 (인지 부담 · 리스트/그리드로 대체)
+    </div>
+
+    <h2>접근성</h2>
+    <ul>
+      <li>자동 재생은 <code>prefers-reduced-motion</code> 존중 · 감소 모드에서 정지</li>
+      <li>슬라이드 컨테이너 <code>aria-live="polite"</code></li>
+      <li>도트에 <code>aria-current="true"</code>로 현재 슬라이드 표시</li>
+    </ul>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md</a></span>
+      <span>
+        <a href="lightbox.html">← Lightbox</a> · <a href="alert.html">Next · Alert →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

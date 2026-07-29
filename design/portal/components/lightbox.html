@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lightbox · ONTOH Design</title>
+  <meta name="description" content="ONTOH Lightbox 컴포넌트 · 사용 가이드 · Do/Don't · 실물 프리뷰">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Components</p>
+    <h1 class="doc-title">Lightbox</h1>
+    <p class="doc-lead">
+      이미지 확대 팝업. <code>&lt;dialog&gt;</code> 요소 사용 · 키보드 ←/→ 순환 · Esc 닫기.
+      감지 시나리오 예시 · 특허/논문 썸네일 · 갤러리 이미지에 사용.
+    </p>
+
+    <h2>Property</h2>
+    <table class="token-table">
+      <thead><tr><th>속성</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td>Trigger</td><td class="token-name">&lt;button data-lb="src" data-lb-cap="caption" data-lb-group="group-id"&gt;</td></tr>
+        <tr><td>Container</td><td class="token-name">&lt;dialog id="lb" class="lb-dialog"&gt;</td></tr>
+        <tr><td>좌우 순환</td><td>같은 <code>data-lb-group</code> 값을 가진 trigger들 순환</td></tr>
+        <tr><td>키보드</td><td class="token-name">← / → (이전·다음) · Esc (닫기)</td></tr>
+        <tr><td>Shadow</td><td class="token-name">shadow-lightbox (0 40px 80px -20px)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>사용 상황</h2>
+    <ul>
+      <li>감지 시나리오 예시 이미지 (vision.html)</li>
+      <li>특허·논문 문서 썸네일 (patents.html)</li>
+      <li>갤러리 이미지 클릭 확대</li>
+    </ul>
+
+    <h2>Do</h2>
+    <pre><code>&lt;!-- Trigger --&gt;
+&lt;button data-lb="/assets/vision/detection/helmet-006.png"
+        data-lb-cap="안전모 미착용 감지 예시"
+        data-lb-group="helmet-scenario"
+        class="lb-trigger"&gt;
+  &lt;img src="thumb.png" alt="썸네일"&gt;
+&lt;/button&gt;
+
+&lt;!-- Container (페이지당 1개) --&gt;
+&lt;dialog id="lb" class="lb-dialog"&gt;
+  &lt;img class="lb-img"&gt;
+  &lt;p class="lb-cap"&gt;&lt;/p&gt;
+  &lt;button class="lb-close" aria-label="닫기"&gt;×&lt;/button&gt;
+  &lt;button class="lb-nav lb-prev" aria-label="이전"&gt;←&lt;/button&gt;
+  &lt;button class="lb-nav lb-next" aria-label="다음"&gt;→&lt;/button&gt;
+&lt;/dialog&gt;</code></pre>
+
+    <h2>Don't</h2>
+    <div class="dont-block">
+      <strong>✗</strong> 텍스트만 표시 · 폼 입력 (Modal 별도 필요) · aria-label 누락한 nav 버튼
+    </div>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md</a></span>
+      <span>
+        <a href="breadcrumb.html">← Breadcrumb</a> · <a href="feature-carousel.html">Next · Feature Carousel →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

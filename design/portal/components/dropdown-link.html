@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dropdown Link · ONTOH Design</title>
+  <meta name="description" content="ONTOH Dropdown Link 컴포넌트 · 사용 가이드 · Do/Don't · 실물 프리뷰">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Components</p>
+    <h1 class="doc-title">Dropdown Link</h1>
+    <p class="doc-lead">
+      드롭다운 패널 내 링크 아이템. GNB 메가메뉴 · Breadcrumb 스트립 공통 사용.
+      Hover 시 오른쪽 화살표 슬라이드 인.
+    </p>
+
+    <h2>실물 프리뷰</h2>
+    <div class="preview-frame preview stack" style="padding:16px 0; max-width:280px;">
+      <a href="#" class="dropdown-link" style="display:flex;">비전 · 미션</a>
+      <a href="#" class="dropdown-link" style="display:flex;">연혁</a>
+      <a href="#" class="dropdown-link" style="display:flex;">회사개요</a>
+      <a href="#" class="dropdown-link" style="display:flex;">오시는 길</a>
+    </div>
+
+    <h2>Property</h2>
+    <table class="token-table">
+      <thead><tr><th>속성</th><th>값</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">.dropdown-link</td><td>Base · flex · 15px · sub · padding 8px 40px 8px 16px</td></tr>
+        <tr><td class="token-name">::after "→"</td><td>Hover 시 opacity 0→1 · translateX slide</td></tr>
+        <tr><td class="token-name">.dropdown-link.is-active</td><td>현재 페이지 강조</td></tr>
+        <tr><td class="token-name">.gnb-panel-box .dropdown-link</td><td>D4 Arrow context (GNB)</td></tr>
+        <tr><td class="token-name">.bc-panel .dropdown-link</td><td>D5 Accent Fill context (Breadcrumb)</td></tr>
+      </tbody>
+    </table>
+
+    <h2>텍스트 규칙</h2>
+    <ul>
+      <li>4-10자 · 명사 · 대메뉴명 동일</li>
+      <li>이모지 · 아이콘 사용 X (::after 화살표만)</li>
+    </ul>
+
+    <h2>Do</h2>
+    <pre><code>&lt;div class="nav-panel"&gt;
+  &lt;div class="gnb-panel-box"&gt;
+    &lt;a href="about.html#mission" class="dropdown-link"&gt;비전 · 미션&lt;/a&gt;
+    &lt;a href="about.html#history" class="dropdown-link"&gt;연혁&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md</a></span>
+      <span>
+        <a href="stat-number.html">← Stat-Number</a> · <a href="breadcrumb.html">Next · Breadcrumb →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

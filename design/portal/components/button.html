@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Button · ONTOH Design</title>
+  <meta name="description" content="ONTOH Button 컴포넌트 · 사용 가이드 · Do/Don't · 실물 프리뷰">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  
+</head>
+<body>
+
+<a href="#main" class="skip-to-content">본문 바로가기</a>
+
+<nav class="topnav" aria-label="상단 네비게이션"><!-- rendered by shell.js --></nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main id="main" class="main doc" role="main">
+    <p class="doc-eyebrow">Components</p>
+    <h1 class="doc-title">Button</h1>
+    <p class="doc-lead">
+      사용자 액션(제출·이동·확인·취소)을 트리거하는 요소.
+      <strong>CTA · 폼 제출 · 모달 열기/닫기</strong>에 사용. 단순 이동은 <code>&lt;a&gt;</code> 텍스트 링크로.
+    </p>
+
+    <h2>Variants</h2>
+    <p>Type 4종 · Size 3종.</p>
+
+    <p class="preview-label">Type</p>
+    <div class="preview-frame preview">
+      <button class="btn btn-primary btn-md">Primary</button>
+      <button class="btn btn-outline-dark btn-md">Outline Dark</button>
+    </div>
+    <div class="preview-frame preview dark">
+      <button class="btn btn-inverse btn-md">Inverse</button>
+      <button class="btn btn-outline-light btn-md">Outline Light</button>
+    </div>
+
+    <p class="preview-label">Size</p>
+    <div class="preview-frame preview">
+      <button class="btn btn-primary btn-sm">Small</button>
+      <button class="btn btn-primary btn-md">Medium (기본)</button>
+      <button class="btn btn-primary btn-lg">Large</button>
+    </div>
+
+    <p class="preview-label">States</p>
+    <div class="preview-frame preview">
+      <button class="btn btn-primary btn-md">Default</button>
+      <button class="btn btn-primary btn-md is-disabled">Disabled</button>
+      <button class="btn btn-primary btn-md is-loading">Loading</button>
+    </div>
+
+    <h2>Property</h2>
+    <table class="token-table">
+      <thead><tr><th>클래스</th><th>용도</th></tr></thead>
+      <tbody>
+        <tr><td class="token-name">.btn-primary</td><td>주 액션 · 밝은 배경</td></tr>
+        <tr><td class="token-name">.btn-inverse</td><td>주 액션 · 어두운 배경 (역상)</td></tr>
+        <tr><td class="token-name">.btn-outline-light</td><td>보조 · 어두운 배경</td></tr>
+        <tr><td class="token-name">.btn-outline-dark</td><td>보조 · 밝은 배경</td></tr>
+        <tr><td class="token-name">.btn-sm / .btn-md / .btn-lg</td><td>Size (GNB / 기본 / 모바일 메뉴)</td></tr>
+        <tr><td class="token-name">.is-disabled / .is-loading</td><td>State 클래스</td></tr>
+      </tbody>
+    </table>
+
+    <h2>텍스트 규칙</h2>
+    <ul>
+      <li>6-10자 이상적 (최대 15자)</li>
+      <li>명사구 우선: <code>"무료 현장 진단"</code> ✓ · <code>"진단 받기"</code> ✗</li>
+      <li>아이콘은 텍스트 오른쪽</li>
+    </ul>
+
+    <h2>Do</h2>
+    <div class="do-block">
+      <strong>✓</strong> 명시적 CTA · 컨텍스트에 맞는 variant · 아이콘 오른쪽
+    </div>
+    <pre><code>&lt;a href="contact.html" class="btn btn-primary btn-md"&gt;
+  무료 현장 진단 &lt;iconify-icon icon="solar:arrow-right-linear"&gt;&lt;/iconify-icon&gt;
+&lt;/a&gt;</code></pre>
+
+    <h2>Don't</h2>
+    <div class="dont-block">
+      <strong>✗</strong> 긴 Tailwind 조합 반복 · Primary 여러 개 병렬 · 라운드 처리
+    </div>
+    <pre><code>&lt;!-- ❌ 긴 Tailwind 조합 --&gt;
+&lt;a class="inline-flex items-center bg-ink text-white px-7 py-3.5..."&gt;
+
+&lt;!-- ❌ Primary 여러 개 --&gt;
+&lt;a class="btn btn-primary btn-md"&gt;진단&lt;/a&gt;
+&lt;a class="btn btn-primary btn-md"&gt;문의&lt;/a&gt;</code></pre>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md</a></span>
+      <span>
+        <a href="card.html">Next · Card →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>
