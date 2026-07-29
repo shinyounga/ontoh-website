@@ -440,10 +440,11 @@ table.token-table td.token-use {
 }
 .preview .dropdown-link:hover::after { opacity: 1; transform: translateX(0); }
 
-/* Preview Frame */
+/* Preview Frame · 항상 라이트 모드 (실사이트가 라이트 모드만 지원) */
 .preview-frame {
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: #ffffff;
+  color: #212121;
+  border: 1px solid #E5E7EB;
   padding: 40px 32px;
   margin: 20px 0 24px;
   min-height: 120px;
@@ -453,6 +454,11 @@ table.token-table td.token-use {
 .preview-frame.dark {
   background: #0A2440;
   color: #fff;
+  border-color: transparent;
+}
+/* Dark portal theme · preview frame 은 여전히 라이트 유지 · 대신 border 강화 */
+:root[data-theme="dark"] .preview-frame:not(.dark) {
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06);
 }
 .preview-frame.stack { flex-direction: column; align-items: stretch; gap: 12px; }
 .preview-frame.center { justify-content: center; }

@@ -29,6 +29,45 @@
       GNB 메가메뉴 + Breadcrumb 스트립. Sticky · 92px 높이 · 대메뉴 4개 고정.
     </p>
 
+    <h2>실물 프리뷰 · GNB</h2>
+    <p>대메뉴 hover 시 밑줄 slide · 드롭다운 표시. (프리뷰는 첫 아이템만 인터랙션).</p>
+    <div class="preview-frame preview" style="padding:0; overflow:visible; align-items:stretch; min-height:auto; flex-direction:column; gap:0;">
+      <!-- GNB Header -->
+      <div style="background:#fff; border-bottom:1px solid #E5E7EB; height:72px; padding:0 32px; display:flex; align-items:center; justify-content:space-between; position:relative;">
+        <div style="display:flex; align-items:center; gap:8px; font-weight:800; letter-spacing:0.14em; font-size:14px; color:#0A2440;">
+          <span style="width:5px; height:20px; background:#0169a9;"></span>
+          ONTOH
+        </div>
+        <nav style="display:flex; gap:36px;">
+          <div id="np-1" class="np-item" style="position:relative;">
+            <a href="#" style="font-size:14px; color:#0A2440; font-weight:600; letter-spacing:-0.01em; text-decoration:none; padding:8px 0; display:inline-block; position:relative;">
+              회사소개
+              <span class="np-underline" style="position:absolute; left:0; right:0; bottom:0; height:2px; background:#0A2440; transform:scaleX(0); transition:transform 340ms cubic-bezier(0.16,1,0.3,1);"></span>
+            </a>
+          </div>
+          <div><a href="#" style="font-size:14px; color:#0A2440; font-weight:600; letter-spacing:-0.01em; text-decoration:none;">제품소개</a></div>
+          <div><a href="#" style="font-size:14px; color:#0A2440; font-weight:600; letter-spacing:-0.01em; text-decoration:none;">기술·연구</a></div>
+          <div><a href="#" style="font-size:14px; color:#0A2440; font-weight:600; letter-spacing:-0.01em; text-decoration:none;">문의</a></div>
+        </nav>
+        <button style="background:#0A2440; color:#fff; padding:8px 18px; font-size:12px; font-weight:700; border:none; letter-spacing:-0.01em;">무료 현장 진단</button>
+        <!-- Dropdown for 회사소개 -->
+        <div id="np-1-panel" style="position:absolute; top:100%; left:32px; margin-top:1px; background:#fff; border:1px solid #E5E7EB; box-shadow:0 24px 44px -20px rgba(10,36,64,0.35); padding:8px 0; min-width:180px; opacity:0; visibility:hidden; transform:translateY(-6px); transition:all 300ms cubic-bezier(0.16,1,0.3,1); z-index:10;">
+          <a href="#" class="preview dropdown-link">비전 · 미션</a>
+          <a href="#" class="preview dropdown-link">연혁</a>
+          <a href="#" class="preview dropdown-link">회사개요</a>
+          <a href="#" class="preview dropdown-link">오시는 길</a>
+        </div>
+      </div>
+      <!-- Breadcrumb Strip -->
+      <div style="background:#0A2440; height:44px; display:flex;">
+        <div style="width:44px; height:44px; display:flex; align-items:center; justify-content:center; color:#fff; border-right:1px solid rgba(255,255,255,0.15);">
+          <iconify-icon icon="mdi:home" style="font-size:18px;"></iconify-icon>
+        </div>
+        <div style="padding:0 16px; min-width:130px; display:flex; align-items:center; color:#fff; font-size:13px; font-weight:600; border-right:1px solid rgba(255,255,255,0.15);">회사소개</div>
+        <div style="padding:0 16px; min-width:130px; display:flex; align-items:center; color:#fff; font-size:13px; font-weight:800; background:rgba(255,255,255,0.06);">비전 · 미션</div>
+      </div>
+    </div>
+
     <h2>GNB · Global Navigation Bar</h2>
     <table class="token-table">
       <thead><tr><th>클래스</th><th>용도</th></tr></thead>
@@ -87,5 +126,31 @@
 </div>
 
 <script src="../shared/shell.js"></script>
+<script>
+  // Navigation preview interactions
+  (function() {
+    const item = document.getElementById('np-1');
+    const panel = document.getElementById('np-1-panel');
+    const underline = item.querySelector('.np-underline');
+    item.addEventListener('mouseenter', () => {
+      underline.style.transform = 'scaleX(1)';
+      panel.style.opacity = '1';
+      panel.style.visibility = 'visible';
+      panel.style.transform = 'translateY(0)';
+    });
+    item.addEventListener('mouseleave', () => {
+      underline.style.transform = 'scaleX(0)';
+      panel.style.opacity = '0';
+      panel.style.visibility = 'hidden';
+      panel.style.transform = 'translateY(-6px)';
+    });
+    panel.addEventListener('mouseenter', () => {
+      panel.style.opacity = '1';
+      panel.style.visibility = 'visible';
+      panel.style.transform = 'translateY(0)';
+      underline.style.transform = 'scaleX(1)';
+    });
+  })();
+</script>
 </body>
 </html>

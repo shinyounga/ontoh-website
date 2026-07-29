@@ -30,6 +30,37 @@
       감지 시나리오 예시 · 특허/논문 썸네일 · 갤러리 이미지에 사용.
     </p>
 
+    <h2>실물 프리뷰</h2>
+    <p>썸네일 클릭 → 확대 팝업 · 좌우 화살표로 순환 · Esc 로 닫기.</p>
+    <div class="preview-frame preview" style="justify-content: center; gap: 20px;">
+      <button type="button" class="lb-demo-trigger" data-src="1"
+              style="border:none; background:transparent; cursor:zoom-in; padding:0;">
+        <div style="width:120px; height:88px; background:linear-gradient(135deg, #ff8547 0%, #f97316 100%); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:700; letter-spacing:0.1em;">HELMET</div>
+      </button>
+      <button type="button" class="lb-demo-trigger" data-src="2"
+              style="border:none; background:transparent; cursor:zoom-in; padding:0;">
+        <div style="width:120px; height:88px; background:linear-gradient(135deg, #0169a9 0%, #0A2440 100%); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:700; letter-spacing:0.1em;">STRAP</div>
+      </button>
+      <button type="button" class="lb-demo-trigger" data-src="3"
+              style="border:none; background:transparent; cursor:zoom-in; padding:0;">
+        <div style="width:120px; height:88px; background:linear-gradient(135deg, #137a52 0%, #14532d 100%); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:700; letter-spacing:0.1em;">OPENING</div>
+      </button>
+    </div>
+
+    <!-- Demo Lightbox Dialog -->
+    <dialog id="lbDemo" style="border:none; padding:0; background:transparent; max-width:90vw; max-height:90vh;">
+      <div style="position:relative; background:#0A2440; box-shadow:0 40px 80px -20px rgba(10,36,64,0.5);">
+        <div id="lbDemoImg" style="width:min(600px, 90vw); height:min(400px, 60vh); background:linear-gradient(135deg, #ff8547 0%, #f97316 100%); display:flex; align-items:center; justify-content:center; color:#fff; font-size:64px; font-weight:800; letter-spacing:0.14em;">HELMET</div>
+        <p id="lbDemoCap" style="color:#fff; padding:16px 24px; font-size:14px; background:rgba(0,0,0,0.4);">안전모 미착용 감지 예시</p>
+        <button id="lbDemoClose" type="button" aria-label="닫기"
+                style="position:absolute; top:12px; right:12px; width:36px; height:36px; background:rgba(255,255,255,0.15); color:#fff; border:none; cursor:pointer; font-size:22px; border-radius:50%;">×</button>
+        <button id="lbDemoPrev" type="button" aria-label="이전"
+                style="position:absolute; top:50%; left:12px; transform:translateY(-50%); width:44px; height:44px; background:rgba(255,255,255,0.15); color:#fff; border:none; cursor:pointer; font-size:20px; border-radius:50%;">‹</button>
+        <button id="lbDemoNext" type="button" aria-label="다음"
+                style="position:absolute; top:50%; right:12px; transform:translateY(-50%); width:44px; height:44px; background:rgba(255,255,255,0.15); color:#fff; border:none; cursor:pointer; font-size:20px; border-radius:50%;">›</button>
+      </div>
+    </dialog>
+
     <h2>Property</h2>
     <table class="token-table">
       <thead><tr><th>속성</th><th>값</th></tr></thead>
@@ -82,5 +113,41 @@
 </div>
 
 <script src="../shared/shell.js"></script>
+<script>
+  // Lightbox demo
+  (function() {
+    const dialog = document.getElementById('lbDemo');
+    const img = document.getElementById('lbDemoImg');
+    const cap = document.getElementById('lbDemoCap');
+    const closeBtn = document.getElementById('lbDemoClose');
+    const prevBtn = document.getElementById('lbDemoPrev');
+    const nextBtn = document.getElementById('lbDemoNext');
+    const scenarios = [
+      { grad: 'linear-gradient(135deg, #ff8547 0%, #f97316 100%)', label: 'HELMET', cap: '안전모 미착용 감지 예시 · 산업안전보건규칙 제32조' },
+      { grad: 'linear-gradient(135deg, #0169a9 0%, #0A2440 100%)', label: 'STRAP', cap: '안전대 미착용 감지 예시 · 산업안전보건규칙 제32조' },
+      { grad: 'linear-gradient(135deg, #137a52 0%, #14532d 100%)', label: 'OPENING', cap: '개구부 안전조치 미비 감지 예시 · 산업안전보건규칙 제43조' },
+    ];
+    let idx = 0;
+    function render() {
+      img.style.background = scenarios[idx].grad;
+      img.textContent = scenarios[idx].label;
+      cap.textContent = scenarios[idx].cap;
+    }
+    document.querySelectorAll('.lb-demo-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        idx = +btn.dataset.src - 1;
+        render();
+        if (dialog.showModal) dialog.showModal();
+      });
+    });
+    closeBtn.addEventListener('click', () => dialog.close());
+    prevBtn.addEventListener('click', () => { idx = (idx - 1 + scenarios.length) % scenarios.length; render(); });
+    nextBtn.addEventListener('click', () => { idx = (idx + 1) % scenarios.length; render(); });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    });
+  })();
+</script>
 </body>
 </html>

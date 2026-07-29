@@ -30,6 +30,41 @@
       Label · Input · Textarea · Checkbox · State 조합.
     </p>
 
+    <h2>실물 프리뷰</h2>
+    <div class="preview-frame preview" style="padding: 32px 40px; flex-direction:column; align-items:stretch; max-width:560px; gap:20px;">
+      <div>
+        <label for="fp-company" style="display:block; font-size:13px; font-weight:700; color:#0A2440; margin-bottom:6px; letter-spacing:-0.01em;">
+          회사명·기관명 <span style="color:#dc2626;">*</span>
+        </label>
+        <input id="fp-company" type="text" placeholder="예) ○○주식회사"
+               style="width:100%; padding:12px 14px; font-size:14px; color:#212121; background:#fff; border:1px solid #E5E7EB; font-family:inherit; outline:none; transition:border-color 200ms cubic-bezier(0.16,1,0.3,1);"
+               onfocus="this.style.borderColor='#0169a9'"
+               onblur="this.style.borderColor='#E5E7EB'">
+      </div>
+      <div>
+        <label for="fp-name" style="display:block; font-size:13px; font-weight:700; color:#0A2440; margin-bottom:6px; letter-spacing:-0.01em;">
+          담당자 이름 <span style="color:#dc2626;">*</span>
+        </label>
+        <input id="fp-name" type="text" placeholder="홍길동"
+               style="width:100%; padding:12px 14px; font-size:14px; color:#212121; background:#fff; border:1px solid #E5E7EB; font-family:inherit; outline:none;">
+      </div>
+      <div>
+        <label for="fp-msg" style="display:block; font-size:13px; font-weight:700; color:#0A2440; margin-bottom:6px; letter-spacing:-0.01em;">
+          문의 내용
+        </label>
+        <textarea id="fp-msg" rows="3" placeholder="구체적인 도입 시나리오를 알려주세요."
+                  style="width:100%; padding:12px 14px; font-size:14px; color:#212121; background:#fff; border:1px solid #E5E7EB; font-family:inherit; outline:none; resize:vertical;"></textarea>
+      </div>
+      <label style="display:flex; align-items:flex-start; gap:8px; font-size:13px; color:#555;">
+        <input type="checkbox" style="margin-top:3px;">
+        <span>개인정보 수집·이용에 동의합니다.</span>
+      </label>
+      <button type="button"
+              style="background:#0A2440; color:#fff; padding:14px 28px; font-size:14px; font-weight:700; border:none; cursor:pointer; letter-spacing:-0.01em; align-self:flex-start;">
+        전송 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+      </button>
+    </div>
+
     <h2>Property</h2>
     <table class="token-table">
       <thead><tr><th>클래스</th><th>용도</th></tr></thead>

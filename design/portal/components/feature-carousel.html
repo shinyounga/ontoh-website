@@ -30,6 +30,39 @@
       3-6개 케이스 순환 · 도트·화살표 컨트롤.
     </p>
 
+    <h2>실물 프리뷰</h2>
+    <p>도트 · 화살표로 수동 이동 · 자동 재생 5초 간격.</p>
+    <div class="preview-frame preview" style="padding: 0; overflow:hidden; align-items:stretch;">
+      <div id="fcDemo" style="width:100%; min-height:280px; position:relative; background:#F5F6F8;">
+        <div id="fcTrack" style="display:flex; transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1); height:100%;">
+          <div class="fc-slide" style="min-width:100%; padding:40px 48px; display:flex; flex-direction:column; justify-content:center; gap:12px;">
+            <span style="font-size:11px; font-weight:800; letter-spacing:0.16em; color:#0169a9; text-transform:uppercase;">Case 01</span>
+            <h4 style="font-size:22px; font-weight:700; color:#0A2440; letter-spacing:-0.01em; margin:0;">안전모 미착용 → 제32조 즉시 알림</h4>
+            <p style="font-size:14px; color:#555; margin:0; max-width:520px;">현장 CCTV에서 안전모 미착용 근로자 자동 감지 · 산업안전보건규칙 제32조 위반 사항으로 현장 관리자에게 즉시 알림 발송.</p>
+          </div>
+          <div class="fc-slide" style="min-width:100%; padding:40px 48px; display:flex; flex-direction:column; justify-content:center; gap:12px;">
+            <span style="font-size:11px; font-weight:800; letter-spacing:0.16em; color:#0169a9; text-transform:uppercase;">Case 02</span>
+            <h4 style="font-size:22px; font-weight:700; color:#0A2440; letter-spacing:-0.01em; margin:0;">개구부 위험 → 제43조 조치 안내</h4>
+            <p style="font-size:14px; color:#555; margin:0; max-width:520px;">고소작업 시 개구부 안전조치 미비 감지 · 산업안전보건규칙 제43조 근거 · 필요 조치 자동 첨부.</p>
+          </div>
+          <div class="fc-slide" style="min-width:100%; padding:40px 48px; display:flex; flex-direction:column; justify-content:center; gap:12px;">
+            <span style="font-size:11px; font-weight:800; letter-spacing:0.16em; color:#0169a9; text-transform:uppercase;">Case 03</span>
+            <h4 style="font-size:22px; font-weight:700; color:#0A2440; letter-spacing:-0.01em; margin:0;">중장비 위험구역 → 제200조 개입</h4>
+            <p style="font-size:14px; color:#555; margin:0; max-width:520px;">중장비 작업 반경 내 근로자 침범 감지 · 제200조 적용 · PTZ 자동 추적 · 실시간 경고.</p>
+          </div>
+        </div>
+        <button id="fcPrev" type="button" aria-label="이전"
+                style="position:absolute; top:50%; left:16px; transform:translateY(-50%); width:36px; height:36px; background:#fff; border:1px solid #E5E7EB; color:#0A2440; cursor:pointer; font-size:16px;">‹</button>
+        <button id="fcNext" type="button" aria-label="다음"
+                style="position:absolute; top:50%; right:16px; transform:translateY(-50%); width:36px; height:36px; background:#fff; border:1px solid #E5E7EB; color:#0A2440; cursor:pointer; font-size:16px;">›</button>
+        <div id="fcDots" style="position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:6px;">
+          <button type="button" class="fc-dot" data-idx="0" aria-label="1번" style="width:8px; height:8px; border:none; background:#0169a9; cursor:pointer; padding:0;"></button>
+          <button type="button" class="fc-dot" data-idx="1" aria-label="2번" style="width:8px; height:8px; border:none; background:#E5E7EB; cursor:pointer; padding:0;"></button>
+          <button type="button" class="fc-dot" data-idx="2" aria-label="3번" style="width:8px; height:8px; border:none; background:#E5E7EB; cursor:pointer; padding:0;"></button>
+        </div>
+      </div>
+    </div>
+
     <h2>Property (Feature 04 규정 매칭 사례)</h2>
     <table class="token-table">
       <thead><tr><th>클래스</th><th>용도</th></tr></thead>
@@ -71,5 +104,40 @@
 </div>
 
 <script src="../shared/shell.js"></script>
+<script>
+  // Feature Carousel demo
+  (function() {
+    const track = document.getElementById('fcTrack');
+    const dots = document.querySelectorAll('.fc-dot');
+    const prev = document.getElementById('fcPrev');
+    const next = document.getElementById('fcNext');
+    const total = 3;
+    let idx = 0;
+    let autoTimer = null;
+
+    function goTo(i) {
+      idx = (i + total) % total;
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dots.forEach((d, di) => {
+        d.style.background = di === idx ? '#0169a9' : '#E5E7EB';
+      });
+    }
+    prev.addEventListener('click', () => { goTo(idx - 1); resetAuto(); });
+    next.addEventListener('click', () => { goTo(idx + 1); resetAuto(); });
+    dots.forEach(d => d.addEventListener('click', () => { goTo(+d.dataset.idx); resetAuto(); }));
+
+    function startAuto() {
+      autoTimer = setInterval(() => goTo(idx + 1), 5000);
+    }
+    function resetAuto() {
+      if (autoTimer) clearInterval(autoTimer);
+      startAuto();
+    }
+    // Respect reduced-motion
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      startAuto();
+    }
+  })();
+</script>
 </body>
 </html>
