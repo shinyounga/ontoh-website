@@ -240,11 +240,41 @@
     });
   }
 
+  // ==================== Code Copy Buttons ====================
+  function attachCopyButtons() {
+    document.querySelectorAll('.doc pre').forEach(pre => {
+      if (pre.querySelector('.code-copy')) return;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'code-copy';
+      btn.textContent = 'Copy';
+      btn.setAttribute('aria-label', '코드 복사');
+      btn.addEventListener('click', async () => {
+        const code = pre.querySelector('code');
+        const text = code ? code.textContent : pre.textContent;
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = 'Copied';
+          btn.classList.add('is-copied');
+          setTimeout(() => {
+            btn.textContent = 'Copy';
+            btn.classList.remove('is-copied');
+          }, 1600);
+        } catch (e) {
+          btn.textContent = 'Failed';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 1600);
+        }
+      });
+      pre.appendChild(btn);
+    });
+  }
+
   // ==================== Init ====================
   function init() {
     renderTopnav();
     renderSidebar();
     renderBrandHref();
+    attachCopyButtons();
 
     const savedTheme = localStorage.getItem('portal-theme');
     if (savedTheme) setTheme(savedTheme);

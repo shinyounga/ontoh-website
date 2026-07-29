@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 · 페이지를 찾을 수 없음 · ONTOH Design</title>
+  <meta name="description" content="요청하신 페이지가 존재하지 않습니다.">
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A2440'/%3E%3Crect x='4' y='6' width='3' height='20' fill='%230169a9'/%3E%3Ctext x='12' y='23' font-family='sans-serif' font-size='18' font-weight='800' fill='white'%3EO%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="shared/shell.css">
+  <style>
+    .err-wrap {
+      min-height: 100dvh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .err-inner {
+      max-width: 520px;
+    }
+    .err-code {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: clamp(80px, 15vw, 140px);
+      font-weight: 800; line-height: 1;
+      color: var(--accent);
+      letter-spacing: -0.04em;
+      margin-bottom: 20px;
+    }
+    .err-title {
+      font-size: 24px; font-weight: 800; color: var(--ink);
+      letter-spacing: -0.02em; margin-bottom: 12px;
+    }
+    .err-msg {
+      font-size: 15px; color: var(--sub);
+      line-height: 1.65; margin-bottom: 32px;
+    }
+    .err-actions {
+      display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+    }
+    .err-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 12px 24px; font-size: 14px; font-weight: 700;
+      text-decoration: none; border: 1px solid transparent;
+      transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .err-btn-primary { background: var(--ink); color: #fff; }
+    .err-btn-primary:hover { background: var(--accent); }
+    .err-btn-outline { color: var(--ink); border-color: var(--border); }
+    .err-btn-outline:hover { color: var(--accent); border-color: var(--accent); background: var(--band); }
+    .err-suggestions {
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid var(--hair);
+      text-align: left;
+    }
+    .err-suggestions h3 {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--sub);
+      margin-bottom: 12px;
+    }
+    .err-suggestions ul { list-style: none; padding: 0; }
+    .err-suggestions li { margin-bottom: 6px; }
+    .err-suggestions a {
+      color: var(--body); text-decoration: none;
+      font-size: 14px; display: inline-flex; align-items: center; gap: 6px;
+    }
+    .err-suggestions a:hover { color: var(--accent); }
+    .err-suggestions a::before {
+      content: "→"; color: var(--accent); font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+<div class="err-wrap">
+  <div class="err-inner">
+    <div class="err-code" aria-label="404 에러">404</div>
+    <h1 class="err-title">페이지를 찾을 수 없습니다.</h1>
+    <p class="err-msg">
+      요청하신 페이지가 이동됐거나 존재하지 않습니다.<br>
+      아래 링크로 원하는 정보를 찾으실 수 있습니다.
+    </p>
+
+    <div class="err-actions">
+      <a href="/design/portal/" class="err-btn err-btn-primary">
+        <iconify-icon icon="solar:home-linear" style="font-size:16px;"></iconify-icon>
+        포털 홈으로
+      </a>
+      <a href="javascript:history.back()" class="err-btn err-btn-outline">
+        <iconify-icon icon="solar:arrow-left-linear" style="font-size:16px;"></iconify-icon>
+        이전 페이지
+      </a>
+    </div>
+
+    <div class="err-suggestions">
+      <h3>많이 찾는 페이지</h3>
+      <ul>
+        <li><a href="/design/portal/get-started/introduction.html">Get Started · Introduction</a></li>
+        <li><a href="/design/portal/foundations/color.html">Foundations · Color</a></li>
+        <li><a href="/design/portal/components/button.html">Components · Button</a></li>
+        <li><a href="/design/portal/patterns/hero.html">Patterns · Hero</a></li>
+        <li><a href="/design/portal/develop/integration.html">Develop · Integration</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
