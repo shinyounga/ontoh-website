@@ -1,13 +1,15 @@
 /* ============================================================
-   ONTOH Design Portal · Shell JS
-   Sidebar rendering · Theme toggle · Mobile menu · Active link
+   ONTOH Design Portal · Shell JS · v2 (systematic improvements)
+   - JS-rendered sidebar with WIP status handling
+   - Theme toggle · Mobile menu · Active link
+   - Client-side search over sidebar
+   - ARIA improvements
    ============================================================ */
 
 (function () {
   'use strict';
 
   // ==================== Path Prefix Detection ====================
-  // Portal root is /design/portal/. Compute how many "../" needed to reach it.
   function getPathPrefix() {
     const path = location.pathname;
     const m = path.match(/\/design\/portal\/(.*)$/);
@@ -20,68 +22,68 @@
   const PREFIX = getPathPrefix();
 
   // ==================== Sidebar Structure ====================
+  // status: 'ready' (default) or 'wip' (Coming in Stage 3)
   const SIDEBAR = [
     {
       title: 'Get Started',
       icon: 'solar:book-linear',
       links: [
-        { label: 'Introduction',  href: 'get-started/introduction.html' },
-        { label: 'Principles',    href: 'get-started/principles.html' },
-        { label: 'Install · Use', href: 'get-started/install.html' },
+        { label: 'Introduction',  href: 'get-started/introduction.html', status: 'ready' },
+        { label: 'Principles',    href: 'get-started/principles.html',   status: 'wip' },
+        { label: 'Install · Use', href: 'get-started/install.html',      status: 'wip' },
       ]
     },
     {
       title: 'Foundations',
       icon: 'solar:palette-linear',
       links: [
-        { label: 'Color',       href: 'foundations/color.html' },
-        { label: 'Typography',  href: 'foundations/typography.html' },
-        { label: 'Spacing',     href: 'foundations/spacing.html' },
-        { label: 'Radius · Shape', href: 'foundations/radius.html' },
-        { label: 'Elevation',   href: 'foundations/elevation.html' },
-        { label: 'Motion',      href: 'foundations/motion.html' },
-        { label: 'Iconography', href: 'foundations/iconography.html' },
+        { label: 'Color',          href: 'foundations/color.html',       status: 'ready' },
+        { label: 'Typography',     href: 'foundations/typography.html',  status: 'ready' },
+        { label: 'Spacing',        href: 'foundations/spacing.html',     status: 'ready' },
+        { label: 'Radius · Shape', href: 'foundations/radius.html',      status: 'ready' },
+        { label: 'Elevation',      href: 'foundations/elevation.html',   status: 'ready' },
+        { label: 'Motion',         href: 'foundations/motion.html',      status: 'ready' },
+        { label: 'Iconography',    href: 'foundations/iconography.html', status: 'ready' },
       ]
     },
     {
       title: 'Components',
       icon: 'solar:widget-3-linear',
       links: [
-        { label: 'Button',           href: 'components/button.html' },
-        { label: 'Card',             href: 'components/card.html' },
-        { label: 'Tag',              href: 'components/tag.html' },
-        { label: 'Kicker',           href: 'components/kicker.html' },
-        { label: 'Stat Number',      href: 'components/stat-number.html' },
-        { label: 'Dropdown Link',    href: 'components/dropdown-link.html' },
-        { label: 'Breadcrumb',       href: 'components/breadcrumb.html' },
-        { label: 'Lightbox',         href: 'components/lightbox.html' },
-        { label: 'Feature Carousel', href: 'components/feature-carousel.html' },
-        { label: 'Alert',            href: 'components/alert.html' },
-        { label: 'Form',             href: 'components/form.html' },
-        { label: 'Navigation',       href: 'components/navigation.html' },
+        { label: 'Button',           href: 'components/button.html',            status: 'wip' },
+        { label: 'Card',             href: 'components/card.html',              status: 'wip' },
+        { label: 'Tag',              href: 'components/tag.html',               status: 'wip' },
+        { label: 'Kicker',           href: 'components/kicker.html',            status: 'wip' },
+        { label: 'Stat Number',      href: 'components/stat-number.html',       status: 'wip' },
+        { label: 'Dropdown Link',    href: 'components/dropdown-link.html',     status: 'wip' },
+        { label: 'Breadcrumb',       href: 'components/breadcrumb.html',        status: 'wip' },
+        { label: 'Lightbox',         href: 'components/lightbox.html',          status: 'wip' },
+        { label: 'Feature Carousel', href: 'components/feature-carousel.html',  status: 'wip' },
+        { label: 'Alert',            href: 'components/alert.html',             status: 'wip' },
+        { label: 'Form',             href: 'components/form.html',              status: 'wip' },
+        { label: 'Navigation',       href: 'components/navigation.html',        status: 'wip' },
       ]
     },
     {
       title: 'Patterns',
       icon: 'solar:layers-linear',
       links: [
-        { label: 'Hero',    href: 'patterns/hero.html' },
-        { label: 'Section', href: 'patterns/section.html' },
-        { label: 'CTA',     href: 'patterns/cta.html' },
-        { label: 'Form',    href: 'patterns/form.html' },
+        { label: 'Hero',    href: 'patterns/hero.html',    status: 'wip' },
+        { label: 'Section', href: 'patterns/section.html', status: 'wip' },
+        { label: 'CTA',     href: 'patterns/cta.html',     status: 'wip' },
+        { label: 'Form',    href: 'patterns/form.html',    status: 'wip' },
       ]
     },
     {
       title: 'Develop',
       icon: 'solar:code-square-linear',
       links: [
-        { label: 'Integration', href: 'develop/integration.html' },
-        { label: 'Changelog',   href: 'develop/changelog.html' },
+        { label: 'Integration', href: 'develop/integration.html', status: 'wip' },
+        { label: 'Changelog',   href: 'develop/changelog.html',   status: 'wip' },
       ]
     },
   ];
 
-  // Detect active link from URL
   function isActive(href) {
     const path = location.pathname;
     const m = path.match(/\/design\/portal\/(.*)$/);
@@ -91,16 +93,19 @@
     return current === href;
   }
 
-  // Render sidebar
   function renderSidebar() {
     const sidebar = document.querySelector('.sidebar');
     if (!sidebar) return;
-    if (sidebar.dataset.rendered) return; // already rendered
+    if (sidebar.dataset.rendered) return;
+    sidebar.setAttribute('aria-label', '문서 내비게이션');
 
     const html = SIDEBAR.map(section => {
       const links = section.links.map(link => {
         const activeClass = isActive(link.href) ? ' is-active' : '';
-        return `<a href="${PREFIX}${link.href}" class="side-link${activeClass}">${link.label}</a>`;
+        if (link.status === 'wip') {
+          return `<span class="side-link is-wip" data-label="${link.label.toLowerCase()}" role="link" aria-disabled="true" tabindex="-1" title="Stage 3 예정 · 아직 준비 중">${link.label}<span class="wip-badge">SOON</span></span>`;
+        }
+        return `<a href="${PREFIX}${link.href}" class="side-link${activeClass}" data-label="${link.label.toLowerCase()}">${link.label}</a>`;
       }).join('\n      ');
       return `
     <div class="side-section">
@@ -116,7 +121,6 @@
     sidebar.dataset.rendered = '1';
   }
 
-  // Render top brand link (adjust to home)
   function renderBrandHref() {
     const brand = document.querySelector('.topnav-brand');
     if (brand) brand.setAttribute('href', PREFIX + 'index.html');
@@ -141,6 +145,7 @@
     if (icon) {
       icon.setAttribute('icon', t === 'dark' ? 'solar:sun-linear' : 'solar:moon-linear');
     }
+    btn.setAttribute('aria-label', t === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환');
   }
 
   // ==================== Mobile Sidebar ====================
@@ -150,6 +155,56 @@
     const isOpen = open !== undefined ? open : !sidebar.classList.contains('is-open');
     sidebar.classList.toggle('is-open', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
+    const menuBtn = document.getElementById('menuToggle');
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  // ==================== Client-side Search ====================
+  function initSearch() {
+    const input = document.querySelector('.topnav-search input');
+    if (!input) return;
+
+    let noResultsMsg = null;
+
+    function filter() {
+      const q = input.value.trim().toLowerCase();
+      const sidebar = document.querySelector('.sidebar');
+      if (!sidebar) return;
+
+      let anyMatch = false;
+      sidebar.querySelectorAll('.side-section').forEach(section => {
+        let sectionHasMatch = false;
+        section.querySelectorAll('.side-link').forEach(link => {
+          const label = link.dataset.label || link.textContent.toLowerCase();
+          const match = !q || label.includes(q);
+          link.style.display = match ? '' : 'none';
+          if (match) { sectionHasMatch = true; anyMatch = true; }
+        });
+        section.style.display = sectionHasMatch ? '' : 'none';
+      });
+
+      // "no results" message
+      if (!anyMatch && q) {
+        if (!noResultsMsg) {
+          noResultsMsg = document.createElement('p');
+          noResultsMsg.className = 'search-no-results';
+          noResultsMsg.textContent = '검색 결과 없음';
+          sidebar.appendChild(noResultsMsg);
+        }
+      } else if (noResultsMsg) {
+        noResultsMsg.remove();
+        noResultsMsg = null;
+      }
+    }
+
+    input.addEventListener('input', filter);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        input.value = '';
+        filter();
+        input.blur();
+      }
+    });
   }
 
   // ==================== Init ====================
@@ -170,7 +225,13 @@
 
     const menuBtn = document.getElementById('menuToggle');
     const backdrop = document.querySelector('.sidebar-backdrop');
-    if (menuBtn) menuBtn.addEventListener('click', () => toggleSidebar());
+    if (menuBtn) {
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.setAttribute('aria-controls', 'portalSidebar');
+      menuBtn.addEventListener('click', () => toggleSidebar());
+    }
+    const sidebar = document.querySelector('.sidebar');
+    if (sidebar) sidebar.setAttribute('id', 'portalSidebar');
     if (backdrop) backdrop.addEventListener('click', () => toggleSidebar(false));
 
     document.querySelectorAll('.sidebar .side-link').forEach(link => {
@@ -179,14 +240,25 @@
       });
     });
 
+    // WIP links: prevent navigation
+    document.querySelectorAll('.sidebar .side-link.is-wip').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+      });
+    });
+
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') toggleSidebar(false);
     });
 
+    initSearch();
+
+    // Search shortcut
     const searchInput = document.querySelector('.topnav-search input');
     if (searchInput) {
       document.addEventListener('keydown', (e) => {
-        if (e.key === '/' && document.activeElement !== searchInput) {
+        if (e.key === '/' && document.activeElement !== searchInput
+            && !['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)) {
           e.preventDefault();
           searchInput.focus();
         }
