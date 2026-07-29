@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spacing · ONTOH Design</title>
+  <meta name="description" content="ONTOH 간격 시스템 · Tailwind 기본 스케일 · 컴포넌트별 여백 규칙">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  <style>
+    .space-scale {
+      margin: 24px 0 32px;
+      border-top: 1px solid var(--hair);
+    }
+    .space-row {
+      display: grid;
+      grid-template-columns: 80px 90px 1fr;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--hair);
+      gap: 20px;
+    }
+    .space-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 13px; color: var(--ink); font-weight: 700;
+    }
+    .space-value {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12.5px; color: var(--sub);
+    }
+    .space-bar {
+      height: 24px;
+      background: var(--accent);
+      display: block;
+    }
+    table.token-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0 28px;
+      font-size: 13.5px;
+    }
+    table.token-table th, table.token-table td {
+      padding: 10px 14px; text-align: left;
+      border-bottom: 1px solid var(--hair);
+    }
+    table.token-table th {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sub); background: var(--band);
+    }
+    table.token-table td.token-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12.5px; color: var(--ink); font-weight: 700;
+    }
+    table.token-table td.token-value {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12.5px; color: var(--sub);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">
+    <span class="topnav-brand-name">ONTOH</span>
+    <span class="topnav-brand-sub">Design</span>
+  </a>
+  <div class="topnav-right">
+    <div class="topnav-search">
+      <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+      <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+      <kbd>/</kbd>
+    </div>
+    <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+      <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+    </button>
+    <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+      <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+    </button>
+    <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+    </a>
+  </div>
+</nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main doc">
+    <p class="doc-eyebrow">Foundations</p>
+    <h1 class="doc-title">Spacing</h1>
+    <p class="doc-lead">
+      Tailwind 기본 spacing scale 사용. 커스텀 spacing 정의 없음.
+      <strong>여백이 위계</strong> — ONTOH는 큰 그림자·볼드 대신 여백으로 정보 위계를 만듭니다.
+    </p>
+
+    <h2>기본 스케일</h2>
+    <p>Tailwind의 4px 배수 (0.25rem) 기반. 자주 쓰는 단위:</p>
+
+    <div class="space-scale">
+      <div class="space-row">
+        <span class="space-name">gap-2</span>
+        <span class="space-value">8px</span>
+        <span><span class="space-bar" style="width:8px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">gap-3</span>
+        <span class="space-value">12px</span>
+        <span><span class="space-bar" style="width:12px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">gap-4</span>
+        <span class="space-value">16px</span>
+        <span><span class="space-bar" style="width:16px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">p-6</span>
+        <span class="space-value">24px</span>
+        <span><span class="space-bar" style="width:24px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">p-7</span>
+        <span class="space-value">28px</span>
+        <span><span class="space-bar" style="width:28px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">p-8</span>
+        <span class="space-value">32px</span>
+        <span><span class="space-bar" style="width:32px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">p-10</span>
+        <span class="space-value">40px</span>
+        <span><span class="space-bar" style="width:40px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">py-14</span>
+        <span class="space-value">56px</span>
+        <span><span class="space-bar" style="width:56px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">py-16</span>
+        <span class="space-value">64px</span>
+        <span><span class="space-bar" style="width:64px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">py-24</span>
+        <span class="space-value">96px</span>
+        <span><span class="space-bar" style="width:96px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">py-28</span>
+        <span class="space-value">112px</span>
+        <span><span class="space-bar" style="width:112px;"></span></span>
+      </div>
+      <div class="space-row">
+        <span class="space-name">py-32</span>
+        <span class="space-value">128px</span>
+        <span><span class="space-bar" style="width:128px;"></span></span>
+      </div>
+    </div>
+
+    <h2>여백 위계 규칙</h2>
+    <table class="token-table">
+      <thead>
+        <tr><th>위치</th><th>모바일</th><th>데스크톱</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>섹션 상하</td>
+          <td class="token-name">py-16</td>
+          <td class="token-name">md:py-24</td>
+        </tr>
+        <tr>
+          <td>헤더 → 콘텐츠</td>
+          <td class="token-name">mb-14</td>
+          <td class="token-name">md:mb-16</td>
+        </tr>
+        <tr>
+          <td>카드 내부 padding (본문 적은 카드)</td>
+          <td class="token-name">p-6</td>
+          <td class="token-name">md:p-7</td>
+        </tr>
+        <tr>
+          <td>카드 내부 padding (본문 많은 카드)</td>
+          <td class="token-name">p-7</td>
+          <td class="token-name">md:p-8 / md:p-10</td>
+        </tr>
+        <tr>
+          <td>텍스트 gap (inline)</td>
+          <td class="token-name">gap-2</td>
+          <td class="token-name">gap-3</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Container 폭</h2>
+    <ul>
+      <li><strong>모바일</strong>: 100% - 32px 여백 (좌우 <code>px-4</code>)</li>
+      <li><strong>데스크톱</strong>: <code>max-w-[1200px]</code> · <code>mx-auto</code> · 좌우 <code>px-6 sm:px-10 lg:px-14</code></li>
+    </ul>
+
+    <h2>Viewport</h2>
+    <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code></pre>
+    <ul>
+      <li><code>min-h-[100dvh]</code> 사용 (mobile Safari 대응 · CLAUDE.md 규정)</li>
+      <li><code>h-screen</code> 금지</li>
+    </ul>
+
+    <h2>사용 예시</h2>
+    <pre><code>&lt;!-- 표준 섹션 --&gt;
+&lt;section class="py-16 md:py-24 border-t border-hair"&gt;
+  &lt;div class="max-w-[1200px] mx-auto px-6 sm:px-10 lg:px-14"&gt;
+    &lt;p class="kicker mb-4"&gt;섹션 라벨&lt;/p&gt;
+    &lt;h2 class="text-h2 font-bold mb-14 md:mb-16"&gt;섹션 헤드&lt;/h2&gt;
+    &lt;!-- 콘텐츠 --&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- 카드 --&gt;
+&lt;article class="card p-6 md:p-7"&gt;...&lt;/article&gt;</code></pre>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../tokens.md">tokens.md §5</a></span>
+      <span>
+        <a href="typography.html">← Typography</a> · <a href="radius.html">Next · Radius →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

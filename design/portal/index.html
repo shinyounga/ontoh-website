@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ONTOH Design · 디자인 시스템 포털</title>
+  <meta name="description" content="ONTOH 디자인 시스템의 단일 진실 소스 · 토큰 · 컴포넌트 · 패턴 · 접근성 기준">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="shared/shell.css">
+</head>
+<body>
+
+<!-- ==================== Top Navigation ==================== -->
+<nav class="topnav">
+  <a href="index.html" class="topnav-brand">
+    <span class="topnav-brand-name">ONTOH</span>
+    <span class="topnav-brand-sub">Design</span>
+  </a>
+  <div class="topnav-right">
+    <div class="topnav-search">
+      <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+      <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+      <kbd>/</kbd>
+    </div>
+    <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+      <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+    </button>
+    <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+      <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+    </button>
+    <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+    </a>
+  </div>
+</nav>
+
+<!-- ==================== Shell (Sidebar + Main) ==================== -->
+<div class="shell">
+  <!-- =========== Sidebar (JS-rendered by shell.js) =========== -->
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <!-- =========== Main =========== -->
+  <main class="main doc">
+    <div class="home-hero">
+      <span class="home-eyebrow">v3.5 · 2026-07-29</span>
+      <h1 class="home-title">ONTOH 디자인 시스템</h1>
+      <p class="home-lead">
+        <strong>주식회사 온토</strong> — 건설현장 안전관리 Physical AI 기업의 웹사이트 디자인 시스템.
+        컴포넌트 · 토큰 · 접근성 기준을 하나의 참조로 정의해 일관된 사용자 경험을 만듭니다.
+      </p>
+      <div class="home-meta">
+        <span><strong>25+</strong> 페이지</span>
+        <span><strong>12</strong> 컴포넌트</span>
+        <span><strong>7</strong> Foundation</span>
+        <span><strong>WCAG 2.1 AA</strong> 준수</span>
+      </div>
+    </div>
+
+    <div class="category-grid">
+      <a href="get-started/introduction.html" class="category-card">
+        <div class="category-icon">
+          <iconify-icon icon="solar:book-linear"></iconify-icon>
+        </div>
+        <h3 class="category-title">
+          Get Started
+          <span class="category-arrow">→</span>
+        </h3>
+        <p class="category-desc">브랜드 요약 · 디자인 원칙 · 신규 페이지 만드는 방법.</p>
+        <div class="category-list">
+          <span>Introduction</span><span>Principles</span><span>Install</span>
+        </div>
+      </a>
+
+      <a href="foundations/color.html" class="category-card">
+        <div class="category-icon">
+          <iconify-icon icon="solar:palette-linear"></iconify-icon>
+        </div>
+        <h3 class="category-title">
+          Foundations
+          <span class="category-arrow">→</span>
+        </h3>
+        <p class="category-desc">Color · Typography · Spacing · Motion · Iconography 등 디자인 토큰.</p>
+        <div class="category-list">
+          <span>Color</span><span>Typography</span><span>Spacing</span><span>Radius</span><span>Elevation</span><span>Motion</span><span>Iconography</span>
+        </div>
+      </a>
+
+      <a href="components/button.html" class="category-card">
+        <div class="category-icon">
+          <iconify-icon icon="solar:widget-3-linear"></iconify-icon>
+        </div>
+        <h3 class="category-title">
+          Components
+          <span class="category-arrow">→</span>
+        </h3>
+        <p class="category-desc">Button · Card · Tag · Kicker · 12개 컴포넌트 사용 가이드.</p>
+        <div class="category-list">
+          <span>Button</span><span>Card</span><span>Tag</span><span>Kicker</span><span>Alert</span><span>+8 more</span>
+        </div>
+      </a>
+
+      <a href="patterns/hero.html" class="category-card">
+        <div class="category-icon">
+          <iconify-icon icon="solar:layers-linear"></iconify-icon>
+        </div>
+        <h3 class="category-title">
+          Patterns
+          <span class="category-arrow">→</span>
+        </h3>
+        <p class="category-desc">Hero · Section · CTA · Form 등 페이지 조립 템플릿.</p>
+        <div class="category-list">
+          <span>Hero</span><span>Section</span><span>CTA</span><span>Form</span>
+        </div>
+      </a>
+
+      <a href="develop/integration.html" class="category-card">
+        <div class="category-icon">
+          <iconify-icon icon="solar:code-square-linear"></iconify-icon>
+        </div>
+        <h3 class="category-title">
+          Develop
+          <span class="category-arrow">→</span>
+        </h3>
+        <p class="category-desc">신규 페이지 통합 방법 · 변경 이력 · 도구 가이드.</p>
+        <div class="category-list">
+          <span>Integration</span><span>Changelog</span>
+        </div>
+      </a>
+
+      <a href="../a11y.md" class="category-card">
+        <div class="category-icon" style="background: color-mix(in oklab, #137a52 12%, transparent); color: #137a52;">
+          <iconify-icon icon="solar:accessibility-linear"></iconify-icon>
+        </div>
+        <h3 class="category-title">
+          Accessibility
+          <span class="category-arrow">→</span>
+        </h3>
+        <p class="category-desc">WCAG 2.1 AA 기준 · 색상 대비 · 키보드 · Skip-to-content.</p>
+        <div class="category-list">
+          <span>Focus</span><span>Contrast</span><span>Reduced Motion</span><span>Landmark</span>
+        </div>
+      </a>
+    </div>
+
+    <h2>최근 업데이트</h2>
+    <ul>
+      <li><strong>2026-07-29</strong> · Kicker 스펙 개정 · 폰트 15px · 세로 블록 5×20px (v3.5)</li>
+      <li><strong>2026-07-28</strong> · CHECKLIST 10섹션 감사 완료 · 접근성 batch 반영 · 운영 문서 신규 (operations.md)</li>
+      <li><strong>2026-07-28</strong> · 디렉토리 정리 · archive/ 6-폴더 구조 · 실험 페이지 이동</li>
+      <li><strong>2026-07-22</strong> · 디자인 시스템 v3.0 통합 · design/ 폴더로 단일 진실 소스화</li>
+    </ul>
+
+    <h2>이 포털의 역할</h2>
+    <p>
+      기존에는 <code>design/</code> 폴더에 마크다운 문서들이 흩어져 있었습니다.
+      이 포털은 그 내용을 <strong>브라우저에서 상호작용하며 탐색</strong>할 수 있게 정리한 것입니다.
+      실물 컴포넌트 미리보기 · 복사 가능한 코드 스니펫 · 사이드바 네비게이션으로 필요한 정보를 빠르게 찾을 수 있습니다.
+    </p>
+    <div class="callout">
+      <strong>진행 중</strong> · 이 포털은 3단계로 순차 구축됩니다.
+      1단계 (셸 + Get Started) 완료 · 2단계 Foundations · 3단계 Components + Patterns 예정.
+    </div>
+
+    <div class="doc-footer">
+      <span>ONTOH Design Portal · v3.5 · 2026-07-29</span>
+      <span>
+        <a href="../README.md">README (Markdown)</a> ·
+        <a href="../CHECKLIST.md">CHECKLIST</a> ·
+        <a href="../operations.md">Operations</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="shared/shell.js"></script>
+</body>
+</html>

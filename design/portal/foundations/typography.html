@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typography · ONTOH Design</title>
+  <meta name="description" content="ONTOH 타이포그래피 토큰 · Semantic scale · Pretendard 단일 · Weight 규칙">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  <style>
+    .type-specimen {
+      border: 1px solid var(--hair);
+      padding: 24px 28px;
+      margin: 16px 0;
+      background: var(--bg);
+    }
+    .type-specimen + .type-specimen { border-top: none; margin-top: -1px; }
+    .type-meta {
+      display: flex; justify-content: space-between; gap: 16px;
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 11px; color: var(--sub);
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--hair);
+    }
+    .type-meta .name { color: var(--ink); font-weight: 700; }
+    .type-sample {
+      color: var(--ink);
+      overflow-wrap: break-word;
+    }
+    /* Sample sizes */
+    .ts-caption  { font-size: 12px; line-height: 1.5; }
+    .ts-body-sm  { font-size: 13px; line-height: 1.6; }
+    .ts-body     { font-size: 15px; line-height: 1.65; }
+    .ts-body-md  { font-size: 17px; line-height: 1.65; }
+    .ts-body-lg  { font-size: 19px; line-height: 1.7; }
+    .ts-h3       { font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; font-weight: 700; }
+    .ts-h2       { font-size: 28px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 700; }
+    .ts-h1       { font-size: 38px; line-height: 1.2; letter-spacing: -0.02em; font-weight: 800; }
+    .ts-hero     { font-size: 48px; line-height: 1.15; letter-spacing: -0.02em; font-weight: 800; }
+    @media (max-width: 720px) {
+      .ts-hero { font-size: 40px; }
+      .ts-h1 { font-size: 32px; }
+    }
+
+    /* Weight scale */
+    .weight-row {
+      display: grid;
+      grid-template-columns: 100px 80px 1fr;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--hair);
+      gap: 20px;
+    }
+    .weight-row:last-child { border-bottom: none; }
+    .weight-label {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12px; color: var(--sub);
+    }
+    .weight-name {
+      font-size: 13px; color: var(--ink); font-weight: 700;
+    }
+    .weight-sample {
+      font-size: 22px; color: var(--ink); letter-spacing: -0.01em;
+    }
+    .w-400 { font-weight: 400; }
+    .w-500 { font-weight: 500; }
+    .w-600 { font-weight: 600; }
+    .w-700 { font-weight: 700; }
+    .w-800 { font-weight: 800; }
+
+    table.token-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0 28px;
+      font-size: 13.5px;
+    }
+    table.token-table th, table.token-table td {
+      padding: 10px 14px; text-align: left;
+      border-bottom: 1px solid var(--hair);
+    }
+    table.token-table th {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sub); background: var(--band);
+    }
+    table.token-table td.token-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12.5px; color: var(--ink); font-weight: 700;
+    }
+    table.token-table td.token-value {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12.5px; color: var(--sub);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">
+    <span class="topnav-brand-name">ONTOH</span>
+    <span class="topnav-brand-sub">Design</span>
+  </a>
+  <div class="topnav-right">
+    <div class="topnav-search">
+      <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+      <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+      <kbd>/</kbd>
+    </div>
+    <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+      <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+    </button>
+    <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+      <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+    </button>
+    <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+    </a>
+  </div>
+</nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main doc">
+    <p class="doc-eyebrow">Foundations</p>
+    <h1 class="doc-title">Typography</h1>
+    <p class="doc-lead">
+      Pretendard 단일 폰트 · Semantic scale 9단계 · Weight 5단계.
+      새 컴포넌트는 반드시 semantic scale (<code>text-h1</code>, <code>text-body</code> 등) 만 사용합니다.
+    </p>
+
+    <h2>Font Family</h2>
+    <p>
+      본문·UI: <strong>Pretendard</strong> (jsDelivr CDN).
+      한국어·영문·숫자 통합 지원. Inter · Noto Sans KR · 명조체 사용 금지.
+    </p>
+    <table class="token-table">
+      <thead>
+        <tr><th>역할</th><th>Family</th><th>Source</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sans (본문·UI)</td>
+          <td class="token-name">Pretendard</td>
+          <td class="token-value">jsDelivr CDN</td>
+        </tr>
+        <tr>
+          <td>Serif (특수 강조)</td>
+          <td class="token-name">Nanum Myeongjo</td>
+          <td class="token-value">Google Fonts · 인용문 등 특수 케이스만</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Semantic Type Scale</h2>
+    <p>Tailwind config <code>fontSize</code> 확장으로 정의. 9단계 · 각 line-height + letter-spacing 매핑.</p>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span class="name">.text-hero</span><span>48px / lh 1.15 / -0.02em / weight 800</span></div>
+      <div class="type-sample ts-hero">현장의 눈을 대신하는 Physical AI</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span class="name">.text-h1</span><span>38px / lh 1.2 / -0.02em</span></div>
+      <div class="type-sample ts-h1">주식회사 온토 · 안전 관제 시스템</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span class="name">.text-h2</span><span>28px / lh 1.25 / -0.015em</span></div>
+      <div class="type-sample ts-h2">5대 현장 위험 유형 감지 시나리오</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span class="name">.text-h3</span><span>22px / lh 1.3 / -0.01em</span></div>
+      <div class="type-sample ts-h3">규정 자동 대조 시스템</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span class="name">.text-body-lg</span><span>19px / lh 1.7</span></div>
+      <div class="type-sample ts-body-lg">건설현장 안전관리를 위한 CCTV 자율 관제 시스템입니다.</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span class="name">.text-body-md</span><span>17px / lh 1.65</span></div>
+      <div class="type-sample ts-body-md">사람이 놓치는 위험을 24시간 대신 감지합니다.</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span class="name">.text-body</span><span>15px / lh 1.65 · 본문 base</span></div>
+      <div class="type-sample ts-body">본문 기본 사이즈입니다. 산업안전보건법·시행규칙 조항 자동 매칭. 위반 시 조치 안내까지.</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span class="name">.text-body-sm</span><span>13px / lh 1.6</span></div>
+      <div class="type-sample ts-body-sm">폼 라벨 · 브레드크럼 · 작은 body 텍스트에 사용합니다.</div>
+    </div>
+    <div class="type-specimen">
+      <div class="type-meta"><span class="name">.text-caption</span><span>12px / lh 1.5</span></div>
+      <div class="type-sample ts-caption">라벨 · 뱃지 · 푸터 메타 · 캡션</div>
+    </div>
+
+    <h2>Font Weight Scale</h2>
+
+    <div>
+      <div class="weight-row">
+        <span class="weight-label">400</span>
+        <span class="weight-name">Regular</span>
+        <span class="weight-sample w-400">기본 본문 · 정보 전달</span>
+      </div>
+      <div class="weight-row">
+        <span class="weight-label">500</span>
+        <span class="weight-name">Medium</span>
+        <span class="weight-sample w-500">강조 body · 인용문</span>
+      </div>
+      <div class="weight-row">
+        <span class="weight-label">600</span>
+        <span class="weight-name">Semibold</span>
+        <span class="weight-sample w-600">서브 헤딩 · 리스트 강조</span>
+      </div>
+      <div class="weight-row">
+        <span class="weight-label">700</span>
+        <span class="weight-name">Bold</span>
+        <span class="weight-sample w-700">헤딩 · CTA 버튼</span>
+      </div>
+      <div class="weight-row">
+        <span class="weight-label">800</span>
+        <span class="weight-name">Extrabold</span>
+        <span class="weight-sample w-800">Kicker · 특히 강조</span>
+      </div>
+    </div>
+
+    <h2>사용 규칙</h2>
+    <ul>
+      <li>새 컴포넌트는 <strong>semantic scale만 사용</strong>. <code>text-h1</code>, <code>text-body</code> 등.</li>
+      <li>Arbitrary <code>text-[Xpx]</code> 는 기존 코드 유지 · <strong>새 코드 사용 금지</strong>.</li>
+      <li>Serif (Nanum Myeongjo) 는 인용문 등 특수 케이스만.</li>
+      <li>한글 시 <code>letter-spacing: -0.01em ~ -0.02em</code> · 영문만이면 <code>-0.025em</code> 까지.</li>
+    </ul>
+
+    <h2>Tailwind 사용 예시</h2>
+    <pre><code>&lt;!-- Before (arbitrary) --&gt;
+&lt;h1 class="text-white text-[42px] md:text-[48px] font-bold tracking-tight"
+    style="letter-spacing:-0.02em;"&gt;
+  온토비전
+&lt;/h1&gt;
+
+&lt;!-- After (semantic scale) --&gt;
+&lt;h1 class="text-white text-hero font-bold"&gt;
+  온토비전
+&lt;/h1&gt;
+
+&lt;!-- 본문 --&gt;
+&lt;p class="text-body text-body"&gt;15px 본문 텍스트&lt;/p&gt;
+&lt;p class="text-body-md text-body"&gt;17px 서브 헤딩 body&lt;/p&gt;
+&lt;span class="text-caption text-sub"&gt;12px 캡션&lt;/span&gt;</code></pre>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../tokens.md">tokens.md §2</a></span>
+      <span>
+        <a href="color.html">← Color</a> · <a href="spacing.html">Next · Spacing →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

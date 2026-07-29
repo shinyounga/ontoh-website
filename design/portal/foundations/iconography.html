@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iconography · ONTOH Design</title>
+  <meta name="description" content="ONTOH 아이콘 시스템 · Iconify Solar 전용 · 이모지 금지">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  <style>
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 24px 0 32px;
+    }
+    .icon-cell {
+      border: 1px solid var(--hair);
+      padding: 20px 16px;
+      background: var(--bg);
+      text-align: center;
+      transition: border-color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .icon-cell:hover { border-color: var(--accent); }
+    .icon-cell iconify-icon {
+      font-size: 28px; color: var(--ink);
+      display: block; margin: 0 auto 10px;
+    }
+    .icon-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 11px; color: var(--sub);
+      word-break: break-all;
+    }
+    .icon-use {
+      font-size: 12px; color: var(--ink); margin-top: 4px;
+      font-weight: 700;
+    }
+
+    .size-scale {
+      display: flex; gap: 24px; align-items: flex-end;
+      margin: 20px 0 28px; padding: 24px;
+      background: var(--band); border: 1px solid var(--hair);
+    }
+    .size-cell {
+      text-align: center;
+    }
+    .size-cell iconify-icon { color: var(--accent); display: block; margin: 0 auto 8px; }
+    .size-cell .lbl {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 11px; color: var(--sub);
+    }
+
+    .warn-box {
+      background: color-mix(in oklab, #ea580c 8%, var(--bg));
+      border-left: 3px solid #ea580c;
+      padding: 16px 20px; margin: 20px 0;
+      font-size: 14px; line-height: 1.65;
+    }
+    .warn-box strong { color: #B84A00; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">
+    <span class="topnav-brand-name">ONTOH</span>
+    <span class="topnav-brand-sub">Design</span>
+  </a>
+  <div class="topnav-right">
+    <div class="topnav-search">
+      <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+      <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+      <kbd>/</kbd>
+    </div>
+    <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+      <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+    </button>
+    <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+      <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+    </button>
+    <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+    </a>
+  </div>
+</nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main doc">
+    <p class="doc-eyebrow">Foundations</p>
+    <h1 class="doc-title">Iconography</h1>
+    <p class="doc-lead">
+      <strong>Iconify Solar</strong> 아이콘 세트 단일 사용. 이모지 · 다른 아이콘 세트 금지.
+      예외: <code>mdi:github</code> (GitHub 마크만) · <code>mdi:home</code> (Breadcrumb 홈).
+    </p>
+
+    <div class="warn-box">
+      <strong>⚠ 이모지 금지</strong> · 절대 사용하지 않음. 이모지는 AI 클리셰의 대표 지표.
+      필요한 시각 요소는 <strong>Iconify Solar</strong> 로 대체합니다.
+    </div>
+
+    <h2>Font Size Scale</h2>
+    <p>Tailwind arbitrary <code>text-[Npx]</code> 로 지정. 컨텍스트에 따라 12-32px 범위.</p>
+
+    <div class="size-scale">
+      <div class="size-cell">
+        <iconify-icon icon="solar:shield-check-linear" style="font-size:14px;"></iconify-icon>
+        <div class="lbl">14px</div>
+      </div>
+      <div class="size-cell">
+        <iconify-icon icon="solar:shield-check-linear" style="font-size:16px;"></iconify-icon>
+        <div class="lbl">16px</div>
+      </div>
+      <div class="size-cell">
+        <iconify-icon icon="solar:shield-check-linear" style="font-size:20px;"></iconify-icon>
+        <div class="lbl">20px</div>
+      </div>
+      <div class="size-cell">
+        <iconify-icon icon="solar:shield-check-linear" style="font-size:24px;"></iconify-icon>
+        <div class="lbl">24px</div>
+      </div>
+      <div class="size-cell">
+        <iconify-icon icon="solar:shield-check-linear" style="font-size:32px;"></iconify-icon>
+        <div class="lbl">32px</div>
+      </div>
+    </div>
+
+    <h2>자주 쓰는 아이콘</h2>
+
+    <h3>내비게이션 · UI</h3>
+    <div class="icon-grid">
+      <div class="icon-cell">
+        <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+        <div class="icon-name">solar:arrow-right-linear</div>
+        <div class="icon-use">화살표</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:alt-arrow-right-linear"></iconify-icon>
+        <div class="icon-name">solar:alt-arrow-right-linear</div>
+        <div class="icon-use">브레드크럼 구분</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+        <div class="icon-name">solar:hamburger-menu-linear</div>
+        <div class="icon-use">모바일 메뉴</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:close-circle-linear"></iconify-icon>
+        <div class="icon-name">solar:close-circle-linear</div>
+        <div class="icon-use">닫기</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:magnifer-linear"></iconify-icon>
+        <div class="icon-name">solar:magnifer-linear</div>
+        <div class="icon-use">검색</div>
+      </div>
+    </div>
+
+    <h3>주제·컨텍스트</h3>
+    <div class="icon-grid">
+      <div class="icon-cell">
+        <iconify-icon icon="solar:shield-check-linear"></iconify-icon>
+        <div class="icon-name">solar:shield-check-linear</div>
+        <div class="icon-use">안전 · 보호</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:heart-pulse-linear"></iconify-icon>
+        <div class="icon-name">solar:heart-pulse-linear</div>
+        <div class="icon-use">보건</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:document-text-linear"></iconify-icon>
+        <div class="icon-name">solar:document-text-linear</div>
+        <div class="icon-use">문서 · 논문</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:videocamera-linear"></iconify-icon>
+        <div class="icon-name">solar:videocamera-linear</div>
+        <div class="icon-use">CCTV</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:cpu-bolt-linear"></iconify-icon>
+        <div class="icon-name">solar:cpu-bolt-linear</div>
+        <div class="icon-use">AI · 프로세서</div>
+      </div>
+    </div>
+
+    <h3>상태 표시 (Alert 컴포넌트)</h3>
+    <div class="icon-grid">
+      <div class="icon-cell">
+        <iconify-icon icon="solar:check-circle-bold" style="color:#137a52;"></iconify-icon>
+        <div class="icon-name">solar:check-circle-bold</div>
+        <div class="icon-use">성공 · 완료</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:info-circle-bold" style="color:#ea580c;"></iconify-icon>
+        <div class="icon-name">solar:info-circle-bold</div>
+        <div class="icon-use">주의</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:danger-triangle-bold" style="color:#dc2626;"></iconify-icon>
+        <div class="icon-name">solar:danger-triangle-bold</div>
+        <div class="icon-use">오류</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:info-circle-linear" style="color:#0169a9;"></iconify-icon>
+        <div class="icon-name">solar:info-circle-linear</div>
+        <div class="icon-use">안내</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:minus-circle-linear" style="color:#dc2626;"></iconify-icon>
+        <div class="icon-name">solar:minus-circle-linear</div>
+        <div class="icon-use">과제 · 부정</div>
+      </div>
+      <div class="icon-cell">
+        <iconify-icon icon="solar:check-circle-linear" style="color:#137a52;"></iconify-icon>
+        <div class="icon-name">solar:check-circle-linear</div>
+        <div class="icon-use">해결 · 긍정</div>
+      </div>
+    </div>
+
+    <h2>사용 규칙</h2>
+    <ul>
+      <li><strong>Iconify Solar</strong> (<code>solar:*</code> prefix) 단일 사용.</li>
+      <li>예외: <code>mdi:github</code> (GitHub 마크) · <code>mdi:home</code> (Breadcrumb 홈).</li>
+      <li>이모지 사용 절대 금지 (🚀 ✨ 💡 등).</li>
+      <li>아이콘 크기는 컨텍스트 텍스트와 매칭 · <code>font-size: 1em~1.4em</code>.</li>
+      <li>단독 아이콘 버튼은 <code>aria-label</code> 필수.</li>
+      <li>장식 아이콘은 <code>aria-hidden="true"</code> (Iconify는 기본 hidden).</li>
+    </ul>
+
+    <h2>사용 예시</h2>
+    <pre><code>&lt;!-- 기본 --&gt;
+&lt;iconify-icon icon="solar:arrow-right-linear"&gt;&lt;/iconify-icon&gt;
+
+&lt;!-- 크기·색상 --&gt;
+&lt;iconify-icon icon="solar:shield-check-linear"
+              style="font-size: 24px; color: #0169a9;"&gt;&lt;/iconify-icon&gt;
+
+&lt;!-- Tailwind (font-size arbitrary) --&gt;
+&lt;iconify-icon icon="solar:heart-pulse-linear"
+              class="text-[20px] text-accent"&gt;&lt;/iconify-icon&gt;
+
+&lt;!-- 텍스트 옆 --&gt;
+&lt;button class="btn"&gt;
+  도입 문의 &lt;iconify-icon icon="solar:arrow-right-linear"&gt;&lt;/iconify-icon&gt;
+&lt;/button&gt;
+
+&lt;!-- 단독 아이콘 버튼 (aria-label 필수) --&gt;
+&lt;button aria-label="메뉴 닫기"&gt;
+  &lt;iconify-icon icon="solar:close-circle-linear"&gt;&lt;/iconify-icon&gt;
+&lt;/button&gt;</code></pre>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../SKILL.md">SKILL.md §5</a></span>
+      <span>
+        <a href="motion.html">← Motion</a> · <a href="../components/button.html">Next · Components →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

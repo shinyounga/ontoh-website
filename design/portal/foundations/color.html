@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Color · ONTOH Design</title>
+  <meta name="description" content="ONTOH 컬러 토큰 카탈로그 · Primitive · State · 사용 규칙">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  <style>
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0 32px;
+    }
+    .swatch {
+      border: 1px solid var(--hair);
+      background: var(--bg);
+      overflow: hidden;
+    }
+    .swatch-chip {
+      height: 96px;
+      position: relative;
+    }
+    .swatch-chip.checkered {
+      background-image:
+        linear-gradient(45deg, var(--band) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--band) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--band) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--band) 75%);
+      background-size: 16px 16px;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    }
+    .swatch-body {
+      padding: 12px 14px;
+      border-top: 1px solid var(--hair);
+    }
+    .swatch-name {
+      font-size: 13px; font-weight: 700; color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .swatch-hex {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12px; color: var(--sub);
+      letter-spacing: -0.01em;
+    }
+    .swatch-use {
+      font-size: 11.5px; color: var(--sub); margin-top: 6px;
+      line-height: 1.45;
+    }
+    /* Contrast badges */
+    .contrast-badge {
+      display: inline-block;
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 2px 6px; margin-left: 6px;
+      background: var(--band); color: var(--sub);
+    }
+    .contrast-badge.aaa { background: #137a52; color: #fff; }
+    .contrast-badge.aa { background: #0169a9; color: #fff; }
+
+    /* Full colored swatches (data-driven backgrounds inline via style attr) */
+    .accent-chip { background: #0169a9; }
+    .ink-chip { background: #0A2440; }
+    .navy-chip { background: #1b2e6a; }
+    .body-chip { background: #212121; }
+    .sub-chip { background: #555555; }
+    .band-chip { background: #F5F6F8; }
+    .hair-chip { background: #E5E7EB; }
+    .error-chip { background: #dc2626; }
+    .warning-chip { background: #ea580c; }
+    .success-chip { background: #137a52; }
+    .info-chip { background: #0169a9; }
+    .accent300-chip { background: #8ed0ff; }
+    .accent400-chip { background: #59b4ff; }
+
+    /* Table */
+    table.token-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0 28px;
+      font-size: 14px;
+    }
+    table.token-table th, table.token-table td {
+      padding: 10px 14px; text-align: left;
+      border-bottom: 1px solid var(--hair);
+    }
+    table.token-table th {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sub); background: var(--band);
+    }
+    table.token-table td.token-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12.5px; color: var(--ink); font-weight: 700;
+    }
+    table.token-table td.token-value {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12.5px; color: var(--sub);
+    }
+    table.token-table td.token-use {
+      color: var(--body); font-size: 13.5px;
+    }
+    .token-dot {
+      display: inline-block; width: 14px; height: 14px;
+      vertical-align: middle; margin-right: 8px;
+      border: 1px solid var(--hair);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">
+    <span class="topnav-brand-name">ONTOH</span>
+    <span class="topnav-brand-sub">Design</span>
+  </a>
+  <div class="topnav-right">
+    <div class="topnav-search">
+      <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+      <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+      <kbd>/</kbd>
+    </div>
+    <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+      <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+    </button>
+    <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+      <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+    </button>
+    <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+    </a>
+  </div>
+</nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main doc">
+    <p class="doc-eyebrow">Foundations</p>
+    <h1 class="doc-title">Color</h1>
+    <p class="doc-lead">
+      ONTOH 컬러 토큰의 단일 참조. Primitive (Tailwind config 기반) · Semantic State · 사용 규칙.
+      <strong>임의 hex 사용 금지</strong> · 이 문서에 정의된 토큰만 사용합니다.
+    </p>
+
+    <h2>Primitive Tokens</h2>
+    <p>모든 UI 컬러는 Tailwind config의 <code>colors</code> 오브젝트에 정의된 아래 primitive 토큰에서 나옵니다.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-chip ink-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">ink</div>
+          <div class="swatch-hex">#0A2440</div>
+          <p class="swatch-use">딥네이비 · 헤드라인 · 메인 텍스트</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip body-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">body</div>
+          <div class="swatch-hex">#212121</div>
+          <p class="swatch-use">기본 텍스트</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip sub-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">sub</div>
+          <div class="swatch-hex">#555555</div>
+          <p class="swatch-use">보조 텍스트 · 캡션</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip accent-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">accent</div>
+          <div class="swatch-hex">#0169a9</div>
+          <p class="swatch-use">강조 · 링크 · CTA · 수치</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip accent400-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">accent.400</div>
+          <div class="swatch-hex">#59b4ff</div>
+          <p class="swatch-use">미디엄 accent · 다크 배경 위</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip accent300-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">accent.300</div>
+          <div class="swatch-hex">#8ed0ff</div>
+          <p class="swatch-use">라이트 accent · 강조</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip band-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">band</div>
+          <div class="swatch-hex">#F5F6F8</div>
+          <p class="swatch-use">연회색 배경 · 섹션 밴드 · hover</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip hair-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">hair</div>
+          <div class="swatch-hex">#E5E7EB</div>
+          <p class="swatch-use">헤어라인 · border 기본</p>
+        </div>
+      </div>
+    </div>
+
+    <h3>로고 전용 컬러</h3>
+    <p>다음 컬러는 <strong>SVG 로고 안에서만</strong> 사용됩니다. 웹 UI에서 사용하지 않습니다.</p>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-chip navy-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">navy</div>
+          <div class="swatch-hex">#1b2e6a</div>
+          <p class="swatch-use"><strong>로고 SVG 전용</strong> · 웹 UI는 <code>ink</code> 사용</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>Semantic State Tokens</h2>
+    <p>상태 표현 컴포넌트(Alert · Tag)에서만 사용합니다. 일반 UI에는 사용 X.</p>
+
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-chip error-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">error</div>
+          <div class="swatch-hex">#dc2626</div>
+          <p class="swatch-use">오류 · 실패 · 삭제 · 위험</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip warning-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">warning</div>
+          <div class="swatch-hex">#ea580c</div>
+          <p class="swatch-use">주의 · 경고</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip success-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">success</div>
+          <div class="swatch-hex">#137a52</div>
+          <p class="swatch-use">성공 · 완료 · Health OK</p>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-chip info-chip"></div>
+        <div class="swatch-body">
+          <div class="swatch-name">info</div>
+          <div class="swatch-hex">#0169a9</div>
+          <p class="swatch-use">정보 (accent와 동일)</p>
+        </div>
+      </div>
+    </div>
+
+    <h2>WCAG 2.1 접근성 대비</h2>
+    <p>사이트에서 실제 사용되는 배경-전경 조합의 대비율 실측 (WCAG AA 기준 <code>4.5:1</code> 이상 · AAA 기준 <code>7:1</code> 이상).</p>
+
+    <table class="token-table">
+      <thead>
+        <tr><th>전경</th><th>배경</th><th>대비율</th><th>등급</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="token-name"><span class="token-dot ink-chip"></span>Ink #0A2440</td>
+          <td class="token-value">White #FFFFFF</td>
+          <td>14.87 : 1</td>
+          <td><span class="contrast-badge aaa">AAA</span></td>
+        </tr>
+        <tr>
+          <td class="token-name"><span class="token-dot body-chip"></span>Body #212121</td>
+          <td class="token-value">White #FFFFFF</td>
+          <td>16.13 : 1</td>
+          <td><span class="contrast-badge aaa">AAA</span></td>
+        </tr>
+        <tr>
+          <td class="token-name"><span class="token-dot sub-chip"></span>Sub #555555</td>
+          <td class="token-value">White #FFFFFF</td>
+          <td>7.46 : 1</td>
+          <td><span class="contrast-badge aaa">AAA</span></td>
+        </tr>
+        <tr>
+          <td class="token-name"><span class="token-dot accent-chip"></span>Accent #0169a9</td>
+          <td class="token-value">White #FFFFFF</td>
+          <td>5.68 : 1</td>
+          <td><span class="contrast-badge aa">AA</span></td>
+        </tr>
+        <tr>
+          <td class="token-name"><span class="token-dot success-chip"></span>Success #137a52</td>
+          <td class="token-value">White #FFFFFF</td>
+          <td>4.76 : 1</td>
+          <td><span class="contrast-badge aa">AA</span></td>
+        </tr>
+        <tr>
+          <td class="token-name"><span class="token-dot error-chip"></span>Error #dc2626</td>
+          <td class="token-value">White #FFFFFF</td>
+          <td>4.83 : 1</td>
+          <td><span class="contrast-badge aa">AA</span></td>
+        </tr>
+        <tr>
+          <td class="token-name"><span class="token-dot warning-chip"></span>Warning #ea580c</td>
+          <td class="token-value">White #FFFFFF</td>
+          <td>3.36 : 1</td>
+          <td><span class="contrast-badge" style="background:#ea580c; color:#fff;">Large text · Deco only</span></td>
+        </tr>
+        <tr>
+          <td class="token-name" style="color:#fff; background:#0A2440;"><span class="token-dot" style="background:#fff;"></span>White</td>
+          <td class="token-value">Ink #0A2440</td>
+          <td>14.87 : 1</td>
+          <td><span class="contrast-badge aaa">AAA</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 13px; color: var(--sub); margin-top: -12px;">
+      <strong>Alert 컴포넌트 실제 텍스트 컬러:</strong>
+      error <code>#7f1d1d</code> on <code>#fef2f2</code> (~11.5:1 AAA) ·
+      warning <code>#7c2d12</code> on <code>#fff7ed</code> (~10.3:1 AAA) ·
+      success <code>#14532d</code> on <code>#f0fdf4</code> (~10.8:1 AAA)
+    </p>
+
+    <h2>사용 규칙</h2>
+    <ul>
+      <li><strong>로고 SVG 안에서만</strong> <code>navy #1b2e6a</code> 사용. 웹 UI에는 항상 <code>ink</code>.</li>
+      <li>강조는 <code>accent</code> 하나로 통일. 여러 색 혼용 금지.</li>
+      <li>State 컬러 (error · warning · success · info) 는 <strong>상태 표현(Alert · Tag)에만</strong> 사용.</li>
+      <li>임의 hex 값 사용 금지 · 필요 시 이 문서에 토큰 추가 논의 후 사용.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>State 컬러 사용 제한 (2026-07-29 확정)</strong> ·
+      <code>error</code> · <code>warning</code> 는 <strong>데코 요소 (border-left · icon · background)</strong> 만 사용 ·
+      본문 텍스트로는 진한 톤 (`#7f1d1d` · `#7c2d12` · `#14532d`) 사용.
+      <code>warning #ea580c</code> 는 대비 3.36:1로 큰 텍스트만 안전.
+    </div>
+
+    <h2>Tailwind 사용 예시</h2>
+    <pre><code>&lt;!-- Primitive tokens --&gt;
+&lt;div class="bg-ink text-white"&gt;딥네이비 배경&lt;/div&gt;
+&lt;p class="text-body"&gt;본문 텍스트&lt;/p&gt;
+&lt;p class="text-sub"&gt;보조 텍스트&lt;/p&gt;
+&lt;a class="text-accent"&gt;링크&lt;/a&gt;
+&lt;section class="bg-band border-t border-hair"&gt;섹션 밴드&lt;/section&gt;
+
+&lt;!-- Semantic state --&gt;
+&lt;div class="alert-error"&gt;오류&lt;/div&gt;
+&lt;div class="alert-success"&gt;완료&lt;/div&gt;</code></pre>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../tokens.md">tokens.md §1</a></span>
+      <span>
+        <a href="typography.html">Next · Typography →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

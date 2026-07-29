@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introduction · ONTOH Design</title>
+  <meta name="description" content="ONTOH 디자인 시스템 소개 · 브랜드 요약 · 30초 요약">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">
+    <span class="topnav-brand-name">ONTOH</span>
+    <span class="topnav-brand-sub">Design</span>
+  </a>
+  <div class="topnav-right">
+    <div class="topnav-search">
+      <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+      <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+      <kbd>/</kbd>
+    </div>
+    <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+      <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+    </button>
+    <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+      <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+    </button>
+    <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+    </a>
+  </div>
+</nav>
+
+<div class="shell">
+  <!-- Sidebar JS-rendered by shell.js -->
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main doc">
+    <p class="doc-eyebrow">Get Started</p>
+    <h1 class="doc-title">Introduction</h1>
+    <p class="doc-lead">
+      ONTOH Design System은 <strong>주식회사 온토</strong>의 웹사이트 전반을 관통하는
+      브랜드 · 색상 · 타이포 · 컴포넌트 · UI 키트의 단일 진실 소스입니다.
+      새 페이지를 만들거나 기존 페이지를 수정할 때 여기부터 봅니다.
+    </p>
+
+    <h2>30초 요약</h2>
+    <p>
+      <strong>시재건설급 대형 건설사 톤</strong> — 정연 · 절제 · 기관형.
+      색은 딥네이비 <code>#0A2440</code>와 온토 블루 액센트 <code>#0169a9</code>의 조합.
+      폰트 하나 (Pretendard), 아이콘 하나 (Iconify Solar), 스타일 하나 (Tailwind CDN).
+    </p>
+
+    <h2>브랜드 파운데이션</h2>
+    <h3>Color</h3>
+    <ul>
+      <li><strong>Ink</strong> <code>#0A2440</code> — 딥네이비 · 헤드라인 · 헤더</li>
+      <li><strong>Body</strong> <code>#212121</code> — 차콜 · 본문</li>
+      <li><strong>Sub</strong> <code>#555555</code> — 보조 텍스트</li>
+      <li><strong>Accent</strong> <code>#0169a9</code> — 온토 블루 · 링크 · CTA · 수치</li>
+      <li><strong>Band</strong> <code>#F5F6F8</code> — 오프화이트 · 섹션 구분</li>
+      <li><strong>Hair</strong> <code>#E5E7EB</code> — 헤어라인 · 테두리</li>
+    </ul>
+
+    <h3>Type</h3>
+    <p>
+      <strong>Pretendard</strong> 단일 (한국어 필수).
+      Inter · Noto Sans KR · 명조체 사용 금지.
+    </p>
+
+    <h3>Shape</h3>
+    <ul>
+      <li><strong>직각 (rounded-none)</strong> — 라운드 지양</li>
+      <li><strong>헤어라인 중심</strong> — 큰 그림자 자제</li>
+      <li><strong>여백으로 위계</strong> — 볼드 남발 금지</li>
+    </ul>
+
+    <h2>금지 사항</h2>
+    <ul>
+      <li>웜 아이보리 · 쿨 그레이 틴트 · 다크 배경 (본문)</li>
+      <li>이모지 → Iconify Solar로 대체</li>
+      <li><code>ease-in-out</code> / <code>linear</code> 트랜지션 → <code>cubic-bezier(0.16, 1, 0.3, 1)</code></li>
+      <li>보라색 · 네온 · AI 그라디언트</li>
+      <li>AI 클리셰 한국어: "혁신적인", "원활한", "차세대", "게임 체인저"</li>
+      <li>지어낸 수치 (없으면 "실증 진행 중"으로 표기)</li>
+    </ul>
+
+    <h2>사용 방법</h2>
+    <p>새 페이지를 만들 때:</p>
+    <ol>
+      <li><a href="principles.html">Principles</a>를 먼저 읽습니다</li>
+      <li><a href="../foundations/color.html">Foundations</a>에서 토큰 값을 참조합니다</li>
+      <li><a href="../components/button.html">Components</a>에서 필요한 컴포넌트 HTML을 복사합니다</li>
+      <li>Pretendard + Tailwind CDN + Iconify 스크립트를 로드합니다</li>
+      <li>헤더 · 푸터는 <code>about.html</code>의 것을 재사용합니다</li>
+    </ol>
+
+    <div class="callout">
+      <strong>AI 에이전트로 사용 시</strong> — <code>design/SKILL.md</code>를 Claude Code · Cursor · GitHub Copilot에
+      컨텍스트로 제공하면 자동으로 ONTOH 스타일을 준수합니다.
+    </div>
+
+    <h2>다음 단계</h2>
+    <ul>
+      <li><a href="principles.html">Design Principles</a> — 디자인 원칙 상세</li>
+      <li><a href="install.html">Install · Use</a> — 실제 프로젝트에 적용하는 방법</li>
+      <li><a href="../foundations/color.html">Foundations · Color</a> — 컬러 토큰 카탈로그</li>
+    </ul>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29</span>
+      <span>
+        <a href="../../README.md">Markdown 원본</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

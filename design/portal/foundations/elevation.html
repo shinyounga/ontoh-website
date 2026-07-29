@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elevation · ONTOH Design</title>
+  <meta name="description" content="ONTOH 그림자 시스템 · Semantic scale 4단계 · Ink 컬러 기반">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  <style>
+    .shadow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 32px;
+      margin: 32px 0 24px;
+      padding: 24px;
+      background: var(--band);
+    }
+    .shadow-card {
+      background: #ffffff;
+      padding: 24px 20px;
+      text-align: center;
+      border: 1px solid var(--hair);
+      transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .shadow-card:hover { transform: translateY(-2px); }
+    .shadow-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 13px; color: #0A2440; font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .shadow-value {
+      font-size: 11px; color: #555; line-height: 1.5;
+    }
+    .shadow-use {
+      font-size: 12px; color: #0169a9; margin-top: 8px;
+      font-weight: 700;
+    }
+    .s-card    { box-shadow: 0 18px 40px -22px rgba(10,36,64,0.32); }
+    .s-panel   { box-shadow: 0 24px 44px -20px rgba(10,36,64,0.35); }
+    .s-megabar { box-shadow: 0 28px 46px -26px rgba(10,36,64,0.30); }
+    .s-lightbox{ box-shadow: 0 40px 80px -20px rgba(10,36,64,0.5); }
+
+    table.token-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0 28px;
+      font-size: 13.5px;
+    }
+    table.token-table th, table.token-table td {
+      padding: 10px 14px; text-align: left;
+      border-bottom: 1px solid var(--hair);
+    }
+    table.token-table th {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sub); background: var(--band);
+    }
+    table.token-table td.token-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12.5px; color: var(--ink); font-weight: 700;
+    }
+    table.token-table td.token-value {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 11.5px; color: var(--sub);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">
+    <span class="topnav-brand-name">ONTOH</span>
+    <span class="topnav-brand-sub">Design</span>
+  </a>
+  <div class="topnav-right">
+    <div class="topnav-search">
+      <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+      <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+      <kbd>/</kbd>
+    </div>
+    <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+      <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+    </button>
+    <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+      <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+    </button>
+    <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+    </a>
+  </div>
+</nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main doc">
+    <p class="doc-eyebrow">Foundations</p>
+    <h1 class="doc-title">Elevation</h1>
+    <p class="doc-lead">
+      그림자(box-shadow) semantic scale · 4단계. 색상은 항상 <code>rgba(10, 36, 64, alpha)</code> — Ink 컬러 기반.
+      <strong>새 그림자 정의 금지</strong> · 아래 4가지 중 선택합니다.
+    </p>
+
+    <h2>Semantic Shadow Scale</h2>
+
+    <table class="token-table">
+      <thead>
+        <tr><th>클래스</th><th>값</th><th>용도</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="token-name">shadow-card</td>
+          <td class="token-value">0 18px 40px -22px rgba(10,36,64,0.32)</td>
+          <td>카드 hover</td>
+        </tr>
+        <tr>
+          <td class="token-name">shadow-panel</td>
+          <td class="token-value">0 24px 44px -20px rgba(10,36,64,0.35)</td>
+          <td>드롭다운 패널</td>
+        </tr>
+        <tr>
+          <td class="token-name">shadow-megabar</td>
+          <td class="token-value">0 28px 46px -26px rgba(10,36,64,0.30)</td>
+          <td>GNB 메가메뉴</td>
+        </tr>
+        <tr>
+          <td class="token-name">shadow-lightbox</td>
+          <td class="token-value">0 40px 80px -20px rgba(10,36,64,0.5)</td>
+          <td>Lightbox 모달</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>실물 미리보기</h2>
+
+    <div class="shadow-grid">
+      <div class="shadow-card s-card">
+        <div class="shadow-name">shadow-card</div>
+        <div class="shadow-value">0 18px 40px -22px<br>rgba(10,36,64,0.32)</div>
+        <div class="shadow-use">Card Hover</div>
+      </div>
+      <div class="shadow-card s-panel">
+        <div class="shadow-name">shadow-panel</div>
+        <div class="shadow-value">0 24px 44px -20px<br>rgba(10,36,64,0.35)</div>
+        <div class="shadow-use">Dropdown Panel</div>
+      </div>
+      <div class="shadow-card s-megabar">
+        <div class="shadow-name">shadow-megabar</div>
+        <div class="shadow-value">0 28px 46px -26px<br>rgba(10,36,64,0.30)</div>
+        <div class="shadow-use">GNB Megabar</div>
+      </div>
+      <div class="shadow-card s-lightbox">
+        <div class="shadow-name">shadow-lightbox</div>
+        <div class="shadow-value">0 40px 80px -20px<br>rgba(10,36,64,0.5)</div>
+        <div class="shadow-use">Lightbox Modal</div>
+      </div>
+    </div>
+
+    <h2>사용 규칙</h2>
+    <ul>
+      <li>새 그림자 정의 금지 · 4가지 semantic scale 중 선택.</li>
+      <li>색상은 항상 <code>rgba(10, 36, 64, alpha)</code> (ink 컬러 기반) · black 사용 금지.</li>
+      <li>기본 상태 X · hover · panel · modal에만.</li>
+      <li>큰 그림자 남발 금지 — 헤어라인이 우선.</li>
+    </ul>
+
+    <h2>Tailwind 사용 예시</h2>
+    <pre><code>&lt;!-- 카드 (hover 시 그림자) --&gt;
+&lt;article class="card hover:shadow-card"&gt;...&lt;/article&gt;
+&lt;!-- .card 컴포넌트가 이미 shadow-card 를 포함 --&gt;
+
+&lt;!-- 드롭다운 패널 --&gt;
+&lt;div class="nav-panel shadow-panel"&gt;...&lt;/div&gt;
+
+&lt;!-- Lightbox 모달 --&gt;
+&lt;dialog class="lb-dialog shadow-lightbox"&gt;...&lt;/dialog&gt;</code></pre>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../tokens.md">tokens.md §3</a></span>
+      <span>
+        <a href="radius.html">← Radius</a> · <a href="motion.html">Next · Motion →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

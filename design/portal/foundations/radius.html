@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Radius · Shape · ONTOH Design</title>
+  <meta name="description" content="ONTOH 모서리 규칙 · 직각 기본 · rounded-full 예외">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  <style>
+    .radius-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+      margin: 24px 0 32px;
+    }
+    .radius-card {
+      background: var(--band);
+      border: 1px solid var(--hair);
+      padding: 24px 16px;
+      text-align: center;
+    }
+    .radius-shape {
+      width: 64px; height: 64px;
+      background: var(--ink);
+      margin: 0 auto 12px;
+    }
+    .r-none { border-radius: 0; }
+    .r-full { border-radius: 9999px; }
+    .radius-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12px; color: var(--ink); font-weight: 700;
+    }
+    .radius-use {
+      font-size: 11.5px; color: var(--sub); margin-top: 6px; line-height: 1.5;
+    }
+    .rule-block {
+      padding: 20px 24px;
+      background: var(--band);
+      margin: 20px 0;
+      border-left: 3px solid var(--ink);
+    }
+    .rule-block strong { color: var(--ink); }
+    .rule-block p { margin: 6px 0; color: var(--body); }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">
+    <span class="topnav-brand-name">ONTOH</span>
+    <span class="topnav-brand-sub">Design</span>
+  </a>
+  <div class="topnav-right">
+    <div class="topnav-search">
+      <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+      <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+      <kbd>/</kbd>
+    </div>
+    <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+      <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+    </button>
+    <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+      <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+    </button>
+    <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+    </a>
+  </div>
+</nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main doc">
+    <p class="doc-eyebrow">Foundations</p>
+    <h1 class="doc-title">Radius · Shape</h1>
+    <p class="doc-lead">
+      ONTOH는 <strong>직각 (rounded-none)</strong>을 기본으로 사용합니다.
+      대형 건설사·기관형 톤 · 라운드는 최소한의 예외 (원형 아이콘 · 로딩 스피너)만.
+    </p>
+
+    <div class="rule-block">
+      <p><strong>CLAUDE.md 규정</strong></p>
+      <p>"형태: <strong>직각(rounded-none)</strong> · 헤어라인 · 여백으로 위계"</p>
+    </div>
+
+    <h2>기본 (직각)</h2>
+    <p>모든 카드 · 버튼 · 태그 · 폼 · 컨테이너 등은 기본적으로 <strong>직각</strong>입니다.</p>
+
+    <div class="radius-demo">
+      <div class="radius-card">
+        <div class="radius-shape r-none"></div>
+        <div class="radius-name">rounded-none</div>
+        <p class="radius-use">기본 · 모든 UI 컴포넌트</p>
+      </div>
+    </div>
+
+    <h2>예외 (원형)</h2>
+    <p>다음 경우에만 <code>rounded-full</code> 사용:</p>
+
+    <div class="radius-demo">
+      <div class="radius-card">
+        <div class="radius-shape r-full"></div>
+        <div class="radius-name">rounded-full</div>
+        <p class="radius-use">Lightbox 좌우 nav 버튼 (<code>.lb-nav</code>) · Loading spinner · Avatar</p>
+      </div>
+    </div>
+
+    <h2>왜 직각인가</h2>
+    <p>ONTOH의 톤은 <strong>시재건설급 대형 건설사 · 기관형</strong>. 참조 사이트:</p>
+    <ul>
+      <li>시재건설 <a href="https://sijae.com" target="_blank" rel="noopener">sijae.com</a></li>
+      <li>한솔홈데코 <a href="http://kr.hansolhomedeco.net" target="_blank" rel="noopener">hansolhomedeco.net</a></li>
+      <li>Q Place <a href="https://qplace.kr" target="_blank" rel="noopener">qplace.kr</a></li>
+    </ul>
+    <p>공통 특징: 직각 · 헤어라인 · 큰 여백. 라운드가 강한 스타트업·SaaS 톤과 대비되는 저널리즘·기관형 감성.</p>
+
+    <h2>지양 사항</h2>
+    <ul>
+      <li><strong>rounded-lg 남발</strong> — AI 생성 디자인의 대표 클리셰 (CLAUDE.md 명시)</li>
+      <li>모든 카드에 <code>rounded-xl / rounded-2xl</code> 적용</li>
+      <li>Feature 카드 안에 rounded 이미지 넣기</li>
+      <li>버튼에 <code>rounded-full</code> (Lightbox nav 외)</li>
+    </ul>
+
+    <h2>사용 예시</h2>
+    <pre><code>&lt;!-- 표준: 직각 --&gt;
+&lt;article class="card"&gt;...&lt;/article&gt;   &lt;!-- .card 는 border-radius: 0 --&gt;
+&lt;button class="btn btn-primary"&gt;도입 문의&lt;/button&gt;
+&lt;span class="tag"&gt;라벨&lt;/span&gt;
+
+&lt;!-- 예외: 원형 --&gt;
+&lt;button class="lb-nav rounded-full"&gt;&lt;iconify-icon icon="solar:arrow-left-linear"/&gt;&lt;/button&gt;
+&lt;div class="w-10 h-10 rounded-full bg-band"&gt;&lt;/div&gt;  &lt;!-- 아바타 --&gt;</code></pre>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../tokens.md">tokens.md §4</a></span>
+      <span>
+        <a href="spacing.html">← Spacing</a> · <a href="elevation.html">Next · Elevation →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+</body>
+</html>

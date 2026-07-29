@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motion · ONTOH Design</title>
+  <meta name="description" content="ONTOH 모션 시스템 · cubic-bezier 단일 · prefers-reduced-motion 준수">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="../shared/shell.css">
+  <style>
+    .motion-demo {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 24px 0 32px;
+    }
+    .motion-card {
+      padding: 20px 20px 28px;
+      background: var(--band);
+      border: 1px solid var(--hair);
+    }
+    .motion-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12.5px; color: var(--ink); font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .motion-desc {
+      font-size: 12px; color: var(--sub); margin-bottom: 14px;
+    }
+    .motion-target {
+      width: 40px; height: 40px;
+      background: var(--accent);
+      display: block;
+    }
+    .motion-play {
+      background: var(--ink); color: #fff;
+      padding: 6px 12px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+      cursor: pointer; font-family: inherit;
+      border: none;
+      margin-top: 14px;
+    }
+    .motion-play:hover { background: var(--accent); }
+    /* Animations */
+    .anim-slide.playing { animation: slide 800ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .anim-fade.playing { animation: fade 600ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .anim-rise.playing { animation: rise 700ms cubic-bezier(0.16, 1, 0.3, 1); }
+    .anim-scale.playing { animation: scaleIn 500ms cubic-bezier(0.16, 1, 0.3, 1); }
+    @keyframes slide {
+      from { transform: translateX(-40px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes rise {
+      from { transform: translateY(24px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    table.token-table {
+      width: 100%; border-collapse: collapse; margin: 16px 0 28px;
+      font-size: 13.5px;
+    }
+    table.token-table th, table.token-table td {
+      padding: 10px 14px; text-align: left;
+      border-bottom: 1px solid var(--hair);
+    }
+    table.token-table th {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--sub); background: var(--band);
+    }
+    table.token-table td.token-name {
+      font-family: 'SF Mono', ui-monospace, monospace;
+      font-size: 12px; color: var(--ink); font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="../index.html" class="topnav-brand">
+    <span class="topnav-brand-name">ONTOH</span>
+    <span class="topnav-brand-sub">Design</span>
+  </a>
+  <div class="topnav-right">
+    <div class="topnav-search">
+      <iconify-icon icon="solar:magnifer-linear" style="font-size:15px;"></iconify-icon>
+      <input type="search" placeholder="컴포넌트 · 토큰 검색..." aria-label="검색">
+      <kbd>/</kbd>
+    </div>
+    <button class="topnav-btn" id="menuToggle" type="button" aria-label="메뉴 열기">
+      <iconify-icon icon="solar:hamburger-menu-linear" style="font-size:20px;"></iconify-icon>
+    </button>
+    <button class="topnav-btn" id="themeToggle" type="button" aria-label="테마 전환">
+      <iconify-icon icon="solar:moon-linear" style="font-size:18px;"></iconify-icon>
+    </button>
+    <a class="topnav-btn" href="https://github.com/shinyounga/ontoh-website" target="_blank" rel="noopener" aria-label="GitHub">
+      <iconify-icon icon="mdi:github" style="font-size:20px;"></iconify-icon>
+    </a>
+  </div>
+</nav>
+
+<div class="shell">
+  <aside class="sidebar"></aside>
+  <div class="sidebar-backdrop"></div>
+
+  <main class="main doc">
+    <p class="doc-eyebrow">Foundations</p>
+    <h1 class="doc-title">Motion</h1>
+    <p class="doc-lead">
+      단일 easing curve · <code>cubic-bezier(0.16, 1, 0.3, 1)</code>.
+      <code>ease-in-out</code> · <code>linear</code> 사용 금지. 모든 애니메이션·트랜지션에 통일합니다.
+    </p>
+
+    <h2>Easing Curve</h2>
+    <table class="token-table">
+      <thead>
+        <tr><th>토큰</th><th>값</th><th>특징</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="token-name">--ease-out</td>
+          <td class="token-name">cubic-bezier(0.16, 1, 0.3, 1)</td>
+          <td>ONTOH 표준 · 부드러운 감속 · 자연스러운 정착감</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Duration (제안 · 미확정)</h2>
+    <div class="callout" style="border-left-color: #ea580c; background: color-mix(in oklab, #ea580c 6%, var(--bg));">
+      <strong>⚠ 아직 정식 토큰 아님</strong> · 아래 duration 스케일은 참고 제안 · 원본 tokens.md에 미정의.
+      정식 토큰으로 승격하려면 별도 논의 필요.
+    </div>
+    <table class="token-table">
+      <thead>
+        <tr><th>제안 이름</th><th>값</th><th>사이트 실 사용처</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="token-name">(fast)</td>
+          <td class="token-name">180-200ms</td>
+          <td>Hover · Focus · 즉시 반응 (버튼, 링크, tag)</td>
+        </tr>
+        <tr>
+          <td class="token-name">(base)</td>
+          <td class="token-name">300ms</td>
+          <td>Card lift · State transition</td>
+        </tr>
+        <tr>
+          <td class="token-name">(slow)</td>
+          <td class="token-name">500ms</td>
+          <td>Reveal · Slide-in · Modal 등장</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>애니메이션 미리보기</h2>
+    <p>버튼 클릭 시 각 모션 재생.</p>
+
+    <div class="motion-demo">
+      <div class="motion-card">
+        <div class="motion-name">slide</div>
+        <div class="motion-desc">Slide from left · 800ms</div>
+        <div class="motion-target anim-slide" id="anim1"></div>
+        <button class="motion-play" type="button" data-target="anim1" data-cls="anim-slide">Play</button>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">fade</div>
+        <div class="motion-desc">Fade in · 600ms</div>
+        <div class="motion-target anim-fade" id="anim2"></div>
+        <button class="motion-play" type="button" data-target="anim2" data-cls="anim-fade">Play</button>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">rise</div>
+        <div class="motion-desc">Rise from below · 700ms</div>
+        <div class="motion-target anim-rise" id="anim3"></div>
+        <button class="motion-play" type="button" data-target="anim3" data-cls="anim-rise">Play</button>
+      </div>
+      <div class="motion-card">
+        <div class="motion-name">scaleIn</div>
+        <div class="motion-desc">Scale in · 500ms</div>
+        <div class="motion-target anim-scale" id="anim4"></div>
+        <button class="motion-play" type="button" data-target="anim4" data-cls="anim-scale">Play</button>
+      </div>
+    </div>
+
+    <h2>사용 규칙</h2>
+    <ul>
+      <li><strong>Easing 단일화</strong> · <code>cubic-bezier(0.16, 1, 0.3, 1)</code> 만 사용.</li>
+      <li><code>ease-in-out</code> · <code>linear</code> · <code>ease</code> 사용 금지.</li>
+      <li>Duration은 상황별 표에서 선택 · 임의 값 금지.</li>
+      <li>모든 애니메이션은 <code>prefers-reduced-motion</code> 존중.</li>
+      <li>3D 회전 · 큰 스케일 (>1.2) · 급격한 진동 애니메이션 금지.</li>
+    </ul>
+
+    <h2>Reduced Motion (WCAG 2.3.3)</h2>
+    <p>모든 페이지 CSS에 아래 규칙 필수:</p>
+    <pre><code>@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}</code></pre>
+
+    <h2>사용 예시</h2>
+    <pre><code>&lt;!-- CSS --&gt;
+.card {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-title {
+  opacity: 0; transform: translateY(24px);
+  animation: rise 800ms cubic-bezier(0.16, 1, 0.3, 1) 200ms forwards;
+}
+@keyframes rise {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+&lt;!-- Tailwind (arbitrary value 필요) --&gt;
+&lt;div class="transition-all duration-300"
+     style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+
+    <div class="doc-footer">
+      <span>업데이트: 2026-07-29 · 원본 <a href="../../CHECKLIST.md">CHECKLIST §3</a> · <a href="../../a11y.md">a11y.md §8</a></span>
+      <span>
+        <a href="elevation.html">← Elevation</a> · <a href="iconography.html">Next · Iconography →</a>
+      </span>
+    </div>
+  </main>
+</div>
+
+<script src="../shared/shell.js"></script>
+<script>
+  document.querySelectorAll('.motion-play').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.target;
+      const cls = btn.dataset.cls;
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      el.classList.remove('playing');
+      // Force reflow
+      void el.offsetWidth;
+      el.classList.add('playing');
+    });
+  });
+</script>
+</body>
+</html>
