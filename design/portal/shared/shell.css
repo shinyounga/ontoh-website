@@ -506,9 +506,6 @@ table.token-table td.token-use {
 }
 
 /* Copy button on code blocks */
-.doc pre {
-  position: relative;
-}
 .code-copy {
   position: absolute; top: 8px; right: 8px;
   background: transparent; color: var(--sub);
@@ -633,17 +630,18 @@ table.token-table td.token-use {
   font-family: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-/* Code block */
+/* Code block · single consolidated rule */
 .doc pre {
+  position: relative;      /* copy button anchor */
   background: var(--code-bg);
   border: 1px solid var(--hair);
-  padding: 20px 20px 20px 20px;
+  padding: 20px;
   margin: 20px 0;
   overflow-x: auto;
   font-size: 13px;
   line-height: 1.65;
   max-width: 100%;
-  white-space: pre;       /* preserve formatting · scroll rather than wrap */
+  white-space: pre;
   word-wrap: normal;
 }
 
