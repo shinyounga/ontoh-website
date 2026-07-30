@@ -212,6 +212,142 @@
       }
     }
 
+
+    /* ==================== Before/After 슬라이더 ==================== */
+    .ba-wrap { max-width: 1000px; margin: 0 auto; }
+    .ba-frame {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: #0A2440;
+      user-select: none;
+      cursor: ew-resize;
+      box-shadow: 0 24px 44px -20px rgba(10, 36, 64, 0.35);
+    }
+    .ba-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      display: block;
+    }
+    .ba-after-wrap {
+      position: absolute; inset: 0;
+      clip-path: inset(0 0 0 50%);
+      transition: clip-path 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: clip-path;
+    }
+    .ba-frame.is-dragging .ba-after-wrap { transition: none; }
+    .ba-divider {
+      position: absolute; top: 0; bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: #ffffff;
+      transform: translateX(-50%);
+      pointer-events: none;
+      box-shadow: 0 0 0 1px rgba(10, 36, 64, 0.3);
+      transition: left 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ba-frame.is-dragging .ba-divider { transition: none; }
+    .ba-handle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: #0169a9;
+      color: #ffffff;
+      border: 3px solid #ffffff;
+      display: flex; align-items: center; justify-content: center;
+      gap: 2px;
+      cursor: ew-resize;
+      pointer-events: auto;
+      box-shadow: 0 8px 20px rgba(10, 36, 64, 0.4);
+      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ba-handle:hover { transform: translate(-50%, -50%) scale(1.08); }
+    .ba-handle:focus-visible { outline: 3px solid #0169a9; outline-offset: 3px; }
+    .ba-label {
+      position: absolute; top: 16px;
+      padding: 7px 14px;
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.06em;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .ba-label-left {
+      left: 16px;
+      background: rgba(10, 36, 64, 0.85);
+      color: #ffffff;
+    }
+    .ba-label-right {
+      right: 16px;
+      background: rgba(1, 105, 169, 0.95);
+      color: #ffffff;
+    }
+    .ba-tabs {
+      display: flex; gap: 4px;
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+    .ba-tab {
+      padding: 12px 18px;
+      background: #ffffff;
+      color: #555555;
+      border: 1px solid #E5E7EB;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ba-tab:hover { border-color: #0169a9; color: #0169a9; }
+    .ba-tab.is-active {
+      background: #0A2440;
+      color: #ffffff;
+      border-color: #0A2440;
+    }
+    .ba-tab:focus-visible { outline: 2px solid #0169a9; outline-offset: 2px; }
+    .ba-info {
+      margin-top: 16px;
+      padding: 20px 24px;
+      background: #ffffff;
+      border: 1px solid #E5E7EB;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .ba-info-law {
+      display: flex; align-items: center; gap: 10px;
+      flex-wrap: wrap;
+    }
+    .ba-law-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #0169a9;
+      color: #ffffff;
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .ba-law-title {
+      font-size: 15px; font-weight: 700;
+      color: #0A2440;
+      letter-spacing: -0.01em;
+    }
+    .ba-info-desc {
+      font-size: 14px; color: #555555;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .ba-frame { aspect-ratio: 4 / 3; }
+      .ba-label { font-size: 10.5px; padding: 5px 10px; }
+      .ba-handle { width: 44px; height: 44px; }
+      .ba-tab { padding: 10px 14px; font-size: 13px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ba-after-wrap, .ba-divider, .ba-handle, .ba-tab { transition: none; }
+    }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -366,30 +502,46 @@
         <p class="reveal stagger-2 mt-6 text-[18px] md:text-[19px] text-sub leading-[1.75]">단순 이벤트 감지에 머무르던 지능형 CCTV를 넘어,<br class="hidden md:block"> 상황을 이해하고 스스로 행동하는 관제 시스템으로 진화합니다.</p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6 md:gap-10">
-        <!-- BEFORE · 기존 지능형 CCTV -->
-        <figure class="reveal">
-          <div class="aspect-video overflow-hidden bg-white">
-            <img src="assets/vision/features/before-cctv-raw.jpg" alt="기존 지능형 CCTV" class="w-full h-full object-cover">
+      <!-- Before/After 인터랙티브 슬라이더 -->
+      <div class="reveal">
+        <div id="baSlider" class="ba-wrap">
+          <div class="ba-frame" data-ba-frame>
+            <img class="ba-img ba-clean" alt="Before · 원본 CCTV">
+            <div class="ba-after-wrap">
+              <img class="ba-img ba-labeled" alt="After · 온토비전 감지">
+            </div>
+            <div class="ba-divider">
+              <button type="button" class="ba-handle" aria-label="드래그하여 Before/After 비교" tabindex="0">
+                <iconify-icon icon="solar:alt-arrow-left-linear" style="font-size:16px;"></iconify-icon>
+                <iconify-icon icon="solar:alt-arrow-right-linear" style="font-size:16px;"></iconify-icon>
+              </button>
+            </div>
+            <span class="ba-label ba-label-left">BEFORE · 원본 CCTV</span>
+            <span class="ba-label ba-label-right">AFTER · 온토비전 감지</span>
           </div>
-          <figcaption class="mt-5">
-            <p class="text-[12px] font-bold text-sub/60 uppercase tracking-[0.14em] mb-1.5">BEFORE · 사람이 보는 CCTV</p>
-            <p class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">사람이 보는 CCTV</p>
-            <p class="text-[17px] text-sub mt-2 leading-[1.65]">위험을 감지해도 규정 확인·조치·기록은 전부 사람 몫. 놓치면 사고로 이어집니다.</p>
-          </figcaption>
-        </figure>
 
-        <!-- AFTER · 온토비전 -->
-        <figure class="reveal stagger-1">
-          <div class="aspect-video border-2 border-accent overflow-hidden bg-white">
-            <img src="assets/vision/features/after-ppe-detected.png" alt="온토비전 AI 자율 관제" class="w-full h-full object-cover">
+          <!-- 시나리오 탭 (5대 현장 위험 유형) -->
+          <div class="ba-tabs" role="tablist" aria-label="시나리오 선택">
+            <button type="button" class="ba-tab is-active" data-idx="0" role="tab">안전모</button>
+            <button type="button" class="ba-tab" data-idx="1" role="tab">안전대</button>
+            <button type="button" class="ba-tab" data-idx="2" role="tab">개구부</button>
+            <button type="button" class="ba-tab" data-idx="3" role="tab">상하동시작업</button>
+            <button type="button" class="ba-tab" data-idx="4" role="tab">중장비</button>
           </div>
-          <figcaption class="mt-5">
-            <p class="text-[12px] font-bold text-accent uppercase tracking-[0.14em] mb-1.5">AFTER · 온토비전</p>
-            <p class="text-[22px] md:text-[26px] font-bold text-ink" style="letter-spacing:-0.015em;">스스로 판단하는 CCTV</p>
-            <p class="text-[17px] text-sub mt-2 leading-[1.65]">감지하는 순간 법령 대조 → 조치 안내 → 자동 기록까지 한 흐름으로 끝냅니다.</p>
-          </figcaption>
-        </figure>
+
+          <!-- 법령 정보 -->
+          <div class="ba-info">
+            <div class="ba-info-law">
+              <span class="ba-law-tag" data-ba-law-tag>제32조</span>
+              <span class="ba-law-title" data-ba-law-title>보호구의 지급 등</span>
+            </div>
+            <p class="ba-info-desc" data-ba-desc>물체가 떨어지거나 날아올 위험이 있는 작업 시 안전모 착용 (제32조 제1항 제1호).</p>
+          </div>
+        </div>
+        <p class="text-[13px] text-sub/70 text-center mt-4">
+          <iconify-icon icon="solar:cursor-linear" class="text-[14px] align-middle"></iconify-icon>
+          가운데 핸들을 좌우로 드래그하여 원본과 감지 결과를 비교하세요.
+        </p>
       </div>
 
       <!-- 3-포인트 요약 스트립 -->
@@ -987,5 +1139,125 @@
   </script>
 
   <script src="js/common.js"></script>
+
+  <!-- ==================== Before/After 슬라이더 ==================== -->
+  <script>
+    (function() {
+      const SCENARIOS = [
+        {
+          cat: '03-helmet', name: 'helmet-001',
+          law: '제32조', title: '보호구의 지급 등',
+          desc: '물체가 떨어지거나 날아올 위험이 있는 작업 시 안전모 착용 (제32조 제1항 제1호).'
+        },
+        {
+          cat: '02-fall-strap', name: 'fall-strap-001',
+          law: '제32조', title: '보호구의 지급 등',
+          desc: '높이 또는 깊이 2미터 이상의 추락 위험 장소에서 안전대 착용 (제32조 제1항 제2호).'
+        },
+        {
+          cat: '05-opening', name: 'opening-001',
+          law: '제43조', title: '개구부 등의 방호 조치',
+          desc: '개구부로 근로자가 추락할 위험 있는 장소에 안전난간·덮개 등 방호 조치 (제43조 제1항).'
+        },
+        {
+          cat: '01-simultaneous-work', name: 'simultaneous-work-001',
+          law: '제14조', title: '낙하물에 의한 위험의 방지',
+          desc: '물체가 떨어지거나 날아올 위험이 있는 작업 시 낙하물 방지망·출입금지구역 등 조치 (제14조 제2항).'
+        },
+        {
+          cat: '04-heavy-equipment', name: 'heavy-equipment-001',
+          law: '제200조', title: '접촉 방지',
+          desc: '차량계 건설기계에 근로자가 부딪칠 위험이 있는 장소에 근로자 출입 금지 (제200조 제1항).'
+        },
+      ];
+
+      const slider = document.getElementById('baSlider');
+      if (!slider) return;
+
+      const frame = slider.querySelector('[data-ba-frame]');
+      const clean = slider.querySelector('.ba-clean');
+      const labeled = slider.querySelector('.ba-labeled');
+      const afterWrap = slider.querySelector('.ba-after-wrap');
+      const divider = slider.querySelector('.ba-divider');
+      const handle = slider.querySelector('.ba-handle');
+      const tabs = slider.querySelectorAll('.ba-tab');
+      const lawTag = slider.querySelector('[data-ba-law-tag]');
+      const lawTitle = slider.querySelector('[data-ba-law-title]');
+      const desc = slider.querySelector('[data-ba-desc]');
+
+      let idx = 0;
+      let dragging = false;
+      let currentPct = 50;
+
+      function setPosition(pct) {
+        pct = Math.max(0, Math.min(100, pct));
+        currentPct = pct;
+        afterWrap.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+        divider.style.left = pct + '%';
+      }
+
+      function loadScenario(i) {
+        idx = i;
+        const s = SCENARIOS[i];
+        const base = 'assets/vision/detection/final';
+        clean.src = base + '/clean/' + s.cat + '/' + s.name + '-clean.png';
+        labeled.src = base + '/labeled/' + s.cat + '/' + s.name + '-labeled.png';
+        clean.alt = 'BEFORE · ' + s.title + ' 원본';
+        labeled.alt = 'AFTER · ' + s.title + ' 감지 결과';
+        lawTag.textContent = s.law;
+        lawTitle.textContent = s.title;
+        desc.textContent = s.desc;
+        tabs.forEach((t, ti) => t.classList.toggle('is-active', ti === i));
+        // Reset position with subtle animation
+        setPosition(50);
+      }
+
+      // ============ Drag interaction ============
+      function startDrag(clientX) {
+        dragging = true;
+        frame.classList.add('is-dragging');
+        updateDrag(clientX);
+      }
+      function updateDrag(clientX) {
+        if (!dragging) return;
+        const rect = frame.getBoundingClientRect();
+        const pct = ((clientX - rect.left) / rect.width) * 100;
+        setPosition(pct);
+      }
+      function endDrag() {
+        if (!dragging) return;
+        dragging = false;
+        frame.classList.remove('is-dragging');
+      }
+
+      // Mouse
+      frame.addEventListener('mousedown', (e) => { e.preventDefault(); startDrag(e.clientX); });
+      document.addEventListener('mousemove', (e) => updateDrag(e.clientX));
+      document.addEventListener('mouseup', endDrag);
+
+      // Touch
+      frame.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX), { passive: true });
+      document.addEventListener('touchmove', (e) => {
+        if (dragging) updateDrag(e.touches[0].clientX);
+      }, { passive: true });
+      document.addEventListener('touchend', endDrag);
+
+      // Keyboard on handle
+      handle.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') { e.preventDefault(); setPosition(currentPct - 5); }
+        else if (e.key === 'ArrowRight') { e.preventDefault(); setPosition(currentPct + 5); }
+        else if (e.key === 'Home') { e.preventDefault(); setPosition(0); }
+        else if (e.key === 'End') { e.preventDefault(); setPosition(100); }
+      });
+
+      // ============ Tabs ============
+      tabs.forEach((t, ti) => {
+        t.addEventListener('click', () => loadScenario(ti));
+      });
+
+      // Init
+      loadScenario(0);
+    })();
+  </script>
 </body>
 </html>
