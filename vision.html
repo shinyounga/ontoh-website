@@ -520,7 +520,7 @@
             <span class="ba-label ba-label-right">AFTER · 온토비전 감지</span>
           </div>
 
-          <!-- 시나리오 탭 (5대 현장 위험 유형) -->
+          <!-- 시나리오 탭 (주요 위험 유형) -->
           <div class="ba-tabs" role="tablist" aria-label="시나리오 선택">
             <button type="button" class="ba-tab is-active" data-idx="0" role="tab">안전모</button>
             <button type="button" class="ba-tab" data-idx="1" role="tab">안전대</button>
@@ -601,10 +601,10 @@
           </div>
         </div>
 
-        <!-- 5대 현장 위험 유형 스트립 (썸네일 클릭 → 팝업) -->
+        <!-- 주요 위험 유형 스트립 (썸네일 클릭 → 팝업) -->
         <div class="mt-12 md:mt-14 pt-10 md:pt-12 border-t border-hair">
           <div class="mb-6">
-            <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">5대 현장 위험 유형</p>
+            <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">주요 위험 유형</p>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             <!-- 01 안전모 미착용 (캐러셀 Case 01) -->
@@ -629,13 +629,13 @@
                 <span class="tag bg-ink/[0.06] text-ink">고소구간 자동 인식</span>
               </div>
             </button>
-            <!-- 03 개구부 안전조치 미비 (캐러셀 Case 03) -->
-            <button class="lb-trigger group" data-lb-group="scenarios" data-lb="assets/vision/detection/final/labeled/05-opening/opening-004-labeled.png" data-lb-cap="개구부 안전조치 미비 감지" aria-label="개구부 안전조치 미비 감지 예시 크게 보기">
+            <!-- 03 개구부 안전조치 (캐러셀 Case 03) -->
+            <button class="lb-trigger group" data-lb-group="scenarios" data-lb="assets/vision/detection/final/labeled/05-opening/opening-004-labeled.png" data-lb-cap="개구부 안전조치 감지" aria-label="개구부 안전조치 감지 예시 크게 보기">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
-                <img src="assets/vision/detection/final/labeled/05-opening/opening-004-labeled.png" alt="개구부 안전조치 미비" class="w-full h-full object-cover" loading="lazy">
+                <img src="assets/vision/detection/final/labeled/05-opening/opening-004-labeled.png" alt="개구부 안전조치" class="w-full h-full object-cover" loading="lazy">
                 <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-[12px]"></iconify-icon>확대</span>
               </div>
-              <p class="mt-2.5 text-[13.5px] font-bold text-ink text-left">개구부 안전조치 미비</p>
+              <p class="mt-2.5 text-[13.5px] font-bold text-ink text-left">개구부 안전조치</p>
               <div class="mt-1.5 flex flex-wrap gap-1">
                 <span class="tag bg-ink/[0.06] text-ink">커버 · 난간 상태 판별</span>
                 <span class="tag bg-ink/[0.06] text-ink">개폐 이력 관리</span>
@@ -774,10 +774,10 @@
               <div class="lc-slide">
                 <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
                   <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
-                    <img src="assets/vision/detection/final/labeled/05-opening/opening-004-labeled.png" alt="개구부 안전조치 미비 감지" class="w-full h-full object-cover" loading="lazy">
+                    <img src="assets/vision/detection/final/labeled/05-opening/opening-004-labeled.png" alt="개구부 안전조치 감지" class="w-full h-full object-cover" loading="lazy">
                   </div>
                   <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
-                    <p class="text-[12px] font-extrabold text-accent tracking-[0.14em] uppercase mb-3">Case 03 · 개구부 안전조치 미비</p>
+                    <p class="text-[12px] font-extrabold text-accent tracking-[0.14em] uppercase mb-3">Case 03 · 개구부 안전조치</p>
                     <p class="text-[15px] font-bold text-ink mb-1">산업안전보건기준에 관한 규칙</p>
                     <p class="text-[20px] md:text-[22px] font-bold text-accent mb-4" style="letter-spacing:-0.015em;">제43조 · 개구부 등의 방호 조치</p>
                     <blockquote class="text-[14.5px] text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
