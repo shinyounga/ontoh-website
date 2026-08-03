@@ -107,13 +107,11 @@
           <td class="token-name">Pretendard</td>
           <td class="token-value">jsDelivr CDN</td>
         </tr>
-        <tr>
-          <td>Serif (특수 강조)</td>
-          <td class="token-name">Nanum Myeongjo</td>
-          <td class="token-value">Google Fonts · 인용문 등 특수 케이스만</td>
-        </tr>
       </tbody>
     </table>
+    <p style="margin-top:12px; font-size:14px; color:#555;">
+      <strong>단일 폰트 시스템</strong> · Pretendard만 사용. Serif(명조) · Inter · Noto 등 병용 금지 (CLAUDE.md 규정).
+    </p>
 
     <h2>Semantic Type Scale</h2>
     <p>Tailwind config <code>fontSize</code> 확장으로 정의. 9단계 · 각 line-height + letter-spacing 매핑.</p>
@@ -189,7 +187,7 @@
     <ul>
       <li>새 컴포넌트는 <strong>semantic scale만 사용</strong>. <code>text-h1</code>, <code>text-body</code> 등.</li>
       <li>Arbitrary <code>text-[Xpx]</code> 는 기존 코드 유지 · <strong>새 코드 사용 금지</strong>.</li>
-      <li>Serif (Nanum Myeongjo) 는 인용문 등 특수 케이스만.</li>
+      <li><strong>Pretendard 단일</strong> 사용 · Serif · Inter · Noto 등 병용 금지 (CLAUDE.md 규정).</li>
       <li>한글 시 <code>letter-spacing: -0.01em ~ -0.02em</code> · 영문만이면 <code>-0.025em</code> 까지.</li>
     </ul>
 

@@ -58,8 +58,8 @@ _사용 시 이 문서에 정의된 토큰만 사용 · 임의 hex/px 값 사용
 
 ### 2.2 Font Family
 
-- **Sans (본문 · UI)**: `Pretendard` (jsDelivr CDN)
-- **Serif (강조)**: `Nanum Myeongjo` (Google Fonts)
+- **Sans (전용)**: `Pretendard` (jsDelivr CDN)
+- **단일 폰트 시스템** — Serif · Inter · Noto 등 병용 금지 (CLAUDE.md 규정)
 
 ### 2.3 Font Weight
 
@@ -75,7 +75,7 @@ _사용 시 이 문서에 정의된 토큰만 사용 · 임의 hex/px 값 사용
 
 - 새 컴포넌트는 **semantic scale (`text-h1`, `text-body` 등)만 사용**.
 - Arbitrary `text-[Xpx]`는 기존 코드 유지 · 새 코드 사용 금지.
-- Serif(`Nanum Myeongjo`)는 인용문 등 특수 케이스만.
+- **Pretendard 단일** · Serif · Inter · Noto 등 병용 금지.
 
 ---
 
