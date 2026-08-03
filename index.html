@@ -294,8 +294,8 @@
           <p class="text-[15.5px] text-sub leading-[1.7] mb-6">원거리 객체 검출·생성형 AI 위험 판별·학습데이터 자동 생성 등 핵심 기술을 (주)온토가 단독 특허권자로 보유합니다.</p>
           <div class="mt-auto flex items-center justify-between border-t border-hair pt-5">
             <div class="flex gap-6">
-              <div><div class="stat-num text-[26px] font-bold text-ink leading-none">2</div><p class="text-[12px] text-sub/70 mt-0.5">등록</p></div>
-              <div><div class="stat-num text-[26px] font-bold text-sub leading-none">3</div><p class="text-[12px] text-sub/70 mt-0.5">출원</p></div>
+              <div><div class="stat-num counter-up text-[26px] font-bold text-ink leading-none" data-count="2">2</div><p class="text-[12px] text-sub/70 mt-0.5">등록</p></div>
+              <div><div class="stat-num counter-up text-[26px] font-bold text-sub leading-none" data-count="3">3</div><p class="text-[12px] text-sub/70 mt-0.5">출원</p></div>
             </div>
             <span class="inline-flex items-center gap-1 text-[13.5px] font-bold text-accent group-hover:gap-2 transition-all">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
           </div>
@@ -309,8 +309,8 @@
           <p class="text-[15.5px] text-sub leading-[1.7] mb-6">Automation in Construction · Computers in Industry · KSCE JCE 등 건설 자동화·토목 분야 최상위 저널에 지속적으로 게재하고 있습니다.</p>
           <div class="mt-auto flex items-center justify-between border-t border-hair pt-5">
             <div class="flex gap-6">
-              <div><div class="stat-num text-[26px] font-bold text-ink leading-none">5</div><p class="text-[12px] text-sub/70 mt-0.5">저널</p></div>
-              <div><div class="stat-num text-[26px] font-bold text-sub leading-none">8</div><p class="text-[12px] text-sub/70 mt-0.5">학회</p></div>
+              <div><div class="stat-num counter-up text-[26px] font-bold text-ink leading-none" data-count="5">5</div><p class="text-[12px] text-sub/70 mt-0.5">저널</p></div>
+              <div><div class="stat-num counter-up text-[26px] font-bold text-sub leading-none" data-count="8">8</div><p class="text-[12px] text-sub/70 mt-0.5">학회</p></div>
             </div>
             <span class="inline-flex items-center gap-1 text-[13.5px] font-bold text-accent group-hover:gap-2 transition-all">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
           </div>
@@ -400,6 +400,35 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
   <script src="js/common.js"></script>
+
+  <!-- ==================== Ex 03 · 숫자 카운터 (index.html) ==================== -->
+  <script>
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        document.querySelectorAll('.counter-up').forEach(function(el) {
+          var target = parseInt(el.dataset.count, 10);
+          if (isNaN(target)) return;
+          el.textContent = '0';
+          ScrollTrigger.create({
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+            onEnter: function() {
+              var obj = { val: 0 };
+              gsap.to(obj, {
+                val: target, duration: 1.8, ease: 'ontoh',
+                onUpdate: function() { el.textContent = Math.round(obj.val); },
+              });
+            },
+          });
+        });
+      });
+    }
+  </script>
 </body>
 </html>

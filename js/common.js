@@ -1,23 +1,49 @@
 /* ==================== ONTOH Common Scripts ==================== */
 
+// ==================== GSAP · 전역 초기화 (사이트 전체 공통) ====================
+// GSAP CDN이 로드되어 있으면 CustomEase 등록 · 기본 easing 설정
+if (typeof gsap !== 'undefined') {
+  if (typeof ScrollTrigger !== 'undefined') gsap.registerPlugin(ScrollTrigger);
+  if (typeof CustomEase !== 'undefined') {
+    CustomEase.create('ontoh', '0.16, 1, 0.3, 1'); // ONTOH 시그니처 easing (cubic-bezier와 동일)
+    gsap.defaults({ ease: 'ontoh', duration: 0.9 });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
-  // ==================== Scroll Reveal (IntersectionObserver) ====================
-  const revealObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
+  // ==================== Scroll Reveal (GSAP ScrollTrigger · fallback IntersectionObserver) ====================
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    // GSAP 방식 · 진입/역방향 시 자연스러운 재생
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      gsap.fromTo(el,
+        { y: 32, opacity: 0, filter: 'blur(4px)' },
+        {
+          y: 0, opacity: 1, filter: 'blur(0px)',
+          duration: 0.9, ease: 'ontoh',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 88%',
+            toggleActions: 'play none none reverse',
+          },
+          onStart: function() { el.classList.add('visible'); },
+        }
+      );
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  document.querySelectorAll('.reveal').forEach(function(el) {
-    revealObserver.observe(el);
-  });
+  } else {
+    // Fallback · GSAP 미로드 시 기존 IntersectionObserver
+    const revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      revealObserver.observe(el);
+    });
+  }
 
   // ==================== Nav: 투명 → 글래스 전환 ====================
   const nav = document.getElementById('mainNav');
