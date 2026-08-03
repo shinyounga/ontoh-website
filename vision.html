@@ -347,22 +347,6 @@
     @media (prefers-reduced-motion: reduce) {
       .ba-after-wrap, .ba-divider, .ba-handle, .ba-tab { transition: none; }
     }
-
-    /* ===== Ex 09 · 주요 위험 유형 hover expand (lg 이상) ===== */
-    @media (min-width: 1024px) {
-      #hazard-strip {
-        display: flex !important;
-        gap: 12px;
-        transition: none;
-      }
-      #hazard-strip > .lb-trigger {
-        flex: 1;
-        min-width: 0;
-        transition: flex-grow .7s cubic-bezier(0.16,1,0.3,1);
-      }
-      #hazard-strip.is-hovering > .lb-trigger { flex: 0.7; }
-      #hazard-strip.is-hovering > .lb-trigger.is-expanded { flex: 2.6; }
-    }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -621,7 +605,7 @@
           <div class="mb-6">
             <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">주요 위험 유형</p>
           </div>
-          <div id="hazard-strip" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             <!-- 01 안전모 미착용 (캐러셀 Case 01) -->
             <button class="lb-trigger group" data-lb-group="scenarios" data-lb="assets/vision/detection/final/labeled/03-helmet/helmet-006-labeled.png" data-lb-cap="안전모 미착용 감지" aria-label="안전모 미착용 감지 예시 크게 보기">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
@@ -1243,21 +1227,6 @@
           });
         }
 
-        // ── Ex 09 · 주요 위험 유형 hover expand (lg 이상만) ──
-        var strip = document.getElementById('hazard-strip');
-        if (strip && window.matchMedia('(min-width: 1024px)').matches) {
-          var items = strip.querySelectorAll(':scope > .lb-trigger');
-          items.forEach(function(item) {
-            item.addEventListener('mouseenter', function() {
-              strip.classList.add('is-hovering');
-              items.forEach(function(i) { i.classList.toggle('is-expanded', i === item); });
-            });
-          });
-          strip.addEventListener('mouseleave', function() {
-            strip.classList.remove('is-hovering');
-            items.forEach(function(i) { i.classList.remove('is-expanded'); });
-          });
-        }
       });
     }
   </script>
