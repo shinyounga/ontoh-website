@@ -454,8 +454,10 @@
     </div>
   </section>
 
-  <!-- ==================== 인트로 히어로 (배경 이미지 fixed · 시재건설 스타일) ==================== -->
-  <section class="relative overflow-hidden bg-ink hero-bg-fixed" style="background-image: url('assets/main/vision.png');">
+  <!-- ==================== 인트로 히어로 (Ken Burns 배경 · GSAP 애니메이션) ==================== -->
+  <section class="relative overflow-hidden bg-ink">
+    <!-- Ken Burns 배경 레이어 (GSAP 대상) -->
+    <div id="hero-kb-bg" class="absolute inset-[-8%] bg-cover bg-center will-change-transform" style="background-image: url('assets/main/vision.png');"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/60 to-ink/85"></div>
     <div class="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-24 text-center">
       <p id="hero-kicker" class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Products</p>
@@ -689,6 +691,42 @@
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>고정 카메라가 놓치는 사각지대 추적</li>
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-[20px]"></iconify-icon></span>작업자·객체 인식 기반 고위험 행동 자동 포착</li>
             </ul>
+          </div>
+        </div>
+
+        <!-- AI 감지 과정 · 3-panel 인포그래픽 (helmet-006 실물) -->
+        <div class="mt-12 md:mt-14 pt-10 md:pt-12 border-t border-hair">
+          <div class="mb-6">
+            <p class="text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">AI는 이렇게 봅니다</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-4 md:gap-6">
+            <div class="detect-panel">
+              <div class="relative aspect-[16/10] overflow-hidden bg-band">
+                <span class="absolute top-0 left-0 z-10 bg-ink text-white w-11 h-11 flex items-center justify-center font-extrabold text-[15px]">01</span>
+                <img src="assets/vision/detection/selected/03-helmet/helmet-006-clean.png" alt="원본 CCTV 영상" class="w-full h-full object-cover" loading="lazy">
+              </div>
+              <p class="mt-4 text-[12px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">Step 01</p>
+              <h4 class="mt-2 text-[18px] md:text-[20px] font-bold text-ink" style="letter-spacing:-0.02em;">원본 CCTV 입력</h4>
+              <p class="mt-2 text-[14.5px] text-sub leading-[1.7]">기존 CCTV 영상 그대로. 사람이 한눈에 안전모 미착용 여부 확인 어려움.</p>
+            </div>
+            <div class="detect-panel">
+              <div class="relative aspect-[16/10] overflow-hidden bg-band">
+                <span class="absolute top-0 left-0 z-10 bg-ink text-white w-11 h-11 flex items-center justify-center font-extrabold text-[15px]">02</span>
+                <img src="assets/vision/detection/selected/03-helmet/helmet-006-segmentation.png" alt="AI 감지 · 픽셀 단위 영역 분리" class="w-full h-full object-cover" loading="lazy">
+              </div>
+              <p class="mt-4 text-[12px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">Step 02</p>
+              <h4 class="mt-2 text-[18px] md:text-[20px] font-bold text-ink" style="letter-spacing:-0.02em;">AI 감지 · 영역 분리</h4>
+              <p class="mt-2 text-[14.5px] text-sub leading-[1.7]">사람·헬멧·안전장구 픽셀 단위 인식 · 각 요소 색상 마스크로 분리.</p>
+            </div>
+            <div class="detect-panel">
+              <div class="relative aspect-[16/10] overflow-hidden bg-band">
+                <span class="absolute top-0 left-0 z-10 bg-ink text-white w-11 h-11 flex items-center justify-center font-extrabold text-[15px]">03</span>
+                <img src="assets/vision/detection/selected/03-helmet/helmet-006-bbox.png" alt="AI 최종 판단 · UNSAFE 판별" class="w-full h-full object-cover" loading="lazy">
+              </div>
+              <p class="mt-4 text-[12px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">Step 03</p>
+              <h4 class="mt-2 text-[18px] md:text-[20px] font-bold text-ink" style="letter-spacing:-0.02em;">최종 판단 · 알림</h4>
+              <p class="mt-2 text-[14.5px] text-sub leading-[1.7]">헬멧 미착용 확인 · UNSAFE 판별 · 현장·관제 즉시 알림 · 법령 매칭.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1170,6 +1208,35 @@
           heroTl.to(hk, { y: 0, opacity: 1, duration: 0.7, ease: 'ontoh' })
                 .to(ht, { y: 0, opacity: 1, duration: 0.9, ease: 'ontoh' }, '-=0.35')
                 .to(hs, { y: 0, opacity: 1, duration: 0.9, ease: 'ontoh' }, '-=0.55');
+        }
+
+        // ── Ken Burns · Hero 배경 (12초 loop · yoyo) ──
+        var kbBg = document.getElementById('hero-kb-bg');
+        if (kbBg) {
+          gsap.set(kbBg, { scale: 1.05, x: 0, y: 0 });
+          gsap.to(kbBg, {
+            scale: 1.22, x: -30, y: -20,
+            duration: 12, ease: 'none', repeat: -1, yoyo: true,
+          });
+        }
+
+        // ── AI 감지 과정 3-panel · 스크롤 진입 시 stagger 등장 ──
+        if (typeof ScrollTrigger !== 'undefined') {
+          var panels = document.querySelectorAll('.detect-panel');
+          if (panels.length) {
+            gsap.fromTo(panels,
+              { y: 60, opacity: 0 },
+              {
+                y: 0, opacity: 1, duration: 0.9, ease: 'ontoh',
+                stagger: 0.15,
+                scrollTrigger: {
+                  trigger: panels[0],
+                  start: 'top 80%',
+                  toggleActions: 'play none none reverse',
+                },
+              }
+            );
+          }
         }
 
         // ── Ex 05 · Feature H2 Split Text (스크롤 진입 시 1회) ──

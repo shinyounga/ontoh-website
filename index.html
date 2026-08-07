@@ -218,10 +218,12 @@
           <p class="reveal stagger-3 mt-5 text-[15px] text-sub/70">현장 환경 맞춤 무료 데모 · 기존 CCTV 장비와 호환</p>
         </div>
         <div class="reveal stagger-2">
-          <div class="relative overflow-hidden shadow-[0_30px_60px_-30px_rgba(10,36,64,0.45)]">
-            <img src="assets/main/main1.png" alt="건설현장에 설치된 PTZ 카메라가 작업자와 현장을 자율 관제하는 모습" class="w-full h-full object-cover aspect-[16/11]">
-            <div class="absolute bottom-3 left-3 inline-flex items-center gap-2 bg-white/90 backdrop-blur text-ink text-[12px] font-bold px-3 py-1.5 shadow-sm">
-              <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> PTZ 자율관제 · LIVE
+          <div id="hero-cycle" class="relative overflow-hidden shadow-[0_30px_60px_-30px_rgba(10,36,64,0.45)] aspect-[16/11]">
+            <img class="hero-cycle-layer absolute inset-0 w-full h-full object-cover" data-stage="1" src="assets/vision/detection/selected/03-helmet/helmet-006-clean.png" alt="실시간 CCTV 영상 · 안전모 미착용 작업자">
+            <img class="hero-cycle-layer absolute inset-0 w-full h-full object-cover" data-stage="2" src="assets/vision/detection/selected/03-helmet/helmet-006-segmentation.png" alt="AI 감지 · 픽셀 단위 영역 분리" style="opacity:0">
+            <img class="hero-cycle-layer absolute inset-0 w-full h-full object-cover" data-stage="3" src="assets/vision/detection/selected/03-helmet/helmet-006-bbox.png" alt="AI 판단 · UNSAFE" style="opacity:0">
+            <div id="hero-badge" class="absolute bottom-3 left-3 inline-flex items-center gap-2 bg-white/90 backdrop-blur text-ink text-[12px] font-bold px-3 py-1.5 shadow-sm">
+              <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> <span id="hero-badge-text">실시간 CCTV · LIVE</span>
             </div>
           </div>
         </div>
@@ -404,6 +406,42 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
   <script src="js/common.js"></script>
+
+  <!-- ==================== Hero 우측 · 3-이미지 스토리텔링 사이클 ==================== -->
+  <script>
+    if (typeof gsap !== 'undefined') {
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var cycleEl = document.getElementById('hero-cycle');
+        var badgeText = document.getElementById('hero-badge-text');
+        if (!cycleEl || !badgeText) return;
+        var layers = cycleEl.querySelectorAll('.hero-cycle-layer');
+        var stages = [
+          { i: 1, text: '실시간 CCTV · LIVE' },
+          { i: 2, text: 'AI 감지 중 · LIVE' },
+          { i: 3, text: '위험 감지 · UNSAFE' },
+        ];
+        var idx = 0;
+        function show(n) {
+          layers.forEach(function(el, i) {
+            gsap.to(el, { opacity: (i + 1) <= n ? 1 : 0, duration: 0.6, ease: 'ontoh' });
+          });
+          gsap.to(badgeText, { opacity: 0, y: -4, duration: 0.2, ease: 'ontoh',
+            onComplete: function() {
+              badgeText.textContent = stages[n - 1].text;
+              gsap.to(badgeText, { opacity: 1, y: 0, duration: 0.3, ease: 'ontoh' });
+            }
+          });
+        }
+        function next() {
+          idx = (idx + 1) % stages.length;
+          show(idx + 1);
+        }
+        show(1);
+        setInterval(next, 1500);  // 빠른 사이클
+      });
+    }
+  </script>
 
   <!-- ==================== Ex 03 · 숫자 카운터 (index.html) ==================== -->
   <script>
