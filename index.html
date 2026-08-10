@@ -205,7 +205,7 @@
   <!-- ==================== HERO ==================== -->
   <section class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
-      <div class="grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-16 items-center">
+      <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
         <div>
           <h1 class="reveal text-[52px] md:text-[80px] font-extrabold tracking-tight text-ink" style="line-height:1.05; letter-spacing:-0.035em;">
             <span class="text-accent">온토비전</span>
@@ -218,11 +218,18 @@
           <p class="reveal stagger-3 mt-5 text-[15px] text-sub/70">현장 환경 맞춤 무료 데모 · 기존 CCTV 장비와 호환</p>
         </div>
         <div class="reveal stagger-2">
-          <div id="hero-cycle" class="relative overflow-hidden shadow-[0_30px_60px_-30px_rgba(10,36,64,0.45)] aspect-[16/11]">
-            <img class="hero-cycle-layer absolute inset-0 w-full h-full object-cover" data-stage="1" src="assets/vision/detection/selected/03-helmet/helmet-006-clean.png" alt="실시간 CCTV 영상 · 안전모 미착용 작업자">
-            <img class="hero-cycle-layer absolute inset-0 w-full h-full object-cover" data-stage="2" src="assets/vision/detection/selected/03-helmet/helmet-006-segmentation.png" alt="AI 감지 · 픽셀 단위 영역 분리" style="opacity:0">
-            <img class="hero-cycle-layer absolute inset-0 w-full h-full object-cover" data-stage="3" src="assets/vision/detection/selected/03-helmet/helmet-006-bbox.png" alt="AI 판단 · UNSAFE" style="opacity:0">
-            <div id="hero-badge" class="absolute bottom-3 left-3 inline-flex items-center gap-2 bg-white/90 backdrop-blur text-ink text-[12px] font-bold px-3 py-1.5 shadow-sm">
+          <div id="hero-cycle" class="relative overflow-hidden shadow-[0_30px_60px_-30px_rgba(10,36,64,0.45)] aspect-[4/3] bg-ink">
+            <!-- 2-layer alternating slots · Ken Burns during each stage -->
+            <img class="hc-slot absolute inset-0 w-full h-full object-cover will-change-transform" data-slot="0" alt="">
+            <img class="hc-slot absolute inset-0 w-full h-full object-cover opacity-0 will-change-transform" data-slot="1" alt="">
+            <!-- 카테고리 진행 dots (상단) -->
+            <div id="hero-dots" class="absolute top-3 right-3 flex gap-1.5 z-10">
+              <span class="hero-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all" data-cat="0"></span>
+              <span class="hero-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all" data-cat="1"></span>
+              <span class="hero-dot w-1.5 h-1.5 rounded-full bg-white/40 transition-all" data-cat="2"></span>
+            </div>
+            <!-- LIVE 뱃지 -->
+            <div id="hero-badge" class="absolute bottom-3 left-3 inline-flex items-center gap-2 bg-white/95 backdrop-blur text-ink text-[12px] font-bold px-3 py-1.5 shadow-sm z-10">
               <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> <span id="hero-badge-text">실시간 CCTV · LIVE</span>
             </div>
           </div>
@@ -407,7 +414,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
   <script src="js/common.js"></script>
 
-  <!-- ==================== Hero 우측 · 3-이미지 스토리텔링 사이클 ==================== -->
+  <!-- ==================== Hero 우측 · 3-카테고리 × 3-stage 사이클 + Ken Burns 전환 ==================== -->
   <script>
     if (typeof gsap !== 'undefined') {
       document.addEventListener('DOMContentLoaded', function() {
@@ -415,30 +422,75 @@
         var cycleEl = document.getElementById('hero-cycle');
         var badgeText = document.getElementById('hero-badge-text');
         if (!cycleEl || !badgeText) return;
-        var layers = cycleEl.querySelectorAll('.hero-cycle-layer');
-        var stages = [
-          { i: 1, text: '실시간 CCTV · LIVE' },
-          { i: 2, text: 'AI 감지 중 · LIVE' },
-          { i: 3, text: '위험 감지 · UNSAFE' },
+
+        var BASE = 'assets/vision/detection/selected/';
+        // 3 카테고리 × 3 stage (clean → seg → bbox) = 9 stages
+        var STAGES = [
+          // Case 01 · 개구부
+          { src: BASE + '05-opening/opening-004-clean.png',        label: '실시간 CCTV · LIVE',      alt: '개구부 · 원본 CCTV', cat: 0 },
+          { src: BASE + '05-opening/opening-004-segmentation.png', label: 'AI 감지 중 · LIVE',       alt: '개구부 · AI 감지 · 영역 분리', cat: 0 },
+          { src: BASE + '05-opening/opening-004-bbox.png',         label: '위험 감지 · 개구부 위험', alt: '개구부 안전조치 미비 · UNSAFE', cat: 0 },
+          // Case 02 · 안전대
+          { src: BASE + '02-fall-strap/fall-strap-003-clean.png',        label: '실시간 CCTV · LIVE',        alt: '고소작업 · 원본 CCTV', cat: 1 },
+          { src: BASE + '02-fall-strap/fall-strap-003-segmentation.png', label: 'AI 감지 중 · LIVE',         alt: '고소작업 · AI 감지 · 영역 분리', cat: 1 },
+          { src: BASE + '02-fall-strap/fall-strap-003-bbox.png',         label: '위험 감지 · 안전대 미착용', alt: '고소작업 안전대 미착용 · UNSAFE', cat: 1 },
+          // Case 03 · 상하동시작업
+          { src: BASE + '01-simultaneous-work/simultaneous-work-001-clean.png',        label: '실시간 CCTV · LIVE',        alt: '상하동시작업 · 원본 CCTV', cat: 2 },
+          { src: BASE + '01-simultaneous-work/simultaneous-work-001-segmentation.png', label: 'AI 감지 중 · LIVE',         alt: '상하동시작업 · AI 감지 · 영역 분리', cat: 2 },
+          { src: BASE + '01-simultaneous-work/simultaneous-work-001-bbox.png',         label: '위험 감지 · 낙하물 위험', alt: '상하동시작업 · 낙하물 위험 UNSAFE', cat: 2 },
         ];
+
+        // 이미지 preload
+        STAGES.forEach(function(s) { var img = new Image(); img.src = s.src; });
+
+        var slots = cycleEl.querySelectorAll('.hc-slot');
+        var dots = cycleEl.querySelectorAll('.hero-dot');
         var idx = 0;
-        function show(n) {
-          layers.forEach(function(el, i) {
-            gsap.to(el, { opacity: (i + 1) <= n ? 1 : 0, duration: 0.6, ease: 'ontoh' });
-          });
-          gsap.to(badgeText, { opacity: 0, y: -4, duration: 0.2, ease: 'ontoh',
+        var activeSlot = 0;
+
+        function setStage(n) {
+          var stage = STAGES[n];
+          var newSlot = 1 - activeSlot;
+          var newEl = slots[newSlot];
+          var oldEl = slots[activeSlot];
+
+          // 새 이미지 세팅
+          newEl.src = stage.src;
+          newEl.alt = stage.alt;
+          gsap.set(newEl, { opacity: 0, scale: 1.1 });
+
+          // 동시 실행: cross-fade + Ken Burns (새 이미지가 살짝 확대되며 등장 · 스테이지 동안 서서히 원복)
+          var tl = gsap.timeline();
+          tl.to(newEl, { opacity: 1, duration: 0.7, ease: 'ontoh' }, 0)
+            .to(oldEl, { opacity: 0, duration: 0.7, ease: 'ontoh' }, 0)
+            .to(newEl, { scale: 1.0, duration: 2.4, ease: 'ontoh' }, 0);  // Ken Burns · 다음 stage 오기 전 자연스럽게 진행
+
+          activeSlot = newSlot;
+
+          // 뱃지 갱신 (플립 애니메이션)
+          gsap.to(badgeText, { opacity: 0, y: -6, duration: 0.2, ease: 'ontoh',
             onComplete: function() {
-              badgeText.textContent = stages[n - 1].text;
+              badgeText.textContent = stage.label;
               gsap.to(badgeText, { opacity: 1, y: 0, duration: 0.3, ease: 'ontoh' });
             }
           });
+
+          // 카테고리 dots 갱신
+          dots.forEach(function(dot, i) {
+            var isActive = i === stage.cat;
+            dot.style.background = isActive ? '#ffffff' : 'rgba(255,255,255,0.4)';
+            dot.style.width = isActive ? '18px' : '6px';
+            dot.style.borderRadius = isActive ? '3px' : '9999px';
+          });
         }
+
         function next() {
-          idx = (idx + 1) % stages.length;
-          show(idx + 1);
+          idx = (idx + 1) % STAGES.length;
+          setStage(idx);
         }
-        show(1);
-        setInterval(next, 1500);  // 빠른 사이클
+
+        setStage(0);
+        setInterval(next, 1500);  // 각 stage 1.5초 · 전체 loop 13.5초
       });
     }
   </script>
