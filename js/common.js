@@ -45,6 +45,42 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // ==================== Hero 시퀀스 인트로 + Ken Burns 배경 (data-hero-* 자동 매칭) ====================
+  // 모든 페이지에 자동 적용 · data-hero-kicker/title/subtitle 있으면 순차 등장 · data-hero-kb 있으면 배경 Ken Burns
+  if (typeof gsap !== 'undefined') {
+    var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduce) {
+      // Hero 시퀀스 인트로
+      var heroEls = [
+        document.querySelector('[data-hero-kicker]'),
+        document.querySelector('[data-hero-title]'),
+        document.querySelector('[data-hero-subtitle]'),
+      ].filter(Boolean);
+      if (heroEls.length) {
+        gsap.set(heroEls, { y: 24, opacity: 0 });
+        var heroTl = gsap.timeline({ delay: 0.15 });
+        heroEls.forEach(function(el, i) {
+          heroTl.to(el, { y: 0, opacity: 1, duration: 0.9, ease: 'ontoh' }, i === 0 ? 0 : '-=0.45');
+        });
+      }
+      // Ken Burns Hero 배경
+      var heroKb = document.querySelector('[data-hero-kb]');
+      if (heroKb) {
+        gsap.set(heroKb, { scale: 1.05, x: 0, y: 0 });
+        gsap.to(heroKb, {
+          scale: 1.22, x: -30, y: -20,
+          duration: 12, ease: 'none', repeat: -1, yoyo: true,
+        });
+      }
+    }
+  } else {
+    // Fallback · GSAP 미로드 시 opacity 원복
+    document.querySelectorAll('[data-hero-kicker], [data-hero-title], [data-hero-subtitle]').forEach(function(el) {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+  }
+
   // ==================== Nav: 투명 → 글래스 전환 ====================
   const nav = document.getElementById('mainNav');
   if (nav) {

@@ -292,13 +292,14 @@
     </div>
   </section>
 
-  <!-- ==================== 인트로 히어로 (배경 이미지 fixed · 가운데 정렬) ==================== -->
-  <section class="relative overflow-hidden bg-ink hero-bg-fixed" style="background-image: url('assets/main/contact.png');">
+  <!-- ==================== 인트로 히어로 (Ken Burns 배경 · common.js data-hero-* 자동 처리) ==================== -->
+  <section class="relative overflow-hidden bg-ink">
+    <div data-hero-kb class="absolute inset-[-8%] bg-cover bg-center will-change-transform" style="background-image: url('assets/main/contact.png');"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/60 to-ink/85"></div>
     <div class="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-24 text-center">
-      <p class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Contact</p>
-      <h1 class="text-white text-[42px] md:text-[48px] font-bold tracking-tight" style="letter-spacing:-0.02em;">문의</h1>
-      <p class="mt-5 text-white/80 text-[17px] md:text-[19px] leading-[1.7] max-w-2xl mx-auto">현장 규모와 CCTV 환경만 알려주시면<br class="hidden md:block"> 맞춤 도입 방안을 무료로 설계해 드립니다.</p>
+      <p data-hero-kicker class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Contact</p>
+      <h1 data-hero-title class="text-white text-[42px] md:text-[48px] font-bold tracking-tight" style="letter-spacing:-0.02em;">문의</h1>
+      <p data-hero-subtitle class="mt-5 text-white/80 text-[17px] md:text-[19px] leading-[1.7] max-w-2xl mx-auto">현장 규모와 CCTV 환경만 알려주시면<br class="hidden md:block"> 맞춤 도입 방안을 무료로 설계해 드립니다.</p>
     </div>
   </section>
 

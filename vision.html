@@ -456,13 +456,13 @@
 
   <!-- ==================== 인트로 히어로 (Ken Burns 배경 · GSAP 애니메이션) ==================== -->
   <section class="relative overflow-hidden bg-ink">
-    <!-- Ken Burns 배경 레이어 (GSAP 대상) -->
-    <div id="hero-kb-bg" class="absolute inset-[-8%] bg-cover bg-center will-change-transform" style="background-image: url('assets/main/vision.png');"></div>
+    <!-- Ken Burns 배경 레이어 (common.js data-hero-kb 자동 매칭) -->
+    <div data-hero-kb class="absolute inset-[-8%] bg-cover bg-center will-change-transform" style="background-image: url('assets/main/vision.png');"></div>
     <div class="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/60 to-ink/85"></div>
     <div class="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-24 text-center">
-      <p id="hero-kicker" class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Products</p>
-      <h1 id="hero-title" class="text-white text-[42px] md:text-[48px] font-bold tracking-tight" style="letter-spacing:-0.02em;">온토비전</h1>
-      <p id="hero-subtitle" class="mt-5 text-white/85 text-[19px] md:text-[22px] leading-[1.6] max-w-3xl mx-auto font-semibold">스스로 위험을 쫓고 판단하는 AI 안전관제 솔루션</p>
+      <p data-hero-kicker class="text-accent-300 text-[13px] font-bold uppercase tracking-[0.16em] mb-3">Products</p>
+      <h1 data-hero-title class="text-white text-[42px] md:text-[48px] font-bold tracking-tight" style="letter-spacing:-0.02em;">온토비전</h1>
+      <p data-hero-subtitle class="mt-5 text-white/85 text-[19px] md:text-[22px] leading-[1.6] max-w-3xl mx-auto font-semibold">스스로 위험을 쫓고 판단하는 AI 안전관제 솔루션</p>
     </div>
   </section>
 
@@ -1198,27 +1198,7 @@
         var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (prefersReduce) return;
 
-        // ── Ex 01 · Hero 시퀀스 인트로 (페이지 로드 시 1회) ──
-        var hk = document.getElementById('hero-kicker');
-        var ht = document.getElementById('hero-title');
-        var hs = document.getElementById('hero-subtitle');
-        if (hk && ht && hs) {
-          gsap.set([hk, ht, hs], { y: 24, opacity: 0 });
-          var heroTl = gsap.timeline({ delay: 0.15 });
-          heroTl.to(hk, { y: 0, opacity: 1, duration: 0.7, ease: 'ontoh' })
-                .to(ht, { y: 0, opacity: 1, duration: 0.9, ease: 'ontoh' }, '-=0.35')
-                .to(hs, { y: 0, opacity: 1, duration: 0.9, ease: 'ontoh' }, '-=0.55');
-        }
-
-        // ── Ken Burns · Hero 배경 (12초 loop · yoyo) ──
-        var kbBg = document.getElementById('hero-kb-bg');
-        if (kbBg) {
-          gsap.set(kbBg, { scale: 1.05, x: 0, y: 0 });
-          gsap.to(kbBg, {
-            scale: 1.22, x: -30, y: -20,
-            duration: 12, ease: 'none', repeat: -1, yoyo: true,
-          });
-        }
+        // Ex 01 · Hero 시퀀스 인트로 + Ken Burns 배경 · common.js가 자동 처리 (data-hero-* 매칭)
 
         // ── AI 감지 과정 3-panel · 스크롤 진입 시 stagger 등장 ──
         if (typeof ScrollTrigger !== 'undefined') {

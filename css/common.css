@@ -131,3 +131,16 @@ html { font-size: 17px; }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #eef2f7; }
 ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+/* ==================== Hero 시퀀스 인트로 · flash 방지 pre-hide ==================== */
+[data-hero-kicker], [data-hero-title], [data-hero-subtitle] {
+  opacity: 0;
+  transform: translateY(24px);
+  will-change: opacity, transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-hero-kicker], [data-hero-title], [data-hero-subtitle] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
