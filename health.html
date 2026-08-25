@@ -166,6 +166,24 @@
     .skip-to-content:focus{top:0;outline:3px solid #0169a9;outline-offset:0}
 
     /* Reduced motion (WCAG 2.3.3) */
+
+    /* ==================== 이미지 팝업 (단일) ==================== */
+    .pv-open { cursor:zoom-in; background:transparent; border:1px solid #E5E7EB;
+      width:100%; display:flex; align-items:center; gap:.6rem; justify-content:center;
+      padding:.85rem 1rem; color:#0169a9; font-weight:700;
+      transition:background .28s cubic-bezier(0.16,1,0.3,1), border-color .28s cubic-bezier(0.16,1,0.3,1); }
+    .pv-open:hover, .pv-open:focus-visible { background:#fff; border-color:#0169a9; }
+    dialog.pv { padding:0; background:transparent; border:0; max-width:96vw; max-height:96vh; }
+    dialog.pv::backdrop { background:rgba(10,36,64,.88); backdrop-filter:blur(6px); }
+    dialog.pv[open] { animation: pv-in .28s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes pv-in { from{ opacity:0; transform:translateY(10px) } to{ opacity:1; transform:none } }
+    .pv-frame { position:relative; padding:44px 0 0; }
+    .pv-frame img { display:block; max-width:92vw; max-height:80vh; width:auto; height:auto; margin:0 auto; background:#fff; }
+    .pv-close { position:absolute; top:0; right:0; background:transparent; border:0; color:#fff;
+      font-size:26px; line-height:1; cursor:pointer; padding:4px 8px; }
+    .pv-close:hover { color:#8ed0ff; }
+    .pv-cap { color:#fff; text-align:center; margin-top:14px; font-size:15px; font-weight:600; }
+
     @media (prefers-reduced-motion: reduce){
       *,*::before,*::after{
         animation-duration:.01ms !important;
@@ -325,6 +343,7 @@
 
       <!-- Feature 01: 건강검진 결과 입력 · 관리 -->
       <div class="reveal mb-24 md:mb-32">
+        <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">01</p>
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
             <div class="max-w-lg mx-auto">
@@ -332,7 +351,6 @@
             </div>
           </div>
           <div>
-            <p class="stat-num text-body-base font-extrabold text-accent tracking-[0.16em] uppercase mb-4">01</p>
             <h3 class="text-h2 md:text-h1 font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">건강검진 결과 입력 · 관리</h3>
             <ul class="space-y-4 text-h3 text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>작업자 건강 상태 등급 분류</li>
@@ -352,6 +370,7 @@
 
       <!-- Feature 02: 업무 적합성 결과 입력 · 관리 -->
       <div class="reveal mb-24 md:mb-32">
+        <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">02</p>
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div class="lg:order-2">
             <div class="max-w-lg mx-auto">
@@ -359,7 +378,6 @@
             </div>
           </div>
           <div class="lg:order-1">
-            <p class="stat-num text-body-base font-extrabold text-accent tracking-[0.16em] uppercase mb-4">02</p>
             <h3 class="text-h2 md:text-h1 font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">업무 적합성 결과 입력 · 관리</h3>
             <ul class="space-y-4 text-h3 text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>업무수행 적합성 결과 입력 · 정리</li>
@@ -372,6 +390,7 @@
 
       <!-- Feature 03: 공종 · 직종별 위험인자 참고 -->
       <div class="reveal mb-24 md:mb-32">
+        <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">03</p>
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div>
             <div class="max-w-lg mx-auto">
@@ -379,7 +398,6 @@
             </div>
           </div>
           <div>
-            <p class="stat-num text-body-base font-extrabold text-accent tracking-[0.16em] uppercase mb-4">03</p>
             <h3 class="text-h2 md:text-h1 font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">공종 · 직종별 위험인자 참고</h3>
             <ul class="space-y-4 text-h3 text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>직종 / 공종 선택 및 분류</li>
@@ -392,19 +410,22 @@
 
       <!-- Feature 04: 유해인자별 건강구분 및 사후관리 조치 -->
       <div class="reveal">
+        <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">04</p>
         <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div class="lg:order-2 space-y-4">
             <div class="max-w-lg mx-auto">
               <img src="assets/health/features/04-health-followup.png" alt="유해인자별 건강구분·사후관리" class="w-full h-auto">
             </div>
-            <!-- 검색 기능 sub-image -->
-            <div class="overflow-hidden relative">
-              <img src="assets/health/features/04-search-function.png" alt="유해인자 검색 기능" class="w-full h-auto object-contain">
-              <span class="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-accent text-white text-caption font-bold px-3 py-1.5" style="letter-spacing:0.04em;"><iconify-icon icon="solar:magnifer-linear" class="text-body-sm"></iconify-icon>검색 기능 지원</span>
+            <!-- 검색 기능 · 팝업으로 확인 -->
+            <div class="max-w-lg mx-auto w-full">
+              <button type="button" class="pv-open text-body-base" data-pv-open
+                      aria-label="유해인자 검색 기능 화면 크게 보기">
+                <iconify-icon icon="solar:magnifer-linear" class="text-body-lg"></iconify-icon>
+                유해인자 검색 기능 보기
+              </button>
             </div>
           </div>
           <div class="lg:order-1">
-            <p class="stat-num text-body-base font-extrabold text-accent tracking-[0.16em] uppercase mb-4">04</p>
             <h3 class="text-h2 md:text-h1 font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">유해인자별 건강구분 및 사후관리 조치</h3>
             <ul class="space-y-4 text-h3 text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>유해인자 자동 매칭 및 검색</li>
@@ -563,5 +584,26 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
   <script src="js/common.js"></script>
+
+  <!-- 유해인자 검색 기능 팝업 -->
+  <dialog class="pv" id="pvSearch" aria-label="유해인자 검색 기능 화면">
+    <div class="pv-frame">
+      <button type="button" class="pv-close" data-pv-close aria-label="닫기">&times;</button>
+      <img src="assets/health/features/04-search-function.png" alt="유해인자를 검색해 목록에서 선택하는 화면">
+      <p class="pv-cap">유해인자 검색 · 이름 일부만 입력해도 후보를 찾아줍니다</p>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      var dlg = document.getElementById('pvSearch');
+      if (!dlg) return;
+      document.querySelectorAll('[data-pv-open]').forEach(function (b) {
+        b.addEventListener('click', function () { dlg.showModal(); });
+      });
+      dlg.querySelector('[data-pv-close]').addEventListener('click', function () { dlg.close(); });
+      dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    })();
+  </script>
 </body>
 </html>
