@@ -347,78 +347,85 @@
 
     /* ==================== 지속 학습 루프 (Feature 04) ==================== */
     .kl { --kl-cycle: 8s; }
-    .kl-node { position:relative; background:#fff; border:1px solid #E5E7EB; }
-    .kl-node .kl-ico { color:#9aa3ad; transition:color .5s cubic-bezier(0.16,1,0.3,1); }
-    .kl-node .kl-lb  { color:#555; transition:color .5s cubic-bezier(0.16,1,0.3,1); }
-    .kl-node::after {
-      content:""; position:absolute; inset:-1px; border:1px solid #0169a9;
-      opacity:0; transition:opacity .5s cubic-bezier(0.16,1,0.3,1);
+    .kl-node {
+      position:relative; background:#fff; border:1px solid #E5E7EB;
+      animation: kl-on var(--kl-cycle) linear infinite;
     }
-    /* 4단계 순환 하이라이트 — 무한 루프이므로 linear (portal/foundations/motion 예외) */
-    .kl-node { animation: kl-on var(--kl-cycle) linear infinite; }
-    .kl-1 { animation-delay: 0s; }
-    .kl-2 { animation-delay: calc(var(--kl-cycle) * -0.75); }
-    .kl-3 { animation-delay: calc(var(--kl-cycle) * -0.50); }
-    .kl-4 { animation-delay: calc(var(--kl-cycle) * -0.25); }
+    .kl-1{ animation-delay:0s } .kl-2{ animation-delay:calc(var(--kl-cycle)*-0.75) }
+    .kl-3{ animation-delay:calc(var(--kl-cycle)*-0.50) } .kl-4{ animation-delay:calc(var(--kl-cycle)*-0.25) }
     @keyframes kl-on {
-      0%, 22%   { border-color:#0169a9; }
-      30%, 100% { border-color:#E5E7EB; }
+      0%,22%   { border-color:#0169a9; box-shadow:0 0 0 3px rgba(1,105,169,.10); }
+      30%,100% { border-color:#E5E7EB; box-shadow:0 0 0 3px rgba(1,105,169,0); }
     }
-    .kl-dot {
-      position:absolute; top:10px; right:10px; width:6px; height:6px; background:#0169a9;
-      opacity:0; animation: kl-dot var(--kl-cycle) linear infinite;
-    }
-    .kl-1 .kl-dot{ animation-delay:0s; }
-    .kl-2 .kl-dot{ animation-delay: calc(var(--kl-cycle) * -0.75); }
-    .kl-3 .kl-dot{ animation-delay: calc(var(--kl-cycle) * -0.50); }
-    .kl-4 .kl-dot{ animation-delay: calc(var(--kl-cycle) * -0.25); }
-    @keyframes kl-dot { 0%,22%{opacity:1;} 30%,100%{opacity:0;} }
+    /* 활성 시 아이콘·라벨까지 accent 로 */
+    .kl-ico, .kl-lb { animation: kl-fg var(--kl-cycle) linear infinite; }
+    .kl-1 .kl-ico,.kl-1 .kl-lb{ animation-delay:0s }
+    .kl-2 .kl-ico,.kl-2 .kl-lb{ animation-delay:calc(var(--kl-cycle)*-0.75) }
+    .kl-3 .kl-ico,.kl-3 .kl-lb{ animation-delay:calc(var(--kl-cycle)*-0.50) }
+    .kl-4 .kl-ico,.kl-4 .kl-lb{ animation-delay:calc(var(--kl-cycle)*-0.25) }
+    @keyframes kl-fg { 0%,22%{ color:#0169a9 } 30%,100%{ color:#9aa3ad } }
+    .kl-lb { color:#555; }
+    @keyframes kl-fg-lb { 0%,22%{ color:#0A2440 } 30%,100%{ color:#555 } }
+    .kl-lb { animation-name: kl-fg-lb; }
 
-    /* 연결선 위를 흐르는 데이터 */
-    .kl-track { position:relative; background:#E5E7EB; overflow:hidden; }
+    /* 연결선 + 화살표 */
+    .kl-track { position:relative; background:#E5E7EB; }
     .kl-track::before {
       content:""; position:absolute; background:#0169a9;
       animation: kl-flow var(--kl-cycle) linear infinite;
     }
-    .kl-track.kl-h { height:1px; }
-    .kl-track.kl-h::before { top:0; height:1px; width:40%; left:-40%; }
-    .kl-track.kl-v { width:1px; }
-    .kl-track.kl-v::before { left:0; width:1px; height:40%; top:-40%; }
-    .kl-h.kl-r::before { animation-name: kl-flow-r; }
-    .kl-h.kl-l::before { animation-name: kl-flow-l; }
-    .kl-v.kl-d::before { animation-name: kl-flow-d; }
-    .kl-v.kl-u::before { animation-name: kl-flow-u; }
-    .kl-h.kl-r::before{ animation-delay: calc(var(--kl-cycle) * -0.90); }
-    .kl-v.kl-d::before{ animation-delay: calc(var(--kl-cycle) * -0.65); }
-    .kl-h.kl-l::before{ animation-delay: calc(var(--kl-cycle) * -0.40); }
-    .kl-v.kl-u::before{ animation-delay: calc(var(--kl-cycle) * -0.15); }
-    @keyframes kl-flow-r { 0%{left:-40%;} 20%,100%{left:100%;} }
-    @keyframes kl-flow-l { 0%{left:100%;} 20%,100%{left:-40%;} }
-    @keyframes kl-flow-d { 0%{top:-40%;} 20%,100%{top:100%;} }
-    @keyframes kl-flow-u { 0%{top:100%;} 20%,100%{top:-40%;} }
-
-    /* 정확도 게이지 */
-    .kl-bar { height:6px; background:#E5E7EB; overflow:hidden; }
-    .kl-bar > i {
-      display:block; height:100%; background:#0169a9; width:96.8%;
-      transform-origin:left center;
-      animation: kl-grow var(--kl-cycle) cubic-bezier(0.16,1,0.3,1) infinite;
+    .kl-track::after {           /* 화살촉 */
+      content:""; position:absolute; width:0; height:0; border:4px solid transparent;
     }
-    @keyframes kl-grow { 0%{ transform:scaleX(.94);} 55%,100%{ transform:scaleX(1);} }
-    .kl-figs { height:1.15em; overflow:hidden; }
-    .kl-figs > span { display:block; animation: kl-roll var(--kl-cycle) steps(1,end) infinite; }
+    .kl-h { height:1px; }
+    .kl-h::before { top:0; height:1px; width:38%; }
+    .kl-v { width:1px; }
+    .kl-v::before { left:0; width:1px; height:38%; }
+    .kl-r::before{ animation-name:kl-flow-r; animation-delay:calc(var(--kl-cycle)*-0.90) }
+    .kl-d::before{ animation-name:kl-flow-d; animation-delay:calc(var(--kl-cycle)*-0.65) }
+    .kl-l::before{ animation-name:kl-flow-l; animation-delay:calc(var(--kl-cycle)*-0.40) }
+    .kl-u::before{ animation-name:kl-flow-u; animation-delay:calc(var(--kl-cycle)*-0.15) }
+    @keyframes kl-flow-r { 0%{left:-38%} 20%,100%{left:100%} }
+    @keyframes kl-flow-l { 0%{left:100%} 20%,100%{left:-38%} }
+    @keyframes kl-flow-d { 0%{top:-38%} 20%,100%{top:100%} }
+    @keyframes kl-flow-u { 0%{top:100%} 20%,100%{top:-38%} }
+    .kl-r::after{ right:-1px; top:-3.5px; border-left-color:#c8cdd3; border-right-width:0 }
+    .kl-l::after{ left:-1px;  top:-3.5px; border-right-color:#c8cdd3; border-left-width:0 }
+    .kl-d::after{ bottom:-1px; left:-3.5px; border-top-color:#c8cdd3; border-bottom-width:0 }
+    .kl-u::after{ top:-1px;    left:-3.5px; border-bottom-color:#c8cdd3; border-top-width:0 }
+
+    /* 중앙 · 학습 회차 */
+    .kl-core { display:flex; flex-direction:column; align-items:center; gap:5px; }
+    .kl-core .kl-seg { display:flex; gap:3px; }
+    .kl-core .kl-seg i { width:5px; height:5px; background:#E5E7EB; display:block; }
+    .kl-core .kl-seg i:nth-child(1){ animation: kl-f1 var(--kl-cycle) linear infinite; }
+    .kl-core .kl-seg i:nth-child(2){ animation: kl-f2 var(--kl-cycle) linear infinite; }
+    .kl-core .kl-seg i:nth-child(3){ animation: kl-f3 var(--kl-cycle) linear infinite; }
+    .kl-core .kl-seg i:nth-child(4){ animation: kl-f4 var(--kl-cycle) linear infinite; }
+
+    /* 정확도 게이지 · 4단 누적 후 동시 리셋 */
+    .kl-bar { height:6px; background:#E5E7EB; display:flex; gap:2px; }
+    .kl-bar i { flex:1; background:#E5E7EB; }
+    .kl-bar i:nth-child(1){ animation: kl-f1 var(--kl-cycle) linear infinite; }
+    .kl-bar i:nth-child(2){ animation: kl-f2 var(--kl-cycle) linear infinite; }
+    .kl-bar i:nth-child(3){ animation: kl-f3 var(--kl-cycle) linear infinite; }
+    .kl-bar i:nth-child(4){ animation: kl-f4 var(--kl-cycle) linear infinite; }
+    @keyframes kl-f1 { 0%,1%{background:#E5E7EB} 3%,96%{background:#0169a9} 98%,100%{background:#E5E7EB} }
+    @keyframes kl-f2 { 0%,26%{background:#E5E7EB} 28%,96%{background:#0169a9} 98%,100%{background:#E5E7EB} }
+    @keyframes kl-f3 { 0%,51%{background:#E5E7EB} 53%,96%{background:#0169a9} 98%,100%{background:#E5E7EB} }
+    @keyframes kl-f4 { 0%,76%{background:#E5E7EB} 78%,96%{background:#0169a9} 98%,100%{background:#E5E7EB} }
+    .kl-figs { height:1.15em; overflow:hidden; line-height:1.15em; }
+    .kl-figs > span { display:block; line-height:1.15em; animation: kl-roll var(--kl-cycle) steps(1,end) infinite; }
     @keyframes kl-roll {
-      0%   { transform:translateY(0); }
-      25%  { transform:translateY(-1.15em); }
-      50%  { transform:translateY(-2.3em); }
-      75%  { transform:translateY(-3.45em); }
-      100% { transform:translateY(-3.45em); }
+      0%{ transform:translateY(0) } 25%{ transform:translateY(-1.15em) }
+      50%{ transform:translateY(-2.3em) } 75%,100%{ transform:translateY(-3.45em) }
     }
     @media (prefers-reduced-motion: reduce) {
-      .kl-node, .kl-dot, .kl-track::before, .kl-bar > i, .kl-figs > span { animation:none !important; }
-      .kl-node { border-color:#E5E7EB; }
-      .kl-dot { opacity:0; }
-      .kl-figs > span { transform:translateY(-3.45em); }
+      .kl-node,.kl-ico,.kl-lb,.kl-track::before,.kl-bar i,.kl-core .kl-seg i,.kl-figs > span { animation:none !important }
+      .kl-node{ border-color:#E5E7EB; box-shadow:none } .kl-ico{ color:#9aa3ad } .kl-lb{ color:#555 }
+      .kl-bar i,.kl-core .kl-seg i{ background:#0169a9 }
+      .kl-figs > span{ transform:translateY(-3.45em) }
+    }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -980,9 +987,12 @@
                 </div>
 
                 <!-- 2행: 좌측 상승(피드백→데이터) · 우측 하강(학습→감지) -->
-                <div class="kl-track kl-v kl-u h-8 justify-self-center" aria-hidden="true"></div>
-                <div aria-hidden="true"></div>
-                <div class="kl-track kl-v kl-d h-8 justify-self-center" aria-hidden="true"></div>
+                <div class="kl-track kl-v kl-u h-10 justify-self-center" aria-hidden="true"></div>
+                <div class="kl-core" aria-hidden="true">
+                  <p class="text-caption font-extrabold text-sub/60 uppercase tracking-[0.12em] whitespace-nowrap">학습 사이클</p>
+                  <span class="kl-seg"><i></i><i></i><i></i><i></i></span>
+                </div>
+                <div class="kl-track kl-v kl-d h-10 justify-self-center" aria-hidden="true"></div>
 
                 <!-- 3행: 피드백 반영 ← 감지·판단 -->
                 <div class="kl-node kl-4 p-4 md:p-5">
@@ -1005,7 +1015,7 @@
                     <span class="kl-figs" aria-hidden="true"><span>91.4<br>93.6<br>95.2<br>96.8</span></span><span>%</span>
                   </p>
                 </div>
-                <div class="kl-bar"><i></i></div>
+                <div class="kl-bar"><i></i><i></i><i></i><i></i></div>
                 <p class="mt-3 text-body-sm text-sub leading-[1.6]">현장 피드백이 누적될수록 오탐이 줄고 판단이 정교해집니다.</p>
               </div>
             </div>
