@@ -167,7 +167,7 @@ Primitive(Tailwind config) · Semantic(이름 자체가 semantic · ink/accent/e
 ### 신규 Tailwind extend (2026-07-28)
 
 **fontSize scale (9종)**  
-`text-caption` (12px) · `text-body-sm` (13px) · `text-body` (15px) · `text-body-md` (17px) · `text-body-lg` (19px) · `text-h3` (22px) · `text-h2` (28px) · `text-h1` (38px) · `text-hero` (48px)
+`text-caption` (12px) · `text-body-sm` (13px) · `text-body-base` (15px) · `text-body-md` (17px) · `text-body-lg` (19px) · `text-h3` (22px) · `text-h2` (28px) · `text-h1` (38px) · `text-hero` (48px)
 
 **boxShadow scale (4종)**  
 `shadow-card` · `shadow-panel` · `shadow-megabar` · `shadow-lightbox`

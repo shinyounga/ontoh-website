@@ -1,7 +1,26 @@
 # ONTOH Design System
 
 > 건설현장 안전관리 Physical AI 기업 · **주식회사 온토** 웹사이트 브랜드 · 컴포넌트 시스템
-> Version 3.0 · 2026-07-22
+
+---
+
+> ## ⚠️ 이 문서는 참조용입니다 — 최신 규격은 디자인 시스템 포털
+>
+> **단일 소스(Single Source of Truth)는 [`design/portal/`](portal/index.html) 입니다.**
+> 이 문서(v3.0 · 2026-07-22)는 포털보다 오래됐습니다. 값이 다르면 **포털이 맞습니다.**
+>
+> | 찾는 것 | 포털에서 보세요 |
+> |---|---|
+> | 타입 스케일 · 웨이트 | [`portal/foundations/typography.html`](portal/foundations/typography.html) |
+> | 컬러 | [`portal/foundations/color.html`](portal/foundations/color.html) |
+> | 모션 · easing · duration | [`portal/foundations/motion.html`](portal/foundations/motion.html) |
+> | Radius · Elevation · Spacing | [`portal/foundations/`](portal/foundations/) |
+> | Kicker · Tag · Card · Button 등 | [`portal/components/`](portal/components/) |
+> | Hero · Section · CTA 패턴 | [`portal/patterns/`](portal/patterns/) |
+> | 신규 페이지 착수 | [`portal/get-started/`](portal/get-started/) |
+>
+> 아래 본문 중 **§4.2 스케일**과 **§6.1 Kicker**는 포털 기준으로 갱신했습니다.
+> 나머지 절은 갱신 전이므로 포털과 대조해 사용하세요.
 
 ---
 
@@ -48,185 +67,61 @@
 
 ## 2. 디자인 원칙
 
-### 2.1 One Thing One Page
-한 페이지 = 한 목적. 여러 액션을 한 곳에 몰아넣지 않는다.
+> **포털이 관리합니다.** 아래 링크가 최신 규격입니다.
 
-### 2.2 여백으로 위계
-볼드 남발보다 크기 · 여백 · 색상 대비로 위계를 만든다.
-
-### 2.3 정직 · 절제
-"혁신적인", "원활한", "게임 체인저" 같은 AI 클리셰 한국어 금지.
-숫자는 있는 것만 정확히. 없는 성과는 지어내지 말고 "실증 진행 중"으로 표기.
-
-### 2.4 헤어라인 미학
-큰 그림자 · 컬러 배경보다 얇은 선(`#E5E7EB`)으로 구획.
-`.corp-card` 같은 카드도 기본은 헤어라인 테두리, hover 시에만 그림자.
-
-### 2.5 반복 금지
-인접한 두 섹션이 같은 레이아웃 패턴을 사용하지 않는다.
-(예: 3열 균등 카드 두 번 연달아 X → Bento Grid + Zig-Zag)
-
----
+| 내용 | 위치 |
+|---|---|
+| 디자인 원칙 | [`portal/get-started/principles.html`](portal/get-started/principles.html) |
+| 보이스 · 톤 | [`portal/foundations/voice-tone.html`](portal/foundations/voice-tone.html) |
+| UX 라이팅 | [`portal/foundations/writing.html`](portal/foundations/writing.html) |
 
 ## 3. 디자인 토큰
 
-### 3.1 컬러 팔레트
+> **포털이 관리합니다.** 아래 링크가 최신 규격입니다.
 
-#### Primary (구조)
-
-| 이름 | HEX | RGB | 사용처 |
-|---|---|---|---|
-| `ink` | **`#0A2440`** | 10, 36, 64 | 헤드라인 · 헤더 · 다크 CTA 배경 · 강조 |
-| `body` | **`#212121`** | 33, 33, 33 | 본문 텍스트 (기본색) |
-| `sub` | **`#555555`** | 85, 85, 85 | 보조 텍스트 · 캡션 |
-
-#### Accent (강조)
-
-| 이름 | HEX | 사용처 |
-|---|---|---|
-| `accent` (DEFAULT) | **`#0169a9`** | 링크 · CTA · 수치 · 킥커 · section-tag |
-| `accent-300` | `#8ed0ff` | 다크 배경 위 킥커 텍스트 |
-| `accent-400` | `#59b4ff` | 보조 강조 (그라디언트 등) |
-
-#### Surface (배경 · 선)
-
-| 이름 | HEX | 사용처 |
-|---|---|---|
-| `white` | `#FFFFFF` | 기본 배경 |
-| `band` | **`#F5F6F8`** | 섹션 구분 배경 (오프화이트) |
-| `hair` | **`#E5E7EB`** | 테두리 · 헤어라인 |
-
-#### Semantic
-
-| 이름 | HEX | 사용처 |
-|---|---|---|
-| `ok` | `#137a52` | Health 축 · 성공 · 보건 성과 강조 |
-| `warn` | `#FEF9E7` / text `#8B6A00` | 초안(draft) 배너 · 안내 |
-
-#### 브랜드 자산 전용 (웹 UI 사용 금지)
-
-| 이름 | HEX | 용도 |
-|---|---|---|
-| `logo-navy` | `#1b2e6a` | 로고 SVG 원본 색상 (변경 금지) |
-
-### 3.2 Radius (직각 우선)
-
-```
---radius-none: 0px        ← 기본
---radius-sm:   2px        ← 예외 (라벨 도트 등)
---radius-full: 9999px     ← 아바타 · 필터 칩만
-```
-
-**원칙**: `border-radius`는 최소한만. Tailwind `rounded-*` 대신 `rounded-none` 명시.
-
-### 3.3 Shadow (절제)
-
-```
---shadow-card-hover: 0 18px 40px -22px rgba(10, 36, 64, .32);
---shadow-mega:       0 28px 46px -26px rgba(10, 36, 64, .3);
-```
-
-**원칙**: 그림자는 호버 시에만. `.corp-card:hover` → 위 shadow-card-hover 적용. 기본 상태는 헤어라인만.
-
----
+| 내용 | 위치 |
+|---|---|
+| 컬러 팔레트 | [`portal/foundations/color.html`](portal/foundations/color.html) |
+| Radius | [`portal/foundations/radius.html`](portal/foundations/radius.html) |
+| Shadow · Elevation | [`portal/foundations/elevation.html`](portal/foundations/elevation.html) |
 
 ## 4. 타이포그래피
 
-### 4.1 폰트 (단일)
+> **포털이 관리합니다.** 아래 링크가 최신 규격입니다.
 
-```html
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
-```
-
-```css
-font-family: 'Pretendard', system-ui, sans-serif;
-```
-
-**절대 사용 금지**: Inter, Noto Sans KR, Roboto, 명조체(Serif). 슬로건 · 인용문도 Pretendard.
-
-### 4.2 스케일
-
-| 역할 | Size | Weight | Letter-spacing | 예시 |
-|---|---|---|---|---|
-| **Hero H1** | 34–46px (`text-[34px] md:text-[46px]`) | 800 (bold) | -0.02em | 페이지 제목 |
-| **Section H2** | 28–42px | 700–800 | -0.02em | 섹션 헤드 |
-| **Card H3** | 19–23px | 700 | -0.015em | 카드 제목 |
-| **Sub-h H4** | 16–18px | 700 | -0.01em | 상세 소제목 |
-| **Body** | 15.5–17px | 400 | 0 | line-height 1.75–1.85 |
-| **Small** | 13.5–14px | 400 | 0 | 캡션 · 부가 |
-| **Kicker** | 13px | 800 | 0.14em uppercase | 킥커 (라벨) |
-| **Section tag** | 12px | 800 | 0.16em uppercase | Challenge · Solution 등 |
-| **Meta** | 11.5–12.5px | 700 | 0.14em uppercase | 태그 · 스트립 라벨 |
-| **KPI Num** | 32–44px | 800 | -0.03em, tabular-nums | 수치 강조 |
-
-### 4.3 폰트 웨이트 팔레트
-
-```
-400 Regular   — 본문
-600 Semibold  — 강조 문구
-700 Bold      — 헤드라인 · 카드 제목 · 버튼
-800 Extrabold — Hero · KPI 수치 · 킥커
-```
-
-**900 Black 사용 금지** — 웹에서 뭉개짐.
-
----
+| 내용 | 위치 |
+|---|---|
+| 타입 스케일 · 웨이트 · 사용 규칙 | [`portal/foundations/typography.html`](portal/foundations/typography.html) |
 
 ## 5. 스페이싱 · 레이아웃
 
-### 5.1 컨테이너
+> **포털이 관리합니다.** 아래 링크가 최신 규격입니다.
 
-```html
-<div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
-```
-
-- **max-width**: 1280px (`max-w-7xl`)
-- **수평 패딩**: 24px → 40px → 56px (반응형)
-
-### 5.2 섹션 세로 패딩
-
-| 컨텍스트 | Padding |
+| 내용 | 위치 |
 |---|---|
-| Hero (넓은 여백) | `py-24 md:py-32` (96–128px) |
-| 일반 섹션 | `py-16 md:py-20` (64–80px) |
-| 컴팩트 섹션 | `py-14 md:py-16` (56–64px) |
-| Sub-visual | `py-20 md:py-28` (80–112px) |
-
-### 5.3 스페이싱 스케일 (Tailwind 기준)
-
-| 토큰 | Rem | Px | 사용 |
-|---|---|---|---|
-| `space-1` | 0.25 | 4 | 아이콘 간격 |
-| `space-2` | 0.5 | 8 | 인라인 gap |
-| `space-3` | 0.75 | 12 | 태그 간격 |
-| `space-4` | 1 | 16 | 카드 내부 원소 |
-| `space-5` | 1.25 | 20 | 그리드 gap 소 |
-| `space-6` | 1.5 | 24 | 카드 padding |
-| `space-8` | 2 | 32 | 카드 padding (큰) |
-| `space-10` | 2.5 | 40 | 섹션 내 그리드 gap |
-| `space-14` | 3.5 | 56 | 섹션 상단 여백 |
-| `space-16` | 4 | 64 | 섹션 여백 |
-| `space-20` | 5 | 80 | 큰 섹션 여백 |
-| `space-24` | 6 | 96 | Hero 여백 |
-
----
+| 스페이싱 스케일 | [`portal/foundations/spacing.html`](portal/foundations/spacing.html) |
+| 컨테이너 · 그리드 | [`portal/foundations/layout.html`](portal/foundations/layout.html) |
 
 ## 6. 컴포넌트
 
-### 6.1 Kicker (킥커)
+> **대부분은 포털이 관리합니다.** 아래는 포털 매핑이며, 이 문서에는 **포털에 아직 없는 컴포넌트만** 남겨두었습니다.
 
-섹션 소개 라벨. 대문자 + 자간 넓게 + accent 색 + 좌측 선.
+| 컴포넌트 | 포털 위치 |
+|---|---|
+| Kicker | [`portal/components/kicker.html`](portal/components/kicker.html) |
+| Tag / Chip | [`portal/components/tag.html`](portal/components/tag.html) |
+| Card | [`portal/components/card.html`](portal/components/card.html) |
+| KPI Box | [`portal/components/stat-number.html`](portal/components/stat-number.html) |
+| Draft Notice | [`portal/components/alert.html`](portal/components/alert.html) |
+| GNB 메가메뉴 | [`portal/components/navigation.html`](portal/components/navigation.html) |
+| Breadcrumb | [`portal/components/breadcrumb.html`](portal/components/breadcrumb.html) |
+| Sub Hero | [`portal/patterns/hero.html`](portal/patterns/hero.html) |
+| CTA Section | [`portal/patterns/cta.html`](portal/patterns/cta.html) |
+| Button · Form · Lightbox · Dropdown · Feature Carousel | [`portal/components/`](portal/components/) |
 
-```html
-<p class="kicker">Case Studies</p>
-```
+**아래는 포털 미수록 — 이 문서가 유일한 출처입니다.**
 
-```css
-.kicker { display:inline-flex; align-items:center; gap:.7rem;
-  font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
-.kicker::before { content:""; width:4px; height:18px; background:#0169a9; display:inline-block; }
-```
+
 
 ### 6.2 Section Tag
 
@@ -243,54 +138,8 @@ Kicker의 상세 페이지 버전. Challenge / Solution / Impact 등에 사용.
   background:#0169a9; vertical-align:middle; margin-right:.6rem; }
 ```
 
-### 6.3 Tag / Chip
 
-```html
-<span class="tag bg-accent/10 text-accent">Vision 실증</span>
-<span class="tag bg-ink/[0.06] text-ink">공공주택 지구조성</span>
-```
 
-```css
-.tag { font-size:12px; font-weight:800; letter-spacing:.02em; padding:3px 9px; }
-```
-
-### 6.4 Card (`.corp-card`)
-
-기본 콘텐츠 컨테이너. 헤어라인 → hover 시 살짝 뜨는 shadow.
-
-```html
-<a href="..." class="corp-card block p-8 group">
-  ...
-</a>
-```
-
-```css
-.corp-card { background:#fff; border:1px solid #E5E7EB;
-  transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1),
-              transform .5s cubic-bezier(0.16,1,0.3,1); }
-.corp-card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32);
-  transform: translateY(-3px); }
-```
-
-### 6.5 KPI Box (3칸 상단 지표)
-
-Voxel · Protex 스타일 "Impact in Numbers". 다크 배경 + 큰 수치.
-
-```html
-<div class="grid md:grid-cols-3 gap-3 md:gap-4">
-  <div class="bg-ink p-7 md:p-8">
-    <div class="text-white kpi-num mb-3">40<small>+건/일</small></div>
-    <p class="text-white/60 text-[13.5px] leading-relaxed">위험행동 자동 감지</p>
-  </div>
-  ...
-</div>
-```
-
-```css
-.kpi-num { font-size:44px; font-weight:800; line-height:1;
-  letter-spacing:-.03em; font-variant-numeric:tabular-nums; }
-.kpi-num small { font-size:20px; font-weight:700; margin-left:.15rem; }
-```
 
 ### 6.6 Summary Strip (4칸 요약 스트립)
 
@@ -367,35 +216,9 @@ Voxel · Protex 스타일 "Impact in Numbers". 다크 배경 + 큰 수치.
 .law-chip::before { content:"§ "; color:#0169a9; }
 ```
 
-### 6.10 Draft Notice (초안 배너)
 
-미확정 콘텐츠 페이지 상단에 노란 스트립.
 
-```html
-<div class="draft-notice">
-  <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-3 text-[13px] text-[#8B6A00]">
-    <iconify-icon icon="solar:info-circle-linear"></iconify-icon>
-    <strong>초안</strong> — 실증 진행에 따라 실제 데이터로 순차 업데이트됩니다.
-  </div>
-</div>
-```
 
-```css
-.draft-notice { background:#FEF9E7; border-bottom:1px solid #F5DE83; }
-```
-
-### 6.11 GNB (Global Navigation) 메가메뉴
-
-풀와이드 메가바 + 4대 카테고리(회사소개 / 솔루션 / 기술·연구 / 문의).
-각 페이지가 동일한 헤더/푸터 공유. 자세한 마크업은 `preview/components.html` 참조.
-
-### 6.12 Sub Hero + Breadcrumb
-
-다크 배경 + 반투명 이미지 오버레이 + 킥커 + h1 + 브레드크럼.
-
-### 6.13 CTA Section
-
-다크 배경 + accent-300 킥커 + 대비 강한 CTA 버튼 2개.
 
 ### 6.14 Footer (강화 푸터)
 
@@ -405,90 +228,28 @@ Voxel · Protex 스타일 "Impact in Numbers". 다크 배경 + 큰 수치.
 
 ## 7. 모션 · 인터랙션
 
-### 7.1 이징 커브 (단일 표준)
+> **포털이 관리합니다.** 아래 링크가 최신 규격입니다.
 
-```css
-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
-```
-
-**금지**: `ease-in-out`, `linear`, `ease` — 전부 이 스프링 커브로 통일.
-
-### 7.2 표준 지속시간
-
-| 인터랙션 | Duration |
+| 내용 | 위치 |
 |---|---|
-| Micro (hover 색상) | 200–280ms |
-| Standard (버튼) | 340–400ms |
-| Card hover | 500ms |
-| 메가메뉴 열림 | 380ms |
-| Reveal (스크롤) | 600–700ms |
-
-### 7.3 Hover 패턴
-
-- **버튼 · CTA**: `hover:scale-[1.02] active:scale-[0.98]`
-- **카드**: `translateY(-3px)` + shadow
-- **텍스트 링크 (dlink)**: 색상 변경 + gap 넓어짐 (아이콘 fade-in)
-- **화살표 아이콘**: `gap` 1.5→2.5
-
-### 7.4 Reveal (스크롤 진입 애니메이션)
-
-```html
-<div class="reveal">...</div>
-<div class="reveal stagger-1">...</div>
-<div class="reveal stagger-2">...</div>
-```
-
-`js/common.js`가 IntersectionObserver로 처리. `stagger-1/2/3/4/5`로 지연 부여.
-
----
+| easing · duration · reduced-motion | [`portal/foundations/motion.html`](portal/foundations/motion.html) |
 
 ## 8. 아이콘
 
-### 8.1 라이브러리
+> **포털이 관리합니다.** 아래 링크가 최신 규격입니다.
 
-**Iconify Solar 전용** — 그 외 아이콘셋 사용 금지.
-
-```html
-<script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
-```
-
-```html
-<iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon>
-```
-
-### 8.2 자주 쓰는 Solar 아이콘
-
-| 용도 | 아이콘 |
+| 내용 | 위치 |
 |---|---|
-| 화살표 (링크·CTA) | `solar:arrow-right-linear` |
-| 브레드크럼 구분 | `solar:alt-arrow-right-linear` |
-| 안전·보호 | `solar:shield-check-linear` · `solar:shield-user-linear` |
-| 보건 | `solar:heart-pulse-linear` |
-| 문서 | `solar:document-text-linear` |
-| 부정(과제) | `solar:minus-circle-linear` |
-| 긍정(해결) | `solar:check-circle-linear` |
-| 안내 | `solar:info-circle-linear` |
-| 인용 | `solar:quote-up-linear` |
-| 메뉴 | `solar:hamburger-menu-linear` |
-| 닫기 | `solar:close-circle-linear` |
-
-### 8.3 절대 사용 금지
-
-- **이모지** (📊 🚀 ⚡ 등) — 모두 Iconify Solar로 대체
-- Font Awesome · Material Icons · Heroicons
-
----
+| 아이콘 규칙 · Iconify Solar | [`portal/foundations/iconography.html`](portal/foundations/iconography.html) |
 
 ## 9. 접근성
 
-- **색상 대비**: 본문 텍스트 4.5:1, 큰 텍스트 3:1 (WCAG AA)
-- **포커스 링**: 브라우저 기본 유지 (커스텀 안 함)
-- **alt 텍스트**: 모든 `<img>`에 의미 있는 alt (장식용은 `alt=""`)
-- **aria-label**: 아이콘만 있는 버튼에 필수 (예: 메뉴 토글)
-- **키보드 네비게이션**: `<a>` `<button>` 사용, `<div onclick>` 금지
-- **prefers-reduced-motion**: reveal 애니메이션은 이 사용자에겐 스킵 (`js/common.js`에서 처리)
+> **포털이 관리합니다.** 아래 링크가 최신 규격입니다.
 
----
+| 내용 | 위치 |
+|---|---|
+| 접근성 기준 · WCAG | [`portal/foundations/accessibility.html`](portal/foundations/accessibility.html) |
+| 상태 표현 | [`portal/foundations/state.html`](portal/foundations/state.html) |
 
 ## 10. 절대 하지 말 것
 
@@ -615,5 +376,6 @@ transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 
 ---
 
-_Last updated: 2026-07-22 · Version 3.0_
+_본문 v3.0 (2026-07-22) · §4.2 · §6.1 은 포털 기준으로 갱신 (2026-08-25)_
+_최신 규격: `design/portal/`_
 _Maintained by ONTOH Inc. (ktg@ontoh.co.kr)_

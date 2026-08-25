@@ -83,6 +83,7 @@
     <p class="doc-lead">
       단일 easing curve · <code>cubic-bezier(0.16, 1, 0.3, 1)</code>.
       <code>ease-in-out</code> · <code>linear</code> 사용 금지. 모든 애니메이션·트랜지션에 통일합니다.
+      <strong>단, 무한 반복 등속 애니메이션(스피너 · 진행바 · 마퀴)은 <code>linear</code> 허용.</strong>
     </p>
 
     <h2>Easing Curve</h2>
@@ -169,6 +170,10 @@
     <ul>
       <li><strong>Easing 단일화</strong> · <code>cubic-bezier(0.16, 1, 0.3, 1)</code> 만 사용.</li>
       <li><code>ease-in-out</code> · <code>linear</code> · <code>ease</code> 사용 금지.</li>
+      <li><strong>예외</strong> — 무한 반복되는 <strong>등속</strong> 애니메이션에 한해 <code>linear</code> 를 허용합니다.
+        해당: 버튼 로딩 스피너(<code>.btn.is-loading::after</code>) · 읽기 진행바(<code>#readingProgress</code>) ·
+        파트너 로고 마퀴(<code>.lg-track</code>). 등속이 아니면 매 주기마다 가감속이 생겨 끊겨 보입니다.
+        <br>상태 전환 · hover · reveal 에는 예외 없이 <code>cubic-bezier(0.16, 1, 0.3, 1)</code> 를 씁니다.</li>
       <li>Duration은 상황별 표에서 선택 · 임의 값 금지.</li>
       <li>모든 애니메이션은 <code>prefers-reduced-motion</code> 존중.</li>
       <li>3D 회전 · 큰 스케일 (>1.2) · 급격한 진동 애니메이션 금지.</li>

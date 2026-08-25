@@ -73,7 +73,7 @@ info     #0169a9  — 정보 (accent와 동일 값)
 ```
 text-caption  12px    — 라벨 · 뱃지
 text-body-sm  13px    — 폼 라벨 · 브레드크럼
-text-body     15px    — 본문 base
+text-body-base 15px   — 본문 base (text-body 는 색상 토큰)
 text-body-md  17px    — 서브 헤딩 body
 text-body-lg  19px    — 인트로 body
 text-h3       22px    — h3 · 카드 타이틀
@@ -143,7 +143,7 @@ AI 클리셰 한국어 금지: "혁신적인", "원활한", "차세대", "게임
   <meta property="og:type" content="website">
   <meta property="og:title" content="...">
   <meta property="og:description" content="...">
-  <meta property="og:image" content="https://ontoh.co.kr/assets/main/main1.png">
+  <meta property="og:image" content="https://ontoh.co.kr/assets/vision/main.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
   <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>

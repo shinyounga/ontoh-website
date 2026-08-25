@@ -48,7 +48,7 @@ _사용 시 이 문서에 정의된 토큰만 사용 · 임의 hex/px 값 사용
 |---|---|---|---|---|
 | `text-caption` | 12px | 1.5 | - | 라벨 · 뱃지 · 푸터 메타 |
 | `text-body-sm` | 13px | 1.6 | - | 폼 라벨 · 브레드크럼 · 작은 body |
-| `text-body` | 15px | 1.65 | - | **본문 base** · 드롭다운 링크 |
+| `text-body-base` | 15px | 1.65 | - | **본문 base** · 드롭다운 링크 · (`text-body`는 색상 토큰이므로 크기는 이 이름 사용) |
 | `text-body-md` | 17px | 1.65 | - | 서브 헤딩 body · 서브타이틀 |
 | `text-body-lg` | 19px | 1.7 | - | 인트로 body · Feature 리스트 |
 | `text-h3` | 22px | 1.3 | -0.01em | h3 · 카드 타이틀 |

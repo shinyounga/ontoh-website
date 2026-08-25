@@ -13,7 +13,7 @@
   <meta property="og:description" content="AI 기반 건설현장 CCTV 자율관제와 작업자 보건관리 솔루션. PTZ 카메라 자동 제어, 위험 감지, 중대재해 예방까지.">
   <meta property="og:url" content="https://ontoh.co.kr/">
   <meta property="og:site_name" content="ONTOH">
-  <meta property="og:image" content="https://ontoh.co.kr/assets/main/main1.png">
+  <meta property="og:image" content="https://ontoh.co.kr/assets/og/home.jpg">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
   <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
@@ -38,7 +38,7 @@
           fontSize: {
             'caption': ['12px', { lineHeight: '1.5' }],
             'body-sm': ['13px', { lineHeight: '1.6' }],
-            'body': ['15px', { lineHeight: '1.65' }],
+            'body-base': ['15px', { lineHeight: '1.65' }],   /* 색상 토큰 text-body 와의 이름 충돌 회피 */
             'body-md': ['17px', { lineHeight: '1.65' }],
             'body-lg': ['19px', { lineHeight: '1.7' }],
             'h3': ['22px', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
@@ -88,6 +88,29 @@
     .alert-info { border-left-color: #0169a9; background: #eff6ff; color: #1e3a8a; }
     .kicker { display:inline-flex; align-items:center; gap:.7rem; font-size:15px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#0169a9; }
     .kicker::before { content:""; width:5px; height:20px; background:#0169a9; display:inline-block; }
+
+    /* ==================== 파트너 로고 마퀴 (좌 → 우) ==================== */
+    .lg-marquee { position:relative; overflow:hidden; }
+    .lg-marquee::before, .lg-marquee::after {
+      content:""; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+    }
+    .lg-marquee::before { left:0;  background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,0) 100%); }
+    .lg-marquee::after  { right:0; background:linear-gradient(270deg,#fff 0%,rgba(255,255,255,0) 100%); }
+    .lg-track {
+      display:flex; align-items:center; width:max-content;
+      /* 연속 스크롤이라 linear가 필수 — 디자인 시스템 모션 규칙의 명시적 예외 */
+      animation: lg-scroll 45s linear infinite;
+    }
+    .lg-track > li { flex:0 0 auto; padding:0 clamp(28px, 5vw, 64px); display:flex; align-items:center; justify-content:center; }
+    .lg-track img { display:block; width:auto; object-fit:contain; }
+    /* 좌 → 우 이동 */
+    @keyframes lg-scroll { from { transform:translateX(-50%); } to { transform:translateX(0); } }
+    /* 로고가 링크가 아니라 멈출 이유가 없어 hover 일시정지는 두지 않음 (키보드 포커스 시에만 정지) */
+    .lg-marquee:focus-within .lg-track { animation-play-state:paused; }
+    @media (prefers-reduced-motion: reduce) {
+      .lg-track { animation:none; transform:none; flex-wrap:wrap; justify-content:center; row-gap:28px; }
+      .lg-marquee::before, .lg-marquee::after { display:none; }
+    }
     .card { background:#fff; border:1px solid #E5E7EB; transition: box-shadow .5s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
     .card:hover { box-shadow: 0 18px 40px -22px rgba(10,36,64,.32); transform: translateY(-3px); }
     .news-row { transition: background .35s cubic-bezier(0.16,1,0.3,1); }
@@ -328,6 +351,35 @@
     </div>
   </section>
 
+  <!-- ==================== 함께한 기관 ==================== -->
+  <section class="border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-14 md:py-16">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+        <p class="reveal text-[13px] font-extrabold text-sub/70 uppercase tracking-[0.14em]">함께한 기관</p>
+        <p class="reveal text-[14.5px] text-sub leading-[1.6] md:text-right">
+          금호건설과 현장 협력을 진행하며, 국가 R&amp;D 스마트건설사업단 과제 수행 이력을 보유합니다.
+          <a href="about.html#partners" class="ml-1 font-bold text-accent hover:underline">관계 자세히&nbsp;<iconify-icon icon="solar:arrow-right-linear" class="text-[12px] align-middle"></iconify-icon></a>
+        </p>
+      </div>
+      <div class="reveal lg-marquee border-t border-hair pt-10">
+        <ul class="lg-track">
+          <li><img src="assets/logo/partners/web/kumho.svg" alt="금호건설" class="h-9 md:h-10" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/yonsei.png" alt="연세대학교" class="h-10 md:h-11" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/smart-construction.png" alt="스마트건설사업단" class="h-4 md:h-5" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/molit.png" alt="국토교통부" class="h-7 md:h-8" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/kaia.svg" alt="국토교통과학기술진흥원 KAIA" class="h-7 md:h-8" loading="lazy"></li>
+          <li><img src="assets/logo/partners/web/ex.png" alt="한국도로공사" class="h-7 md:h-8" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/kumho.svg" alt="" class="h-9 md:h-10" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/yonsei.png" alt="" class="h-10 md:h-11" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/smart-construction.png" alt="" class="h-4 md:h-5" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/molit.png" alt="" class="h-7 md:h-8" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/kaia.svg" alt="" class="h-7 md:h-8" loading="lazy"></li>
+          <li aria-hidden="true"><img src="assets/logo/partners/web/ex.png" alt="" class="h-7 md:h-8" loading="lazy"></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== 새소식 ==================== -->
   <section class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
@@ -352,7 +404,7 @@
         </a>
         <a href="about.html#history" class="news-row flex items-center gap-5 px-3 md:px-5 py-5 border-b border-hair group">
           <span class="tag bg-ink/[0.06] text-ink shrink-0">입주</span>
-          <p class="flex-1 text-[18px] md:text-[22px] font-semibold text-ink truncate group-hover:text-accent spring">캠퍼스타운 S-CUBE 입주기업 선발</p>
+          <p class="flex-1 text-[18px] md:text-[22px] font-semibold text-ink truncate group-hover:text-accent spring">캠퍼스타운 S-CUBE 입주기업 선발 (서울특별시 · 연세대학교 · 서대문구청)</p>
           <span class="hidden sm:block text-[15px] text-sub/70 shrink-0 tabular-nums">2026.02</span>
           <iconify-icon icon="solar:arrow-right-up-linear" class="text-sub/40 text-[20px] shrink-0 group-hover:text-accent spring"></iconify-icon>
         </a>
