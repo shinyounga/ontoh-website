@@ -757,41 +757,6 @@
           </div>
         </div>
 
-        <!-- AI 감지 과정 · 3-panel 인포그래픽 (helmet-006 실물) -->
-        <div class="mt-12 md:mt-14 pt-10 md:pt-12 border-t border-hair">
-          <div class="mb-6">
-            <p class="text-body-sm font-extrabold text-sub/70 uppercase tracking-[0.14em]">AI는 이렇게 봅니다</p>
-          </div>
-          <div class="grid md:grid-cols-3 gap-4 md:gap-6">
-            <div class="detect-panel">
-              <div class="relative aspect-[16/10] overflow-hidden bg-band">
-                <span class="absolute top-0 left-0 z-10 bg-ink text-white w-11 h-11 flex items-center justify-center font-extrabold text-body-base">01</span>
-                <img src="assets/vision/detection/selected/03-helmet/helmet-006-clean.png" alt="원본 CCTV 영상" class="w-full h-full object-cover" loading="lazy">
-              </div>
-              <p class="mt-4 text-caption font-extrabold text-sub/70 uppercase tracking-[0.14em]">Step 01</p>
-              <h4 class="mt-2 text-body-md md:text-body-lg font-bold text-ink" style="letter-spacing:-0.02em;">원본 CCTV 입력</h4>
-              <p class="mt-2 text-body-base text-sub leading-[1.7]">기존 CCTV 영상 그대로. 사람이 한눈에 안전모 미착용 여부 확인 어려움.</p>
-            </div>
-            <div class="detect-panel">
-              <div class="relative aspect-[16/10] overflow-hidden bg-band">
-                <span class="absolute top-0 left-0 z-10 bg-ink text-white w-11 h-11 flex items-center justify-center font-extrabold text-body-base">02</span>
-                <img src="assets/vision/detection/selected/03-helmet/helmet-006-segmentation.png" alt="AI 감지 · 픽셀 단위 영역 분리" class="w-full h-full object-cover" loading="lazy">
-              </div>
-              <p class="mt-4 text-caption font-extrabold text-sub/70 uppercase tracking-[0.14em]">Step 02</p>
-              <h4 class="mt-2 text-body-md md:text-body-lg font-bold text-ink" style="letter-spacing:-0.02em;">AI 감지 · 영역 분리</h4>
-              <p class="mt-2 text-body-base text-sub leading-[1.7]">사람·헬멧·안전장구 픽셀 단위 인식 · 각 요소 색상 마스크로 분리.</p>
-            </div>
-            <div class="detect-panel">
-              <div class="relative aspect-[16/10] overflow-hidden bg-band">
-                <span class="absolute top-0 left-0 z-10 bg-ink text-white w-11 h-11 flex items-center justify-center font-extrabold text-body-base">03</span>
-                <img src="assets/vision/detection/selected/03-helmet/helmet-006-bbox.png" alt="AI 최종 판단 · UNSAFE 판별" class="w-full h-full object-cover" loading="lazy">
-              </div>
-              <p class="mt-4 text-caption font-extrabold text-sub/70 uppercase tracking-[0.14em]">Step 03</p>
-              <h4 class="mt-2 text-body-md md:text-body-lg font-bold text-ink" style="letter-spacing:-0.02em;">최종 판단 · 알림</h4>
-              <p class="mt-2 text-body-base text-sub leading-[1.7]">헬멧 미착용 확인 · UNSAFE 판별 · 현장·관제 즉시 알림 · 법령 매칭.</p>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Feature 03: 생성형 AI 기반 안전 서류·법령 자동화 · 와이드 이미지 상단 배치 -->
@@ -1013,11 +978,13 @@
         <div class="reveal md:pr-8">
           <p class="text-body-sm font-extrabold text-accent tracking-[0.16em] uppercase mb-4">Step 01</p>
           <iconify-icon icon="solar:videocamera-linear" class="text-h1 text-ink mb-4"></iconify-icon>
-          <h3 class="text-h3 md:text-h3 font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">연동</h3>
+          <h3 class="text-h3 md:text-h3 font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">CCTV 연동</h3>
           <p class="text-body-base text-sub leading-[1.7]">기존 CCTV 인프라의 영상 스트림을 그대로 받아옵니다. 카메라 교체나 신규 장비 설치가 필요 없습니다.</p>
+          <p class="mt-3 text-body-base text-sub leading-[1.7]">PTZ CCTV가 없는 현장은 협력사를 통해 장비 구축까지 함께 진행할 수 있습니다.</p>
           <ul class="mt-5 flex flex-wrap gap-1.5">
             <li class="tag bg-ink/[0.06] text-ink">별도 장비 불필요</li>
             <li class="tag bg-ink/[0.06] text-ink">기존 인프라 활용</li>
+            <li class="tag bg-ink/[0.06] text-ink">미보유 시 장비 구축 지원</li>
           </ul>
         </div>
         <div class="reveal stagger-1 md:border-l md:border-hair md:pl-8 md:pr-8">
@@ -1084,11 +1051,11 @@
         <div class="absolute inset-0 bg-gradient-to-b from-ink/85 via-ink/70 to-ink/85"></div>
         <div class="relative">
           <p class="text-body-sm font-bold uppercase tracking-[0.16em] text-accent-300 mb-5 reveal">Get started</p>
-          <h2 class="reveal stagger-1 text-h1 md:text-hero font-bold tracking-tight text-white" style="line-height:1.3;">기존 CCTV에 AI를 얹는 <span class="text-accent-300">가장 빠른 방법</span>.</h2>
-          <p class="reveal stagger-2 mt-6 text-body-lg md:text-h3 text-white/75 leading-[1.7] max-w-xl mx-auto">운영 중인 CCTV 현황과 현장 규모를 알려주시면, 최적의 자율 관제 도입 방안을 설계해 드립니다.</p>
+          <h2 class="reveal stagger-1 text-h1 md:text-hero font-bold tracking-tight text-white" style="line-height:1.3;">지금 현장의 CCTV로 <span class="text-accent-300">가능한지</span> 확인해보세요.</h2>
+          <p class="reveal stagger-2 mt-6 text-body-lg md:text-h3 text-white/75 leading-[1.7] max-w-xl mx-auto">보유하신 CCTV 모델과 현장 규모를 알려주시면 연동 가능 여부를 확인해 드립니다. PTZ 장비가 없어도 협력사를 통한 구축까지 함께 검토합니다.</p>
           <div class="reveal stagger-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <a href="contact.html" class="btn btn-inverse btn-md">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
-            <a href="mailto:ktg@ontoh.co.kr" class="btn btn-outline-light btn-md">이메일 문의</a>
+            <a href="contact.html" class="btn btn-inverse btn-md">CCTV 호환성 확인 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
+            <a href="contact.html" class="btn btn-outline-light btn-md">현장 데모 요청</a>
           </div>
         </div>
       </div>
@@ -1286,24 +1253,6 @@
 
         // Ex 01 · Hero 시퀀스 인트로 + Ken Burns 배경 · common.js가 자동 처리 (data-hero-* 매칭)
 
-        // ── AI 감지 과정 3-panel · 스크롤 진입 시 stagger 등장 ──
-        if (typeof ScrollTrigger !== 'undefined') {
-          var panels = document.querySelectorAll('.detect-panel');
-          if (panels.length) {
-            gsap.fromTo(panels,
-              { y: 60, opacity: 0 },
-              {
-                y: 0, opacity: 1, duration: 0.9, ease: 'ontoh',
-                stagger: 0.15,
-                scrollTrigger: {
-                  trigger: panels[0],
-                  start: 'top 80%',
-                  toggleActions: 'play none none reverse',
-                },
-              }
-            );
-          }
-        }
 
         // ── Ex 05 · Feature H2 Split Text (스크롤 진입 시 1회) ──
         var fh2 = document.getElementById('feature-h2');
