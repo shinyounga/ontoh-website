@@ -800,8 +800,9 @@
       <!-- Feature 02: PTZ 자율 제어 · 와이드 이미지 상단 배치 -->
       <div class="reveal mb-24 md:mb-32">
           <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">02</p>
+        <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-10 lg:gap-16 items-center">
         <!-- PTZ 자율 추적 시퀀스 · 감지 → 줌인 → 알림 → 조치 → 복귀 -->
-        <div class="mb-10 md:mb-14">
+        <div class="lg:order-2">
           <div class="ptz" role="img"
                aria-label="개구부 안전조치 미비를 감지한 뒤 PTZ 카메라가 해당 지점을 확대해 추적하고, 현장과 관제에 알림을 보내 조치가 이뤄진 다음 다시 줌아웃해 정상 상태로 복귀하는 과정을 순서대로 보여주는 시퀀스입니다.">
             <div class="ptz-stage">
@@ -828,12 +829,10 @@
           </div>
           <p class="mt-3 text-body-sm text-sub leading-[1.6]">감지부터 조치 확인까지, PTZ가 스스로 화각을 옮기며 따라갑니다.</p>
         </div>
-        <!-- 텍스트 · 좌: 번호/제목/리드 · 우: bullet 리스트 -->
-        <div class="grid md:grid-cols-[1fr_1.35fr] gap-10 md:gap-16">
-          <div>
-            <h3 class="text-h2 md:text-h1 font-bold text-ink mb-5 leading-tight" style="letter-spacing:-0.02em;">PTZ 자율 제어</h3>
-            <p class="text-body-lg text-body leading-[1.7]">위험을 감지하면 카메라가 스스로 움직여 사각지대까지 추적합니다.</p>
-          </div>
+        <!-- 텍스트 · 좌측 칼럼 -->
+        <div class="lg:order-1">
+          <h3 class="text-h2 md:text-h1 font-bold text-ink mb-5 leading-tight" style="letter-spacing:-0.02em;">PTZ 자율 제어</h3>
+          <p class="text-body-lg text-body leading-[1.7] mb-6">위험을 감지하면 카메라가 스스로 움직여 사각지대까지 추적합니다.</p>
           <div>
             <ul class="space-y-4 text-h3 text-ink leading-[1.55] font-semibold">
               <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>위험 감지 시 카메라 자동 회전·줌인</li>
@@ -883,11 +882,11 @@
                     <blockquote class="text-body-base text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
                       "물체가 떨어지거나 날아올 위험 또는 근로자가 추락할 위험이 있는 작업: <strong class="text-ink font-semibold">안전모</strong>"<br><span class="text-caption text-sub/70">— 제32조 제1항 제1호</span>
                     </blockquote>
+                    <p class="-mt-3 mb-5 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                     <div class="pt-4 border-t border-hair">
                       <p class="text-caption font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
                       <p class="text-body-sm text-body leading-[1.6]">현장 · 관제 알림 → 안전모 착용 지시 → 미착용 시 작업 중지</p>
                     </div>
-                    <p class="mt-3 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                   </div>
                 </div>
               </div>
@@ -905,11 +904,11 @@
                     <blockquote class="text-body-base text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
                       "높이 또는 깊이 2미터 이상의 추락할 위험이 있는 장소에서 하는 작업: <strong class="text-ink font-semibold">안전대(安全帶)</strong>"<br><span class="text-caption text-sub/70">— 제32조 제1항 제2호</span>
                     </blockquote>
+                    <p class="-mt-3 mb-5 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                     <div class="pt-4 border-t border-hair">
                       <p class="text-caption font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
                       <p class="text-body-sm text-body leading-[1.6]">현장 · 관제 알림 → 안전대 착용 지시 → 부착 설비 점검</p>
                     </div>
-                    <p class="mt-3 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                   </div>
                 </div>
               </div>
@@ -927,11 +926,11 @@
                     <blockquote class="text-body-base text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
                       "개구부로서 근로자가 추락할 위험이 있는 장소에는 <strong class="text-ink font-semibold">안전난간, 울타리, 수직형 추락방망 또는 덮개 등</strong>의 방호 조치를 설치하여야 한다."<br><span class="text-caption text-sub/70">— 제43조 제1항</span>
                     </blockquote>
+                    <p class="-mt-3 mb-5 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                     <div class="pt-4 border-t border-hair">
                       <p class="text-caption font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
                       <p class="text-body-sm text-body leading-[1.6]">현장 · 관제 알림 → 개구부 덮개·난간 설치 지시 → 접근 통제</p>
                     </div>
-                    <p class="mt-3 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                   </div>
                 </div>
               </div>
@@ -949,11 +948,11 @@
                     <blockquote class="text-body-base text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
                       "작업으로 인하여 물체가 떨어지거나 날아올 위험이 있는 경우 <strong class="text-ink font-semibold">낙하물 방지망, 수직보호망 또는 방호선반의 설치, 출입금지구역의 설정, 보호구의 착용</strong> 등 위험을 방지하기 위하여 필요한 조치를 하여야 한다."<br><span class="text-caption text-sub/70">— 제14조 제2항</span>
                     </blockquote>
+                    <p class="-mt-3 mb-5 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                     <div class="pt-4 border-t border-hair">
                       <p class="text-caption font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
                       <p class="text-body-sm text-body leading-[1.6]">상·하부 동시 작업 감지 → 하부 출입금지구역 설정 알림 → 방호 설비 점검 지시</p>
                     </div>
-                    <p class="mt-3 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                   </div>
                 </div>
               </div>
@@ -971,11 +970,11 @@
                     <blockquote class="text-body-base text-sub leading-[1.7] mb-5 pl-4 border-l-2 border-accent/30">
                       "차량계 건설기계를 사용하여 작업을 하는 경우에는 운전 중인 해당 차량계 건설기계에 <strong class="text-ink font-semibold">접촉되어 근로자가 부딪칠 위험이 있는 장소에 근로자를 출입시켜서는 아니 된다.</strong> 다만, 유도자를 배치하고 해당 차량계 건설기계를 유도하는 경우에는 그러하지 아니하다."<br><span class="text-caption text-sub/70">— 제200조 제1항</span>
                     </blockquote>
+                    <p class="-mt-3 mb-5 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                     <div class="pt-4 border-t border-hair">
                       <p class="text-caption font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-2">자동 조치</p>
                       <p class="text-body-sm text-body leading-[1.6]">위험반경 진입 감지 → 현장·관제 즉시 경보 → 유도자 배치·출입 통제 지시</p>
                     </div>
-                    <p class="mt-3 text-caption text-sub/60 leading-[1.5]">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr/법령/산업안전보건기준에관한규칙" target="_blank" rel="noopener" class="hover:text-accent hover:underline">국가법령정보센터</a></p>
                   </div>
                 </div>
               </div>
