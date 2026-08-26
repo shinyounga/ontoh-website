@@ -414,6 +414,72 @@
     @media (prefers-reduced-motion: reduce) {
       .ba-after-wrap, .ba-divider, .ba-handle, .ba-tab { transition: none; }
     }
+
+    /* ==================== PTZ 자율 추적 시퀀스 (Feature 02) ==================== */
+    .ptz { position:relative; background:#0A2440; overflow:hidden; }
+    .ptz-stage { position:relative; aspect-ratio:16/9; }
+    .ptz-f {
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      opacity:0; transform:scale(1);
+      animation: ptz-seq 24s cubic-bezier(0.16,1,0.3,1) infinite;
+    }
+    .ptz-f:nth-child(1){ animation-delay:0s }
+    .ptz-f:nth-child(2){ animation-delay:-21.33s }
+    .ptz-f:nth-child(3){ animation-delay:-18.66s }
+    .ptz-f:nth-child(4){ animation-delay:-16s }
+    .ptz-f:nth-child(5){ animation-delay:-13.33s }
+    .ptz-f:nth-child(6){ animation-delay:-10.66s }
+    .ptz-f:nth-child(7){ animation-delay:-8s }
+    .ptz-f:nth-child(8){ animation-delay:-5.33s }
+    .ptz-f:nth-child(9){ animation-delay:-2.66s }
+    @keyframes ptz-seq {
+      0%     { opacity:0 }
+      1.5%   { opacity:1 }
+      11.11% { opacity:1 }
+      12.6%  { opacity:0 }
+      100%   { opacity:0 }
+    }
+    /* 줌인 구간(4번째 프레임) · 줌아웃 구간(6번째) */
+    .ptz-f.is-zoomin  { animation-name: ptz-seq, ptz-zin;  animation-composition:replace; }
+    .ptz-f.is-zoomout { animation-name: ptz-seq, ptz-zout; }
+    .ptz-f.is-zoomin, .ptz-f.is-zoomout { animation-duration:24s,24s; animation-iteration-count:infinite,infinite;
+      animation-timing-function:cubic-bezier(0.16,1,0.3,1),cubic-bezier(0.16,1,0.3,1); }
+    .ptz-f.is-zoomin  { animation-delay:-16s,-16s }
+    .ptz-f.is-zoomout { animation-delay:-10.66s,-10.66s }
+    @keyframes ptz-zin  { 0%{ transform:scale(1) } 11.11%{ transform:scale(1.18) } 100%{ transform:scale(1.18) } }
+    @keyframes ptz-zout { 0%{ transform:scale(1.18) } 11.11%{ transform:scale(1) } 100%{ transform:scale(1) } }
+
+    /* 단계 라벨 */
+    .ptz-cap { position:absolute; left:0; bottom:0; right:0; padding:14px 16px;
+      background:linear-gradient(180deg, rgba(10,36,64,0) 0%, rgba(10,36,64,.82) 60%); }
+    .ptz-step { position:absolute; left:16px; bottom:14px; color:#fff; font-weight:700;
+      font-size:14px; letter-spacing:-.01em; opacity:0;
+      animation: ptz-seq 24s cubic-bezier(0.16,1,0.3,1) infinite; }
+    .ptz-step:nth-of-type(1){ animation-delay:0s } .ptz-step:nth-of-type(2){ animation-delay:-21.33s }
+    .ptz-step:nth-of-type(3){ animation-delay:-18.66s } .ptz-step:nth-of-type(4){ animation-delay:-16s }
+    .ptz-step:nth-of-type(5){ animation-delay:-13.33s } .ptz-step:nth-of-type(6){ animation-delay:-10.66s }
+    .ptz-step:nth-of-type(7){ animation-delay:-8s } .ptz-step:nth-of-type(8){ animation-delay:-5.33s }
+    .ptz-step:nth-of-type(9){ animation-delay:-2.66s }
+    .ptz-step b { color:#8ed0ff; font-weight:800; margin-right:.5rem; }
+
+    /* 진행 막대 */
+    .ptz-bar { position:absolute; top:0; left:0; height:2px; background:#0169a9; width:0;
+      animation: ptz-bar 24s linear infinite; }
+    @keyframes ptz-bar { from{ width:0 } to{ width:100% } }
+
+    /* LIVE 표시 */
+    .ptz-live { position:absolute; top:14px; left:16px; display:inline-flex; align-items:center; gap:6px;
+      color:#fff; font-size:12px; font-weight:800; letter-spacing:.12em; }
+    .ptz-live i { width:7px; height:7px; background:#ff4d4f; display:block;
+      animation: ptz-blink 1.6s linear infinite; }
+    @keyframes ptz-blink { 0%,60%{opacity:1} 61%,100%{opacity:.25} }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ptz-f, .ptz-step, .ptz-bar, .ptz-live i { animation:none !important }
+      .ptz-f { opacity:0 } .ptz-f:nth-child(3){ opacity:1 }
+      .ptz-step { opacity:0 } .ptz-step:nth-of-type(3){ opacity:1 }
+      .ptz-bar { width:100% }
+    }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -735,9 +801,35 @@
       <!-- Feature 02: PTZ 자율 제어 · 와이드 이미지 상단 배치 -->
       <div class="reveal mb-24 md:mb-32">
           <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">02</p>
-        <!-- 와이드 이미지 상단 전폭 (PTZ 대시보드 실물 · 약 3:1 비율) -->
+        <!-- PTZ 자율 추적 시퀀스 · 감지 → 줌인 → 알림 → 조치 → 복귀 -->
         <div class="mb-10 md:mb-14">
-          <img src="assets/vision/features/03-ptz-tracking.png" alt="PTZ 자율 제어 대시보드 · CAM-02·05 실시간 추적 + Pan/Tilt/Zoom 제어 패널" class="w-full h-auto">
+          <div class="ptz" role="img"
+               aria-label="개구부 안전조치 미비를 감지한 뒤 PTZ 카메라가 해당 지점을 확대해 추적하고, 현장과 관제에 알림을 보내 조치가 이뤄진 다음 다시 줌아웃해 정상 상태로 복귀하는 과정을 순서대로 보여주는 시퀀스입니다.">
+            <div class="ptz-stage">
+            <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-008-clean.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-008-segmentation.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-008-bbox.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="ptz-f is-zoomin" src="assets/vision/detection/selected/05-opening/opening-007-bbox.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-006-bbox.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="ptz-f is-zoomout" src="assets/vision/detection/selected/05-opening/opening-006-segmentation.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-001-bbox.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-001-segmentation.png" alt="" aria-hidden="true" loading="lazy">
+            <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-001-clean.png" alt="" aria-hidden="true" loading="lazy">
+              <div class="ptz-cap" aria-hidden="true"></div>
+              <span class="ptz-live" aria-hidden="true"><i></i>LIVE</span>
+            <p class="ptz-step"><b>01</b>원본 CCTV · 개구부 구역</p>
+            <p class="ptz-step"><b>02</b>AI 감지 · 픽셀 영역 분리</p>
+            <p class="ptz-step"><b>03</b>위험 판별 · 개구부 안전조치 미비</p>
+            <p class="ptz-step"><b>04</b>PTZ 줌인 · 해당 지점 확대 추적</p>
+            <p class="ptz-step"><b>05</b>현장 · 관제 알림 발송</p>
+            <p class="ptz-step"><b>06</b>조치 확인 · PTZ 줌아웃</p>
+            <p class="ptz-step"><b>07</b>재확인 · 주변 구역 점검</p>
+            <p class="ptz-step"><b>08</b>AI 재분석</p>
+            <p class="ptz-step"><b>09</b>조치 완료 · 정상 복귀</p>
+              <span class="ptz-bar" aria-hidden="true"></span>
+            </div>
+          </div>
+          <p class="mt-3 text-body-sm text-sub leading-[1.6]">감지부터 조치 확인까지, PTZ가 스스로 화각을 옮기며 따라갑니다.</p>
         </div>
         <!-- 텍스트 · 좌: 번호/제목/리드 · 우: bullet 리스트 -->
         <div class="grid md:grid-cols-[1fr_1.35fr] gap-10 md:gap-16">
