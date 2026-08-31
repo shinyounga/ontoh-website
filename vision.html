@@ -235,6 +235,8 @@
 
     /* ==================== Before/After 슬라이더 ==================== */
     .ba-wrap { max-width: 1000px; margin: 0 auto; }
+    @media (min-width:1024px){ .ba-wrap { max-width:none; display:grid;
+      grid-template-columns:1.18fr 0.82fr; gap:28px; align-items:stretch; } }
     .ba-frame {
       position: relative;
       aspect-ratio: 16 / 10;
@@ -329,34 +331,23 @@
       border-color: #0A2440;
     }
     .ba-tab:focus-visible { outline: 2px solid #0169a9; outline-offset: 2px; }
-    .ba-info {
-      margin-top: 16px;
-      padding: 20px 24px;
-      background: #ffffff;
-      border: 1px solid #E5E7EB;
-      display: flex; flex-direction: column; gap: 8px;
+    /* 법령 패널 · 규정 매칭 캐러셀과 같은 서술 구조 (조문 → 전문 → 시행일·출처 → 자동 조치) */
+    .ba-law {
+      background:#ffffff; border:1px solid #E5E7EB;
+      padding:24px 26px; display:flex; flex-direction:column; justify-content:center;
     }
-    .ba-info-law {
-      display: flex; align-items: center; gap: 10px;
-      flex-wrap: wrap;
-    }
-    .ba-law-tag {
-      display: inline-block;
-      padding: 4px 10px;
-      background: #0169a9;
-      color: #ffffff;
-      font-size: 12px; font-weight: 800;
-      letter-spacing: 0.02em;
-    }
-    .ba-law-title {
-      font-size: 15px; font-weight: 700;
-      color: #0A2440;
-      letter-spacing: -0.01em;
-    }
-    .ba-info-desc {
-      font-size: 14px; color: #555555;
-      line-height: 1.6;
-    }
+    .ba-law-kicker { font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+      color:#0169a9; margin-bottom:12px; }
+    .ba-law-act { font-size:15px; font-weight:700; color:#0A2440; margin-bottom:4px; }
+    .ba-law-head { font-size:19px; font-weight:700; color:#0169a9; letter-spacing:-.015em; margin-bottom:16px; }
+    .ba-law-quote { font-size:15px; color:#555555; line-height:1.7; padding-left:16px;
+      border-left:2px solid rgba(1,105,169,.3); margin-bottom:10px; }
+    .ba-law-quote cite { display:block; margin-top:6px; font-size:12px; font-style:normal; color:#555555; }
+    .ba-law-src { font-size:12px; color:rgba(85,85,85,.6); line-height:1.5; margin-bottom:18px; }
+    .ba-law-act-box { padding-top:16px; border-top:1px solid #E5E7EB; }
+    .ba-law-act-label { font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+      color:rgba(85,85,85,.7); margin-bottom:8px; }
+    .ba-law-act-text { font-size:13px; color:#212121; line-height:1.6; }
 
     @media (max-width: 640px) {
       .ba-frame { aspect-ratio: 4 / 3; }
@@ -618,9 +609,9 @@
 
   <main id="main" tabindex="-1">
   <!-- ==================== 인트로 (컴팩트 + 메인 플랫폼 이미지) ==================== -->
-  <section class="border-b border-hair">
+  <section class="border-b border-hair overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
-      <div class="grid lg:grid-cols-[1fr_1.15fr] gap-12 lg:gap-16 items-center">
+      <div class="grid lg:grid-cols-[0.82fr_1.18fr] gap-10 lg:gap-12 items-center">
         <div>
           <h2 class="reveal stagger-1 text-h2 md:text-hero font-bold tracking-tight text-ink" style="line-height:1.15; letter-spacing:-0.03em;">
             놓치는 곳까지,<br><span class="text-accent">스스로</span> 살핍니다.
@@ -632,8 +623,8 @@
             <a href="contact.html" class="btn btn-primary btn-md">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
           </div>
         </div>
-        <div class="reveal stagger-2">
-          <!-- 기기 목업은 배경이 투명한 PNG · 박스 그림자 대신 알파를 따라가는 drop-shadow 사용 -->
+        <!-- 기기 목업 · 가로형이라 우측으로 크게 확장 (배경 투명 PNG → drop-shadow) -->
+        <div class="reveal stagger-2 -mr-6 sm:-mr-10 lg:-mr-14 xl:-mr-40 2xl:-mr-56">
           <img src="assets/vision/dashboard2.png" alt="온토비전 자율 관제 대시보드 · CCTV 현장 모니터링과 PTZ 제어 화면"
                class="w-full h-auto block" style="filter:drop-shadow(0 26px 44px rgba(10,36,64,0.26));">
         </div>
@@ -654,6 +645,7 @@
       <!-- Before/After 인터랙티브 슬라이더 -->
       <div class="reveal">
         <div id="baSlider" class="ba-wrap">
+          <div>
           <div class="ba-frame" data-ba-frame>
             <img class="ba-img ba-clean" alt="Before · 원본 CCTV">
             <div class="ba-after-wrap">
@@ -678,19 +670,27 @@
             <button type="button" class="ba-tab" data-idx="4" role="tab">중장비</button>
           </div>
 
-          <!-- 법령 정보 -->
-          <div class="ba-info">
-            <div class="ba-info-law">
-              <span class="ba-law-tag" data-ba-law-tag>제32조</span>
-              <span class="ba-law-title" data-ba-law-title>보호구의 지급 등</span>
-            </div>
-            <p class="ba-info-desc" data-ba-desc>물체가 떨어지거나 날아올 위험이 있는 작업 시 안전모 착용 (제32조 제1항 제1호).</p>
-          </div>
+          <p class="text-body-sm text-sub/70 mt-4">
+            <iconify-icon icon="solar:cursor-linear" class="text-body-sm align-middle"></iconify-icon>
+            가운데 핸들을 좌우로 드래그하여 원본과 감지 결과를 비교하세요.
+          </p>
         </div>
-        <p class="text-body-sm text-sub/70 text-center mt-4">
-          <iconify-icon icon="solar:cursor-linear" class="text-body-sm align-middle"></iconify-icon>
-          가운데 핸들을 좌우로 드래그하여 원본과 감지 결과를 비교하세요.
-        </p>
+
+        <!-- 법령 패널 · 우측 세로 배치 -->
+        <aside class="ba-law">
+          <p class="ba-law-kicker">위반 조항</p>
+          <p class="ba-law-act">산업안전보건기준에 관한 규칙</p>
+          <p class="ba-law-head" data-ba-law-head>제32조 · 보호구의 지급 등</p>
+          <blockquote class="ba-law-quote">
+            <span data-ba-quote>"물체가 떨어지거나 날아올 위험 또는 근로자가 추락할 위험이 있는 작업: 안전모"</span>
+            <cite data-ba-clause>— 제32조 제1항 제1호</cite>
+          </blockquote>
+          <p class="ba-law-src">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr" target="_blank" rel="noopener" class="underline hover:text-accent">국가법령정보센터</a></p>
+          <div class="ba-law-act-box">
+            <p class="ba-law-act-label">자동 조치</p>
+            <p class="ba-law-act-text" data-ba-action>현장 · 관제 알림 → 안전모 착용 지시 → 미착용 시 작업 중지</p>
+          </div>
+        </aside>
       </div>
 
       <!-- 3-포인트 요약 스트립 -->
@@ -1469,28 +1469,38 @@
       const SCENARIOS = [
         {
           cat: '03-helmet', name: 'helmet-006',
-          law: '제32조', title: '보호구의 지급 등',
-          desc: '물체가 떨어지거나 날아올 위험이 있는 작업 시 안전모 착용 (제32조 제1항 제1호).'
+          head: '제32조 · 보호구의 지급 등',
+          quote: '"물체가 떨어지거나 날아올 위험 또는 근로자가 추락할 위험이 있는 작업: 안전모"',
+          clause: '— 제32조 제1항 제1호',
+          action: '현장 · 관제 알림 → 안전모 착용 지시 → 미착용 시 작업 중지'
         },
         {
           cat: '02-fall-strap', name: 'fall-strap-003',
-          law: '제32조', title: '보호구의 지급 등',
-          desc: '높이 또는 깊이 2미터 이상의 추락 위험 장소에서 안전대 착용 (제32조 제1항 제2호).'
+          head: '제32조 · 보호구의 지급 등',
+          quote: '"높이 또는 깊이 2미터 이상의 추락할 위험이 있는 장소에서 하는 작업: 안전대(安全帶)"',
+          clause: '— 제32조 제1항 제2호',
+          action: '현장 · 관제 알림 → 안전대 착용 지시 → 부착 설비 점검'
         },
         {
           cat: '05-opening', name: 'opening-001',
-          law: '제43조', title: '개구부 등의 방호 조치',
-          desc: '개구부로 근로자가 추락할 위험 있는 장소에 안전난간·덮개 등 방호 조치 (제43조 제1항).'
+          head: '제43조 · 개구부 등의 방호 조치',
+          quote: '"개구부로서 근로자가 추락할 위험이 있는 장소에는 안전난간, 울타리, 수직형 추락방망 또는 덮개 등의 방호 조치를 설치하여야 한다."',
+          clause: '— 제43조 제1항',
+          action: '현장 · 관제 알림 → 개구부 덮개·난간 설치 지시 → 접근 통제'
         },
         {
           cat: '01-simultaneous-work', name: 'simultaneous-work-001',
-          law: '제14조', title: '낙하물에 의한 위험의 방지',
-          desc: '물체가 떨어지거나 날아올 위험이 있는 작업 시 낙하물 방지망·출입금지구역 등 조치 (제14조 제2항).'
+          head: '제14조 · 낙하물에 의한 위험의 방지',
+          quote: '"작업으로 인하여 물체가 떨어지거나 날아올 위험이 있는 경우 낙하물 방지망, 수직보호망 또는 방호선반의 설치, 출입금지구역의 설정, 보호구의 착용 등 위험을 방지하기 위하여 필요한 조치를 하여야 한다."',
+          clause: '— 제14조 제2항',
+          action: '상·하부 동시 작업 감지 → 하부 출입금지구역 설정 알림 → 방호 설비 점검 지시'
         },
         {
           cat: '04-heavy-equipment', name: 'heavy-equipment-008', after: 'labeled',
-          law: '제200조', title: '접촉 방지',
-          desc: '차량계 건설기계에 근로자가 부딪칠 위험이 있는 장소에 근로자 출입 금지 (제200조 제1항).'
+          head: '제200조 · 접촉 방지',
+          quote: '"차량계 건설기계를 사용하여 작업을 하는 경우에는 운전 중인 해당 차량계 건설기계에 접촉되어 근로자가 부딪칠 위험이 있는 장소에 근로자를 출입시켜서는 아니 된다."',
+          clause: '— 제200조 제1항',
+          action: '위험반경 진입 감지 → 현장·관제 즉시 경보 → 유도자 배치·출입 통제 지시'
         },
       ];
 
@@ -1504,9 +1514,10 @@
       const divider = slider.querySelector('.ba-divider');
       const handle = slider.querySelector('.ba-handle');
       const tabs = slider.querySelectorAll('.ba-tab');
-      const lawTag = slider.querySelector('[data-ba-law-tag]');
-      const lawTitle = slider.querySelector('[data-ba-law-title]');
-      const desc = slider.querySelector('[data-ba-desc]');
+      const lawHead = slider.querySelector('[data-ba-law-head]');
+      const lawQuote = slider.querySelector('[data-ba-quote]');
+      const lawClause = slider.querySelector('[data-ba-clause]');
+      const lawAction = slider.querySelector('[data-ba-action]');
 
       let idx = 0;
       let dragging = false;
@@ -1527,9 +1538,10 @@
         labeled.src = base + '/' + s.cat + '/' + s.name + '-' + (s.after || 'bbox') + '.png';
         clean.alt = 'BEFORE · ' + s.title + ' 원본';
         labeled.alt = 'AFTER · ' + s.title + ' 감지 결과';
-        lawTag.textContent = s.law;
-        lawTitle.textContent = s.title;
-        desc.textContent = s.desc;
+        lawHead.textContent = s.head;
+        lawQuote.textContent = s.quote;
+        lawClause.textContent = s.clause;
+        lawAction.textContent = s.action;
         tabs.forEach((t, ti) => t.classList.toggle('is-active', ti === i));
         // Reset position with subtle animation
         setPosition(50);

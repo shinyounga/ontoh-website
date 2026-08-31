@@ -166,6 +166,41 @@
       }
     }
 
+
+    /* ==================== 사업영역 Bento ==================== */
+    .bento {
+      position:relative; display:flex; flex-direction:column; overflow:hidden;
+      background:#ffffff; border:1px solid #E5E7EB; min-height:520px;
+      transition: transform .5s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow .5s cubic-bezier(0.16,1,0.3,1),
+                  border-color .5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .bento:hover, .bento:focus-visible {
+      transform: translateY(-4px); border-color:#0169a9;
+      box-shadow: 0 28px 56px -24px rgba(1,105,169,.30);
+    }
+    .bento-head { padding:52px 32px 0; text-align:center; }
+    .bento-name { font-size:34px; font-weight:800; color:#0A2440; letter-spacing:-.03em; line-height:1.15; }
+    .bento-kind { margin-top:10px; font-size:19px; font-weight:700; color:#0169a9; letter-spacing:-.015em; }
+    .bento-sum { margin-top:12px; font-size:17px; color:#555555; line-height:1.7; max-width:34ch; margin-inline:auto; }
+    .bento-cta { margin-top:20px; display:inline-flex; align-items:center; gap:6px;
+      font-size:15px; font-weight:700; color:#0169a9;
+      transition: gap .4s cubic-bezier(0.16,1,0.3,1); }
+    .bento:hover .bento-cta { gap:12px; }
+    /* 목업은 카드 하단에 붙여 잘리게 둔다 (기기 아래쪽은 정보가 없다) */
+    .bento-art { margin-top:auto; padding-top:32px; }
+    .bento-art img {
+      display:block; width:100%; height:auto;
+      transition: transform .6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .bento:hover .bento-art img { transform: scale(1.03); }
+    .bento-art-tall img { max-width:56%; margin-inline:auto; }
+    @media (max-width:768px) {
+      .bento { min-height:0; }
+      .bento-head { padding:40px 24px 0; }
+      .bento-name { font-size:28px; }
+      .bento-art-tall img { max-width:66%; }
+    }
   </style>
 </head>
 <body class="bg-white font-sans antialiased">
@@ -261,8 +296,8 @@
     </div>
   </section>
 
-  <!-- ==================== 사업영역 ==================== -->
-  <section class="border-b border-hair">
+  <!-- ==================== 사업영역 (Bento) ==================== -->
+  <section class="bg-band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
         <div>
@@ -270,40 +305,28 @@
         </div>
         <p class="reveal stagger-2 text-[18px] text-sub leading-[1.7] max-w-md">사각지대 없는 산업재해 CCTV 자율관제와, 데이터 기반 작업자 보건관리 솔루션을 함께 제공합니다.</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-6">
-        <a href="vision.html" class="group reveal block relative overflow-hidden bg-white p-8 md:p-10 t-smooth hover:-translate-y-1.5 hover:border-accent hover:shadow-[0_28px_56px_-24px_rgba(1,105,169,0.30)]">
-          <div class="flex items-center gap-4 mb-6">
-            <span class="w-14 h-14 bg-ink/[0.06] flex items-center justify-center t-smooth"><iconify-icon icon="solar:videocamera-record-linear" class="text-ink text-[34px] t-smooth"></iconify-icon></span>
-            <p class="text-[30px] md:text-[40px] font-extrabold text-ink tracking-tight t-smooth" style="letter-spacing:-0.025em;">온토비전</p>
+      <div class="grid md:grid-cols-2 gap-4 md:gap-5">
+        <a href="vision.html" class="bento reveal group">
+          <div class="bento-head">
+            <p class="bento-name">온토비전</p>
+            <p class="bento-kind">지능형 CCTV 자율관제</p>
+            <p class="bento-sum">기존 CCTV 인프라 그대로, AI가 스스로 카메라를 제어하고 위험 상황을 판단합니다.</p>
+            <span class="bento-cta">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
           </div>
-          <h3 class="text-[26px] font-bold text-ink mb-3 t-smooth">지능형 CCTV 자율관제</h3>
-          <p class="text-[18px] text-sub leading-[1.75] mb-7 t-smooth">기존 CCTV 인프라 그대로, AI가 스스로 카메라를 제어하고 위험 상황을 판단합니다.</p>
-
-          <div class="border-t border-hair pt-5 mb-4 t-smooth">
-            <div class="flex items-center gap-2.5 mb-2"><span class="tag bg-ink/[0.06] text-ink">01</span><span class="text-[16.5px] font-bold text-ink t-smooth">AI가 스스로 카메라를 제어</span></div>
-            <p class="text-[15.5px] text-sub leading-[1.65] t-smooth">PTZ 카메라가 위험 구역을 자동 순찰하며 사각지대를 실시간 해소. 24시간 무인 자율 순찰 · 위험 감지 시 자동 줌인.</p>
+          <div class="bento-art">
+            <img src="assets/vision/dashboard2.png" alt="온토비전 자율 관제 대시보드 화면" loading="lazy">
           </div>
-          <div class="border-t border-hair pt-5 mb-7 t-smooth">
-            <div class="flex items-center gap-2.5 mb-2"><span class="tag bg-ink/[0.06] text-ink">02</span><span class="text-[16.5px] font-bold text-ink t-smooth">위험 감지 · 맥락 판단</span></div>
-            <p class="text-[15.5px] text-sub leading-[1.65] t-smooth">단순 객체 인식을 넘어 RAG-LMM 복합 상황 판단으로 오경보를 줄이고 실제 위험만 알림. 안전보건 법령 자동 매칭.</p>
-          </div>
-
-          <span class="inline-flex items-center gap-2 text-[16.5px] font-bold text-accent t-smooth translate-y-2 opacity-70 group-hover:translate-y-0 group-hover:opacity-100">온토비전 자세히 <iconify-icon icon="solar:arrow-right-linear" class="t-smooth group-hover:translate-x-1"></iconify-icon></span>
         </a>
-        <a href="health.html" class="group reveal stagger-1 block relative overflow-hidden bg-white p-8 md:p-10 t-smooth hover:-translate-y-1.5 hover:border-accent hover:shadow-[0_28px_56px_-24px_rgba(1,105,169,0.30)]">
-          <div class="flex items-center gap-4 mb-6">
-            <span class="w-14 h-14 bg-ink/[0.06] flex items-center justify-center t-smooth"><iconify-icon icon="solar:heart-pulse-linear" class="text-ink text-[34px] t-smooth"></iconify-icon></span>
-            <p class="text-[30px] md:text-[40px] font-extrabold text-ink tracking-tight t-smooth" style="letter-spacing:-0.025em;">온토케어</p>
+        <a href="health.html" class="bento reveal stagger-1 group">
+          <div class="bento-head">
+            <p class="bento-name">온토케어</p>
+            <p class="bento-kind">작업자 디지털 보건관리</p>
+            <p class="bento-sum">건강검진 데이터를 자동 연동해 고위험군을 즉시 분류하고, 질병형 산업재해까지 사전에 대응합니다.</p>
+            <span class="bento-cta">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
           </div>
-          <h3 class="text-[26px] font-bold text-ink mb-3 t-smooth">작업자 디지털 보건관리</h3>
-          <p class="text-[18px] text-sub leading-[1.75] mb-7 t-smooth">건강검진 데이터를 자동 연동해 고위험군을 즉시 분류하고, 질병형 산업재해까지 사전에 대응합니다.</p>
-
-          <div class="border-t border-hair pt-5 mb-7 t-smooth">
-            <div class="flex items-center gap-2.5 mb-2"><span class="tag bg-ink/[0.06] text-ink">01</span><span class="text-[16.5px] font-bold text-ink t-smooth">근로자 건강 데이터 관리</span></div>
-            <p class="text-[15.5px] text-sub leading-[1.65] t-smooth">건강검진 결과를 자동 연동해 고위험군을 즉시 분류. 질환 민감군 자동 분류 · 맞춤 보건 리포트로 질병형 재해 대응.</p>
+          <div class="bento-art bento-art-tall">
+            <img src="assets/health/hero-dashboard.png" alt="온토케어 작업자 보건관리 앱 화면" loading="lazy">
           </div>
-
-          <span class="inline-flex items-center gap-2 text-[16.5px] font-bold text-accent t-smooth translate-y-2 opacity-70 group-hover:translate-y-0 group-hover:opacity-100">온토케어 자세히 <iconify-icon icon="solar:arrow-right-linear" class="t-smooth group-hover:translate-x-1"></iconify-icon></span>
         </a>
       </div>
     </div>
