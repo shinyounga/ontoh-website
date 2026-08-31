@@ -22,3 +22,6 @@ sijae/
 assets/vision/vid/
 assets/vision/processed/
 assets/vision/site/processed/
+
+# 로컬 프리뷰 실행 스크립트 (배포는 저장소 전체를 업로드하므로 공개 방지)
+serve.bat
