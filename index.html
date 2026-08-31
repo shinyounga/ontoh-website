@@ -194,13 +194,12 @@
       transition: transform .6s cubic-bezier(0.16,1,0.3,1);
     }
     .bento:hover .bento-art img { transform: scale(1.03); }
-    /* 세로형 목업은 우측으로 치우쳐 배치 (좌측 여백이 텍스트 블록과 호흡) */
-    .bento-art-tall img { max-width:56%; margin-left:auto; margin-right:6%; }
+    .bento-art-tall img { max-width:56%; margin-inline:auto; }
     @media (max-width:768px) {
       .bento { min-height:0; }
       .bento-head { padding:40px 24px 0; }
       .bento-name { font-size:28px; }
-      .bento-art-tall img { max-width:66%; margin-right:4%; }
+      .bento-art-tall img { max-width:66%; }
     }
   </style>
 </head>
