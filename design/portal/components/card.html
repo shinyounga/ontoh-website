@@ -57,6 +57,48 @@
       </tbody>
     </table>
 
+    <h2>Feature Card 변형 (v1.0 · 2026-08-31 신설)</h2>
+    <p class="doc-lead" style="margin-bottom:16px;">
+      아이콘 + 제목 + 설명으로 기능을 소개하는 카드. 열 수에 따라 두 가지만 쓴다.
+      온토비전 · 온토케어가 같은 위계를 공유하도록 아래 사양을 그대로 사용한다.
+    </p>
+    <table class="token-table">
+      <thead><tr><th>속성</th><th>S · 3–4열</th><th>L · 2–3열</th></tr></thead>
+      <tbody>
+        <tr><td>컨테이너</td><td class="token-name">.card p-8</td><td class="token-name">border border-hair p-8 md:p-10</td></tr>
+        <tr><td>아이콘</td><td class="token-name">text-accent text-h1 mb-5</td><td class="token-name">text-accent text-h1 mb-5</td></tr>
+        <tr><td>제목</td><td class="token-name">text-body-lg md:text-h3</td><td class="token-name">text-h3 md:text-h2</td></tr>
+        <tr><td>제목 여백</td><td class="token-name">mb-3 leading-snug</td><td class="token-name">mb-3 leading-snug</td></tr>
+        <tr><td>본문</td><td class="token-name">text-body-md text-sub leading-[1.7]</td><td class="token-name">text-body-md text-sub leading-[1.7]</td></tr>
+        <tr><td>본문 하단 여백</td><td class="token-name">mb-5 (뒤에 태그가 올 때)</td><td class="token-name">mb-7 (뒤에 목록·태그가 올 때)</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>아이콘 색은 <strong>항상 <code>text-accent</code></strong>. <code>text-ink</code> 아이콘은 쓰지 않는다.</li>
+      <li>카드에 <strong>01 · 02 · 03 번호를 붙이지 않는다.</strong> 순서가 없는 병렬 항목이기 때문이며,
+          단계를 표현해야 할 때만 <a href="stat-number.html">Stat Number</a>를 쓴다.</li>
+      <li>같은 페이지에서 S와 L을 섞지 않는다. 한 섹션은 한 변형으로 통일한다.</li>
+    </ul>
+    <h3 style="margin-top:20px;">사용처</h3>
+    <ul>
+      <li><strong>S</strong> — 온토케어 「관리 부담을 덜어주는 부가 기능 4가지」 · 온토비전 「기록으로 남습니다」</li>
+      <li><strong>L</strong> — 온토케어 「관리자 뷰 / 작업자 뷰」 · 온토비전 「지금 쓰는 CCTV로, 2주면 시작합니다」</li>
+    </ul>
+    <pre><code>&lt;!-- S · 3–4열 --&gt;
+&lt;article class="card p-8"&gt;
+  &lt;iconify-icon icon="solar:chart-square-linear" class="text-accent text-h1 mb-5"&gt;&lt;/iconify-icon&gt;
+  &lt;h3 class="text-body-lg md:text-h3 font-bold text-ink mb-3 leading-snug"&gt;일일 안전 리포트&lt;/h3&gt;
+  &lt;p class="text-body-md text-sub leading-[1.7]"&gt;매일의 위험 감지·조치 이력을 자동 정리합니다.&lt;/p&gt;
+&lt;/article&gt;
+
+&lt;!-- L · 2–3열 --&gt;
+&lt;article class="border border-hair p-8 md:p-10"&gt;
+  &lt;iconify-icon icon="solar:videocamera-linear" class="text-accent text-h1 mb-5"&gt;&lt;/iconify-icon&gt;
+  &lt;h3 class="text-h3 md:text-h2 font-bold text-ink mb-3 leading-snug"&gt;CCTV 연동&lt;/h3&gt;
+  &lt;p class="text-body-md text-sub leading-[1.7] mb-7"&gt;기존 CCTV 인프라의 영상 스트림을 그대로 받아옵니다.&lt;/p&gt;
+  &lt;ul class="flex flex-wrap gap-1.5"&gt;&lt;li class="tag bg-ink/[0.06] text-ink"&gt;별도 장비 불필요&lt;/li&gt;&lt;/ul&gt;
+&lt;/article&gt;</code></pre>
+
     <h2>텍스트 규칙</h2>
     <ul>
       <li>제목 15자 이내</li>
@@ -75,7 +117,7 @@
     </div>
 
     <div class="doc-footer">
-      <span>업데이트: 2026-07-29 · 원본 <a href="../../components.md">components.md</a></span>
+      <span>업데이트: 2026-08-31 · 원본 <a href="../../components.md">components.md</a></span>
       <span>
         <a href="button.html">← Button</a> · <a href="tag.html">Next · Tag →</a>
       </span>
