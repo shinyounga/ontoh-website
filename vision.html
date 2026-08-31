@@ -171,7 +171,22 @@
     .lb-frame img { display:block; max-width:96vw; max-height:82vh; width:auto; height:auto; object-fit:contain; margin:0 auto; }
     .lb-close { position:absolute; top:0; right:0; background:transparent; border:0; color:#fff; font-size:26px; cursor:pointer; padding:4px 12px; line-height:1; font-weight:300; }
     .lb-close:hover { color:#8ed0ff; }
-    .lb-cap { color:#fff; text-align:center; margin-top:14px; font-size:15px; font-weight:600; letter-spacing:-.01em; }
+    .lb-cap { color:#fff; text-align:center; margin:16px auto 0; max-width:720px; padding:0 12px; }
+    .lb-cap-t { font-size:19px; font-weight:800; letter-spacing:-.02em; line-height:1.35; }
+    .lb-cap-s { margin-top:8px; font-size:15px; font-weight:400; line-height:1.65; color:rgba(255,255,255,.72); }
+    .lb-cap-n { margin-top:12px; font-size:12px; font-weight:800; letter-spacing:.14em; color:rgba(255,255,255,.45); }
+
+    /* 주요 위험 유형 카드 */
+    .rc { display:flex; flex-direction:column; background:#fff; border:1px solid #E5E7EB; text-align:left;
+      transition: border-color .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s cubic-bezier(0.16,1,0.3,1); }
+    .rc:hover, .rc:focus-visible { border-color:#0169a9; box-shadow:0 10px 26px rgba(10,36,64,0.12); }
+    .rc-no { position:absolute; top:0; left:0; z-index:2; background:#0169a9; color:#fff;
+      font-size:12px; font-weight:800; letter-spacing:.08em; padding:4px 9px; line-height:1.25; }
+    .rc-body { flex:1; display:flex; flex-direction:column; gap:9px; padding:13px 13px 14px; }
+    .rc-title { font-size:17px; font-weight:800; color:#0A2440; letter-spacing:-.015em; line-height:1.3; }
+    .rc-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:auto; }
+    .rc-tag { font-size:13px; font-weight:700; color:#555; background:#F5F6F8; border:1px solid #E5E7EB;
+      padding:5px 9px; line-height:1.25; letter-spacing:-.01em; }
     /* Lightbox 좌우 nav (그룹 내 순환) */
     .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.55); border:0; color:#fff; width:64px; height:64px; border-radius:999px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .22s ease, transform .32s cubic-bezier(0.16,1,0.3,1); z-index:2; }
     .lb-nav:hover { background:#0169a9; transform:translateY(-50%) scale(1.08); }
@@ -346,7 +361,7 @@
 
 
     /* ==================== 지속 학습 루프 (Feature 04) ==================== */
-    .kl { --kl-cycle: 8s; }
+    .kl { --kl-cycle: 5.5s; }
     .kl-node {
       position:relative; background:#fff; border:1px solid #E5E7EB;
       animation: kl-on var(--kl-cycle) linear infinite;
@@ -420,32 +435,32 @@
     .ptz-f {
       position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
       opacity:0; transform:scale(1);
-      animation: ptz-seq 24s cubic-bezier(0.16,1,0.3,1) infinite;
+      animation: ptz-seq 15s cubic-bezier(0.16,1,0.3,1) infinite;
     }
-    .ptz-f:nth-child(1){ animation-delay:0s }   .ptz-f:nth-child(2){ animation-delay:-3s }
-    .ptz-f:nth-child(3){ animation-delay:-6s }  .ptz-f:nth-child(4){ animation-delay:-9s }
-    .ptz-f:nth-child(5){ animation-delay:-12s } .ptz-f:nth-child(6){ animation-delay:-15s }
-    .ptz-f:nth-child(7){ animation-delay:-18s } .ptz-f:nth-child(8){ animation-delay:-21s }
+    /* delay D 인 프레임은 t∈[D, D+3] 구간에 보인다. 15s 주기이므로 N번째는 D=-(15-(N-1)*3) */
+    .ptz-f:nth-child(1){ animation-delay:0s }   .ptz-f:nth-child(2){ animation-delay:-12s }
+    .ptz-f:nth-child(3){ animation-delay:-9s }  .ptz-f:nth-child(4){ animation-delay:-6s }
+    .ptz-f:nth-child(5){ animation-delay:-3s }
     @keyframes ptz-seq {
-      0%{ opacity:0 } 1.7%{ opacity:1 } 12.5%{ opacity:1 } 14.2%{ opacity:0 } 100%{ opacity:0 }
+      0%{ opacity:0 } 2.7%{ opacity:1 } 20%{ opacity:1 } 22.7%{ opacity:0 } 100%{ opacity:0 }
     }
-    /* 줌 구간 · 03~05 가 확대 유지 (02->03 줌인, 05->06 줌아웃) */
+    /* 줌 구간 · 03(줌인) → 04(확대 유지) → 05(줌아웃) */
     .ptz-f.is-zoomin  { animation-name: ptz-zin }
     .ptz-f.is-hold    { animation-name: ptz-hold }
     .ptz-f.is-zoomout { animation-name: ptz-zout }
     @keyframes ptz-zin {
-      0%{ opacity:0; transform:scale(1) }       1.7%{ opacity:1; transform:scale(1) }
-      12.5%{ opacity:1; transform:scale(1.18) } 14.2%{ opacity:0; transform:scale(1.18) }
+      0%{ opacity:0; transform:scale(1) }      2.7%{ opacity:1; transform:scale(1) }
+      20%{ opacity:1; transform:scale(1.18) }  22.7%{ opacity:0; transform:scale(1.18) }
       100%{ opacity:0; transform:scale(1.18) }
     }
     @keyframes ptz-hold {
-      0%{ opacity:0; transform:scale(1.18) }    1.7%{ opacity:1; transform:scale(1.18) }
-      12.5%{ opacity:1; transform:scale(1.18) } 14.2%{ opacity:0; transform:scale(1.18) }
+      0%{ opacity:0; transform:scale(1.18) }   2.7%{ opacity:1; transform:scale(1.18) }
+      20%{ opacity:1; transform:scale(1.18) }  22.7%{ opacity:0; transform:scale(1.18) }
       100%{ opacity:0; transform:scale(1.18) }
     }
     @keyframes ptz-zout {
-      0%{ opacity:0; transform:scale(1.18) }    1.7%{ opacity:1; transform:scale(1.18) }
-      12.5%{ opacity:1; transform:scale(1) }    14.2%{ opacity:0; transform:scale(1) }
+      0%{ opacity:0; transform:scale(1.18) }   2.7%{ opacity:1; transform:scale(1.18) }
+      20%{ opacity:1; transform:scale(1) }     22.7%{ opacity:0; transform:scale(1) }
       100%{ opacity:0; transform:scale(1) }
     }
 
@@ -454,16 +469,15 @@
       background:linear-gradient(180deg, rgba(10,36,64,0) 0%, rgba(10,36,64,.82) 60%); }
     .ptz-step { position:absolute; left:16px; bottom:14px; color:#fff; font-weight:700;
       font-size:14px; letter-spacing:-.01em; opacity:0;
-      animation: ptz-seq 24s cubic-bezier(0.16,1,0.3,1) infinite; }
-    .ptz-step:nth-of-type(1){ animation-delay:0s }   .ptz-step:nth-of-type(2){ animation-delay:-3s }
-    .ptz-step:nth-of-type(3){ animation-delay:-6s }  .ptz-step:nth-of-type(4){ animation-delay:-9s }
-    .ptz-step:nth-of-type(5){ animation-delay:-12s } .ptz-step:nth-of-type(6){ animation-delay:-15s }
-    .ptz-step:nth-of-type(7){ animation-delay:-18s } .ptz-step:nth-of-type(8){ animation-delay:-21s }
+      animation: ptz-seq 15s cubic-bezier(0.16,1,0.3,1) infinite; }
+    .ptz-step:nth-of-type(1){ animation-delay:0s }   .ptz-step:nth-of-type(2){ animation-delay:-12s }
+    .ptz-step:nth-of-type(3){ animation-delay:-9s }  .ptz-step:nth-of-type(4){ animation-delay:-6s }
+    .ptz-step:nth-of-type(5){ animation-delay:-3s }
     .ptz-step b { color:#8ed0ff; font-weight:800; margin-right:.5rem; }
 
     /* 진행 막대 */
     .ptz-bar { position:absolute; top:0; left:0; height:2px; background:#0169a9; width:0;
-      animation: ptz-bar 24s linear infinite; }
+      animation: ptz-bar 15s linear infinite; }
     @keyframes ptz-bar { from{ width:0 } to{ width:100% } }
 
     /* LIVE 표시 */
@@ -712,7 +726,7 @@
       </div>
 
       <!-- Feature 01: 실시간 AI 위험 감지·판단 -->
-      <div class="reveal mb-24 md:mb-32">
+      <div class="reveal pb-16 md:pb-20 mb-16 md:mb-20 border-b border-hair">
           <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">01</p>
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
@@ -736,61 +750,76 @@
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             <!-- 01 안전모 미착용 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/03-helmet/helmet-001-bbox.png" data-lb-cap="안전모 미착용 감지" aria-label="안전모 미착용 감지 예시 크게 보기">
+            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/03-helmet/helmet-001-bbox.png" data-lb-cap="안전모 미착용" data-lb-sub="작업자마다 안전모 착용 여부를 개별 판별해, 미착용자만 특정해 알립니다." aria-label="안전모 미착용 감지 예시 크게 보기">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
                 <img src="assets/vision/detection/selected/03-helmet/helmet-001-bbox.png" alt="안전모 미착용" class="w-full h-full object-cover" loading="lazy">
+                <span class="rc-no" aria-hidden="true">01</span>
                 <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
               </div>
-              <p class="mt-2.5 text-body-sm font-bold text-ink text-left">안전모 미착용</p>
-              <div class="mt-1.5 flex flex-wrap gap-1">
-                <span class="tag bg-ink/[0.06] text-ink">개별 작업자 인식</span>
+              <div class="rc-body">
+                <p class="rc-title">안전모 미착용</p>
+                <div class="rc-tags">
+                  <span class="rc-tag">개별 작업자 인식</span>
+                </div>
               </div>
             </button>
             <!-- 02 안전대 미착용 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png" data-lb-cap="고소작업 · 안전대 미착용 감지" aria-label="안전대 미착용 감지 예시 크게 보기">
+            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png" data-lb-cap="안전대 미착용" data-lb-sub="고소 작업 구간을 자동으로 인식하고, 그 안에서 안전대를 착용하지 않은 작업자를 잡아냅니다." aria-label="안전대 미착용 감지 예시 크게 보기">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
                 <img src="assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png" alt="안전대 미착용" class="w-full h-full object-cover" loading="lazy">
+                <span class="rc-no" aria-hidden="true">02</span>
                 <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
               </div>
-              <p class="mt-2.5 text-body-sm font-bold text-ink text-left">안전대 미착용</p>
-              <div class="mt-1.5 flex flex-wrap gap-1">
-                <span class="tag bg-ink/[0.06] text-ink">고소구간 자동 인식</span>
+              <div class="rc-body">
+                <p class="rc-title">안전대 미착용</p>
+                <div class="rc-tags">
+                  <span class="rc-tag">고소구간 자동 인식</span>
+                </div>
               </div>
             </button>
             <!-- 03 개구부 안전조치 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/05-opening/opening-007-bbox.png" data-lb-cap="개구부 안전조치 감지" aria-label="개구부 안전조치 감지 예시 크게 보기">
+            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/05-opening/opening-007-bbox.png" data-lb-cap="개구부 안전조치" data-lb-sub="개구부 커버와 난간의 설치 상태를 판별하고, 열고 닫은 이력을 남깁니다." aria-label="개구부 안전조치 감지 예시 크게 보기">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
                 <img src="assets/vision/detection/selected/05-opening/opening-007-bbox.png" alt="개구부 안전조치" class="w-full h-full object-cover" loading="lazy">
+                <span class="rc-no" aria-hidden="true">03</span>
                 <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
               </div>
-              <p class="mt-2.5 text-body-sm font-bold text-ink text-left">개구부 안전조치</p>
-              <div class="mt-1.5 flex flex-wrap gap-1">
-                <span class="tag bg-ink/[0.06] text-ink">커버 · 난간 상태 판별</span>
-                <span class="tag bg-ink/[0.06] text-ink">개폐 이력 관리</span>
+              <div class="rc-body">
+                <p class="rc-title">개구부 안전조치</p>
+                <div class="rc-tags">
+                  <span class="rc-tag">커버 · 난간 상태 판별</span>
+                  <span class="rc-tag">개폐 이력 관리</span>
+                </div>
               </div>
             </button>
             <!-- 04 상하동시작업 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png" data-lb-cap="상하동시작업 · 상·하부 동시 작업 상황 감지" aria-label="상하동시작업 감지 예시 크게 보기">
+            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png" data-lb-cap="상하동시작업" data-lb-sub="위층과 아래층에서 동시에 진행되는 작업을 함께 인식해, 낙하물 위험을 알립니다." aria-label="상하동시작업 감지 예시 크게 보기">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
-                <img src="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png" alt="상하동시작업 감지" class="w-full h-full object-cover" loading="lazy">
+                <img src="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png" alt="상하동시작업" class="w-full h-full object-cover" loading="lazy">
+                <span class="rc-no" aria-hidden="true">04</span>
                 <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
               </div>
-              <p class="mt-2.5 text-body-sm font-bold text-ink text-left">상하동시작업</p>
-              <div class="mt-1.5 flex flex-wrap gap-1">
-                <span class="tag bg-ink/[0.06] text-ink">작업자 동시 감지</span>
-                <span class="tag bg-ink/[0.06] text-ink">낙하물 위험 알림</span>
+              <div class="rc-body">
+                <p class="rc-title">상하동시작업</p>
+                <div class="rc-tags">
+                  <span class="rc-tag">작업자 동시 감지</span>
+                  <span class="rc-tag">낙하물 위험 알림</span>
+                </div>
               </div>
             </button>
             <!-- 05 중장비 위험구역 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png" data-lb-cap="중장비 위험구역 침범 · 작업자 반경 진입 감지" aria-label="중장비 위험구역 침범 감지 예시 크게 보기">
+            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png" data-lb-cap="중장비 위험구역" data-lb-sub="장비별 위험반경을 자동으로 잡고, 작업자가 그 안으로 들어오면 즉시 알립니다." aria-label="중장비 위험구역 감지 예시 크게 보기">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
                 <img src="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png" alt="중장비 위험구역" class="w-full h-full object-cover" loading="lazy">
+                <span class="rc-no" aria-hidden="true">05</span>
                 <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
               </div>
-              <p class="mt-2.5 text-body-sm font-bold text-ink text-left">중장비 위험구역</p>
-              <div class="mt-1.5 flex flex-wrap gap-1">
-                <span class="tag bg-ink/[0.06] text-ink">위험반경 자동 설정</span>
-                <span class="tag bg-ink/[0.06] text-ink">작업자 진입 감지</span>
+              <div class="rc-body">
+                <p class="rc-title">중장비 위험구역</p>
+                <div class="rc-tags">
+                  <span class="rc-tag">위험반경 자동 설정</span>
+                  <span class="rc-tag">작업자 진입 감지</span>
+                </div>
               </div>
             </button>
           </div>
@@ -798,7 +827,7 @@
       </div>
 
       <!-- Feature 02: PTZ 자율 제어 · 와이드 이미지 상단 배치 -->
-      <div class="reveal mb-24 md:mb-32">
+      <div class="reveal pb-16 md:pb-20 mb-16 md:mb-20 border-b border-hair">
           <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">02</p>
         <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-10 lg:gap-16 items-center">
         <!-- PTZ 자율 추적 시퀀스 · 감지 → 줌인 → 알림 → 조치 → 복귀 -->
@@ -810,20 +839,14 @@
               <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-008-segmentation.png" alt="" aria-hidden="true" loading="lazy">
               <img class="ptz-f is-zoomin" src="assets/vision/detection/selected/05-opening/opening-007-bbox.png" alt="" aria-hidden="true" loading="lazy">
               <img class="ptz-f is-hold" src="assets/vision/detection/selected/05-opening/opening-006-bbox.png" alt="" aria-hidden="true" loading="lazy">
-              <img class="ptz-f is-hold" src="assets/vision/detection/selected/05-opening/opening-006-segmentation.png" alt="" aria-hidden="true" loading="lazy">
               <img class="ptz-f is-zoomout" src="assets/vision/detection/selected/05-opening/opening-001-bbox.png" alt="" aria-hidden="true" loading="lazy">
-              <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-001-segmentation.png" alt="" aria-hidden="true" loading="lazy">
-              <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-001-clean.png" alt="" aria-hidden="true" loading="lazy">
               <div class="ptz-cap" aria-hidden="true"></div>
               <span class="ptz-live" aria-hidden="true"><i></i>LIVE</span>
               <p class="ptz-step"><b>01</b>원본 CCTV · 개구부 구역</p>
               <p class="ptz-step"><b>02</b>AI 감지 · 픽셀 영역 분리</p>
               <p class="ptz-step"><b>03</b>위험 판별 · PTZ 줌인</p>
               <p class="ptz-step"><b>04</b>현장 · 관제 알림 발송</p>
-              <p class="ptz-step"><b>05</b>조치 확인</p>
-              <p class="ptz-step"><b>06</b>PTZ 줌아웃 · 주변 재점검</p>
-              <p class="ptz-step"><b>07</b>AI 재분석</p>
-              <p class="ptz-step"><b>08</b>조치 완료 · 정상 복귀</p>
+              <p class="ptz-step"><b>05</b>PTZ 줌아웃 · 정상 복귀</p>
               <span class="ptz-bar" aria-hidden="true"></span>
             </div>
           </div>
@@ -833,19 +856,17 @@
         <div class="lg:order-1">
           <h3 class="text-h2 md:text-h1 font-bold text-ink mb-5 leading-tight" style="letter-spacing:-0.02em;">PTZ 자율 제어</h3>
           <p class="text-body-lg text-body leading-[1.7] mb-6">위험을 감지하면 카메라가 스스로 움직여 사각지대까지 추적합니다.</p>
-          <div>
-            <ul class="space-y-4 text-h3 text-ink leading-[1.55] font-semibold">
-              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>위험 감지 시 카메라 자동 회전·줌인</li>
-              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>고정 카메라가 놓치는 사각지대 추적</li>
-              <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>작업자·객체 인식 기반 고위험 행동 자동 포착</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
+          <ul class="space-y-4 text-h3 text-ink leading-[1.55] font-semibold">
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>위험 감지 시 카메라 자동 회전·줌인</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>고정 카메라가 놓치는 사각지대 추적</li>
+            <li class="flex gap-3"><span class="text-accent shrink-0 pt-1"><iconify-icon icon="solar:check-circle-linear" class="text-body-lg"></iconify-icon></span>작업자·객체 인식 기반 고위험 행동 자동 포착</li>
+          </ul>
+        </div><!-- /텍스트 칼럼 -->
+        </div><!-- /2열 그리드 -->
+      </div><!-- /Feature 02 -->
 
       <!-- Feature 03: 생성형 AI 기반 안전 서류·법령 자동화 · 와이드 이미지 상단 배치 -->
-      <div class="reveal mb-24 md:mb-32">
+      <div class="reveal pb-16 md:pb-20 mb-16 md:mb-20 border-b border-hair">
           <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">03</p>
         <!-- 텍스트 · 좌: 번호/제목/리드 · 우: bullet 리스트 -->
         <div class="grid md:grid-cols-[1fr_1.35fr] gap-10 md:gap-16">
@@ -1031,7 +1052,7 @@
                 </div>
               </div>
               <p class="mt-6 md:mt-7 pt-5 border-t border-hair text-body-sm text-sub leading-[1.6]">
-                현장 피드백이 누적될수록 판단 기준이 촘촘해집니다.
+                같은 알람이 반복되면 기준을 조정하고, 놓친 위험은 다음 학습에 반영합니다.
               </p>
             </div>
           </div>
@@ -1061,7 +1082,6 @@
       </div>
       <div class="grid md:grid-cols-3 gap-8 md:gap-0 items-stretch">
         <div class="reveal md:pr-8">
-          <p class="text-body-sm font-extrabold text-accent tracking-[0.16em] uppercase mb-4">Step 01</p>
           <iconify-icon icon="solar:videocamera-linear" class="text-h1 text-ink mb-4"></iconify-icon>
           <h3 class="text-h3 md:text-h3 font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">CCTV 연동</h3>
           <p class="text-body-base text-sub leading-[1.7]">기존 CCTV 인프라의 영상 스트림을 그대로 받아옵니다. 카메라 교체나 신규 장비 설치가 필요 없습니다.</p>
@@ -1073,23 +1093,41 @@
           </ul>
         </div>
         <div class="reveal stagger-1 md:border-l md:border-hair md:pl-8 md:pr-8">
-          <p class="text-body-sm font-extrabold text-accent tracking-[0.16em] uppercase mb-4">Step 02</p>
           <iconify-icon icon="solar:cpu-bolt-linear" class="text-h1 text-ink mb-4"></iconify-icon>
-          <h3 class="text-h3 md:text-h3 font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">자율 감지·판단</h3>
-          <p class="text-body-base text-sub leading-[1.7]">관리자가 화면을 지켜보지 않아도, 24시간 다채널 영상을 분석해 위험을 감지하고, 단순 객체 탐지를 넘어 상황 맥락까지 판단해 오탐을 걸러냅니다.</p>
+          <h3 class="text-h3 md:text-h3 font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">24시간 자동 순찰 및 안전 모니터링</h3>
+          <p class="text-body-base text-sub leading-[1.7]">주·야간 설정된 주기에 따라 현장을 자동 순찰합니다.</p>
+          <div class="mt-5 space-y-4">
+            <div>
+              <p class="text-caption font-extrabold text-accent tracking-[0.14em] uppercase mb-2">주간 · 작업 중</p>
+              <ul class="space-y-1.5 text-body-base text-sub leading-[1.6]">
+              <li class="flex items-start gap-2.5"><span class="mt-[9px] w-[3px] h-[3px] bg-accent shrink-0"></span>작업자 추적</li>
+              <li class="flex items-start gap-2.5"><span class="mt-[9px] w-[3px] h-[3px] bg-accent shrink-0"></span>위험구역 접근</li>
+              <li class="flex items-start gap-2.5"><span class="mt-[9px] w-[3px] h-[3px] bg-accent shrink-0"></span>작업 상황 확인</li>
+              <li class="flex items-start gap-2.5"><span class="mt-[9px] w-[3px] h-[3px] bg-accent shrink-0"></span>화재·이상상황 감지</li>
+              </ul>
+            </div>
+            <div>
+              <p class="text-caption font-extrabold text-accent tracking-[0.14em] uppercase mb-2">야간 · 작업 종료 후</p>
+              <ul class="space-y-1.5 text-body-base text-sub leading-[1.6]">
+              <li class="flex items-start gap-2.5"><span class="mt-[9px] w-[3px] h-[3px] bg-accent shrink-0"></span>일정 주기 자동 순찰</li>
+              <li class="flex items-start gap-2.5"><span class="mt-[9px] w-[3px] h-[3px] bg-accent shrink-0"></span>잔류인원 확인</li>
+              <li class="flex items-start gap-2.5"><span class="mt-[9px] w-[3px] h-[3px] bg-accent shrink-0"></span>외부인원 확인</li>
+              <li class="flex items-start gap-2.5"><span class="mt-[9px] w-[3px] h-[3px] bg-accent shrink-0"></span>이상 상황 확인</li>
+              </ul>
+            </div>
+          </div>
         </div>
         <div class="reveal stagger-2 md:border-l md:border-hair md:pl-8">
-          <p class="text-body-sm font-extrabold text-accent tracking-[0.16em] uppercase mb-4">Step 03</p>
-          <iconify-icon icon="solar:bell-bing-linear" class="text-h1 text-ink mb-4"></iconify-icon>
-          <h3 class="text-h3 md:text-h3 font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">자율 대응</h3>
-          <p class="text-body-base text-sub leading-[1.7]">대부분의 AI CCTV가 '알림'에서 멈추는 지점부터가 온토비전의 시작입니다. PTZ로 사각지대를 추적하고, 산업안전보건법 대조·조치 안내·기록까지 자동으로 이어집니다.</p>
+          <iconify-icon icon="solar:tuning-2-linear" class="text-h1 text-ink mb-4"></iconify-icon>
+          <h3 class="text-h3 md:text-h3 font-bold text-ink mb-3 leading-tight" style="letter-spacing:-0.015em;">현장 맞춤 설정</h3>
+          <p class="text-body-base text-sub leading-[1.7]">현장에 맞게 AUTO PTZ 순찰 경로와 감지 기준을 설정합니다.</p>
+          <p class="mt-3 text-body-base text-sub leading-[1.7]">현장 안전 기준에 맞춰 감지 항목을 추가할 수 있습니다.</p>
         </div>
       </div>
 
       <!-- 결과물 · 이렇게 남습니다 -->
       <div class="mt-16 md:mt-20 pt-12 md:pt-14 border-t border-hair">
         <div class="max-w-3xl mb-10 md:mb-12">
-          <p class="text-body-sm font-extrabold text-sub/70 uppercase tracking-[0.14em] mb-3">이렇게 남습니다</p>
           <h3 class="text-h3 md:text-h2 font-bold text-ink" style="letter-spacing:-0.02em; line-height:1.3;">감지로 끝이 아니라,<br class="hidden md:block"> 기록으로 남습니다.</h3>
         </div>
         <div class="grid md:grid-cols-3 gap-4 md:gap-5">
@@ -1186,14 +1224,20 @@
       <button type="button" class="lb-nav lb-prev" onclick="lbNav(-1)" aria-label="이전 이미지"><iconify-icon icon="solar:alt-arrow-left-linear"></iconify-icon></button>
       <button type="button" class="lb-nav lb-next" onclick="lbNav(1)" aria-label="다음 이미지"><iconify-icon icon="solar:alt-arrow-right-linear"></iconify-icon></button>
       <img id="lb-img" src="" alt="">
-      <p class="lb-cap" id="lb-cap"></p>
+      <div class="lb-cap">
+        <p class="lb-cap-t" id="lb-cap-t"></p>
+        <p class="lb-cap-s" id="lb-cap-s"></p>
+        <p class="lb-cap-n" id="lb-cap-n"></p>
+      </div>
     </div>
   </dialog>
   <script>
     (function() {
       var dlg = document.getElementById('lb');
       var img = document.getElementById('lb-img');
-      var cap = document.getElementById('lb-cap');
+      var capT = document.getElementById('lb-cap-t');
+      var capS = document.getElementById('lb-cap-s');
+      var capN = document.getElementById('lb-cap-n');
       var prevBtn = document.querySelector('.lb-prev');
       var nextBtn = document.querySelector('.lb-next');
       if (!dlg || !dlg.showModal) return;
@@ -1203,8 +1247,14 @@
 
       function loadImage(el) {
         img.src = el.getAttribute('data-lb');
-        img.alt = el.getAttribute('data-lb-cap') || '';
-        cap.textContent = el.getAttribute('data-lb-cap') || '';
+        var t = el.getAttribute('data-lb-cap') || '';
+        var sub = el.getAttribute('data-lb-sub') || '';
+        img.alt = t;
+        capT.textContent = t;
+        capS.textContent = sub;
+        capS.hidden = !sub;
+        capN.textContent = currentGroup.length > 1 ? (currentIdx + 1) + ' / ' + currentGroup.length : '';
+        capN.hidden = currentGroup.length <= 1;
       }
 
       function updateNav() {
@@ -1345,30 +1395,41 @@
           function splitCharsPreservingSpans(el) {
             var frag = document.createDocumentFragment();
             var chars = [];
+            // 글자마다 inline-block + white-space:pre 를 주면 브라우저의 공백 접힘이 사라져
+            // 소스의 줄바꿈·들여쓰기가 그대로 여백이 된다. 접힘 규칙을 직접 재현한다.
+            var pendingSpace = false;
+            function mkSpan(ch) {
+              var s = document.createElement('span');
+              s.textContent = ch;
+              s.style.display = 'inline-block';
+              s.style.whiteSpace = 'pre';
+              return s;
+            }
+            function emitText(text, target) {
+              Array.from(text).forEach(function(ch) {
+                if (/\s/.test(ch)) { pendingSpace = true; return; }
+                if (pendingSpace) {
+                  pendingSpace = false;
+                  // 선행 공백은 버리고, 글자 사이 공백만 한 칸으로 남긴다
+                  if (chars.length) {
+                    var sp = mkSpan(' ');
+                    target.appendChild(sp);
+                    chars.push(sp);
+                  }
+                }
+                var s = mkSpan(ch);
+                target.appendChild(s);
+                chars.push(s);
+              });
+            }
             Array.from(el.childNodes).forEach(function(node) {
               if (node.nodeType === Node.TEXT_NODE) {
-                Array.from(node.textContent).forEach(function(ch) {
-                  var s = document.createElement('span');
-                  s.textContent = ch;
-                  s.style.display = 'inline-block';
-                  s.style.whiteSpace = 'pre';
-                  frag.appendChild(s);
-                  chars.push(s);
-                });
+                emitText(node.textContent, frag);
               } else if (node.nodeType === Node.ELEMENT_NODE) {
                 // span 등 자식 요소는 그 안 텍스트만 분리, 클래스는 유지
                 var wrapper = node.cloneNode(false);
                 Array.from(node.childNodes).forEach(function(cn) {
-                  if (cn.nodeType === Node.TEXT_NODE) {
-                    Array.from(cn.textContent).forEach(function(ch) {
-                      var s = document.createElement('span');
-                      s.textContent = ch;
-                      s.style.display = 'inline-block';
-                      s.style.whiteSpace = 'pre';
-                      wrapper.appendChild(s);
-                      chars.push(s);
-                    });
-                  }
+                  if (cn.nodeType === Node.TEXT_NODE) emitText(cn.textContent, wrapper);
                 });
                 frag.appendChild(wrapper);
               }
