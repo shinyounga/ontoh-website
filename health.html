@@ -293,10 +293,10 @@
   </section>
 
   <!-- ==================== 인트로 (컴팩트 + 대시보드 이미지) ==================== -->
-  <section class="border-b border-hair">
+  <section class="border-b border-hair overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
-      <div class="grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-16 items-center">
-        <div>
+      <div class="grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-16 items-end">
+        <div class="self-center lg:pb-6">
           <h2 class="reveal text-h1 md:text-hero font-bold tracking-tight text-ink" style="line-height:1.15; letter-spacing:-0.03em;">
             근로자의 건강 위험을,<br><span class="text-accent">데이터로</span> 먼저 살핍니다.
           </h2>
@@ -307,7 +307,8 @@
             <a href="contact.html" class="btn btn-primary btn-md">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
           </div>
         </div>
-        <div class="reveal stagger-2">
+        <!-- 목업 · 하단을 섹션 구분선에 붙인다 (섹션 하단 패딩을 음수 마진으로 상쇄) -->
+        <div class="reveal stagger-2 -mb-20 md:-mb-28 -mr-6 sm:-mr-10 lg:-mr-14 xl:-mr-32">
           <img src="assets/health/hero-dashboard.png" alt="온토케어 대시보드 화면" class="w-full h-auto block">
         </div>
       </div>
