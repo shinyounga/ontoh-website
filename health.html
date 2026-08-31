@@ -320,7 +320,7 @@
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-3xl mb-16 md:mb-20">
         <p class="kicker mb-4 reveal">핵심 기능</p>
-        <h2 class="reveal stagger-1 text-h2 md:text-hero font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
+        <h2 id="feature-h2" class="text-h2 md:text-hero font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
           온토케어가 <span class="text-accent">근로자 건강을 지키는 방법</span>.
         </h2>
       </div>
@@ -568,6 +568,82 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
   <script src="js/common.js"></script>
+
+  <!-- ==================== GSAP · 주요 기능 H2 Split Text (온토비전과 동일) ==================== -->
+  <script>
+    if (typeof gsap !== 'undefined') {
+      document.addEventListener('DOMContentLoaded', function() {
+        var prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReduce) return;
+
+        // ── Ex 05 · Feature H2 Split Text (스크롤 진입 시 1회) ──
+        var fh2 = document.getElementById('feature-h2');
+        if (fh2 && typeof ScrollTrigger !== 'undefined') {
+          // 자식 노드(텍스트 + span)를 순회하며 글자 단위로 분리
+          // <span class="text-accent">유지 · 그 안 글자도 분리
+          function splitCharsPreservingSpans(el) {
+            var frag = document.createDocumentFragment();
+            var chars = [];
+            // 글자마다 inline-block + white-space:pre 를 주면 브라우저의 공백 접힘이 사라져
+            // 소스의 줄바꿈·들여쓰기가 그대로 여백이 된다. 접힘 규칙을 직접 재현한다.
+            var pendingSpace = false;
+            function mkSpan(ch) {
+              var s = document.createElement('span');
+              s.textContent = ch;
+              s.style.display = 'inline-block';
+              s.style.whiteSpace = 'pre';
+              return s;
+            }
+            function emitText(text, target) {
+              Array.from(text).forEach(function(ch) {
+                if (/\s/.test(ch)) { pendingSpace = true; return; }
+                if (pendingSpace) {
+                  pendingSpace = false;
+                  // 선행 공백은 버리고, 글자 사이 공백만 한 칸으로 남긴다
+                  if (chars.length) {
+                    var sp = mkSpan(' ');
+                    target.appendChild(sp);
+                    chars.push(sp);
+                  }
+                }
+                var s = mkSpan(ch);
+                target.appendChild(s);
+                chars.push(s);
+              });
+            }
+            Array.from(el.childNodes).forEach(function(node) {
+              if (node.nodeType === Node.TEXT_NODE) {
+                emitText(node.textContent, frag);
+              } else if (node.nodeType === Node.ELEMENT_NODE) {
+                // span 등 자식 요소는 그 안 텍스트만 분리, 클래스는 유지
+                var wrapper = node.cloneNode(false);
+                Array.from(node.childNodes).forEach(function(cn) {
+                  if (cn.nodeType === Node.TEXT_NODE) emitText(cn.textContent, wrapper);
+                });
+                frag.appendChild(wrapper);
+              }
+            });
+            el.innerHTML = '';
+            el.appendChild(frag);
+            return chars;
+          }
+          var chars = splitCharsPreservingSpans(fh2);
+          gsap.set(chars, { y: 40, opacity: 0 });
+          ScrollTrigger.create({
+            trigger: fh2,
+            start: 'top 80%',
+            once: true,
+            onEnter: function() {
+              gsap.to(chars, {
+                y: 0, opacity: 1,
+                duration: 0.75, stagger: 0.035, ease: 'ontoh',
+              });
+            },
+          });
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
