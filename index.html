@@ -194,12 +194,13 @@
       transition: transform .6s cubic-bezier(0.16,1,0.3,1);
     }
     .bento:hover .bento-art img { transform: scale(1.03); }
-    .bento-art-tall img { max-width:56%; margin-inline:auto; }
+    /* 세로형 목업은 우측으로 치우쳐 배치 (좌측 여백이 텍스트 블록과 호흡) */
+    .bento-art-tall img { max-width:56%; margin-left:auto; margin-right:6%; }
     @media (max-width:768px) {
       .bento { min-height:0; }
       .bento-head { padding:40px 24px 0; }
       .bento-name { font-size:28px; }
-      .bento-art-tall img { max-width:66%; }
+      .bento-art-tall img { max-width:66%; margin-right:4%; }
     }
   </style>
 </head>
@@ -436,15 +437,17 @@
   </section>
 
   <!-- ==================== CTA ==================== -->
-  <section class="border-b border-hair">
-    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
-      <div class="bg-ink px-8 md:px-16 py-14 md:py-20 text-center relative overflow-hidden">
-        <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent-300 mb-5 reveal">Get started</p>
-        <h2 class="reveal stagger-1 text-[34px] md:text-[46px] font-bold tracking-tight text-white" style="line-height:1.3;">지금의 CCTV, <span class="text-accent-300">그대로 지능화</span>합니다.</h2>
-        <p class="reveal stagger-2 mt-6 text-[19px] md:text-[23px] text-white/65 leading-[1.7] max-w-xl mx-auto">무료 현장 데모로 자율 관제 효과를 직접 확인해보세요.</p>
-        <div class="reveal stagger-3 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-          <a href="contact.html" class="btn btn-inverse btn-md">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
-          <a href="mailto:ktg@ontoh.co.kr" class="btn btn-outline-light btn-md">이메일 문의</a>
+  <section class="bg-band border-b border-hair">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <div class="reveal">
+          <p class="text-[13px] font-bold uppercase tracking-[0.16em] text-accent mb-4">Get started</p>
+          <h2 class="text-[28px] md:text-[34px] font-bold tracking-tight text-ink" style="letter-spacing:-0.025em;">지금의 CCTV, <span class="text-accent">그대로 지능화</span>합니다.</h2>
+          <p class="mt-3 text-[16.5px] text-sub leading-[1.7]">무료 현장 데모로 자율 관제 효과를 직접 확인해보세요.</p>
+        </div>
+        <div class="reveal stagger-1 flex flex-col sm:flex-row gap-3.5 shrink-0">
+          <a href="contact.html" class="btn btn-primary btn-md">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></a>
+          <a href="mailto:ktg@ontoh.co.kr" class="btn btn-outline-dark btn-md bg-white hover:border-ink">이메일 문의</a>
         </div>
       </div>
     </div>
