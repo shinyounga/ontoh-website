@@ -235,8 +235,12 @@
 
     /* ==================== Before/After 슬라이더 ==================== */
     .ba-wrap { max-width: 1000px; margin: 0 auto; }
-    @media (min-width:1024px){ .ba-wrap { max-width:none; display:grid;
-      grid-template-columns:1.18fr 0.82fr; gap:28px; align-items:stretch; } }
+    @media (min-width:1024px){
+      .ba-wrap { max-width:none; }
+      /* 상단: 비교 이미지 + 법령 패널을 같은 높이로 (행 높이는 법령 패널이 결정) */
+      .ba-top { display:grid; grid-template-columns:1.18fr 0.82fr; gap:28px; align-items:stretch; }
+      .ba-top .ba-frame { aspect-ratio:auto; height:100%; min-height:440px; }
+    }
     .ba-frame {
       position: relative;
       aspect-ratio: 16 / 10;
@@ -309,6 +313,11 @@
     .ba-tabs {
       display: flex; flex-wrap: wrap; gap: 4px;
       margin-top: 20px;
+    }
+    /* 데스크톱: 시나리오 선택을 가로 전체로 5등분 (기본 규칙 뒤에 와야 적용됨) */
+    @media (min-width:1024px){
+      .ba-tabs { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; }
+      .ba-tab { text-align:center; }
     }
     .ba-tab {
       padding: 12px 18px;
@@ -644,23 +653,39 @@
       <!-- Before/After 인터랙티브 슬라이더 -->
       <div class="reveal">
         <div id="baSlider" class="ba-wrap">
-          <div>
+          <div class="ba-top">
           <div class="ba-frame" data-ba-frame>
-            <img class="ba-img ba-clean" alt="Before · 원본 CCTV">
-            <div class="ba-after-wrap">
-              <img class="ba-img ba-labeled" alt="After · 온토비전 감지">
+              <img class="ba-img ba-clean" alt="Before · 원본 CCTV">
+              <div class="ba-after-wrap">
+                <img class="ba-img ba-labeled" alt="After · 온토비전 감지">
+              </div>
+              <div class="ba-divider">
+                <button type="button" class="ba-handle" aria-label="드래그하여 Before/After 비교" tabindex="0">
+                  <iconify-icon icon="solar:alt-arrow-left-linear" style="font-size:16px;"></iconify-icon>
+                  <iconify-icon icon="solar:alt-arrow-right-linear" style="font-size:16px;"></iconify-icon>
+                </button>
+              </div>
+              <span class="ba-label ba-label-left">BEFORE · 원본 CCTV</span>
+              <span class="ba-label ba-label-right">AFTER · 온토비전 감지</span>
             </div>
-            <div class="ba-divider">
-              <button type="button" class="ba-handle" aria-label="드래그하여 Before/After 비교" tabindex="0">
-                <iconify-icon icon="solar:alt-arrow-left-linear" style="font-size:16px;"></iconify-icon>
-                <iconify-icon icon="solar:alt-arrow-right-linear" style="font-size:16px;"></iconify-icon>
-              </button>
-            </div>
-            <span class="ba-label ba-label-left">BEFORE · 원본 CCTV</span>
-            <span class="ba-label ba-label-right">AFTER · 온토비전 감지</span>
+        <!-- 법령 패널 · 우측 세로 배치 -->
+            <aside class="ba-law">
+              <p class="ba-law-kicker" data-ba-case>Case 01 · 안전모 미착용</p>
+              <p class="ba-law-act">산업안전보건기준에 관한 규칙</p>
+              <p class="ba-law-head" data-ba-law-head>제32조 · 보호구의 지급 등</p>
+              <blockquote class="ba-law-quote">
+                <span data-ba-quote>"물체가 떨어지거나 날아올 위험 또는 근로자가 추락할 위험이 있는 작업: 안전모"</span>
+                <cite data-ba-clause>— 제32조 제1항 제1호</cite>
+              </blockquote>
+              <p class="ba-law-src">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr" target="_blank" rel="noopener" class="underline hover:text-accent">국가법령정보센터</a></p>
+              <div class="ba-law-act-box">
+                <p class="ba-law-act-label">자동 조치</p>
+                <p class="ba-law-act-text" data-ba-action>현장 · 관제 알림 → 안전모 착용 지시 → 미착용 시 작업 중지</p>
+              </div>
+            </aside>
           </div>
 
-          <!-- 시나리오 탭 (주요 위험 유형) -->
+          <!-- 시나리오 선택 · 가로 전체 -->
           <div class="ba-tabs" role="tablist" aria-label="시나리오 선택">
             <button type="button" class="ba-tab is-active" data-idx="0" role="tab">안전모 미착용</button>
             <button type="button" class="ba-tab" data-idx="1" role="tab">고소작업 안전대 미착용</button>
@@ -668,28 +693,10 @@
             <button type="button" class="ba-tab" data-idx="3" role="tab">상하동시작업</button>
             <button type="button" class="ba-tab" data-idx="4" role="tab">중장비 위험구역 침범</button>
           </div>
-
           <p class="text-body-sm text-sub/70 mt-4">
             <iconify-icon icon="solar:cursor-linear" class="text-body-sm align-middle"></iconify-icon>
             가운데 핸들을 좌우로 드래그하여 원본과 감지 결과를 비교하세요.
           </p>
-        </div>
-
-        <!-- 법령 패널 · 우측 세로 배치 -->
-        <aside class="ba-law">
-          <p class="ba-law-kicker" data-ba-case>Case 01 · 안전모 미착용</p>
-          <p class="ba-law-act">산업안전보건기준에 관한 규칙</p>
-          <p class="ba-law-head" data-ba-law-head>제32조 · 보호구의 지급 등</p>
-          <blockquote class="ba-law-quote">
-            <span data-ba-quote>"물체가 떨어지거나 날아올 위험 또는 근로자가 추락할 위험이 있는 작업: 안전모"</span>
-            <cite data-ba-clause>— 제32조 제1항 제1호</cite>
-          </blockquote>
-          <p class="ba-law-src">[시행 2025. 9. 1.] 고용노동부령 제450호 · 출처: <a href="https://www.law.go.kr" target="_blank" rel="noopener" class="underline hover:text-accent">국가법령정보센터</a></p>
-          <div class="ba-law-act-box">
-            <p class="ba-law-act-label">자동 조치</p>
-            <p class="ba-law-act-text" data-ba-action>현장 · 관제 알림 → 안전모 착용 지시 → 미착용 시 작업 중지</p>
-          </div>
-        </aside>
       </div>
 
       <!-- 3-포인트 요약 스트립 -->
