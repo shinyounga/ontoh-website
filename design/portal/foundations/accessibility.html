@@ -48,8 +48,17 @@
         <tr><td>Body #212121 on White</td><td>16.13 : 1</td><td><span class="contrast-badge aaa" style="background:#137a52; color:#fff; padding:2px 6px; font-size:10px; font-weight:700; letter-spacing:0.14em;">AAA</span></td></tr>
         <tr><td>Sub #555 on White</td><td>7.46 : 1</td><td><span class="contrast-badge aaa" style="background:#137a52; color:#fff; padding:2px 6px; font-size:10px; font-weight:700; letter-spacing:0.14em;">AAA</span></td></tr>
         <tr><td>Accent #0169a9 on White</td><td>5.68 : 1</td><td><span class="contrast-badge aa" style="background:#0169a9; color:#fff; padding:2px 6px; font-size:10px; font-weight:700; letter-spacing:0.14em;">AA</span></td></tr>
+        <tr><td>Sub/85 #6e6e6e on White <em>(3차 텍스트 최소치)</em></td><td>5.10 : 1</td><td><span class="contrast-badge aa" style="background:#0169a9; color:#fff; padding:2px 6px; font-size:10px; font-weight:700; letter-spacing:.06em;">AA</span></td></tr>
+        <tr><td>Sub/70 #888888 on White <em>(사용 금지)</em></td><td>3.54 : 1</td><td><span class="contrast-badge" style="background:#dc2626; color:#fff; padding:2px 6px; font-size:10px; font-weight:700; letter-spacing:.06em;">FAIL</span></td></tr>
+        <tr><td>Sub/60 #999999 on White <em>(사용 금지)</em></td><td>2.85 : 1</td><td><span class="contrast-badge" style="background:#dc2626; color:#fff; padding:2px 6px; font-size:10px; font-weight:700; letter-spacing:.06em;">FAIL</span></td></tr>
       </tbody>
     </table>
+    <div class="dont-block">
+      <strong>✗</strong> 본문 텍스트에 <code>text-sub/50</code> ~ <code>text-sub/80</code> 을 쓰지 않는다.
+      #555 를 80% 이하로 흐리면 4.5:1 아래로 떨어진다. 3차 위계가 필요하면
+      <code>text-sub/85</code>(#6e6e6e · 5.10:1)가 하한이다.
+      <code>text-sub/40</code> 은 장식 아이콘 전용으로만 남긴다.
+    </div>
 
     <h2>키보드 · Focus (WCAG 2.1.1, 2.4.7)</h2>
     <ul>
