@@ -68,7 +68,7 @@
     body { color: #212121; }
     /* -- State System (Focus/Disabled/Loading/Alert/Tag Variants) -- */
     /* Focus (접근성 · WCAG 2.4.7) */
-    .btn:focus-visible, .dropdown-link:focus-visible, .bc-cell:focus-visible, .nav-top:focus-visible, .lb-nav:focus-visible, .lb-close:focus-visible, .lb-trigger:focus-visible, .lc-nav:focus-visible, .lc-dot:focus-visible { outline: 2px solid #0169a9; outline-offset: 2px; }
+    .btn:focus-visible, .dropdown-link:focus-visible, .bc-cell:focus-visible, .nav-top:focus-visible, .lc-nav:focus-visible, .lc-dot:focus-visible { outline: 2px solid #0169a9; outline-offset: 2px; }
     /* Disabled */
     .btn:disabled, .btn.is-disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
     input:disabled, select:disabled, textarea:disabled { opacity: 0.6; cursor: not-allowed; background: #F5F6F8; }
@@ -152,37 +152,13 @@
     .bc-panel .dropdown-link { display: block; padding: 10px 16px; font-size: 15px; color: #555; transition: color .28s cubic-bezier(0.16,1,0.3,1), background .28s cubic-bezier(0.16,1,0.3,1); white-space: nowrap; }
     .bc-panel .dropdown-link:hover { color: #fff; background: #0169a9; }
     .bc-panel .dropdown-link.is-active { color: #0A2440; font-weight: 700; background: #F5F6F8; }
-    /* Lightbox */
-    .lb-trigger { cursor: zoom-in; background:transparent; border:0; padding:0; width:100%; }
     .lb-thumb { position:relative; overflow:hidden; }
-    .lb-thumb::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, transparent 55%, rgba(10,36,64,0.55) 100%); opacity:0; transition:opacity .38s cubic-bezier(0.16,1,0.3,1); }
-    .lb-thumb .lb-badge { position:absolute; top:10px; right:10px; background:rgba(255,255,255,0.9); color:#0A2440; font-size:11px; font-weight:800; letter-spacing:.06em; padding:4px 8px; display:inline-flex; align-items:center; gap:4px; opacity:0; transform:translateY(-4px); transition:all .38s cubic-bezier(0.16,1,0.3,1); z-index:2; }
-    .lb-trigger:hover .lb-thumb::after,
-    .lb-trigger:focus-visible .lb-thumb::after { opacity:1; }
-    .lb-trigger:hover .lb-badge,
-    .lb-trigger:focus-visible .lb-badge { opacity:1; transform:none; }
-    .lb-trigger img { transition: transform .6s cubic-bezier(0.16,1,0.3,1); }
-    .lb-trigger:hover img { transform: scale(1.04); }
-    dialog.lb-dialog { padding:0; background:transparent; border:0; max-width:96vw; max-height:96vh; overflow:visible; }
-    dialog.lb-dialog::backdrop { background:rgba(10,36,64,0.88); backdrop-filter:blur(6px); }
-    dialog.lb-dialog[open] { animation: lb-in .28s cubic-bezier(0.16,1,0.3,1); }
-    @keyframes lb-in { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:none; } }
-    .lb-frame { position:relative; padding:44px 0 0; }
-    .lb-frame img { display:block; max-width:96vw; max-height:82vh; width:auto; height:auto; object-fit:contain; margin:0 auto; }
-    .lb-close { position:absolute; top:0; right:0; background:transparent; border:0; color:#fff; font-size:26px; cursor:pointer; padding:4px 12px; line-height:1; font-weight:300; }
-    .lb-close:hover { color:#8ed0ff; }
-    .lb-cap { color:#fff; text-align:center; margin:16px auto 0; max-width:720px; padding:0 12px; }
-    .lb-cap-t { font-size:19px; font-weight:800; letter-spacing:-.02em; line-height:1.35; }
-    .lb-cap-s { margin-top:8px; font-size:15px; font-weight:400; line-height:1.65; color:rgba(255,255,255,.72); }
-    .lb-cap-n { margin-top:12px; font-size:12px; font-weight:800; letter-spacing:.14em; color:rgba(255,255,255,.45); }
 
     /* 주요 위험 유형 카드 · 사진 위 제목 + 바디 태그 */
     .rc { position:relative; display:flex; flex-direction:column; background:#fff; border:1px solid #E5E7EB;
       text-align:left; overflow:hidden;
       transition: border-color .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s cubic-bezier(0.16,1,0.3,1); }
     .rc:hover, .rc:focus-visible { border-color:#0169a9; box-shadow:0 10px 26px rgba(10,36,64,0.12); }
-    /* 상시 스크림을 쓰므로 공용 호버 그라데이션은 끈다 (이중 적용 방지) */
-    .rc .lb-thumb::after { display:none; }
     .rc-scrim { position:absolute; inset:0; pointer-events:none;
       background:linear-gradient(180deg, rgba(10,36,64,0) 42%, rgba(10,36,64,0.90) 100%); }
     .rc-ov { position:absolute; left:0; right:0; bottom:0; padding:14px 13px 12px; }
@@ -193,13 +169,6 @@
     .rc-tag { font-size:13px; font-weight:700; color:#555; background:#F5F6F8; border:1px solid #E5E7EB;
       padding:5px 9px; line-height:1.25; letter-spacing:-.01em; }
 
-    /* Lightbox 좌우 nav (그룹 내 순환) */
-    .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.55); border:0; color:#fff; width:64px; height:64px; border-radius:999px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .22s ease, transform .32s cubic-bezier(0.16,1,0.3,1); z-index:2; }
-    .lb-nav:hover { background:#0169a9; transform:translateY(-50%) scale(1.08); }
-    .lb-nav iconify-icon { font-size:34px; }
-    .lb-prev { left:-84px; }
-    .lb-next { right:-84px; }
-    @media (max-width: 900px) { .lb-prev { left:10px; } .lb-next { right:10px; } .lb-nav { width:50px; height:50px; } .lb-nav iconify-icon { font-size:26px; } }
     /* 법령 매칭 캐러셀 */
     .lc-viewport { position:relative; }
     .lc-stack { display:grid; }
@@ -523,11 +492,11 @@
           </div>
           <div class="nav-item flex items-stretch">
             <a href="contact.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-body-lg font-bold text-ink">문의</a>
-            <div class="nav-panel"><div class="gnb-panel-box min-w-[150]"><a href="contact.html" class="dropdown-link">도입 문의 <iconify-icon icon="solar:arrow-right-linear" class="text-caption"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[150]"><a href="contact.html" class="dropdown-link">문의하기 <iconify-icon icon="solar:arrow-right-linear" class="text-caption"></iconify-icon></a></div></div>
           </div>
         </nav>
         <div class="flex items-center gap-3">
-          <a href="contact.html" class="hidden sm:inline-flex btn btn-primary btn-sm">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
+          <a href="contact.html" class="hidden sm:inline-flex btn btn-primary btn-sm">문의하기 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
           <button id="menuToggle" class="lg:hidden w-10 h-10 bg-ink/[0.05] flex items-center justify-center hover:bg-ink/10 transition-colors" aria-label="메뉴 열기">
             <iconify-icon icon="solar:hamburger-menu-linear" class="text-ink text-lg"></iconify-icon>
           </button>
@@ -550,7 +519,7 @@
     </div>
     
     <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
-    <a href="contact.html" class="menu-link btn btn-primary btn-lg stagger-5" onclick="closeMobileMenu()">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+    <a href="contact.html" class="menu-link btn btn-primary btn-lg stagger-5" onclick="closeMobileMenu()">문의하기 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
   </div>
 
   <!-- ==================== 얇은 브레드크럼 스트립 (한솔홈데코 스타일 · 균일 박스 그리드) ==================== -->
@@ -628,7 +597,7 @@
             기존 CCTV에 AI를 더해 위험을 감지하고,<br class="hidden md:block"> PTZ 카메라가 스스로 움직여 사각지대까지 쫓아갑니다.
           </p>
           <div class="reveal stagger-3 mt-9 flex flex-col sm:flex-row sm:items-center gap-3.5">
-            <a href="contact.html" class="btn btn-primary btn-md">무료 현장 진단 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
+            <a href="contact.html" class="btn btn-primary btn-md">문의하기 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
           </div>
         </div>
         <!-- 기기 목업 · 가로형이라 우측으로 크게 확장 (배경 투명 PNG → drop-shadow) -->
@@ -753,17 +722,16 @@
           </div>
         </div>
 
-        <!-- 주요 위험 유형 스트립 (썸네일 클릭 → 팝업) -->
+        <!-- 주요 위험 유형 스트립 -->
         <div class="mt-12 md:mt-14 pt-10 md:pt-12 border-t border-hair">
           <div class="mb-6">
             <p class="text-body-sm font-extrabold text-sub/85 uppercase tracking-[0.14em]">주요 위험 유형</p>
           </div>
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             <!-- 01 안전모 미착용 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/03-helmet/helmet-001-bbox.png" data-lb-cap="안전모 미착용" data-lb-sub="작업자마다 안전모 착용 여부를 개별 판별해, 미착용자만 특정해 알립니다." aria-label="안전모 미착용 감지 예시 크게 보기">
+            <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
                 <img src="assets/vision/detection/selected/03-helmet/helmet-001-bbox.png" alt="안전모 미착용" class="w-full h-full object-cover" loading="lazy">
-                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">01</span>
@@ -775,12 +743,11 @@
                   <span class="rc-tag">개별 작업자 인식</span>
                 </div>
               </div>
-            </button>
+            </div>
             <!-- 02 안전대 미착용 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png" data-lb-cap="안전대 미착용" data-lb-sub="고소 작업 구간을 자동으로 인식하고, 그 안에서 안전대를 착용하지 않은 작업자를 잡아냅니다." aria-label="안전대 미착용 감지 예시 크게 보기">
+            <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
                 <img src="assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png" alt="안전대 미착용" class="w-full h-full object-cover" loading="lazy">
-                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">02</span>
@@ -792,12 +759,11 @@
                   <span class="rc-tag">고소구간 자동 인식</span>
                 </div>
               </div>
-            </button>
+            </div>
             <!-- 03 개구부 안전조치 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/05-opening/opening-007-bbox.png" data-lb-cap="개구부 안전조치" data-lb-sub="개구부 커버와 난간의 설치 상태를 판별하고, 열고 닫은 이력을 남깁니다." aria-label="개구부 안전조치 감지 예시 크게 보기">
+            <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
                 <img src="assets/vision/detection/selected/05-opening/opening-007-bbox.png" alt="개구부 안전조치" class="w-full h-full object-cover" loading="lazy">
-                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">03</span>
@@ -810,12 +776,11 @@
                   <span class="rc-tag">개폐 이력 관리</span>
                 </div>
               </div>
-            </button>
+            </div>
             <!-- 04 상하동시작업 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png" data-lb-cap="상하동시작업" data-lb-sub="위층과 아래층에서 동시에 진행되는 작업을 함께 인식해, 낙하물 위험을 알립니다." aria-label="상하동시작업 감지 예시 크게 보기">
+            <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
                 <img src="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png" alt="상하동시작업" class="w-full h-full object-cover" loading="lazy">
-                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">04</span>
@@ -828,12 +793,11 @@
                   <span class="rc-tag">낙하물 위험 알림</span>
                 </div>
               </div>
-            </button>
+            </div>
             <!-- 05 중장비 위험구역 (스트립 전용 · 캐러셀과 다른 컷) -->
-            <button class="lb-trigger rc group" data-lb-group="scenarios" data-lb="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png" data-lb-cap="중장비 위험구역" data-lb-sub="장비별 위험반경을 자동으로 잡고, 작업자가 그 안으로 들어오면 즉시 알립니다." aria-label="중장비 위험구역 감지 예시 크게 보기">
+            <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
                 <img src="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png" alt="중장비 위험구역" class="w-full h-full object-cover" loading="lazy">
-                <span class="lb-badge"><iconify-icon icon="solar:magnifer-zoom-in-linear" class="text-caption"></iconify-icon>확대</span>
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">05</span>
@@ -846,7 +810,7 @@
                   <span class="rc-tag">작업자 진입 감지</span>
                 </div>
               </div>
-            </button>
+            </div>
           </div>
         </div>
       </div>
@@ -895,7 +859,7 @@
         <div class="grid md:grid-cols-[1fr_1.35fr] gap-10 md:gap-16">
           <div>
             <h3 class="text-h2 md:text-h1 font-bold text-ink mb-5 leading-tight" style="letter-spacing:-0.02em;">생성형 AI 기반<br>안전 서류·법령 자동화</h3>
-            <p class="text-body-lg text-body leading-[1.7]">감지에서 끝나지 않고, 법령 매칭부터 안전서류까지 자동으로 처리합니다.</p>
+            <p class="text-body-lg text-body leading-[1.7]">감지에서 끝나지 않고, 법령 매칭부터 안전서류생성까지 처리합니다.</p>
           </div>
           <div>
             <ul class="space-y-4 text-h3 text-ink leading-[1.55] font-semibold">
@@ -1184,10 +1148,9 @@
       <div class="bg-ink px-8 md:px-16 py-14 md:py-20 text-center">
         <div>
           <h2 class="reveal text-h1 md:text-hero font-bold tracking-tight text-white" style="line-height:1.3;">지금 현장의 CCTV로 <span class="text-accent-300">가능한지</span> 확인해보세요.</h2>
-          <p class="reveal stagger-1 mt-6 text-body-lg md:text-h3 text-white/75 leading-[1.7] max-w-xl mx-auto">보유하신 CCTV 모델과 현장 규모를 알려주시면 연동 가능 여부를 확인해 드립니다. PTZ 장비가 없어도 협력사를 통한 구축까지 함께 검토합니다.</p>
+          <p class="reveal stagger-1 mt-6 text-body-lg md:text-h3 text-white/75 leading-[1.7] max-w-xl mx-auto">보유하신 CCTV 모델과 현장 규모를 알려주시면 연동 가능 여부를 확인해 드립니다.</p>
           <div class="reveal stagger-2 mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <a href="contact.html" class="btn btn-inverse btn-md">현장 데모 요청 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
-            <a href="contact.html" class="btn btn-outline-light btn-md">우리 현장 CCTV로 되는지 묻기</a>
+            <a href="contact.html" class="btn btn-inverse btn-md">문의하기 <iconify-icon icon="solar:arrow-right-linear" class="text-body-sm"></iconify-icon></a>
           </div>
         </div>
       </div>
@@ -1227,88 +1190,6 @@
       <p class="mt-6 pt-4 border-t border-hair/60 text-sub/85 text-body-sm">&copy; 2026 주식회사 온토. All rights reserved.</p>
     </div>
   </footer>
-
-  <!-- Lightbox 팝업 (그룹 내 좌우 순환) -->
-  <dialog id="lb" class="lb-dialog" aria-label="이미지 팝업">
-    <div class="lb-frame">
-      <button type="button" class="lb-close" onclick="document.getElementById('lb').close()" aria-label="닫기">✕</button>
-      <button type="button" class="lb-nav lb-prev" onclick="lbNav(-1)" aria-label="이전 이미지"><iconify-icon icon="solar:alt-arrow-left-linear"></iconify-icon></button>
-      <button type="button" class="lb-nav lb-next" onclick="lbNav(1)" aria-label="다음 이미지"><iconify-icon icon="solar:alt-arrow-right-linear"></iconify-icon></button>
-      <img id="lb-img" src="" alt="">
-      <div class="lb-cap">
-        <p class="lb-cap-t" id="lb-cap-t"></p>
-        <p class="lb-cap-s" id="lb-cap-s"></p>
-        <p class="lb-cap-n" id="lb-cap-n"></p>
-      </div>
-    </div>
-  </dialog>
-  <script>
-    (function() {
-      var dlg = document.getElementById('lb');
-      var img = document.getElementById('lb-img');
-      var capT = document.getElementById('lb-cap-t');
-      var capS = document.getElementById('lb-cap-s');
-      var capN = document.getElementById('lb-cap-n');
-      var prevBtn = document.querySelector('.lb-prev');
-      var nextBtn = document.querySelector('.lb-next');
-      if (!dlg || !dlg.showModal) return;
-
-      var currentGroup = [];
-      var currentIdx = 0;
-
-      function loadImage(el) {
-        img.src = el.getAttribute('data-lb');
-        var t = el.getAttribute('data-lb-cap') || '';
-        var sub = el.getAttribute('data-lb-sub') || '';
-        img.alt = t;
-        capT.textContent = t;
-        capS.textContent = sub;
-        capS.hidden = !sub;
-        capN.textContent = currentGroup.length > 1 ? (currentIdx + 1) + ' / ' + currentGroup.length : '';
-        capN.hidden = currentGroup.length <= 1;
-      }
-
-      function updateNav() {
-        var multi = currentGroup.length > 1;
-        if (prevBtn) prevBtn.style.display = multi ? '' : 'none';
-        if (nextBtn) nextBtn.style.display = multi ? '' : 'none';
-      }
-
-      document.querySelectorAll('[data-lb]').forEach(function(el) {
-        el.addEventListener('click', function() {
-          var group = el.getAttribute('data-lb-group');
-          if (group) {
-            currentGroup = Array.from(document.querySelectorAll('[data-lb-group="' + group + '"]'));
-            currentIdx = currentGroup.indexOf(el);
-          } else {
-            currentGroup = [el];
-            currentIdx = 0;
-          }
-          loadImage(el);
-          updateNav();
-          if (!dlg.open) dlg.showModal();
-        });
-      });
-
-      window.lbNav = function(dir) {
-        if (currentGroup.length <= 1) return;
-        currentIdx = (currentIdx + dir + currentGroup.length) % currentGroup.length;
-        loadImage(currentGroup[currentIdx]);
-      };
-
-      dlg.addEventListener('click', function(e) {
-        if (e.target === dlg) dlg.close();
-      });
-      dlg.addEventListener('close', function() { img.src = ''; });
-
-      // 키보드 화살표 지원
-      document.addEventListener('keydown', function(e) {
-        if (!dlg.open) return;
-        if (e.key === 'ArrowLeft') lbNav(-1);
-        else if (e.key === 'ArrowRight') lbNav(1);
-      });
-    })();
-  </script>
 
   <!-- 법령 매칭 캐러셀 -->
   <script>
