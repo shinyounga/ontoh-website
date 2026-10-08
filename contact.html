@@ -331,6 +331,8 @@
     }
 
   </style>
+  <script defer src="js/analytics.js"></script>
+  <script defer src="js/kakao-widget.js"></script>
 </head>
 <body class="bg-white font-sans antialiased">
   <!-- Skip to content · WCAG 2.4.1 -->
@@ -452,7 +454,7 @@
         <div class="reveal border border-hair bg-white p-7 md:p-10 order-2 lg:order-1">
 
           <!-- 폼 상태 메시지 (성공/에러) — JS가 토글 -->
-          <div id="formSuccess" class="form-state success hidden">
+          <div id="formSuccess" data-clarity-mask="true" class="form-state success hidden">
             <iconify-icon icon="solar:check-circle-bold" class="text-[48px] mb-3"></iconify-icon>
             <h3 class="text-[23px] font-extrabold mb-2">문의가 정상 접수되었습니다</h3>
             <p class="text-[16.5px] leading-relaxed">담당자가 확인 후 회신드리겠습니다.<br>관심 가져주셔서 감사합니다.</p>
@@ -465,7 +467,7 @@
           </div>
 
           <!-- 실제 폼 -->
-          <form id="contactForm" action="https://formspree.io/f/xpqnabkv" method="POST" class="space-y-5">
+          <form id="contactForm" data-clarity-mask="true" action="https://formspree.io/f/xpqnabkv" method="POST" class="space-y-5">
             <input type="hidden" name="_subject" value="[ONTOH] 신규 문의가 도착했습니다">
             <input type="hidden" name="_language" value="ko">
             <input type="text" name="_gotcha" class="honeypot" tabindex="-1" autocomplete="off">
@@ -649,6 +651,7 @@
         });
 
         if (response.ok) {
+          if (window.ontohAnalytics) window.ontohAnalytics.track('generate_lead');
           form.style.display = 'none';
           successBox.classList.remove('hidden');
           successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });

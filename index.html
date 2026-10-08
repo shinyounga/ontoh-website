@@ -367,6 +367,8 @@
     .bento:hover .bento-cta { gap:12px; }
     /* 목업은 카드 하단에 붙여 잘리게 둔다 (기기 아래쪽은 정보가 없다) */
     .bento-art { margin-top:auto; padding-top:32px; }
+    /* 목업 패널(#F3F5F9)이 카드 하단을 채우도록 — 높이가 다른 두 카드도 하단 정렬 */
+    .bento-art-fill { flex:1; display:flex; align-items:flex-end; margin-top:32px; padding-top:0; background:#F3F5F9; }
     .bento-art img {
       display:block; width:100%; height:auto;
       transition: transform .6s cubic-bezier(0.16,1,0.3,1);
@@ -380,6 +382,8 @@
       .bento-art-tall img { max-width:66%; }
     }
   </style>
+  <script defer src="js/analytics.js"></script>
+  <script defer src="js/kakao-widget.js"></script>
 </head>
 <body class="bg-white font-sans antialiased">
   <!-- Skip to content · WCAG 2.4.1 -->
@@ -501,8 +505,8 @@
             <p class="bento-sum">분석용 PC 없이 현장에서 AI가 위험을 판단하고,<br class="hidden sm:block"> 카메라가 필요한 곳을 찾아 확대해 확인합니다.</p>
             <span class="bento-cta">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
           </div>
-          <div class="bento-art">
-            <img src="assets/vision/dashboard2.png" alt="LOOKAT 자율 관제 대시보드 화면" loading="lazy">
+          <div class="bento-art bento-art-fill">
+            <img src="assets/bento/lookat.webp" alt="LOOKAT 장비 · 카메라와 Edge AI 본체" width="1105" height="1041" loading="lazy">
           </div>
         </a>
         <a href="health.html" class="bento reveal stagger-1 group">
@@ -512,8 +516,8 @@
             <p class="bento-sum">건강검진 데이터를 자동 연동해 고위험군을 즉시 분류하고, 질병형 산업재해까지 사전에 대응합니다.</p>
             <span class="bento-cta">자세히 <iconify-icon icon="solar:arrow-right-linear" class="text-[13px]"></iconify-icon></span>
           </div>
-          <div class="bento-art bento-art-tall">
-            <img src="assets/health/hero-dashboard.png" alt="ONTOH CARE 작업자 보건관리 앱 화면" loading="lazy">
+          <div class="bento-art bento-art-fill" style="align-items:center;">
+            <img src="assets/bento/care.webp" alt="ONTOH CARE 웹 대시보드와 작업자 보건관리 앱 화면" width="1600" height="730" loading="lazy">
           </div>
         </a>
       </div>
@@ -635,39 +639,6 @@
     </div>
   </section>
 
-
-  <!-- ==================== 카카오톡 상담 · 플로팅 런처 + 인사 카드 (클릭 시 열림 · 자동 팝업 없음) ==================== -->
-  <div class="kakao-fab">
-    <div class="kakao-card" id="kakao-card" role="dialog" aria-label="카카오톡 상담 안내" aria-hidden="true">
-      <button type="button" class="kakao-card-close" aria-label="닫기"><iconify-icon icon="solar:close-circle-linear" class="text-[20px]" aria-hidden="true"></iconify-icon></button>
-      <p class="text-[16px] font-bold text-ink leading-snug pr-6">안녕하세요, 온토입니다.</p>
-      <p class="mt-1.5 text-[14px] text-sub leading-[1.6]">건설현장 AI 안전관리가 궁금하시면<br>카카오톡으로 편하게 문의하세요.</p>
-      <div class="mt-4 flex flex-col gap-2">
-        <a href="https://pf.kakao.com/_TqExiX/chat" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-[#FEE500] text-[#191919] px-4 py-3 text-[15px] font-bold hover:brightness-95 transition"><svg viewBox="0 0 24 24" aria-hidden="true" class="kakao-sym text-[18px]"><path fill="currentColor" d="M12 3.2C6.6 3.2 2.3 6.6 2.3 10.8c0 2.7 1.8 5.1 4.6 6.5l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.5.1 1 .1 1.5.1 5.4 0 9.7-3.4 9.7-7.6S17.4 3.2 12 3.2z"/></svg>카카오톡 상담하기</a>
-        <a href="https://pf.kakao.com/_TqExiX/friend" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 border border-hair text-ink px-4 py-2.5 text-[14px] font-bold hover:bg-band transition-colors"><iconify-icon icon="solar:user-plus-linear" class="text-[17px]" aria-hidden="true"></iconify-icon>채널 추가하고 소식 받기</a>
-      </div>
-    </div>
-    <button type="button" class="kakao-launcher" aria-label="카카오톡 상담 열기" aria-expanded="false" aria-controls="kakao-card">
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="kakao-sym"><path fill="currentColor" d="M12 3.2C6.6 3.2 2.3 6.6 2.3 10.8c0 2.7 1.8 5.1 4.6 6.5l-.9 3.4c-.1.3.3.6.6.4l4-2.7c.5.1 1 .1 1.5.1 5.4 0 9.7-3.4 9.7-7.6S17.4 3.2 12 3.2z"/></svg><span class="kakao-tip" aria-hidden="true">카카오톡 상담</span>
-    </button>
-  </div>
-  <script>
-    (function () {
-      var fab = document.querySelector('.kakao-fab'); if (!fab) return;
-      var btn = fab.querySelector('.kakao-launcher'), card = fab.querySelector('.kakao-card');
-      function set(open) {
-        card.classList.toggle('is-open', open);
-        card.setAttribute('aria-hidden', open ? 'false' : 'true');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-        card.querySelectorAll('a,button').forEach(function (el) { el.tabIndex = open ? 0 : -1; });
-      }
-      set(false);
-      btn.addEventListener('click', function () { set(!card.classList.contains('is-open')); });
-      card.querySelector('.kakao-card-close').addEventListener('click', function () { set(false); btn.focus(); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
-      document.addEventListener('click', function (e) { if (!fab.contains(e.target)) set(false); });
-    })();
-  </script>
 
   <!-- ==================== 강화 푸터 ==================== -->
   </main>
