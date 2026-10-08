@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이미지 100KB 압축 품질 비교</title>
+<style>
+:root {
+  --bg:#0e1013; --panel:#171a1f; --line:#272b33; --fg:#e8eaed; --dim:#9aa1ab;
+  --good:#4ade80; --warn:#fbbf24; --accent:#60a5fa; --violet:#a78bfa;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg);
+  font:15px/1.55 -apple-system,"Segoe UI","Malgun Gothic",sans-serif; }
+.wrap { max-width:1120px; margin:0 auto; padding:40px 20px 80px; }
+h1 { font-size:26px; margin:0 0 6px; letter-spacing:-.01em; }
+.sub { color:var(--dim); margin:0 0 28px; }
+.sub code { font-family:ui-monospace,Consolas,monospace; font-size:13px; }
+.summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px;
+  background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:16px; }
+.summary div span { display:block; color:var(--dim); font-size:12px; letter-spacing:.04em; text-transform:uppercase; }
+.summary div strong { font-size:22px; font-weight:600; }
+.bar { display:flex; gap:10px; align-items:center; background:var(--panel); border:1px solid var(--line);
+  border-radius:12px; padding:14px 18px; margin-bottom:16px; flex-wrap:wrap; }
+.bar b { font-weight:600; font-size:13px; color:var(--dim); margin-right:4px; }
+.bar button { background:#22262e; color:var(--fg); border:1px solid var(--line); border-radius:8px;
+  padding:6px 14px; font-size:13px; cursor:pointer; font-family:inherit; }
+.bar button.on { background:var(--accent); color:#0b1020; border-color:var(--accent); font-weight:600; }
+.hint { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 18px;
+  color:var(--dim); font-size:13.5px; margin-bottom:28px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; margin-bottom:22px; }
+.card header { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+.card h3 { margin:0; font-size:16px; font-weight:600; }
+.fmt { font-size:11px; font-weight:600; padding:2px 7px; border-radius:5px; vertical-align:2px;
+  background:#22303f; color:var(--accent); letter-spacing:.03em; }
+.fmt.webp { background:#2c2740; color:var(--violet); }
+.path { margin:2px 0 0; color:var(--dim); font-size:12px; font-family:ui-monospace,Consolas,monospace; }
+.nums { font-size:14px; white-space:nowrap; }
+.nums .from { color:var(--dim); text-decoration:line-through; }
+.nums .arrow { color:var(--dim); margin:0 6px; }
+.nums .to { color:var(--good); font-weight:600; }
+.nums .cut { margin-left:10px; color:var(--accent); font-size:12.5px; }
+.warn { color:var(--warn); font-size:12px; font-weight:500; }
+.meta { color:var(--dim); font-size:12.5px; margin:8px 0 12px; }
+.cmp { position:relative; overflow:hidden; border-radius:10px; outline:none; user-select:none;
+  background:conic-gradient(#2a2e36 25%,#20242b 0 50%,#2a2e36 0 75%,#20242b 0) 0 0/22px 22px; }
+.cmp img { display:block; width:100%; }
+.overlay { position:absolute; inset:0; width:50%; overflow:hidden; border-right:2px solid rgba(255,255,255,.85); }
+.overlay img { width:auto; height:auto; max-width:none; }
+.handle { position:absolute; top:0; bottom:0; left:50%; width:2px; pointer-events:none; }
+.handle span { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:34px; height:34px; border-radius:50%; background:rgba(255,255,255,.92);
+  box-shadow:0 2px 10px rgba(0,0,0,.5); }
+.handle span::before { content:"‹ ›"; position:absolute; inset:0; display:flex; align-items:center;
+  justify-content:center; color:#111; font-size:15px; font-weight:700; letter-spacing:1px; }
+.tag { position:absolute; top:10px; padding:4px 9px; border-radius:6px; font-size:11.5px;
+  background:rgba(0,0,0,.62); color:#fff; letter-spacing:.02em; pointer-events:none; }
+.tag.left { left:10px; } .tag.right { right:10px; }
+.range { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:ew-resize; margin:0; }
+.links { margin-top:10px; display:flex; gap:14px; }
+.links a { color:var(--accent); font-size:13px; text-decoration:none; }
+.links a:hover { text-decoration:underline; }
+</style></head>
+<body><div class="wrap">
+<h1>이미지 100KB 압축 품질 비교</h1>
+<p class="sub">원본은 그대로 두고 최적화본만 만들었습니다. 배포용 세트는 <code>ontoh/assets-web/</code> 에 별도로 정리했습니다.</p>
+
+<div class="summary">
+  <div><span>대상</span><strong>45장</strong></div>
+  <div><span>변환 전</span><strong>82.17 MB</strong></div>
+  <div><span>변환 후</span><strong>4.10 MB</strong></div>
+  <div><span>절감</span><strong>95.0%</strong></div>
+  <div><span>포맷</span><strong>JPEG 39 · WebP 6</strong></div>
+</div>
+<div class="bar">
+  <b>보기</b>
+  <button class="on" data-f="all">전체 45</button>
+  <button data-f="JPEG">JPEG 39</button>
+  <button data-f="WebP">WebP 6 (투명 배경)</button>
+</div>
+<div class="hint">가운데 손잡이를 좌우로 끌면 왼쪽이 <b>PNG 원본</b>, 오른쪽이 <b>100KB 이하 최적화본</b>입니다.
+투명 배경이 필요한 이미지는 JPEG 대신 WebP로 압축했습니다 — 체크무늬가 비치면 투명 영역이 그대로 살아 있는 것입니다.</div>
+
+<section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>health.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/main/health.png</p></div>
+    <div class="nums">
+      <span class="from">8.24 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-98.8%</span>
+    </div>
+  </header>
+  <div class="meta">3000×1200 → 1536×614 · quality 31</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/main/health.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/main/health.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/main/health.png" target="_blank">원본 열기</a><a href="assets/main/health.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>about.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/main/about.png</p></div>
+    <div class="nums">
+      <span class="from">6.37 MB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-98.5%</span>
+    </div>
+  </header>
+  <div class="meta">3000×1200 → 1920×768 · quality 53</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/main/about.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/main/about.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/main/about.png" target="_blank">원본 열기</a><a href="assets/main/about.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>contact.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/main/contact.png</p></div>
+    <div class="nums">
+      <span class="from">5.64 MB</span><span class="arrow">→</span><span class="to">96 KB</span>
+      <span class="cut">-98.3%</span>
+    </div>
+  </header>
+  <div class="meta">3000×1200 → 1920×768 · quality 79</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/main/contact.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/main/contact.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/main/contact.png" target="_blank">원본 열기</a><a href="assets/main/contact.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>patents.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/main/patents.png</p></div>
+    <div class="nums">
+      <span class="from">5.02 MB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-98.1%</span>
+    </div>
+  </header>
+  <div class="meta">3000×1200 → 1920×768 · quality 73</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/main/patents.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/main/patents.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/main/patents.png" target="_blank">원본 열기</a><a href="assets/main/patents.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>vision.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/main/vision.png</p></div>
+    <div class="nums">
+      <span class="from">4.60 MB</span><span class="arrow">→</span><span class="to">94 KB</span>
+      <span class="cut">-98.0%</span>
+    </div>
+  </header>
+  <div class="meta">3000×1200 → 1920×768 · quality 79</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/main/vision.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/main/vision.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/main/vision.png" target="_blank">원본 열기</a><a href="assets/main/vision.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>opening-008-segmentation.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/05-opening/opening-008-segmentation.png</p></div>
+    <div class="nums">
+      <span class="from">3.66 MB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-97.3%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1070×602 · quality 30</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/05-opening/opening-008-segmentation.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/05-opening/opening-008-segmentation.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/05-opening/opening-008-segmentation.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/05-opening/opening-008-segmentation.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>opening-001-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/05-opening/opening-001-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">3.56 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-97.3%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 856×481 · quality 52</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/05-opening/opening-001-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/05-opening/opening-001-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/05-opening/opening-001-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/05-opening/opening-001-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>opening-006-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/05-opening/opening-006-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">3.18 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-97.0%</span>
+    </div>
+  </header>
+  <div class="meta">1531×1027 → 979×657 · quality 46</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/05-opening/opening-006-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/05-opening/opening-006-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/05-opening/opening-006-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/05-opening/opening-006-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>opening-007-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/05-opening/opening-007-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">3.18 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-97.0%</span>
+    </div>
+  </header>
+  <div class="meta">1537×1023 → 983×654 · quality 41</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/05-opening/opening-007-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/05-opening/opening-007-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/05-opening/opening-007-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/05-opening/opening-007-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>heavy-equipment-008-labeled.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.png</p></div>
+    <div class="nums">
+      <span class="from">2.96 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-96.7%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1070×602 · quality 47</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>opening-003-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/05-opening/opening-003-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">2.85 MB</span><span class="arrow">→</span><span class="to">98 KB</span>
+      <span class="cut">-96.7%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1337×752 · quality 32</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/05-opening/opening-003-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/05-opening/opening-003-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/05-opening/opening-003-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/05-opening/opening-003-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>main.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/reference/daejeon/main.png</p></div>
+    <div class="nums">
+      <span class="from">2.74 MB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-96.5%</span>
+    </div>
+  </header>
+  <div class="meta">1513×827 → 1210×661 · quality 52</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/reference/daejeon/main.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/reference/daejeon/main.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/reference/daejeon/main.png" target="_blank">원본 열기</a><a href="assets/vision/reference/daejeon/main.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>helmet-001-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/03-helmet/helmet-001-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">2.66 MB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-96.3%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1070×602 · quality 50</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/03-helmet/helmet-001-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/03-helmet/helmet-001-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/03-helmet/helmet-001-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/03-helmet/helmet-001-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>helmet-006-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/03-helmet/helmet-006-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">2.53 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-96.2%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1070×602 · quality 43</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/03-helmet/helmet-006-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/03-helmet/helmet-006-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/03-helmet/helmet-006-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/03-helmet/helmet-006-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>simultaneous-work-020-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">2.51 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-96.1%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1070×602 · quality 52</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>heavy-equipment-011-labeled.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png</p></div>
+    <div class="nums">
+      <span class="from">2.50 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-96.2%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1337×752 · quality 32</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>simultaneous-work-001-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">2.49 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-96.1%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1070×602 · quality 53</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>fall-strap-006-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">2.49 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-96.1%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1337×752 · quality 32</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>fall-strap-003-bbox.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.png</p></div>
+    <div class="nums">
+      <span class="from">2.33 MB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-95.8%</span>
+    </div>
+  </header>
+  <div class="meta">1672×941 → 1337×752 · quality 41</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.png" target="_blank">원본 열기</a><a href="assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>construction_cctv.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/archive/construction_cctv.png</p></div>
+    <div class="nums">
+      <span class="from">2.01 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-95.2%</span>
+    </div>
+  </header>
+  <div class="meta">1536×1024 · quality 55</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/archive/construction_cctv.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/archive/construction_cctv.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/archive/construction_cctv.png" target="_blank">원본 열기</a><a href="assets/vision/archive/construction_cctv.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>01-realtime-monitoring.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/features/01-realtime-monitoring.png</p></div>
+    <div class="nums">
+      <span class="from">1.93 MB</span><span class="arrow">→</span><span class="to">98 KB</span>
+      <span class="cut">-95.0%</span>
+    </div>
+  </header>
+  <div class="meta">1378×794 → 1102×635 · quality 43</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/features/01-realtime-monitoring.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/features/01-realtime-monitoring.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/features/01-realtime-monitoring.png" target="_blank">원본 열기</a><a href="assets/vision/features/01-realtime-monitoring.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="WebP">
+  <header>
+    <div><h3>hero-dashboard.png <span class="fmt webp">WebP</span></h3><p class="path">assets/health/hero-dashboard.png</p></div>
+    <div class="nums">
+      <span class="from">1.58 MB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-93.9%</span>
+    </div>
+  </header>
+  <div class="meta">1600×1802 · quality 77 · 투명 배경 유지</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/health/hero-dashboard.webp" alt="WebP">
+    <div class="overlay"><img src="../assets/health/hero-dashboard.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">WebP &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/health/hero-dashboard.png" target="_blank">원본 열기</a><a href="assets/health/hero-dashboard.webp" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>main.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/vision/main.png</p></div>
+    <div class="nums">
+      <span class="from">1.17 MB</span><span class="arrow">→</span><span class="to">98 KB</span>
+      <span class="cut">-91.8%</span>
+    </div>
+  </header>
+  <div class="meta">1765×1023 → 1412×818 · quality 40</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/main.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/vision/main.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/main.png" target="_blank">원본 열기</a><a href="assets/vision/main.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="WebP">
+  <header>
+    <div><h3>dashboard2.png <span class="fmt webp">WebP</span></h3><p class="path">assets/vision/dashboard2.png</p></div>
+    <div class="nums">
+      <span class="from">1.01 MB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-90.4%</span>
+    </div>
+  </header>
+  <div class="meta">1800×1170 · quality 71 · 투명 배경 유지</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/vision/dashboard2.webp" alt="WebP">
+    <div class="overlay"><img src="../assets/vision/dashboard2.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">WebP &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/vision/dashboard2.png" target="_blank">원본 열기</a><a href="assets/vision/dashboard2.webp" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>patent-2023-0592-thumb-1.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/patents/patent-2023-0592-thumb-1.png</p></div>
+    <div class="nums">
+      <span class="from">968 KB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-89.7%</span>
+    </div>
+  </header>
+  <div class="meta">827×1169 · quality 62</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/patents/patent-2023-0592-thumb-1.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/patents/patent-2023-0592-thumb-1.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/patents/patent-2023-0592-thumb-1.png" target="_blank">원본 열기</a><a href="assets/tech/patents/patent-2023-0592-thumb-1.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>patent-2025-0986-thumb-1.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/patents/patent-2025-0986-thumb-1.png</p></div>
+    <div class="nums">
+      <span class="from">685 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-85.5%</span>
+    </div>
+  </header>
+  <div class="meta">827×1169 · quality 68</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/patents/patent-2025-0986-thumb-1.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/patents/patent-2025-0986-thumb-1.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/patents/patent-2025-0986-thumb-1.png" target="_blank">원본 열기</a><a href="assets/tech/patents/patent-2025-0986-thumb-1.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>04-health-followup.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/health/features/04-health-followup.png</p></div>
+    <div class="nums">
+      <span class="from">411 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-75.9%</span>
+    </div>
+  </header>
+  <div class="meta">1935×2780 → 1536×2206 · quality 43</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/health/features/04-health-followup.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/health/features/04-health-followup.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/health/features/04-health-followup.png" target="_blank">원본 열기</a><a href="assets/health/features/04-health-followup.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>conf-2024-cctv-ptz-thumb.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/conf-2024-cctv-ptz-thumb.png</p></div>
+    <div class="nums">
+      <span class="from">353 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-72.0%</span>
+    </div>
+  </header>
+  <div class="meta">745×1053 · quality 48</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/conf-2024-cctv-ptz-thumb.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/conf-2024-cctv-ptz-thumb.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/conf-2024-cctv-ptz-thumb.png" target="_blank">원본 열기</a><a href="assets/tech/papers/conf-2024-cctv-ptz-thumb.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>conf-2024-zero-shot-polygon-thumb-1.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png</p></div>
+    <div class="nums">
+      <span class="from">259 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-61.7%</span>
+    </div>
+  </header>
+  <div class="meta">745×1053 · quality 37</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png" target="_blank">원본 열기</a><a href="assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>journal-2026-dsdl-tiny-thumb-01.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png</p></div>
+    <div class="nums">
+      <span class="from">241 KB</span><span class="arrow">→</span><span class="to">98 KB</span>
+      <span class="cut">-59.2%</span>
+    </div>
+  </header>
+  <div class="meta">745×993 · quality 40</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png" target="_blank">원본 열기</a><a href="assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>03-risk-factor-guide.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/health/features/03-risk-factor-guide.png</p></div>
+    <div class="nums">
+      <span class="from">229 KB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-56.3%</span>
+    </div>
+  </header>
+  <div class="meta">1599×1897 · quality 77</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/health/features/03-risk-factor-guide.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/health/features/03-risk-factor-guide.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/health/features/03-risk-factor-guide.png" target="_blank">원본 열기</a><a href="assets/health/features/03-risk-factor-guide.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>journal-2025-moving-feature-thumb-01.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/journal-2025-moving-feature-thumb-01.png</p></div>
+    <div class="nums">
+      <span class="from">225 KB</span><span class="arrow">→</span><span class="to">100 KB</span>
+      <span class="cut">-55.6%</span>
+    </div>
+  </header>
+  <div class="meta">745×993 · quality 51</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/journal-2025-moving-feature-thumb-01.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/journal-2025-moving-feature-thumb-01.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/journal-2025-moving-feature-thumb-01.png" target="_blank">원본 열기</a><a href="assets/tech/papers/journal-2025-moving-feature-thumb-01.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>journal-2025-adaptive-water-thumb.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/journal-2025-adaptive-water-thumb.png</p></div>
+    <div class="nums">
+      <span class="from">216 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-54.4%</span>
+    </div>
+  </header>
+  <div class="meta">745×993 · quality 48</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/journal-2025-adaptive-water-thumb.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/journal-2025-adaptive-water-thumb.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/journal-2025-adaptive-water-thumb.png" target="_blank">원본 열기</a><a href="assets/tech/papers/journal-2025-adaptive-water-thumb.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>journal-2024-monte-carlo-thumb.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/journal-2024-monte-carlo-thumb.png</p></div>
+    <div class="nums">
+      <span class="from">215 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-54.1%</span>
+    </div>
+  </header>
+  <div class="meta">744×982 · quality 64</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/journal-2024-monte-carlo-thumb.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/journal-2024-monte-carlo-thumb.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/journal-2024-monte-carlo-thumb.png" target="_blank">원본 열기</a><a href="assets/tech/papers/journal-2024-monte-carlo-thumb.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>journal-2025-lvlm-safety-thumb-01.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png</p></div>
+    <div class="nums">
+      <span class="from">209 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-52.4%</span>
+    </div>
+  </header>
+  <div class="meta">745×993 · quality 52</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/journal-2025-lvlm-safety-thumb-01.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png" target="_blank">원본 열기</a><a href="assets/tech/papers/journal-2025-lvlm-safety-thumb-01.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>domestic-2023-optimization-debris-thumb.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/domestic-2023-optimization-debris-thumb.png</p></div>
+    <div class="nums">
+      <span class="from">153 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-34.9%</span>
+    </div>
+  </header>
+  <div class="meta">744×1052 · quality 66</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/domestic-2023-optimization-debris-thumb.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/domestic-2023-optimization-debris-thumb.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/domestic-2023-optimization-debris-thumb.png" target="_blank">원본 열기</a><a href="assets/tech/papers/domestic-2023-optimization-debris-thumb.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>01-medical-input.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/health/features/01-medical-input.png</p></div>
+    <div class="nums">
+      <span class="from">144 KB</span><span class="arrow">→</span><span class="to">96 KB</span>
+      <span class="cut">-33.3%</span>
+    </div>
+  </header>
+  <div class="meta">1600×1893 · quality 93</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/health/features/01-medical-input.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/health/features/01-medical-input.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/health/features/01-medical-input.png" target="_blank">원본 열기</a><a href="assets/health/features/01-medical-input.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="WebP">
+  <header>
+    <div><h3>smart-construction.png <span class="fmt webp">WebP</span></h3><p class="path">assets/logo/partners/web/smart-construction.png</p></div>
+    <div class="nums">
+      <span class="from">142 KB</span><span class="arrow">→</span><span class="to">74 KB</span>
+      <span class="cut">-47.7%</span>
+    </div>
+  </header>
+  <div class="meta">2333×240 → 1920×197 · quality 95 · 투명 배경 유지</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/logo/partners/web/smart-construction.webp" alt="WebP">
+    <div class="overlay"><img src="../assets/logo/partners/web/smart-construction.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">WebP &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/logo/partners/web/smart-construction.png" target="_blank">원본 열기</a><a href="assets/logo/partners/web/smart-construction.webp" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>domestic-2023-self-training-thumb.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/domestic-2023-self-training-thumb.png</p></div>
+    <div class="nums">
+      <span class="from">138 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-28.6%</span>
+    </div>
+  </header>
+  <div class="meta">744×1052 · quality 72</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/domestic-2023-self-training-thumb.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/domestic-2023-self-training-thumb.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/domestic-2023-self-training-thumb.png" target="_blank">원본 열기</a><a href="assets/tech/papers/domestic-2023-self-training-thumb.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>conf-2022-comparing-objdet-thumb.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/tech/papers/conf-2022-comparing-objdet-thumb.png</p></div>
+    <div class="nums">
+      <span class="from">125 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">-20.8%</span>
+    </div>
+  </header>
+  <div class="meta">550×833 · quality 83</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/tech/papers/conf-2022-comparing-objdet-thumb.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/tech/papers/conf-2022-comparing-objdet-thumb.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/tech/papers/conf-2022-comparing-objdet-thumb.png" target="_blank">원본 열기</a><a href="assets/tech/papers/conf-2022-comparing-objdet-thumb.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>02-work-fit.png <span class="fmt jpeg">JPEG</span></h3><p class="path">assets/health/features/02-work-fit.png</p></div>
+    <div class="nums">
+      <span class="from">96 KB</span><span class="arrow">→</span><span class="to">88 KB</span>
+      <span class="cut">-8.8%</span>
+    </div>
+  </header>
+  <div class="meta">1598×1897 · quality 95</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/health/features/02-work-fit.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/health/features/02-work-fit.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/health/features/02-work-fit.png" target="_blank">원본 열기</a><a href="assets/health/features/02-work-fit.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="JPEG">
+  <header>
+    <div><h3>04-search-function.png <span class="fmt jpeg">JPEG</span> <span class="warn">원본보다 큼</span></h3><p class="path">assets/health/features/04-search-function.png</p></div>
+    <div class="nums">
+      <span class="from">94 KB</span><span class="arrow">→</span><span class="to">99 KB</span>
+      <span class="cut">--5.2%</span>
+    </div>
+  </header>
+  <div class="meta">1058×1063 · quality 93</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/health/features/04-search-function.jpg" alt="JPEG">
+    <div class="overlay"><img src="../assets/health/features/04-search-function.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">JPEG &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/health/features/04-search-function.png" target="_blank">원본 열기</a><a href="assets/health/features/04-search-function.jpg" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="WebP">
+  <header>
+    <div><h3>yonsei.png <span class="fmt webp">WebP</span></h3><p class="path">assets/logo/partners/web/yonsei.png</p></div>
+    <div class="nums">
+      <span class="from">81 KB</span><span class="arrow">→</span><span class="to">36 KB</span>
+      <span class="cut">-55.5%</span>
+    </div>
+  </header>
+  <div class="meta">793×240 · quality 95 · 투명 배경 유지</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/logo/partners/web/yonsei.webp" alt="WebP">
+    <div class="overlay"><img src="../assets/logo/partners/web/yonsei.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">WebP &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/logo/partners/web/yonsei.png" target="_blank">원본 열기</a><a href="assets/logo/partners/web/yonsei.webp" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="WebP">
+  <header>
+    <div><h3>ex.png <span class="fmt webp">WebP</span></h3><p class="path">assets/logo/partners/web/ex.png</p></div>
+    <div class="nums">
+      <span class="from">42 KB</span><span class="arrow">→</span><span class="to">27 KB</span>
+      <span class="cut">-36.4%</span>
+    </div>
+  </header>
+  <div class="meta">808×240 · quality 95 · 투명 배경 유지</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/logo/partners/web/ex.webp" alt="WebP">
+    <div class="overlay"><img src="../assets/logo/partners/web/ex.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">WebP &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/logo/partners/web/ex.png" target="_blank">원본 열기</a><a href="assets/logo/partners/web/ex.webp" target="_blank">최적화본 열기</a></div>
+</section><section class="card" data-fmt="WebP">
+  <header>
+    <div><h3>molit.png <span class="fmt webp">WebP</span></h3><p class="path">assets/logo/partners/web/molit.png</p></div>
+    <div class="nums">
+      <span class="from">39 KB</span><span class="arrow">→</span><span class="to">25 KB</span>
+      <span class="cut">-35.8%</span>
+    </div>
+  </header>
+  <div class="meta">811×240 · quality 95 · 투명 배경 유지</div>
+  <div class="cmp" tabindex="0">
+    <img class="base" src="assets/logo/partners/web/molit.webp" alt="WebP">
+    <div class="overlay"><img src="../assets/logo/partners/web/molit.png" alt="PNG 원본"></div>
+    <div class="handle"><span></span></div>
+    <div class="tag left">PNG 원본</div>
+    <div class="tag right">WebP &lt;100KB</div>
+    <input class="range" type="range" min="0" max="100" value="50" aria-label="비교 슬라이더">
+  </div>
+  <div class="links"><a href="../assets/logo/partners/web/molit.png" target="_blank">원본 열기</a><a href="assets/logo/partners/web/molit.webp" target="_blank">최적화본 열기</a></div>
+</section>
+</div>
+<script>
+document.querySelectorAll('.cmp').forEach(function (cmp) {
+  var range = cmp.querySelector('.range'),
+      ov = cmp.querySelector('.overlay'),
+      hd = cmp.querySelector('.handle'),
+      img = cmp.querySelector('.overlay img'),
+      base = cmp.querySelector('.base');
+  function sync() {
+    var v = range.value;
+    ov.style.width = v + '%';
+    hd.style.left = v + '%';
+    img.style.width = cmp.clientWidth + 'px';
+  }
+  range.addEventListener('input', sync);
+  base.addEventListener('load', sync);
+  window.addEventListener('resize', sync);
+  sync();
+});
+document.querySelectorAll('.bar button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('.bar button').forEach(function (x) { x.classList.remove('on'); });
+    b.classList.add('on');
+    var f = b.dataset.f;
+    document.querySelectorAll('.card').forEach(function (c) {
+      c.hidden = !(f === 'all' || c.dataset.fmt === f);
+    });
+    window.dispatchEvent(new Event('resize'));
+  });
+});
+</script>
+</body></html>

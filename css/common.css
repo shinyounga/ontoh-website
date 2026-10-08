@@ -144,3 +144,111 @@ html { font-size: 17px; }
     transform: none !important;
   }
 }
+
+
+/* 브랜드 제품명 (LOOKAT · LOOKAT NOTE · ONTOH CARE · BASIC · EDGE+ · EDGE PRO) 전용 서체 */
+.font-brand { font-family: 'Montserrat', 'Pretendard', sans-serif; font-weight: 900; letter-spacing: -0.01em; }
+
+
+/* ── 서브페이지 히어로 배경 · 사진 대신 그래픽 (격자 + 블루 글로우 + 스캔 프레임) ── */
+.hero-graphic {
+  background-color: #0A2440;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='720' height='720' viewBox='0 0 720 720' fill='none'%3E%3Cg stroke='%23ffffff' stroke-opacity='.12'%3E%3Ccircle cx='360' cy='360' r='120'/%3E%3Ccircle cx='360' cy='360' r='200'/%3E%3Ccircle cx='360' cy='360' r='280'/%3E%3Ccircle cx='360' cy='360' r='355' stroke-dasharray='2 10'/%3E%3C/g%3E%3Cg stroke='%2359b4ff' stroke-opacity='.6' stroke-width='3'%3E%3Cpath d='M250 290v-40h40'/%3E%3Cpath d='M430 250h40v40'/%3E%3Cpath d='M470 430v40h-40'/%3E%3Cpath d='M290 470h-40v-40'/%3E%3C/g%3E%3Ccircle cx='360' cy='360' r='5' fill='%2359b4ff' fill-opacity='.85'/%3E%3C/svg%3E"),
+    radial-gradient(55% 90% at 82% 30%, rgba(1,105,169,.42), transparent 62%),
+    radial-gradient(45% 70% at 8% 100%, rgba(1,105,169,.20), transparent 60%),
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat;
+  background-size: 640px 640px, auto, auto, 44px 44px, 44px 44px;
+  background-position: right -120px center, 0 0, 0 0, center, center;
+}
+@media (max-width: 767px) {
+  .hero-graphic { background-size: 420px 420px, auto, auto, 32px 32px, 32px 32px; background-position: right -180px center, 0 0, 0 0, center, center; }
+}
+
+
+/* ── 카카오톡 상담 · 플로팅 런처 + 인사 카드 (레퍼런스: Elfsight · Crisp 런처 패턴) ── */
+.kakao-sym { width: 1em; height: 1em; display: inline-block; flex-shrink: 0; }
+.kakao-fab { position: fixed; right: 20px; bottom: 20px; z-index: 45; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; }
+@media (min-width: 768px) { .kakao-fab { right: 28px; bottom: 28px; } }
+.kakao-launcher { position: relative; width: 60px; height: 60px; border-radius: 9999px; background: #FEE500; color: #191919; display: inline-flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 10px 28px -8px rgba(10,36,64,.45), 0 2px 6px rgba(10,36,64,.12); transition: transform .35s cubic-bezier(0.16,1,0.3,1), box-shadow .35s cubic-bezier(0.16,1,0.3,1); }
+.kakao-launcher:hover { transform: translateY(-2px); box-shadow: 0 16px 34px -10px rgba(10,36,64,.5), 0 2px 6px rgba(10,36,64,.12); }
+.kakao-launcher:focus-visible { outline: 3px solid #0169a9; outline-offset: 3px; }
+.kakao-launcher .kakao-tip { position: absolute; right: calc(100% + 12px); top: 50%; transform: translateY(-50%) translateX(6px); white-space: nowrap; background: #0A2440; color: #fff; font-size: 13px; font-weight: 700; padding: 7px 11px; opacity: 0; pointer-events: none; transition: opacity .25s, transform .35s cubic-bezier(0.16,1,0.3,1); }
+.kakao-launcher:hover .kakao-tip, .kakao-launcher:focus-visible .kakao-tip { opacity: 1; transform: translateY(-50%) translateX(0); }
+.kakao-card { width: 280px; background: #fff; border: 1px solid #E5E7EB; box-shadow: 0 24px 44px -20px rgba(10,36,64,.38); padding: 20px 20px 18px; position: relative; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity .4s cubic-bezier(0.16,1,0.3,1), transform .5s cubic-bezier(0.16,1,0.3,1); }
+.kakao-card.is-open { opacity: 1; transform: none; pointer-events: auto; }
+.kakao-card::after { content: ""; position: absolute; right: 24px; bottom: -7px; width: 12px; height: 12px; background: #fff; border-right: 1px solid #E5E7EB; border-bottom: 1px solid #E5E7EB; transform: rotate(45deg); }
+.kakao-card-close { position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; color: #555; }
+.kakao-card-close:hover { color: #0A2440; background: #F5F6F8; }
+@media (prefers-reduced-motion: reduce) { .kakao-card, .kakao-launcher, .kakao-launcher .kakao-tip { transition: none; } }
+
+
+/* ── GNB 메가메뉴 정렬 보정 · 상위 메뉴와 하위 메뉴를 각 칸 가운데로 맞춤 ──
+   (페이지 인라인 스타일보다 우선하도록 nav.gnb 로 범위 지정) */
+nav.gnb .nav-top { justify-content: center; }
+nav.gnb .nav-panel { left: 0; right: 0; }
+nav.gnb .gnb-panel-box { min-width: 0; text-align: center; }
+nav.gnb .dropdown-link { justify-content: center; padding: 8px 12px; }
+nav.gnb .dropdown-link::after { display: none; }
+nav.gnb .dropdown-link:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+nav.gnb .nav-item:not(:first-child) .nav-panel::before { left: 0; }
+/* 카카오 상담 버튼은 헤더 메뉴(z-40) 아래로 */
+.kakao-fab { z-index: 35; }
+
+
+/* ── 서브페이지 히어로 · 밝은 3D 배너 (assets/hero/*.webp) ──
+   lg 이상: 배너 원본(왼쪽 55% 여백) · 그 미만: 같은 톤 그라데이션 + 투명 아이콘 */
+.hero-light { background: linear-gradient(100deg, #F8FAFE 0%, #F3F7FE 45%, #E3EDFE 100%); }
+.hero-banner { background-repeat: no-repeat; background-size: cover; background-position: right center; }
+@media (min-width: 1024px) { .hero-light { min-height: 360px; display: flex; align-items: center; } .hero-light > .relative { width: 100%; } }
+
+/* ── GNB 메가메뉴 간격 축소 (칸 폭 · 상하 여백) ── */
+nav.gnb .nav-top { min-width: 148px; padding-left: 12px; padding-right: 12px; }
+nav.gnb .gnb-panel-box { padding: 16px 0 22px; }
+nav.gnb .dropdown-link { padding-top: 6px; padding-bottom: 6px; }
+header .gnb-megabar { height: 182px; }
+nav.gnb .nav-item:not(:first-child) .nav-panel::before { height: 182px; }
+
+
+/* ── 서브페이지 히어로 v3 · 배너(cover) 대신 투명 아이콘 크기 고정 ── */
+.hero-glow { background: radial-gradient(420px 300px at 80% 52%, rgba(89,180,255,.28), rgba(89,180,255,0) 70%); }
+.hero-icon { position: absolute; right: 12px; top: 14px; width: 96px; height: auto; pointer-events: none; }
+@media (min-width: 768px) { .hero-icon { width: auto; height: 190px; right: 5%; top: 50%; transform: translateY(-50%); } }
+@media (min-width: 1024px) { .hero-light { min-height: 320px; } .hero-icon { height: min(62%, 240px); right: max(5%, calc((100vw - 1280px) / 2 + 40px)); } }
+
+
+/* ── Q&A 접이식 (details/summary) ── */
+.faq-item { transition: border-color .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s cubic-bezier(0.16,1,0.3,1); }
+.faq-item[open] { border-color: rgba(10,36,64,.25); box-shadow: 0 18px 40px -26px rgba(10,36,64,.35); }
+.faq-q { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 24px 24px; cursor: pointer; list-style: none; }
+@media (min-width: 768px) { .faq-q { padding: 28px 36px; } }
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q:hover .faq-toggle { background: #0A2440; color: #fff; border-color: #0A2440; }
+.faq-q:focus-visible { outline: 2px solid #0169a9; outline-offset: -2px; }
+.faq-mark { font-size: 15px; font-weight: 800; color: #0169a9; min-width: 28px; }
+.faq-mark-a { color: #0A2440; }
+.faq-toggle { flex-shrink: 0; width: 40px; height: 40px; border: 1px solid #E5E7EB; border-radius: 9999px; display: inline-flex; align-items: center; justify-content: center; font-size: 20px; color: #0A2440; transition: transform .4s cubic-bezier(0.16,1,0.3,1), background .3s, color .3s, border-color .3s; }
+.faq-item[open] .faq-toggle { transform: rotate(180deg); background: #0A2440; color: #fff; border-color: #0A2440; }
+.faq-a { padding: 0 24px 32px; border-top: 1px solid #E5E7EB; padding-top: 24px; }
+@media (min-width: 768px) { .faq-a { padding: 28px 36px 40px; } }
+
+
+/* ── ONTOH CARE 주요 기능 캐러셀 (health.html) ── */
+.hc-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 16px; margin-bottom: 28px; border-bottom: 1px solid #E5E7EB; }
+.hc-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+.hc-tab { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid #E5E7EB; background: #fff; color: #555; font-size: 15px; font-weight: 700; transition: all .3s cubic-bezier(0.16,1,0.3,1); }
+.hc-tab .stat-num { color: #0169a9; font-weight: 800; font-size: 13px; }
+.hc-tab:hover { border-color: rgba(10,36,64,.3); color: #0A2440; }
+.hc-tab.is-active { background: #0A2440; border-color: #0A2440; color: #fff; }
+.hc-tab.is-active .stat-num { color: #8ed0ff; }
+.hc-ctrl { display: flex; align-items: center; gap: 8px; }
+.hc-count { font-size: 15px; color: #555; margin-right: 8px; }
+.hc-count b { color: #0A2440; font-weight: 800; }
+.hc-nav { width: 48px; height: 48px; border: 1px solid #E5E7EB; background: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 22px; color: #0A2440; transition: all .3s cubic-bezier(0.16,1,0.3,1); }
+.hc-nav:hover { background: #0A2440; color: #fff; border-color: #0A2440; }
+.hc-tab:focus-visible, .hc-nav:focus-visible { outline: 2px solid #0169a9; outline-offset: 2px; }
+.hc-slide.is-active { animation: hcIn .55s cubic-bezier(0.16,1,0.3,1); }
+@keyframes hcIn { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .hc-slide.is-active { animation: none; } }

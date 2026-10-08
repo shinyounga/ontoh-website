@@ -5,32 +5,173 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제 | 온토 테크</title>
   <meta name="description" content="50m 밖 작업자의 안전모는 단 몇 픽셀입니다. 광역 CCTV에서 작은 객체를 검출하기 어려운 이유, PTZ 카메라 개념, 2단계 파이프라인으로 푸는 방법을 정리합니다.">
-  <meta name="keywords" content="Tiny Object Detection, Small Object Detection, PTZ 카메라, PPE 검출, 건설안전 AI, FPN, 영상 분석">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="주식회사 온토 (ONTOH)">
+  <meta name="theme-color" content="#0A2440">
   <link rel="canonical" href="https://ontoh.co.kr/blog/tiny-object-detection.html">
-  <!-- Open Graph -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- Open Graph · Twitter -->
   <meta property="og:type" content="article">
   <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="ONTOH 온토">
   <meta property="og:title" content="건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제">
   <meta property="og:description" content="광역 CCTV에서 작은 객체를 검출하기 어려운 이유와, PTZ·타일링·2단계 파이프라인으로 푸는 방법.">
   <meta property="og:url" content="https://ontoh.co.kr/blog/tiny-object-detection.html">
-  <meta property="og:site_name" content="ONTOH">
   <meta property="og:image" content="https://ontoh.co.kr/assets/og/home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제">
   <meta property="article:published_time" content="2026-06-26">
-  <meta property="article:author" content="온토비전 Team">
-  <!-- JSON-LD -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제">
+  <meta name="twitter:description" content="광역 CCTV에서 작은 객체를 검출하기 어려운 이유와, PTZ·타일링·2단계 파이프라인으로 푸는 방법.">
+  <meta name="twitter:image" content="https://ontoh.co.kr/assets/og/home.jpg">
+  <!-- 구조화 데이터 (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "headline": "건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제",
-    "datePublished": "2026-06-26",
-    "author": { "@type": "Organization", "name": "온토비전 Team" },
-    "publisher": { "@type": "Organization", "name": "ONTOH", "logo": { "@type": "ImageObject", "url": "https://ontoh.co.kr/assets/logo/ontoh/파랑.svg" } },
-    "mainEntityOfPage": "https://ontoh.co.kr/blog/tiny-object-detection.html"
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://ontoh.co.kr/#organization",
+        "name": "ONTOH",
+        "legalName": "주식회사 온토",
+        "alternateName": [
+          "온토",
+          "(주)온토",
+          "ONTOH 온토"
+        ],
+        "url": "https://ontoh.co.kr/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ontoh.co.kr/assets/logo/ontoh/%ED%8C%8C%EB%9E%91.svg"
+        },
+        "image": "https://ontoh.co.kr/assets/og/home.jpg",
+        "description": "ONTOH(온토)는 건설현장을 비롯한 산업현장의 위험을 감지·판단·개입·기록하는 Physical AI 안전관리 기업입니다. 건설현장 Edge AI 안전관제 솔루션 LOOKAT(루캣), 현장관리 앱 LOOKAT NOTE, 작업자 보건관리 시스템 ONTOH CARE(온토케어)를 제공합니다.",
+        "foundingDate": "2025-10-02",
+        "founder": {
+          "@type": "Person",
+          "name": "김태건",
+          "jobTitle": "대표이사"
+        },
+        "email": "contact@ontoh.co.kr",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "연세로2나길 61 캠퍼스타운에스큐브 304호",
+          "addressLocality": "서대문구",
+          "addressRegion": "서울특별시",
+          "postalCode": "03777",
+          "addressCountry": "KR"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "contact@ontoh.co.kr",
+          "url": "https://ontoh.co.kr/contact.html",
+          "availableLanguage": [
+            "Korean"
+          ]
+        },
+        "areaServed": "KR",
+        "knowsAbout": [
+          "건설현장 안전관리",
+          "산업안전",
+          "중대재해 예방",
+          "AI CCTV",
+          "Edge AI",
+          "PTZ 자율관제",
+          "컴퓨터비전",
+          "Tiny Object Detection",
+          "생성형 AI 법령 매칭",
+          "작업자 보건관리",
+          "Physical AI"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ontoh.co.kr/#website",
+        "url": "https://ontoh.co.kr/",
+        "name": "ONTOH 온토",
+        "alternateName": "온토",
+        "inLanguage": "ko-KR",
+        "publisher": {
+          "@id": "https://ontoh.co.kr/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://ontoh.co.kr/blog/tiny-object-detection.html#webpage",
+        "url": "https://ontoh.co.kr/blog/tiny-object-detection.html",
+        "name": "건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제 | 온토 테크",
+        "description": "50m 밖 작업자의 안전모는 단 몇 픽셀입니다. 광역 CCTV에서 작은 객체를 검출하기 어려운 이유, PTZ 카메라 개념, 2단계 파이프라인으로 푸는 방법을 정리합니다.",
+        "inLanguage": "ko-KR",
+        "isPartOf": {
+          "@id": "https://ontoh.co.kr/#website"
+        },
+        "about": {
+          "@id": "https://ontoh.co.kr/#organization"
+        },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://ontoh.co.kr/assets/og/home.jpg"
+        },
+        "breadcrumb": {
+          "@id": "https://ontoh.co.kr/blog/tiny-object-detection.html#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://ontoh.co.kr/blog/tiny-object-detection.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "홈",
+            "item": "https://ontoh.co.kr/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "테크 블로그",
+            "item": "https://ontoh.co.kr/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Tiny Object Detection",
+            "item": "https://ontoh.co.kr/blog/tiny-object-detection.html"
+          }
+        ]
+      },
+      {
+        "@type": "TechArticle",
+        "@id": "https://ontoh.co.kr/blog/tiny-object-detection.html#article",
+        "headline": "건설현장에서 ‘작은 것’을 본다는 것 — Tiny Object Detection과 PTZ 자율관제",
+        "description": "50m 밖 작업자의 안전모는 단 몇 픽셀입니다. 광역 CCTV에서 작은 객체를 검출하기 어려운 이유, PTZ 카메라 개념, 2단계 파이프라인으로 푸는 방법을 정리합니다.",
+        "image": "https://ontoh.co.kr/assets/og/home.jpg",
+        "inLanguage": "ko-KR",
+        "author": {
+          "@id": "https://ontoh.co.kr/#organization"
+        },
+        "publisher": {
+          "@id": "https://ontoh.co.kr/#organization"
+        },
+        "mainEntityOfPage": {
+          "@id": "https://ontoh.co.kr/blog/tiny-object-detection.html#webpage"
+        },
+        "datePublished": "2026-06-26"
+      }
+    ]
   }
   </script>
+  <meta name="keywords" content="Tiny Object Detection, Small Object Detection, PTZ 카메라, PPE 검출, 건설안전 AI, FPN, 영상 분석">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <!-- LOOKAT · ONTOH CARE 브랜드 서체 · 영문 제품명 전용 (Montserrat Black) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap">
+  <style>.font-brand{font-family:'Montserrat','Pretendard',sans-serif;font-weight:900;letter-spacing:-0.01em}</style>
   <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
   <script>
     tailwind.config = {
@@ -63,7 +204,7 @@
       },
     }
   </script>
-  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/common.css?v=20261006j">
   <style>
     /* ===== 읽기 진행률 바 ===== */
     #readingProgress {
@@ -194,7 +335,7 @@
           </div>
           <div class="nav-item flex items-stretch">
             <a href="../vision.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">제품소개</a>
-            <div class="nav-panel"><div class="gnb-panel-box min-w-[150px]"><a href="../vision.html" class="dropdown-link">온토비전 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../health.html" class="dropdown-link">온토케어 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../references.html" class="dropdown-link">도입 사례 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
+            <div class="nav-panel"><div class="gnb-panel-box min-w-[150px]"><a href="../vision.html" class="dropdown-link"><span class="font-brand">LOOKAT</span> <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../lookat-note.html" class="dropdown-link"><span class="font-brand">LOOKAT NOTE</span> <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../health.html" class="dropdown-link"><span class="font-brand">ONTOH CARE</span> <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a><a href="../references.html" class="dropdown-link">도입 사례 <iconify-icon icon="solar:arrow-right-linear" class="text-[12px]"></iconify-icon></a></div></div>
           </div>
           <div class="nav-item flex items-stretch">
             <a href="../tech.html" class="nav-top is-active relative flex items-center min-w-[168px] px-5 text-[20px] font-bold text-ink">기술·연구</a>
@@ -226,8 +367,9 @@
     <a href="../about.html" class="menu-link text-2xl font-bold text-ink stagger-1" onclick="closeMobileMenu()">회사소개</a>
     <div class="menu-link stagger-2 text-center">
       <p class="text-[13px] text-sub/85 font-bold tracking-[0.14em] uppercase mb-3">솔루션</p>
-      <a href="../vision.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()">온토비전</a>
-      <a href="../health.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()">온토케어</a>
+      <a href="../vision.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">LOOKAT</span></a>
+      <a href="../lookat-note.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">LOOKAT NOTE</span></a>
+      <a href="../health.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">ONTOH CARE</span></a>
       <a href="../references.html" class="block text-xl font-bold text-ink" onclick="closeMobileMenu()">도입 사례</a>
     </div>
     <a href="../patents.html" class="menu-link text-2xl font-bold text-accent stagger-3" onclick="closeMobileMenu()">기술·연구</a>
@@ -251,7 +393,7 @@
       </h1>
       <p class="mt-3 text-[23px] md:text-[34px] font-bold text-accent" style="letter-spacing:-0.02em;">Tiny Object Detection과 PTZ 자율관제</p>
       <div class="flex items-center gap-3 text-[15px] text-[#94a3b8] mt-7">
-        <span class="font-semibold text-[#475569]">온토비전 Team</span>
+        <span class="font-semibold text-[#475569]">ONTOH Team</span>
         <span class="w-1 h-1 rounded-full bg-[#cbd5e1]"></span>
         <span>2026.06.26</span>
         <span class="w-1 h-1 rounded-full bg-[#cbd5e1]"></span>
@@ -404,7 +546,7 @@
             <text x="530" y="95" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">위험 판정·알림</text>
             <text x="530" y="116" text-anchor="middle" fill="#bcc8e7" font-size="11">PPE 미착용·위험구역 진입</text>
           </svg>
-          <figcaption>그림 2. 온토비전의 2단계 파이프라인 — 싸게 찾고, 줌으로 확인하고, 위험만 알린다.</figcaption>
+          <figcaption>그림 2. <span class="font-brand">LOOKAT</span>의 2단계 파이프라인 — 싸게 찾고, 줌으로 확인하고, 위험만 알린다.</figcaption>
         </figure>
 
         <h2 id="s5">5. PPE 검출의 현실</h2>
@@ -424,7 +566,7 @@
           <li><strong>맥락을 결합하라:</strong> 사람·자세·시간 정보를 함께 봐야 PPE 착용 여부가 신뢰성을 얻는다.</li>
           <li><strong>스케줄링이 본질이다:</strong> 한 대의 PTZ로 ‘언제 어디를 볼지’ 정하는 것이 검출 정확도만큼 중요하다.</li>
         </ul>
-        <p>온토비전은 이 원칙들을 하나의 자율관제 루프로 묶어, 사람이 모니터를 24시간 응시하지 않아도 현장의 ‘작은 위험’을 놓치지 않도록 설계되었습니다. 다음 글에서는 이 중 <strong>PPE 착용 판정</strong>을 더 깊이 다루겠습니다.</p>
+        <p><span class="font-brand">LOOKAT</span>은 이 원칙들을 하나의 자율관제 루프로 묶어, 사람이 모니터를 24시간 응시하지 않아도 현장의 ‘작은 위험’을 놓치지 않도록 설계되었습니다. 다음 글에서는 이 중 <strong>PPE 착용 판정</strong>을 더 깊이 다루겠습니다.</p>
 
         <!-- ===== Article footer ===== -->
         <div class="not-prose mt-16 pt-8 border-t border-navy/10">
@@ -448,7 +590,7 @@
           <!-- CTA -->
           <div class="mt-10 rounded-2xl bg-[#ffffff] border border-navy/8 p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
             <div>
-              <p class="text-[20px] font-bold text-navy mb-1">현장에 온토비전을 적용해 보고 싶다면</p>
+              <p class="text-[20px] font-bold text-navy mb-1">현장에 <span class="font-brand">LOOKAT</span>을 적용해 보고 싶다면</p>
               <p class="text-[16.5px] text-[#64748b]">자율관제 도입 상담을 도와드립니다.</p>
             </div>
             <a href="../contact.html" class="shrink-0 group inline-flex items-center gap-2 bg-navy text-white rounded-full px-6 py-3 text-[16.5px] font-bold hover:scale-[1.02] active:scale-[0.98] spring">
@@ -504,7 +646,7 @@
         <span class="text-sub/40" aria-hidden="true">|</span>
         <span><span class="font-semibold">사업자등록번호</span> 230-88-03436</span>
         <span class="text-sub/40" aria-hidden="true">|</span>
-        <span><span class="font-semibold">이메일</span> <a href="mailto:ktg@ontoh.co.kr" class="hover:text-ink transition-colors">ktg@ontoh.co.kr</a></span>
+        <span><span class="font-semibold">이메일</span> <a href="mailto:contact@ontoh.co.kr" class="hover:text-ink transition-colors">contact@ontoh.co.kr</a></span>
         <span class="text-sub/40" aria-hidden="true">|</span>
         <span><span class="font-semibold">주소</span> (03777) 서울특별시 서대문구 연세로2나길 61 (창천동, 캠퍼스타운에스큐브) 304호</span>
       </div>

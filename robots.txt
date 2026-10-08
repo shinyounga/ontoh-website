@@ -1,8 +1,53 @@
+# ONTOH 온토 — https://ontoh.co.kr
+# 검색엔진 · AI 검색/답변 엔진 모두 공개 페이지 수집을 허용합니다.
+
 User-agent: *
 Allow: /
-
 Disallow: /archive/
+Disallow: /design/
+Disallow: /assets-jpeg-preview/
 Disallow: /.claude/
 Disallow: /.github/
+
+# 국내 검색엔진
+User-agent: Yeti
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
+# AI 검색 · 답변 엔진 (GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
 
 Sitemap: https://ontoh.co.kr/sitemap.xml

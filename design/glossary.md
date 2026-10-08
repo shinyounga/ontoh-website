@@ -26,8 +26,8 @@ _같은 개념을 여러 이름으로 부르지 않도록 이 문서에서만 �
 
 | 표준 (한글) | 표준 (영문) | ❌ 잘못된 표기 |
 |---|---|---|
-| **온토비전** | **ONTOH Vision** | 온토 비전 (띄어쓰기 X) · OntohVision · Vision (문맥 상 필요 시만 축약 OK) |
-| **온토케어** | **ONTOH Care** | 온토 케어 · Ontoh Care · Health (파일명은 health.html이지만 서비스명은 온토케어) |
+| **LOOKAT** (한글 병기: 루캣) | **LOOKAT** | 온토비전 · ONTOH Vision (구 명칭, 사용 금지) · Lookat · LooKat · 룩캣 · 루켓 |
+| **ONTOH CARE** (한글 병기: 온토케어) | **ONTOH CARE** | 온토 케어 · Ontoh Care · ONTOH Health · Health (파일명은 health.html) |
 | **제품소개** | Products | 솔루션 (이전에 사용 · 지금은 "제품소개"로 통일) |
 | **CCTV 자율관제** | CCTV Autonomous Monitoring | 자율 CCTV · AI CCTV |
 | **Physical AI** | Physical AI | 피지컬 AI · 실물 AI |
@@ -74,7 +74,7 @@ _같은 개념을 여러 이름으로 부르지 않도록 이 문서에서만 �
 | 홈 | `index.html` | 메인 · 첫 페이지 |
 | 회사소개 | `about.html` | About · 소개 |
 | 제품소개 | (dropdown) | Solutions (이전) · Products |
-| 온토비전 | `vision.html` | Vision |
+| LOOKAT | `vision.html` | LOOKAT |
 | 온토케어 | `health.html` | Care · Health |
 | 기술·연구 | `patents.html` | Research · 기술연구 |
 | 문의 | `contact.html` | Contact · 문의하기 |
