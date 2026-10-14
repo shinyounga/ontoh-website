@@ -43,7 +43,7 @@
         "url": "https://ontoh.co.kr/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://ontoh.co.kr/assets/logo/ontoh/%ED%8C%8C%EB%9E%91.svg"
+          "url": "https://ontoh.co.kr/assets/logo/ontoh/ontoh-logo-color.svg"
         },
         "image": "https://ontoh.co.kr/assets/og/home.jpg",
         "description": "ONTOH(온토)는 건설현장을 비롯한 산업현장의 위험을 감지·판단·개입·기록하는 Physical AI 안전관리 기업입니다. 건설현장 Edge AI 안전관제 솔루션 LOOKAT(루캣), 현장관리 앱 LOOKAT NOTE, 작업자 보건관리 시스템 ONTOH CARE(온토케어)를 제공합니다.",
@@ -112,7 +112,7 @@
         },
         "primaryImageOfPage": {
           "@type": "ImageObject",
-          "url": "https://ontoh.co.kr/assets/og/vision.jpg"
+          "url": "https://ontoh.co.kr/assets/og/vision.webp"
         },
         "breadcrumb": {
           "@id": "https://ontoh.co.kr/vision.html#breadcrumb"
@@ -197,6 +197,10 @@
   }
   </script>
   <meta name="keywords" content="LOOKAT, 루캣, 건설현장 Edge AI, 건설 안전 AI CCTV, AUTO PTZ, PTZ 카메라 AI, 건설현장 위험 감지, 법령 매칭 자동화, 현장관리 앱, LOOKAT NOTE, 온토비전">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://code.iconify.design">
+  <link rel="preconnect" href="https://api.iconify.design" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
   <!-- LOOKAT 브랜드 서체 · 영문 제품명 전용 (Montserrat Black) -->
@@ -234,7 +238,7 @@
       } },
     }
   </script>
-  <link rel="stylesheet" href="css/common.css?v=20261006j">
+  <link rel="stylesheet" href="css/common.css?v=20261014d">
   <style>
     /* LOOKAT 브랜드 워드 · 제품명(LOOKAT · BASIC · EDGE+ · EDGE PRO)에만 사용 */
     .font-brand { font-family: 'Montserrat', 'Pretendard', sans-serif; font-weight: 900; letter-spacing: -0.01em; }
@@ -635,9 +639,30 @@
       .ptz-step { opacity:0 } .ptz-step:nth-of-type(3){ opacity:1 }
       .ptz-bar { width:100% }
     }
+  
+    /* 모바일 최적화 · 솔루션 페이지 상단 탭 바 · 도식 가로 넘침 방지 */
+    @media (max-width: 640px) {
+      .bc-cell { font-size: 14px; }
+      .bc-cell .bc-caret { display: none; }
+      .bc-cell.bc-menu { min-width: 0; padding: 0 10px; gap: 0; font-size: 13px; }
+      .bc-cell.bc-home { width: 44px; }
+      .bc-item { min-width: 0; }
+      .bc-row { min-width: 0; flex: 1 1 auto; }
+      .bc-panel { min-width: 100%; max-width: calc(100vw - 24px); }
+      .bc-panel .dropdown-link { padding: 14px 16px; }
+      .bc-strip-tools { flex-shrink: 0; gap: 0 !important; }
+      .bc-strip-tools button { min-width: 40px; justify-content: center; }
+      footer a[href$="terms.html"], footer a[href$="privacy.html"] { display: inline-block; padding: 12px 6px; }
+    }
+    @media (max-width: 480px) {
+      .kl { max-width: 100%; padding: 16px; }
+      .kl .kl-lb { white-space: normal; }
+      .kl .grid > * { min-width: 0; }
+      .md\:order-2:has(> .kl), div:has(> .kl) { min-width: 0; }
+    }
   </style>
-  <script defer src="js/analytics.js"></script>
-  <script defer src="js/kakao-widget.js"></script>
+  <script defer src="js/analytics.js?v=20261014d"></script>
+  <script defer src="js/kakao-widget.js?v=20261014d"></script>
 </head>
 <body class="bg-white font-sans antialiased">
   <!-- Skip to content · WCAG 2.4.1 -->
@@ -648,7 +673,7 @@
   <header class="sticky top-0 z-40 bg-white border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
       <div class="flex items-center justify-between h-[92px]">
-        <a href="index.html" class="flex items-center shrink-0"><img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-12 md:h-14"></a>
+        <a href="index.html" class="flex items-center shrink-0"><img src="assets/logo/ontoh/ontoh-logo-color.svg" alt="ONTOH" class="h-12 md:h-14"></a>
         <nav class="gnb hidden lg:flex items-stretch h-full">
           <div class="nav-item flex items-stretch">
             <a href="about.html" class="nav-top relative flex items-center min-w-[168px] px-5 text-body-lg font-bold text-ink">회사소개</a>
@@ -679,20 +704,30 @@
   </header>
 
   <!-- ==================== 모바일 메뉴 ==================== -->
-  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white/97 backdrop-blur-3xl flex flex-col items-center justify-center gap-7 lg:hidden">
-    <button id="menuClose" class="absolute top-6 right-6 w-10 h-10 bg-ink/[0.05] flex items-center justify-center" aria-label="메뉴 닫기">
-      <iconify-icon icon="solar:close-circle-linear" class="text-ink text-2xl"></iconify-icon>
-    </button>
-    <a href="about.html" class="menu-link text-2xl font-bold text-ink stagger-1" onclick="closeMobileMenu()">회사소개</a>
-    <div class="menu-link stagger-2 text-center">
-      <p class="text-body-sm text-accent font-bold tracking-[0.14em] uppercase mb-3">솔루션</p>
-      <a href="vision.html" class="block text-xl font-bold text-accent mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">LOOKAT</span></a>
-      <a href="lookat-note.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">LOOKAT NOTE</span></a>
-      <a href="health.html" class="block text-xl font-bold text-ink mb-2.5" onclick="closeMobileMenu()"><span class="font-brand">ONTOH CARE</span></a>
+  <div id="mobileMenu" class="mobile-menu fixed inset-0 z-50 bg-white flex flex-col lg:hidden" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+    <div class="mm-top shrink-0 flex items-center justify-between h-[92px] px-6 sm:px-10 border-b border-hair">
+      <a href="index.html" class="flex items-center"><img src="assets/logo/ontoh/ontoh-logo-color.svg" alt="ONTOH 홈" class="h-12"></a>
+      <button id="menuClose" class="w-11 h-11 bg-ink/[0.05] flex items-center justify-center" aria-label="메뉴 닫기">
+        <iconify-icon icon="solar:close-circle-linear" class="text-ink text-2xl"></iconify-icon>
+      </button>
     </div>
-    
-    <a href="contact.html" class="menu-link text-2xl font-bold text-ink stagger-4" onclick="closeMobileMenu()">문의</a>
-    <a href="contact.html" class="menu-link btn btn-primary btn-lg stagger-5" onclick="closeMobileMenu()">문의하기 <iconify-icon icon="solar:arrow-right-linear"></iconify-icon></a>
+    <nav class="mm-body flex-1 overflow-y-auto px-6 sm:px-10" aria-label="모바일 메뉴">
+      <div class="mm-group menu-link stagger-1">
+        <a href="about.html" class="mm-head">회사소개 <iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+        <div class="mm-subs"><a href="about.html#mission" class="mm-sub">비전 · 미션</a><a href="about.html#history" class="mm-sub">연혁</a><a href="about.html#overview" class="mm-sub">회사개요</a><a href="about.html#location" class="mm-sub">오시는 길</a></div>
+      </div>
+      <div class="mm-group menu-link stagger-2">
+        <a href="vision.html" class="mm-head">제품소개 <iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+        <a href="vision.html" class="mm-prod" aria-current="page"><span><b class="font-brand">LOOKAT</b><small>건설현장 Edge&nbsp;AI 안전관제</small></span><iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a><a href="lookat-note.html" class="mm-prod"><span><b class="font-brand">LOOKAT NOTE</b><small>사진·음성으로 쓰는 현장관리 앱</small></span><iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a><a href="health.html" class="mm-prod"><span><b class="font-brand">ONTOH CARE</b><small>작업자 디지털 보건관리</small></span><iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+      </div>
+      <div class="mm-group menu-link stagger-3">
+        <a href="patents.html" class="mm-head">기술 · 연구 <iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+      </div>
+    </nav>
+    <div class="mm-foot shrink-0 px-6 sm:px-10 pt-4 border-t border-hair bg-white">
+      <a href="contact.html" class="btn btn-primary btn-lg w-full justify-center">문의하기 <iconify-icon icon="solar:arrow-right-linear" aria-hidden="true"></iconify-icon></a>
+      <a href="mailto:contact@ontoh.co.kr" class="mm-mail">contact@ontoh.co.kr</a>
+    </div>
   </div>
 
   <!-- ==================== 얇은 브레드크럼 스트립 (한솔홈데코 스타일 · 균일 박스 그리드) ==================== -->
@@ -735,7 +770,7 @@
         </nav>
 
         <!-- 우측: 글자크기 조절 (스트립 높이만큼 꽉찬 세로선) -->
-        <div class="inline-flex items-stretch gap-5 text-white/70 text-body-base">
+        <div class="bc-strip-tools inline-flex items-stretch gap-5 text-white/70 text-body-base">
           <span class="w-px bg-white/25" aria-hidden="true"></span>
           <button type="button" onclick="fontResize('up')" class="hover:text-white transition-colors font-semibold flex items-center leading-none" aria-label="글자 크게">+</button>
           <span class="w-px bg-white/25" aria-hidden="true"></span>
@@ -753,30 +788,40 @@
     <div class="relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-28 text-left">
       <p data-hero-kicker class="text-accent text-body-sm font-bold uppercase tracking-[0.16em] mb-3">Products</p>
       <h1 data-hero-title class="text-ink text-h1 md:text-hero font-bold tracking-tight" style="letter-spacing:-0.02em;">
-        <img src="assets/logo/lookat/lookat-symbol.png" alt="" aria-hidden="true" class="inline-block w-11 h-11 md:w-14 md:h-14 align-middle mr-3 -mt-1.5"><span class="font-brand">LOOKAT</span><span class="sr-only"> 루캣</span>
+        <img src="assets/logo/lookat/lookat-symbol.webp" alt="" aria-hidden="true" class="inline-block w-11 h-11 md:w-14 md:h-14 align-middle mr-3 -mt-1.5" loading="lazy" decoding="async"><span class="font-brand">LOOKAT</span><span class="sr-only"> 루캣</span>
       </h1>
-      <p data-hero-subtitle class="mt-5 text-sub text-body-lg md:text-h3 leading-[1.6] max-w-xl font-semibold">현장을 살피고, AI로 판단하는 건설현장 Edge AI 솔루션</p>
+      <p data-hero-subtitle class="mt-5 text-sub text-body-lg md:text-h3 leading-[1.6] max-w-xl font-semibold">현장을 살피고, AI로 판단하는 건설현장 Edge&nbsp;AI 솔루션</p>
     </div>
   </section>
 
   <main id="main" tabindex="-1">
+  <!-- ==================== 모바일 바로가기 칩 (640px 미만 · 상단 고정) ==================== -->
+  <nav class="m-jump sm:hidden" aria-label="이 페이지 바로가기">
+    <div class="m-jump-track">
+      <button type="button" data-jump="how">작동 방식</button>
+      <button type="button" data-jump="compare">법령 매칭</button>
+      <button type="button" data-jump="detect">감지 상황</button>
+      <button type="button" data-jump="lineup">구성 안내</button>
+      <button type="button" data-jump="faq">자주 묻는 질문</button>
+    </div>
+  </nav>
   <!-- ==================== 인트로 (컴팩트 + 메인 플랫폼 이미지) ==================== -->
   <section class="border-b border-hair overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
-      <div class="grid lg:grid-cols-[0.82fr_1.18fr] gap-10 lg:gap-12 items-center">
+      <div class="m-intro grid lg:grid-cols-[0.82fr_1.18fr] gap-10 lg:gap-12 items-center">
         <div>
-          <img src="assets/logo/lookat/lookat-wordmark.png" alt="LOOKAT 루캣" class="reveal h-8 md:h-10 w-auto mb-8" width="2533" height="421">
+          <img src="assets/logo/lookat/lookat-wordmark.webp" alt="LOOKAT 루캣" class="reveal h-8 md:h-10 w-auto mb-8" width="2533" height="421">
           <h2 class="reveal stagger-1 text-h2 md:text-hero font-bold tracking-tight text-ink" style="line-height:1.15; letter-spacing:-0.03em;">
             현장을 살피고,<br><span class="text-accent">AI로 판단</span>합니다.
           </h2>
           <p class="reveal stagger-1 mt-6 text-body-lg text-sub leading-[1.75]">
             분석용 PC 없이 장비 한 대에서 AI가 바로 분석하고,<br class="hidden md:block"> 카메라가 필요한 곳으로 스스로 움직여 위험을 확인합니다.
           </p>
-          <dl class="reveal stagger-2 mt-9 grid sm:grid-cols-2 border-t border-b border-hair pb-6">
+          <dl class="m-dl2 reveal stagger-2 mt-9 grid grid-cols-2 sm:grid-cols-2 border-t border-b border-hair pb-6">
             <div class="flex items-start gap-4 pt-6 sm:pr-6">
               <iconify-icon icon="solar:cpu-bolt-linear" class="text-accent text-h1 shrink-0"></iconify-icon>
               <div>
-                <dt class="text-body-lg font-bold text-ink">Edge AI</dt>
+                <dt class="text-body-lg font-bold text-ink">Edge&nbsp;AI</dt>
                 <dd class="mt-1 text-body-base text-sub leading-[1.6]">분석용 PC 없이<br>현장에서 바로 분석·판단</dd>
               </div>
             </div>
@@ -795,8 +840,8 @@
         </div>
         <!-- 기기 목업 · 가로형이라 우측으로 크게 확장 (배경 투명 PNG → drop-shadow) -->
         <div class="reveal stagger-2 -mr-6 sm:-mr-10 lg:-mr-14 xl:-mr-40 2xl:-mr-56">
-          <img src="assets/vision/dashboard2.png" alt="LOOKAT 자율 관제 대시보드 · CCTV 현장 모니터링과 PTZ 제어 화면"
-               class="w-full h-auto block" style="filter:drop-shadow(0 26px 44px rgba(10,36,64,0.26));">
+          <img src="assets/vision/dashboard2.webp" alt="LOOKAT 자율 관제 대시보드 · CCTV 현장 모니터링과 PTZ 제어 화면"
+               class="w-full h-auto block" style="filter:drop-shadow(0 26px 44px rgba(10,36,64,0.26));" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -804,7 +849,7 @@
 
 
   <!-- ==================== 작동 방식 · 찾고 → 판단하고 → 움직이고 → 확인한다 ==================== -->
-  <section class="bg-band border-b border-hair">
+  <section id="how" class="bg-band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-3xl mb-14 md:mb-16">
         <p class="reveal font-brand text-h2 md:text-h1 text-accent tracking-tight mb-4">AUTO PTZ</p>
@@ -813,7 +858,7 @@
         </h2>
       </div>
 
-      <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-14">
+      <ol class="m-swipe grid sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-14">
         <li class="reveal">
           <div class="aspect-[4/3] bg-white border border-hair overflow-hidden flex items-center justify-center">
             <img src="assets/lookat/flow/01-find-labeled.webp" alt="작업자 인식과 개구부 인식이 각각 표시된 현장 일러스트" class="w-full h-full object-contain" loading="lazy">
@@ -826,7 +871,7 @@
         </li>
         <li class="reveal stagger-1">
           <div class="aspect-[4/3] bg-white border border-hair overflow-hidden flex items-center justify-center">
-            <img src="assets/lookat/flow/02-judge.png" alt="작업자가 개구부 위험반경에 들어가 위험 상황으로 판단된 일러스트" class="w-full h-full object-contain" loading="lazy">
+            <img src="assets/lookat/flow/02-judge.webp" alt="작업자가 개구부 위험반경에 들어가 위험 상황으로 판단된 일러스트" class="w-full h-full object-contain" loading="lazy">
           </div>
           <div class="mt-7 flex items-center gap-3">
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink text-white text-body-lg font-extrabold stat-num">2</span>
@@ -836,7 +881,7 @@
         </li>
         <li class="reveal stagger-2">
           <div class="aspect-[4/3] bg-white border border-hair overflow-hidden flex items-center justify-center">
-            <img src="assets/lookat/flow/03-move.png" alt="LOOKAT 카메라가 회전해 해당 지점을 줌인한 일러스트" class="w-full h-full object-contain" loading="lazy">
+            <img src="assets/lookat/flow/03-move.webp" alt="LOOKAT 카메라가 회전해 해당 지점을 줌인한 일러스트" class="w-full h-full object-contain" loading="lazy">
           </div>
           <div class="mt-7 flex items-center gap-3">
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink text-white text-body-lg font-extrabold stat-num">3</span>
@@ -846,7 +891,7 @@
         </li>
         <li class="reveal stagger-3">
           <div class="aspect-[4/3] bg-white border border-hair overflow-hidden flex items-center justify-center">
-            <img src="assets/lookat/flow/04-confirm.png" alt="확대 화면에서 안전모·안전조끼 착용은 확인되고 안전난간·개구부 덮개 미설치가 표시된 일러스트" class="w-full h-full object-contain" loading="lazy">
+            <img src="assets/lookat/flow/04-confirm.webp" alt="확대 화면에서 안전모·안전조끼 착용은 확인되고 안전난간·개구부 덮개 미설치가 표시된 일러스트" class="w-full h-full object-contain" loading="lazy">
           </div>
           <div class="mt-7 flex items-center gap-3">
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-ink text-white text-body-lg font-extrabold stat-num">4</span>
@@ -860,7 +905,7 @@
   </section>
 
   <!-- ==================== Before / After 비교 ==================== -->
-  <section class="border-b border-hair">
+  <section id="compare" class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="max-w-3xl mb-14 md:mb-16">
         <p class="reveal text-h3 md:text-h2 font-extrabold text-accent tracking-tight mb-4">생성형 AI 기반 법령 매칭</p>
@@ -875,9 +920,9 @@
         <div id="baSlider" class="ba-wrap">
           <div class="ba-top">
           <div class="ba-frame" data-ba-frame>
-              <img class="ba-img ba-clean" alt="Before · 원본 CCTV">
+              <img class="ba-img ba-clean" alt="Before · 원본 CCTV" loading="lazy" decoding="async">
               <div class="ba-after-wrap">
-                <img class="ba-img ba-labeled" alt="After · LOOKAT 감지">
+                <img class="ba-img ba-labeled" alt="After · LOOKAT 감지" loading="lazy" decoding="async">
               </div>
               <div class="ba-divider">
                 <button type="button" class="ba-handle" aria-label="드래그하여 Before/After 비교" tabindex="0">
@@ -924,7 +969,7 @@
 
 
   <!-- ==================== 현장 맞춤 감지 상황 6종 ==================== -->
-  <section class="bg-band border-b border-hair">
+  <section id="detect" class="bg-band border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-20 md:py-28">
       <div class="text-center mb-12 md:mb-14">
         <h2 class="reveal text-h2 md:text-hero font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
@@ -932,34 +977,34 @@
         </h2>
         <p class="reveal stagger-1 mt-5 text-body-md md:text-body-lg text-sub leading-[1.7]">다양한 상황을 감지하여 더 안전한 현장을 만듭니다.</p>
       </div>
-      <div class="reveal grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-hair border border-hair">
+      <div class="reveal m-grid2 grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-hair border border-hair">
         <div class="bg-white p-8 md:p-10 text-center">
-          <img src="assets/lookat/scenario/worker-protection.png" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
+          <img src="assets/lookat/scenario/worker-protection.webp" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
           <h3 class="mt-5 text-h3 font-bold text-ink">작업자 보호</h3>
           <p class="mt-2 text-body-base text-sub leading-[1.65]">보호구 착용 등<br>작업자 위험 상황 확인</p>
         </div>
         <div class="bg-white p-8 md:p-10 text-center">
-          <img src="assets/lookat/scenario/danger-zone.png" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
+          <img src="assets/lookat/scenario/danger-zone.webp" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
           <h3 class="mt-5 text-h3 font-bold text-ink">위험구역 접근</h3>
           <p class="mt-2 text-body-base text-sub leading-[1.65]">지정 위험구역의<br>접근 상황 확인</p>
         </div>
         <div class="bg-white p-8 md:p-10 text-center">
-          <img src="assets/lookat/scenario/fire.png" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
+          <img src="assets/lookat/scenario/fire.webp" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
           <h3 class="mt-5 text-h3 font-bold text-ink">화재 감지</h3>
           <p class="mt-2 text-body-base text-sub leading-[1.65]">화재 및 연기 등<br>이상 징후 확인</p>
         </div>
         <div class="bg-white p-8 md:p-10 text-center">
-          <img src="assets/lookat/scenario/auto-patrol.png" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
+          <img src="assets/lookat/scenario/auto-patrol.webp" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
           <h3 class="mt-5 text-h3 font-bold text-ink">자동 순찰</h3>
           <p class="mt-2 text-body-base text-sub leading-[1.65]">설정된 주기에 따라<br>주요 구역 확인</p>
         </div>
         <div class="bg-white p-8 md:p-10 text-center">
-          <img src="assets/lookat/scenario/night-check.png" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
+          <img src="assets/lookat/scenario/night-check.webp" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
           <h3 class="mt-5 text-h3 font-bold text-ink">야간 주기 점검</h3>
           <p class="mt-2 text-body-base text-sub leading-[1.65]">작업 종료 후<br>잔류 인원 확인</p>
         </div>
         <div class="bg-white p-8 md:p-10 text-center">
-          <img src="assets/lookat/scenario/outsider.png" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
+          <img src="assets/lookat/scenario/outsider.webp" alt="" aria-hidden="true" class="mx-auto w-16 h-16 md:w-20 md:h-20" width="240" height="240" loading="lazy">
           <h3 class="mt-5 text-h3 font-bold text-ink">외부인원 확인</h3>
           <p class="mt-2 text-body-base text-sub leading-[1.65]">출입통제 구역의<br>외부 인원 확인</p>
         </div>
@@ -974,9 +1019,10 @@
         <h2 class="reveal text-h2 md:text-hero font-bold tracking-tight text-ink" style="line-height:1.2; letter-spacing:-0.02em;">
           우리 현장에 맞는<br><span class="text-accent"><span class="font-brand">LOOKAT</span> 구성</span> 안내.
         </h2>
-        <p class="reveal stagger-1 mt-6 text-body-md md:text-body-lg text-sub leading-[1.75]"><b class="text-ink">필요한 만큼, 더 스마트하게.</b> 현장에 최적화된 구성을 제안합니다.</p>
+        <p class="reveal stagger-1 mt-6 text-body-md md:text-body-lg text-sub leading-[1.75]"><b class="text-ink">필요한 만큼, 더 스마트하게.</b><br class="sm:hidden"> 현장에 최적화된 구성을 제안합니다.</p>
       </div>
 
+      <p class="sm:hidden mb-3 text-body-sm text-sub flex items-center gap-1.5"><iconify-icon icon="solar:hand-swipe-linear" class="text-accent text-body-lg"></iconify-icon>표를 좌우로 밀어 구성을 비교하세요.</p>
       <div class="reveal overflow-x-auto -mx-6 px-6 sm:mx-0 sm:px-0">
         <table class="w-full min-w-[640px] border-collapse text-center">
           <caption class="sr-only"><span class="font-brand">LOOKAT</span> 구성별 카메라 · AI 처리 · 채널 수 비교</caption>
@@ -991,9 +1037,9 @@
           <tbody class="text-body-md text-ink">
             <tr class="border-b border-hair">
               <th scope="row" class="bg-ink/[0.04] font-bold py-4">제품 이미지</th>
-              <td class="bg-[#ECF0F5] p-4"><img src="assets/lookat/product/basic.png" alt="LOOKAT BASIC · 기본형 팬·틸트 카메라와 본체" class="mx-auto h-40 md:h-48 w-auto" loading="lazy"></td>
-              <td class="bg-[#ECF0F5] p-4 border-x border-white"><img src="assets/lookat/product/edge-plus.png" alt="LOOKAT EDGE+ · 기본형 팬·틸트 카메라와 Edge AI 본체" class="mx-auto h-40 md:h-48 w-auto" loading="lazy"></td>
-              <td class="bg-[#ECF0F5] p-4"><img src="assets/lookat/product/edge-pro.png" alt="LOOKAT EDGE PRO · 고급형 팬·틸트·줌 카메라와 Edge AI 본체" class="mx-auto h-40 md:h-48 w-auto" loading="lazy"></td>
+              <td class="bg-[#ECF0F5] p-4"><img src="assets/lookat/product/basic.webp" alt="LOOKAT BASIC · 기본형 팬·틸트 카메라와 본체" class="mx-auto h-40 md:h-48 w-auto" loading="lazy"></td>
+              <td class="bg-[#ECF0F5] p-4 border-x border-white"><img src="assets/lookat/product/edge-plus.webp" alt="LOOKAT EDGE+ · 기본형 팬·틸트 카메라와 Edge AI 본체" class="mx-auto h-40 md:h-48 w-auto" loading="lazy"></td>
+              <td class="bg-[#ECF0F5] p-4"><img src="assets/lookat/product/edge-pro.webp" alt="LOOKAT EDGE PRO · 고급형 팬·틸트·줌 카메라와 Edge AI 본체" class="mx-auto h-40 md:h-48 w-auto" loading="lazy"></td>
             </tr>
             <tr class="border-b border-hair">
               <th scope="row" class="bg-ink/[0.04] font-bold py-5"><iconify-icon icon="solar:videocamera-linear" class="block mx-auto text-h3 mb-1"></iconify-icon>카메라</th>
@@ -1019,14 +1065,14 @@
 
       <div class="reveal mt-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
         <p class="text-body-md font-bold text-ink shrink-0">추가 옵션</p>
-        <ul class="flex flex-wrap gap-2">
+        <ul class="m-eq4 flex flex-wrap gap-2">
           <li class="inline-flex items-center gap-2 border border-hair px-4 py-2 text-body-base font-semibold text-ink"><iconify-icon icon="solar:sd-card-linear" class="text-accent"></iconify-icon>저장용량</li>
           <li class="inline-flex items-center gap-2 border border-hair px-4 py-2 text-body-base font-semibold text-ink"><iconify-icon icon="solar:battery-charge-linear" class="text-accent"></iconify-icon>배터리</li>
           <li class="inline-flex items-center gap-2 border border-hair px-4 py-2 text-body-base font-semibold text-ink"><iconify-icon icon="solar:map-point-linear" class="text-accent"></iconify-icon>삼각대</li>
           <li class="inline-flex items-center gap-2 border border-hair px-4 py-2 text-body-base font-semibold text-ink"><iconify-icon icon="solar:wi-fi-router-linear" class="text-accent"></iconify-icon>통신</li>
         </ul>
       </div>
-      <p class="reveal mt-6 flex items-start gap-2 bg-band px-5 py-4 text-body-base text-sub"><iconify-icon icon="solar:info-circle-linear" class="text-body-lg text-ink shrink-0 mt-0.5"></iconify-icon>현장 조건에 따라 저장 방식(NVR) · 채널 수 등을 맞춰 구성해 드립니다. 장비 구매부터 설치, 운영까지 최적의 구성을 제안합니다.</p>
+      <p class="reveal mt-6 flex items-start gap-2 bg-band px-5 py-4 text-body-base text-sub"><iconify-icon icon="solar:info-circle-linear" class="text-body-lg text-ink shrink-0 mt-0.5"></iconify-icon>현장 조건에 따라 저장 방식(NVR) · 채널 수 등을 맞춰 구성해 드립니다.<br class="sm:hidden"> 장비 구매부터 설치, 운영까지 최적의 구성을 제안합니다.</p>
     </div>
   </section>
 
@@ -1035,7 +1081,7 @@
   <section class="border-b border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-16 md:py-20">
       <a href="lookat-note.html" class="reveal group grid md:grid-cols-[auto_1fr_auto] gap-6 md:gap-10 items-center bg-band border border-hair p-7 md:p-10 hover:border-ink/30 transition-colors">
-        <img src="assets/logo/lookat/lookat-symbol.png" alt="" aria-hidden="true" class="w-16 h-16 md:w-20 md:h-20" loading="lazy">
+        <img src="assets/logo/lookat/lookat-symbol.webp" alt="" aria-hidden="true" class="w-16 h-16 md:w-20 md:h-20" loading="lazy">
         <div>
           <p class="text-body-md font-bold text-sub">함께 쓰는 현장관리 앱</p>
           <p class="mt-1 text-h2 md:text-h1 text-ink"><span class="font-brand">LOOKAT</span> <span class="font-brand bg-lookat px-2">NOTE</span></p>
@@ -1063,11 +1109,11 @@
           <span class="faq-toggle" aria-hidden="true"><iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon></span>
         </summary>
         <div class="faq-a">
-          <p class="flex items-baseline gap-4 md:gap-5 text-body-md md:text-body-lg text-body leading-[1.75]"><span class="faq-mark faq-mark-a stat-num">A</span><span>분석용 PC 없이 장비 한 대에서 AI가 바로 분석하고(Edge AI), 카메라가 필요한 곳으로 스스로 회전 · 확대해 확인합니다(AUTO PTZ). 장비 구성을 간소화해 도입 비용 부담을 줄입니다.</span></p>
+          <p class="flex items-baseline gap-4 md:gap-5 text-body-md md:text-body-lg text-body leading-[1.75]"><span class="faq-mark faq-mark-a stat-num">A</span><span>분석용 PC 없이 장비 한 대에서 AI가 바로 분석하고(Edge&nbsp;AI), 카메라가 필요한 곳으로 스스로 회전 · 확대해 확인합니다(AUTO PTZ). 장비 구성을 간소화해 도입 비용 부담을 줄입니다.</span></p>
           <div class="mt-8">
 
 
-      <div class="grid lg:grid-cols-[1fr_auto_1.1fr] gap-6 lg:gap-0 items-stretch">
+      <div class="m-swipe grid lg:grid-cols-[1fr_auto_1.1fr] gap-6 lg:gap-0 items-stretch">
         <!-- 기존 CCTV -->
         <div class="bg-white border border-hair p-7 md:p-9 lg:mr-8">
           <p class="text-h3 font-bold text-sub">기존 CCTV</p>
@@ -1104,11 +1150,11 @@
 
         <!-- LOOKAT -->
         <div class="bg-white border-2 border-lookat p-7 md:p-9 lg:ml-8">
-          <img src="assets/logo/lookat/lookat-wordmark.png" alt="LOOKAT" class="h-7 w-auto" width="2533" height="421" loading="lazy">
+          <img src="assets/logo/lookat/lookat-wordmark.webp" alt="LOOKAT" class="h-7 w-auto" width="2533" height="421" loading="lazy">
           <p class="mt-3 text-body-base text-sub">하나의 장비로, 현장에서 바로 AI 분석이 가능합니다.</p>
-          <div class="mt-7 grid grid-cols-[auto_1fr] gap-6 items-center">
+          <div class="m-faq-lookat mt-7 grid grid-cols-[auto_1fr] gap-6 items-center">
             <div class="w-28 md:w-36">
-              <img src="assets/lookat/product/edge-pro-angle.png" alt="LOOKAT EDGE PRO 장비 · 카메라와 Edge AI 본체 일체형" class="w-full h-auto" loading="lazy">
+              <img src="assets/lookat/product/edge-pro-angle.webp" alt="LOOKAT EDGE PRO 장비 · 카메라와 Edge AI 본체 일체형" class="w-full h-auto" loading="lazy">
             </div>
             <ul class="space-y-2.5">
               <li class="flex items-center gap-3 bg-lookat-tint px-4 py-3 text-body-md font-bold text-ink"><iconify-icon icon="solar:check-circle-bold" class="text-h3 text-ink shrink-0"></iconify-icon>분석용 PC 불필요</li>
@@ -1121,11 +1167,11 @@
       </div>
 
       <!-- 기존 CCTV vs AUTO PTZ · LOOKAT 팔레트 Panel Gray / Panel Blue -->
-      <div class="mt-8 grid md:grid-cols-[1fr_auto_1.15fr] items-stretch">
+      <div class="m-swipe mt-8 grid md:grid-cols-[1fr_auto_1.15fr] items-stretch">
         <div class="bg-[#EFEEEF] p-7 md:p-9 flex flex-col">
           <p class="text-h3 md:text-h2 font-bold text-ink">기존 CCTV</p>
           <p class="mt-1 text-body-md text-sub">보이는 영역만 확인</p>
-          <img src="assets/lookat/flow/cctv-fixed-view.png" alt="벽에 고정된 CCTV가 정면 한 구역만 비추는 일러스트" class="mt-7 w-full h-auto" loading="lazy">
+          <img src="assets/lookat/flow/cctv-fixed-view.webp" alt="벽에 고정된 CCTV가 정면 한 구역만 비추는 일러스트" class="mt-7 w-full h-auto" loading="lazy">
           <p class="mt-6 self-center inline-flex px-5 py-2 rounded-full bg-[#6E7683] text-white text-body-md font-bold">한정된 시야</p>
         </div>
         <div class="hidden md:flex items-center justify-center bg-gradient-to-r from-[#EFEEEF] to-[#E3E8F1] px-3" aria-hidden="true">
@@ -1153,15 +1199,21 @@
         </summary>
         <div class="faq-a">
           <p class="flex items-baseline gap-4 md:gap-5 text-body-md md:text-body-lg text-body leading-[1.75]"><span class="faq-mark faq-mark-a stat-num">A</span><span>실시간 AI 위험 감지 · 판단, PTZ 자율 제어, 생성형 AI 기반 안전 서류 · 법령 자동화, 현장 맞춤형 지속 학습 — 4가지 방법으로 현장을 지킵니다.</span></p>
-          <div class="mt-8">
+          <div class="mt-8 faq-feats" data-mtabs>
+      <div class="m-tabs m-tabs-4 sm:hidden" role="tablist" aria-label="기능 선택" hidden>
+        <button type="button" role="tab" data-mtab="f1" aria-selected="true">AI 감지·판단</button>
+        <button type="button" role="tab" data-mtab="f2" aria-selected="false">PTZ 자율 제어</button>
+        <button type="button" role="tab" data-mtab="f3" aria-selected="false">서류·법령 자동화</button>
+        <button type="button" role="tab" data-mtab="f4" aria-selected="false">지속 학습</button>
+      </div>
 
 
       <!-- Feature 01: 실시간 AI 위험 감지·판단 -->
-      <div class="pb-16 md:pb-20 mb-16 md:mb-20 border-b border-hair">
+      <div data-mpanel="f1" class="pb-16 md:pb-20 mb-16 md:mb-20 border-b border-hair">
           <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">01</p>
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div>
-            <img src="assets/vision/features/01-realtime-monitoring.png" alt="실시간 AI 위험 감지 화면" class="w-full h-auto">
+            <img src="assets/vision/features/01-realtime-monitoring.webp" alt="실시간 AI 위험 감지 화면" class="w-full h-auto" loading="lazy" decoding="async">
           </div>
           <div>
             <h3 class="text-h2 md:text-h1 font-bold text-ink mb-6 leading-tight" style="letter-spacing:-0.02em;">실시간 AI 위험 감지·판단</h3>
@@ -1183,7 +1235,7 @@
             <!-- 01 안전모 미착용 (스트립 전용 · 캐러셀과 다른 컷) -->
             <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
-                <img src="assets/vision/detection/selected/03-helmet/helmet-001-bbox.png" alt="안전모 미착용" class="w-full h-full object-cover" loading="lazy">
+                <img src="assets/vision/detection/selected/03-helmet/helmet-001-bbox.webp" alt="안전모 미착용" class="w-full h-full object-cover" loading="lazy">
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">01</span>
@@ -1199,7 +1251,7 @@
             <!-- 02 안전대 미착용 (스트립 전용 · 캐러셀과 다른 컷) -->
             <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
-                <img src="assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png" alt="안전대 미착용" class="w-full h-full object-cover" loading="lazy">
+                <img src="assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.webp" alt="안전대 미착용" class="w-full h-full object-cover" loading="lazy">
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">02</span>
@@ -1215,7 +1267,7 @@
             <!-- 03 개구부 안전조치 (스트립 전용 · 캐러셀과 다른 컷) -->
             <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
-                <img src="assets/vision/detection/selected/05-opening/opening-007-bbox.png" alt="개구부 안전조치" class="w-full h-full object-cover" loading="lazy">
+                <img src="assets/vision/detection/selected/05-opening/opening-007-bbox.webp" alt="개구부 안전조치" class="w-full h-full object-cover" loading="lazy">
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">03</span>
@@ -1232,7 +1284,7 @@
             <!-- 04 상하동시작업 (스트립 전용 · 캐러셀과 다른 컷) -->
             <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
-                <img src="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png" alt="상하동시작업" class="w-full h-full object-cover" loading="lazy">
+                <img src="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.webp" alt="상하동시작업" class="w-full h-full object-cover" loading="lazy">
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">04</span>
@@ -1249,7 +1301,7 @@
             <!-- 05 중장비 위험구역 (스트립 전용 · 캐러셀과 다른 컷) -->
             <div class="rc">
               <div class="lb-thumb aspect-[4/3] overflow-hidden bg-band">
-                <img src="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png" alt="중장비 위험구역" class="w-full h-full object-cover" loading="lazy">
+                <img src="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.webp" alt="중장비 위험구역" class="w-full h-full object-cover" loading="lazy">
                 <span class="rc-scrim" aria-hidden="true"></span>
                 <div class="rc-ov">
                   <span class="rc-no" aria-hidden="true">05</span>
@@ -1268,7 +1320,7 @@
       </div>
 
       <!-- Feature 02: PTZ 자율 제어 · 와이드 이미지 상단 배치 -->
-      <div class="pb-16 md:pb-20 mb-16 md:mb-20 border-b border-hair">
+      <div data-mpanel="f2" class="pb-16 md:pb-20 mb-16 md:mb-20 border-b border-hair">
           <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">02</p>
         <div class="grid lg:grid-cols-[0.92fr_1.08fr] gap-10 lg:gap-16 items-center">
         <!-- PTZ 자율 추적 시퀀스 · 감지 → 줌인 → 알림 → 조치 → 복귀 -->
@@ -1276,10 +1328,10 @@
           <div class="ptz" role="img"
                aria-label="개구부 안전조치 미비를 감지한 뒤 PTZ 카메라가 해당 지점을 확대해 추적하고, 현장과 관제에 알림을 보내 조치가 이뤄진 다음 다시 줌아웃해 정상 상태로 복귀하는 과정을 순서대로 보여주는 시퀀스입니다.">
             <div class="ptz-stage">
-              <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-008-segmentation.png" alt="" aria-hidden="true" loading="lazy">
-              <img class="ptz-f is-zoomin" src="assets/vision/detection/selected/05-opening/opening-007-bbox.png" alt="" aria-hidden="true" loading="lazy">
-              <img class="ptz-f is-hold" src="assets/vision/detection/selected/05-opening/opening-006-bbox.png" alt="" aria-hidden="true" loading="lazy">
-              <img class="ptz-f is-zoomout" src="assets/vision/detection/selected/05-opening/opening-001-bbox.png" alt="" aria-hidden="true" loading="lazy">
+              <img class="ptz-f" src="assets/vision/detection/selected/05-opening/opening-008-segmentation.webp" alt="" aria-hidden="true" loading="lazy">
+              <img class="ptz-f is-zoomin" src="assets/vision/detection/selected/05-opening/opening-007-bbox.webp" alt="" aria-hidden="true" loading="lazy">
+              <img class="ptz-f is-hold" src="assets/vision/detection/selected/05-opening/opening-006-bbox.webp" alt="" aria-hidden="true" loading="lazy">
+              <img class="ptz-f is-zoomout" src="assets/vision/detection/selected/05-opening/opening-001-bbox.webp" alt="" aria-hidden="true" loading="lazy">
               <div class="ptz-cap" aria-hidden="true"></div>
               <span class="ptz-live" aria-hidden="true"><i></i>LIVE</span>
               <p class="ptz-step"><b>01</b>AI 감지 · 픽셀 영역 분리</p>
@@ -1305,7 +1357,7 @@
       </div><!-- /Feature 02 -->
 
       <!-- Feature 03: 생성형 AI 기반 안전 서류·법령 자동화 · 와이드 이미지 상단 배치 -->
-      <div class="pb-16 md:pb-20 mb-16 md:mb-20 border-b border-hair">
+      <div data-mpanel="f3" class="pb-16 md:pb-20 mb-16 md:mb-20 border-b border-hair">
           <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">03</p>
         <!-- 텍스트 · 좌: 번호/제목/리드 · 우: bullet 리스트 -->
         <div class="grid md:grid-cols-[1fr_1.35fr] gap-10 md:gap-16">
@@ -1333,7 +1385,7 @@
               <div class="lc-slide active">
                 <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
                   <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
-                    <img src="assets/vision/detection/selected/03-helmet/helmet-006-bbox.png" alt="안전모 미착용 감지" class="w-full h-full object-cover" loading="lazy">
+                    <img src="assets/vision/detection/selected/03-helmet/helmet-006-bbox.webp" alt="안전모 미착용 감지" class="w-full h-full object-cover" loading="lazy">
                   </div>
                   <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
                     <p class="text-h3 md:text-h2 font-bold text-ink mb-4" style="letter-spacing:-0.015em;"><span class="stat-num text-accent">01.</span> 안전모 미착용</p>
@@ -1355,7 +1407,7 @@
               <div class="lc-slide">
                 <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
                   <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
-                    <img src="assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.png" alt="고소작업 안전대 미착용 감지" class="w-full h-full object-cover" loading="lazy">
+                    <img src="assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.webp" alt="고소작업 안전대 미착용 감지" class="w-full h-full object-cover" loading="lazy">
                   </div>
                   <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
                     <p class="text-h3 md:text-h2 font-bold text-ink mb-4" style="letter-spacing:-0.015em;"><span class="stat-num text-accent">02.</span> 고소작업 안전대 미착용</p>
@@ -1377,7 +1429,7 @@
               <div class="lc-slide">
                 <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
                   <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
-                    <img src="assets/vision/detection/selected/05-opening/opening-003-bbox.png" alt="개구부 안전조치 감지" class="w-full h-full object-cover" loading="lazy">
+                    <img src="assets/vision/detection/selected/05-opening/opening-003-bbox.webp" alt="개구부 안전조치 감지" class="w-full h-full object-cover" loading="lazy">
                   </div>
                   <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
                     <p class="text-h3 md:text-h2 font-bold text-ink mb-4" style="letter-spacing:-0.015em;"><span class="stat-num text-accent">03.</span> 개구부 안전조치</p>
@@ -1399,7 +1451,7 @@
               <div class="lc-slide">
                 <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
                   <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
-                    <img src="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.png" alt="상하동시작업 감지" class="w-full h-full object-cover" loading="lazy">
+                    <img src="assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.webp" alt="상하동시작업 감지" class="w-full h-full object-cover" loading="lazy">
                   </div>
                   <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
                     <p class="text-h3 md:text-h2 font-bold text-ink mb-4" style="letter-spacing:-0.015em;"><span class="stat-num text-accent">04.</span> 상하동시작업</p>
@@ -1421,7 +1473,7 @@
               <div class="lc-slide">
                 <div class="grid md:grid-cols-[1fr_1fr] gap-6 md:gap-8 items-stretch">
                   <div class="aspect-[4/3] md:aspect-auto overflow-hidden bg-band">
-                    <img src="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.png" alt="중장비 위험구역 침범 감지" class="w-full h-full object-cover" loading="lazy">
+                    <img src="assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.webp" alt="중장비 위험구역 침범 감지" class="w-full h-full object-cover" loading="lazy">
                   </div>
                   <div class="bg-white border border-hair p-6 md:p-7 flex flex-col justify-center">
                     <p class="text-h3 md:text-h2 font-bold text-ink mb-4" style="letter-spacing:-0.015em;"><span class="stat-num text-accent">05.</span> 중장비 위험구역 침범</p>
@@ -1458,7 +1510,7 @@
       </div>
 
       <!-- Feature 04: 현장 맞춤형 지속 학습 -->
-      <div >
+      <div data-mpanel="f4">
           <p class="stat-num text-hero font-bold text-ink/15 leading-none mb-5" aria-hidden="true">04</p>
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div class="md:order-2">
@@ -1524,7 +1576,7 @@
           <p class="flex items-baseline gap-4 md:gap-5 text-body-md md:text-body-lg text-body leading-[1.75]"><span class="faq-mark faq-mark-a stat-num">A</span><span>감지로 끝나지 않고 기록으로 남습니다. 일일 안전 리포트, 현장 맞춤 교육자료, 법적 증빙 서류로 정리됩니다.</span></p>
           <div class="mt-8">
 
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="m-swipe grid md:grid-cols-3 gap-6">
         <article class="card p-8">
             <iconify-icon icon="solar:chart-square-linear" class="text-accent text-h1 mb-5"></iconify-icon>
             <h3 class="text-body-lg md:text-h3 font-bold text-ink mb-3 leading-snug" style="letter-spacing:-0.015em;">일일 안전 리포트</h3>
@@ -1583,9 +1635,9 @@
   <footer class="bg-[#E9ECEF] text-sub border-t border-hair">
     <div class="max-w-7xl mx-auto px-6 sm:px-10 lg:px-14 py-10 md:py-12">
       <!-- 상단: 로고 + 정책 링크 -->
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-hair/70">
+      <div class="ft-top flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-hair/70">
         <a href="index.html" class="flex items-center">
-          <img src="assets/logo/ontoh/파랑.svg" alt="ONTOH" class="h-10">
+          <img src="assets/logo/ontoh/ontoh-logo-color.svg" alt="ONTOH" class="h-10">
         </a>
         <div class="flex items-center gap-5 text-body-sm">
           <a href="privacy.html" class="text-sub hover:text-ink transition-colors font-semibold">개인정보처리방침</a>
@@ -1595,7 +1647,7 @@
       </div>
 
       <!-- 회사 정보 · 가로 한 줄 (큐플레이스·시재건설 스타일 · 회색조 · | 구분자) -->
-      <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-body-sm text-sub leading-relaxed">
+      <div class="ft-info flex flex-wrap items-center gap-x-4 gap-y-2 text-body-sm text-sub leading-relaxed">
         <span class="text-ink font-bold">주식회사 온토</span>
         <span class="text-sub/40" aria-hidden="true">|</span>
         <span><span class="font-semibold">대표이사</span> 김태건</span>
@@ -1608,7 +1660,7 @@
       </div>
 
       <!-- 카피라이트 -->
-      <p class="mt-6 pt-4 border-t border-hair/60 text-sub/85 text-body-sm">&copy; 2026 주식회사 온토. All rights reserved.</p>
+      <p class="ft-copy mt-6 pt-4 border-t border-hair/60 text-sub/85 text-body-sm">&copy; 2026 주식회사 온토. All rights reserved.</p>
     </div>
   </footer>
 
@@ -1687,7 +1739,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/CustomEase.min.js"></script>
-  <script src="js/common.js"></script>
+  <script src="js/common.js?v=20261014d"></script>
 
   <!-- ==================== GSAP · vision.html 전용 애니메이션 (Ex 01, 05, 09) ==================== -->
   <script>
@@ -1847,8 +1899,8 @@
         idx = i;
         const s = SCENARIOS[i];
         const base = 'assets/vision/detection/selected';
-        clean.src = base + '/' + s.cat + '/' + s.name + '-clean.png';
-        labeled.src = base + '/' + s.cat + '/' + s.name + '-' + (s.after || 'bbox') + '.png';
+        clean.src = base + '/' + s.cat + '/' + s.name + '-clean.webp';
+        labeled.src = base + '/' + s.cat + '/' + s.name + '-' + (s.after || 'bbox') + '.webp';
         clean.alt = 'BEFORE · ' + s.title + ' 원본';
         labeled.alt = 'AFTER · ' + s.title + ' 감지 결과';
         lawCase.textContent = s.caseName;

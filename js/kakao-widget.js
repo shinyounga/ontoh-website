@@ -42,11 +42,15 @@
     // 닫힌 카드가 차지하는 빈 영역에는 반응하지 않도록 컨테이너는 이벤트를 통과시키고 런처·카드만 받는다
     fab.style.pointerEvents = 'none';
     launcher.style.pointerEvents = 'auto';
-    [launcher, card].forEach(function (el) {
+    // 터치 기기: 카드를 띄우지 않고 런처를 누르면 바로 상담으로 이동 (열린 카드가 화면을 가리지 않게)
+    var canHover = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    document.addEventListener('pointerdown', function (e) { if (!fab.contains(e.target)) set(false); }, { passive: true });
+    window.addEventListener('scroll', function () { if (card.classList.contains('is-open') && !canHover) set(false); }, { passive: true });
+    if (canHover) [launcher, card].forEach(function (el) {
       el.addEventListener('mouseenter', function () { set(true); });
       el.addEventListener('mouseleave', later);
     });
-    fab.addEventListener('focusin', function () { set(true); });
+    fab.addEventListener('focusin', function () { if (canHover) set(true); });
     fab.addEventListener('focusout', function (e) { if (!fab.contains(e.relatedTarget)) later(); });
     card.querySelector('[data-kakao-close]').addEventListener('click', function () { set(false); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });

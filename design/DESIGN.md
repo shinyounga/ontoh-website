@@ -59,8 +59,8 @@
 
 ### 로고
 
-- **`assets/logo/ontoh/파랑.svg`** — 라이트 배경용 (딥네이비 로고)
-- **`assets/logo/ontoh/흰색.svg`** — 다크 배경용 (푸터 등)
+- **`assets/logo/ontoh/ontoh-logo-color.svg`** — 라이트 배경용 (딥네이비 로고)
+- **`assets/logo/ontoh/ontoh-logo-white.svg`** — 다크 배경용 (푸터 등)
 - 로고 네이비 `#1b2e6a`는 **로고 자산 전용** — 웹 UI에는 사용 금지 (`#0A2440` ink 사용)
 
 ---

@@ -18,7 +18,7 @@ _같은 개념을 여러 이름으로 부르지 않도록 이 문서에서만 �
 ### 사용 규칙
 - 공식 문서 · footer: "주식회사 온토"
 - 본문 · CTA: "ONTOH" (영문 브랜드명 강조 시) 또는 "온토" (한글 자연스러움)
-- 로고: SVG 파일명 `assets/logo/ontoh/파랑.svg` — 텍스트로 대체 금지
+- 로고: SVG 파일명 `assets/logo/ontoh/ontoh-logo-color.svg` — 텍스트로 대체 금지
 
 ---
 

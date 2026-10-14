@@ -29,17 +29,9 @@
 3. 개입: 위험 순간 관리자에게 즉시 알리고, 자동 줌인으로 빠른 대응을 돕습니다.
 4. 기록: 감지부터 조치까지의 과정을 법령 기준 보고서로 자동 기록합니다.
 
-## 도입 사례
-
-- [사례 01 · 대규모 지구 조성 현장](https://ontoh.co.kr/references/case-01.html): 약 135만㎡·8,000세대급 현장에 LOOKAT 실증 배치. 위험행동 일 40+건 자동 감지, 오경보 68% 감소, 일일 안전보고서 작성 2시간→10분.
-- [사례 02 · 고층 다층 현장](https://ontoh.co.kr/references/case-02.html): 1,420세대·최고 35층 현장에 LOOKAT 실증 배치. 추락위험 3초 이내 알림, 다층 통합 관제로 사각지대 해소.
-- [도입 사례 전체](https://ontoh.co.kr/references.html)
-
 ## 주요 페이지
 
 - [홈](https://ontoh.co.kr/)
 - [회사소개](https://ontoh.co.kr/about.html): 비전·미션, 회사개요, 연혁, 특허·논문 요약, 협력 · 지원 기관
 - [기술 · 연구 (특허 · 논문)](https://ontoh.co.kr/patents.html)
-- [테크 블로그](https://ontoh.co.kr/blog/)
-- [Tiny Object Detection과 PTZ 자율관제](https://ontoh.co.kr/blog/tiny-object-detection.html): 광역 CCTV에서 작은 객체를 검출하기 어려운 이유와 2단계 파이프라인 해법
 - [문의 · 도입 상담](https://ontoh.co.kr/contact.html)
