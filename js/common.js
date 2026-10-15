@@ -125,6 +125,101 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Esc 로 모바일 메뉴 닫기
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && mobileMenu && mobileMenu.classList.contains('open')) closeMobileMenu();
+  });
+
+  // ==================== 모바일 탭 전환 (data-mtabs) ====================
+  document.querySelectorAll('[data-mtabs]').forEach(function(box) {
+    var tabs = box.querySelectorAll('[data-mtab]');
+    var panels = box.querySelectorAll('[data-mpanel]');
+    if (!tabs.length || !panels.length) return;
+    var keys = Array.prototype.map.call(tabs, function(t) { return t.getAttribute('data-mtab'); });
+    function show(key) {
+      tabs.forEach(function(t) { t.setAttribute('aria-selected', t.getAttribute('data-mtab') === key ? 'true' : 'false'); });
+      panels.forEach(function(p) {
+        var on = p.getAttribute('data-mpanel') === key;
+        p.classList.toggle('is-active', on);
+        if (on) p.classList.add('visible');
+      });
+    }
+    tabs.forEach(function(t) { t.addEventListener('click', function() { show(t.getAttribute('data-mtab')); }); });
+    // 좌우 스와이프로 다음/이전 탭
+    var x0 = null, y0 = null;
+    box.addEventListener('touchstart', function(e) { if (e.target.closest('[data-mpanel]')) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; } }, { passive: true });
+    box.addEventListener('touchend', function(e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+      if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy) * 1.5 || window.innerWidth >= 640) return;
+      var cur = keys.indexOf(box.querySelector('[data-mtab][aria-selected="true"]').getAttribute('data-mtab'));
+      var next = cur + (dx < 0 ? 1 : -1);
+      if (next >= 0 && next < keys.length) show(keys[next]);
+    }, { passive: true });
+    box.querySelectorAll('.m-tabs[hidden]').forEach(function(el) { el.hidden = false; });
+    box.classList.add('mtabs-on');
+    show(keys[0]);
+  });
+
+  // ==================== 모바일 가로 스와이프 진행 바 (.m-swipe) ====================
+  document.querySelectorAll('.m-swipe').forEach(function(track) {
+    // 가로로 넘기는 카드는 등장 애니메이션 없이 고정 (넘길 때 위로 튀는 현상 방지)
+    if (window.innerWidth < 640) { track.classList.remove('reveal'); Array.prototype.forEach.call(track.children, function(el) { el.classList.remove('reveal'); el.classList.add('visible'); }); }
+    var bar = document.createElement('div');
+    bar.className = 'm-swipe-bar';
+    bar.setAttribute('aria-hidden', 'true');
+    bar.innerHTML = '<i></i>';
+    track.parentNode.insertBefore(bar, track.nextSibling);
+    var fill = bar.firstChild;
+    function update() {
+      var max = track.scrollWidth;
+      fill.style.width = (max > 0 ? Math.min(100, (track.scrollLeft + track.clientWidth) / max * 100) : 100) + '%';
+    }
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
+
+  // ==================== 모바일 바로가기 칩 (.m-jump) ====================
+  document.querySelectorAll('.m-jump').forEach(function(bar) {
+    var btns = bar.querySelectorAll('[data-jump]');
+    var header = document.querySelector('header');
+    function offset() { return (header ? header.offsetHeight : 0) + bar.offsetHeight + 8; }
+    function mark(id) {
+      btns.forEach(function(b) {
+        var on = b.getAttribute('data-jump') === id;
+        b.setAttribute('aria-current', on ? 'true' : 'false');
+        if (on && b.scrollIntoView) bar.firstElementChild.scrollTo({ left: b.offsetLeft - 24, behavior: 'smooth' });
+      });
+    }
+    btns.forEach(function(b) {
+      b.addEventListener('click', function() {
+        var t = document.getElementById(b.getAttribute('data-jump'));
+        if (!t) return;
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - offset() + 1, behavior: 'smooth' });
+        // 스크롤이 멈춘 뒤 지연 로딩 이미지 등으로 위치가 밀렸으면 보정
+        var last = -1, tries = 0;
+        setTimeout(function wait() {
+          var y = window.pageYOffset;
+          if (y !== last && ++tries < 40) { last = y; return setTimeout(wait, 100); }
+          var d = t.getBoundingClientRect().top - offset();
+          if (Math.abs(d) > 6) window.scrollBy({ top: d + 1, behavior: 'auto' });
+        }, 200);
+      });
+    });
+    var current = null;
+    function onScroll() {
+      var y = offset() + 4, found = null;
+      btns.forEach(function(b) {
+        var t = document.getElementById(b.getAttribute('data-jump'));
+        if (t && t.getBoundingClientRect().top <= y) found = b.getAttribute('data-jump');
+      });
+      if (found !== current) { current = found; mark(found); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  });
+
   // ==================== Smooth Scroll ====================
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
@@ -138,6 +233,40 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo({ top: targetPosition, behavior: 'smooth' });
       }
     });
+  });
+
+  // ==================== 모바일 목차 (data-mtoc) ====================
+  document.querySelectorAll('[data-mtoc]').forEach(function(box, bi) {
+    var heads = box.querySelectorAll('h2');
+    if (heads.length < 3) return;
+    var toc = document.createElement('details');
+    toc.className = 'm-toc';
+    var html = '<summary>목차 <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon></summary><ol>';
+    heads.forEach(function(h, i) {
+      if (!h.id) h.id = 'sec-' + (bi + 1) + '-' + (i + 1);
+      var label = h.textContent.replace(/\s+/g, ' ').trim().replace(/^(제\d+조)\s*/, '$1 ');
+      html += '<li><a href="#' + h.id + '">' + label.replace(/</g, '&lt;') + '</a></li>';
+    });
+    toc.innerHTML = html + '</ol>';
+    box.insertBefore(toc, heads[0].closest('[data-mtoc] > *') || heads[0]);
+    toc.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var t = document.getElementById(a.getAttribute('href').slice(1));
+        if (!t) return;
+        e.preventDefault();
+        toc.open = false;
+        var header = document.querySelector('header');
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - (header ? header.offsetHeight : 0) - 16, behavior: 'smooth' });
+      });
+    });
+  });
+
+  // 가로 스크롤 탭: 누른 탭이 화면 안으로 오게
+  document.addEventListener('click', function(e) {
+    var t = e.target.closest('.ba-tab, .hc-tab');
+    if (!t || window.innerWidth >= 640) return;
+    var row = t.parentElement;
+    row.scrollTo({ left: t.offsetLeft - (row.clientWidth - t.offsetWidth) / 2, behavior: 'smooth' });
   });
 
   // ==================== Tab UI ====================

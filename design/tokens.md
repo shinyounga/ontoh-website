@@ -148,14 +148,14 @@ Tailwind 기본 spacing scale 사용. 커스텀 spacing 정의 없음.
 ```html
 <h1 class="text-white text-[42px] md:text-[48px] font-bold tracking-tight" 
     style="letter-spacing:-0.02em;">
-  온토비전
+  LOOKAT
 </h1>
 ```
 
 **After (semantic scale)**
 ```html
 <h1 class="text-white text-hero font-bold">
-  온토비전
+  LOOKAT
 </h1>
 ```
 
@@ -187,3 +187,20 @@ Tailwind 기본 spacing scale 사용. 커스텀 spacing 정의 없음.
 - 초안 · 섹션 4 완료 시점 기준 토큰 카탈로그 확정
 - Tailwind config에 fontSize (9개), boxShadow (4개) semantic scale 추가
 - 22개 파일 반영
+
+---
+
+## LOOKAT 서브브랜드 팔레트 (vision.html 전용)
+
+출처: LOOKAT 서비스소개서 4번 슬라이드 (`archive/original-assets/lookat/lookat-service-deck.pptx`). 리플렛·소개서·전시물 공통 기준.
+
+| 이름 | HEX | 용도 | Tailwind (vision.html) |
+|---|---|---|---|
+| Deep Navy | `#1B2E6A` | 헤드라인·번호·카드 제목 | `navy` |
+| Dark Navy | `#0D2843` | 다크 섹션 배경·로고 | — (웹은 `ink #0A2440`) |
+| Safety Yellow | `#F4C300` | 강조어·CTA·하이라이트 테두리 **전용** (넓은 배경 금지) | `lookat` |
+| Yellow Tint | `#FFF4CC` | 인용·강조 박스 | `lookat-tint` |
+| Sky Blue / Green / Red | `#2F80ED` / `#22A45D` / `#E5322D` | AI 인식 / 적합 / 위험 — 라벨·아이콘 표시 전용 | — |
+| Gray 700 / Gray 500 | `#4A5261` / `#6E7683` | 본문 / 캡션 | — |
+| Panel Gray / Panel Blue | `#EFEEEF` / `#E3E8F1` | 비교 패널 기존 / 개선 | arbitrary |
+| Tile | `#F3F5F9` | 아이콘 타일·섹션 면 | — |

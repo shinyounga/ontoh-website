@@ -1,0 +1,735 @@
+{
+ "summary": {
+  "count": 45,
+  "orig": 86162154,
+  "new": 4303581
+ },
+ "items": [
+  {
+   "origin": "ontoh/assets/main/health.png",
+   "deploy": "ontoh/assets-web/assets/main/health.jpg",
+   "web_path": "/assets/main/health.jpg",
+   "fmt": "JPEG",
+   "orig": 8636615,
+   "new": 100944,
+   "q": 31,
+   "ow": 3000,
+   "oh": 1200,
+   "w": 1536,
+   "h": 614,
+   "pages": [
+    "ontoh/health.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/main/about.png",
+   "deploy": "ontoh/assets-web/assets/main/about.jpg",
+   "web_path": "/assets/main/about.jpg",
+   "fmt": "JPEG",
+   "orig": 6678218,
+   "new": 102135,
+   "q": 53,
+   "ow": 3000,
+   "oh": 1200,
+   "w": 1920,
+   "h": 768,
+   "pages": [
+    "ontoh/about.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/main/contact.png",
+   "deploy": "ontoh/assets-web/assets/main/contact.jpg",
+   "web_path": "/assets/main/contact.jpg",
+   "fmt": "JPEG",
+   "orig": 5910373,
+   "new": 98733,
+   "q": 79,
+   "ow": 3000,
+   "oh": 1200,
+   "w": 1920,
+   "h": 768,
+   "pages": [
+    "ontoh/contact.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/main/patents.png",
+   "deploy": "ontoh/assets-web/assets/main/patents.jpg",
+   "web_path": "/assets/main/patents.jpg",
+   "fmt": "JPEG",
+   "orig": 5266599,
+   "new": 101908,
+   "q": 73,
+   "ow": 3000,
+   "oh": 1200,
+   "w": 1920,
+   "h": 768,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/main/vision.png",
+   "deploy": "ontoh/assets-web/assets/main/vision.jpg",
+   "web_path": "/assets/main/vision.jpg",
+   "fmt": "JPEG",
+   "orig": 4827613,
+   "new": 96381,
+   "q": 79,
+   "ow": 3000,
+   "oh": 1200,
+   "w": 1920,
+   "h": 768,
+   "pages": [
+    "ontoh/design/portal/patterns/hero.html",
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/05-opening/opening-008-segmentation.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/05-opening/opening-008-segmentation.jpg",
+   "web_path": "/assets/vision/detection/selected/05-opening/opening-008-segmentation.jpg",
+   "fmt": "JPEG",
+   "orig": 3837023,
+   "new": 101981,
+   "q": 30,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1070,
+   "h": 602,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/05-opening/opening-001-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/05-opening/opening-001-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/05-opening/opening-001-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 3738024,
+   "new": 101386,
+   "q": 52,
+   "ow": 1672,
+   "oh": 941,
+   "w": 856,
+   "h": 481,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/05-opening/opening-006-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/05-opening/opening-006-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/05-opening/opening-006-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 3337858,
+   "new": 101632,
+   "q": 46,
+   "ow": 1531,
+   "oh": 1027,
+   "w": 979,
+   "h": 657,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/05-opening/opening-007-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/05-opening/opening-007-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/05-opening/opening-007-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 3333160,
+   "new": 101508,
+   "q": 41,
+   "ow": 1537,
+   "oh": 1023,
+   "w": 983,
+   "h": 654,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.jpg",
+   "web_path": "/assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-008-labeled.jpg",
+   "fmt": "JPEG",
+   "orig": 3103133,
+   "new": 101187,
+   "q": 47,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1070,
+   "h": 602,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/05-opening/opening-003-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/05-opening/opening-003-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/05-opening/opening-003-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 2991329,
+   "new": 100056,
+   "q": 32,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1337,
+   "h": 752,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/reference/daejeon/main.png",
+   "deploy": "ontoh/assets-web/assets/vision/reference/daejeon/main.jpg",
+   "web_path": "/assets/vision/reference/daejeon/main.jpg",
+   "fmt": "JPEG",
+   "orig": 2878188,
+   "new": 102065,
+   "q": 52,
+   "ow": 1513,
+   "oh": 827,
+   "w": 1210,
+   "h": 661,
+   "pages": [
+    "ontoh/references.html",
+    "ontoh/references/case-01.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/03-helmet/helmet-001-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/03-helmet/helmet-001-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/03-helmet/helmet-001-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 2785413,
+   "new": 102090,
+   "q": 50,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1070,
+   "h": 602,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/03-helmet/helmet-006-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/03-helmet/helmet-006-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/03-helmet/helmet-006-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 2648982,
+   "new": 100994,
+   "q": 43,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1070,
+   "h": 602,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-020-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 2628372,
+   "new": 101459,
+   "q": 52,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1070,
+   "h": 602,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.jpg",
+   "web_path": "/assets/vision/detection/selected/04-heavy-equipment/heavy-equipment-011-labeled.jpg",
+   "fmt": "JPEG",
+   "orig": 2626011,
+   "new": 101069,
+   "q": 32,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1337,
+   "h": 752,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/01-simultaneous-work/simultaneous-work-001-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 2614843,
+   "new": 101470,
+   "q": 53,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1070,
+   "h": 602,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/02-fall-strap/fall-strap-006-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 2608349,
+   "new": 101046,
+   "q": 32,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1337,
+   "h": 752,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.png",
+   "deploy": "ontoh/assets-web/assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.jpg",
+   "web_path": "/assets/vision/detection/selected/02-fall-strap/fall-strap-003-bbox.jpg",
+   "fmt": "JPEG",
+   "orig": 2447266,
+   "new": 102371,
+   "q": 41,
+   "ow": 1672,
+   "oh": 941,
+   "w": 1337,
+   "h": 752,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/archive/construction_cctv.png",
+   "deploy": "ontoh/assets-web/assets/vision/archive/construction_cctv.jpg",
+   "web_path": "/assets/vision/archive/construction_cctv.jpg",
+   "fmt": "JPEG",
+   "orig": 2110251,
+   "new": 101461,
+   "q": 55,
+   "ow": 1536,
+   "oh": 1024,
+   "w": 1536,
+   "h": 1024,
+   "pages": [
+    "ontoh/blog/tiny-object-detection.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/features/01-realtime-monitoring.png",
+   "deploy": "ontoh/assets-web/assets/vision/features/01-realtime-monitoring.jpg",
+   "web_path": "/assets/vision/features/01-realtime-monitoring.jpg",
+   "fmt": "JPEG",
+   "orig": 2020215,
+   "new": 100547,
+   "q": 43,
+   "ow": 1378,
+   "oh": 794,
+   "w": 1102,
+   "h": 635,
+   "pages": [
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/health/hero-dashboard.png",
+   "deploy": "ontoh/assets-web/assets/health/hero-dashboard.webp",
+   "web_path": "/assets/health/hero-dashboard.webp",
+   "fmt": "WebP",
+   "orig": 1657374,
+   "new": 101470,
+   "q": 77,
+   "ow": 1600,
+   "oh": 1802,
+   "w": 1600,
+   "h": 1802,
+   "pages": [
+    "ontoh/health.html",
+    "ontoh/index.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/main.png",
+   "deploy": "ontoh/assets-web/assets/vision/main.jpg",
+   "web_path": "/assets/vision/main.jpg",
+   "fmt": "JPEG",
+   "orig": 1226028,
+   "new": 100555,
+   "q": 40,
+   "ow": 1765,
+   "oh": 1023,
+   "w": 1412,
+   "h": 818,
+   "pages": [
+    "ontoh/design/portal/foundations/layout.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/vision/dashboard2.png",
+   "deploy": "ontoh/assets-web/assets/vision/dashboard2.webp",
+   "web_path": "/assets/vision/dashboard2.webp",
+   "fmt": "WebP",
+   "orig": 1064234,
+   "new": 101932,
+   "q": 71,
+   "ow": 1800,
+   "oh": 1170,
+   "w": 1800,
+   "h": 1170,
+   "pages": [
+    "ontoh/index.html",
+    "ontoh/vision.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/patents/patent-2023-0592-thumb-1.png",
+   "deploy": "ontoh/assets-web/assets/tech/patents/patent-2023-0592-thumb-1.jpg",
+   "web_path": "/assets/tech/patents/patent-2023-0592-thumb-1.jpg",
+   "fmt": "JPEG",
+   "orig": 991116,
+   "new": 102323,
+   "q": 62,
+   "ow": 827,
+   "oh": 1169,
+   "w": 827,
+   "h": 1169,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/patents/patent-2025-0986-thumb-1.png",
+   "deploy": "ontoh/assets-web/assets/tech/patents/patent-2025-0986-thumb-1.jpg",
+   "web_path": "/assets/tech/patents/patent-2025-0986-thumb-1.jpg",
+   "fmt": "JPEG",
+   "orig": 701495,
+   "new": 101703,
+   "q": 68,
+   "ow": 827,
+   "oh": 1169,
+   "w": 827,
+   "h": 1169,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/health/features/04-health-followup.png",
+   "deploy": "ontoh/assets-web/assets/health/features/04-health-followup.jpg",
+   "web_path": "/assets/health/features/04-health-followup.jpg",
+   "fmt": "JPEG",
+   "orig": 420624,
+   "new": 101345,
+   "q": 43,
+   "ow": 1935,
+   "oh": 2780,
+   "w": 1536,
+   "h": 2206,
+   "pages": [
+    "ontoh/health.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/conf-2024-cctv-ptz-thumb.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/conf-2024-cctv-ptz-thumb.jpg",
+   "web_path": "/assets/tech/papers/conf-2024-cctv-ptz-thumb.jpg",
+   "fmt": "JPEG",
+   "orig": 361659,
+   "new": 101391,
+   "q": 48,
+   "ow": 745,
+   "oh": 1053,
+   "w": 745,
+   "h": 1053,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.jpg",
+   "web_path": "/assets/tech/papers/conf-2024-zero-shot-polygon-thumb-1.jpg",
+   "fmt": "JPEG",
+   "orig": 265085,
+   "new": 101515,
+   "q": 37,
+   "ow": 745,
+   "oh": 1053,
+   "w": 745,
+   "h": 1053,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.jpg",
+   "web_path": "/assets/tech/papers/journal-2026-dsdl-tiny-thumb-01.jpg",
+   "fmt": "JPEG",
+   "orig": 247088,
+   "new": 100727,
+   "q": 40,
+   "ow": 745,
+   "oh": 993,
+   "w": 745,
+   "h": 993,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/health/features/03-risk-factor-guide.png",
+   "deploy": "ontoh/assets-web/assets/health/features/03-risk-factor-guide.jpg",
+   "web_path": "/assets/health/features/03-risk-factor-guide.jpg",
+   "fmt": "JPEG",
+   "orig": 234286,
+   "new": 102399,
+   "q": 77,
+   "ow": 1599,
+   "oh": 1897,
+   "w": 1599,
+   "h": 1897,
+   "pages": [
+    "ontoh/health.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/journal-2025-moving-feature-thumb-01.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/journal-2025-moving-feature-thumb-01.jpg",
+   "web_path": "/assets/tech/papers/journal-2025-moving-feature-thumb-01.jpg",
+   "fmt": "JPEG",
+   "orig": 230440,
+   "new": 102304,
+   "q": 51,
+   "ow": 745,
+   "oh": 993,
+   "w": 745,
+   "h": 993,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/journal-2025-adaptive-water-thumb.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/journal-2025-adaptive-water-thumb.jpg",
+   "web_path": "/assets/tech/papers/journal-2025-adaptive-water-thumb.jpg",
+   "fmt": "JPEG",
+   "orig": 221595,
+   "new": 101148,
+   "q": 48,
+   "ow": 745,
+   "oh": 993,
+   "w": 745,
+   "h": 993,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/journal-2024-monte-carlo-thumb.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/journal-2024-monte-carlo-thumb.jpg",
+   "web_path": "/assets/tech/papers/journal-2024-monte-carlo-thumb.jpg",
+   "fmt": "JPEG",
+   "orig": 220489,
+   "new": 101281,
+   "q": 64,
+   "ow": 744,
+   "oh": 982,
+   "w": 744,
+   "h": 982,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/journal-2025-lvlm-safety-thumb-01.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/journal-2025-lvlm-safety-thumb-01.jpg",
+   "web_path": "/assets/tech/papers/journal-2025-lvlm-safety-thumb-01.jpg",
+   "fmt": "JPEG",
+   "orig": 213782,
+   "new": 101713,
+   "q": 52,
+   "ow": 745,
+   "oh": 993,
+   "w": 745,
+   "h": 993,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/domestic-2023-optimization-debris-thumb.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/domestic-2023-optimization-debris-thumb.jpg",
+   "web_path": "/assets/tech/papers/domestic-2023-optimization-debris-thumb.jpg",
+   "fmt": "JPEG",
+   "orig": 156505,
+   "new": 101823,
+   "q": 66,
+   "ow": 744,
+   "oh": 1052,
+   "w": 744,
+   "h": 1052,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/health/features/01-medical-input.png",
+   "deploy": "ontoh/assets-web/assets/health/features/01-medical-input.jpg",
+   "web_path": "/assets/health/features/01-medical-input.jpg",
+   "fmt": "JPEG",
+   "orig": 147510,
+   "new": 98416,
+   "q": 93,
+   "ow": 1600,
+   "oh": 1893,
+   "w": 1600,
+   "h": 1893,
+   "pages": [
+    "ontoh/health.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/logo/partners/web/smart-construction.png",
+   "deploy": "ontoh/assets-web/assets/logo/partners/web/smart-construction.webp",
+   "web_path": "/assets/logo/partners/web/smart-construction.webp",
+   "fmt": "WebP",
+   "orig": 145075,
+   "new": 75946,
+   "q": 95,
+   "ow": 2333,
+   "oh": 240,
+   "w": 1920,
+   "h": 197,
+   "pages": [
+    "ontoh/about.html",
+    "ontoh/index.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/domestic-2023-self-training-thumb.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/domestic-2023-self-training-thumb.jpg",
+   "web_path": "/assets/tech/papers/domestic-2023-self-training-thumb.jpg",
+   "fmt": "JPEG",
+   "orig": 141689,
+   "new": 101151,
+   "q": 72,
+   "ow": 744,
+   "oh": 1052,
+   "w": 744,
+   "h": 1052,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/tech/papers/conf-2022-comparing-objdet-thumb.png",
+   "deploy": "ontoh/assets-web/assets/tech/papers/conf-2022-comparing-objdet-thumb.jpg",
+   "web_path": "/assets/tech/papers/conf-2022-comparing-objdet-thumb.jpg",
+   "fmt": "JPEG",
+   "orig": 128405,
+   "new": 101635,
+   "q": 83,
+   "ow": 550,
+   "oh": 833,
+   "w": 550,
+   "h": 833,
+   "pages": [
+    "ontoh/patents.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/health/features/02-work-fit.png",
+   "deploy": "ontoh/assets-web/assets/health/features/02-work-fit.jpg",
+   "web_path": "/assets/health/features/02-work-fit.jpg",
+   "fmt": "JPEG",
+   "orig": 98583,
+   "new": 89935,
+   "q": 95,
+   "ow": 1598,
+   "oh": 1897,
+   "w": 1598,
+   "h": 1897,
+   "pages": [
+    "ontoh/health.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/health/features/04-search-function.png",
+   "deploy": "ontoh/assets-web/assets/health/features/04-search-function.jpg",
+   "web_path": "/assets/health/features/04-search-function.jpg",
+   "fmt": "JPEG",
+   "orig": 95888,
+   "new": 100912,
+   "q": 93,
+   "ow": 1058,
+   "oh": 1063,
+   "w": 1058,
+   "h": 1063,
+   "pages": [
+    "ontoh/health.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/logo/partners/web/yonsei.png",
+   "deploy": "ontoh/assets-web/assets/logo/partners/web/yonsei.webp",
+   "web_path": "/assets/logo/partners/web/yonsei.webp",
+   "fmt": "WebP",
+   "orig": 82924,
+   "new": 36866,
+   "q": 95,
+   "ow": 793,
+   "oh": 240,
+   "w": 793,
+   "h": 240,
+   "pages": [
+    "ontoh/about.html",
+    "ontoh/index.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/logo/partners/web/ex.png",
+   "deploy": "ontoh/assets-web/assets/logo/partners/web/ex.webp",
+   "web_path": "/assets/logo/partners/web/ex.webp",
+   "fmt": "WebP",
+   "orig": 42853,
+   "new": 27234,
+   "q": 95,
+   "ow": 808,
+   "oh": 240,
+   "w": 808,
+   "h": 240,
+   "pages": [
+    "ontoh/index.html"
+   ]
+  },
+  {
+   "origin": "ontoh/assets/logo/partners/web/molit.png",
+   "deploy": "ontoh/assets-web/assets/logo/partners/web/molit.webp",
+   "web_path": "/assets/logo/partners/web/molit.webp",
+   "fmt": "WebP",
+   "orig": 39592,
+   "new": 25434,
+   "q": 95,
+   "ow": 811,
+   "oh": 240,
+   "w": 811,
+   "h": 240,
+   "pages": [
+    "ontoh/index.html"
+   ]
+  }
+ ]
+}

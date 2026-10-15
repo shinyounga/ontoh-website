@@ -46,9 +46,9 @@
 |---|---|
 | **회사명** | ONTOH (온토) · 주식회사 온토 |
 | **사업 도메인** | 건설현장 안전관리 Physical AI |
-| **제품** | ONTOH Vision (AI 영상 자율 관제) · ONTOH Health (디지털 보건 관리) |
+| **제품** | LOOKAT (AI 영상 자율 관제) · ONTOH Health (디지털 보건 관리) |
 | **대표이사** | 김태건 |
-| **연락처** | ktg@ontoh.co.kr · www.ontoh.co.kr |
+| **연락처** | contact@ontoh.co.kr · www.ontoh.co.kr |
 | **소재지** | (03777) 서울특별시 서대문구 연세로2나길 61, 캠퍼스타운에스큐브 304호 |
 | **사업자번호** | 230-88-03436 |
 
@@ -59,8 +59,8 @@
 
 ### 로고
 
-- **`assets/logo/ontoh/파랑.svg`** — 라이트 배경용 (딥네이비 로고)
-- **`assets/logo/ontoh/흰색.svg`** — 다크 배경용 (푸터 등)
+- **`assets/logo/ontoh/ontoh-logo-color.svg`** — 라이트 배경용 (딥네이비 로고)
+- **`assets/logo/ontoh/ontoh-logo-white.svg`** — 다크 배경용 (푸터 등)
 - 로고 네이비 `#1b2e6a`는 **로고 자산 전용** — 웹 UI에는 사용 금지 (`#0A2440` ink 사용)
 
 ---
@@ -378,4 +378,4 @@ Kicker의 상세 페이지 버전. Challenge / Solution / Impact 등에 사용.
 
 _본문 v3.0 (2026-07-22) · §4.2 · §6.1 은 포털 기준으로 갱신 (2026-08-25)_
 _최신 규격: `design/portal/`_
-_Maintained by ONTOH Inc. (ktg@ontoh.co.kr)_
+_Maintained by ONTOH Inc. (contact@ontoh.co.kr)_

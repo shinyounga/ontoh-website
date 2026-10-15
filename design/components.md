@@ -135,7 +135,7 @@ _토큰 참조: [tokens.md](tokens.md) · 클래스 카탈로그: [CHECKLIST.md]
 ### Do
 ```html
 <p class="kicker">Products</p>
-<h2 class="text-h2 font-bold">온토비전이 현장을 지키는 방법</h2>
+<h2 class="text-h2 font-bold">LOOKAT이 현장을 지키는 방법</h2>
 ```
 
 ### Don't
